@@ -1,100 +1,6 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-<!-- CSS cho phần chuyên đề -->
-<style>
-    .chuyen-de-section {
-        margin-top: 40px;
-    }
-    .chuyen-de-item {
-        margin-bottom: 20px;
-    }
-    .chuyen-de-item h3 {
-        margin-bottom: 10px;
-        color: #333;
-        cursor: pointer;
-        padding: 10px;
-        background-color: #f9f9f9;
-        border-radius: 5px;
-        font-size: 20px; /* Đồng bộ với h2 trong main-content */
-    }
-    .chuyen-de-item h3:hover {
-        background-color: #e9e9e9;
-    }
-    .pdf-container {
-        display: none;
-        width: 100%;
-        border: 1px solid #ccc;
-        background-color: #fff;
-        padding: 10px;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đồng bộ với article */
-    }
-    .pdf-canvas {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    .pdf-nav {
-        text-align: center;
-        margin-top: 10px;
-    }
-    .pdf-nav button {
-        padding: 5px 10px;
-        margin: 0 5px;
-        background-color: #ff6200; /* Đồng bộ với màu chủ đạo */
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 14px;
-    }
-    .pdf-nav button:disabled {
-        background-color: #ccc;
-        cursor: not-allowed;
-    }
-</style>
-
-<!-- Tích hợp PDF.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Đồng Hành Cùng Học Sinh - Bộ đề thi Toán với 100 đề trắc nghiệm, giúp học sinh ôn luyện hiệu quả.">
@@ -244,6 +150,7 @@
             text-decoration: none;
             color: #1a73e8;
             font-size: 14px;
+            cursor: pointer;
         }
         .sidebar ul li a:hover {
             text-decoration: underline;
@@ -325,9 +232,92 @@
         .pagination a:hover:not(.active) {
             background-color: #ccc;
         }
+        .pdf-viewer {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .pdf-container {
+            width: 100%;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .pdf-canvas {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .pdf-nav {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .pdf-nav button {
+            padding: 5px 10px;
+            margin: 0 5px;
+            background-color: #ff6200;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .pdf-nav button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        @media (max-width: 768px) {
+            .pdf-canvas {
+                width: 100%;
+                height: auto;
+            }
+        }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
 </head>
 <body>
+    <script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+    </script>
     <div class="header">
         <div class="logo">Đồng Hành Cùng Học Sinh</div>
         <div class="course">
@@ -397,14 +387,11 @@
             <div id="examList">
                 <!-- Danh sách bài viết sẽ được tạo bằng JavaScript -->
             </div>
-<!-- Phần chuyên đề -->
-<div class="chuyen-de-section" id="chuyen-de">
-    <h2>Chuyên đề Toán</h2>
-    <div class="chuyen-de-item">
-        <h3 onclick="togglePDF('chuyen-de/nguyen-ham-tich-phan.pdf', 'pdf-container-nguyen-ham')">Nguyên hàm - Tích phân</h3>
-        <div class="pdf-container" id="pdf-container-nguyen-ham"></div>
-    </div>
-</div>
+            <!-- Khu vực hiển thị PDF từ chuyên đề -->
+            <div class="pdf-viewer" id="pdf-viewer" style="display: none;">
+                <h2 id="pdf-title"></h2>
+                <div class="pdf-container" id="pdf-container"></div>
+            </div>
             <div class="pagination" id="pagination">
                 <!-- Phân trang sẽ được tạo bằng JavaScript -->
             </div>
@@ -492,93 +479,122 @@
             window.location.href = randomExam.file;
         }
 
-        // Khởi tạo trang đầu tiên
-        renderExams(currentPage);
-    </script>
-<script>
-// Đặt workerSrc cho PDF.js
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
+        // Đặt workerSrc cho PDF.js
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
 
-// Hàm hiển thị/ẩn PDF
-async function togglePDF(pdfUrl, containerId) {
-    const pdfContainer = document.getElementById(containerId);
-    pdfContainer.innerHTML = ''; // Xóa nội dung cũ
+        // Biến lưu trữ danh sách chuyên đề từ JSON
+        let chuyenDeList = [];
 
-    // Ẩn/hiển thị PDF
-    if (pdfContainer.style.display === 'block') {
-        pdfContainer.style.display = 'none';
-        return;
-    }
+        // Tải danh sách chuyên đề từ file JSON
+        async function loadChuyenDeList() {
+            try {
+                const response = await fetch('chuyen-de-list.json');
+                chuyenDeList = await response.json();
 
-    pdfContainer.style.display = 'block';
+                // Tìm tất cả các liên kết trong sidebar (Lớp 12)
+                const sidebarLinks = document.querySelectorAll('.sidebar .category:nth-child(3) ul li a');
+                sidebarLinks.forEach(link => {
+                    const title = link.textContent.trim();
+                    const chuyenDe = chuyenDeList.find(item => item.title === title);
+                    if (chuyenDe) {
+                        // Thêm sự kiện nhấp để hiển thị PDF
+                        link.onclick = (e) => {
+                            e.preventDefault();
+                            showPDF(chuyenDe.file, title);
+                        };
+                    }
+                });
+            } catch (error) {
+                console.error('Lỗi khi tải danh sách chuyên đề:', error);
+            }
+        }
 
-    // Tải PDF
-    try {
-        const loadingTask = pdfjsLib.getDocument(pdfUrl);
-        const pdf = await loadingTask.promise;
-
-        // Biến lưu trạng thái trang hiện tại
-        let currentPage = 1;
-
-        // Hàm render trang
-        const renderPage = async (pageNum) => {
-            if (pageNum < 1 || pageNum > pdf.numPages) return;
-
+        // Hàm hiển thị PDF trong main-content
+        async function showPDF(pdfUrl, title) {
+            const pdfViewer = document.getElementById('pdf-viewer');
+            const pdfTitle = document.getElementById('pdf-title');
+            const pdfContainer = document.getElementById('pdf-container');
             pdfContainer.innerHTML = ''; // Xóa nội dung cũ
-            const page = await pdf.getPage(pageNum);
-            const viewport = page.getViewport({ scale: 1.0 });
 
-            // Tạo canvas cho trang
-            const canvas = document.createElement('canvas');
-            const context = canvas.getContext('2d');
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-            canvas.className = 'pdf-canvas';
-            pdfContainer.appendChild(canvas);
+            // Hiển thị tiêu đề và khu vực PDF
+            pdfTitle.textContent = title;
+            pdfViewer.style.display = 'block';
 
-            // Render trang PDF
-            const renderContext = {
-                canvasContext: context,
-                viewport: viewport
-            };
-            await page.render(renderContext).promise;
+            // Tải PDF
+            try {
+                const loadingTask = pdfjsLib.getDocument(pdfUrl);
+                const pdf = await loadingTask.promise;
 
-            // Thêm nút điều hướng
-            const navDiv = document.createElement('div');
-            navDiv.className = 'pdf-nav';
-            navDiv.innerHTML = `
-                <button onclick="renderPage(${pageNum - 1})" ${pageNum === 1 ? 'disabled' : ''}>Trang trước</button>
-                <span>Trang ${pageNum} / ${pdf.numPages}</span>
-                <button onclick="renderPage(${pageNum + 1})" ${pageNum === pdf.numPages ? 'disabled' : ''}>Trang sau</button>
-            `;
-            pdfContainer.appendChild(navDiv);
+                // Biến lưu trạng thái trang hiện tại
+                let currentPage = 1;
+
+                // Hàm render trang
+                const renderPage = async (pageNum) => {
+                    if (pageNum < 1 || pageNum > pdf.numPages) return;
+
+                    pdfContainer.innerHTML = ''; // Xóa nội dung cũ
+                    const page = await pdf.getPage(pageNum);
+                    const viewport = page.getViewport({ scale: 1.0 });
+
+                    // Tạo canvas cho trang
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    canvas.className = 'pdf-canvas';
+                    pdfContainer.appendChild(canvas);
+
+                    // Render trang PDF
+                    const renderContext = {
+                        canvasContext: context,
+                        viewport: viewport
+                    };
+                    await page.render(renderContext).promise;
+
+                    // Thêm nút điều hướng
+                    const navDiv = document.createElement('div');
+                    navDiv.className = 'pdf-nav';
+                    navDiv.innerHTML = `
+                        <button onclick="renderPage(${pageNum - 1})" ${pageNum === 1 ? 'disabled' : ''}>Trang trước</button>
+                        <span>Trang ${pageNum} / ${pdf.numPages}</span>
+                        <button onclick="renderPage(${pageNum + 1})" ${pageNum === pdf.numPages ? 'disabled' : ''}>Trang sau</button>
+                    `;
+                    pdfContainer.appendChild(navDiv);
+                };
+
+                // Lưu hàm renderPage vào global để gọi từ HTML
+                window.renderPage = renderPage;
+
+                // Render trang đầu tiên
+                renderPage(currentPage);
+            } catch (error) {
+                console.error('Lỗi khi tải PDF:', error);
+                pdfContainer.innerHTML = '<p>Không thể tải tài liệu. Vui lòng thử lại sau.</p>';
+            }
+        }
+
+        // Ngăn nhấp chuột phải trên PDF (hạn chế tải)
+        document.addEventListener('contextmenu', (e) => {
+            if (e.target.closest('.pdf-container')) {
+                e.preventDefault();
+            }
+        });
+
+        // Ngăn phím tắt Ctrl+S hoặc Ctrl+P (hạn chế tải)
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey && e.key === 's') || (e.ctrlKey && e.key === 'p')) {
+                e.preventDefault();
+                alert('Tính năng tải xuống hoặc in ấn đã bị vô hiệu hóa.');
+            }
+        });
+
+        // Tải danh sách chuyên đề khi trang được tải
+        window.onload = function() {
+            // Gọi hàm renderExams để giữ chức năng hiện tại
+            renderExams(currentPage);
+            // Gọi hàm loadChuyenDeList để tích hợp chuyên đề từ sidebar
+            loadChuyenDeList();
         };
-
-        // Lưu hàm renderPage vào global để gọi từ HTML
-        window.renderPage = renderPage;
-
-        // Render trang đầu tiên
-        renderPage(currentPage);
-    } catch (error) {
-        console.error('Lỗi khi tải PDF:', error);
-        pdfContainer.innerHTML = '<p>Không thể tải tài liệu. Vui lòng thử lại sau.</p>';
-    }
-}
-
-// Ngăn nhấp chuột phải trên PDF (hạn chế tải)
-document.addEventListener('contextmenu', (e) => {
-    if (e.target.closest('.pdf-container')) {
-        e.preventDefault();
-    }
-});
-
-// Ngăn phím tắt Ctrl+S hoặc Ctrl+P (hạn chế tải)
-document.addEventListener('keydown', (e) => {
-    if ((e.ctrlKey && e.key === 's') || (e.ctrlKey && e.key === 'p')) {
-        e.preventDefault();
-        alert('Tính năng tải xuống hoặc in ấn đã bị vô hiệu hóa.');
-    }
-});
-</script>
+    </script>
 </body>
 </html>
