@@ -40,61 +40,6 @@
         </script><!DOCTYPE html>
 <html lang="vi">
 <head>
-<!-- CSS cho phần chuyên đề -->
-<style>
-    .chuyen-de-section {
-        margin-top: 40px;
-    }
-    .chuyen-de-item {
-        margin-bottom: 20px;
-    }
-    .chuyen-de-item h3 {
-        margin-bottom: 10px;
-        color: #333;
-        cursor: pointer;
-        padding: 10px;
-        background-color: #f9f9f9;
-        border-radius: 5px;
-        font-size: 20px; /* Đồng bộ với h2 trong main-content */
-    }
-    .chuyen-de-item h3:hover {
-        background-color: #e9e9e9;
-    }
-    .pdf-container {
-        display: none;
-        width: 100%;
-        border: 1px solid #ccc;
-        background-color: #fff;
-        padding: 10px;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đồng bộ với article */
-    }
-    .pdf-canvas {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    .pdf-nav {
-        text-align: center;
-        margin-top: 10px;
-    }
-    .pdf-nav button {
-        padding: 5px 10px;
-        margin: 0 5px;
-        background-color: #ff6200; /* Đồng bộ với màu chủ đạo */
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 14px;
-    }
-    .pdf-nav button:disabled {
-        background-color: #ccc;
-        cursor: not-allowed;
-    }
-</style>
-
-<!-- Tích hợp PDF.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Đồng Hành Cùng Học Sinh - Bộ đề thi Toán với 100 đề trắc nghiệm, giúp học sinh ôn luyện hiệu quả.">
@@ -397,14 +342,6 @@
             <div id="examList">
                 <!-- Danh sách bài viết sẽ được tạo bằng JavaScript -->
             </div>
-<!-- Phần chuyên đề -->
-<div class="chuyen-de-section" id="chuyen-de">
-    <h2>Chuyên đề Toán</h2>
-    <div class="chuyen-de-item">
-        <h3 onclick="togglePDF('chuyen-de/nguyen-ham-tich-phan.pdf', 'pdf-container-nguyen-ham')">Nguyên hàm - Tích phân</h3>
-        <div class="pdf-container" id="pdf-container-nguyen-ham"></div>
-    </div>
-</div>
             <div class="pagination" id="pagination">
                 <!-- Phân trang sẽ được tạo bằng JavaScript -->
             </div>
@@ -495,90 +432,5 @@
         // Khởi tạo trang đầu tiên
         renderExams(currentPage);
     </script>
-<script>
-// Đặt workerSrc cho PDF.js
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
-
-// Hàm hiển thị/ẩn PDF
-async function togglePDF(pdfUrl, containerId) {
-    const pdfContainer = document.getElementById(containerId);
-    pdfContainer.innerHTML = ''; // Xóa nội dung cũ
-
-    // Ẩn/hiển thị PDF
-    if (pdfContainer.style.display === 'block') {
-        pdfContainer.style.display = 'none';
-        return;
-    }
-
-    pdfContainer.style.display = 'block';
-
-    // Tải PDF
-    try {
-        const loadingTask = pdfjsLib.getDocument(pdfUrl);
-        const pdf = await loadingTask.promise;
-
-        // Biến lưu trạng thái trang hiện tại
-        let currentPage = 1;
-
-        // Hàm render trang
-        const renderPage = async (pageNum) => {
-            if (pageNum < 1 || pageNum > pdf.numPages) return;
-
-            pdfContainer.innerHTML = ''; // Xóa nội dung cũ
-            const page = await pdf.getPage(pageNum);
-            const viewport = page.getViewport({ scale: 1.0 });
-
-            // Tạo canvas cho trang
-            const canvas = document.createElement('canvas');
-            const context = canvas.getContext('2d');
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-            canvas.className = 'pdf-canvas';
-            pdfContainer.appendChild(canvas);
-
-            // Render trang PDF
-            const renderContext = {
-                canvasContext: context,
-                viewport: viewport
-            };
-            await page.render(renderContext).promise;
-
-            // Thêm nút điều hướng
-            const navDiv = document.createElement('div');
-            navDiv.className = 'pdf-nav';
-            navDiv.innerHTML = `
-                <button onclick="renderPage(${pageNum - 1})" ${pageNum === 1 ? 'disabled' : ''}>Trang trước</button>
-                <span>Trang ${pageNum} / ${pdf.numPages}</span>
-                <button onclick="renderPage(${pageNum + 1})" ${pageNum === pdf.numPages ? 'disabled' : ''}>Trang sau</button>
-            `;
-            pdfContainer.appendChild(navDiv);
-        };
-
-        // Lưu hàm renderPage vào global để gọi từ HTML
-        window.renderPage = renderPage;
-
-        // Render trang đầu tiên
-        renderPage(currentPage);
-    } catch (error) {
-        console.error('Lỗi khi tải PDF:', error);
-        pdfContainer.innerHTML = '<p>Không thể tải tài liệu. Vui lòng thử lại sau.</p>';
-    }
-}
-
-// Ngăn nhấp chuột phải trên PDF (hạn chế tải)
-document.addEventListener('contextmenu', (e) => {
-    if (e.target.closest('.pdf-container')) {
-        e.preventDefault();
-    }
-});
-
-// Ngăn phím tắt Ctrl+S hoặc Ctrl+P (hạn chế tải)
-document.addEventListener('keydown', (e) => {
-    if ((e.ctrlKey && e.key === 's') || (e.ctrlKey && e.key === 'p')) {
-        e.preventDefault();
-        alert('Tính năng tải xuống hoặc in ấn đã bị vô hiệu hóa.');
-    }
-});
-</script>
 </body>
 </html>
