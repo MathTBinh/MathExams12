@@ -12,13 +12,20 @@
             background-color: #f9f9f9;
             color: #333;
         }
+        /* Cố định thanh tiêu đề */
         .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             background-color: #fff;
             padding: 10px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             border-bottom: 1px solid #ddd;
+            z-index: 1000;
+            box-sizing: border-box;
         }
         .header .logo {
             font-size: 24px;
@@ -58,12 +65,19 @@
         .header .nav-links a:hover {
             text-decoration: underline;
         }
+        /* Cố định thanh menu */
         .nav-tabs {
+            position: fixed;
+            top: 110px; /* Chiều cao của header (khoảng 110px) */
+            left: 0;
+            width: 100%;
             background-color: #fff;
             border-bottom: 1px solid #ddd;
             padding: 10px 20px;
             display: flex;
             align-items: center;
+            z-index: 999;
+            box-sizing: border-box;
         }
         .nav-tabs .dropdown {
             position: relative;
@@ -86,6 +100,7 @@
             max-height: 300px;
             overflow-y: auto;
             border-radius: 5px;
+            top: 100%;
         }
         .nav-tabs .dropdown-content a {
             color: #333;
@@ -115,16 +130,24 @@
         .nav-tabs .random-exam:hover {
             background-color: #3d8b40;
         }
+        /* Container chính */
         .container {
             display: flex;
             max-width: 1200px;
-            margin: 20px auto;
+            margin: 160px auto 20px; /* Thêm margin-top để tránh bị che bởi header và nav-tabs */
+            padding: 0 20px;
         }
+        /* Cố định sidebar */
         .sidebar {
             width: 25%;
             padding: 20px;
             background-color: #fff;
             border-right: 1px solid #ddd;
+            position: sticky;
+            top: 160px; /* Bắt đầu từ dưới nav-tabs */
+            height: calc(100vh - 160px); /* Chiều cao sidebar bằng chiều cao viewport trừ header và nav-tabs */
+            overflow-y: auto;
+            box-sizing: border-box;
         }
         .sidebar h2 {
             font-size: 20px;
@@ -155,6 +178,7 @@
         .sidebar ul li a:hover {
             text-decoration: underline;
         }
+        /* Nội dung chính */
         .main-content {
             width: 75%;
             padding: 20px;
@@ -272,6 +296,21 @@
             .pdf-canvas {
                 width: 100%;
                 height: auto;
+            }
+            .container {
+                flex-direction: column;
+                margin-top: 140px; /* Điều chỉnh cho mobile */
+            }
+            .sidebar {
+                width: 100%;
+                position: static;
+                height: auto;
+            }
+            .main-content {
+                width: 100%;
+            }
+            .nav-tabs {
+                top: 90px; /* Điều chỉnh cho mobile */
             }
         }
     </style>
