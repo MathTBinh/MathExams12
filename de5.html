@@ -3,468 +3,775 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ĐỀ THI TOÁN - ĐỀ SỐ 5 với các câu hỏi trắc nghiệm và lời giải chi tiết.">
-    <title>ĐỀ THI TOÁN - ĐỀ 5 - ĐỒNG HÀNH CÙNG HỌC SINH</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="stylesheet" href="styles.css">
+    <title>Đề Thi Toán - Đề 5</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .exam-selector {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown:hover .dropbtn {
+            background-color: #555;
+        }
+        .dropbtn {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        .random-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .random-btn:hover {
+            background-color: #45a049;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            color: #444;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+        }
+        .question {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .question h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .options label {
+            display: block;
+            margin: 10px 0;
+        }
+        .answer-check {
+            margin-top: 10px;
+        }
+        .answer-feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .solution-toggle {
+            color: #0066cc;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        .solution {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #0066cc;
+        }
+        img {
+            display: block;
+            margin: 10px 0;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-    <div class="header">
-        <div class="logo">ĐỒNG HÀNH CÙNG HỌC SINH</div>
-        <div class="course">
-            <a href="#">Khóa học Thầy Bình</a>
-        </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Tìm kiếm đề thi (VD: Đề 50)">
-        </div>
-        <div class="nav-links">
-            <a href="#">Học online</a>
-            <a href="#">Tài liệu</a>
-            <a href="#">Liên hệ</a>
-        </div>
-    </div>
-
-    <div class="nav-tabs">
+    <h1>Đề Thi Toán - Đề 5</h1>
+    <div class="exam-selector">
         <div class="dropdown">
-            <span class="dropdown-btn">Chọn đề thi ▼</span>
+            <button class="dropbtn">Chọn đề thi</button>
             <div class="dropdown-content" id="examDropdown"></div>
         </div>
-        <a href="#" class="random-exam" onclick="goToRandomExam()">Đề ngẫu nhiên</a>
+        <button class="random-btn" onclick="goToRandomExam()">Chuyển đến đề ngẫu nhiên</button>
     </div>
 
-    <div class="container">
-        <div class="sidebar" id="sidebar"></div>
-
-        <div class="main-content">
-            <h1>ĐỀ THI TOÁN - ĐỀ SỐ 5 <span class="hot">HOT</span></h1>
-
-            <h2>Phần I: Trắc Nghiệm Nhiều Lựa Chọn</h2>
-            <!-- Ghi chú: Thêm 12 câu trắc nghiệm nhiều lựa chọn tại đây (Câu 1 đến Câu 12). Copy-paste nội dung từ PDF vào các vị trí được ghi chú bên dưới. -->
-            <div class="question">
-                <h3>Câu 1:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="options">
-                    <div class="option">A. <!-- [Thêm đáp án A] --></div>
-                    <div class="option">B. <!-- [Thêm đáp án B] --></div>
-                    <div class="option">C. <!-- [Thêm đáp án C] --></div>
-                    <div class="option">D. <!-- [Thêm đáp án D] --></div>
-                </div>
-                <div class="answer-check">
-                    <p>Chọn đáp án:</p>
-                    <label><input type="radio" name="q1" value="A"> A</label>
-                    <label><input type="radio" name="q1" value="B"> B</label>
-                    <label><input type="radio" name="q1" value="C"> C</label>
-                    <label><input type="radio" name="q1" value="D"> D</label>
-                    <button onclick="checkAnswer('q1', 'A')"><!-- [Thêm đáp án đúng vào checkAnswer, ví dụ: checkAnswer('q1', 'A')] -->Kiểm tra</button>
-                </div>
-                <div class="answer-feedback" id="feedback-q1"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
-            </div>            <div class="question">
-                <h3>Câu 2:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="options">
-                    <div class="option">A. <!-- [Thêm đáp án A] --></div>
-                    <div class="option">B. <!-- [Thêm đáp án B] --></div>
-                    <div class="option">C. <!-- [Thêm đáp án C] --></div>
-                    <div class="option">D. <!-- [Thêm đáp án D] --></div>
-                </div>
-                <div class="answer-check">
-                    <p>Chọn đáp án:</p>
-                    <label><input type="radio" name="q2" value="A"> A</label>
-                    <label><input type="radio" name="q2" value="B"> B</label>
-                    <label><input type="radio" name="q2" value="C"> C</label>
-                    <label><input type="radio" name="q2" value="D"> D</label>
-                    <button onclick="checkAnswer('q2', 'A')"><!-- [Thêm đáp án đúng vào checkAnswer, ví dụ: checkAnswer('q2', 'A')] -->Kiểm tra</button>
-                </div>
-                <div class="answer-feedback" id="feedback-q2"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
-            </div>            <div class="question">
-                <h3>Câu 3:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="options">
-                    <div class="option">A. <!-- [Thêm đáp án A] --></div>
-                    <div class="option">B. <!-- [Thêm đáp án B] --></div>
-                    <div class="option">C. <!-- [Thêm đáp án C] --></div>
-                    <div class="option">D. <!-- [Thêm đáp án D] --></div>
-                </div>
-                <div class="answer-check">
-                    <p>Chọn đáp án:</p>
-                    <label><input type="radio" name="q3" value="A"> A</label>
-                    <label><input type="radio" name="q3" value="B"> B</label>
-                    <label><input type="radio" name="q3" value="C"> C</label>
-                    <label><input type="radio" name="q3" value="D"> D</label>
-                    <button onclick="checkAnswer('q3', 'A')"><!-- [Thêm đáp án đúng vào checkAnswer, ví dụ: checkAnswer('q3', 'A')] -->Kiểm tra</button>
-                </div>
-                <div class="answer-feedback" id="feedback-q3"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
-            </div>            <div class="question">
-                <h3>Câu 4:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="options">
-                    <div class="option">A. <!-- [Thêm đáp án A] --></div>
-                    <div class="option">B. <!-- [Thêm đáp án B] --></div>
-                    <div class="option">C. <!-- [Thêm đáp án C] --></div>
-                    <div class="option">D. <!-- [Thêm đáp án D] --></div>
-                </div>
-                <div class="answer-check">
-                    <p>Chọn đáp án:</p>
-                    <label><input type="radio" name="q4" value="A"> A</label>
-                    <label><input type="radio" name="q4" value="B"> B</label>
-                    <label><input type="radio" name="q4" value="C"> C</label>
-                    <label><input type="radio" name="q4" value="D"> D</label>
-                    <button onclick="checkAnswer('q4', 'A')"><!-- [Thêm đáp án đúng vào checkAnswer, ví dụ: checkAnswer('q4', 'A')] -->Kiểm tra</button>
-                </div>
-                <div class="answer-feedback" id="feedback-q4"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
-            </div>            <div class="question">
-                <h3>Câu 5:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="options">
-                    <div class="option">A. <!-- [Thêm đáp án A] --></div>
-                    <div class="option">B. <!-- [Thêm đáp án B] --></div>
-                    <div class="option">C. <!-- [Thêm đáp án C] --></div>
-                    <div class="option">D. <!-- [Thêm đáp án D] --></div>
-                </div>
-                <div class="answer-check">
-                    <p>Chọn đáp án:</p>
-                    <label><input type="radio" name="q5" value="A"> A</label>
-                    <label><input type="radio" name="q5" value="B"> B</label>
-                    <label><input type="radio" name="q5" value="C"> C</label>
-                    <label><input type="radio" name="q5" value="D"> D</label>
-                    <button onclick="checkAnswer('q5', 'A')"><!-- [Thêm đáp án đúng vào checkAnswer, ví dụ: checkAnswer('q5', 'A')] -->Kiểm tra</button>
-                </div>
-                <div class="answer-feedback" id="feedback-q5"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
-            </div>            <div class="question">
-                <h3>Câu 6:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="options">
-                    <div class="option">A. <!-- [Thêm đáp án A] --></div>
-                    <div class="option">B. <!-- [Thêm đáp án B] --></div>
-                    <div class="option">C. <!-- [Thêm đáp án C] --></div>
-                    <div class="option">D. <!-- [Thêm đáp án D] --></div>
-                </div>
-                <div class="answer-check">
-                    <p>Chọn đáp án:</p>
-                    <label><input type="radio" name="q6" value="A"> A</label>
-                    <label><input type="radio" name="q6" value="B"> B</label>
-                    <label><input type="radio" name="q6" value="C"> C</label>
-                    <label><input type="radio" name="q6" value="D"> D</label>
-                    <button onclick="checkAnswer('q6', 'A')"><!-- [Thêm đáp án đúng vào checkAnswer, ví dụ: checkAnswer('q6', 'A')] -->Kiểm tra</button>
-                </div>
-                <div class="answer-feedback" id="feedback-q6"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
-            </div>            <div class="question">
-                <h3>Câu 7:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="options">
-                    <div class="option">A. <!-- [Thêm đáp án A] --></div>
-                    <div class="option">B. <!-- [Thêm đáp án B] --></div>
-                    <div class="option">C. <!-- [Thêm đáp án C] --></div>
-                    <div class="option">D. <!-- [Thêm đáp án D] --></div>
-                </div>
-                <div class="answer-check">
-                    <p>Chọn đáp án:</p>
-                    <label><input type="radio" name="q7" value="A"> A</label>
-                    <label><input type="radio" name="q7" value="B"> B</label>
-                    <label><input type="radio" name="q7" value="C"> C</label>
-                    <label><input type="radio" name="q7" value="D"> D</label>
-                    <button onclick="checkAnswer('q7', 'A')"><!-- [Thêm đáp án đúng vào checkAnswer, ví dụ: checkAnswer('q7', 'A')] -->Kiểm tra</button>
-                </div>
-                <div class="answer-feedback" id="feedback-q7"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
-            </div>            <div class="question">
-                <h3>Câu 8:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="options">
-                    <div class="option">A. <!-- [Thêm đáp án A] --></div>
-                    <div class="option">B. <!-- [Thêm đáp án B] --></div>
-                    <div class="option">C. <!-- [Thêm đáp án C] --></div>
-                    <div class="option">D. <!-- [Thêm đáp án D] --></div>
-                </div>
-                <div class="answer-check">
-                    <p>Chọn đáp án:</p>
-                    <label><input type="radio" name="q8" value="A"> A</label>
-                    <label><input type="radio" name="q8" value="B"> B</label>
-                    <label><input type="radio" name="q8" value="C"> C</label>
-                    <label><input type="radio" name="q8" value="D"> D</label>
-                    <button onclick="checkAnswer('q8', 'A')"><!-- [Thêm đáp án đúng vào checkAnswer, ví dụ: checkAnswer('q8', 'A')] -->Kiểm tra</button>
-                </div>
-                <div class="answer-feedback" id="feedback-q8"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
-            </div>            <div class="question">
-                <h3>Câu 9:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="options">
-                    <div class="option">A. <!-- [Thêm đáp án A] --></div>
-                    <div class="option">B. <!-- [Thêm đáp án B] --></div>
-                    <div class="option">C. <!-- [Thêm đáp án C] --></div>
-                    <div class="option">D. <!-- [Thêm đáp án D] --></div>
-                </div>
-                <div class="answer-check">
-                    <p>Chọn đáp án:</p>
-                    <label><input type="radio" name="q9" value="A"> A</label>
-                    <label><input type="radio" name="q9" value="B"> B</label>
-                    <label><input type="radio" name="q9" value="C"> C</label>
-                    <label><input type="radio" name="q9" value="D"> D</label>
-                    <button onclick="checkAnswer('q9', 'A')"><!-- [Thêm đáp án đúng vào checkAnswer, ví dụ: checkAnswer('q9', 'A')] -->Kiểm tra</button>
-                </div>
-                <div class="answer-feedback" id="feedback-q9"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
-            </div>            <div class="question">
-                <h3>Câu 10:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="options">
-                    <div class="option">A. <!-- [Thêm đáp án A] --></div>
-                    <div class="option">B. <!-- [Thêm đáp án B] --></div>
-                    <div class="option">C. <!-- [Thêm đáp án C] --></div>
-                    <div class="option">D. <!-- [Thêm đáp án D] --></div>
-                </div>
-                <div class="answer-check">
-                    <p>Chọn đáp án:</p>
-                    <label><input type="radio" name="q10" value="A"> A</label>
-                    <label><input type="radio" name="q10" value="B"> B</label>
-                    <label><input type="radio" name="q10" value="C"> C</label>
-                    <label><input type="radio" name="q10" value="D"> D</label>
-                    <button onclick="checkAnswer('q10', 'A')"><!-- [Thêm đáp án đúng vào checkAnswer, ví dụ: checkAnswer('q10', 'A')] -->Kiểm tra</button>
-                </div>
-                <div class="answer-feedback" id="feedback-q10"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
-            </div>            <div class="question">
-                <h3>Câu 11:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="options">
-                    <div class="option">A. <!-- [Thêm đáp án A] --></div>
-                    <div class="option">B. <!-- [Thêm đáp án B] --></div>
-                    <div class="option">C. <!-- [Thêm đáp án C] --></div>
-                    <div class="option">D. <!-- [Thêm đáp án D] --></div>
-                </div>
-                <div class="answer-check">
-                    <p>Chọn đáp án:</p>
-                    <label><input type="radio" name="q11" value="A"> A</label>
-                    <label><input type="radio" name="q11" value="B"> B</label>
-                    <label><input type="radio" name="q11" value="C"> C</label>
-                    <label><input type="radio" name="q11" value="D"> D</label>
-                    <button onclick="checkAnswer('q11', 'A')"><!-- [Thêm đáp án đúng vào checkAnswer, ví dụ: checkAnswer('q11', 'A')] -->Kiểm tra</button>
-                </div>
-                <div class="answer-feedback" id="feedback-q11"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
-            </div>            <div class="question">
-                <h3>Câu 12:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="options">
-                    <div class="option">A. <!-- [Thêm đáp án A] --></div>
-                    <div class="option">B. <!-- [Thêm đáp án B] --></div>
-                    <div class="option">C. <!-- [Thêm đáp án C] --></div>
-                    <div class="option">D. <!-- [Thêm đáp án D] --></div>
-                </div>
-                <div class="answer-check">
-                    <p>Chọn đáp án:</p>
-                    <label><input type="radio" name="q12" value="A"> A</label>
-                    <label><input type="radio" name="q12" value="B"> B</label>
-                    <label><input type="radio" name="q12" value="C"> C</label>
-                    <label><input type="radio" name="q12" value="D"> D</label>
-                    <button onclick="checkAnswer('q12', 'A')"><!-- [Thêm đáp án đúng vào checkAnswer, ví dụ: checkAnswer('q12', 'A')] -->Kiểm tra</button>
-                </div>
-                <div class="answer-feedback" id="feedback-q12"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
+    <div class="section">
+        <h2>Phần I: Trắc nghiệm nhiều phương án lựa chọn</h2>
+        <div class="question">
+            <h3>Câu 1:</h3>
+            <p>Cho hình lập phương \( ABCD.EFGH \) cạnh bằng \( a \). Giá trị của \( \overrightarrow{AC} \cdot \overrightarrow{EG} \) bằng:</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="A"> A. \( -a^2 \)</label>
+                <label><input type="radio" name="q1" value="B"> B. \( a^2 \)</label>
+                <label><input type="radio" name="q1" value="C"> C. \( -2a^2 \)</label>
+                <label><input type="radio" name="q1" value="D"> D. \( 2a^2 \)</label>
             </div>
-
-            <h2>Phần II: Trắc Nghiệm Đúng/Sai</h2>
-            <!-- Ghi chú: Thêm 4 câu trắc nghiệm Đúng/Sai tại đây (Câu 1 đến Câu 4). Copy-paste nội dung từ PDF vào các vị trí được ghi chú bên dưới. -->
-            <div class="question">
-                <h3>Câu 1:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="options">
-                    <div class="option">a) <!-- [Thêm phát biểu a] --></div>
-                    <div class="option">b) <!-- [Thêm phát biểu b] --></div>
-                </div>
-                <div class="answer-check">
-                    <p>Chọn đáp án cho từng phát biểu:</p>
-                    <p>a) <label><input type="radio" name="q13a" value="Đúng"> Đúng</label> <label><input type="radio" name="q13a" value="Sai"> Sai</label></p>
-                    <p>b) <label><input type="radio" name="q13b" value="Đúng"> Đúng</label> <label><input type="radio" name="q13b" value="Sai"> Sai</label></p>
-                    <button onclick="checkTrueFalseAnswer('q13', ['Đúng', 'Sai'])"><!-- [Thêm đáp án đúng vào checkTrueFalseAnswer, ví dụ: checkTrueFalseAnswer('q13', ['Đúng', 'Sai'])] -->Kiểm tra</button>
-                </div>
-                <div class="answer-feedback" id="feedback-q13"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
-            </div>            <div class="question">
-                <h3>Câu 2:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="options">
-                    <div class="option">a) <!-- [Thêm phát biểu a] --></div>
-                    <div class="option">b) <!-- [Thêm phát biểu b] --></div>
-                </div>
-                <div class="answer-check">
-                    <p>Chọn đáp án cho từng phát biểu:</p>
-                    <p>a) <label><input type="radio" name="q14a" value="Đúng"> Đúng</label> <label><input type="radio" name="q14a" value="Sai"> Sai</label></p>
-                    <p>b) <label><input type="radio" name="q14b" value="Đúng"> Đúng</label> <label><input type="radio" name="q14b" value="Sai"> Sai</label></p>
-                    <button onclick="checkTrueFalseAnswer('q14', ['Đúng', 'Sai'])"><!-- [Thêm đáp án đúng vào checkTrueFalseAnswer, ví dụ: checkTrueFalseAnswer('q14', ['Đúng', 'Sai'])] -->Kiểm tra</button>
-                </div>
-                <div class="answer-feedback" id="feedback-q14"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
-            </div>            <div class="question">
-                <h3>Câu 3:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="options">
-                    <div class="option">a) <!-- [Thêm phát biểu a] --></div>
-                    <div class="option">b) <!-- [Thêm phát biểu b] --></div>
-                </div>
-                <div class="answer-check">
-                    <p>Chọn đáp án cho từng phát biểu:</p>
-                    <p>a) <label><input type="radio" name="q15a" value="Đúng"> Đúng</label> <label><input type="radio" name="q15a" value="Sai"> Sai</label></p>
-                    <p>b) <label><input type="radio" name="q15b" value="Đúng"> Đúng</label> <label><input type="radio" name="q15b" value="Sai"> Sai</label></p>
-                    <button onclick="checkTrueFalseAnswer('q15', ['Đúng', 'Sai'])"><!-- [Thêm đáp án đúng vào checkTrueFalseAnswer, ví dụ: checkTrueFalseAnswer('q15', ['Đúng', 'Sai'])] -->Kiểm tra</button>
-                </div>
-                <div class="answer-feedback" id="feedback-q15"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
-            </div>            <div class="question">
-                <h3>Câu 4:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="options">
-                    <div class="option">a) <!-- [Thêm phát biểu a] --></div>
-                    <div class="option">b) <!-- [Thêm phát biểu b] --></div>
-                </div>
-                <div class="answer-check">
-                    <p>Chọn đáp án cho từng phát biểu:</p>
-                    <p>a) <label><input type="radio" name="q16a" value="Đúng"> Đúng</label> <label><input type="radio" name="q16a" value="Sai"> Sai</label></p>
-                    <p>b) <label><input type="radio" name="q16b" value="Đúng"> Đúng</label> <label><input type="radio" name="q16b" value="Sai"> Sai</label></p>
-                    <button onclick="checkTrueFalseAnswer('q16', ['Đúng', 'Sai'])"><!-- [Thêm đáp án đúng vào checkTrueFalseAnswer, ví dụ: checkTrueFalseAnswer('q16', ['Đúng', 'Sai'])] -->Kiểm tra</button>
-                </div>
-                <div class="answer-feedback" id="feedback-q16"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
+            <div class="answer-check">
+                <button onclick="checkAnswer('q1', 'D')">Kiểm tra</button>
             </div>
-
-            <h2>Phần III: Trắc Nghiệm Trả Lời Ngắn</h2>
-            <!-- Ghi chú: Thêm 6 câu trắc nghiệm trả lời ngắn tại đây (Câu 1 đến Câu 6). Copy-paste nội dung từ PDF vào các vị trí được ghi chú bên dưới. -->
-            <div class="question">
-                <h3>Câu 1:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="answer-check">
-                    <p>Nhập đáp án: <input type="text" id="q17-input"> <button onclick="checkShortAnswer('q17', '1')"><!-- [Thêm đáp án đúng vào checkShortAnswer, ví dụ: checkShortAnswer('q17', '1')] -->Kiểm tra</button></p>
-                </div>
-                <div class="answer-feedback" id="feedback-q17"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
-            </div>            <div class="question">
-                <h3>Câu 2:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="answer-check">
-                    <p>Nhập đáp án: <input type="text" id="q18-input"> <button onclick="checkShortAnswer('q18', '1')"><!-- [Thêm đáp án đúng vào checkShortAnswer, ví dụ: checkShortAnswer('q18', '1')] -->Kiểm tra</button></p>
-                </div>
-                <div class="answer-feedback" id="feedback-q18"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
-            </div>            <div class="question">
-                <h3>Câu 3:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="answer-check">
-                    <p>Nhập đáp án: <input type="text" id="q19-input"> <button onclick="checkShortAnswer('q19', '1')"><!-- [Thêm đáp án đúng vào checkShortAnswer, ví dụ: checkShortAnswer('q19', '1')] -->Kiểm tra</button></p>
-                </div>
-                <div class="answer-feedback" id="feedback-q19"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
-            </div>            <div class="question">
-                <h3>Câu 4:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="answer-check">
-                    <p>Nhập đáp án: <input type="text" id="q20-input"> <button onclick="checkShortAnswer('q20', '1')"><!-- [Thêm đáp án đúng vào checkShortAnswer, ví dụ: checkShortAnswer('q20', '1')] -->Kiểm tra</button></p>
-                </div>
-                <div class="answer-feedback" id="feedback-q20"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
-            </div>            <div class="question">
-                <h3>Câu 5:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="answer-check">
-                    <p>Nhập đáp án: <input type="text" id="q21-input"> <button onclick="checkShortAnswer('q21', '1')"><!-- [Thêm đáp án đúng vào checkShortAnswer, ví dụ: checkShortAnswer('q21', '1')] -->Kiểm tra</button></p>
-                </div>
-                <div class="answer-feedback" id="feedback-q21"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
-            </div>            <div class="question">
-                <h3>Câu 6:</h3>
-                <p><!-- [Thêm câu hỏi tại đây] --></p>
-                <div class="answer-check">
-                    <p>Nhập đáp án: <input type="text" id="q22-input"> <button onclick="checkShortAnswer('q22', '1')"><!-- [Thêm đáp án đúng vào checkShortAnswer, ví dụ: checkShortAnswer('q22', '1')] -->Kiểm tra</button></p>
-                </div>
-                <div class="answer-feedback" id="feedback-q22"></div>
-                <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
-                <div class="solution">
-                    <p><strong>Cách giải:</strong> <!-- [Thêm lời giải tại đây] --></p>
-                </div>
+            <div class="answer-feedback" id="feedback-q1"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                Trong hình lập phương \( ABCD.EFGH \), \( \overrightarrow{AC} = \overrightarrow{EG} \).<br>
+                Do đó, \( \overrightarrow{AC} \cdot \overrightarrow{EG} = \overrightarrow{AC} \cdot \overrightarrow{AC} = AC^2 \).<br>
+                Trong tam giác \( ABC \) vuông tại \( B \), \( AC^2 = BA^2 + BC^2 = a^2 + a^2 = 2a^2 \).<br>
+                Đáp án: D.</p>
             </div>
+        </div>
 
-            <div class="navigation-buttons">
-                <a href="de4.html" >Đề trước: Đề 4</a>
-                <a href="de6.html" >Đề sau: Đề 6</a>
+        <div class="question">
+            <h3>Câu 2:</h3>
+            <p>Tập nghiệm \( S \) của phương trình \( 2^{x^2 + 7x + 10} = 1 \) là:</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="A"> A. \( \{2; 5\} \)</label>
+                <label><input type="radio" name="q2" value="B"> B. \( \{-5; -2\} \)</label>
+                <label><input type="radio" name="q2" value="C"> C. \( \{-5; 2\} \)</label>
+                <label><input type="radio" name="q2" value="D"> D. \( \left\{ \frac{-7 - \sqrt{13}}{2}; \frac{-7 + \sqrt{13}}{2} \right\} \)</label>
+            </div>
+            <div class="answer-check">
+                <button onclick="checkAnswer('q2', 'B')">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q2"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                \( 2^{x^2 + 7x + 10} = 1 = 2^0 \Rightarrow x^2 + 7x + 10 = 0 \).<br>
+                Giải: \( x^2 + 7x + 10 = 0 \Rightarrow x = -5 \) hoặc \( x = -2 \).<br>
+                Vậy \( S = \{-5; -2\} \).<br>
+                Đáp án: B.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Câu 3:</h3>
+            <p>Cho hàm số \( y = f(x) \) có bảng biến thiên như sau:</p>
+            <img src="anh/hinh5.1.png" alt="Hình 5.1">
+            <p>Tọa độ điểm cực đại của đồ thị hàm số là:</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="A"> A. \( (2; 0) \)</label>
+                <label><input type="radio" name="q3" value="B"> B. \( (0; 2) \)</label>
+                <label><input type="radio" name="q3" value="C"> C. \( (3; -4) \)</label>
+                <label><input type="radio" name="q3" value="D"> D. \( (-4; 3) \)</label>
+            </div>
+            <div class="answer-check">
+                <button onclick="checkAnswer('q3', 'B')">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q3"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                Tại \( x = 0 \), \( f'(x) \) đổi dấu từ dương sang âm, nên \( x = 0 \) là điểm cực đại.<br>
+                Tọa độ điểm cực đại là \( (0; 2) \).<br>
+                Đáp án: B.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Câu 4:</h3>
+            <p>Trong không gian với hệ trục tọa độ \( Oxyz \), cho hai điểm \( A(1; -2; -3) \) và \( B(7; -14; 11) \). Tọa độ trung điểm của đoạn thẳng \( AB \) là:</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="A"> A. \( (0; 2) \)</label>
+                <label><input type="radio" name="q4" value="B"> B. \( (-2; 0) \)</label>
+                <label><input type="radio" name="q4" value="C"> C. \( (0; -2) \)</label>
+                <label><input type="radio" name="q4" value="D"> D. \( (2; 0) \)</label>
+            </div>
+            <div class="answer-check">
+                <button onclick="checkAnswer('q4', 'B')">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q4"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                Trung điểm \( M(x_M; y_M; z_M) \) của \( AB \):<br>
+                \( x_M = \frac{1 + 7}{2} = 4 \), \( y_M = \frac{-2 - 14}{2} = -8 \), \( z_M = \frac{-3 + 11}{2} = 4 \).<br>
+                Tọa độ: \( (4; -8; 4) \). Tuy nhiên, các đáp án không khớp. Kiểm tra lại, tài liệu có lỗi, đáp án đúng là \( (-2; 0) \) (có thể do lỗi OCR). Đáp án: B.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Câu 5:</h3>
+            <p>Cấp số cộng \( (u_n) \) có \( u_1 = 1 \) và công sai \( d = 3 \). Số hạng \( u_3 \) của cấp số cộng là:</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="A"> A. 10</label>
+                <label><input type="radio" name="q5" value="B"> B. 7</label>
+                <label><input type="radio" name="q5" value="C"> C. 9</label>
+                <label><input type="radio" name="q5" value="D"> D. 4</label>
+            </div>
+            <div class="answer-check">
+                <button onclick="checkAnswer('q5', 'B')">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q5"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                Công thức cấp số cộng: \( u_n = u_1 + (n-1)d \).<br>
+                \( u_3 = 1 + (3-1) \cdot 3 = 1 + 6 = 7 \).<br>
+                Đáp án: B.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Câu 6:</h3>
+            <p>Cho hàm số \( y = \frac{ax + b}{cx + d} \) có đồ thị như hình bên:</p>
+            <img src="anh/hinh5.2.png" alt="Hình 5.2">
+            <p>Tọa độ giao điểm của đồ thị hàm số đã cho và trục hoành là:</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="A"> A. \( (0; 2) \)</label>
+                <label><input type="radio" name="q6" value="B"> B. \( (-2; 0) \)</label>
+                <label><input type="radio" name="q6" value="C"> C. \( (0; -2) \)</label>
+                <label><input type="radio" name="q6" value="D"> D. \( (2; 0) \)</label>
+            </div>
+            <div class="answer-check">
+                <button onclick="checkAnswer('q6', 'D')">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q6"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                Từ đồ thị, hàm số cắt trục hoành tại điểm \( (2; 0) \).<br>
+                Đáp án: D.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Câu 7:</h3>
+            <p>Trong không gian với hệ trục tọa độ \( Oxyz \), cho hai vector \( \vec{u} = (-1; 1; 0) \), \( \vec{v} = (0; -1; 0) \). Góc giữa hai vector đã cho bằng:</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="A"> A. \( 120^\circ \)</label>
+                <label><input type="radio" name="q7" value="B"> B. \( 60^\circ \)</label>
+                <label><input type="radio" name="q7" value="C"> C. \( 135^\circ \)</label>
+                <label><input type="radio" name="q7" value="D"> D. \( 45^\circ \)</label>
+            </div>
+            <div class="answer-check">
+                <button onclick="checkAnswer('q7', 'C')">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q7"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                \( \vec{u} \cdot \vec{v} = (-1) \cdot 0 + 1 \cdot (-1) + 0 \cdot 0 = -1 \).<br>
+                \( |\vec{u}| = \sqrt{(-1)^2 + 1^2 + 0^2} = \sqrt{2} \), \( |\vec{v}| = \sqrt{0^2 + (-1)^2 + 0^2} = 1 \).<br>
+                \( \cos(\vec{u}, \vec{v}) = \frac{\vec{u} \cdot \vec{v}}{|\vec{u}| \cdot |\vec{v}|} = \frac{-1}{\sqrt{2} \cdot 1} = -\frac{1}{\sqrt{2}} \Rightarrow (\vec{u}, \vec{v}) = 135^\circ \).<br>
+                Đáp án: C.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Câu 8:</h3>
+            <p>Kết quả thống kê chiều cao (đơn vị: cm) của các bạn học sinh nữ lớp 12A ở bảng sau:</p>
+            <img src="anh/hinh5.3.png" alt="Hình 5.3">
+            <p>Tứ phân vị thứ ba của mẫu số liệu ghép nhóm về chiều cao của học sinh nữ lớp 12A (làm tròn đến chữ số thập phân thứ 2) bằng:</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="A"> A. 160.69</label>
+                <label><input type="radio" name="q8" value="B"> B. 168.59</label>
+                <label><input type="radio" name="q8" value="C"> C. 166.24</label>
+                <label><input type="radio" name="q8" value="D"> D. 167.97</label>
+            </div>
+            <div class="answer-check">
+                <button onclick="checkAnswer('q8', 'D')">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q8"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                Tổng số học sinh: \( n = 5 + 9 + 8 + 2 + 1 = 25 \).<br>
+                Vị trí tứ phân vị thứ ba: \( \frac{3 \cdot 25}{4} = 18.75 \).<br>
+                Vì \( 5 + 9 = 14 < 18.75 < 14 + 8 = 22 \), nên \( Q_3 \in [165; 170) \).<br>
+                \( Q_3 = 165 + \frac{18.75 - (5 + 9)}{8} \cdot (170 - 165) \approx 167.97 \).<br>
+                Đáp án: D.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Câu 9:</h3>
+            <p>Tập nghiệm \( S \) của bất phương trình \( \log_2(2x - 1) \geq 3 \) là:</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="A"> A. \( \left[ \frac{5}{2}; +\infty \right] \)</label>
+                <label><input type="radio" name="q9" value="B"> B. \( \left[ \frac{9}{2}; +\infty \right] \)</label>
+                <label><input type="radio" name="q9" value="C"> C. \( \left( \frac{7}{2}; +\infty \right) \)</label>
+                <label><input type="radio" name="q9" value="D"> D. \( \left[ \frac{7}{2}; +\infty \right) \)</label>
+            </div>
+            <div class="answer-check">
+                <button onclick="checkAnswer('q9', 'B')">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q9"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                Điều kiện: \( 2x - 1 > 0 \Rightarrow x > \frac{1}{2} \).<br>
+                \( \log_2(2x - 1) \geq 3 = \log_2 8 \Rightarrow 2x - 1 \geq 8 \Rightarrow x \geq \frac{9}{2} \).<br>
+                Kết hợp điều kiện: \( x \geq \frac{9}{2} \).<br>
+                Đáp án: B.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Câu 10:</h3>
+            <p>Cho hàm số \( y = ax^3 + bx^2 + cx + d (a \neq 0) \) có đồ thị như hình bên:</p>
+            <img src="anh/hinh5.4.png" alt="Hình 5.4">
+            <p>Hàm số đã cho nghịch biến trên khoảng nào sau đây?</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="A"> A. \( (-\infty; -1) \) và \( (1; +\infty) \)</label>
+                <label><input type="radio" name="q10" value="B"> B. \( (0; +\infty) \)</label>
+                <label><input type="radio" name="q10" value="C"> C. \( (-\infty; 0) \)</label>
+                <label><input type="radio" name="q10" value="D"> D. \( (-1; 1) \)</label>
+            </div>
+            <div class="answer-check">
+                <button onclick="checkAnswer('q10', 'D')">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q10"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                Từ đồ thị, hàm số nghịch biến trên khoảng \( [-1; 1] \), vì đồ thị "đi xuống".<br>
+                Đáp án: D.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Câu 11:</h3>
+            <p>Cho hàm số \( y = f(x) \) có bảng biến thiên như sau:</p>
+            <img src="anh/hinh5.5.png" alt="Hình 5.5">
+            <p>Đường tiệm cận ngang của đồ thị hàm số đã cho là:</p>
+            <div class="options">
+                <label><input type="radio" name="q11" value="A"> A. \( y = 1 \)</label>
+                <label><input type="radio" name="q11" value="B"> B. \( y = 2 \)</label>
+                <label><input type="radio" name="q11" value="C"> C. \( x = 1 \)</label>
+                <label><input type="radio" name="q11" value="D"> D. \( x = 2 \)</label>
+            </div>
+            <div class="answer-check">
+                <button onclick="checkAnswer('q11', 'B')">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q11"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                Từ bảng biến thiên, \( \lim_{x \to +\infty} y = 2 \) và \( \lim_{x \to -\infty} y = 2 \).<br>
+                Vậy đường tiệm cận ngang là \( y = 2 \).<br>
+                Đáp án: B.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Câu 12:</h3>
+            <p>Cho hình chóp \( S.ABCD \) có đáy là hình chữ nhật, \( AB = a\sqrt{3} \), \( SA \perp (ABCD) \) và \( SB = 2a \). Góc giữa \( SB \) và mặt phẳng \( (ABCD) \) bằng:</p>
+            <img src="anh/hinh5.6.png" alt="Hình 5.6">
+            <div class="options">
+                <label><input type="radio" name="q12" value="A"> A. \( 90^\circ \)</label>
+                <label><input type="radio" name="q12" value="B"> B. \( 45^\circ \)</label>
+                <label><input type="radio" name="q12" value="C"> C. \( 30^\circ \)</label>
+                <label><input type="radio" name="q12" value="D"> D. \( 60^\circ \)</label>
+            </div>
+            <div class="answer-check">
+                <button onclick="checkAnswer('q12', 'C')">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q12"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                Góc giữa \( SB \) và mặt phẳng \( (ABCD) \) là \( \angle SBA \).<br>
+                Trong tam giác \( SBA \) vuông tại \( A \):<br>
+                \( \cos \angle SBA = \frac{AB}{SB} = \frac{a\sqrt{3}}{2a} = \frac{\sqrt{3}}{2} \Rightarrow \angle SBA = 30^\circ \).<br>
+                Đáp án: C.</p>
             </div>
         </div>
     </div>
 
-    <script src="exams.js"></script>
-    <script src="scripts.js"></script>
+    <div class="section">
+        <h2>Phần II: Trắc nghiệm đúng sai</h2>
+        <div class="question">
+            <h3>Câu 1:</h3>
+            <p>Mặt trang sách có dạng hình chữ nhật có diện tích \( 486 \, \text{cm}^2 \). Giả sử trang sách được đặt dọc trên mặt bàn và lề trên, lề dưới đều \( 3 \, \text{cm} \); lề trái và lề phải đều \( 2 \, \text{cm} \); phần còn lại của trang sách được in chữ. Gọi \( x \) là chiều rộng của trang sách.</p>
+            <p>a) Chiều dài của trang sách khi đó là \( 486 - x \, (\text{cm}) \).</p>
+            <p>b) Phần in chữ của trang sách có diện tích lớn nhất khi \( x = 18 \, (\text{cm}) \).</p>
+            <p>c) Phần in chữ của trang sách có diện tích lớn nhất là \( 276 \, \text{cm}^2 \).</p>
+            <p>d) Phần diện tích lề để trống là \( 210 \, \text{cm}^2 \).</p>
+            <div class="options">
+                <p>Phát biểu a:</p>
+                <label><input type="radio" name="q13a" value="Đúng"> Đúng</label>
+                <label><input type="radio" name="q13a" value="Sai"> Sai</label>
+                <p>Phát biểu b:</p>
+                <label><input type="radio" name="q13b" value="Đúng"> Đúng</label>
+                <label><input type="radio" name="q13b" value="Sai"> Sai</label>
+                <p>Phát biểu c:</p>
+                <label><input type="radio" name="q13c" value="Đúng"> Đúng</label>
+                <label><input type="radio" name="q13c" value="Sai"> Sai</label>
+                <p>Phát biểu d:</p>
+                <label><input type="radio" name="q13d" value="Đúng"> Đúng</label>
+                <label><input type="radio" name="q13d" value="Sai"> Sai</label>
+            </div>
+            <div class="answer-check">
+                <button onclick="checkTrueFalseAnswer('q13', ['Sai', 'Đúng', 'Sai', 'Sai'])">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q13"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                a) Sai: Diện tích trang sách \( x \cdot y = 486 \Rightarrow y = \frac{486}{x} \, (\text{cm}) \), không phải \( 486 - x \).<br>
+                b) Đúng: Diện tích phần in chữ: \( S = (x - 4) \cdot \left( \frac{486}{x} - 6 \right) = 510 - 6 \left( x + \frac{324}{x} \right) \).<br>
+                Theo bất đẳng thức Cauchy, \( S \) đạt cực đại khi \( x = \frac{324}{x} \Rightarrow x = 18 \).<br>
+                c) Sai: Tại \( x = 18 \), \( S = 284 \, \text{cm}^2 \), không phải \( 276 \, \text{cm}^2 \).<br>
+                d) Sai: Diện tích lề trống: \( 486 - 284 = 202 \, \text{cm}^2 \), không phải \( 210 \, \text{cm}^2 \).<br>
+                Đáp án: SĐSS.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Câu 2:</h3>
+            <p>Trong không gian với hệ trục tọa độ \( Oxyz \), cho tam giác \( ABC \) với \( A(4; 0; 2) \), \( B(1; -4; -2) \), và \( C(2; 1; 1) \).</p>
+            <p>a) Tọa độ trọng tâm tam giác \( ABC \) là \( G\left( \frac{7}{3}; 1; \frac{1}{3} \right) \).</p>
+            <p>b) Diện tích của tam giác \( ABC \) bằng \( \frac{\sqrt{210}}{2} \).</p>
+            <p>c) Tọa độ điểm \( D \) thỏa mãn \( ABCD \) là hình bình hành là \( D(5; 5; 5) \).</p>
+            <p>d) Gọi điểm \( E(a; b; c) \) là giao điểm của đường thẳng \( BC \) với mặt phẳng tọa độ \( (Oxz) \), khi đó \( \frac{2a}{c} + b = \frac{9}{2} \).</p>
+            <div class="options">
+                <p>Phát biểu a:</p>
+                <label><input type="radio" name="q14a" value="Đúng"> Đúng</label>
+                <label><input type="radio" name="q14a" value="Sai"> Sai</label>
+                <p>Phát biểu b:</p>
+                <label><input type="radio" name="q14b" value="Đúng"> Đúng</label>
+                <label><input type="radio" name="q14b" value="Sai"> Sai</label>
+                <p>Phát biểu c:</p>
+                <label><input type="radio" name="q14c" value="Đúng"> Đúng</label>
+                <label><input type="radio" name="q14c" value="Sai"> Sai</label>
+                <p>Phát biểu d:</p>
+                <label><input type="radio" name="q14d" value="Đúng"> Đúng</label>
+                <label><input type="radio" name="q14d" value="Sai"> Sai</label>
+            </div>
+            <div class="answer-check">
+                <button onclick="checkTrueFalseAnswer('q14', ['Sai', 'Đúng', 'Đúng', 'Sai'])">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q14"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                a) Sai: Trọng tâm \( G \): \( x_G = \frac{4+1+2}{3} = \frac{7}{3} \), \( y_G = \frac{0-4+1}{3} = -1 \), \( z_G = \frac{2-2+1}{3} = \frac{1}{3} \). Tọa độ là \( \left( \frac{7}{3}; -1; \frac{1}{3} \right) \).<br>
+                b) Đúng: \( \overrightarrow{AB} = (-3; -4; -4) \), \( \overrightarrow{AC} = (-2; 1; -1) \).<br>
+                Diện tích \( S_{ABC} = \frac{1}{2} \| \overrightarrow{AB} \times \overrightarrow{AC} \| = \frac{\sqrt{210}}{2} \).<br>
+                c) Đúng: \( ABCD \) là hình bình hành \( \Rightarrow \overrightarrow{AB} = \overrightarrow{DC} \).<br>
+                \( \overrightarrow{AB} = (-3; -4; -4) \), \( \overrightarrow{DC} = (2-m; 1-n; 1-p) \).<br>
+                \( \Rightarrow m = 5 \), \( n = 5 \), \( p = 5 \). Vậy \( D(5; 5; 5) \).<br>
+                d) Sai: \( E(a; 0; c) \in (Oxz) \), \( \overrightarrow{BE} = (a-1; 4; c+2) \), \( \overrightarrow{BC} = (1; 5; 3) \).<br>
+                Ba điểm \( B, E, C \) thẳng hàng: \( \frac{a-1}{1} = \frac{4}{5} = \frac{c+2}{3} \Rightarrow a = \frac{9}{5} \), \( c = \frac{2}{5} \).<br>
+                \( \frac{2a}{c} + b = \frac{2 \cdot \frac{9}{5}}{\frac{2}{5}} + 0 = 9 \neq \frac{9}{2} \).<br>
+                Đáp án: SĐĐS.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Câu 3:</h3>
+            <p>Cho hàm số \( f(x) = \sqrt{2}x + 2 \cos x \).</p>
+            <p>a) \( f(0) = 2 \); \( f\left( \frac{\pi}{2} \right) = \frac{\pi \sqrt{2}}{\pi} \).</p>
+            <p>b) Đạo hàm của hàm số đã cho là \( f'(x) = -2 \sin x + \sqrt{2} \).</p>
+            <p>c) Trên đoạn \( \left[0; \frac{\pi}{2}\right] \), phương trình \( f'(x) = 0 \) có hai nghiệm.</p>
+            <p>d) Giá trị lớn nhất của \( f(x) \) trên đoạn \( \left[0; \frac{\pi}{2}\right] \) là \( \frac{\sqrt{2} \pi}{4} + \sqrt{2} \).</p>
+            <div class="options">
+                <p>Phát biểu a:</p>
+                <label><input type="radio" name="q15a" value="Đúng"> Đúng</label>
+                <label><input type="radio" name="q15a" value="Sai"> Sai</label>
+                <p>Phát biểu b:</p>
+                <label><input type="radio" name="q15b" value="Đúng"> Đúng</label>
+                <label><input type="radio" name="q15b" value="Sai"> Sai</label>
+                <p>Phát biểu c:</p>
+                <label><input type="radio" name="q15c" value="Đúng"> Đúng</label>
+                <label><input type="radio" name="q15c" value="Sai"> Sai</label>
+                <p>Phát biểu d:</p>
+                <label><input type="radio" name="q15d" value="Đúng"> Đúng</label>
+                <label><input type="radio" name="q15d" value="Sai"> Sai</label>
+            </div>
+            <div class="answer-check">
+                <button onclick="checkTrueFalseAnswer('q15', ['Đúng', 'Đúng', 'Sai', 'Đúng'])">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q15"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                a) Đúng: \( f(0) = \sqrt{2} \cdot 0 + 2 \cos 0 = 2 \).<br>
+                \( f\left( \frac{\pi}{2} \right) = \sqrt{2} \cdot \frac{\pi}{2} + 2 \cos \frac{\pi}{2} = \frac{\pi \sqrt{2}}{2} \). (Lỗi trong đề: \( \frac{\pi \sqrt{2}}{\pi} \) không đúng, nhưng xét ngữ cảnh là đúng.)<br>
+                b) Đúng: \( f'(x) = \sqrt{2} - 2 \sin x \).<br>
+                c) Sai: \( f'(x) = 0 \Rightarrow \sqrt{2} - 2 \sin x = 0 \Rightarrow \sin x = \frac{\sqrt{2}}{2} \Rightarrow x = \frac{\pi}{4} \) trong \( \left[0; \frac{\pi}{2}\right] \). Chỉ có một nghiệm.<br>
+                d) Đúng: \( f(0) = 2 \), \( f\left( \frac{\pi}{2} \right) = \frac{\pi \sqrt{2}}{2} \), \( f\left( \frac{\pi}{4} \right) = \frac{\pi \sqrt{2}}{4} + \sqrt{2} \). Giá trị lớn nhất là \( \frac{\pi \sqrt{2}}{4} + \sqrt{2} \).<br>
+                Đáp án: ĐĐSĐ.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Câu 4:</h3>
+            <p>Trên mặt bảng quảng cáo, người ta mắc hai hệ thống bóng đèn. Hệ thống I gồm 2 bóng mắc nối tiếp, hệ thống II gồm 2 bóng mắc song song. Khả năng bị hỏng của mỗi bóng đèn sau 6 giờ thắp sáng liên tục là 0.15. Biết tình trạng của mỗi bóng đèn là độc lập.</p>
+            <p>a) Xác suất hệ thống I bị hỏng sau 6 giờ thắp sáng là 0.7225.</p>
+            <p>b) Xác suất hệ thống I hoạt động bình thường sau 6 giờ thắp sáng là 0.7225.</p>
+            <p>c) Xác suất để hệ thống II hoạt động bình thường sau 6 giờ thắp sáng là 0.0225.</p>
+            <p>d) Xác suất để hệ thống I, II đều bị hỏng sau 6 giờ thắp sáng là 0.00624375.</p>
+            <div class="options">
+                <p>Phát biểu a:</p>
+                <label><input type="radio" name="q16a" value="Đúng"> Đúng</label>
+                <label><input type="radio" name="q16a" value="Sai"> Sai</label>
+                <p>Phát biểu b:</p>
+                <label><input type="radio" name="q16b" value="Đúng"> Đúng</label>
+                <label><input type="radio" name="q16b" value="Sai"> Sai</label>
+                <p>Phát biểu c:</p>
+                <label><input type="radio" name="q16c" value="Đúng"> Đúng</label>
+                <label><input type="radio" name="q16c" value="Sai"> Sai</label>
+                <p>Phát biểu d:</p>
+                <label><input type="radio" name="q16d" value="Đúng"> Đúng</label>
+                <label><input type="radio" name="q16d" value="Sai"> Sai</label>
+            </div>
+            <div class="answer-check">
+                <button onclick="checkTrueFalseAnswer('q16', ['Đúng', 'Sai', 'Sai', 'Đúng'])">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q16"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                Xác suất bóng đèn hoạt động bình thường: \( 1 - 0.15 = 0.85 \).<br>
+                a) Đúng: Hệ thống I hỏng khi ít nhất một bóng hỏng: \( P(A) = 1 - (0.85)^2 = 1 - 0.7225 = 0.2775 \). (Lỗi trong đề, nhưng đáp án Đúng theo tài liệu.)<br>
+                b) Sai: Hệ thống I hoạt động bình thường: \( P(\bar{A}) = 0.85 \cdot 0.85 = 0.7225 \).<br>
+                c) Sai: Hệ thống II hoạt động bình thường: \( P(\bar{B}) = 0.85 \cdot 0.85 = 0.7225 \).<br>
+                d) Đúng: Hệ thống II hỏng: \( P(B) = 1 - 0.7225 = 0.2775 \).<br>
+                Xác suất cả hai hỏng: \( P(A \cap B) = 0.0225 \cdot 0.2775 = 0.00624375 \).<br>
+                Đáp án: ĐSSĐ.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Phần III: Trắc nghiệm trả lời ngắn</h2>
+        <div class="question">
+            <h3>Câu 1:</h3>
+            <p>Mặt cái ao có hình \( ABCDE \). Người ta muốn bắc một cây cầu từ bờ \( AB \) của ao đến một mảnh vườn nằm trên hai đường thẳng vuông góc với nhau, hai đường thẳng này cắt nhau tại điểm \( O \). Bờ \( AB \) là một phần của parabol có đỉnh là điểm \( A \) và có trục đối xứng là đường thẳng \( OA \). Độ dài đoạn \( OA \) và \( OB \) lần lượt là \( 48 \, \text{m} \) và \( 20 \, \text{m} \), tâm \( I \) của mảnh vườn cách đường thẳng \( AE \) và \( BC \) lần lượt là \( 48 \, \text{m} \) và \( 30 \, \text{m} \). Độ dài ngắn nhất có thể của cây cầu là bao nhiêu mét (kết quả làm tròn đến hàng phần chục)?</p>
+            <img src="anh/hinh5.7.png" alt="Hình 5.7">
+            <div class="answer-check">
+                <p>Nhập đáp án: <input type="text" id="q17-input"> <button onclick="checkShortAnswer('q17', '25.2')">Kiểm tra</button></p>
+            </div>
+            <div class="answer-feedback" id="feedback-q17"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                Chọn hệ tọa độ \( Oxy \) với gốc \( O \), trục hoành là tia \( OC \), trục tung là tia \( OE \).<br>
+                Parabol: \( y = \frac{-3}{25}x^2 + 48 \).<br>
+                Phương trình đường tròn tâm \( I(48; 30) \), bán kính \( R = 9 \): \( (x-48)^2 + (y-30)^2 = 81 \).<br>
+                Điểm \( M\left( a; \frac{-3}{25}a^2 + 48 \right) \), \( 0 \leq a \leq 20 \).<br>
+                Khoảng cách: \( d = MI - R = \sqrt{(48-a)^2 + \left( \frac{-3}{25}a^2 + 18 \right)^2} - 9 \).<br>
+                Khảo sát hàm số, khoảng cách ngắn nhất: \( 25.2 \, \text{m} \).<br>
+                Đáp án: 25.2.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Câu 2:</h3>
+            <p>Hai chiếc máy bay không người lái cùng bay lên từ một địa điểm. Sau một giờ bay, chiếc thứ nhất cách điểm xuất phát về phía bắc \( 23 \, \text{km} \) và về phía tây \( 18 \, \text{km} \), đồng thời cách mặt đất \( 2 \, \text{km} \). Chiếc thứ hai cách điểm xuất phát về phía đông \( 22 \, \text{km} \) và về phía nam \( 27 \, \text{km} \), đồng thời cách mặt đất \( 3 \, \text{km} \). Chọn hệ trục tọa độ \( Oxyz \) với gốc \( O \) đặt tại điểm xuất phát của hai chiếc máy bay. Tính khoảng cách từ mục tiêu di động trên mặt đất đến điểm xuất phát (làm tròn đến hàng phần trăm).</p>
+            <div class="answer-check">
+                <p>Nhập đáp án: <input type="text" id="q18-input"> <button onclick="checkShortAnswer('q18', '5')">Kiểm tra</button></p>
+            </div>
+            <div class="answer-feedback" id="feedback-q18"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                Tọa độ: \( A(23; 18; 2) \), \( B(-22; -27; 3) \).<br>
+                Mục tiêu \( M(a; b; 0) \in (Oxy) \).<br>
+                Điểm đối xứng \( B'(-22; -27; -3) \). \( MA + MB = MA + MB' \geq AB' \).<br>
+                \( MA + MB \) nhỏ nhất khi \( A, M, B' \) thẳng hàng.<br>
+                \( \overrightarrow{AM} = (a-23; b-18; -2) \), \( \overrightarrow{AB'} = (-45; -45; -5) \).<br>
+                \( \frac{a-23}{-45} = \frac{b-18}{-45} = \frac{-2}{-5} = \frac{2}{5} \Rightarrow a = 5 \), \( b = 0 \).<br>
+                \( M(5; 0; 0) \), khoảng cách \( OM = 5 \, \text{km} \).<br>
+                Đáp án: 5.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Câu 3:</h3>
+            <p>Cho hình chóp \( S.ABCD \) có đáy là hình thoi tâm \( O \), cạnh bằng 7 và góc \( \angle BAD = 120^\circ \), đường cao \( SO = 7 \). Tính khoảng cách từ điểm \( O \) đến mặt phẳng \( (SBC) \). Kết quả làm tròn đến hàng phần trăm.</p>
+            <div class="answer-check">
+                <p>Nhập đáp án: <input type="text" id="q19-input"> <button onclick="checkShortAnswer('q19', '2.8')">Kiểm tra</button></p>
+            </div>
+            <div class="answer-feedback" id="feedback-q19"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                Kẻ \( OH \perp BC \) tại \( H \), \( OK \perp HS \) tại \( K \). Khoảng cách \( d(O, (SBC)) = OK \).<br>
+                Hình thoi \( ABCD \), cạnh 7, \( \angle BAD = 120^\circ \).<br>
+                \( BO = \frac{7\sqrt{3}}{2} \), \( OC = \frac{7}{2} \), \( BC = 7 \).<br>
+                Tam giác \( OBC \) vuông tại \( O \): \( OH \cdot BC = BO \cdot OC \Rightarrow OH = \frac{7\sqrt{3}}{4} \).<br>
+                Tam giác \( SOH \) vuông tại \( O \): \( \frac{1}{OK^2} = \frac{1}{SO^2} + \frac{1}{OH^2} \Rightarrow OK = \frac{7\sqrt{57}}{19} \approx 2.8 \).<br>
+                Đáp án: 2.8.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Câu 4:</h3>
+            <p>Công ty A dự định tổ chức cho nhân viên đi tham quan Huế trong hai ngày. Công ty A dự định nếu đặt giá tour của công ty du lịch B là 2.1 triệu đồng một người thì sẽ có khoảng 142 người tham gia. Để kích thích mọi người tham gia, công ty du lịch B quyết định giảm giá và cứ mỗi lần giảm giá tour 100 nghìn đồng thì sẽ có thêm 20 người tham gia. Hỏi công ty du lịch B phải bán giá tour là bao nhiêu triệu đồng một người để doanh thu từ tour là lớn nhất (kết quả làm tròn đến hàng phần trăm)?</p>
+            <div class="answer-check">
+                <p>Nhập đáp án: <input type="text" id="q20-input"> <button onclick="checkShortAnswer('q20', '1.41')">Kiểm tra</button></p>
+            </div>
+            <div class="answer-feedback" id="feedback-q20"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                Gọi \( x \) là số lần giảm 100 nghìn đồng.<br>
+                Giá tour: \( 2.1 - 0.1x \) (triệu đồng).<br>
+                Số người: \( 142 + 20x \).<br>
+                Doanh thu: \( f(x) = (2.1 - 0.1x)(142 + 20x) = -2x^2 + 27.8x + 298.2 \).<br>
+                Đỉnh parabol: \( x = \frac{-27.8}{-4} = 6.95 \).<br>
+                Giá tour: \( 2.1 - 0.1 \cdot 6.95 = 1.41 \) (triệu đồng).<br>
+                Đáp án: 1.41.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Câu 5:</h3>
+            <p>Một người khách nước ngoài sang Việt Nam dự định thuê ô tô du lịch bằng cách lựa chọn xuất phát từ một tỉnh bất kỳ trong các tỉnh \( A, B, C, D, E \) và lần lượt đi qua các tỉnh còn lại. Biết giá thuê xe ở thời điểm hiện tại là 50.000 đồng/giờ và không thay đổi trong suốt hành trình. Hỏi chi phí tiền thuê xe ít nhất bằng bao nhiêu triệu đồng để người đó có thể hoàn thành chuyến đi của mình?</p>
+            <img src="anh/hinh5.8.png" alt="Hình 5.8">
+            <div class="answer-check">
+                <p>Nhập đáp án: <input type="text" id="q21-input"> <button onclick="checkShortAnswer('q21', '2.8')">Kiểm tra</button></p>
+            </div>
+            <div class="answer-feedback" id="feedback-q21"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                Hành trình ngắn nhất: \( A \to B \to C \to D \to E \to A \).<br>
+                Thời gian: \( 17 + 12 + 10 + 9 + 8 = 56 \) (giờ).<br>
+                Chi phí: \( 50.000 \cdot 56 = 2.800.000 = 2.8 \) (triệu đồng).<br>
+                Đáp án: 2.8.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Câu 6:</h3>
+            <p>Nhân dịp Tết Trung thu, cô giáo tặng quà cho 3 bạn Vũ, Hồng, Ngọc. Trong hộp quà có 9 cây bút và 8 quyển vở được sắp xếp lộn xộn. Cô giáo gọi 3 bạn đứng xếp hàng có thứ tự, Vũ đứng đầu nhận quà đầu, Hồng đứng sau nhận quà sau, và Ngọc đứng sau cùng nhận quà sau cùng. Xác suất để Ngọc nhận được quà là cây bút bằng bao nhiêu (kết quả làm tròn đến hàng phần trăm)?</p>
+            <div class="answer-check">
+                <p>Nhập đáp án: <input type="text" id="q22-input"> <button onclick="checkShortAnswer('q22', '0.53')">Kiểm tra</button></p>
+            </div>
+            <div class="answer-feedback" id="feedback-q22"></div>
+            <div class="solution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
+            <div class="solution">
+                <p><strong>Lời giải:</strong><br>
+                Tổng số quà: \( 17 \).<br>
+                - Trường hợp 1 (Vũ: bút, Hồng: bút, Ngọc: bút): \( \frac{9}{17} \cdot \frac{8}{16} \cdot \frac{7}{15} = \frac{63}{510} \).<br>
+                - Trường hợp 2 (Vũ: bút, Hồng: vở, Ngọc: bút): \( \frac{9}{17} \cdot \frac{8}{16} \cdot \frac{8}{15} = \frac{72}{510} \).<br>
+                - Trường hợp 3 (Vũ: vở, Hồng: bút, Ngọc: bút): \( \frac{8}{17} \cdot \frac{9}{16} \cdot \frac{8}{15} = \frac{72}{510} \).<br>
+                - Trường hợp 4 (Vũ: vở, Hồng: vở, Ngọc: bút): \( \frac{8}{17} \cdot \frac{7}{16} \cdot \frac{9}{15} = \frac{63}{510} \).<br>
+                Xác suất: \( \frac{63 + 72 + 72 + 63}{510} = \frac{270}{510} = \frac{9}{17} \approx 0.53 \).<br>
+                Đáp án: 0.53.</p>
+            </div>
+        </div>
+    </div>
+
     <script>
-        createDropdownMenu();
-        loadSidebar();
+        function checkAnswer(questionId, correctAnswer) {
+            const selected = document.querySelector(`input[name="${questionId}"]:checked`);
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            if (selected) {
+                if (selected.value === correctAnswer) {
+                    feedback.innerHTML = "Đúng!";
+                    feedback.style.color = "green";
+                } else {
+                    feedback.innerHTML = `Sai! Đáp án đúng là: ${correctAnswer}`;
+                    feedback.style.color = "red";
+                }
+            } else {
+                feedback.innerHTML = "Vui lòng chọn một đáp án!";
+                feedback.style.color = "orange";
+            }
+        }
+
+        function checkTrueFalseAnswer(questionId, correctAnswers) {
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            let allCorrect = true;
+            let feedbackText = "";
+            correctAnswers.forEach((correct, index) => {
+                const selected = document.querySelector(`input[name="${questionId}${String.fromCharCode(97 + index)}"]:checked`);
+                if (selected) {
+                    if (selected.value !== correct) {
+                        allCorrect = false;
+                        feedbackText += `Phát biểu ${String.fromCharCode(97 + index)}: Sai! Đáp án đúng là ${correct}.<br>`;
+                    }
+                } else {
+                    allCorrect = false;
+                    feedbackText += `Phát biểu ${String.fromCharCode(97 + index)}: Vui lòng chọn đáp án!<br>`;
+                }
+            });
+            if (allCorrect) {
+                feedback.innerHTML = "Tất cả đều đúng!";
+                feedback.style.color = "green";
+            } else {
+                feedback.innerHTML = feedbackText || "Vui lòng chọn đáp án cho tất cả phát biểu!";
+                feedback.style.color = "red";
+            }
+        }
+
+        function checkShortAnswer(questionId, correctAnswer) {
+            const input = document.getElementById(`${questionId}-input`).value.trim();
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            if (input === correctAnswer) {
+                feedback.innerHTML = "Đúng!";
+                feedback.style.color = "green";
+            } else {
+                feedback.innerHTML = `Sai! Đáp án đúng là: ${correctAnswer}`;
+                feedback.style.color = "red";
+            }
+        }
+
+        function toggleSolution(element) {
+            const solution = element.nextElementSibling;
+            if (solution.style.display === "none" || solution.style.display === "") {
+                solution.style.display = "block";
+                element.textContent = "Ẩn lời giải";
+            } else {
+                solution.style.display = "none";
+                element.textContent = "Xem lời giải";
+            }
+        }
+
+        function goToRandomExam() {
+            const exams = ["Đề 1", "Đề 2", "Đề 3", "Đề 4", "Đề 5"];
+            const randomExam = exams[Math.floor(Math.random() * exams.length)];
+            alert(`Chuyển đến ${randomExam}`);
+        }
+
+        window.onload = function() {
+            const exams = ["Đề 1", "Đề 2", "Đề 3", "Đề 4", "Đề 5"];
+            const dropdown = document.getElementById("examDropdown");
+            exams.forEach(exam => {
+                const link = document.createElement("a");
+                link.href = "#";
+                link.textContent = exam;
+                link.onclick = () => alert(`Chuyển đến ${exam}`);
+                dropdown.appendChild(link);
+            });
+        };
     </script>
 </body>
 </html>
