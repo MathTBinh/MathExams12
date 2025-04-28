@@ -186,7 +186,43 @@
     </div>
 
     <div class="main-content">
-        
+        <script>
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']],
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                    processEscapes: true
+                },
+                chtml: {
+                    scale: 1.0,
+                    matchFontHeight: true
+                },
+                startup: {
+                    ready: () => {
+                        console.log("MathJax is loaded and ready!");
+                        MathJax.startup.defaultReady();
+                    }
+                }
+            };
+        </script>
+        <style>
+            /* CSS hỗ trợ hiển thị công thức toán */
+            .MathJax {
+                font-size: 1em !important;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .question p, .solution p {
+                line-height: 1.6;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            @media (max-width: 600px) {
+                .MathJax {
+                    font-size: 0.9em !important;
+                }
+            }
+        </style>    
         
        
 <div class="main-content">
