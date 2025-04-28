@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ĐỀ THI TOÁN - ĐỀ SỐ 1 với các câu hỏi trắc nghiệm và lời giải chi tiết.">
-    <title>ĐỀ THI TOÁN - ĐỀ SỐ 1 - KHÓA HỌC TOÁN THẦY BÌNH</title>
+    <meta name="description" content="ĐỀ THI TOÁN - ĐỀ SỐ 3 với các câu hỏi trắc nghiệm và lời giải chi tiết.">
+    <title>ĐỀ THI TOÁN - ĐỀ MẪU - KHÓA HỌC TOÁN THẦY BÌNH</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
@@ -186,12 +186,12 @@
     </div>
 
     <div class="main-content">
+        
+        
+       
         <h1>ĐỀ THI TOÁN - ĐỀ SỐ 1 <span class="hot">HOT</span></h1>
 
-    <div class="main-content">
-        <h1>ĐỀ THI TOÁN - ĐỀ SỐ 1 <span class="hot">HOT</span></h1>
-
-        <!-- Phần I: Trắc nghiệm nhiều lựa chọn -->
+            <!-- Phần I: Trắc nghiệm nhiều lựa chọn -->
         <h2>Phần I: Trắc Nghiệm Nhiều Lựa Chọn</h2>
         <div class="question">
             <h3>Câu 1:</h3>
@@ -599,12 +599,14 @@
 
         <!-- Nút điều hướng -->
         <div class="navigation">
-            <button onclick="window.location.href='de_50.html'">Đề trước</button>
-            <button onclick="window.location.href='de_2.html'">Đề sau</button>
+            <button onclick="window.location.href='de50.html'">Đề trước</button>
+            <button onclick="window.location.href='de2.html'">Đề sau</button>
         </div>
     </div>
 
-    <script>
+    <script defer>
+        let isSolutionDisabled = false; // Mặc định vô hiệu hóa xem lời giải
+
         function checkAnswer(questionId, correctAnswer) {
             const options = document.getElementsByName(questionId);
             let selectedAnswer = null;
@@ -661,7 +663,28 @@
             }
         }
 
+        function checkShortAnswer(questionId, correctAnswer) {
+            const input = document.getElementById(`${questionId}-input`).value.trim();
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            if (!input) {
+                feedback.textContent = 'Vui lòng nhập đáp án!';
+                feedback.className = 'answer-feedback incorrect';
+                return;
+            }
+            if (input === correctAnswer) {
+                feedback.textContent = 'Đúng!';
+                feedback.className = 'answer-feedback correct';
+            } else {
+                feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
+                feedback.className = 'answer-feedback incorrect';
+            }
+        }
+
         function toggleSolution(solutionId) {
+            if (isSolutionDisabled) {
+                alert('Hãy cố gắng giải, thầy sẽ cho xem lời giải sau, nhớ quay lại xem lời giải nhé.');
+                return;
+            }
             const solution = document.getElementById(solutionId);
             if (solution.style.display === 'block') {
                 solution.style.display = 'none';

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ĐỀ THI TOÁN - ĐỀ SỐ 1 với các câu hỏi trắc nghiệm và lời giải chi tiết.">
-    <title>ĐỀ THI TOÁN - ĐỀ SỐ 1 - KHÓA HỌC TOÁN THẦY BÌNH</title>
+    <meta name="description" content="ĐỀ THI TOÁN - ĐỀ SỐ 3 với các câu hỏi trắc nghiệm và lời giải chi tiết.">
+    <title>ĐỀ THI TOÁN - ĐỀ MẪU - KHÓA HỌC TOÁN THẦY BÌNH</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
@@ -186,10 +186,10 @@
     </div>
 
     <div class="main-content">
-        <h1>ĐỀ THI TOÁN - ĐỀ SỐ 1 <span class="hot">HOT</span></h1>
-
-        <div class="main-content">
-            <h1>ĐỀ THI TOÁN - ĐỀ SỐ 2 <span class="hot">HOT</span></h1>
+        
+        
+       
+<h1>ĐỀ THI TOÁN - ĐỀ SỐ 2 <span class="hot">HOT</span></h1>
 lution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
         <div class="solution">
             <p><strong>Cách giải:</strong> Hợp lực: \( |\vec{F_1} + \vec{F_2} + \vec{F_3}| = \sqrt{9^2 + 4^2 + 7^2 + 2 \cdot 9 \cdot 4 \cdot \cos 110^\circ + 2 \cdot 4 \cdot 7 \cdot 0 + 2 \cdot 9 \cdot 7 \cdot 0} \approx 11 \, N \).</p>
@@ -792,12 +792,14 @@ lution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
 
         <!-- Nút điều hướng -->
         <div class="navigation">
-            <button onclick="window.location.href='index.html'">Đề trước</button>
-            <button onclick="window.location.href='de_2.html'">Đề sau</button>
+            <button onclick="window.location.href='de1.html'">Đề trước</button>
+            <button onclick="window.location.href='de3.html'">Đề sau</button>
         </div>
     </div>
 
     <script defer>
+        let isSolutionDisabled = false; // Mặc định vô hiệu hóa xem lời giải
+
         function checkAnswer(questionId, correctAnswer) {
             const options = document.getElementsByName(questionId);
             let selectedAnswer = null;
@@ -872,6 +874,10 @@ lution-toggle" onclick="toggleSolution(this)">Xem lời giải</div>
         }
 
         function toggleSolution(solutionId) {
+            if (isSolutionDisabled) {
+                alert('Hãy cố gắng giải, thầy sẽ cho xem lời giải sau, nhớ quay lại xem lời giải nhé.');
+                return;
+            }
             const solution = document.getElementById(solutionId);
             if (solution.style.display === 'block') {
                 solution.style.display = 'none';
