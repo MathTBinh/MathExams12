@@ -236,7 +236,7 @@
     <h2>Phần I: Trắc Nghiệm Nhiều Lựa Chọn</h2>
     <div class="question">
         <h3>Câu 1:</h3>
-        <p>Cho hàm số $f(x)$ có đồ thị như hình vẽ bên: <img src="c1.6png" alt="Hình"> Điểm cực đại của hàm số đã cho là</p>
+        <p>Cho hàm số $f(x)$ có đồ thị như hình vẽ bên: <img src="c1.6.png" alt="Hình"> Điểm cực đại của hàm số đã cho là</p>
         <div class="options">
             <div class="option">A. $x=-1$</div>
             <div class="option">B. $x=1$</div>
@@ -262,7 +262,7 @@
 
     <div class="question">
         <h3>Câu 2:</h3>
-        <p>Cho hàm số $f(x)$ có đồ thị như hình vẽ bên: <img src="anh/c2.6png" alt="Hình"> Giá trị nhỏ nhất của hàm số $f(x)$ trên đoạn $[-2;2]$ bằng</p>
+        <p>Cho hàm số $f(x)$ có đồ thị như hình vẽ bên: <img src="anh/c2.6.png" alt="Hình"> Giá trị nhỏ nhất của hàm số $f(x)$ trên đoạn $[-2;2]$ bằng</p>
         <div class="options">
             <div class="option">A. -2</div>
             <div class="option">B. -1</div>
@@ -418,7 +418,7 @@
 
     <div class="question">
         <h3>Câu 8:</h3>
-        <p>Một người muốn mua một thanh gỗ đủ để cắt ra làm các thanh ngang của một cái thang. Biết rằng chiều dài các thanh ngang của cái thang đó (từ bậc dưới cùng đến trên cùng) lần lượt là $45 \mathrm{~cm}, 43 \mathrm{~cm}, 41 \mathrm{~cm}, \ldots, 31 \mathrm{~cm}$ (xem hình vẽ bên: <img src="anh/c8.66.png" alt="Hình">). Giả sử chiều dài các mối nối (phần gỗ bị cắt thành mùn cưa) là không đáng kể, chiều dài thanh gỗ mà người đó cần mua gần nhất với giá trị nào sau đây?</p>
+        <p>Một người muốn mua một thanh gỗ đủ để cắt ra làm các thanh ngang của một cái thang. Biết rằng chiều dài các thanh ngang của cái thang đó (từ bậc dưới cùng đến trên cùng) lần lượt là $45 \mathrm{~cm}, 43 \mathrm{~cm}, 41 \mathrm{~cm}, \ldots, 31 \mathrm{~cm}$ (xem hình vẽ bên: <img src="anh/c8.6.png" alt="Hình">). Giả sử chiều dài các mối nối (phần gỗ bị cắt thành mùn cưa) là không đáng kể, chiều dài thanh gỗ mà người đó cần mua gần nhất với giá trị nào sau đây?</p>
         <div class="options">
             <div class="option">A. $3,2 \mathrm{~m}$</div>
             <div class="option">B. $2,8 \mathrm{~m}$</div>
@@ -523,7 +523,7 @@
 
     <div class="question">
         <h3>Câu 12:</h3>
-        <p>Thống kê số thẻ vàng của mỗi câu lạc bộ trong giải ngoại hạng Anh mùa giải 2021-2022 cho kết quả như sau: <img src="anh/12.6.png" alt="Bảng tần số"><br>
+        <p>Thống kê số thẻ vàng của mỗi câu lạc bộ trong giải ngoại hạng Anh mùa giải 2021-2022 cho kết quả như sau: <img src="anh/c12.6.png" alt="Bảng tần số"><br>
         Khi ghép nhóm dãy số liệu trên thành các nhóm có độ dài bằng nhau với nhóm đầu tiên là $[40;50)$. Tính khoảng biến thiên $R$ của mẫu số liệu ghép nhóm vừa thu được.</p>
         <div class="options">
             <div class="option">A. $R=70$</div>
@@ -762,93 +762,94 @@
 </div>
 
 <script defer>
-let isSolutionDisabled = false; // Mặc định vô hiệu hóa xem lời giải
-
-function checkAnswer(questionId, correctAnswer) {
-    const options = document.getElementsByName(questionId);
-    let selectedAnswer = null;
-    for (const option of options) {
-        if (option.checked) {
-            selectedAnswer = option.value;
-            break;
-        }
-    }
-    const feedback = document.getElementById(`feedback-${questionId}`);
-    if (!selectedAnswer) {
-        feedback.textContent = 'Vui lòng chọn một đáp án!';
-        feedback.className = 'answer-feedback incorrect';
-        return;
-    }
-    if (selectedAnswer === correctAnswer) {
-        feedback.textContent = 'Đúng!';
-        feedback.className = 'answer-feedback correct';
-    } else {
-        feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
-        feedback.className = 'answer-feedback incorrect';
-    }
-}
-
-function checkTrueFalseAnswer(questionId, correctAnswers) {
-    const feedback = document.getElementById(`feedback-${questionId}`);
-    let allCorrect = true;
-    let results = [];
-    for (let i = 0; i < correctAnswers.length; i++) {
-        const options = document.getElementsByName(`${questionId}${String.fromCharCode(97 + i)}`);
-        let selected = null;
+    let isSolutionDisabled = false; // Cho phép xem lời giải
+    
+    function checkAnswer(questionId, correctAnswer) {
+        const options = document.getElementsByName(questionId);
+        let selectedAnswer = null;
         for (const option of options) {
             if (option.checked) {
-                selected = option.value;
+                selectedAnswer = option.value;
                 break;
             }
         }
-        if (!selected) {
-            feedback.textContent = 'Vui lòng chọn đáp án cho tất cả phát biểu!';
+        const feedback = document.getElementById(`feedback-${questionId}`);
+        if (!selectedAnswer) {
+            feedback.textContent = 'Vui lòng chọn một đáp án!';
             feedback.className = 'answer-feedback incorrect';
             return;
         }
-        if (selected !== correctAnswers[i]) {
-            allCorrect = false;
+        if (selectedAnswer === correctAnswer) {
+            feedback.textContent = 'Đúng!';
+            feedback.className = 'answer-feedback correct';
+        } else {
+            feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
+            feedback.className = 'answer-feedback incorrect';
         }
-        results.push(`Phát biểu ${String.fromCharCode(97 + i)}: ${selected === correctAnswers[i] ? 'Đúng' : `Sai (Đáp án đúng: ${correctAnswers[i]})`}`);
     }
-    if (allCorrect) {
-        feedback.textContent = 'Tất cả đều đúng!';
-        feedback.className = 'answer-feedback correct';
-    } else {
-        feedback.textContent = results.join('\n');
-        feedback.className = 'answer-feedback incorrect';
+    
+    function checkTrueFalseAnswer(questionId, correctAnswers) {
+        const feedback = document.getElementById(`feedback-${questionId}`);
+        let allCorrect = true;
+        let results = [];
+        for (let i = 0; i < correctAnswers.length; i++) {
+            const options = document.getElementsByName(`${questionId}${String.fromCharCode(97 + i)}`);
+            let selected = null;
+            for (const option of options) {
+                if (option.checked) {
+                    selected = option.value;
+                    break;
+                }
+            }
+            if (!selected) {
+                feedback.textContent = 'Vui lòng chọn đáp án cho tất cả phát biểu!';
+                feedback.className = 'answer-feedback incorrect';
+                return;
+            }
+            if (selected !== correctAnswers[i]) {
+                allCorrect = false;
+            }
+            results.push(`Phát biểu ${String.fromCharCode(97 + i)}: ${selected === correctAnswers[i] ? 'Đúng' : `Sai (Đáp án đúng: ${correctAnswers[i]})`}`);
+        }
+        if (allCorrect) {
+            feedback.textContent = 'Tất cả đều đúng!';
+            feedback.className = 'answer-feedback correct';
+        } else {
+            feedback.textContent = results.join('\n');
+            feedback.className = 'answer-feedback incorrect';
+        }
     }
-}
-
-function checkShortAnswer(questionId, correctAnswer) {
-    const input = document.getElementById(`${questionId}-input`).value.trim();
-    const feedback = document.getElementById(`feedback-${questionId}`);
-    if (!input) {
-        feedback.textContent = 'Vui lòng nhập đáp án!';
-        feedback.className = 'answer-feedback incorrect';
-        return;
+    
+    function checkShortAnswer(questionId, correctAnswer) {
+        const input = document.getElementById(`${questionId}-input`).value.trim().replace('.', ',');
+        const feedback = document.getElementById(`feedback-${questionId}`);
+        if (!input) {
+            feedback.textContent = 'Vui lòng nhập đáp án!';
+            feedback.className = 'answer-feedback incorrect';
+            return;
+        }
+        if (input === correctAnswer || parseFloat(input.replace(',', '.')) === parseFloat(correctAnswer.replace(',', '.'))) {
+            feedback.textContent = 'Đúng!';
+            feedback.className = 'answer-feedback correct';
+            isSolutionDisabled = false; // Cho phép xem lời giải sau khi trả lời đúng
+        } else {
+            feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
+            feedback.className = 'answer-feedback incorrect';
+        }
     }
-    if (input === correctAnswer) {
-        feedback.textContent = 'Đúng!';
-        feedback.className = 'answer-feedback correct';
-    } else {
-        feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
-        feedback.className = 'answer-feedback incorrect';
+    
+    function toggleSolution(solutionId) {
+        if (isSolutionDisabled) {
+            alert('Hãy cố gắng giải, thầy sẽ cho xem lời giải sau, nhớ quay lại xem lời giải nhé.');
+            return;
+        }
+        const solution = document.getElementById(solutionId);
+        if (solution.style.display === 'block') {
+            solution.style.display = 'none';
+        } else {
+            solution.style.display = 'block';
+        }
     }
-}
-
-function toggleSolution(solutionId) {
-    if (isSolutionDisabled) {
-        alert('Hãy cố gắng giải, thầy sẽ cho xem lời giải sau, nhớ quay lại xem lời giải nhé.');
-        return;
-    }
-    const solution = document.getElementById(solutionId);
-    if (solution.style.display === 'block') {
-        solution.style.display = 'none';
-    } else {
-        solution.style.display = 'block';
-    }
-}
-</script>
+    </script>
 </body>
 </html>
