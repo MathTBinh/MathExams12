@@ -16,7 +16,7 @@ template = """<!DOCTYPE html>
     <div class="header">
         <div class="logo">ĐỒNG HÀNH CÙNG HỌC SINH</div>
         <div class="course">
-            <a href="#">Khóa học Thầy Bình</a>
+            <a href="#">Khóa học Toán Thầy Bình</a>
         </div>
         <div class="search-bar">
             <input type="text" placeholder="Tìm kiếm đề thi (VD: Đề 50)">

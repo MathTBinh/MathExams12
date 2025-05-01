@@ -1,323 +1,4 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Đồng Hành Cùng Học Sinh - Bộ đề thi Toán với 100 đề trắc nghiệm, giúp học sinh ôn luyện hiệu quả.">
-    <title>Đồng Hành Cùng Học Sinh - Đề Thi Toán</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            margin: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        /* Cố định thanh tiêu đề */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border-bottom: 1px solid #ddd;
-            z-index: 1000;
-            box-sizing: border-box;
-        }
-        .header .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ff6200;
-        }
-        .header .course {
-            margin-top: 5px;
-        }
-        .header .course a {
-            text-decoration: none;
-            background-color: #ff0000;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        .header .course a:hover {
-            background-color: #cc0000;
-        }
-        .header .search-bar {
-            width: 50%;
-            margin: 10px 0;
-        }
-        .header .search-bar input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .header .nav-links a {
-            margin-left: 15px;
-            text-decoration: none;
-            color: #1a73e8;
-            font-size: 14px;
-        }
-        .header .nav-links a:hover {
-            text-decoration: underline;
-        }
-        /* Cố định thanh menu */
-        .nav-tabs {
-            position: fixed;
-            top: 110px; /* Chiều cao của header (khoảng 110px) */
-            left: 0;
-            width: 100%;
-            background-color: #fff;
-            border-bottom: 1px solid #ddd;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            z-index: 999;
-            box-sizing: border-box;
-        }
-        .nav-tabs .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        .nav-tabs .dropdown-btn {
-            padding: 10px 20px;
-            background-color: #ff6200;
-            color: white;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .nav-tabs .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #fff;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            max-height: 300px;
-            overflow-y: auto;
-            border-radius: 5px;
-            top: 100%;
-        }
-        .nav-tabs .dropdown-content a {
-            color: #333;
-            padding: 10px 20px;
-            text-decoration: none;
-            display: block;
-            font-size: 14px;
-        }
-        .nav-tabs .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-        .nav-tabs .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        .nav-tabs .dropdown:hover .dropdown-btn {
-            background-color: #e55a00;
-        }
-        .nav-tabs .random-exam {
-            margin-left: 20px;
-            padding: 10px 20px;
-            background-color: #4caf50;
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .nav-tabs .random-exam:hover {
-            background-color: #3d8b40;
-        }
-        /* Container chính */
-        .container {
-            display: flex;
-            max-width: 1200px;
-            margin: 160px auto 20px; /* Thêm margin-top để tránh bị che bởi header và nav-tabs */
-            padding: 0 20px;
-        }
-        /* Cố định sidebar */
-        .sidebar {
-            width: 25%;
-            padding: 20px;
-            background-color: #fff;
-            border-right: 1px solid #ddd;
-            position: sticky;
-            top: 160px; /* Bắt đầu từ dưới nav-tabs */
-            height: calc(100vh - 160px); /* Chiều cao sidebar bằng chiều cao viewport trừ header và nav-tabs */
-            overflow-y: auto;
-            box-sizing: border-box;
-        }
-        .sidebar h2 {
-            font-size: 20px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-        .sidebar .category {
-            margin-bottom: 20px;
-        }
-        .sidebar .category h3 {
-            font-size: 16px;
-            color: #ff6200;
-            margin-bottom: 10px;
-        }
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-        .sidebar ul li {
-            margin-bottom: 8px;
-        }
-        .sidebar ul li a {
-            text-decoration: none;
-            color: #1a73e8;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        .sidebar ul li a:hover {
-            text-decoration: underline;
-        }
-        /* Nội dung chính */
-        .main-content {
-            width: 75%;
-            padding: 20px;
-        }
-        .main-content h1 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-        .main-content .article {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .main-content .article .hot {
-            background-color: #ff0000;
-            color: white;
-            padding: 5px 10px;
-            font-size: 12px;
-            border-radius: 3px;
-            margin-right: 10px;
-        }
-        .main-content .article h2 {
-            font-size: 20px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .main-content .article p {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 10px;
-        }
-        .main-content .article .actions {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-        }
-        .main-content .article .actions a {
-            text-decoration: none;
-            margin-right: 15px;
-            color: #1a73e8;
-            font-size: 14px;
-        }
-        .main-content .article .actions a:hover {
-            text-decoration: underline;
-        }
-        .main-content .article .actions .share {
-            display: flex;
-            align-items: center;
-        }
-        .main-content .article .actions .share a {
-            margin-left: 5px;
-            font-size: 14px;
-        }
-        .pagination {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .pagination a {
-            text-decoration: none;
-            padding: 8px 15px;
-            margin: 0 5px;
-            background-color: #ddd;
-            color: #333;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-        .pagination a.active {
-            background-color: #ff6200;
-            color: white;
-        }
-        .pagination a:hover:not(.active) {
-            background-color: #ccc;
-        }
-        .pdf-viewer {
-            margin-top: 20px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .pdf-container {
-            width: 100%;
-            border: 1px solid #ccc;
-            background-color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .pdf-canvas {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-        .pdf-nav {
-            text-align: center;
-            margin-top: 10px;
-        }
-        .pdf-nav button {
-            padding: 5px 10px;
-            margin: 0 5px;
-            background-color: #ff6200;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        .pdf-nav button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-        @media (max-width: 768px) {
-            .pdf-canvas {
-                width: 100%;
-                height: auto;
-            }
-            .container {
-                flex-direction: column;
-                margin-top: 140px; /* Điều chỉnh cho mobile */
-            }
-            .sidebar {
-                width: 100%;
-                position: static;
-                height: auto;
-            }
-            .main-content {
-                width: 100%;
-            }
-            .nav-tabs {
-                top: 90px; /* Điều chỉnh cho mobile */
-            }
-        }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
-</head>
-<body>
-    <script type="text/javascript">
+<script type="text/javascript">
         var gk_isXlsx = false;
         var gk_xlsxFileLookup = {};
         var gk_fileData = {};
@@ -356,113 +37,632 @@
         }
         return gk_fileData[filename] || "";
         }
+        </script><!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Đồng Hành Cùng Học Sinh - Bộ đề thi Toán với 100 đề trắc nghiệm, giúp học sinh ôn luyện hiệu quả.">
+    <title>Đồng Hành Cùng Học Sinh - Đề Thi Toán</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+        .header .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: #ff6200;
+        }
+        .header .course a {
+            text-decoration: none;
+            background-color: #ff0000;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .header .course a:hover {
+            background-color: #cc0000;
+        }
+        .header .search-bar {
+            flex: 1;
+            max-width: 400px;
+            margin: 0 20px;
+        }
+        .header .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .header .search-bar input:focus {
+            border-color: #ff6200;
+        }
+        .header .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .header .nav-links a {
+            text-decoration: none;
+            color: #1a73e8;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .header .nav-links a:hover {
+            background-color: #f1f1f1;
+            color: #ff6200;
+        }
+        .header .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .header .user-profile .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ff6200;
+        }
+        .header .user-profile .user-info {
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+        }
+        .header .user-profile .user-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+        }
+        .header .user-profile .user-phone {
+            font-size: 12px;
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        .header .user-profile .user-phone:hover {
+            text-decoration: underline;
+        }
+        .nav-tabs {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 999;
+            box-sizing: border-box;
+        }
+        .nav-tabs .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .nav-tabs .dropdown-btn {
+            padding: 10px 20px;
+            background-color: #ff6200;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .nav-tabs .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            max-height: 300px;
+            overflow-y: auto;
+            border-radius: 5px;
+            top: 100%;
+            z-index: 1000;
+        }
+        .nav-tabs .dropdown-content a {
+            color: #333;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .nav-tabs .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .nav-tabs .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .nav-tabs .dropdown:hover .dropdown-btn {
+            background-color: #e55a00;
+        }
+        .nav-tabs .random-exam {
+            margin-left: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .nav-tabs .random-exam:hover {
+            background-color: #3d8b40;
+        }
+        .dynamic-marquee {
+            background-color: #ff6200;
+            color: #fff;
+            padding: 10px 20px;
+            margin-top: 110px;
+            position: relative;
+            overflow: hidden;
+            height: 40px;
+            z-index: 998;
+            display: flex;
+            align-items: center;
+        }
+        .marquee-content {
+            display: flex;
+            white-space: nowrap;
+            animation: marquee 20s linear infinite;
+        }
+        .marquee-content span {
+            margin-right: 50px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: text-decoration 0.3s;
+        }
+        .marquee-content span:hover {
+            text-decoration: underline;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .marquee-controls {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        .marquee-controls button {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 160px auto 20px;
+            padding: 0 20px;
+        }
+        .sidebar {
+            width: 25%;
+            padding: 20px;
+            background-color: #fff;
+            position: fixed;
+            top: 160px;
+            bottom: 0;
+            overflow-y: auto;
+            box-shadow: 2px 0 4px rgba(0,0,0,0.1);
+            z-index: 997;
+            box-sizing: border-box;
+        }
+        .sidebar h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .sidebar .category {
+            margin-bottom: 20px;
+        }
+        .sidebar .category h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ff6200;
+            margin-bottom: 10px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin-bottom: 8px;
+        }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #1a73e8;
+            font-size: 14px;
+            display: block;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .sidebar ul li a:hover {
+            background-color: #f1f1f1;
+            color: #ff6200;
+        }
+        .main-content {
+            width: 75%;
+            margin-left: 25%;
+            padding: 20px;
+        }
+        .main-content h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .main-content .article {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .main-content .article:hover {
+            transform: translateY(-5px);
+        }
+        .main-content .article .hot {
+            background-color: #ff0000;
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 3px;
+            margin-right: 10px;
+        }
+        .main-content .article h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .main-content .article h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .main-content .article h2 a:hover {
+            color: #ff6200;
+        }
+        .main-content .article p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .main-content .article .actions {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .main-content .article .actions a {
+            text-decoration: none;
+            margin-right: 15px;
+            color: #1a73e8;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .main-content .article .actions a:hover {
+            text-decoration: underline;
+        }
+        .main-content .article .actions .share {
+            display: flex;
+            align-items: center;
+        }
+        .main-content .article .actions .share a {
+            margin-left: 5px;
+            font-size: 14px;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .pagination a {
+            text-decoration: none;
+            padding: 8px 15px;
+            margin: 0 5px;
+            background-color: #f9f9f9;
+            color: #333;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .pagination a.active {
+            background-color: #ff6200;
+            color: #fff;
+        }
+        .pagination a:hover:not(.active) {
+            background-color: #ff6200;
+            color: #fff;
+        }
+        .pdf-viewer {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .pdf-container {
+            width: 100%;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .pdf-canvas {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .pdf-nav {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .pdf-nav button {
+            padding: 8px 15px;
+            margin: 0 5px;
+            background-color: #ff6200;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .pdf-nav button:hover:not(:disabled) {
+            background-color: #e55a00;
+        }
+        .pdf-nav button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .header .search-bar {
+                margin: 10px 0;
+                width: 100%;
+            }
+            .header .header-right {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                align-items: center;
+            }
+            .header .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+            }
+            .header .user-profile {
+                justify-content: center;
+            }
+            .header .user-profile .user-info {
+                text-align: center;
+            }
+            .nav-tabs {
+                top: 180px;
+                flex-direction: column;
+                align-items: center;
+            }
+            .nav-tabs .random-exam {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            .dynamic-marquee {
+                margin-top: 230px;
+                height: 30px;
+            }
+            .marquee-content span {
+                font-size: 12px;
+                margin-right: 30px;
+            }
+            .container {
+                flex-direction: column;
+                margin-top: 270px;
+            }
+            .sidebar {
+                position: static;
+                width: 100%;
+                height: auto;
+                box-shadow: none;
+                border-bottom: 1px solid #ddd;
+            }
+            .main-content {
+                width: 100%;
+                margin-left: 0;
+            }
+            .pdf-canvas {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+            return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+            if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+                try {
+                    var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                    var firstSheetName = workbook.SheetNames[0];
+                    var worksheet = workbook.Sheets[firstSheetName];
+                    var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                    var filteredData = jsonData.filter(row => row.some(filledCell));
+                    var headerRowIndex = filteredData.findIndex((row, index) =>
+                        row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                    );
+                    if (headerRowIndex === -1 || headerRowIndex > 25) {
+                        headerRowIndex = 0;
+                    }
+                    var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
+                    csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                    return csv;
+                } catch (e) {
+                    console.error(e);
+                    return "";
+                }
+            }
+            return gk_fileData[filename] || "";
+        }
     </script>
     <div class="header">
         <div class="logo">Đồng Hành Cùng Học Sinh</div>
-        <div class="course">
-            <a href="#">Khóa học Toán Thầy Bình</a>
-        </div>
         <div class="search-bar">
             <input type="text" placeholder="Tìm kiếm đề thi (VD: Đề 50)">
         </div>
-        <div class="nav-links">
-            <a href="#">Học online</a>
-            <a href="#">Tài liệu</a>
-            <a href="#">Liên hệ</a>
+        <div class="header-right">
+            <div class="course">
+                <a href="#">Khóa học Toán Thầy Bình</a>
+                <!-- THAY LINK KHÓA HỌC TẠI ĐÂY -->
+            </div>
+            <div class="nav-links">
+                <a href="#">Học online</a>
+                <a href="#">Tài liệu</a>
+                <a href="#">Liên hệ</a>
+                <!-- THAY LIÊN KẾT ĐIỀU HƯỚNG TẠI ĐÂY -->
+            </div>
+            <div class="user-profile">
+                <img src="anh/cn.png" alt="Ảnh đại diện" class="avatar">
+                <!-- THAY ĐƯỜNG DẪN ẢNH TẠI ĐÂY -->
+                <div class="user-info">
+                    <span class="user-name">Thầy Bình</span>
+                    <!-- THAY TÊN CÁ NHÂN TẠI ĐÂY -->
+                    <a href="tel:0822351447" class="user-phone">0822351447</a>
+                    <!-- THAY SỐ ĐIỆN THOẠI TẠI ĐÂY -->
+                </div>
+            </div>
         </div>
     </div>
-
     <div class="nav-tabs">
         <div class="dropdown">
             <span class="dropdown-btn">Chọn đề thi ▼</span>
-            <div class="dropdown-content" id="examDropdown">
-                <!-- Danh sách đề sẽ được tạo bằng JavaScript -->
-            </div>
+            <div class="dropdown-content" id="examDropdown"></div>
         </div>
         <a href="#" class="random-exam" onclick="goToRandomExam()">Đề ngẫu nhiên</a>
     </div>
-
+    <div class="dynamic-marquee" id="dynamicMarquee" aria-label="Thông báo động">
+        <div class="marquee-content" id="marqueeContent">
+            <span onclick="selectExam(1)">Ôn tập Toán 12: Web đang quá trình cập nhật và chỉnh sửa!</span>
+            <span onclick="window.location.href='/dang-ky-khoa-hoc'">Thường xuyên theo dõi để có những tài liệu hot!</span>
+            <span onclick="selectExam(2)">You don't need to be better than anyone else, just better than you were yesterday!</span>
+            <!-- THAY NỘI DUNG THÔNG BÁO TẠI ĐÂY -->
+        </div>
+        <div class="marquee-controls">
+            <button id="pauseButton" onclick="toggleMarquee()">❚❚</button>
+            <button onclick="closeMarquee()">×</button>
+        </div>
+    </div>
     <div class="container">
         <div class="sidebar">
-            <h2>Toán theo chuyên đề</h2>
             <div class="category">
-                <h3>Lớp 10</h3>
+                <h3>ÔN TẬP THEO CHỦ ĐỀ</h3>
                 <ul>
-                    <li><a href="de7.html">Phương trình và bất phương trình </a></li>
-                    <li><a href="#">Phương trình và hệ phương trình</a></li>
-                    <li><a href="#">Bất phương trình</a></li>
-                    <li><a href="#">Hàm số bậc hai</a></li>
-                    <li><a href="#">Lượng giác cơ bản</a></li>
-                    <li><a href="#">Vector</a></li>
-                    <li><a href="#">Phương pháp tọa độ trong mặt phẳng</a></li>
+                    <li><a href="CD1.html">Phương trình và bất phương trình</a></li>
+                    <li><a href="CD2.html">Cấp số cộng và Cấp số nhân</a></li>
+                    <li><a href="CD3.html">Đạo hàm và khảo sát hàm số</a></li>
+                    <li><a href="CD4.html">Nguyên hàm và tích phân</a></li>
+                    <li><a href="CD5.html">Hình học không gian</a></li>
+                    <li><a href="CD6.html">Phương pháp tọa độ trong KG</a></li>
+                    <li><a href="CD7.html">Thống kê</a></li>
+                    <li><a href="CD8.html">Xác suất</a></li>
                 </ul>
             </div>
             <div class="category">
-                <h3>Lớp 11</h3>
+                <h3>ÔN TẬP TỔNG HỢP</h3>
                 <ul>
-                    <li><a href="#">Hàm số lượng giác và phương trình lượng giác</a></li>
-                    <li><a href="#">Tổ hợp và xác suất</a></li>
-                    <li><a href="#">Dãy số và cấp số</a></li>
-                    <li><a href="#">Giới hạn và liên tục</a></li>
-                    <li><a href="#">Hình học không gian cơ bản</a></li>
+                    <li><a href="#">Ứng dụng đạo hàm và tích phân</a></li>
+                    <li><a href="#">Hình học tổng hợp</a></li>
+                    <li><a href="#">Toán thực tế</a></li>
+                    <!-- THAY LIÊN KẾT TỔNG HỢP TẠI ĐÂY -->
                 </ul>
             </div>
             <div class="category">
-                <h3>Lớp 12</h3>
+                <h3>TOÁN VẬN DỤNG CAO</h3>
                 <ul>
-                    <li><a href="#">Hàm số và đồ thị</a></li>
-                    <li><a href="#">Đạo hàm và ứng dụng</a></li>
-                    <li><a href="#">Tích phân và ứng dụng</a></li>
-                    <li><a href="#">Thống kê và xác suất</a></li>
-                    <li><a href="#">Khối đa diện và thể tích</a></li>
-                    <li><a href="#">Hình học không gian nâng cao</a></li>
-                    <li><a href="#">Tổ hợp và xác suất nâng cao</a></li>
+                    <li><a href="#">Ôn tập 8+</a></li>
+                    <li><a href="#">Ôn tập 9+</a></li>
+                    <!-- THAY LIÊN KẾT VẬN DỤNG CAO TẠI ĐÂY -->
                 </ul>
             </div>
         </div>
-
         <div class="main-content">
             <h1>Đề thi Toán</h1>
-            <div id="examList">
-                <!-- Danh sách bài viết sẽ được tạo bằng JavaScript -->
-            </div>
-            <!-- Khu vực hiển thị PDF từ chuyên đề -->
+            <div id="examList"></div>
             <div class="pdf-viewer" id="pdf-viewer" style="display: none;">
                 <h2 id="pdf-title"></h2>
                 <div class="pdf-container" id="pdf-container"></div>
             </div>
-            <div class="pagination" id="pagination">
-                <!-- Phân trang sẽ được tạo bằng JavaScript -->
-            </div>
+            <div class="pagination" id="pagination"></div>
         </div>
     </div>
-
     <script src="exams.js"></script>
     <script>
-        // Tạo dropdown menu
-        const dropdown = document.getElementById('examDropdown');
-        examList.forEach(exam => {
-            const link = document.createElement('a');
-            link.href = exam.available ? exam.file : '#';
-            link.textContent = `Đề ${exam.id}`;
-            if (!exam.available) {
-                link.style.color = '#999';
-                link.onclick = (e) => {
-                    e.preventDefault();
-                    alert(`Đề ${exam.id} chưa có sẵn!`);
-                };
+        // Tích hợp createDropdownMenu từ exams.js
+        window.onload = function() {
+            createDropdownMenu();
+            renderExams(currentPage);
+            loadChuyenDeList();
+            if (localStorage.getItem('marqueeClosed') === 'true') {
+                document.getElementById('dynamicMarquee').style.display = 'none';
             }
-            dropdown.appendChild(link);
-        });
+        };
 
         // Phân trang: Hiển thị 20 đề/trang
         const examsPerPage = 20;
         let currentPage = 1;
+        let filteredExams = examList;
 
-        function renderExams(page) {
+        function renderExams(page, exams = filteredExams) {
             const start = (page - 1) * examsPerPage;
             const end = start + examsPerPage;
-            const examsToShow = examList.slice(start, end);
+            const examsToShow = exams.slice(start, end);
 
             const examListDiv = document.getElementById('examList');
             examListDiv.innerHTML = '';
@@ -473,6 +673,7 @@
                 article.innerHTML = `
                     <span class="hot">HOT</span>
                     <h2><a href="${exam.available ? exam.file : '#'}" ${!exam.available ? 'onclick="alert(\'Đề ' + exam.id + ' chưa có sẵn!\'); return false;"' : ''}>${exam.title}</a></h2>
+                    <p>Chủ đề: ${exam.topic}</p>
                     <p>Bộ đề thi Toán bao gồm các câu hỏi trắc nghiệm nhiều lựa chọn, trắc nghiệm đúng/sai và trắc nghiệm trả lời ngắn. Đề thi giúp học sinh ôn luyện kiến thức và kỹ năng giải Toán.</p>
                     <div class="actions">
                         <a href="#">Thích</a>
@@ -486,11 +687,11 @@
                 examListDiv.appendChild(article);
             });
 
-            renderPagination();
+            renderPagination(exams);
         }
 
-        function renderPagination() {
-            const totalPages = Math.ceil(examList.length / examsPerPage);
+        function renderPagination(exams = filteredExams) {
+            const totalPages = Math.ceil(exams.length / examsPerPage);
             const paginationDiv = document.getElementById('pagination');
             paginationDiv.innerHTML = '';
 
@@ -508,14 +709,57 @@
             }
         }
 
-        function goToRandomExam() {
-            const availableExams = examList.filter(exam => exam.available);
-            if (availableExams.length === 0) {
-                alert('Chưa có đề nào sẵn sàng!');
+        // Tìm kiếm đề thi
+        document.querySelector('.search-bar input').addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase();
+            filteredExams = examList.filter(exam => exam.title.toLowerCase().includes(query));
+            currentPage = 1;
+            renderExams(currentPage);
+        });
+
+        // Chọn đề thi từ marquee
+        function selectExam(examId) {
+            const dropdownContent = document.getElementById('examDropdown');
+            const exam = examList.find(exam => exam.id === examId);
+            if (!exam) {
+                alert(`Đề ${examId} không tồn tại trong danh sách!`);
                 return;
             }
-            const randomExam = availableExams[Math.floor(Math.random() * availableExams.length)];
-            window.location.href = randomExam.file;
+            const examLink = dropdownContent.querySelector(`a[href="${exam.file}"]`);
+            if (examLink) {
+                dropdownContent.style.display = 'block';
+                examLink.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                examLink.style.backgroundColor = '#f1f1f1';
+                setTimeout(() => {
+                    examLink.style.backgroundColor = '';
+                }, 2000);
+                if (exam.available) {
+                    setTimeout(() => {
+                        window.location.href = examLink.href;
+                    }, 500);
+                } else {
+                    alert(`Đề ${examId} chưa có sẵn!`);
+                }
+            }
+        }
+
+        // Marquee controls
+        function toggleMarquee() {
+            const marquee = document.getElementById('marqueeContent');
+            const button = document.getElementById('pauseButton');
+            if (marquee.style.animationPlayState === 'paused') {
+                marquee.style.animationPlayState = 'running';
+                button.textContent = '❚❚';
+            } else {
+                marquee.style.animationPlayState = 'paused';
+                button.textContent = '▶';
+            }
+        }
+
+        function closeMarquee() {
+            const marquee = document.getElementById('dynamicMarquee');
+            marquee.style.display = 'none';
+            localStorage.setItem('marqueeClosed', 'true');
         }
 
         // Đặt workerSrc cho PDF.js
@@ -529,14 +773,11 @@
             try {
                 const response = await fetch('chuyen-de-list.json');
                 chuyenDeList = await response.json();
-
-                // Tìm tất cả các liên kết trong sidebar (Lớp 12)
                 const sidebarLinks = document.querySelectorAll('.sidebar .category:nth-child(3) ul li a');
                 sidebarLinks.forEach(link => {
                     const title = link.textContent.trim();
                     const chuyenDe = chuyenDeList.find(item => item.title === title);
                     if (chuyenDe) {
-                        // Thêm sự kiện nhấp để hiển thị PDF
                         link.onclick = (e) => {
                             e.preventDefault();
                             showPDF(chuyenDe.file, title);
@@ -548,49 +789,36 @@
             }
         }
 
-        // Hàm hiển thị PDF trong main-content
+        // Hiển thị PDF trong main-content
         async function showPDF(pdfUrl, title) {
             const pdfViewer = document.getElementById('pdf-viewer');
             const pdfTitle = document.getElementById('pdf-title');
             const pdfContainer = document.getElementById('pdf-container');
-            pdfContainer.innerHTML = ''; // Xóa nội dung cũ
-
-            // Hiển thị tiêu đề và khu vực PDF
+            pdfContainer.innerHTML = '';
             pdfTitle.textContent = title;
             pdfViewer.style.display = 'block';
 
-            // Tải PDF
             try {
                 const loadingTask = pdfjsLib.getDocument(pdfUrl);
                 const pdf = await loadingTask.promise;
-
-                // Biến lưu trạng thái trang hiện tại
                 let currentPage = 1;
 
-                // Hàm render trang
                 const renderPage = async (pageNum) => {
                     if (pageNum < 1 || pageNum > pdf.numPages) return;
-
-                    pdfContainer.innerHTML = ''; // Xóa nội dung cũ
+                    pdfContainer.innerHTML = '';
                     const page = await pdf.getPage(pageNum);
                     const viewport = page.getViewport({ scale: 1.0 });
-
-                    // Tạo canvas cho trang
                     const canvas = document.createElement('canvas');
                     const context = canvas.getContext('2d');
                     canvas.height = viewport.height;
                     canvas.width = viewport.width;
                     canvas.className = 'pdf-canvas';
                     pdfContainer.appendChild(canvas);
-
-                    // Render trang PDF
                     const renderContext = {
                         canvasContext: context,
                         viewport: viewport
                     };
                     await page.render(renderContext).promise;
-
-                    // Thêm nút điều hướng
                     const navDiv = document.createElement('div');
                     navDiv.className = 'pdf-nav';
                     navDiv.innerHTML = `
@@ -601,10 +829,7 @@
                     pdfContainer.appendChild(navDiv);
                 };
 
-                // Lưu hàm renderPage vào global để gọi từ HTML
                 window.renderPage = renderPage;
-
-                // Render trang đầu tiên
                 renderPage(currentPage);
             } catch (error) {
                 console.error('Lỗi khi tải PDF:', error);
@@ -612,14 +837,14 @@
             }
         }
 
-        // Ngăn nhấp chuột phải trên PDF (hạn chế tải)
+        // Ngăn nhấp chuột phải trên PDF
         document.addEventListener('contextmenu', (e) => {
             if (e.target.closest('.pdf-container')) {
                 e.preventDefault();
             }
         });
 
-        // Ngăn phím tắt Ctrl+S hoặc Ctrl+P (hạn chế tải)
+        // Ngăn phím tắt Ctrl+S hoặc Ctrl+P
         document.addEventListener('keydown', (e) => {
             if ((e.ctrlKey && e.key === 's') || (e.ctrlKey && e.key === 'p')) {
                 e.preventDefault();
@@ -627,13 +852,37 @@
             }
         });
 
-        // Tải danh sách chuyên đề khi trang được tải
-        window.onload = function() {
-            // Gọi hàm renderExams để giữ chức năng hiện tại
-            renderExams(currentPage);
-            // Gọi hàm loadChuyenDeList để tích hợp chuyên đề từ sidebar
-            loadChuyenDeList();
-        };
+        // Giữ code iframe từ indexlu.html
+        (function(){
+            function c(){
+                var b=a.contentDocument||a.contentWindow.document;
+                if(b){
+                    var d=b.createElement('script');
+                    d.innerHTML="window.__CF$cv$params={r:'9390cc8cfacdae89',t:'MTc0NjExODQ0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+                    b.getElementsByTagName('head')[0].appendChild(d)
+                }
+            }
+            if(document.body){
+                var a=document.createElement('iframe');
+                a.height=1;
+                a.width=1;
+                a.style.position='absolute';
+                a.style.top=0;
+                a.style.left=0;
+                a.style.border='none';
+                a.style.visibility='hidden';
+                document.body.appendChild(a);
+                if('loading'!==document.readyState)c();
+                else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);
+                else{
+                    var e=document.onreadystatechange||function(){};
+                    document.onreadystatechange=function(b){
+                        e(b);
+                        'loading'!==document.readyState&&(document.onreadystatechange=e,c())
+                    }
+                }
+            }
+        })();
     </script>
 </body>
 </html>

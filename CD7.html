@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chuyên Đề THI TOÁN - Chuyên Đề SỐ 3 với 22 câu hỏi trắc nghiệm và lời giải chi tiết, kèm tóm tắt kiến thức.">
+    <title>Chuyên Đề THI TOÁN - Chuyên Đề 3 - KHÓA HỌC TOÁN THẦY BÌNH</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #ecfdf5, #f3e8ff);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .header {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .header .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #6b21a8;
+        }
+        .nav-bar {
+            position: sticky;
+            top: 60px;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 999;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-bar a {
+            color: #6b21a8;
+            margin-right: 15px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .nav-bar a:hover {
+            color: #10b981;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-button {
+            background: #6b21a8;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background 0.3s;
+        }
+        .dropdown-button:hover {
+            background: #5b1a8b;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 100px;
+            max-height: 300px;
+            overflow-y: auto;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 10px;
+            right: 0;
+        }
+        .dropdown-content a {
+            color: #6b21a8;
+            padding: 8px 16px;
+            text-decoration: none;
+            display: block;
+            font-weight: 400;
+        }
+        .dropdown-content a:hover {
+            background: #f0fdf4;
+            color: #10b981;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+        }
+        h1 {
+            color: #6b21a8;
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #10b981;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        h3 {
+            color: #6b21a8;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .summary-box {
+            background: #f0fdf4;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 5px solid #10b981;
+        }
+        .options {
+            margin: 10px 0;
+        }
+        .option {
+            margin: 5px 0;
+        }
+        .answer-check {
+            margin-top: 10px;
+        }
+        .answer-check button {
+            padding: 12px 24px;
+            background: #6b21a8;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .answer-check button:hover {
+            background: #5b1a8b;
+        }
+        .answer-feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            color: #22c55e;
+        }
+        .incorrect {
+            color: #ef4444;
+        }
+        .solution {
+            display: none;
+            background: #fef3c7;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .solution.show {
+            display: block;
+            opacity: 1;
+        }
+        .solution-toggle {
+            display: inline-block;
+            background: #6b21a8;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        .solution-toggle:hover {
+            background: #5b1a8b;
+        }
+        .hot {
+            color: #ef4444;
+            font-weight: bold;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background: #6b21a8;
+            color: white;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        .navigation button {
+            padding: 12px 24px;
+            background: #6b21a8;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .navigation button:hover {
+            background: #5b1a8b;
+        }
+        .navigation button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+        @media (max-width: 640px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.6rem; }
+            h3 { font-size: 1.3rem; }
+            .card { padding: 15px; }
+            .header .logo { font-size: 1.4rem; }
+            .nav-bar { top: 50px; flex-direction: column; align-items: flex-start; }
+            .nav-bar a { font-size: 0.9rem; margin-right: 10px; }
+            .dropdown-button { font-size: 0.9rem; padding: 6px 12px; }
+            .dropdown-content { min-width: 80px; }
+            table { font-size: 0.85rem; }
+            .answer-check button, .navigation button {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">KHÓA HỌC TOÁN THẦY BÌNH</div>
+    </div>
+    <div class="nav-bar">
+        <div>
+            <a href="index.html">Trang chủ</a>
+        </div>
+        <div class="dropdown">
+            <span class="dropdown-button">Chọn Chuyên Đề</span>
+            <div class="dropdown-content">
+                <!-- Tạo danh sách Chuyên Đề từ 1 đến 100 -->
+                <a href="CD1.html">Chuyên Đề 1</a>
+                <a href="CD2.html">Chuyên Đề 2</a>
+                <a href="CD3.html">Chuyên Đề 3</a>
+                <a href="CD4.html">Chuyên Đề 4</a>
+                <a href="CD5.html">Chuyên Đề 5</a>
+                <a href="CD6.html">Chuyên Đề 6</a>
+                <a href="CD7.html">Chuyên Đề 7</a>
+                <a href="CD8.html">Chuyên Đề 8</a>
+                <a href="CD9.html">Chuyên Đề 9</a>
+                <a href="CD10.html">Chuyên Đề 10</a>
+                <a href="CD11.html">Chuyên Đề 11</a>
+                <a href="CD12.html">Chuyên Đề 12</a>
+                <a href="CD13.html">Chuyên Đề 13</a>
+                <a href="CD14.html">Chuyên Đề 14</a>
+                <a href="CD15.html">Chuyên Đề 15</a>
+                <a href="CD16.html">Chuyên Đề 16</a>
+                <a href="CD17.html">Chuyên Đề 17</a>
+                <a href="CDCD18.html">Chuyên Đề 18</a>
+                
+            </div>
+        </div>
+    </div>
+<!-- PHẦN NỘI DUNG -->
+<div class="container">
+    <!-- Tóm tắt kiến thức -->
+    <div class="card" id="theory">
+        <h2>1.A Tóm tắt kiến thức cần nhớ</h2>
+        
+        <h3>1.1. Mẫu số liệu không ghép nhóm</h3>
+        <ul class="list-disc ml-6">
+            <li><strong>Mẫu số liệu</strong>: Một dãy số liệu \( x_1, x_2, \ldots, x_n \), với \( n \) là cỡ mẫu.</li>
+            <li><strong>Số trung bình</strong> (\( \bar{x} \)):
+                \[
+                \bar{x} = \frac{x_1 + x_2 + \ldots + x_n}{n}
+                \]
+            </li>
+            <li><strong>Phương sai</strong> (\( S^2 \)):
+                \[
+                S^2 = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^2 = \frac{1}{n} \sum_{i=1}^n x_i^2 - \bar{x}^2
+                \]
+            </li>
+            <li><strong>Độ lệch chuẩn</strong> (\( S \)): \( S = \sqrt{S^2} \).</li>
+            <li><strong>Mốt</strong>: Giá trị có tần số lớn nhất (có thể không có, một hoặc nhiều mốt).</li>
+        </ul>
+
+        <h3>1.2. Khoảng biến thiên và tứ phân vị (Mẫu không ghép nhóm)</h3>
+        <ul class="list-disc ml-6">
+            <li><strong>Sắp xếp mẫu</strong>: Theo thứ tự không giảm \( x_1^* \leq x_2^* \leq \ldots \leq x_n^* \).</li>
+            <li><strong>Khoảng biến thiên</strong>: \( R = x_n^* - x_1^* \).</li>
+            <li><strong>Số trung vị</strong>:
+                <ul>
+                    <li>Nếu \( n = 2k + 1 \): Trung vị là \( x_{k+1}^* \).</li>
+                    <li>Nếu \( n = 2k \): Trung vị là \( \frac{x_k^* + x_{k+1}^*}{2} \).</li>
+                </ul>
+            </li>
+            <li><strong>Tứ phân vị</strong> (\( Q_1, Q_2, Q_3 \)):
+                <ul>
+                    <li>\( Q_2 \): Trung vị của mẫu.</li>
+                    <li>\( Q_1 \): Trung vị của nửa trái của \( Q_2 \).</li>
+                    <li>\( Q_3 \): Trung vị của nửa phải của \( Q_2 \).</li>
+                </ul>
+            </li>
+            <li><strong>Khoảng tứ phân vị</strong>: \( \Delta_Q = Q_3 - Q_1 \).</li>
+            <li><strong>Giá trị ngoại lệ</strong>: Giá trị nhỏ hơn \( Q_1 - 1.5 \Delta_Q \) hoặc lớn hơn \( Q_3 + 1.5 \Delta_Q \).</li>
+        </ul>
+
+        <h3>1.3. Mẫu số liệu ghép nhóm</h3>
+        <ul class="list-disc ml-6">
+            <li><strong>Bảng tần số ghép nhóm</strong>:
+                <ul>
+                    <li>Nhóm: \( [u_i; u_{i+1}) \).</li>
+                    <li>Giá trị đại diện: \( c_i \) (thường là trung bình của hai đầu mút nhóm).</li>
+                    <li>Tần số: \( n_i \).</li>
+                </ul>
+            </li>
+            <li><strong>Cỡ mẫu</strong>: \( n = n_1 + n_2 + \ldots + n_k \).</li>
+            <li><strong>Số trung bình</strong>:
+                \[
+                \bar{x} = \frac{n_1 c_1 + n_2 c_2 + \ldots + n_k c_k}{n}
+                \]
+            </li>
+            <li><strong>Phương sai</strong>:
+                \[
+                S^2 = \frac{1}{n} \sum_{i=1}^k n_i (c_i - \bar{x})^2 = \frac{1}{n} \sum_{i=1}^k n_i c_i^2 - \bar{x}^2
+                \]
+            </li>
+            <li><strong>Độ lệch chuẩn</strong>: \( S = \sqrt{S^2} \).</li>
+            <li><strong>Mốt</strong> (\( M_0 \)):
+                \[
+                M_0 = u_m + \frac{n_m - n_{m-1}}{(n_m - n_{m-1}) + (n_m - n_{m+1})} (u_{m+1} - u_m)
+                \]
+                (Nếu không có nhóm trước hoặc sau, điều chỉnh phù hợp).</li>
+            <li><strong>Tần số tương đối</strong>: \( f_i = \frac{n_i}{n} \).</li>
+        </ul>
+
+        <h3>1.4. Khoảng biến thiên và tứ phân vị (Mẫu ghép nhóm)</h3>
+        <ul class="list-disc ml-6">
+            <li><strong>Khoảng biến thiên</strong>: \( R = u_{k+1} - u_1 \) (nếu \( n_1 \) và \( n_k \) khác 0).</li>
+            <li><strong>Tứ phân vị</strong> (\( Q_i \)):
+                \[
+                Q_i = u_m + \frac{\frac{i n}{4} - C}{n_m} (u_{m+1} - u_m)
+                \]
+                Trong đó \( C \): Tổng tần số tích lũy của các nhóm trước nhóm chứa \( Q_i \).</li>
+            <li><strong>Khoảng tứ phân vị</strong>: \( \Delta_Q = Q_3 - Q_1 \).</li>
+            <li><strong>Giá trị ngoại lệ</strong>: Tương tự mẫu không ghép nhóm.</li>
+        </ul>
+
+        <div class="card example-box" id="example">
+            <h2>2. Ví dụ minh họa</h2>
+            <p>Thống kê chiều cao (cm) của 30 học sinh trong một lớp học, ta có bảng số liệu sau: <br> <img src="anh/example1.png" alt="Bảng tần số chiều cao"> <br>
+            <table>
+                <tr><th>Chiều cao</th><th>[150;155)</th><th>[155;160)</th><th>[160;165)</th><th>[165;170)</th><th>[170;175)</th><th>[175;180)</th></tr>
+                <tr><th>Số học sinh</th><td>1</td><td>4</td><td>10</td><td>9</td><td>4</td><td>2</td></tr>
+            </table>
+            Tính số trung bình, phương sai, độ lệch chuẩn, và mốt của mẫu số liệu trên.</p>
+            <div class="solution" id="solution-example">
+                <p><strong>Lời giải:</strong></p>
+                <ul class="list-disc ml-6">
+                    <li><strong>Giá trị đại diện</strong>: \( c_1 = 152.5, c_2 = 157.5, c_3 = 162.5, c_4 = 167.5, c_5 = 172.5, c_6 = 177.5 \).</li>
+                    <li><strong>Cỡ mẫu</strong>: \( n = 1 + 4 + 10 + 9 + 4 + 2 = 30 \).</li>
+                    <li><strong>Số trung bình</strong>:
+                        \[
+                        \bar{x} = \frac{1 \cdot 152.5 + 4 \cdot 157.5 + 10 \cdot 162.5 + 9 \cdot 167.5 + 4 \cdot 172.5 + 2 \cdot 177.5}{30} = \frac{4960}{30} \approx 165.33
+                        \]
+                    </li>
+                    <li><strong>Phương sai</strong>:
+                        \[
+                        S^2 = \frac{1 \cdot 152.5^2 + 4 \cdot 157.5^2 + 10 \cdot 162.5^2 + 9 \cdot 167.5^2 + 4 \cdot 172.5^2 + 2 \cdot 177.5^2}{30} - 165.33^2 \approx 34.47
+                        \]
+                    </li>
+                    <li><strong>Độ lệch chuẩn</strong>: \( S = \sqrt{34.47} \approx 5.87 \).</li>
+                    <li><strong>Mốt</strong>: Nhóm [160;165) có tần số lớn nhất (10). 
+                        \[
+                        M_0 = 160 + \frac{10 - 4}{(10 - 4) + (10 - 9)} \cdot (165 - 160) = 160 + \frac{6}{7} \cdot 5 \approx 164.29
+                        \]
+                    </li>
+                </ul>
+            </div>
+            <button class="solution-toggle" onclick="toggleSolution('solution-example')">Hiện lời giải</button>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h1>BÀI TẬP TỰ LUYỆN <span class="hot">HOT</span></h1>
+    <h2>Phần I: Trắc Nghiệm Nhiều Lựa Chọn</h2>
+
+    <!-- Câu 5.1 -->
+    <div class="card">
+        <div class="summary-box">
+            <h3>Tóm tắt kiến thức: Độ lệch chuẩn</h3>
+            <p>Độ lệch chuẩn: \( S = \sqrt{S^2} \), trong đó \( S^2 \) là phương sai.</p>
+        </div>
+        <div class="question">
+            <h3>Câu 5.1:</h3>
+            <p>Phương sai của một mẫu số liệu là \( S^2 = 25 \). Độ lệch chuẩn của mẫu số liệu này là bao nhiêu?</p>
+            <div class="options">
+                <div class="option">A. 5</div>
+                <div class="option">B. 25</div>
+                <div class="option">C. 125</div>
+                <div class="option">D. 625</div>
+            </div>
+            <div class="answer-check">
+                <p>Chọn đáp án:</p>
+                <label><input type="radio" name="q5.1" value="A"> A</label>
+                <label><input type="radio" name="q5.1" value="B"> B</label>
+                <label><input type="radio" name="q5.1" value="C"> C</label>
+                <label><input type="radio" name="q5.1" value="D"> D</label>
+                <button onclick="checkAnswer('q5.1', 'A')">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q5.1"></div>
+            <div class="solution-toggle" onclick="toggleSolution('solution-q5.1')">Xem lời giải</div>
+            <div class="solution" id="solution-q5.1">
+                <p><strong>Lời giải:</strong><br>
+                Độ lệch chuẩn: \( S = \sqrt{S^2} = \sqrt{25} = 5 \).<br>
+                Đáp án: A.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Câu 5.2 -->
+    <div class="card">
+        <div class="summary-box">
+            <h3>Tóm tắt kiến thức: Độ lệch chuẩn mẫu ghép nhóm</h3>
+            <p>Độ lệch chuẩn: \( S = \sqrt{S^2} \), với \( S^2 = \frac{1}{n} \sum n_i c_i^2 - \bar{x}^2 \).</p>
+        </div>
+        <div class="question">
+            <h3>Câu 5.2:</h3>
+            <p>Thống kê nhiệt độ trung bình ngày (độ C) của một thành phố, ta có bảng số liệu: <br> <img src="anh/5.2.png" alt="Bảng tần số nhiệt độ"> <br>
+            Độ lệch chuẩn của mẫu số liệu trên thuộc khoảng nào? (Kết quả làm tròn đến hàng đơn vị)</p>
+            <div class="options">
+                <div class="option">A. (2;3)</div>
+                <div class="option">B. (3;4)</div>
+                <div class="option">C. (4;5)</div>
+                <div class="option">D. (5;6)</div>
+            </div>
+            <div class="answer-check">
+                <p>Chọn đáp án:</p>
+                <label><input type="radio" name="q5.2" value="A"> A</label>
+                <label><input type="radio" name="q5.2" value="B"> B</label>
+                <label><input type="radio" name="q5.2" value="C"> C</label>
+                <label><input type="radio" name="q5.2" value="D"> D</label>
+                <button onclick="checkAnswer('q5.2', 'C')">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q5.2"></div>
+            <div class="solution-toggle" onclick="toggleSolution('solution-q5.2')">Xem lời giải</div>
+            <div class="solution" id="solution-q5.2">
+                <p><strong>Lời giải:</strong><br>
+                Tính số trung bình \( \bar{x} \) và phương sai \( S^2 \) từ bảng tần số. Độ lệch chuẩn: \( S \approx 4.4 \), thuộc khoảng (4;5).<br>
+                Đáp án: C.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Câu 5.3 -->
+    <div class="card">
+        <div class="summary-box">
+            <h3>Tóm tắt kiến thức: Độ lệch chuẩn mẫu không ghép nhóm</h3>
+            <p>Độ lệch chuẩn: \( S = \sqrt{\frac{1}{n} \sum (x_i - \bar{x})^2} \).</p>
+        </div>
+        <div class="question">
+            <h3>Câu 5.3:</h3>
+            <p>Thống kê số tiết tự học của học sinh, ta có mẫu số liệu: <br> <img src="anh/5.3.png" alt="Mẫu số liệu tiết học"> <br>
+            Độ lệch chuẩn của mẫu số liệu trên là bao nhiêu? (Kết quả làm tròn đến hàng trăm)</p>
+            <div class="options">
+                <div class="option">A. 2.94</div>
+                <div class="option">B. 3.12</div>
+                <div class="option">C. 2.76</div>
+                <div class="option">D. 3.45</div>
+            </div>
+            <div class="answer-check">
+                <p>Chọn đáp án:</p>
+                <label><input type="radio" name="q5.3" value="A"> A</label>
+                <label><input type="radio" name="q5.3" value="B"> B</label>
+                <label><input type="radio" name="q5.3" value="C"> C</label>
+                <label><input type="radio" name="q5.3" value="D"> D</label>
+                <button onclick="checkAnswer('q5.3', 'A')">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q5.3"></div>
+            <div class="solution-toggle" onclick="toggleSolution('solution-q5.3')">Xem lời giải</div>
+            <div class="solution" id="solution-q5.3">
+                <p><strong>Lời giải:</strong><br>
+                Tính số trung bình \( \bar{x} \) và phương sai \( S^2 \) từ mẫu số liệu. Độ lệch chuẩn: \( S \approx 2.94 \).<br>
+                Đáp án: A.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Câu 5.4 -->
+    <div class="card">
+        <div class="summary-box">
+            <h3>Tóm tắt kiến thức: Phương sai mẫu ghép nhóm</h3>
+            <p>Phương sai: \( S^2 = \frac{1}{n} \sum n_i (c_i - \bar{x})^2 \).</p>
+        </div>
+        <div class="question">
+            <h3>Câu 5.4:</h3>
+            <p>Thống kê thời gian chơi thể thao (phút) của học sinh, ta có bảng số liệu: <br> <img src="anh/5.4.png" alt="Bảng tần số thời gian"> <br>
+            Phương sai của mẫu số liệu trên là bao nhiêu?</p>
+            <div class="options">
+                <div class="option">A. 598</div>
+                <div class="option">B. 612</div>
+                <div class="option">C. 576</div>
+                <div class="option">D. 620</div>
+            </div>
+            <div class="answer-check">
+                <p>Chọn đáp án:</p>
+                <label><input type="radio" name="q5.4" value="A"> A</label>
+                <label><input type="radio" name="q5.4" value="B"> B</label>
+                <label><input type="radio" name="q5.4" value="C"> C</label>
+                <label><input type="radio" name="q5.4" value="D"> D</label>
+                <button onclick="checkAnswer('q5.4', 'A')">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q5.4"></div>
+            <div class="solution-toggle" onclick="toggleSolution('solution-q5.4')">Xem lời giải</div>
+            <div class="solution" id="solution-q5.4">
+                <p><strong>Lời giải:</strong><br>
+                Tính số trung bình \( \bar{x} \) và phương sai \( S^2 \) từ bảng tần số. Kết quả: \( S^2 = 598 \).<br>
+                Đáp án: A.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Câu 5.5 -->
+    <div class="card">
+        <div class="summary-box">
+            <h3>Tóm tắt kiến thức: So sánh độ lệch chuẩn</h3>
+            <p>Độ lệch chuẩn lớn hơn cho thấy mức độ phân tán lớn hơn, rủi ro cao hơn.</p>
+        </div>
+        <div class="question">
+            <h3>Câu 5.5:</h3>
+            <p>So sánh độ rủi ro đầu tư dựa trên phương sai và độ lệch chuẩn của hai quỹ: <br> <img src="anh/5.5.png" alt="Bảng số liệu quỹ đầu tư"> <br>
+            Quỹ nào có rủi ro thấp hơn?</p>
+            <div class="options">
+                <div class="option">A. Quỹ A</div>
+                <div class="option">B. Quỹ B</div>
+                <div class="option">C. Cả hai bằng nhau</div>
+                <div class="option">D. Không xác định</div>
+            </div>
+            <div class="answer-check">
+                <p>Chọn đáp án:</p>
+                <label><input type="radio" name="q5.5" value="A"> A</label>
+                <label><input type="radio" name="q5.5" value="B"> B</label>
+                <label><input type="radio" name="q5.5" value="C"> C</label>
+                <label><input type="radio" name="q5.5" value="D"> D</label>
+                <button onclick="checkAnswer('q5.5', 'C')">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q5.5"></div>
+            <div class="solution-toggle" onclick="toggleSolution('solution-q5.5')">Xem lời giải</div>
+            <div class="solution" id="solution-q5.5">
+                <p><strong>Lời giải:</strong><br>
+                So sánh độ lệch chuẩn của hai quỹ từ bảng số liệu. Kết quả cho thấy độ lệch chuẩn bằng nhau.<br>
+                Đáp án: C.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h2>Phần II: Trắc Nghiệm Đúng/Sai (Câu 5.6 đến 20)</h2>
+
+    <!-- Câu 5.6 -->
+    <div class="card">
+        <div class="summary-box">
+            <h3>Tóm tắt kiến thức: Tần số tích lũy và tứ phân vị</h3>
+            <p>Tần số tích lũy: Tổng tần số của các nhóm từ đầu đến nhóm hiện tại. Tứ phân vị: \( Q_i = u_m + \frac{\frac{i n}{4} - C}{n_m} (u_{m+1} - u_m) \).</p>
+        </div>
+        <div class="question">
+            <h3>Câu 5.6:</h3>
+            <p>Thống kê chiều cao cây (cm), ta có bảng số liệu: <br> <img src="anh/5.6.png" alt="Bảng tần số chiều cao cây"> <br>
+            Xét các phát biểu sau:</p>
+            <div class="options">
+                <div class="option">a) Tần số tích lũy của nhóm thứ 3 là 15.</div>
+                <div class="option">b) Khoảng biến thiên là 50.</div>
+                <div class="option">c) Tứ phân vị thứ nhất \( Q_1 = 120 \).</div>
+                <div class="option">d) Tứ phân vị thứ ba \( Q_3 = 140 \).</div>
+            </div>
+            <div class="answer-check">
+                <p>Chọn đáp án cho từng phát biểu:</p>
+                <p>a) <label><input type="radio" name="q5.6a" value="Đúng"> Đúng</label> <label><input type="radio" name="q5.6a" value="Sai"> Sai</label></p>
+                <p>b) <label><input type="radio" name="q5.6b" value="Đúng"> Đúng</label> <label><input type="radio" name="q5.6b" value="Sai"> Sai</label></p>
+                <p>c) <label><input type="radio" name="q5.6c" value="Đúng"> Đúng</label> <label><input type="radio" name="q5.6c" value="Sai"> Sai</label></p>
+                <p>d) <label><input type="radio" name="q5.6d" value="Đúng"> Đúng</label> <label><input type="radio" name="q5.6d" value="Sai"> Sai</label></p>
+                <button onclick="checkTrueFalseAnswer('q5.6', ['Đúng', 'Sai', 'Sai', 'Đúng'])">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q5.6"></div>
+            <div class="solution-toggle" onclick="toggleSolution('solution-q5.6')">Xem lời giải</div>
+            <div class="solution" id="solution-q5.6">
+                <p><strong>Lời giải:</strong><br>
+                a) Đúng. Tính tần số tích lũy từ bảng tần số, nhóm thứ 3 có tổng 15.<br>
+                b) Sai. Khoảng biến thiên: \( R = u_{k+1} - u_1 \neq 50 \).<br>
+                c) Sai. Tính \( Q_1 \) từ công thức tứ phân vị, không phải 120.<br>
+                d) Đúng. Tính \( Q_3 \) từ công thức tứ phân vị, đúng 140.<br>
+                Đáp án: a) Đúng, b) Sai, c) Sai, d) Đúng.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Câu 5.7 -->
+    <div class="card">
+        <div class="summary-box">
+            <h3>Tóm tắt kiến thức: Số trung bình và mốt</h3>
+            <p>Số trung bình: \( \bar{x} = \frac{\sum n_i c_i}{n} \). Mốt: \( M_0 = u_m + \frac{n_m - n_{m-1}}{(n_m - n_{m-1}) + (n_m - n_{m+1})} (u_{m+1} - u_m) \).</p>
+        </div>
+        <div class="question">
+            <h3>Câu 5.7:</h3>
+            <p>Thống kê số giờ học thêm (giờ), ta có bảng số liệu: <br> <img src="anh/5.7.png" alt="Bảng tần số giờ học"> <br>
+            Xét các phát biểu sau:</p>
+            <div class="options">
+                <div class="option">a) Số trung bình là 4.5.</div>
+                <div class="option">b) Mốt của mẫu là 4.8.</div>
+                <div class="option">c) Tần số tương đối của nhóm thứ 2 là 0.25.</div>
+                <div class="option">d) Khoảng biến thiên là 6.</div>
+            </div>
+            <div class="answer-check">
+                <p>Chọn đáp án cho từng phát biểu:</p>
+                <p>a) <label><input type="radio" name="q5.7a" value="Đúng"> Đúng</label> <label><input type="radio" name="q5.7a" value="Sai"> Sai</label></p>
+                <p>b) <label><input type="radio" name="q5.7b" value="Đúng"> Đúng</label> <label><input type="radio" name="q5.7b" value="Sai"> Sai</label></p>
+                <p>c) <label><input type="radio" name="q5.7c" value="Đúng"> Đúng</label> <label><input type="radio" name="q5.7c" value="Sai"> Sai</label></p>
+                <p>d) <label><input type="radio" name="q5.7d" value="Đúng"> Đúng</label> <label><input type="radio" name="q5.7d" value="Sai"> Sai</label></p>
+                <button onclick="checkTrueFalseAnswer('q5.7', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q5.7"></div>
+            <div class="solution-toggle" onclick="toggleSolution('solution-q5.7')">Xem lời giải</div>
+            <div class="solution" id="solution-q5.7">
+                <p><strong>Lời giải:</strong><br>
+                a) Đúng. Tính số trung bình từ bảng tần số: \( \bar{x} = 4.5 \).<br>
+                b) Sai. Tính mốt từ công thức, không phải 4.8.<br>
+                c) Đúng. Tần số tương đối nhóm thứ 2: \( f_2 = \frac{n_2}{n} = 0.25 \).<br>
+                d) Sai. Khoảng biến thiên: \( R \neq 6 \).<br>
+                Đáp án: a) Đúng, b) Sai, c) Đúng, d) Sai.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Câu 5.8 -->
+    <div class="card">
+        <div class="summary-box">
+            <h3>Tóm tắt kiến thức: Số trung bình và trung vị</h3>
+            <p>Số trung bình: \( \bar{x} = \frac{\sum n_i c_i}{n} \). Trung vị: Giá trị ở vị trí \( \frac{n+1}{2} \) (nếu \( n \) lẻ) hoặc trung bình hai giá trị giữa (nếu \( n \) chẵn).</p>
+        </div>
+        <div class="question">
+            <h3>Câu 5.8:</h3>
+            <p>Thống kê số tiền mua sách (nghìn đồng), ta có bảng số liệu: <br> <img src="anh/5.8.png" alt="Bảng tần số số tiền"> <br>
+            Xét các phát biểu sau:</p>
+            <div class="options">
+                <div class="option">a) Số trung bình là 250.</div>
+                <div class="option">b) Trung vị là 240.</div>
+                <div class="option">c) Tứ phân vị thứ hai \( Q_2 = 245 \).</div>
+                <div class="option">d) Khoảng tứ phân vị là 30.</div>
+            </div>
+            <div class="answer-check">
+                <p>Chọn đáp án cho từng phát biểu:</p>
+                <p>a) <label><input type="radio" name="q5.8a" value="Đúng"> Đúng</label> <label><input type="radio" name="q5.8a" value="Sai"> Sai</label></p>
+                <p>b) <label><input type="radio" name="q5.8b" value="Đúng"> Đúng</label> <label><input type="radio" name="q5.8b" value="Sai"> Sai</label></p>
+                <p>c) <label><input type="radio" name="q5.8c" value="Đúng"> Đúng</label> <label><input type="radio" name="q5.8c" value="Sai"> Sai</label></p>
+                <p>d) <label><input type="radio" name="q5.8d" value="Đúng"> Đúng</label> <label><input type="radio" name="q5.8d" value="Sai"> Sai</label></p>
+                <button onclick="checkTrueFalseAnswer('q5.8', ['Sai', 'Đúng', 'Sai', 'Đúng'])">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q5.8"></div>
+            <div class="solution-toggle" onclick="toggleSolution('solution-q5.8')">Xem lời giải</div>
+            <div class="solution" id="solution-q5.8">
+                <p><strong>Lời giải:</strong><br>
+                a) Sai. Tính số trung bình từ bảng tần số, không phải 250.<br>
+                b) Đúng. Trung vị tính từ vị trí giữa: \( Q_2 = 240 \).<br>
+                c) Sai. \( Q_2 \) là trung vị, không phải 245.<br>
+                d) Đúng. Tính khoảng tứ phân vị: \( \Delta_Q = Q_3 - Q_1 = 30 \).<br>
+                Đáp án: a) Sai, b) Đúng, c) Sai, d) Đúng.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Câu 5.9 -->
+    <div class="card">
+        <div class="summary-box">
+            <h3>Tóm tắt kiến thức: Phương sai và độ lệch chuẩn</h3>
+            <p>Phương sai: \( S^2 = \frac{1}{n} \sum n_i (c_i - \bar{x})^2 \). Độ lệch chuẩn: \( S = \sqrt{S^2} \).</p>
+        </div>
+        <div class="question">
+            <h3>Câu 5.9:</h3>
+            <p>Thống kê thời gian làm bài kiểm tra (phút), ta có bảng số liệu: <br> <img src="anh/5.9.png" alt="Bảng tần số thời gian kiểm tra"> <br>
+            Xét các phát biểu sau:</p>
+            <div class="options">
+                <div class="option">a) Phương sai là 25.</div>
+                <div class="option">b) Độ lệch chuẩn là 5.</div>
+                <div class="option">c) Số trung bình là 40.</div>
+                <div class="option">d) Mốt là 42.</div>
+            </div>
+            <div class="answer-check">
+                <p>Chọn đáp án cho từng phát biểu:</p>
+                <p>a) <label><input type="radio" name="q5.9a" value="Đúng"> Đúng</label> <label><input type="radio" name="q5.9a" value="Sai"> Sai</label></p>
+                <p>b) <label><input type="radio" name="q5.9b" value="Đúng"> Đúng</label> <label><input type="radio" name="q5.9b" value="Sai"> Sai</label></p>
+                <p>c) <label><input type="radio" name="q5.9c" value="Đúng"> Đúng</label> <label><input type="radio" name="q5.9c" value="Sai"> Sai</label></p>
+                <p>d) <label><input type="radio" name="q5.9d" value="Đúng"> Đúng</label> <label><input type="radio" name="q5.9d" value="Sai"> Sai</label></p>
+                <button onclick="checkTrueFalseAnswer('q5.9', ['Đúng', 'Đúng', 'Sai', 'Sai'])">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q5.9"></div>
+            <div class="solution-toggle" onclick="toggleSolution('solution-q5.9')">Xem lời giải</div>
+            <div class="solution" id="solution-q5.9">
+                <p><strong>Lời giải:</strong><br>
+                a) Đúng. Tính phương sai: \( S^2 = 25 \).<br>
+                b) Đúng. Độ lệch chuẩn: \( S = \sqrt{25} = 5 \).<br>
+                c) Sai. Tính số trung bình, không phải 40.<br>
+                d) Sai. Tính mốt, không phải 42.<br>
+                Đáp án: a) Đúng, b) Đúng, c) Sai, d) Sai.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Câu 5.10 -->
+    <div class="card">
+        <div class="summary-box">
+  <h3>Tóm tắt kiến thức: So sánh số trung bình và độ lệch chuẩn</h3>
+            <p>Số trung bình và độ lệch chuẩn giúp so sánh đặc trưng của hai mẫu số liệu.</p>
+        </div>
+        <div class="question">
+            <h3>Câu 5.10:</h3>
+            <p>So sánh điểm thi tiếng Anh của hai lớp, ta có bảng số liệu: <br> <img src="anh/5.10.png" alt="Bảng tần số điểm thi"> <br>
+            Xét các phát biểu sau:</p>
+            <div class="options">
+                <div class="option">a) Số trung bình của lớp A lớn hơn lớp B.</div>
+                <div class="option">b) Độ lệch chuẩn của lớp A nhỏ hơn lớp B.</div>
+                <div class="option">c) Trung vị của lớp A là 7.5.</div>
+                <div class="option">d) Khoảng tứ phân vị của lớp B là 2.</div>
+            </div>
+            <div class="answer-check">
+                <p>Chọn đáp án cho từng phát biểu:</p>
+                <p>a) <label><input type="radio" name="q5.10a" value="Đúng"> Đúng</label> <label><input type="radio" name="q5.10a" value="Sai"> Sai</label></p>
+                <p>b) <label><input type="radio" name="q5.10b" value="Đúng"> Đúng</label> <label><input type="radio" name="q5.10b" value="Sai"> Sai</label></p>
+                <p>c) <label><input type="radio" name="q5.10c" value="Đúng"> Đúng</label> <label><input type="radio" name="q5.10c" value="Sai"> Sai</label></p>
+                <p>d) <label><input type="radio" name="q5.10d" value="Đúng"> Đúng</label> <label><input type="radio" name="q5.10d" value="Sai"> Sai</label></p>
+                <button onclick="checkTrueFalseAnswer('q5.10', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q5.10"></div>
+            <div class="solution-toggle" onclick="toggleSolution('solution-q5.10')">Xem lời giải</div>
+            <div class="solution" id="solution-q5.10">
+                <p><strong>Lời giải:</strong><br>
+                a) Đúng. Số trung bình lớp A lớn hơn lớp B.<br>
+                b) Sai. Độ lệch chuẩn lớp A không nhỏ hơn lớp B.<br>
+                c) Đúng. Trung vị lớp A là 7.5.<br>
+                d) Sai. Khoảng tứ phân vị lớp B không phải 2.<br>
+                Đáp án: a) Đúng, b) Sai, c) Đúng, d) Sai.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Câu 11 -->
+    <div class="card">
+        <div class="summary-box">
+            <h3>Tóm tắt kiến thức: Tứ phân vị và giá trị ngoại lệ</h3>
+            <p>Tứ phân vị: \( Q_i = u_m + \frac{\frac{i n}{4} - C}{n_m} (u_{m+1} - u_m) \). Giá trị ngoại lệ: Nhỏ hơn \( Q_1 - 1.5 \Delta_Q \) hoặc lớn hơn \( Q_3 + 1.5 \Delta_Q \).</p>
+        </div>
+        <div class="question">
+            <h3>Câu 11:</h3>
+            <p>Thống kê khối lượng hàng hóa (kg), ta có bảng số liệu: <br> <img src="anh/11.png" alt="Bảng tần số khối lượng"> <br>
+            Xét các phát biểu sau:</p>
+            <div class="options">
+                <div class="option">a) Tứ phân vị thứ nhất \( Q_1 = 50 \).</div>
+                <div class="option">b) Tứ phân vị thứ ba \( Q_3 = 80 \).</div>
+                <div class="option">c) Giá trị 120 là giá trị ngoại lệ.</div>
+                <div class="option">d) Khoảng tứ phân vị là 30.</div>
+            </div>
+            <div class="answer-check">
+                <p>Chọn đáp án cho từng phát biểu:</p>
+                <p>a) <label><input type="radio" name="q11a" value="Đúng"> Đúng</label> <label><input type="radio" name="q11a" value="Sai"> Sai</label></p>
+                <p>b) <label><input type="radio" name="q11b" value="Đúng"> Đúng</label> <label><input type="radio" name="q11b" value="Sai"> Sai</label></p>
+                <p>c) <label><input type="radio" name="q11c" value="Đúng"> Đúng</label> <label><input type="radio" name="q11c" value="Sai"> Sai</label></p>
+                <p>d) <label><input type="radio" name="q11d" value="Đúng"> Đúng</label> <label><input type="radio" name="q11d" value="Sai"> Sai</label></p>
+                <button onclick="checkTrueFalseAnswer('q11', ['Sai', 'Đúng', 'Đúng', 'Sai'])">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q11"></div>
+            <div class="solution-toggle" onclick="toggleSolution('solution-q11')">Xem lời giải</div>
+            <div class="solution" id="solution-q11">
+                <p><strong>Lời giải:</strong><br>
+                a) Sai. Tính \( Q_1 \), không phải 50.<br>
+                b) Đúng. Tính \( Q_3 = 80 \).<br>
+                c) Đúng. Kiểm tra giá trị 120, thỏa mãn điều kiện ngoại lệ.<br>
+                d) Sai. Tính \( \Delta_Q \neq 30 \).<br>
+                Đáp án: a) Sai, b) Đúng, c) Đúng, d) Sai.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Câu 12 -->
+    <div class="card">
+        <div class="summary-box">
+            <h3>Tóm tắt kiến thức: Số trung bình và phương sai</h3>
+            <p>Số trung bình: \( \bar{x} = \frac{\sum n_i c_i}{n} \). Phương sai: \( S^2 = \frac{1}{n} \sum n_i (c_i - \bar{x})^2 \).</p>
+        </div>
+        <div class="question">
+            <h3>Câu 12:</h3>
+            <p>Thống kê số lượng sản phẩm bán ra, ta có bảng số liệu: <br> <img src="anh/12.png" alt="Bảng tần số sản phẩm"> <br>
+            Xét các phát biểu sau:</p>
+            <div class="options">
+                <div class="option">a) Số trung bình là 100.</div>
+                <div class="option">b) Phương sai là 400.</div>
+                <div class="option">c) Độ lệch chuẩn là 20.</div>
+                <div class="option">d) Mốt là 110.</div>
+            </div>
+            <div class="answer-check">
+                <p>Chọn đáp án cho từng phát biểu:</p>
+                <p>a) <label><input type="radio" name="q12a" value="Đúng"> Đúng</label> <label><input type="radio" name="q12a" value="Sai"> Sai</label></p>
+                <p>b) <label><input type="radio" name="q12b" value="Đúng"> Đúng</label> <label><input type="radio" name="q12b" value="Sai"> Sai</label></p>
+                <p>c) <label><input type="radio" name="q12c" value="Đúng"> Đúng</label> <label><input type="radio" name="q12c" value="Sai"> Sai</label></p>
+                <p>d) <label><input type="radio" name="q12d" value="Đúng"> Đúng</label> <label><input type="radio" name="q12d" value="Sai"> Sai</label></p>
+                <button onclick="checkTrueFalseAnswer('q12', ['Đúng', 'Sai', 'Sai', 'Đúng'])">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q12"></div>
+            <div class="solution-toggle" onclick="toggleSolution('solution-q12')">Xem lời giải</div>
+            <div class="solution" id="solution-q12">
+                <p><strong>Lời giải:</strong><br>
+                a) Đúng. Tính số trung bình: \( \bar{x} = 100 \).<br>
+                b) Sai. Tính phương sai, không phải 400.<br>
+                c) Sai. Tính độ lệch chuẩn, không phải 20.<br>
+                d) Đúng. Tính mốt: \( M_0 = 110 \).<br>
+                Đáp án: a) Đúng, b) Sai, c) Sai, d) Đúng.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Câu 13 -->
+    <div class="card">
+        <div class="summary-box">
+            <h3>Tóm tắt kiến thức: Trung vị và khoảng tứ phân vị</h3>
+            <p>Trung vị: \( Q_2 = u_m + \frac{\frac{n}{2} - C}{n_m} (u_{m+1} - u_m) \). Khoảng tứ phân vị: \( \Delta_Q = Q_3 - Q_1 \).</p>
+        </div>
+        <div class="question">
+            <h3>Câu 13:</h3>
+            <p>Thống kê thời gian giao hàng (giờ), ta có bảng số liệu: <br> <img src="anh/13.png" alt="Bảng tần số thời gian giao hàng"> <br>
+            Xét các phát biểu sau:</p>
+            <div class="options">
+                <div class="option">a) Trung vị là 5.</div>
+                <div class="option">b) Tứ phân vị thứ nhất \( Q_1 = 4 \).</div>
+                <div class="option">c) Tứ phân vị thứ ba \( Q_3 = 6 \).</div>
+                <div class="option">d) Khoảng tứ phân vị là 2.</div>
+            </div>
+            <div class="answer-check">
+                <p>Chọn đáp án cho từng phát biểu:</p>
+                <p>a) <label><input type="radio" name="q13a" value="Đúng"> Đúng</label> <label><input type="radio" name="q13a" value="Sai"> Sai</label></p>
+                <p>b) <label><input type="radio" name="q13b" value="Đúng"> Đúng</label> <label><input type="radio" name="q13b" value="Sai"> Sai</label></p>
+                <p>c) <label><input type="radio" name="q13c" value="Đúng"> Đúng</label> <label><input type="radio" name="q13c" value="Sai"> Sai</label></p>
+                <p>d) <label><input type="radio" name="q13d" value="Đúng"> Đúng</label> <label><input type="radio" name="q13d" value="Sai"> Sai</label></p>
+                <button onclick="checkTrueFalseAnswer('q13', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q13"></div>
+            <div class="solution-toggle" onclick="toggleSolution('solution-q13')">Xem lời giải</div>
+            <div class="solution" id="solution-q13">
+                <p><strong>Lời giải:</strong><br>
+                a) Đúng. Tính trung vị: \( Q_2 = 5 \).<br>
+                b) Sai. Tính \( Q_1 \neq 4 \).<br>
+                c) Đúng. Tính \( Q_3 = 6 \).<br>
+                d) Sai. Tính \( \Delta_Q \neq 2 \).<br>
+                Đáp án: a) Đúng, b) Sai, c) Đúng, d) Sai.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Câu 14 -->
+    <div class="card">
+        <div class="summary-box">
+            <h3>Tóm tắt kiến thức: Mốt và tần số tương đối</h3>
+            <p>Mốt: \( M_0 = u_m + \frac{n_m - n_{m-1}}{(n_m - n_{m-1}) + (n_m - n_{m+1})} (u_{m+1} - u_m) \). Tần số tương đối: \( f_i = \frac{n_i}{n} \).</p>
+        </div>
+        <div class="question">
+            <h3>Câu 14:</h3>
+            <p>Thống kê số lượng khách hàng, ta có bảng số liệu: <br> <img src="anh/14.png" alt="Bảng tần số khách hàng"> <br>
+            Xét các phát biểu sau:</p>
+            <div class="options">
+                <div class="option">a) Mốt là 200.</div>
+                <div class="option">b) Tần số tương đối của nhóm thứ 3 là 0.3.</div>
+                <div class="option">c) Số trung bình là 210.</div>
+                <div class="option">d) Khoảng biến thiên là 150.</div>
+            </div>
+            <div class="answer-check">
+                <p>Chọn đáp án cho từng phát biểu:</p>
+                <p>a) <label><input type="radio" name="q14a" value="Đúng"> Đúng</label> <label><input type="radio" name="q14a" value="Sai"> Sai</label></p>
+                <p>b) <label><input type="radio" name="q14b" value="Đúng"> Đúng</label> <label><input type="radio" name="q14b" value="Sai"> Sai</label></p>
+                <p>c) <label><input type="radio" name="q14c" value="Đúng"> Đúng</label> <label><input type="radio" name="q14c" value="Sai"> Sai</label></p>
+                <p>d) <label><input type="radio" name="q14d" value="Đúng"> Đúng</label> <label><input type="radio" name="q14d" value="Sai"> Sai</label></p>
+                <button onclick="checkTrueFalseAnswer('q14', ['Sai', 'Đúng', 'Sai', 'Đúng'])">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q14"></div>
+            <div class="solution-toggle" onclick="toggleSolution('solution-q14')">Xem lời giải</div>
+            <div class="solution" id="solution-q14">
+                <p><strong>Lời giải:</strong><br>
+                a) Sai. Tính mốt, không phải 200.<br>
+                b) Đúng. Tần số tương đối nhóm thứ 3: \( f_3 = 0.3 \).<br>
+                c) Sai. Tính số trung bình, không phải 210.<br>
+                d) Đúng. Khoảng biến thiên: \( R = 150 \).<br>
+                Đáp án: a) Sai, b) Đúng, c) Sai, d) Đúng.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Câu 15 -->
+    <div class="card">
+        <div class="summary-box">
+            <h3>Tóm tắt kiến thức: Độ lệch chuẩn và giá trị ngoại lệ</h3>
+            <p>Độ lệch chuẩn: \( S = \sqrt{S^2} \). Giá trị ngoại lệ: Nhỏ hơn \( Q_1 - 1.5 \Delta_Q \) hoặc lớn hơn \( Q_3 + 1.5 \Delta_Q \).</p>
+        </div>
+        <div class="question">
+            <h3>Câu 15:</h3>
+            <p>Thống kê doanh thu (triệu đồng), ta có bảng số liệu: <br> <img src="anh/15.png" alt="Bảng tần số doanh thu"> <br>
+            Xét các phát biểu sau:</p>
+            <div class="options">
+                <div class="option">a) Độ lệch chuẩn là 10.</div>
+                <div class="option">b) Giá trị 50 là giá trị ngoại lệ.</div>
+                <div class="option">c) Tứ phân vị thứ hai \( Q_2 = 30 \).</div>
+                <div class="option">d) Khoảng tứ phân vị là 15.</div>
+            </div>
+            <div class="answer-check">
+                <p>Chọn đáp án cho từng phát biểu:</p>
+                <p>a) <label><input type="radio" name="q15a" value="Đúng"> Đúng</label> <label><input type="radio" name="q15a" value="Sai"> Sai</label></p>
+                <p>b) <label><input type="radio" name="q15b" value="Đúng"> Đúng</label> <label><input type="radio" name="q15b" value="Sai"> Sai</label></p>
+                <p>c) <label><input type="radio" name="q15c" value="Đúng"> Đúng</label> <label><input type="radio" name="q15c" value="Sai"> Sai</label></p>
+                <p>d) <label><input type="radio" name="q15d" value="Đúng"> Đúng</label> <label><input type="radio" name="q15d" value="Sai"> Sai</label></p>
+                <button onclick="checkTrueFalseAnswer('q15', ['Sai', 'Đúng', 'Sai', 'Đúng'])">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q15"></div>
+            <div class="solution-toggle" onclick="toggleSolution('solution-q15')">Xem lời giải</div>
+            <div class="solution" id="solution-q15">
+                <p><strong>Lời giải:</strong><br>
+                a) Sai. Tính độ lệch chuẩn, không phải 10.<br>
+                b) Đúng. Giá trị 50 là ngoại lệ.<br>
+                c) Sai. Tính \( Q_2 \neq 30 \).<br>
+                d) Đúng. Tính \( \Delta_Q = 15 \).<br>
+                Đáp án: a) Sai, b) Đúng, c) Sai, d) Đúng.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Câu 16 -->
+    <div class="card">
+        <div class="summary-box">
+            <h3>Tóm tắt kiến thức: Số trung bình và mốt</h3>
+            <p>Số trung bình: \( \bar{x} = \frac{\sum n_i c_i}{n} \). Mốt: \( M_0 = u_m + \frac{n_m - n_{m-1}}{(n_m - n_{m-1}) + (n_m - n_{m+1})} (u_{m+1} - u_m) \).</p>
+        </div>
+        <div class="question">
+            <h3>Câu 16:</h3>
+            <p>Thống kê số lượng vé bán ra, ta có bảng số liệu: <br> <img src="anh/16.png" alt="Bảng tần số vé"> <br>
+            Xét các phát biểu sau:</p>
+            <div class="options">
+                <div class="option">a) Số trung bình là 500.</div>
+                <div class="option">b) Mốt là 510.</div>
+                <div class="option">c) Tần số tương đối nhóm thứ 2 là 0.2.</div>
+                <div class="option">d) Khoảng biến thiên là 300.</div>
+            </div>
+            <div class="answer-check">
+                <p>Chọn đáp án cho từng phát biểu:</p>
+                <p>a) <label><input type="radio" name="q16a" value="Đúng"> Đúng</label> <label><input type="radio" name="q16a" value="Sai"> Sai</label></p>
+                <p>b) <label><input type="radio" name="q16b" value="Đúng"> Đúng</label> <label><input type="radio" name="q16b" value="Sai"> Sai</label></p>
+                <p>c) <label><input type="radio" name="q16c" value="Đúng"> Đúng</label> <label><input type="radio" name="q16c" value="Sai"> Sai</label></p>
+                <p>d) <label><input type="radio" name="q16d" value="Đúng"> Đúng</label> <label><input type="radio" name="q16d" value="Sai"> Sai</label></p>
+                <button onclick="checkTrueFalseAnswer('q16', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q16"></div>
+            <div class="solution-toggle" onclick="toggleSolution('solution-q16')">Xem lời giải</div>
+            <div class="solution" id="solution-q16">
+                <p><strong>Lời giải:</strong><br>
+                a) Đúng. Tính số trung bình: \( \bar{x} = 500 \).<br>
+                b) Sai. Tính mốt, không phải 510.<br>
+                c) Đúng. Tần số tương đối nhóm thứ 2: \( f_2 = 0.2 \).<br>
+                d) Sai. Khoảng biến thiên: \( R \neq 300 \).<br>
+                Đáp án: a) Đúng, b) Sai, c) Đúng, d) Sai.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Câu 17 -->
+    <div class="card">
+        <div class="summary-box">
+            <h3>Tóm tắt kiến thức: Tứ phân vị và giá trị ngoại lệ</h3>
+            <p>Tứ phân vị: \( Q_i = u_m + \frac{\frac{i n}{4} - C}{n_m} (u_{m+1} - u_m) \). Giá trị ngoại lệ: Nhỏ hơn \( Q_1 - 1.5 \Delta_Q \) hoặc lớn hơn \( Q_3 + 1.5 \Delta_Q \).</p>
+        </div>
+        <div class="question">
+            <h3>Câu 17:</h3>
+            <p>Thống kê số lượng đơn hàng, ta có bảng số liệu: <br> <img src="anh/17.png" alt="Bảng tần số đơn hàng"> <br>
+            Xét các phát biểu sau:</p>
+            <div class="options">
+                <div class="option">a) Tứ phân vị thứ nhất \( Q_1 = 20 \).</div>
+                <div class="option">b) Tứ phân vị thứ ba \( Q_3 = 40 \).</div>
+                <div class="option">c) Giá trị 60 là giá trị ngoại lệ.</div>
+                <div class="option">d) Khoảng tứ phân vị là 20.</div>
+            </div>
+            <div class="answer-check">
+                <p>Chọn đáp án cho từng phát biểu:</p>
+                <p>a) <label><input type="radio" name="q17a" value="Đúng"> Đúng</label> <label><input type="radio" name="q17a" value="Sai"> Sai</label></p>
+                <p>b) <label><input type="radio" name="q17b" value="Đúng"> Đúng</label> <label><input type="radio" name="q17b" value="Sai"> Sai</label></p>
+                <p>c) <label><input type="radio" name="q17c" value="Đúng"> Đúng</label> <label><input type="radio" name="q17c" value="Sai"> Sai</label></p>
+                <p>d) <label><input type="radio" name="q17d" value="Đúng"> Đúng</label> <label><input type="radio" name="q17d" value="Sai"> Sai</label></p>
+                <button onclick="checkTrueFalseAnswer('q17', ['Sai', 'Đúng', 'Sai', 'Đúng'])">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q17"></div>
+            <div class="solution-toggle" onclick="toggleSolution('solution-q17')">Xem lời giải</div>
+            <div class="solution" id="solution-q17">
+                <p><strong>Lời giải:</strong><br>
+                a) Sai. Tính \( Q_1 \neq 20 \).<br>
+                b) Đúng. Tính \( Q_3 = 40 \).<br>
+                c) Sai. Giá trị 60 không phải ngoại lệ.<br>
+                d) Đúng. Tính \( \Delta_Q = 20 \).<br>
+                Đáp án: a) Sai, b) Đúng, c) Sai, d) Đúng.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Câu 18 -->
+    <div class="card">
+        <div class="summary-box">
+            <h3>Tóm tắt kiến thức: Số trung bình và độ lệch chuẩn</h3>
+            <p>Số trung bình: \( \bar{x} = \frac{\sum n_i c_i}{n} \). Độ lệch chuẩn: \( S = \sqrt{\frac{1}{n} \sum n_i (c_i - \bar{x})^2} \).</p>
+        </div>
+        <div class="question">
+            <h3>Câu 18:</h3>
+            <p>Thống kê số giờ làm việc, ta có bảng số liệu: <br> <img src="anh/18.png" alt="Bảng tần số giờ làm việc"> <br>
+            Xét các phát biểu sau:</p>
+            <div class="options">
+                <div class="option">a) Số trung bình là 8.</div>
+                <div class="option">b) Độ lệch chuẩn là 2.</div>
+                <div class="option">c) Trung vị là 8.</div>
+                <div class="option">d) Mốt là 7.5.</div>
+            </div>
+            <div class="answer-check">
+                <p>Chọn đáp án cho từng phát biểu:</p>
+                <p>a) <label><input type="radio" name="q18a" value="Đúng"> Đúng</label> <label><input type="radio" name="q18a" value="Sai"> Sai</label></p>
+                <p>b) <label><input type="radio" name="q18b" value="Đúng"> Đúng</label> <label><input type="radio" name="q18b" value="Sai"> Sai</label></p>
+                <p>c) <label><input type="radio" name="q18c" value="Đúng"> Đúng</label> <label><input type="radio" name="q18c" value="Sai"> Sai</label></p>
+                <p>d) <label><input type="radio" name="q18d" value="Đúng"> Đúng</label> <label><input type="radio" name="q18d" value="Sai"> Sai</label></p>
+                <button onclick="checkTrueFalseAnswer('q18', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q18"></div>
+            <div class="solution-toggle" onclick="toggleSolution('solution-q18')">Xem lời giải</div>
+            <div class="solution" id="solution-q18">
+                <p><strong>Lời giải:</strong><br>
+                a) Đúng. Tính số trung bình: \( \bar{x} = 8 \).<br>
+                b) Sai. Tính độ lệch chuẩn, không phải 2.<br>
+                c) Đúng. Tính trung vị: \( Q_2 = 8 \).<br>
+                d) Sai. Tính mốt, không phải 7.5.<br>
+                Đáp án: a) Đúng, b) Sai, c) Đúng, d) Sai.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Câu 19 -->
+    <div class="card">
+        <div class="summary-box">
+            <h3>Tóm tắt kiến thức: Tứ phân vị và khoảng biến thiên</h3>
+            <p>Tứ phân vị: \( Q_i = u_m + \frac{\frac{i n}{4} - C}{n_m} (u_{m+1} - u_m) \). Khoảng biến thiên: \( R = u_{k+1} - u_1 \).</p>
+        </div>
+        <div class="question">
+            <h3>Câu 19:</h3>
+            <p>Thống kê chiều dài sản phẩm (cm), ta có bảng số liệu: <br> <img src="anh/19.png" alt="Bảng tần số chiều dài"> <br>
+            Xét các phát biểu sau:</p>
+            <div class="options">
+                <div class="option">a) Tứ phân vị thứ nhất \( Q_1 = 10 \).</div>
+                <div class="option">b) Tứ phân vị thứ ba \( Q_3 = 20 \).</div>
+                <div class="option">c) Khoảng biến thiên là 15.</div>
+                <div class="option">d) Trung vị là 15.</div>
+            </div>
+            <div class="answer-check">
+                <p>Chọn đáp án cho từng phát biểu:</p>
+                <p>a) <label><input type="radio" name="q19a" value="Đúng"> Đúng</label> <label><input type="radio" name="q19a" value="Sai"> Sai</label></p>
+                <p>b) <label><input type="radio" name="q19b" value="Đúng"> Đúng</label> <label><input type="radio" name="q19b" value="Sai"> Sai</label></p>
+                <p>c) <label><input type="radio" name="q19c" value="Đúng"> Đúng</label> <label><input type="radio" name="q19c" value="Sai"> Sai</label></p>
+                <p>d) <label><input type="radio" name="q19d" value="Đúng"> Đúng</label> <label><input type="radio" name="q19d" value="Sai"> Sai</label></p>
+                <button onclick="checkTrueFalseAnswer('q19', ['Sai', 'Đúng', 'Sai', 'Đúng'])">Kiểm tra</button>
+            </div>
+            <div class="answer-feedback" id="feedback-q19"></div>
+            <div class="solution-toggle" onclick="toggleSolution('solution-q19')">Xem lời giải</div>
+            <div class="solution" id="solution-q19">
+                <p><strong>Lời giải:</strong><br>
+                a) Sai. Tính \( Q_1 \neq 10 \).<br>
+                b) Đúng. Tính \( Q_3 = 20 \).<br>
+                c) Sai. Tính \( R \neq 15 \).<br>
+                d) Đúng. Tính trung vị: \( Q_2 = 15 \).<br>
+                Đáp án: a) Sai, b) Đúng, c) Sai, d) Đúng.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Phần II: Trắc Nghiệm Đúng/Sai (Câu 21 đến 40)</h2>
+    
+        <!-- Câu 21 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Tứ phân vị và giá trị ngoại lệ</h3>
+                <p>Tứ phân vị: \( Q_i = u_m + \frac{\frac{i n}{4} - C}{n_m} (u_{m+1} - u_m) \). Giá trị ngoại lệ: Nhỏ hơn \( Q_1 - 1.5 \Delta_Q \) hoặc lớn hơn \( Q_3 + 1.5 \Delta_Q \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 21:</h3>
+                <p>Thống kê số lượng hàng hóa nhập kho (kg), ta có bảng số liệu: <br> <img src="anh/21.png" alt="Bảng tần số hàng hóa nhập kho"> <br>
+                Xét các phát biểu sau:</p>
+                <div class="options">
+                    <div class="option">a) Tứ phân vị thứ nhất \( Q_1 = 200 \).</div>
+                    <div class="option">b) Tứ phân vị thứ ba \( Q_3 = 400 \).</div>
+                    <div class="option">c) Giá trị 600 là giá trị ngoại lệ.</div>
+                    <div class="option">d) Khoảng tứ phân vị là 200.</div>
+                </div>
+                <div class="answer-check">
+                    <p>Chọn đáp án cho từng phát biểu:</p>
+                    <p>a) <label><input type="radio" name="q21a" value="Đúng"> Đúng</label> <label><input type="radio" name="q21a" value="Sai"> Sai</label></p>
+                    <p>b) <label><input type="radio" name="q21b" value="Đúng"> Đúng</label> <label><input type="radio" name="q21b" value="Sai"> Sai</label></p>
+                    <p>c) <label><input type="radio" name="q21c" value="Đúng"> Đúng</label> <label><input type="radio" name="q21c" value="Sai"> Sai</label></p>
+                    <p>d) <label><input type="radio" name="q21d" value="Đúng"> Đúng</label> <label><input type="radio" name="q21d" value="Sai"> Sai</label></p>
+                    <button onclick="checkTrueFalseAnswer('q21', ['Sai', 'Đúng', 'Đúng', 'Sai'])">Kiểm tra</button>
+                </div>
+                <div class="answer-feedback" id="feedback-q21"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q21')">Xem lời giải</div>
+                <div class="solution" id="solution-q21">
+                    <p><strong>Lời giải:</strong><br>
+                    a) Sai. Tính \( Q_1 \neq 200 \).<br>
+                    b) Đúng. Tính \( Q_3 = 400 \).<br>
+                    c) Đúng. Giá trị 600 thỏa mãn điều kiện ngoại lệ.<br>
+                    d) Sai. Tính \( \Delta_Q \neq 200 \).<br>
+                    Đáp án: a) Sai, b) Đúng, c) Đúng, d) Sai.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 22 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Số trung bình và mốt</h3>
+                <p>Số trung bình: \( \bar{x} = \frac{\sum n_i c_i}{n} \). Mốt: \( M_0 = u_m + \frac{n_m - n_{m-1}}{(n_m - n_{m-1}) + (n_m - n_{m+1})} (u_{m+1} - u_m) \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 22:</h3>
+                <p>Thống kê số lượng sản phẩm lỗi, ta có bảng số liệu: <br> <img src="anh/22.png" alt="Bảng tần số sản phẩm lỗi"> <br>
+                Xét các phát biểu sau:</p>
+                <div class="options">
+                    <div class="option">a) Số trung bình là 10.</div>
+                    <div class="option">b) Mốt là 12.</div>
+                    <div class="option">c) Tần số tương đối nhóm thứ 1 là 0.15.</div>
+                    <div class="option">d) Khoảng biến thiên là 20.</div>
+                </div>
+                <div class="answer-check">
+                    <p>Chọn đáp án cho từng phát biểu:</p>
+                    <p>a) <label><input type="radio" name="q22a" value="Đúng"> Đúng</label> <label><input type="radio" name="q22a" value="Sai"> Sai</label></p>
+                    <p>b) <label><input type="radio" name="q22b" value="Đúng"> Đúng</label> <label><input type="radio" name="q22b" value="Sai"> Sai</label></p>
+                    <p>c) <label><input type="radio" name="q22c" value="Đúng"> Đúng</label> <label><input type="radio" name="q22c" value="Sai"> Sai</label></p>
+                    <p>d) <label><input type="radio" name="q22d" value="Đúng"> Đúng</label> <label><input type="radio" name="q22d" value="Sai"> Sai</label></p>
+                    <button onclick="checkTrueFalseAnswer('q22', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
+                </div>
+                <div class="answer-feedback" id="feedback-q22"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q22')">Xem lời giải</div>
+                <div class="solution" id="solution-q22">
+                    <p><strong>Lời giải:</strong><br>
+                    a) Đúng. Tính số trung bình: \( \bar{x} = 10 \).<br>
+                    b) Sai. Tính mốt, không phải 12.<br>
+                    c) Đúng. Tần số tương đối nhóm thứ 1: \( f_1 = 0.15 \).<br>
+                    d) Sai. Tính \( R \neq 20 \).<br>
+                    Đáp án: a) Đúng, b) Sai, c) Đúng, d) Sai.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 23 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Phương sai và độ lệch chuẩn</h3>
+                <p>Phương sai: \( S^2 = \frac{1}{n} \sum n_i (c_i - \bar{x})^2 \). Độ lệch chuẩn: \( S = \sqrt{S^2} \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 23:</h3>
+                <p>Thống kê thời gian sản xuất (giờ), ta có bảng số liệu: <br> <img src="anh/23.png" alt="Bảng tần số thời gian sản xuất"> <br>
+                Xét các phát biểu sau:</p>
+                <div class="options">
+                    <div class="option">a) Phương sai là 16.</div>
+                    <div class="option">b) Độ lệch chuẩn là 4.</div>
+                    <div class="option">c) Số trung bình là 8.</div>
+                    <div class="option">d) Trung vị là 7.5.</div>
+                </div>
+                <div class="answer-check">
+                    <p>Chọn đáp án cho từng phát biểu:</p>
+                    <p>a) <label><input type="radio" name="q23a" value="Đúng"> Đúng</label> <label><input type="radio" name="q23a" value="Sai"> Sai</label></p>
+                    <p>b) <label><input type="radio" name="q23b" value="Đúng"> Đúng</label> <label><input type="radio" name="q23b" value="Sai"> Sai</label></p>
+                    <p>c) <label><input type="radio" name="q23c" value="Đúng"> Đúng</label> <label><input type="radio" name="q23c" value="Sai"> Sai</label></p>
+                    <p>d) <label><input type="radio" name="q23d" value="Đúng"> Đúng</label> <label><input type="radio" name="q23d" value="Sai"> Sai</label></p>
+                    <button onclick="checkTrueFalseAnswer('q23', ['Đúng', 'Đúng', 'Sai', 'Sai'])">Kiểm tra</button>
+                </div>
+                <div class="answer-feedback" id="feedback-q23"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q23')">Xem lời giải</div>
+                <div class="solution" id="solution-q23">
+                    <p><strong>Lời giải:</strong><br>
+                    a) Đúng. Tính phương sai: \( S^2 = 16 \).<br>
+                    b) Đúng. Độ lệch chuẩn: \( S = \sqrt{16} = 4 \).<br>
+                    c) Sai. Tính số trung bình, không phải 8.<br>
+                    d) Sai. Tính trung vị, không phải 7.5.<br>
+                    Đáp án: a) Đúng, b) Đúng, c) Sai, d) Sai.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 24 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Trung vị và khoảng tứ phân vị</h3>
+                <p>Trung vị: \( Q_2 = u_m + \frac{\frac{n}{2} - C}{n_m} (u_{m+1} - u_m) \). Khoảng tứ phân vị: \( \Delta_Q = Q_3 - Q_1 \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 24:</h3>
+                <p>Thống kê số lượng nhân viên, ta có bảng số liệu: <br> <img src="anh/24.png" alt="Bảng tần số nhân viên"> <br>
+                Xét các phát biểu sau:</p>
+                <div class="options">
+                    <div class="option">a) Trung vị là 50.</div>
+                    <div class="option">b) Tứ phân vị thứ nhất \( Q_1 = 40 \).</div>
+                    <div class="option">c) Tứ phân vị thứ ba \( Q_3 = 60 \).</div>
+                    <div class="option">d) Khoảng tứ phân vị là 20.</div>
+                </div>
+                <div class="answer-check">
+                    <p>Chọn đáp án cho từng phát biểu:</p>
+                    <p>a) <label><input type="radio" name="q24a" value="Đúng"> Đúng</label> <label><input type="radio" name="q24a" value="Sai"> Sai</label></p>
+                    <p>b) <label><input type="radio" name="q24b" value="Đúng"> Đúng</label> <label><input type="radio" name="q24b" value="Sai"> Sai</label></p>
+                    <p>c) <label><input type="radio" name="q24c" value="Đúng"> Đúng</label> <label><input type="radio" name="q24c" value="Sai"> Sai</label></p>
+                    <p>d) <label><input type="radio" name="q24d" value="Đúng"> Đúng</label> <label><input type="radio" name="q24d" value="Sai"> Sai</label></p>
+                    <button onclick="checkTrueFalseAnswer('q24', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
+                </div>
+                <div class="answer-feedback" id="feedback-q24"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q24')">Xem lời giải</div>
+                <div class="solution" id="solution-q24">
+                    <p><strong>Lời giải:</strong><br>
+                    a) Đúng. Tính trung vị: \( Q_2 = 50 \).<br>
+                    b) Sai. Tính \( Q_1 \neq 40 \).<br>
+                    c) Đúng. Tính \( Q_3 = 60 \).<br>
+                    d) Sai. Tính \( \Delta_Q \neq 20 \).<br>
+                    Đáp án: a) Đúng, b) Sai, c) Đúng, d) Sai.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 25 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Mốt và tần số tương đối</h3>
+                <p>Mốt: \( M_0 = u_m + \frac{n_m - n_{m-1}}{(n_m - n_{m-1}) + (n_m - n_{m+1})} (u_{m+1} - u_m) \). Tần số tương đối: \( f_i = \frac{n_i}{n} \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 25:</h3>
+                <p>Thống kê số lượng đơn đặt hàng, ta có bảng số liệu: <br> <img src="anh/25.png" alt="Bảng tần số đơn đặt hàng"> <br>
+                Xét các phát biểu sau:</p>
+                <div class="options">
+                    <div class="option">a) Mốt là 100.</div>
+                    <div class="option">b) Tần số tương đối của nhóm thứ 2 là 0.25.</div>
+                    <div class="option">c) Số trung bình là 110.</div>
+                    <div class="option">d) Khoảng biến thiên là 80.</div>
+                </div>
+                <div class="answer-check">
+                    <p>Chọn đáp án cho từng phát biểu:</p>
+                    <p>a) <label><input type="radio" name="q25a" value="Đúng"> Đúng</label> <label><input type="radio" name="q25a" value="Sai"> Sai</label></p>
+                    <p>b) <label><input type="radio" name="q25b" value="Đúng"> Đúng</label> <label><input type="radio" name="q25b" value="Sai"> Sai</label></p>
+                    <p>c) <label><input type="radio" name="q25c" value="Đúng"> Đúng</label> <label><input type="radio" name="q25c" value="Sai"> Sai</label></p>
+                    <p>d) <label><input type="radio" name="q25d" value="Đúng"> Đúng</label> <label><input type="radio" name="q25d" value="Sai"> Sai</label></p>
+                    <button onclick="checkTrueFalseAnswer('q25', ['Sai', 'Đúng', 'Sai', 'Đúng'])">Kiểm tra</button>
+                </div>
+                <div class="answer-feedback" id="feedback-q25"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q25')">Xem lời giải</div>
+                <div class="solution" id="solution-q25">
+                    <p><strong>Lời giải:</strong><br>
+                    a) Sai. Tính mốt, không phải 100.<br>
+                    b) Đúng. Tần số tương đối nhóm thứ 2: \( f_2 = 0.25 \).<br>
+                    c) Sai. Tính số trung bình, không phải 110.<br>
+                    d) Đúng. Tính \( R = 80 \).<br>
+                    Đáp án: a) Sai, b) Đúng, c) Sai, d) Đúng.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 26 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Độ lệch chuẩn và giá trị ngoại lệ</h3>
+                <p>Độ lệch chuẩn: \( S = \sqrt{S^2} \). Giá trị ngoại lệ: Nhỏ hơn \( Q_1 - 1.5 \Delta_Q \) hoặc lớn hơn \( Q_3 + 1.5 \Delta_Q \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 26:</h3>
+                <p>Thống kê chi phí sản xuất (triệu đồng), ta có bảng số liệu: <br> <img src="anh/26.png" alt="Bảng tần số chi phí sản xuất"> <br>
+                Xét các phát biểu sau:</p>
+                <div class="options">
+                    <div class="option">a) Độ lệch chuẩn là 5.</div>
+                    <div class="option">b) Giá trị 30 là giá trị ngoại lệ.</div>
+                    <div class="option">c) Tứ phân vị thứ hai \( Q_2 = 20 \).</div>
+                    <div class="option">d) Khoảng tứ phân vị là 10.</div>
+                </div>
+                <div class="answer-check">
+                    <p>Chọn đáp án cho từng phát biểu:</p>
+                    <p>a) <label><input type="radio" name="q26a" value="Đúng"> Đúng</label> <label><input type="radio" name="q26a" value="Sai"> Sai</label></p>
+                    <p>b) <label><input type="radio" name="q26b" value="Đúng"> Đúng</label> <label><input type="radio" name="q26b" value="Sai"> Sai</label></p>
+                    <p>c) <label><input type="radio" name="q26c" value="Đúng"> Đúng</label> <label><input type="radio" name="q26c" value="Sai"> Sai</label></p>
+                    <p>d) <label><input type="radio" name="q26d" value="Đúng"> Đúng</label> <label><input type="radio" name="q26d" value="Sai"> Sai</label></p>
+                    <button onclick="checkTrueFalseAnswer('q26', ['Sai', 'Đúng', 'Sai', 'Đúng'])">Kiểm tra</button>
+                </div>
+                <div class="answer-feedback" id="feedback-q26"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q26')">Xem lời giải</div>
+                <div class="solution" id="solution-q26">
+                    <p><strong>Lời giải:</strong><br>
+                    a) Sai. Tính độ lệch chuẩn, không phải 5.<br>
+                    b) Đúng. Giá trị 30 là ngoại lệ.<br>
+                    c) Sai. Tính \( Q_2 \neq 20 \).<br>
+                    d) Đúng. Tính \( \Delta_Q = 10 \).<br>
+                    Đáp án: a) Sai, b) Đúng, c) Sai, d) Đúng.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 27 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Số trung bình và mốt</h3>
+                <p>Số trung bình: \( \bar{x} = \frac{\sum n_i c_i}{n} \). Mốt: \( M_0 = u_m + \frac{n_m - n_{m-1}}{(n_m - n_{m-1}) + (n_m - n_{m+1})} (u_{m+1} - u_m) \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 27:</h3>
+                <p>Thống kê số lượng khách truy cập, ta có bảng số liệu: <br> <img src="anh/27.png" alt="Bảng tần số khách truy cập"> <br>
+                Xét các phát biểu sau:</p>
+                <div class="options">
+                    <div class="option">a) Số trung bình là 300.</div>
+                    <div class="option">b) Mốt là 310.</div>
+                    <div class="option">c) Tần số tương đối nhóm thứ 3 là 0.3.</div>
+                    <div class="option">d) Khoảng biến thiên là 200.</div>
+                </div>
+                <div class="answer-check">
+                    <p>Chọn đáp án cho từng phát biểu:</p>
+                    <p>a) <label><input type="radio" name="q27a" value="Đúng"> Đúng</label> <label><input type="radio" name="q27a" value="Sai"> Sai</label></p>
+                    <p>b) <label><input type="radio" name="q27b" value="Đúng"> Đúng</label> <label><input type="radio" name="q27b" value="Sai"> Sai</label></p>
+                    <p>c) <label><input type="radio" name="q27c" value="Đúng"> Đúng</label> <label><input type="radio" name="q27c" value="Sai"> Sai</label></p>
+                    <p>d) <label><input type="radio" name="q27d" value="Đúng"> Đúng</label> <label><input type="radio" name="q27d" value="Sai"> Sai</label></p>
+                    <button onclick="checkTrueFalseAnswer('q27', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
+                </div>
+                <div class="answer-feedback" id="feedback-q27"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q27')">Xem lời giải</div>
+                <div class="solution" id="solution-q27">
+                    <p><strong>Lời giải:</strong><br>
+                    a) Đúng. Tính số trung bình: \( \bar{x} = 300 \).<br>
+                    b) Sai. Tính mốt, không phải 310.<br>
+                    c) Đúng. Tần số tương đối nhóm thứ 3: \( f_3 = 0.3 \).<br>
+                    d) Sai. Tính \( R \neq 200 \).<br>
+                    Đáp án: a) Đúng, b) Sai, c) Đúng, d) Sai.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 28 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Tứ phân vị và giá trị ngoại lệ</h3>
+                <p>Tứ phân vị: \( Q_i = u_m + \frac{\frac{i n}{4} - C}{n_m} (u_{m+1} - u_m) \). Giá trị ngoại lệ: Nhỏ hơn \( Q_1 - 1.5 \Delta_Q \) hoặc lớn hơn \( Q_3 + 1.5 \Delta_Q \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 28:</h3>
+                <p>Thống kê số lượng sản phẩm tồn kho, ta có bảng số liệu: <br> <img src="anh/28.png" alt="Bảng tần số sản phẩm tồn kho"> <br>
+                Xét các phát biểu sau:</p>
+                <div class="options">
+                    <div class="option">a) Tứ phân vị thứ nhất \( Q_1 = 50 \).</div>
+                    <div class="option">b) Tứ phân vị thứ ba \( Q_3 = 100 \).</div>
+                    <div class="option">c) Giá trị 150 là giá trị ngoại lệ.</div>
+                    <div class="option">d) Khoảng tứ phân vị là 50.</div>
+                </div>
+                <div class="answer-check">
+                    <p>Chọn đáp án cho từng phát biểu:</p>
+                    <p>a) <label><input type="radio" name="q28a" value="Đúng"> Đúng</label> <label><input type="radio" name="q28a" value="Sai"> Sai</label></p>
+                    <p>b) <label><input type="radio" name="q28b" value="Đúng"> Đúng</label> <label><input type="radio" name="q28b" value="Sai"> Sai</label></p>
+                    <p>c) <label><input type="radio" name="q28c" value="Đúng"> Đúng</label> <label><input type="radio" name="q28c" value="Sai"> Sai</label></p>
+                    <p>d) <label><input type="radio" name="q28d" value="Đúng"> Đúng</label> <label><input type="radio" name="q28d" value="Sai"> Sai</label></p>
+                    <button onclick="checkTrueFalseAnswer('q28', ['Sai', 'Đúng', 'Sai', 'Đúng'])">Kiểm tra</button>
+                </div>
+                <div class="answer-feedback" id="feedback-q28"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q28')">Xem lời giải</div>
+                <div class="solution" id="solution-q28">
+                    <p><strong>Lời giải:</strong><br>
+                    a) Sai. Tính \( Q_1 \neq 50 \).<br>
+                    b) Đúng. Tính \( Q_3 = 100 \).<br>
+                    c) Sai. Giá trị 150 không phải ngoại lệ.<br>
+                    d) Đúng. Tính \( \Delta_Q = 50 \).<br>
+                    Đáp án: a) Sai, b) Đúng, c) Sai, d) Đúng.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 29 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Số trung bình và độ lệch chuẩn</h3>
+                <p>Số trung bình: \( \bar{x} = \frac{\sum n_i c_i}{n} \). Độ lệch chuẩn: \( S = \sqrt{\frac{1}{n} \sum n_i (c_i - \bar{x})^2} \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 29:</h3>
+                <p>Thống kê số giờ đào tạo, ta có bảng số liệu: <br> <img src="anh/29.png" alt="Bảng tần số giờ đào tạo"> <br>
+                Xét các phát biểu sau:</p>
+                <div class="options">
+                    <div class="option">a) Số trung bình là 20.</div>
+                    <div class="option">b) Độ lệch chuẩn là 5.</div>
+                    <div class="option">c) Trung vị là 20.</div>
+                    <div class="option">d) Mốt là 18.</div>
+                </div>
+                <div class="answer-check">
+                    <p>Chọn đáp án cho từng phát biểu:</p>
+                    <p>a) <label><input type="radio" name="q29a" value="Đúng"> Đúng</label> <label><input type="radio" name="q29a" value="Sai"> Sai</label></p>
+                    <p>b) <label><input type="radio" name="q29b" value="Đúng"> Đúng</label> <label><input type="radio" name="q29b" value="Sai"> Sai</label></p>
+                    <p>c) <label><input type="radio" name="q29c" value="Đúng"> Đúng</label> <label><input type="radio" name="q29c" value="Sai"> Sai</label></p>
+                    <p>d) <label><input type="radio" name="q29d" value="Đúng"> Đúng</label> <label><input type="radio" name="q29d" value="Sai"> Sai</label></p>
+                    <button onclick="checkTrueFalseAnswer('q29', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
+                </div>
+                <div class="answer-feedback" id="feedback-q29"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q29')">Xem lời giải</div>
+                <div class="solution" id="solution-q29">
+                    <p><strong>Lời giải:</strong><br>
+                    a) Đúng. Tính số trung bình: \( \bar{x} = 20 \).<br>
+                    b) Sai. Tính độ lệch chuẩn, không phải 5.<br>
+                    c) Đúng. Tính trung vị: \( Q_2 = 20 \).<br>
+                    d) Sai. Tính mốt, không phải 18.<br>
+                    Đáp án: a) Đúng, b) Sai, c) Đúng, d) Sai.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 30 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Tứ phân vị và khoảng biến thiên</h3>
+                <p>Tứ phân vị: \( Q_i = u_m + \frac{\frac{i n}{4} - C}{n_m} (u_{m+1} - u_m) \). Khoảng biến thiên: \( R = u_{k+1} - u_1 \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 30:</h3>
+                <p>Thống kê số lượng sản phẩm xuất khẩu, ta có bảng số liệu: <br> <img src="anh/30.png" alt="Bảng tần số sản phẩm xuất khẩu"> <br>
+                Xét các phát biểu sau:</p>
+                <div class="options">
+                    <div class="option">a) Tứ phân vị thứ nhất \( Q_1 = 500 \).</div>
+                    <div class="option">b) Tứ phân vị thứ ba \( Q_3 = 1000 \).</div>
+                    <div class="option">c) Khoảng biến thiên là 800.</div>
+                    <div class="option">d) Trung vị là 750.</div>
+                </div>
+                <div class="answer-check">
+                    <p>Chọn đáp án cho từng phát biểu:</p>
+                    <p>a) <label><input type="radio" name="q30a" value="Đúng"> Đúng</label> <label><input type="radio" name="q30a" value="Sai"> Sai</label></p>
+                    <p>b) <label><input type="radio" name="q30b" value="Đúng"> Đúng</label> <label><input type="radio" name="q30b" value="Sai"> Sai</label></p>
+                    <p>c) <label><input type="radio" name="q30c" value="Đúng"> Đúng</label> <label><input type="radio" name="q30c" value="Sai"> Sai</label></p>
+                    <p>d) <label><input type="radio" name="q30d" value="Đúng"> Đúng</label> <label><input type="radio" name="q30d" value="Sai"> Sai</label></p>
+                    <button onclick="checkTrueFalseAnswer('q30', ['Sai', 'Đúng', 'Sai', 'Đúng'])">Kiểm tra</button>
+                </div>
+                <div class="answer-feedback" id="feedback-q30"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q30')">Xem lời giải</div>
+                <div class="solution" id="solution-q30">
+                    <p><strong>Lời giải:</strong><br>
+                    a) Sai. Tính \( Q_1 \neq 500 \).<br>
+                    b) Đúng. Tính \( Q_3 = 1000 \).<br>
+                    c) Sai. Tính \( R \neq 800 \).<br>
+                    d) Đúng. Tính trung vị: \( Q_2 = 750 \).<br>
+                    Đáp án: a) Sai, b) Đúng, c) Sai, d) Đúng.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 31 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Số trung bình và phương sai</h3>
+                <p>Số trung bình: \( \bar{x} = \frac{\sum n_i c_i}{n} \). Phương sai: \( S^2 = \frac{1}{n} \sum n_i (c_i - \bar{x})^2 \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 31:</h3>
+                <p>Thống kê số lượng hàng hóa bán ra, ta có bảng số liệu: <br> <img src="anh/31.png" alt="Bảng tần số hàng hóa bán ra"> <br>
+                Xét các phát biểu sau:</p>
+                <div class="options">
+                    <div class="option">a) Số trung bình là 200.</div>
+                    <div class="option">b) Phương sai là 100.</div>
+                    <div class="option">c) Độ lệch chuẩn là 10.</div>
+                    <div class="option">d) Mốt là 210.</div>
+                </div>
+                <div class="answer-check">
+                    <p>Chọn đáp án cho từng phát biểu:</p>
+                    <p>a) <label><input type="radio" name="q31a" value="Đúng"> Đúng</label> <label><input type="radio" name="q31a" value="Sai"> Sai</label></p>
+                    <p>b) <label><input type="radio" name="q31b" value="Đúng"> Đúng</label> <label><input type="radio" name="q31b" value="Sai"> Sai</label></p>
+                    <p>c) <label><input type="radio" name="q31c" value="Đúng"> Đúng</label> <label><input type="radio" name="q31c" value="Sai"> Sai</label></p>
+                    <p>d) <label><input type="radio" name="q31d" value="Đúng"> Đúng</label> <label><input type="radio" name="q31d" value="Sai"> Sai</label></p>
+                    <button onclick="checkTrueFalseAnswer('q31', ['Đúng', 'Sai', 'Sai', 'Đúng'])">Kiểm tra</button>
+                </div>
+                <div class="answer-feedback" id="feedback-q31"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q31')">Xem lời giải</div>
+                <div class="solution" id="solution-q31">
+                    <p><strong>Lời giải:</strong><br>
+                    a) Đúng. Tính số trung bình: \( \bar{x} = 200 \).<br>
+                    b) Sai. Tính phương sai, không phải 100.<br>
+                    c) Sai. Tính độ lệch chuẩn, không phải 10.<br>
+                    d) Đúng. Tính mốt: \( M_0 = 210 \).<br>
+                    Đáp án: a) Đúng, b) Sai, c) Sai, d) Đúng.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 32 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Trung vị và khoảng tứ phân vị</h3>
+                <p>Trung vị: \( Q_2 = u_m + \frac{\frac{n}{2} - C}{n_m} (u_{m+1} - u_m) \). Khoảng tứ phân vị: \( \Delta_Q = Q_3 - Q_1 \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 32:</h3>
+                <p>Thống kê số lượng xe bán ra, ta có bảng số liệu: <br> <img src="anh/32.png" alt="Bảng tần số xe bán ra"> <br>
+                Xét các phát biểu sau:</p>
+                <div class="options">
+                    <div class="option">a) Trung vị là 30.</div>
+                    <div class="option">b) Tứ phân vị thứ nhất \( Q_1 = 20 \).</div>
+                    <div class="option">c) Tứ phân vị thứ ba \( Q_3 = 40 \).</div>
+                    <div class="option">d) Khoảng tứ phân vị là 20.</div>
+                </div>
+                <div class="answer-check">
+                    <p>Chọn đáp án cho từng phát biểu:</p>
+                    <p>a) <label><input type="radio" name="q32a" value="Đúng"> Đúng</label> <label><input type="radio" name="q32a" value="Sai"> Sai</label></p>
+                    <p>b) <label><input type="radio" name="q32b" value="Đúng"> Đúng</label> <label><input type="radio" name="q32b" value="Sai"> Sai</label></p>
+                    <p>c) <label><input type="radio" name="q32c" value="Đúng"> Đúng</label> <label><input type="radio" name="q32c" value="Sai"> Sai</label></p>
+                    <p>d) <label><input type="radio" name="q32d" value="Đúng"> Đúng</label> <label><input type="radio" name="q32d" value="Sai"> Sai</label></p>
+                    <button onclick="checkTrueFalseAnswer('q32', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
+                </div>
+                <div class="answer-feedback" id="feedback-q32"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q32')">Xem lời giải</div>
+                <div class="solution" id="solution-q32">
+                    <p><strong>Lời giải:</strong><br>
+                    a) Đúng. Tính trung vị: \( Q_2 = 30 \).<br>
+                    b) Sai. Tính \( Q_1 \neq 20 \).<br>
+                    c) Đúng. Tính \( Q_3 = 40 \).<br>
+                    d) Sai. Tính \( \Delta_Q \neq 20 \).<br>
+                    Đáp án: a) Đúng, b) Sai, c) Đúng, d) Sai.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 33 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Mốt và tần số tương đối</h3>
+                <p>Mốt: \( M_0 = u_m + \frac{n_m - n_{m-1}}{(n_m - n_{m-1}) + (n_m - n_{m+1})} (u_{m+1} - u_m) \). Tần số tương đối: \( f_i = \frac{n_i}{n} \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 33:</h3>
+                <p>Thống kê số lượng đơn hàng trực tuyến, ta có bảng số liệu: <br> <img src="anh/33.png" alt="Bảng tần số đơn hàng trực tuyến"> <br>
+                Xét các phát biểu sau:</p>
+                <div class="options">
+                    <div class="option">a) Mốt là 50.</div>
+                    <div class="option">b) Tần số tương đối của nhóm thứ 1 là 0.2.</div>
+                    <div class="option">c) Số trung bình là 60.</div>
+                    <div class="option">d) Khoảng biến thiên là 40.</div>
+                </div>
+                <div class="answer-check">
+                    <p>Chọn đáp án cho từng phát biểu:</p>
+                    <p>a) <label><input type="radio" name="q33a" value="Đúng"> Đúng</label> <label><input type="radio" name="q33a" value="Sai"> Sai</label></p>
+                    <p>b) <label><input type="radio" name="q33b" value="Đúng"> Đúng</label> <label><input type="radio" name="q33b" value="Sai"> Sai</label></p>
+                    <p>c) <label><input type="radio" name="q33c" value="Đúng"> Đúng</label> <label><input type="radio" name="q33c" value="Sai"> Sai</label></p>
+                    <p>d) <label><input type="radio" name="q33d" value="Đúng"> Đúng</label> <label><input type="radio" name="q33d" value="Sai"> Sai</label></p>
+                    <button onclick="checkTrueFalseAnswer('q33', ['Sai', 'Đúng', 'Sai', 'Đúng'])">Kiểm tra</button>
+                </div>
+                <div class="answer-feedback" id="feedback-q33"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q33')">Xem lời giải</div>
+                <div class="solution" id="solution-q33">
+                    <p><strong>Lời giải:</strong><br>
+                    a) Sai. Tính mốt, không phải 50.<br>
+                    b) Đúng. Tần số tương đối nhóm thứ 1: \( f_1 = 0.2 \).<br>
+                    c) Sai. Tính số trung bình, không phải 60.<br>
+                    d) Đúng. Tính \( R = 40 \).<br>
+                    Đáp án: a) Sai, b) Đúng, c) Sai, d) Đúng.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 34 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Độ lệch chuẩn và giá trị ngoại lệ</h3>
+                <p>Độ lệch chuẩn: \( S = \sqrt{S^2} \). Giá trị ngoại lệ: Nhỏ hơn \( Q_1 - 1.5 \Delta_Q \) hoặc lớn hơn \( Q_3 + 1.5 \Delta_Q \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 34:</h3>
+                <p>Thống kê doanh thu bán hàng (triệu đồng), ta có bảng số liệu: <br> <img src="anh/34.png" alt="Bảng tần số doanh thu bán hàng"> <br>
+                Xét các phát biểu sau:</p>
+                <div class="options">
+                    <div class="option">a) Độ lệch chuẩn là 15.</div>
+                    <div class="option">b) Giá trị 100 là giá trị ngoại lệ.</div>
+                    <div class="option">c) Tứ phân vị thứ hai \( Q_2 = 50 \).</div>
+                    <div class="option">d) Khoảng tứ phân vị là 30.</div>
+                </div>
+                <div class="answer-check">
+                    <p>Chọn đáp án cho từng phát biểu:</p>
+                    <p>a) <label><input type="radio" name="q34a" value="Đúng"> Đúng</label> <label><input type="radio" name="q34a" value="Sai"> Sai</label></p>
+                    <p>b) <label><input type="radio" name="q34b" value="Đúng"> Đúng</label> <label><input type="radio" name="q34b" value="Sai"> Sai</label></p>
+                    <p>c) <label><input type="radio" name="q34c" value="Đúng"> Đúng</label> <label><input type="radio" name="q34c" value="Sai"> Sai</label></p>
+                    <p>d) <label><input type="radio" name="q34d" value="Đúng"> Đúng</label> <label><input type="radio" name="q34d" value="Sai"> Sai</label></p>
+                    <button onclick="checkTrueFalseAnswer('q34', ['Sai', 'Đúng', 'Sai', 'Đúng'])">Kiểm tra</button>
+                </div>
+                <div class="answer-feedback" id="feedback-q34"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q34')">Xem lời giải</div>
+                <div class="solution" id="solution-q34">
+                    <p><strong>Lời giải:</strong><br>
+                    a) Sai. Tính độ lệch chuẩn, không phải 15.<br>
+                    b) Đúng. Giá trị 100 là ngoại lệ.<br>
+                    c) Sai. Tính \( Q_2 \neq 50 \).<br>
+                    d) Đúng. Tính \( \Delta_Q = 30 \).<br>
+                    Đáp án: a) Sai, b) Đúng, c) Sai, d) Đúng.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 35 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Số trung bình và mốt</h3>
+                <p>Số trung bình: \( \bar{x} = \frac{\sum n_i c_i}{n} \). Mốt: \( M_0 = u_m + \frac{n_m - n_{m-1}}{(n_m - n_{m-1}) + (n_m - n_{m+1})} (u_{m+1} - u_m) \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 35:</h3>
+                <p>Thống kê số lượng người tham gia sự kiện, ta có bảng số liệu: <br> <img src="anh/35.png" alt="Bảng tần số người tham gia"> <br>
+                Xét các phát biểu sau:</p>
+                <div class="options">
+                    <div class="option">a) Số trung bình là 400.</div>
+                    <div class="option">b) Mốt là 410.</div>
+                    <div class="option">c) Tần số tương đối nhóm thứ 2 là 0.25.</div>
+                    <div class="option">d) Khoảng biến thiên là 300.</div>
+                </div>
+                <div class="answer-check">
+                    <p>Chọn đáp án cho từng phát biểu:</p>
+                    <p>a) <label><input type="radio" name="q35a" value="Đúng"> Đúng</label> <label><input type="radio" name="q35a" value="Sai"> Sai</label></p>
+                    <p>b) <label><input type="radio" name="q35b" value="Đúng"> Đúng</label> <label><input type="radio" name="q35b" value="Sai"> Sai</label></p>
+                    <p>c) <label><input type="radio" name="q35c" value="Đúng"> Đúng</label> <label><input type="radio" name="q35c" value="Sai"> Sai</label></p>
+                    <p>d) <label><input type="radio" name="q35d" value="Đúng"> Đúng</label> <label><input type="radio" name="q35d" value="Sai"> Sai</label></p>
+                    <button onclick="checkTrueFalseAnswer('q35', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
+                </div>
+                <div class="answer-feedback" id="feedback-q35"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q35')">Xem lời giải</div>
+                <div class="solution" id="solution-q35">
+                    <p><strong>Lời giải:</strong><br>
+                    a) Đúng. Tính số trung bình: \( \bar{x} = 400 \).<br>
+                    b) Sai. Tính mốt, không phải 410.<br>
+                    c) Đúng. Tần số tương đối nhóm thứ 2: \( f_2 = 0.25 \).<br>
+                    d) Sai. Tính \( R \neq 300 \).<br>
+                    Đáp án: a) Đúng, b) Sai, c) Đúng, d) Sai.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 36 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Tứ phân vị và giá trị ngoại lệ</h3>
+                <p>Tứ phân vị: \( Q_i = u_m + \frac{\frac{i n}{4} - C}{n_m} (u_{m+1} - u_m) \). Giá trị ngoại lệ: Nhỏ hơn \( Q_1 - 1.5 \Delta_Q \) hoặc lớn hơn \( Q_3 + 1.5 \Delta_Q \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 36:</h3>
+                <p>Thống kê số lượng đơn hàng giao, ta có bảng số liệu: <br> <img src="anh/36.png" alt="Bảng tần số đơn hàng giao"> <br>
+                Xét các phát biểu sau:</p>
+                <div class="options">
+                    <div class="option">a) Tứ phân vị thứ nhất \( Q_1 = 100 \).</div>
+                    <div class="option">b) Tứ phân vị thứ ba \( Q_3 = 200 \).</div>
+                    <div class="option">c) Giá trị 300 là giá trị ngoại lệ.</div>
+                    <div class="option">d) Khoảng tứ phân vị là 100.</div>
+                </div>
+                <div class="answer-check">
+                    <p>Chọn đáp án cho từng phát biểu:</p>
+                    <p>a) <label><input type="radio" name="q36a" value="Đúng"> Đúng</label> <label><input type="radio" name="q36a" value="Sai"> Sai</label></p>
+                    <p>b) <label><input type="radio" name="q36b" value="Đúng"> Đúng</label> <label><input type="radio" name="q36b" value="Sai"> Sai</label></p>
+                    <p>c) <label><input type="radio" name="q36c" value="Đúng"> Đúng</label> <label><input type="radio" name="q36c" value="Sai"> Sai</label></p>
+                    <p>d) <label><input type="radio" name="q36d" value="Đúng"> Đúng</label> <label><input type="radio" name="q36d" value="Sai"> Sai</label></p>
+                    <button onclick="checkTrueFalseAnswer('q36', ['Sai', 'Đúng', 'Sai', 'Đúng'])">Kiểm tra</button>
+                </div>
+                <div class="answer-feedback" id="feedback-q36"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q36')">Xem lời giải</div>
+                <div class="solution" id="solution-q36">
+                    <p><strong>Lời giải:</strong><br>
+                    a) Sai. Tính \( Q_1 \neq 100 \).<br>
+                    b) Đúng. Tính \( Q_3 = 200 \).<br>
+                    c) Sai. Giá trị 300 không phải ngoại lệ.<br>
+                    d) Đúng. Tính \( \Delta_Q = 100 \).<br>
+                    Đáp án: a) Sai, b) Đúng, c) Sai, d) Đúng.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 37 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Số trung bình và độ lệch chuẩn</h3>
+                <p>Số trung bình: \( \bar{x} = \frac{\sum n_i c_i}{n} \). Độ lệch chuẩn: \( S = \sqrt{\frac{1}{n} \sum n_i (c_i - \bar{x})^2} \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 37:</h3>
+                <p>Thống kê số giờ làm thêm, ta có bảng số liệu: <br> <img src="anh/37.png" alt="Bảng tần số giờ làm thêm"> <br>
+                Xét các phát biểu sau:</p>
+                <div class="options">
+                    <div class="option">a) Số trung bình là 10.</div>
+                    <div class="option">b) Độ lệch chuẩn là 3.</div>
+                    <div class="option">c) Trung vị là 10.</div>
+                    <div class="option">d) Mốt là 9.</div>
+                </div>
+                <div class="answer-check">
+                    <p>Chọn đáp án cho từng phát biểu:</p>
+                    <p>a) <label><input type="radio" name="q37a" value="Đúng"> Đúng</label> <label><input type="radio" name="q37a" value="Sai"> Sai</label></p>
+                    <p>b) <label><input type="radio" name="q37b" value="Đúng"> Đúng</label> <label><input type="radio" name="q37b" value="Sai"> Sai</label></p>
+                    <p>c) <label><input type="radio" name="q37c" value="Đúng"> Đúng</label> <label><input type="radio" name="q37c" value="Sai"> Sai</label></p>
+                    <p>d) <label><input type="radio" name="q37d" value="Đúng"> Đúng</label> <label><input type="radio" name="q37d" value="Sai"> Sai</label></p>
+                    <button onclick="checkTrueFalseAnswer('q37', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
+                </div>
+                <div class="answer-feedback" id="feedback-q37"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q37')">Xem lời giải</div>
+                <div class="solution" id="solution-q37">
+                    <p><strong>Lời giải:</strong><br>
+                    a) Đúng. Tính số trung bình: \( \bar{x} = 10 \).<br>
+                    b) Sai. Tính độ lệch chuẩn, không phải 3.<br>
+                    c) Đúng. Tính trung vị: \( Q_2 = 10 \).<br>
+                    d) Sai. Tính mốt, không phải 9.<br>
+                    Đáp án: a) Đúng, b) Sai, c) Đúng, d) Sai.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 38 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Tứ phân vị và khoảng biến thiên</h3>
+                <p>Tứ phân vị: \( Q_i = u_m + \frac{\frac{i n}{4} - C}{n_m} (u_{m+1} - u_m) \). Khoảng biến thiên: \( R = u_{k+1} - u_1 \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 38:</h3>
+                <p>Thống kê số lượng sản phẩm tiêu thụ, ta có bảng số liệu: <br> <img src="anh/38.png" alt="Bảng tần số sản phẩm tiêu thụ"> <br>
+                Xét các phát biểu sau:</p>
+                <div class="options">
+                    <div class="option">a) Tứ phân vị thứ nhất \( Q_1 = 200 \).</div>
+                    <div class="option">b) Tứ phân vị thứ ba \( Q_3 = 400 \).</div>
+                    <div class="option">c) Khoảng biến thiên là 300.</div>
+                    <div class="option">d) Trung vị là 300.</div>
+                </div>
+                <div class="answer-check">
+                    <p>Chọn đáp án cho từng phát biểu:</p>
+                    <p>a) <label><input type="radio" name="q38a" value="Đúng"> Đúng</label> <label><input type="radio" name="q38a" value="Sai"> Sai</label></p>
+                    <p>b) <label><input type="radio" name="q38b" value="Đúng"> Đúng</label> <label><input type="radio" name="q38b" value="Sai"> Sai</label></p>
+                    <p>c) <label><input type="radio" name="q38c" value="Đúng"> Đúng</label> <label><input type="radio" name="q38c" value="Sai"> Sai</label></p>
+                    <p>d) <label><input type="radio" name="q38d" value="Đúng"> Đúng</label> <label><input type="radio" name="q38d" value="Sai"> Sai</label></p>
+                    <button onclick="checkTrueFalseAnswer('q38', ['Sai', 'Đúng', 'Sai', 'Đúng'])">Kiểm tra</button>
+                </div>
+                <div class="answer-feedback" id="feedback-q38"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q38')">Xem lời giải</div>
+                <div class="solution" id="solution-q38">
+                    <p><strong>Lời giải:</strong><br>
+                    a) Sai. Tính \( Q_1 \neq 200 \).<br>
+                    b) Đúng. Tính \( Q_3 = 400 \).<br>
+                    c) Sai. Tính \( R \neq 300 \).<br>
+                    d) Đúng. Tính trung vị: \( Q_2 = 300 \).<br>
+                    Đáp án: a) Sai, b) Đúng, c) Sai, d) Đúng.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 39 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Số trung bình và phương sai</h3>
+                <p>Số trung bình: \( \bar{x} = \frac{\sum n_i c_i}{n} \). Phương sai: \( S^2 = \frac{1}{n} \sum n_i (c_i - \bar{x})^2 \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 39:</h3>
+                <p>Thống kê số lượng hàng hóa nhập khẩu, ta có bảng số liệu: <br> <img src="anh/39.png" alt="Bảng tần số hàng hóa nhập khẩu"> <br>
+                Xét các phát biểu sau:</p>
+                <div class="options">
+                    <div class="option">a) Số trung bình là 500.</div>
+                    <div class="option">b) Phương sai là 250.</div>
+                    <div class="option">c) Độ lệch chuẩn là 15.</div>
+                    <div class="option">d) Mốt là 510.</div>
+                </div>
+                <div class="answer-check">
+                    <p>Chọn đáp án cho từng phát biểu:</p>
+                    <p>a) <label><input type="radio" name="q39a" value="Đúng"> Đúng</label> <label><input type="radio" name="q39a" value="Sai"> Sai</label></p>
+                    <p>b) <label><input type="radio" name="q39b" value="Đúng"> Đúng</label> <label><input type="radio" name="q39b" value="Sai"> Sai</label></p>
+                    <p>c) <label><input type="radio" name="q39c" value="Đúng"> Đúng</label> <label><input type="radio" name="q39c" value="Sai"> Sai</label></p>
+                    <p>d) <label><input type="radio" name="q39d" value="Đúng"> Đúng</label> <label><input type="radio" name="q39d" value="Sai"> Sai</label></p>
+                    <button onclick="checkTrueFalseAnswer('q39', ['Đúng', 'Sai', 'Sai', 'Đúng'])">Kiểm tra</button>
+                </div>
+                <div class="answer-feedback" id="feedback-q39"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q39')">Xem lời giải</div>
+                <div class="solution" id="solution-q39">
+                    <p><strong>Lời giải:</strong><br>
+                    a) Đúng. Tính số trung bình: \( \bar{x} = 500 \).<br>
+                    b) Sai. Tính phương sai, không phải 250.<br>
+                    c) Sai. Tính độ lệch chuẩn, không phải 15.<br>
+                    d) Đúng. Tính mốt: \( M_0 = 510 \).<br>
+                    Đáp án: a) Đúng, b) Sai, c) Sai, d) Đúng.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 40 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Trung vị và khoảng tứ phân vị</h3>
+                <p>Trung vị: \( Q_2 = u_m + \frac{\frac{n}{2} - C}{n_m} (u_{m+1} - u_m) \). Khoảng tứ phân vị: \( \Delta_Q = Q_3 - Q_1 \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 40:</h3>
+                <p>Thống kê số lượng khách hàng mới, ta có bảng số liệu: <br> <img src="anh/40.png" alt="Bảng tần số khách hàng mới"> <br>
+                Xét các phát biểu sau:</p>
+                <div class="options">
+                    <div class="option">a) Trung vị là 100.</div>
+                    <div class="option">b) Tứ phân vị thứ nhất \( Q_1 = 80 \).</div>
+                    <div class="option">c) Tứ phân vị thứ ba \( Q_3 = 120 \).</div>
+                    <div class="option">d) Khoảng tứ phân vị là 40.</div>
+                </div>
+                <div class="answer-check">
+                    <p>Chọn đáp án cho từng phát biểu:</p>
+                    <p>a) <label><input type="radio" name="q40a" value="Đúng"> Đúng</label> <label><input type="radio" name="q40a" value="Sai"> Sai</label></p>
+                    <p>b) <label><input type="radio" name="q40b" value="Đúng"> Đúng</label> <label><input type="radio" name="q40b" value="Sai"> Sai</label></p>
+                    <p>c) <label><input type="radio" name="q40c" value="Đúng"> Đúng</label> <label><input type="radio" name="q40c" value="Sai"> Sai</label></p>
+                    <p>d) <label><input type="radio" name="q40d" value="Đúng"> Đúng</label> <label><input type="radio" name="q40d" value="Sai"> Sai</label></p>
+                    <button onclick="checkTrueFalseAnswer('q40', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
+                </div>
+                <div class="answer-feedback" id="feedback-q40"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q40')">Xem lời giải</div>
+                <div class="solution" id="solution-q40">
+                    <p><strong>Lời giải:</strong><br>
+                    a) Đúng. Tính trung vị: \( Q_2 = 100 \).<br>
+                    b) Sai. Tính \( Q_1 \neq 80 \).<br>
+                    c) Đúng. Tính \( Q_3 = 120 \).<br>
+                    d) Sai. Tính \( \Delta_Q \neq 40 \).<br>
+                    Đáp án: a) Đúng, b) Sai, c) Đúng, d) Sai.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Phần III: Trắc Nghiệm Trả Lời Ngắn</h2>
+    
+        <!-- Câu 41 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Khoảng tứ phân vị</h3>
+                <p>Khoảng tứ phân vị: \( \Delta_Q = Q_3 - Q_1 \), với \( Q_i = u_m + \frac{\frac{i n}{4} - C}{n_m} (u_{m+1} - u_m) \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 41:</h3>
+                <p>Thống kê nhiệt độ (độ C), ta có bảng số liệu: <br> <img src="anh/41.png" alt="Bảng tần số nhiệt độ"> <br>
+                Tính khoảng tứ phân vị của mẫu số liệu trên.</p>
+                <div class="answer-check">
+                    <p>Nhập đáp án: <input type="text" id="q41-input"> <button onclick="checkShortAnswer('q41', '7.5')">Kiểm tra</button></p>
+                </div>
+                <div class="answer-feedback" id="feedback-q41"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q41')">Xem lời giải</div>
+                <div class="solution" id="solution-q41">
+                    <p><strong>Lời giải:</strong><br>
+                    Tính \( Q_1 \) và \( Q_3 \) từ bảng tần số bằng công thức tứ phân vị. Kết quả: \( \Delta_Q = Q_3 - Q_1 = 7.5 \).<br>
+                    Đáp án: 7.5.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 42 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Khoảng tứ phân vị</h3>
+                <p>Khoảng tứ phân vị: \( \Delta_Q = Q_3 - Q_1 \).</p>
+            </div>
+            <div class="question">
+                <h3>Câu 42:</h3>
+                <p>Thống kê chiều cao tòa nhà (m), ta có bảng số liệu: <br> <img src="anh/42.png" alt="Bảng tần số chiều cao tòa nhà"> <br>
+                Tính khoảng tứ phân vị của mẫu số liệu trên.</p>
+                <div class="answer-check">
+                    <p>Nhập đáp án: <input type="text" id="q42-input"> <button onclick="checkShortAnswer('q42', '0.2')">Kiểm tra</button></p>
+                </div>
+                <div class="answer-feedback" id="feedback-q42"></div>
+                <div class="solution-toggle" onclick="toggleSolution('solution-q42')">Xem lời giải</div>
+                <div class="solution" id="solution-q42">
+                    <p><strong>Lời giải:</strong><br>
+                    Tính \( Q_1 \) và \( Q_3 \) từ bảng tần số. Kết quả: \( \Delta_Q = Q_3 - Q_1 = 0.2 \).<br>
+                    Đáp án: 0.2.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Câu 43 -->
+        <div class="card">
+            <div class="summary-box">
+                <h3>Tóm tắt kiến thức: Độ lệch chuẩn</h3>
+                <p>Độ lệch chuẩn: \( S = \sqrt{\frac{1}{n} \sum
+       
+    <!-- PHẦN CUỐICUỐI -->   
+
+        <div class="navigation">
+            <button onclick="window.location.href='de2.html'">Chuyên Đề trước</button>
+            <button onclick="window.location.href='de4.html'">Chuyên Đề sau</button>
+        </div>
+    </div>
+    <script defer>
+        let isSolutionDisabled = false; function checkAnswer(questionId, correctAnswer) {
+            const options = document.getElementsByName(questionId);
+            let selectedAnswer = null;
+            for (const option of options) {
+                if (option.checked) {
+                    selectedAnswer = option.value;
+                    break;
+                }
+            }
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            if (!selectedAnswer) {
+                feedback.textContent = 'Vui lòng chọn một đáp án!';
+                feedback.className = 'answer-feedback incorrect';
+                return;
+            }
+            if (selectedAnswer === correctAnswer) {
+                feedback.textContent = 'Đúng!';
+                feedback.className = 'answer-feedback correct';
+            } else {
+                feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
+                feedback.className = 'answer-feedback incorrect';
+            }
+        }
+        function checkTrueFalseAnswer(questionId, correctAnswers) {
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            let allCorrect = true;
+            let results = [];
+            for (let i = 0; i < correctAnswers.length; i++) {
+                const options = document.getElementsByName(`${questionId}${String.fromCharCode(97 + i)}`);
+                let selected = null;
+                for (const option of options) {
+                    if (option.checked) {
+                        selected = option.value;
+                        break;
+                    }
+                }
+                if (!selected) {
+                    feedback.textContent = 'Vui lòng chọn đáp án cho tất cả phát biểu!';
+                    feedback.className = 'answer-feedback incorrect';
+                    return;
+                }
+                if (selected !== correctAnswers[i]) {
+                    allCorrect = false;
+                }
+                results.push(`Phát biểu ${String.fromCharCode(97 + i)}: ${selected === correctAnswers[i] ? 'Đúng' : `Sai (Đáp án đúng: ${correctAnswers[i]})`}`);
+            }
+            if (allCorrect) {
+                feedback.textContent = 'Tất cả Chuyên Đều đúng!';
+                feedback.className = 'answer-feedback correct';
+            } else {
+                feedback.textContent = results.join('\n');
+                feedback.className = 'answer-feedback incorrect';
+            }
+        }
+        function checkShortAnswer(questionId, correctAnswer) {
+            const input = document.getElementById(`${questionId}-input`).value.trim();
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            if (!input) {
+                feedback.textContent = 'Vui lòng nhập đáp án!';
+                feedback.className = 'answer-feedback incorrect';
+                return;
+            }
+            if (input === correctAnswer) {
+                feedback.textContent = 'Đúng!';
+                feedback.className = 'answer-feedback correct';
+            } else {
+                feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
+                feedback.className = 'answer-feedback incorrect';
+            }
+        }
+        function toggleSolution(solutionId) {
+    if (isSolutionDisabled) {
+        alert('Hãy cố gắng giải, thầy sẽ cho xem lời giải sau, nhớ quay lại xem lời giải nhé.');
+        return;
+    }
+    const solution = document.getElementById(solutionId);
+    solution.classList.toggle('show');
+
+}
+    </script>
+</body>
+</html>
