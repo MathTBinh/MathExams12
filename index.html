@@ -66,6 +66,7 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             z-index: 1000;
             box-sizing: border-box;
+            height: 70px;
         }
         .header .logo {
             font-size: 26px;
@@ -139,8 +140,12 @@
         }
         .header .user-profile .user-name {
             font-size: 14px;
-            font-weight: 500;
-            color: #333;
+            font-weight: 700;
+            color: #ff6200;
+            background-color: #fff3e6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            display: inline-block;
         }
         .header .user-profile .user-phone {
             font-size: 12px;
@@ -163,6 +168,7 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             z-index: 999;
             box-sizing: border-box;
+            height: 50px;
         }
         .nav-tabs .dropdown {
             position: relative;
@@ -224,7 +230,7 @@
             background-color: #ff6200;
             color: #fff;
             padding: 10px 20px;
-            margin-top: 110px;
+            margin-top: 120px;
             position: relative;
             overflow: hidden;
             height: 40px;
@@ -268,7 +274,7 @@
         .container {
             display: flex;
             max-width: 1200px;
-            margin: 160px auto 20px;
+            margin: 120px auto 20px;
             padding: 0 20px;
         }
         .sidebar {
@@ -318,6 +324,13 @@
             background-color: #f1f1f1;
             color: #ff6200;
         }
+        .sidebar ul li.highlight {
+            background-color: #ff6200;
+            border-radius: 5px;
+        }
+        .sidebar ul li.highlight a {
+            color: #fff;
+        }
         .main-content {
             width: 75%;
             margin-left: 25%;
@@ -328,6 +341,56 @@
             font-weight: 700;
             color: #333;
             margin-bottom: 20px;
+        }
+        .main-banner {
+            background: linear-gradient(135deg, #ff6200 0%, #fff 100%);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #333;
+            position: relative;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .main-banner .banner-content {
+            max-width: 70%;
+        }
+        .main-banner h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        .main-banner p {
+            font-size: 14px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        .main-banner .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .main-banner .cta-button:hover {
+            background-color: #3d8b40;
+        }
+        .main-banner .banner-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 50px;
+            color: rgba(255,255,255,0.2);
         }
         .main-content .article {
             background-color: #fff;
@@ -360,6 +423,12 @@
         }
         .main-content .article h2 a:hover {
             color: #ff6200;
+        }
+        .main-content .article h2.highlight {
+            background-color: #ff6200;
+            color: #fff;
+            padding: 2px 5px;
+            border-radius: 3px;
         }
         .main-content .article p {
             font-size: 14px;
@@ -453,6 +522,16 @@
             cursor: not-allowed;
         }
         @media (max-width: 768px) {
+            .main-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .main-banner .banner-content {
+                max-width: 100%;
+            }
+            .main-banner .banner-icon {
+                display: none;
+            }
             .header {
                 flex-direction: column;
                 padding: 10px;
@@ -498,7 +577,7 @@
             }
             .container {
                 flex-direction: column;
-                margin-top: 270px;
+                margin-top: 230px;
             }
             .sidebar {
                 position: static;
@@ -555,27 +634,22 @@
     <div class="header">
         <div class="logo">Đồng Hành Cùng Học Sinh</div>
         <div class="search-bar">
-            <input type="text" placeholder="Tìm kiếm đề thi (VD: Đề 50)">
+            <input type="text" placeholder="Tìm kiếm đề thi hoặc chuyên đề (VD: Đề 50, Đạo hàm)">
         </div>
         <div class="header-right">
             <div class="course">
                 <a href="#">Khóa học Toán Thầy Bình</a>
-                <!-- THAY LINK KHÓA HỌC TẠI ĐÂY -->
             </div>
             <div class="nav-links">
                 <a href="#">Học online</a>
                 <a href="#">Tài liệu</a>
                 <a href="#">Liên hệ</a>
-                <!-- THAY LIÊN KẾT ĐIỀU HƯỚNG TẠI ĐÂY -->
             </div>
             <div class="user-profile">
                 <img src="anh/cn.png" alt="Ảnh đại diện" class="avatar">
-                <!-- THAY ĐƯỜNG DẪN ẢNH TẠI ĐÂY -->
                 <div class="user-info">
-                    <span class="user-name">Thầy Bình</span>
-                    <!-- THAY TÊN CÁ NHÂN TẠI ĐÂY -->
+                    <span class="user-name">Ths Nguyễn Thanh Bình</span>
                     <a href="tel:0822351447" class="user-phone">0822351447</a>
-                    <!-- THAY SỐ ĐIỆN THOẠI TẠI ĐÂY -->
                 </div>
             </div>
         </div>
@@ -585,14 +659,13 @@
             <span class="dropdown-btn">Chọn đề thi ▼</span>
             <div class="dropdown-content" id="examDropdown"></div>
         </div>
-        <a href="#" class="random-exam" onclick="goToRandomExam()">Đề ngẫu nhiên</a>
+        <a href="#" class="random-exam" onclick="goToRandomExam(); return false;">Đề ngẫu nhiên</a>
     </div>
     <div class="dynamic-marquee" id="dynamicMarquee" aria-label="Thông báo động">
         <div class="marquee-content" id="marqueeContent">
             <span onclick="selectExam(1)">Ôn tập Toán 12: Web đang quá trình cập nhật và chỉnh sửa!</span>
             <span onclick="window.location.href='/dang-ky-khoa-hoc'">Thường xuyên theo dõi để có những tài liệu hot!</span>
             <span onclick="selectExam(2)">You don't need to be better than anyone else, just better than you were yesterday!</span>
-            <!-- THAY NỘI DUNG THÔNG BÁO TẠI ĐÂY -->
         </div>
         <div class="marquee-controls">
             <button id="pauseButton" onclick="toggleMarquee()">❚❚</button>
@@ -620,7 +693,6 @@
                     <li><a href="#">Ứng dụng đạo hàm và tích phân</a></li>
                     <li><a href="#">Hình học tổng hợp</a></li>
                     <li><a href="#">Toán thực tế</a></li>
-                    <!-- THAY LIÊN KẾT TỔNG HỢP TẠI ĐÂY -->
                 </ul>
             </div>
             <div class="category">
@@ -628,12 +700,20 @@
                 <ul>
                     <li><a href="#">Ôn tập 8+</a></li>
                     <li><a href="#">Ôn tập 9+</a></li>
-                    <!-- THAY LIÊN KẾT VẬN DỤNG CAO TẠI ĐÂY -->
                 </ul>
             </div>
         </div>
         <div class="main-content">
             <h1>Đề thi Toán</h1>
+            <div class="main-banner">
+                <div class="banner-content">
+                    <h2>Chào Mừng Đến Với Đồng Hành Cùng Học Sinh!</h2>
+                    <p>Ôn luyện hiệu quả với bộ đề thi và các cụm chuyên đề cũng cố kiến thức nền, vận dụng tổng hợp, vận dụng nâng cao. 
+                        Điểm đặc biệt là luôn tóm tắt kiến thức sẽ vận dụng trước mỗi bài toán. Chọn đề từ dropdown, hoặc thử "Đề ngẫu nhiên" để kiểm tra kiến thức ngay hôm nay!</p>
+                    <a href="#" class="cta-button">Xem Khóa Học Toán Thầy Bình</a>
+                </div>
+                <span class="banner-icon">📚</span>
+            </div>
             <div id="examList"></div>
             <div class="pdf-viewer" id="pdf-viewer" style="display: none;">
                 <h2 id="pdf-title"></h2>
@@ -644,20 +724,33 @@
     </div>
     <script src="exams.js"></script>
     <script>
-        // Tích hợp createDropdownMenu từ exams.js
-        window.onload = function() {
-            createDropdownMenu();
-            renderExams(currentPage);
-            loadChuyenDeList();
-            if (localStorage.getItem('marqueeClosed') === 'true') {
-                document.getElementById('dynamicMarquee').style.display = 'none';
-            }
-        };
-
         // Phân trang: Hiển thị 20 đề/trang
         const examsPerPage = 20;
         let currentPage = 1;
-        let filteredExams = examList;
+        let filteredExams = [];
+
+        // Lấy danh sách chuyên đề từ sidebar
+        const sidebarLinks = Array.from(document.querySelectorAll('.sidebar .category ul li a')).map(link => ({
+            title: link.textContent.trim(),
+            href: link.href,
+            element: link.parentElement
+        }));
+
+        // Tích hợp và render danh sách đề thi từ exams.js
+        window.onload = function() {
+            if (typeof examList !== 'undefined' && Array.isArray(examList)) {
+                filteredExams = examList;
+                createDropdownMenu();
+                renderExams(currentPage);
+                loadChuyenDeList();
+                if (localStorage.getItem('marqueeClosed') === 'true') {
+                    document.getElementById('dynamicMarquee').style.display = 'none';
+                }
+            } else {
+                console.error('examList not loaded. Check exams.js or path.');
+                document.getElementById('examList').innerHTML = '<p>Lỗi: Không tải được danh sách đề thi từ exams.js.</p>';
+            }
+        };
 
         function renderExams(page, exams = filteredExams) {
             const start = (page - 1) * examsPerPage;
@@ -709,12 +802,39 @@
             }
         }
 
-        // Tìm kiếm đề thi
+        // Tìm kiếm đề thi và chuyên đề
         document.querySelector('.search-bar input').addEventListener('input', function(e) {
-            const query = e.target.value.toLowerCase();
-            filteredExams = examList.filter(exam => exam.title.toLowerCase().includes(query));
+            const query = e.target.value.toLowerCase().trim();
+
+            // Xóa highlight cũ
+            document.querySelectorAll('.sidebar ul li').forEach(li => li.classList.remove('highlight'));
+
+            // Tìm kiếm trong danh sách đề thi
+            filteredExams = examList.filter(exam =>
+                exam.title.toLowerCase().includes(query) ||
+                exam.topic.toLowerCase().includes(query)
+            );
             currentPage = 1;
             renderExams(currentPage);
+
+            // Tìm kiếm trong chuyên đề (sidebar)
+            let foundInSidebar = false;
+            sidebarLinks.forEach(link => {
+                if (query && link.title.toLowerCase().includes(query)) {
+                    link.element.classList.add('highlight');
+                    link.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    foundInSidebar = true;
+                }
+            });
+
+            // Nếu không có kết quả, hiển thị thông báo
+            const examListDiv = document.getElementById('examList');
+            if (filteredExams.length === 0 && !foundInSidebar) {
+                examListDiv.innerHTML = '<p>Không tìm thấy đề thi hoặc chuyên đề nào khớp với từ khóa.</p>';
+            } else if (filteredExams.length > 0) {
+                examListDiv.innerHTML = ''; // Đảm bảo không giữ thông báo cũ
+                renderExams(currentPage, filteredExams);
+            }
         });
 
         // Chọn đề thi từ marquee
@@ -884,5 +1004,6 @@
             }
         })();
     </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9392f3a6c9a2dd25',t:'MTc0NjE0MTAyMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
