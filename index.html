@@ -648,7 +648,7 @@
             <div class="user-profile">
                 <img src="anh/cn.png" alt="Ảnh đại diện" class="avatar">
                 <div class="user-info">
-                    <span class="user-name">Ths Nguyễn Thanh Bình</span>
+                    <span class="user-name">Thầy Bình</span>
                     <a href="tel:0822351447" class="user-phone">0822351447</a>
                 </div>
             </div>
@@ -708,8 +708,7 @@
             <div class="main-banner">
                 <div class="banner-content">
                     <h2>Chào Mừng Đến Với Đồng Hành Cùng Học Sinh!</h2>
-                    <p>Ôn luyện hiệu quả với bộ đề thi và các cụm chuyên đề cũng cố kiến thức nền, vận dụng tổng hợp, vận dụng nâng cao. 
-                        Điểm đặc biệt là luôn tóm tắt kiến thức sẽ vận dụng trước mỗi bài toán. Chọn đề từ dropdown, hoặc thử "Đề ngẫu nhiên" để kiểm tra kiến thức ngay hôm nay!</p>
+                    <p>Ôn luyện hiệu quả với 60 đề thi Toán THPT. Chọn đề từ dropdown, hoặc thử "Đề ngẫu nhiên" để kiểm tra kiến thức ngay hôm nay!</p>
                     <a href="#" class="cta-button">Xem Khóa Học Toán Thầy Bình</a>
                 </div>
                 <span class="banner-icon">📚</span>
@@ -736,11 +735,32 @@
             element: link.parentElement
         }));
 
+        // Hàm tạo dropdown menu (giả định từ exams.js)
+        function createDropdownMenu() {
+            const dropdown = document.getElementById('examDropdown');
+            if (typeof examList !== 'undefined' && Array.isArray(examList)) {
+                examList.forEach(exam => {
+                    const link = document.createElement('a');
+                    link.href = exam.available ? exam.file : '#';
+                    link.textContent = exam.title;
+                    if (!exam.available) {
+                        link.onclick = (e) => {
+                            e.preventDefault();
+                            alert(`Đề ${exam.id} chưa có sẵn!`);
+                        };
+                    }
+                    dropdown.appendChild(link);
+                });
+            } else {
+                console.error('examList không tồn tại hoặc không phải mảng.');
+            }
+        }
+
         // Tích hợp và render danh sách đề thi từ exams.js
         window.onload = function() {
             if (typeof examList !== 'undefined' && Array.isArray(examList)) {
                 filteredExams = examList;
-                createDropdownMenu();
+                createDropdownMenu(); // Đảm bảo gọi hàm này
                 renderExams(currentPage);
                 loadChuyenDeList();
                 if (localStorage.getItem('marqueeClosed') === 'true') {
@@ -832,7 +852,7 @@
             if (filteredExams.length === 0 && !foundInSidebar) {
                 examListDiv.innerHTML = '<p>Không tìm thấy đề thi hoặc chuyên đề nào khớp với từ khóa.</p>';
             } else if (filteredExams.length > 0) {
-                examListDiv.innerHTML = ''; // Đảm bảo không giữ thông báo cũ
+                examListDiv.innerHTML = '';
                 renderExams(currentPage, filteredExams);
             }
         });

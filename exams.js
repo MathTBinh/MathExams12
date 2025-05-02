@@ -26,7 +26,7 @@ const examList = [
     { id: 25, title: "Đề thi Toán – Đề số 25 – Ôn thi TN THPT", topic: "Nguyên hàm, tích phân và ứng dụng", file: "de25.html", available: true },
     { id: 26, title: "Đề thi Toán – Đề số 26 – Ôn thi TN THPT", topic: "Nguyên hàm, tích phân và ứng dụng", file: "de26.html", available: true },
     { id: 27, title: "Đề thi Toán – Đề số 27 – Ôn thi TN THPT", topic: "Nguyên hàm, tích phân và ứng dụng", file: "de27.html", available: true },
-    { id: 28, title: "Đề thi Toán – Đề số 28 – Ôn thi TN THPT", topic: "Nguyên hàm, tích phân và ứng dụng", file: "de28.html", available: trutrue },
+    { id: 28, title: "Đề thi Toán – Đề số 28 – Ôn thi TN THPT", topic: "Nguyên hàm, tích phân và ứng dụng", file: "de28.html", available: true },
     { id: 29, title: "Đề thi Toán – Đề số 29 – Ôn thi TN THPT", topic: "Nguyên hàm, tích phân và ứng dụng", file: "de29.html", available: false },
     { id: 30, title: "Đề thi Toán – Đề số 30 – Ôn thi TN THPT", topic: "Nguyên hàm, tích phân và ứng dụng", file: "de30.html", available: false },
     { id: 31, title: "Đề thi Toán – Đề số 31 – Ôn thi TN THPT", topic: "Nguyên hàm, tích phân và ứng dụng", file: "de31.html", available: false },
