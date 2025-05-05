@@ -1045,107 +1045,106 @@
 <!-- Câu 19 -->
 <div class="card">
     <div class="summary-box">
-    <h3>Tóm tắt kiến thức: Phương trình lượng giác</h3>
-    <p>Phương trình lượng giác cơ bản: \(\sin x = a\) có nghiệm \(x = \arcsin a + k2\pi\) hoặc \(x = \pi - \arcsin a + k2\pi\).</p>
+        <h3>Tóm tắt kiến thức: Khoảng cách trong không gian</h3>
+        <p>Khoảng cách ngắn nhất từ điểm đến đường thẳng hoặc giữa đường thẳng và điểm được tính bằng công thức hình học không gian.</p>
     </div>
     <div class="question">
-    <h3>Câu 19:</h3>
-    <p>Cho phương trình \(\sin x = \frac{1}{2}\). Nghiệm \(x\) nhỏ nhất thuộc \([0; 2\pi]\) của phương trình bằng bao nhiêu (đáp án để dưới dạng radian)?</p>
-    <div class="answer-check">
-    <p>Nhập đáp án (dạng số hoặc biểu thức, ví dụ: \(\frac{\pi}{6}\)):</p>
-    <input id="answer-q19" placeholder="Đáp án của bạn" type="text"/>
-    <button onclick="checkShortAnswer('q19', '\\frac{\\pi}{6}')">Kiểm tra</button>
+        <h3>Câu 19:</h3>
+        <p>Trong không gian hệ tọa độ \(Oxyz\) (đơn vị trên mỗi trục là kilômét), đài kiểm soát không lưu sân bay Cam Ranh - Khánh Hòa ở vị trí \(O(0;0;0)\) và được thiết kế phát hiện máy bay ở khoảng cách tối đa \(600 \, \text{km}\). Một máy bay của hãng Vietnam Airlines đang chuyển động theo đường thẳng \(d\) có phương trình \(\begin{cases} x = -1000 + 100t \\ y = -200 + 80t \\ z = 10 \end{cases}\) (\(t \in \mathbb{R}\)) và hướng về đài kiểm soát không lưu. Tính khoảng cách ngắn nhất giữa máy bay với đài kiểm soát không lưu (làm tròn đến hàng đơn vị).</p>
+        <div class="answer-check">
+            <p>Nhập đáp án: <input type="text" id="q19-input"> <button onclick="checkShortAnswer('q19', '469')">Kiểm tra</button></p>
+        </div>
+        <div class="answer-feedback" id="feedback-q19"></div>
+        <div class="solution-toggle" onclick="toggleSolution('solution-q19')">Xem lời giải</div>
+        <div class="solution" id="solution-q19">
+            <p><strong>Lời giải:</strong><br>
+            Đường thẳng \(d\): \(\begin{cases} x = -1000 + 100t \\ y = -200 + 80t \\ z = 10 \end{cases}\).<br>
+            Vector chỉ phương: \(\vec{v} = (100;80;0)\).<br>
+            Khoảng cách ngắn nhất từ \(O(0;0;0)\) đến \(d\) là khoảng cách từ \(O\) đến mặt phẳng đi qua điểm trên \(d\) và vuông góc với \(\vec{v}\).<br>
+            Lấy điểm \(M(-1000;-200;10)\) trên \(d\). Phương trình mặt phẳng: \(100x + 80y = -116000\).<br>
+            Khoảng cách: \(d = \frac{|100 \cdot 0 + 80 \cdot 0 + 0 + 116000|}{\sqrt{100^2 + 80^2}} \approx 469 \, \text{km}\).<br>
+            Đáp án: 469.</p>
+        </div>
     </div>
-    <div class="answer-feedback" id="feedback-q19"></div>
-    <div class="solution-toggle" onclick="toggleSolution('solution-q19')">Xem lời giải</div>
-    <div class="solution" id="solution-q19">
-    <p><strong>Lời giải:</strong><br/>
-                    Phương trình \(\sin x = \frac{1}{2}\).<br/>
-                    Nghiệm tổng quát: \(x = \arcsin \frac{1}{2} + k2\pi\) hoặc \(x = \pi - \arcsin \frac{1}{2} + k2\pi\).<br/>
-                    Vì \(\arcsin \frac{1}{2} = \frac{\pi}{6}\), ta có: \(x = \frac{\pi}{6} + k2\pi\) hoặc \(x = \pi - \frac{\pi}{6} + k2\pi = \frac{5\pi}{6} + k2\pi\).<br/>
-                    Trong \([0; 2\pi]\), các nghiệm là: \(x = \frac{\pi}{6}\) (khi \(k=0\)) và \(x = \frac{5\pi}{6}\) (khi \(k=0\)).<br/>
-                    Nghiệm nhỏ nhất: \(\frac{\pi}{6}\).<br/>
-                    Đáp án: \(\frac{\pi}{6}\).</p>
-    </div>
-    </div>
-    </div>
-    <!-- Câu 20 -->
-    <div class="card">
+</div>
+<!-- Câu 20 -->
+<div class="card">
     <div class="summary-box">
-    <h3>Tóm tắt kiến thức: Giới hạn dãy số</h3>
-    <p>Giới hạn dãy số: Nếu \(u_n \to l\) khi \(n \to \infty\), thì \(l\) là giới hạn của dãy.</p>
+        <h3>Tóm tắt kiến thức: Diện tích vùng giới hạn</h3>
+        <p>Diện tích vùng giới hạn bởi hai đồ thị: \(S = \int_a^b |f(x) - g(x)| \, dx\).</p>
     </div>
     <div class="question">
-    <h3>Câu 20:</h3>
-    <p>Cho dãy số \(u_n = \frac{3n + 1}{n + 2}\). Giới hạn của dãy số \(u_n\) khi \(n \to \infty\) bằng bao nhiêu?</p>
-    <div class="answer-check">
-    <p>Nhập đáp án (dạng số hoặc biểu thức, ví dụ: 3):</p>
-    <input id="answer-q20" placeholder="Đáp án của bạn" type="text"/>
-    <button onclick="checkShortAnswer('q20', '3')">Kiểm tra</button>
+        <h3>Câu 20:</h3>
+        <p>Thầy Tuấn cắt miếng tôn theo ba đường: Đường cong \(AIB\) là một phần của parabol, có trục đối xứng là trục \(Oy\). Biết đường cong \(EB\) đi qua các điểm \((1;-2)\) và \((3;-3)\). Tính diện tích chiếc mặt nạ đồ chơi của thầy Tuấn. Làm tròn đến hàng phần mười theo đơn vị \(\text{cm}^2\).</p>
+        <img src="anh/32.20.png" alt="">
+        <div class="answer-check">
+            <p>Nhập đáp án: <input type="text" id="q20-input"> <button onclick="checkShortAnswer('q20', '24.9')">Kiểm tra</button></p>
+        </div>
+        <div class="answer-feedback" id="feedback-q20"></div>
+        <div class="solution-toggle" onclick="toggleSolution('solution-q20')">Xem lời giải</div>
+        <div class="solution" id="solution-q20">
+            <p><strong>Lời giải:</strong><br>
+            Đường cong \(AIB\): \(y = f(x) = -\frac{1}{16}x^2 + 1\), qua \(A(-4;0)\), \(I(0;1)\), \(B(4;0)\).<br>
+            Đường cong \(EB\): \(y = g(x) = \frac{1}{2}x^3 - \frac{17}{6}x^2 + \frac{13}{3}x - 4\), qua \(E(0;-4)\), \((1;-2)\), \((3;-3)\), \(B(4;0)\).<br>
+            Diện tích: \(S = 2 \int_0^4 \left| -\frac{1}{16}x^2 + 1 - \left( \frac{1}{2}x^3 - \frac{17}{6}x^2 + \frac{13}{3}x - 4 \right) \right| \, dx \approx 24.9 \, \text{cm}^2\).<br>
+            Đáp án: 24.9.</p>
+        </div>
     </div>
-    <div class="answer-feedback" id="feedback-q20"></div>
-    <div class="solution-toggle" onclick="toggleSolution('solution-q20')">Xem lời giải</div>
-    <div class="solution" id="solution-q20">
-    <p><strong>Lời giải:</strong><br/>
-                    Ta có: \(u_n = \frac{3n + 1}{n + 2}\).<br/>
-                    Khi \(n \to \infty\), chia tử và mẫu cho \(n\), ta được: \(u_n = \frac{3 + \frac{1}{n}}{1 + \frac{2}{n}} \to \frac{3 + 0}{1 + 0} = 3\).<br/>
-                    Vậy giới hạn của dãy là 3.<br/>
-                    Đáp án: 3.</p>
-    </div>
-    </div>
-    </div>
-    <!-- Câu 21 -->
-    <div class="card">
+</div>
+<!-- Câu 21 -->
+<div class="card">
     <div class="summary-box">
-    <h3>Tóm tắt kiến thức: Diện tích tam giác</h3>
-    <p>Diện tích tam giác: \(S = \frac{1}{2}ab \sin C\), với \(a\), \(b\) là hai cạnh và \(C\) là góc giữa hai cạnh đó.</p>
+        <h3>Tóm tắt kiến thức: Tối ưu hóa diện tích</h3>
+        <p>Tìm giá trị cực tiểu của hàm số diện tích bằng đạo hàm và bảng biến thiên.</p>
     </div>
     <div class="question">
-    <h3>Câu 21:</h3>
-    <p>Cho tam giác \(ABC\) có \(AB = 4\), \(AC = 5\), và góc giữa \(AB\) và \(AC\) là \(60^\circ\). Diện tích tam giác \(ABC\) bằng bao nhiêu?</p>
-    <div class="answer-check">
-    <p>Nhập đáp án (dạng số hoặc biểu thức, ví dụ: \(5\sqrt{3}\)):</p>
-    <input id="answer-q21" placeholder="Đáp án của bạn" type="text"/>
-    <button onclick="checkShortAnswer('q21', '5\\sqrt{3}')">Kiểm tra</button>
+        <h3>Câu 21:</h3>
+        <p>Một sợi dây kim loại dài \(160 \, \text{cm}\) được cắt thành hai đoạn. Đoạn dây thứ nhất được uốn thành hình vuông, đoạn dây thứ hai được uốn thành vòng tròn. Tổng diện tích của hình vuông và hình tròn đạt giá trị nhỏ nhất là bao nhiêu (làm tròn đến hàng đơn vị)?</p>
+        <img src="anh/32.21.png" alt="">
+
+        <div class="answer-check">
+            <p>Nhập đáp án: <input type="text" id="q21-input"> <button onclick="checkShortAnswer('q21', '896')">Kiểm tra</button></p>
+        </div>
+        <div class="answer-feedback" id="feedback-q21"></div>
+        <div class="solution-toggle" onclick="toggleSolution('solution-q21')">Xem lời giải</div>
+        <div class="solution" id="solution-q21">
+            <p><strong>Lời giải:</strong><br>
+            Gọi độ dài đoạn dây thứ hai: \(x \, \text{cm}\). Đoạn thứ nhất: \((160-x) \, \text{cm}\).<br>
+            Diện tích hình vuông: \(\left(\frac{160-x}{4}\right)^2\).<br>
+            Diện tích hình tròn: \(\pi \left(\frac{x}{2\pi}\right)^2 = \frac{x^2}{4\pi}\).<br>
+            Tổng diện tích: \(S(x) = \left(\frac{160-x}{4}\right)^2 + \frac{x^2}{4\pi} = \left(\frac{1}{4\pi} + \frac{1}{16}\right)x^2 - 20x + 1600\).<br>
+            Đạo hàm: \(S'(x) = 2\left(\frac{1}{4\pi} + \frac{1}{16}\right)x - 20 = 0 \Rightarrow x = \frac{160\pi}{4+\pi}\).<br>
+            Giá trị nhỏ nhất: \(S\left(\frac{160\pi}{4+\pi}\right) \approx 896 \, \text{cm}^2\).<br>
+            Đáp án: 896.</p>
+        </div>
     </div>
-    <div class="answer-feedback" id="feedback-q21"></div>
-    <div class="solution-toggle" onclick="toggleSolution('solution-q21')">Xem lời giải</div>
-    <div class="solution" id="solution-q21">
-    <p><strong>Lời giải:</strong><br/>
-                    Diện tích tam giác: \(S = \frac{1}{2} \cdot AB \cdot AC \cdot \sin (\widehat{BAC})\).<br/>
-                    Với \(AB = 4\), \(AC = 5\), \(\widehat{BAC} = 60^\circ\), ta có: \(S = \frac{1}{2} \cdot 4 \cdot 5 \cdot \sin 60^\circ = \frac{1}{2} \cdot 20 \cdot \frac{\sqrt{3}}{2} = 5\sqrt{3}\).<br/>
-                    Đáp án: \(5\sqrt{3}\).</p>
-    </div>
-    </div>
-    </div>
-    <!-- Câu 22 -->
-    <div class="card">
+</div>
+<!-- Câu 22 -->
+<div class="card">
     <div class="summary-box">
-    <h3>Tóm tắt kiến thức: Phương trình đường thẳng</h3>
-    <p>Phương trình đường thẳng qua điểm \(M_0(x_0; y_0)\) và có vector chỉ phương \(\vec{v} = (a; b)\): \(\frac{x - x_0}{a} = \frac{y - y_0}{b}\).</p>
+        <h3>Tóm tắt kiến thức: Xác suất</h3>
+        <p>Xác suất của biến cố độc lập: \(P(A \cap B) = P(A) \cdot P(B)\). Xác suất đúng \(k\) sự kiện: Tính tổng xác suất các trường hợp thỏa mãn.</p>
     </div>
     <div class="question">
-    <h3>Câu 22:</h3>
-    <p>Trong mặt phẳng \(Oxy\), cho đường thẳng đi qua điểm \(A(1; 2)\) và có vector chỉ phương \(\vec{v} = (3; -4)\). Hệ số góc của đường thẳng này bằng bao nhiêu?</p>
-    <div class="answer-check">
-    <p>Nhập đáp án (dạng số hoặc biểu thức, ví dụ: \(-\frac{4}{3}\)):</p>
-    <input id="answer-q22" placeholder="Đáp án của bạn" type="text"/>
-    <button onclick="checkShortAnswer('q22', '-\\frac{4}{3}')">Kiểm tra</button>
+        <h3>Câu 22:</h3>
+        <p>Ba cầu thủ sút phạt đền \(11 \, \text{m}\), mỗi người đá một lần với xác suất ghi bàn tương ứng là \(a\), \(b\) và \(0.7\) (với \(a > b\)). Biết xác suất ghi bàn ít nhất một trong ba cầu thủ là \(0.982\) và xác suất để ba cầu thủ ghi bàn là \(0.392\). Tính xác suất để có đúng hai cầu thủ ghi bàn (làm tròn đến hàng phần trăm).</p>
+        <div class="answer-check">
+            <p>Nhập đáp án: <input type="text" id="q22-input"> <button onclick="checkShortAnswer('q22', '0.43')">Kiểm tra</button></p>
+        </div>
+        <div class="answer-feedback" id="feedback-q22"></div>
+        <div class="solution-toggle" onclick="toggleSolution('solution-q22')">Xem lời giải</div>
+        <div class="solution" id="solution-q22">
+            <p><strong>Lời giải:</strong><br>
+            Gọi \(A_1, A_2, A_3\) là biến cố cầu thủ thứ \(i\) ghi bàn, với \(P(A_1)=a\), \(P(A_2)=b\), \(P(A_3)=0.7\).<br>
+            \(P(A_1 \cap A_2 \cap A_3) = 0.7 \cdot a \cdot b = 0.392 \Rightarrow a b = 0.56\).<br>
+            \(P(\text{ít nhất một ghi bàn}) = 1 - P(\bar{A_1} \cap \bar{A_2} \cap \bar{A_3}) = 1 - 0.3 \cdot (1-a)(1-b) = 0.982\).<br>
+            \(\Rightarrow (1-a)(1-b) = 0.06 \Rightarrow a + b = 1.5\).<br>
+            Giải: \(a=0.8\), \(b=0.7\).<br>
+            Xác suất đúng hai cầu thủ ghi bàn: \(P(C) = (1-a)b \cdot 0.7 + a(1-b) \cdot 0.7 + a b \cdot 0.3 \approx 0.43\).<br>
+            Đáp án: 0.43.</p>
+        </div>
     </div>
-    <div class="answer-feedback" id="feedback-q22"></div>
-    <div class="solution-toggle" onclick="toggleSolution('solution-q22')">Xem lời giải</div>
-    <div class="solution" id="solution-q22">
-    <p><strong>Lời giải:</strong><br/>
-                    Vector chỉ phương \(\vec{v} = (3; -4)\).<br/>
-                    Hệ số góc của đường thẳng: \(k = \frac{\text{thành phần y}}{\text{thành phần x}} = \frac{-4}{3}\).<br/>
-                    Đáp án: \(-\frac{4}{3}\).</p>
-    </div>
-    </div>
-    </div>
-    <div class="navigation">
-    <button disabled>Trước</button>
-    <button onclick="window.location.href='de33.html'">Tiếp</button>
-    </div>
+</div>
     <script>
             function checkAnswer(questionId, correctAnswer) {
                 const options = document.getElementsByName(questionId);
