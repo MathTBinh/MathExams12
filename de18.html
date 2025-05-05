@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Chuyên Đề THI TOÁN - Chuyên Đề SỐ 3 với 22 câu hỏi trắc nghiệm và lời giải chi tiết, kèm tóm tắt kiến thức.">
-    <title>Chuyên Đề THI TOÁN - Chuyên Đề 3 - KHÓA HỌC TOÁN THẦY BÌNH</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Chuyên Đề THI TOÁN - Chuyên Đề SỐ 3 với 22 câu hỏi trắc nghiệm và lời giải chi tiết, kèm tóm tắt kiến thức." name="description"/>
+<title>Chuyên Đề THI TOÁN - Chuyên Đề 3 - KHÓA HỌC TOÁN THẦY BÌNH</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
         body {
             font-family: 'Roboto', sans-serif;
             background: linear-gradient(135deg, #ecfdf5, #f3e8ff);
@@ -250,123 +251,221 @@
                 font-size: 0.9rem;
             }
         }
-    </style>
+    
+.question img, .solution img {
+    display: block;
+    margin: 10px auto;
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+    object-position: center;
+    background: white;
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%;
+}
+
+.question img, .solution img {
+    display: block;
+    margin: 5px auto; /* Giảm khoảng cách */
+    width: 300px; /* Giảm chiều rộng */
+    height: 200px; /* Giảm chiều cao */
+    object-fit: contain;
+    object-position: center;
+    background: white;
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%; /* Đảm bảo vừa với màn hình nhỏ */
+}
+.question img:not([src]), .solution img:not([src]),
+.question img[src=''], .solution img[src=''],
+.question img[onerror], .solution img[onerror] {
+    display: none !important; /* Ẩn ảnh không tồn tại */
+}
+@media (max-width: 640px) {
+    .question img, .solution img {
+        width: 100%; /* Chiều rộng 100% trên di động */
+        height: auto; /* Chiều cao tự động */
+        margin: 3px auto; /* Giảm thêm khoảng cách trên di động */
+    }
+    .question img.long-image, .solution img.long-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.question img, .solution img {
+    display: block;
+    margin: 5px auto; /* Khoảng cách trên laptop */
+    width: 300px; /* Chiều rộng mặc định */
+    height: 200px; /* Chiều cao mặc định */
+    object-fit: contain;
+    object-position: center;
+    background: white;
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%; /* Đảm bảo vừa với màn hình nhỏ */
+}
+.question img:not([src]), .solution img:not([src]),
+.question img[src=''], .solution img[src=''],
+.question img[onerror], .solution img[onerror] {
+    display: none !important; /* Ẩn ảnh không tồn tại */
+}
+@media (max-width: 640px) {
+    .question img, .solution img {
+        max-width: 100%; /* Thu nhỏ theo màn hình */
+        width: auto; /* Tự động điều chỉnh chiều rộng */
+        height: auto; /* Tự động điều chỉnh chiều cao */
+        margin: 2px auto; /* Giảm khoảng cách trên di động */
+    }
+    .question img.long-image, .solution img.long-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.question img, .solution img {
+    display: block;
+    margin: 5px auto; /* Căn giữa và giữ khoảng cách nhỏ */
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%; /* Giới hạn chiều rộng tối đa */
+}
+.question img:not([src]), .solution img:not([src]),
+.question img[src=''], .solution img[src=''],
+.question img[onerror], .solution img[onerror] {
+    display: none !important; /* Ẩn ảnh không tồn tại */
+}
+@media (max-width: 640px) {
+    .question img, .solution img {
+        margin: 2px auto; /* Giảm khoảng cách trên di động */
+    }
+    .question img.long-image, .solution img.long-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+</style>
 </head>
 <body>
-    <div class="header">
-        <div class="logo">KHÓA HỌC TOÁN THẦY BÌNH</div>
-    </div>
-    <div class="nav-bar">
-        <div>
-            <a href="index.html">Trang chủ</a>
-        </div>
-        <div class="dropdown">
-            <span class="dropdown-button">Chọn đề</span>
-                <div class="dropdown-content">
-                    <!-- Tạo danh sách đề từ 1 đến 100 -->
-                    <a href="de1.html">Đề 1</a>
-                    <a href="de2.html">Đề 2</a>
-                    <a href="de3.html">Đề 3</a>
-                    <a href="de4.html">Đề 4</a>
-                    <a href="de5.html">Đề 5</a>
-                    <a href="de6.html">Đề 6</a>
-                    <a href="de7.html">Đề 7</a>
-                    <a href="de8.html">Đề 8</a>
-                    <a href="de9.html">Đề 9</a>
-                    <a href="de10.html">Đề 10</a>
-                    <a href="de11.html">Đề 11</a>
-                    <a href="de12.html">Đề 12</a>
-                    <a href="de13.html">Đề 13</a>
-                    <a href="de14.html">Đề 14</a>
-                    <a href="de15.html">Đề 15</a>
-                    <a href="de16.html">Đề 16</a>
-                    <a href="de17.html">Đề 17</a>
-                    <a href="de18.html">Đề 18</a>
-                    <a href="de19.html">Đề 19</a>
-                    <a href="de20.html">Đề 20</a>
-                    <a href="de21.html">Đề 21</a>
-                    <a href="de22.html">Đề 22</a>
-                    <a href="de23.html">Đề 23</a>
-                    <a href="de24.html">Đề 24</a>
-                    <a href="de25.html">Đề 25</a>
-                    <a href="de26.html">Đề 26</a>
-                    <a href="de27.html">Đề 27</a>
-                    <a href="de28.html">Đề 28</a>
-                    <a href="de29.html">Đề 29</a>
-                    <a href="de30.html">Đề 30</a>
-                    <a href="de31.html">Đề 31</a>
-                    <a href="de32.html">Đề 32</a>
-                    <a href="de33.html">Đề 33</a>
-                    <a href="de34.html">Đề 34</a>
-                    <a href="de35.html">Đề 35</a>
-                    <a href="de36.html">Đề 36</a>
-                    <a href="de37.html">Đề 37</a>
-                    <a href="de38.html">Đề 38</a>
-                    <a href="de39.html">Đề 39</a>
-                    <a href="de40.html">Đề 40</a>
-                    <a href="de41.html">Đề 41</a>
-                    <a href="de42.html">Đề 42</a>
-                    <a href="de43.html">Đề 43</a>
-                    <a href="de44.html">Đề 44</a>
-                    <a href="de45.html">Đề 45</a>
-                    <a href="de46.html">Đề 46</a>
-                    <a href="de47.html">Đề 47</a>
-                    <a href="de48.html">Đề 48</a>
-                    <a href="de49.html">Đề 49</a>
-                    <a href="de50.html">Đề 50</a>
-                    <a href="de51.html">Đề 51</a>
-                    <a href="de52.html">Đề 52</a>
-                    <a href="de53.html">Đề 53</a>
-                    <a href="de54.html">Đề 54</a>
-                    <a href="de55.html">Đề 55</a>
-                    <a href="de56.html">Đề 56</a>
-                    <a href="de57.html">Đề 57</a>
-                    <a href="de58.html">Đề 58</a>
-                    <a href="de59.html">Đề 59</a>
-                    <a href="de60.html">Đề 60</a>
-                    <a href="de61.html">Đề 61</a>
-                    <a href="de62.html">Đề 62</a>
-                    <a href="de63.html">Đề 63</a>
-                    <a href="de64.html">Đề 64</a>
-                    <a href="de65.html">Đề 65</a>
-                    <a href="de66.html">Đề 66</a>
-                    <a href="de67.html">Đề 67</a>
-                    <a href="de68.html">Đề 68</a>
-                    <a href="de69.html">Đề 69</a>
-                    <a href="de70.html">Đề 70</a>
-                    <a href="de71.html">Đề 71</a>
-                    <a href="de72.html">Đề 72</a>
-                    <a href="de73.html">Đề 73</a>
-                    <a href="de74.html">Đề 74</a>
-                    <a href="de75.html">Đề 75</a>
-                    <a href="de76.html">Đề 76</a>
-                    <a href="de77.html">Đề 77</a>
-                    <a href="de78.html">Đề 78</a>
-                    <a href="de79.html">Đề 79</a>
-                    <a href="de80.html">Đề 80</a>
-                    <a href="de81.html">Đề 81</a>
-                    <a href="de82.html">Đề 82</a>
-                    <a href="de83.html">Đề 83</a>
-                    <a href="de84.html">Đề 84</a>
-                    <a href="de85.html">Đề 85</a>
-                    <a href="de86.html">Đề 86</a>
-                    <a href="de87.html">Đề 87</a>
-                    <a href="de88.html">Đề 88</a>
-                    <a href="de89.html">Đề 89</a>
-                    <a href="de90.html">Đề 90</a>
-                    <a href="de91.html">Đề 91</a>
-                    <a href="de92.html">Đề 92</a>
-                    <a href="de93.html">Đề 93</a>
-                    <a href="de94.html">Đề 94</a>
-                    <a href="de95.html">Đề 95</a>
-                    <a href="de96.html">Đề 96</a>
-                    <a href="de97.html">Đề 97</a>
-                    <a href="de98.html">Đề 98</a>
-                    <a href="de99.html">Đề 99</a>
-                    <a href="de100.html">Đề 100</a>
-                </div>
-            </div>
-    </div>
+<div class="header">
+<div class="logo">KHÓA HỌC TOÁN THẦY BÌNH</div>
+</div>
+<div class="nav-bar">
+<div>
+<a href="index.html">Trang chủ</a>
+</div>
+<div class="dropdown">
+<span class="dropdown-button">Chọn đề</span>
+<div class="dropdown-content">
+<!-- Tạo danh sách đề từ 1 đến 100 -->
+<a href="de1.html">Đề 1</a>
+<a href="de2.html">Đề 2</a>
+<a href="de3.html">Đề 3</a>
+<a href="de4.html">Đề 4</a>
+<a href="de5.html">Đề 5</a>
+<a href="de6.html">Đề 6</a>
+<a href="de7.html">Đề 7</a>
+<a href="de8.html">Đề 8</a>
+<a href="de9.html">Đề 9</a>
+<a href="de10.html">Đề 10</a>
+<a href="de11.html">Đề 11</a>
+<a href="de12.html">Đề 12</a>
+<a href="de13.html">Đề 13</a>
+<a href="de14.html">Đề 14</a>
+<a href="de15.html">Đề 15</a>
+<a href="de16.html">Đề 16</a>
+<a href="de17.html">Đề 17</a>
+<a href="de18.html">Đề 18</a>
+<a href="de19.html">Đề 19</a>
+<a href="de20.html">Đề 20</a>
+<a href="de21.html">Đề 21</a>
+<a href="de22.html">Đề 22</a>
+<a href="de23.html">Đề 23</a>
+<a href="de24.html">Đề 24</a>
+<a href="de25.html">Đề 25</a>
+<a href="de26.html">Đề 26</a>
+<a href="de27.html">Đề 27</a>
+<a href="de28.html">Đề 28</a>
+<a href="de29.html">Đề 29</a>
+<a href="de30.html">Đề 30</a>
+<a href="de31.html">Đề 31</a>
+<a href="de32.html">Đề 32</a>
+<a href="de33.html">Đề 33</a>
+<a href="de34.html">Đề 34</a>
+<a href="de35.html">Đề 35</a>
+<a href="de36.html">Đề 36</a>
+<a href="de37.html">Đề 37</a>
+<a href="de38.html">Đề 38</a>
+<a href="de39.html">Đề 39</a>
+<a href="de40.html">Đề 40</a>
+<a href="de41.html">Đề 41</a>
+<a href="de42.html">Đề 42</a>
+<a href="de43.html">Đề 43</a>
+<a href="de44.html">Đề 44</a>
+<a href="de45.html">Đề 45</a>
+<a href="de46.html">Đề 46</a>
+<a href="de47.html">Đề 47</a>
+<a href="de48.html">Đề 48</a>
+<a href="de49.html">Đề 49</a>
+<a href="de50.html">Đề 50</a>
+<a href="de51.html">Đề 51</a>
+<a href="de52.html">Đề 52</a>
+<a href="de53.html">Đề 53</a>
+<a href="de54.html">Đề 54</a>
+<a href="de55.html">Đề 55</a>
+<a href="de56.html">Đề 56</a>
+<a href="de57.html">Đề 57</a>
+<a href="de58.html">Đề 58</a>
+<a href="de59.html">Đề 59</a>
+<a href="de60.html">Đề 60</a>
+<a href="de61.html">Đề 61</a>
+<a href="de62.html">Đề 62</a>
+<a href="de63.html">Đề 63</a>
+<a href="de64.html">Đề 64</a>
+<a href="de65.html">Đề 65</a>
+<a href="de66.html">Đề 66</a>
+<a href="de67.html">Đề 67</a>
+<a href="de68.html">Đề 68</a>
+<a href="de69.html">Đề 69</a>
+<a href="de70.html">Đề 70</a>
+<a href="de71.html">Đề 71</a>
+<a href="de72.html">Đề 72</a>
+<a href="de73.html">Đề 73</a>
+<a href="de74.html">Đề 74</a>
+<a href="de75.html">Đề 75</a>
+<a href="de76.html">Đề 76</a>
+<a href="de77.html">Đề 77</a>
+<a href="de78.html">Đề 78</a>
+<a href="de79.html">Đề 79</a>
+<a href="de80.html">Đề 80</a>
+<a href="de81.html">Đề 81</a>
+<a href="de82.html">Đề 82</a>
+<a href="de83.html">Đề 83</a>
+<a href="de84.html">Đề 84</a>
+<a href="de85.html">Đề 85</a>
+<a href="de86.html">Đề 86</a>
+<a href="de87.html">Đề 87</a>
+<a href="de88.html">Đề 88</a>
+<a href="de89.html">Đề 89</a>
+<a href="de90.html">Đề 90</a>
+<a href="de91.html">Đề 91</a>
+<a href="de92.html">Đề 92</a>
+<a href="de93.html">Đề 93</a>
+<a href="de94.html">Đề 94</a>
+<a href="de95.html">Đề 95</a>
+<a href="de96.html">Đề 96</a>
+<a href="de97.html">Đề 97</a>
+<a href="de98.html">Đề 98</a>
+<a href="de99.html">Đề 99</a>
+<a href="de100.html">Đề 100</a>
+</div>
+</div>
+</div>
 <script type="text/javascript">
         var gk_isXlsx = false;
         var gk_xlsxFileLookup = {};
@@ -407,728 +506,702 @@
         return gk_fileData[filename] || "";
         }
         </script><div class="container">
-    <h1>ĐỀ THI TOÁN - ĐỀ SỐ 18 <span class="hot">HOT</span></h1>
-    <h2>Phần I: Trắc Nghiệm Nhiều Lựa Chọn</h2>
-    
-    <!-- Câu 1 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Cấp số cộng</h3>
-            <p>Trong cấp số cộng, công sai \( d \), số hạng đầu \( u_1 \), tổng \( S_n = \frac{n}{2} (2u_1 + (n-1)d) \).</p>
-        </div>
-        <div class="question">
-            <h3>Câu 1:</h3>
-            <p>Cho cấp số cộng \( (u_n) \) có \( d = -2 \) và \( S_8 = 72 \). Tìm số hạng đầu tiên \( u_1 \).</p>
-            <div class="options">
-                <div class="option">A. \( u_1 = 16 \)</div>
-                <div class="option">B. \( u_1 = -16 \)</div>
-                <div class="option">C. \( u_1 = \frac{1}{16} \)</div>
-                <div class="option">D. \( u_1 = -\frac{1}{16} \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q1" value="A"> A</label>
-                <label><input type="radio" name="q1" value="B"> B</label>
-                <label><input type="radio" name="q1" value="C"> C</label>
-                <label><input type="radio" name="q1" value="D"> D</label>
-                <button onclick="checkAnswer('q1', 'A')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q1"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q1')">Xem lời giải</div>
-            <div class="solution" id="solution-q1">
-                <p><strong>Lời giải:</strong><br>
-                Ta có \( S_8 = 72 \), \( d = -2 \). Công thức tổng cấp số cộng:<br>
-                \( S_8 = 8u_1 + \frac{8 \cdot 7}{2} \cdot (-2) = 8u_1 - 56 \).<br>
-                \( 72 = 8u_1 - 56 \Rightarrow 8u_1 = 128 \Rightarrow u_1 = 16 \).<br>
+<h1>ĐỀ THI TOÁN - ĐỀ SỐ 18 <span class="hot">HOT</span></h1>
+<h2>Phần I: Trắc Nghiệm Nhiều Lựa Chọn</h2>
+<!-- Câu 1 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Cấp số cộng</h3>
+<p>Trong cấp số cộng, công sai \( d \), số hạng đầu \( u_1 \), tổng \( S_n = \frac{n}{2} (2u_1 + (n-1)d) \).</p>
+</div>
+<div class="question">
+<h3>Câu 1:</h3>
+<p>Cho cấp số cộng \( (u_n) \) có \( d = -2 \) và \( S_8 = 72 \). Tìm số hạng đầu tiên \( u_1 \).</p>
+<div class="options">
+<div class="option">A. \( u_1 = 16 \)</div>
+<div class="option">B. \( u_1 = -16 \)</div>
+<div class="option">C. \( u_1 = \frac{1}{16} \)</div>
+<div class="option">D. \( u_1 = -\frac{1}{16} \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q1" type="radio" value="A"/> A</label>
+<label><input name="q1" type="radio" value="B"/> B</label>
+<label><input name="q1" type="radio" value="C"/> C</label>
+<label><input name="q1" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q1', 'A')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q1"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q1')">Xem lời giải</div>
+<div class="solution" id="solution-q1">
+<p><strong>Lời giải:</strong><br/>
+                Ta có \( S_8 = 72 \), \( d = -2 \). Công thức tổng cấp số cộng:<br/>
+                \( S_8 = 8u_1 + \frac{8 \cdot 7}{2} \cdot (-2) = 8u_1 - 56 \).<br/>
+                \( 72 = 8u_1 - 56 \Rightarrow 8u_1 = 128 \Rightarrow u_1 = 16 \).<br/>
                 Đáp án: A.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 2 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Giao tuyến của hai mặt phẳng</h3>
-            <p>Giao tuyến của hai mặt phẳng là đường thẳng đi qua hai điểm chung của chúng.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 2:</h3>
-            <p>Cho tứ diện \( ABCD \). Gọi \( G \) là trọng tâm của tam giác \( BCD \). Giao tuyến của mặt phẳng \( ACD \) và \( GAB \) là:</p>
-            <div class="options">
-                <div class="option">A. \( AM \) (\( M \) là trung điểm của \( AB \))</div>
-                <div class="option">B. \( AN \) (\( N \) là trung điểm của \( CD \))</div>
-                <div class="option">C. \( AH \) (\( H \) là hình chiếu của \( B \) trên \( CD \))</div>
-                <div class="option">D. \( AK \) (\( K \) là hình chiếu của \( C \) trên \( BD \))</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q2" value="A"> A</label>
-                <label><input type="radio" name="q2" value="B"> B</label>
-                <label><input type="radio" name="q2" value="C"> C</label>
-                <label><input type="radio" name="q2" value="D"> D</label>
-                <button onclick="checkAnswer('q2', 'B')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q2"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q2')">Xem lời giải</div>
-            <div class="solution" id="solution-q2">
-                <p><strong>Lời giải:</strong><br>
-                Điểm \( A \) là điểm chung thứ nhất giữa hai mặt phẳng \( ACD \) và \( GAB \).<br>
-                Điểm \( N \), trung điểm của \( CD \), thuộc \( CD \subset ACD \Rightarrow N \in ACD \).<br>
-                Vì \( G \) là trọng tâm tam giác \( BCD \), đoạn \( BG \) cắt \( CD \) tại \( N \), nên \( N \in BG \subset GAB \Rightarrow N \in GAB \).<br>
-                Vậy giao tuyến là đường thẳng \( AN \).<br>
+</div>
+</div>
+</div>
+<!-- Câu 2 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Giao tuyến của hai mặt phẳng</h3>
+<p>Giao tuyến của hai mặt phẳng là đường thẳng đi qua hai điểm chung của chúng.</p>
+</div>
+<div class="question">
+<h3>Câu 2:</h3>
+<p>Cho tứ diện \( ABCD \). Gọi \( G \) là trọng tâm của tam giác \( BCD \). Giao tuyến của mặt phẳng \( ACD \) và \( GAB \) là:</p>
+<div class="options">
+<div class="option">A. \( AM \) (\( M \) là trung điểm của \( AB \))</div>
+<div class="option">B. \( AN \) (\( N \) là trung điểm của \( CD \))</div>
+<div class="option">C. \( AH \) (\( H \) là hình chiếu của \( B \) trên \( CD \))</div>
+<div class="option">D. \( AK \) (\( K \) là hình chiếu của \( C \) trên \( BD \))</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q2" type="radio" value="A"/> A</label>
+<label><input name="q2" type="radio" value="B"/> B</label>
+<label><input name="q2" type="radio" value="C"/> C</label>
+<label><input name="q2" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q2', 'B')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q2"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q2')">Xem lời giải</div>
+<div class="solution" id="solution-q2">
+<p><strong>Lời giải:</strong><br/>
+                Điểm \( A \) là điểm chung thứ nhất giữa hai mặt phẳng \( ACD \) và \( GAB \).<br/>
+                Điểm \( N \), trung điểm của \( CD \), thuộc \( CD \subset ACD \Rightarrow N \in ACD \).<br/>
+                Vì \( G \) là trọng tâm tam giác \( BCD \), đoạn \( BG \) cắt \( CD \) tại \( N \), nên \( N \in BG \subset GAB \Rightarrow N \in GAB \).<br/>
+                Vậy giao tuyến là đường thẳng \( AN \).<br/>
                 Đáp án: B.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 3 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Tứ phân vị</h3>
-            <p>Tứ phân vị thứ ba \( Q_3 \) của mẫu số liệu ghép nhóm được tính: \( Q_3 = a_k + \frac{\frac{3n}{4} - \sum_{i=1}^{k-1} m_i}{m_k} \cdot (a_{k+1} - a_k) \), trong đó \( a_k \) là đầu mút trái của nhóm chứa \( Q_3 \), \( m_k \) là tần số nhóm đó, \( n \) là tổng tần số.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 3:</h3>
-            <p>Thống kê thời gian hoàn thành một bài tập (đơn vị: phút) của một số học sinh, ta có bảng số liệu sau:<br>
-            <img src="anh/18.3.png" alt="Hình 18.3"><br>
-            <table>
-                <tr><th>Thời gian (phút)</th><th>\([0; 4)\)</th><th>\([4; 8)\)</th><th>\([8; 12)\)</th><th>\([12; 16)\)</th><th>\([16; 20)\)</th></tr>
-                <tr><th>Số học sinh</th><td>2</td><td>4</td><td>7</td><td>4</td><td>3</td></tr>
-            </table>
+</div>
+</div>
+</div>
+<!-- Câu 3 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Tứ phân vị</h3>
+<p>Tứ phân vị thứ ba \( Q_3 \) của mẫu số liệu ghép nhóm được tính: \( Q_3 = a_k + \frac{\frac{3n}{4} - \sum_{i=1}^{k-1} m_i}{m_k} \cdot (a_{k+1} - a_k) \), trong đó \( a_k \) là đầu mút trái của nhóm chứa \( Q_3 \), \( m_k \) là tần số nhóm đó, \( n \) là tổng tần số.</p>
+</div>
+<div class="question">
+<h3>Câu 3:</h3>
+<p>Thống kê thời gian hoàn thành một bài tập (đơn vị: phút) của một số học sinh, ta có bảng số liệu sau:<br/>
+<img alt="Hình 18.3" loading="lazy" src="anh/18.3.png"/><br/>
+<table>
+<tr><th>Thời gian (phút)</th><th>\([0; 4)\)</th><th>\([4; 8)\)</th><th>\([8; 12)\)</th><th>\([12; 16)\)</th><th>\([16; 20)\)</th></tr>
+<tr><th>Số học sinh</th><td>2</td><td>4</td><td>7</td><td>4</td><td>3</td></tr>
+</table>
             Tứ phân vị thứ ba của mẫu số liệu ghép nhóm này là:</p>
-            <div class="options">
-                <div class="option">A. \( Q_3 = 13 \)</div>
-                <div class="option">B. \( Q_3 = 14 \)</div>
-                <div class="option">C. \( Q_3 = 15 \)</div>
-                <div class="option">D. \( Q_3 = 12 \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q3" value="A"> A</label>
-                <label><input type="radio" name="q3" value="B"> B</label>
-                <label><input type="radio" name="q3" value="C"> C</label>
-                <label><input type="radio" name="q3" value="D"> D</label>
-                <button onclick="checkAnswer('q3', 'B')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q3"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q3')">Xem lời giải</div>
-            <div class="solution" id="solution-q3">
-                <p><strong>Lời giải:</strong><br>
-                Tổng số học sinh: \( n = 2 + 4 + 7 + 4 + 3 = 20 \).<br>
-                Tứ phân vị thứ ba \( Q_3 = \frac{x_{15} + x_{16}}{2} \), thuộc nhóm \([12; 16)\).<br>
-                Với \( p = 4 \), \( a_4 = 12 \), \( m_4 = 4 \), \( m_1 + m_2 + m_3 = 2 + 4 + 7 = 13 \), \( a_5 - a_4 = 4 \):<br>
-                \( Q_3 = 12 + \frac{\frac{3 \cdot 20}{4} - 13}{4} \cdot 4 = 12 + \frac{15 - 13}{4} \cdot 4 = 14 \).<br>
+<div class="options">
+<div class="option">A. \( Q_3 = 13 \)</div>
+<div class="option">B. \( Q_3 = 14 \)</div>
+<div class="option">C. \( Q_3 = 15 \)</div>
+<div class="option">D. \( Q_3 = 12 \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q3" type="radio" value="A"/> A</label>
+<label><input name="q3" type="radio" value="B"/> B</label>
+<label><input name="q3" type="radio" value="C"/> C</label>
+<label><input name="q3" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q3', 'B')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q3"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q3')">Xem lời giải</div>
+<div class="solution" id="solution-q3">
+<p><strong>Lời giải:</strong><br/>
+                Tổng số học sinh: \( n = 2 + 4 + 7 + 4 + 3 = 20 \).<br/>
+                Tứ phân vị thứ ba \( Q_3 = \frac{x_{15} + x_{16}}{2} \), thuộc nhóm \([12; 16)\).<br/>
+                Với \( p = 4 \), \( a_4 = 12 \), \( m_4 = 4 \), \( m_1 + m_2 + m_3 = 2 + 4 + 7 = 13 \), \( a_5 - a_4 = 4 \):<br/>
+                \( Q_3 = 12 + \frac{\frac{3 \cdot 20}{4} - 13}{4} \cdot 4 = 12 + \frac{15 - 13}{4} \cdot 4 = 14 \).<br/>
                 Đáp án: B.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 4 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Tính đơn điệu của hàm số</h3>
-            <p>Hàm số đồng biến trên khoảng mà \( f'(x) \geq 0 \), nghịch biến nếu \( f'(x) \leq 0 \). Bảng biến thiên cho biết dấu của \( f'(x) \).</p>
-        </div>
-        <div class="question">
-            <h3>Câu 4:</h3>
-            <p>Cho hàm số \( f(x) \) có bảng biến thiên như sau:<br>
-            <img src="anh/18.4.png" alt="Hình 18.4"><br>
+</div>
+</div>
+</div>
+<!-- Câu 4 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Tính đơn điệu của hàm số</h3>
+<p>Hàm số đồng biến trên khoảng mà \( f'(x) \geq 0 \), nghịch biến nếu \( f'(x) \leq 0 \). Bảng biến thiên cho biết dấu của \( f'(x) \).</p>
+</div>
+<div class="question">
+<h3>Câu 4:</h3>
+<p>Cho hàm số \( f(x) \) có bảng biến thiên như sau:<br/>
+<img alt="Hình 18.4" loading="lazy" src="anh/18.4.png"/><br/>
             Hàm số đã cho đồng biến trên khoảng nào dưới đây?</p>
-            <div class="options">
-                <div class="option">A. \( (-3; 0) \)</div>
-                <div class="option">B. \( (-3; 3) \)</div>
-                <div class="option">C. \( (0; 3) \)</div>
-                <div class="option">D. \( (-\infty; -3) \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q4" value="A"> A</label>
-                <label><input type="radio" name="q4" value="B"> B</label>
-                <label><input type="radio" name="q4" value="C"> C</label>
-                <label><input type="radio" name="q4" value="D"> D</label>
-                <button onclick="checkAnswer('q4', 'A')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q4"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q4')">Xem lời giải</div>
-            <div class="solution" id="solution-q4">
-                <p><strong>Lời giải:</strong><br>
-                Từ bảng biến thiên, \( f'(x) \geq 0 \) trên các khoảng \( (-3; 0) \) và \( (3; +\infty) \). Do đó, hàm số đồng biến trên \( (-3; 0) \).<br>
+<div class="options">
+<div class="option">A. \( (-3; 0) \)</div>
+<div class="option">B. \( (-3; 3) \)</div>
+<div class="option">C. \( (0; 3) \)</div>
+<div class="option">D. \( (-\infty; -3) \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q4" type="radio" value="A"/> A</label>
+<label><input name="q4" type="radio" value="B"/> B</label>
+<label><input name="q4" type="radio" value="C"/> C</label>
+<label><input name="q4" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q4', 'A')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q4"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q4')">Xem lời giải</div>
+<div class="solution" id="solution-q4">
+<p><strong>Lời giải:</strong><br/>
+                Từ bảng biến thiên, \( f'(x) \geq 0 \) trên các khoảng \( (-3; 0) \) và \( (3; +\infty) \). Do đó, hàm số đồng biến trên \( (-3; 0) \).<br/>
                 Đáp án: A.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 5 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Cực trị của hàm số</h3>
-            <p>Hàm số đạt cực đại tại \( x_0 \) nếu \( f'(x_0) = 0 \) và \( f'(x) \) đổi dấu từ dương sang âm tại \( x_0 \).</p>
-        </div>
-        <div class="question">
-            <h3>Câu 5:</h3>
-            <p>Cho hàm số \( f(x) \) có bảng biến thiên như sau:<br>
-            <img src="anh/18.5.png" alt="Hình 18.5"><br>
+</div>
+</div>
+</div>
+<!-- Câu 5 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Cực trị của hàm số</h3>
+<p>Hàm số đạt cực đại tại \( x_0 \) nếu \( f'(x_0) = 0 \) và \( f'(x) \) đổi dấu từ dương sang âm tại \( x_0 \).</p>
+</div>
+<div class="question">
+<h3>Câu 5:</h3>
+<p>Cho hàm số \( f(x) \) có bảng biến thiên như sau:<br/>
+<img alt="Hình 18.5" loading="lazy" src="anh/18.5.png"/><br/>
             Hàm số đã cho đạt cực đại tại:</p>
-            <div class="options">
-                <div class="option">A. \( x = -2 \)</div>
-                <div class="option">B. \( x = 2 \)</div>
-                <div class="option">C. \( x = 1 \)</div>
-                <div class="option">D. \( x = -1 \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q5" value="A"> A</label>
-                <label><input type="radio" name="q5" value="B"> B</label>
-                <label><input type="radio" name="q5" value="C"> C</label>
-                <label><input type="radio" name="q5" value="D"> D</label>
-                <button onclick="checkAnswer('q5', 'D')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q5"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q5')">Xem lời giải</div>
-            <div class="solution" id="solution-q5">
-                <p><strong>Lời giải:</strong><br>
-                Từ bảng biến thiên, tại \( x = -1 \), \( f'(x) \) đổi dấu từ dương sang âm, do đó hàm số đạt cực đại tại \( x = -1 \).<br>
+<div class="options">
+<div class="option">A. \( x = -2 \)</div>
+<div class="option">B. \( x = 2 \)</div>
+<div class="option">C. \( x = 1 \)</div>
+<div class="option">D. \( x = -1 \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q5" type="radio" value="A"/> A</label>
+<label><input name="q5" type="radio" value="B"/> B</label>
+<label><input name="q5" type="radio" value="C"/> C</label>
+<label><input name="q5" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q5', 'D')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q5"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q5')">Xem lời giải</div>
+<div class="solution" id="solution-q5">
+<p><strong>Lời giải:</strong><br/>
+                Từ bảng biến thiên, tại \( x = -1 \), \( f'(x) \) đổi dấu từ dương sang âm, do đó hàm số đạt cực đại tại \( x = -1 \).<br/>
                 Đáp án: D.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 6 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Giá trị lớn nhất của hàm số</h3>
-            <p>Để tìm giá trị lớn nhất của hàm số trên đoạn, xét giá trị tại điểm đầu mút và các điểm tới hạn (nếu có).</p>
-        </div>
-        <div class="question">
-            <h3>Câu 6:</h3>
-            <p>Tìm giá trị lớn nhất \( M \) của hàm số \( y = \frac{3x - 1}{x - 3} \) trên đoạn \([0; 2]\).</p>
-            <div class="options">
-                <div class="option">A. \( M = 5 \)</div>
-                <div class="option">B. \( M = -5 \)</div>
-                <div class="option">C. \( M = \frac{1}{3} \)</div>
-                <div class="option">D. \( M = -\frac{1}{3} \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q6" value="A"> A</label>
-                <label><input type="radio" name="q6" value="B"> B</label>
-                <label><input type="radio" name="q6" value="C"> C</label>
-                <label><input type="radio" name="q6" value="D"> D</label>
-                <button onclick="checkAnswer('q6', 'C')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q6"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q6')">Xem lời giải</div>
-            <div class="solution" id="solution-q6">
-                <p><strong>Lời giải:</strong><br>
-                Hàm số xác định trên \([0; 2]\). Đạo hàm: \( y' = \frac{-8}{(x-3)^2} < 0 \), nên hàm số nghịch biến.<br>
-                Tính giá trị tại đầu mút: \( y(0) = \frac{1}{3} \), \( y(2) = -5 \).<br>
-                Giá trị lớn nhất là \( M = \frac{1}{3} \).<br>
+</div>
+</div>
+</div>
+<!-- Câu 6 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Giá trị lớn nhất của hàm số</h3>
+<p>Để tìm giá trị lớn nhất của hàm số trên đoạn, xét giá trị tại điểm đầu mút và các điểm tới hạn (nếu có).</p>
+</div>
+<div class="question">
+<h3>Câu 6:</h3>
+<p>Tìm giá trị lớn nhất \( M \) của hàm số \( y = \frac{3x - 1}{x - 3} \) trên đoạn \([0; 2]\).</p>
+<div class="options">
+<div class="option">A. \( M = 5 \)</div>
+<div class="option">B. \( M = -5 \)</div>
+<div class="option">C. \( M = \frac{1}{3} \)</div>
+<div class="option">D. \( M = -\frac{1}{3} \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q6" type="radio" value="A"/> A</label>
+<label><input name="q6" type="radio" value="B"/> B</label>
+<label><input name="q6" type="radio" value="C"/> C</label>
+<label><input name="q6" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q6', 'C')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q6"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q6')">Xem lời giải</div>
+<div class="solution" id="solution-q6">
+<p><strong>Lời giải:</strong><br/>
+                Hàm số xác định trên \([0; 2]\). Đạo hàm: \( y' = \frac{-8}{(x-3)^2} &lt; 0 \), nên hàm số nghịch biến.<br/>
+                Tính giá trị tại đầu mút: \( y(0) = \frac{1}{3} \), \( y(2) = -5 \).<br/>
+                Giá trị lớn nhất là \( M = \frac{1}{3} \).<br/>
                 Đáp án: C.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 7 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Ứng dụng đạo hàm</h3>
-            <p>Để xác định thời điểm hàm số bắt đầu giảm, xét dấu của \( f'(x) \). Nếu \( f'(x) < 0 \), hàm số nghịch biến.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 7:</h3>
-            <p>Sự ảnh hưởng khi sử dụng một loại độc tố với vi khuẩn \( X \) được mô tả bởi hàm số \( P(t) = \frac{t+1}{t^2 + t + 4} \), trong đó \( P(t) \) là số lượng vi khuẩn sau thời gian \( t \). Vào thời điểm nào thì số lượng vi khuẩn \( X \) bắt đầu giảm?</p>
-            <div class="options">
-                <div class="option">A. Ngay từ lúc bắt đầu sử dụng độc tố</div>
-                <div class="option">B. Sau 0,5 giờ</div>
-                <div class="option">C. Sau 2 giờ</div>
-                <div class="option">D. Sau 1 giờ</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q7" value="A"> A</label>
-                <label><input type="radio" name="q7" value="B"> B</label>
-                <label><input type="radio" name="q7" value="C"> C</label>
-                <label><input type="radio" name="q7" value="D"> D</label>
-                <button onclick="checkAnswer('q7', 'D')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q7"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q7')">Xem lời giải</div>
-            <div class="solution" id="solution-q7">
-                <p><strong>Lời giải:</strong><br>
-                Xét \( P(t) = \frac{t+1}{t^2 + t + 4} \), \( t > 0 \). Đạo hàm:<br>
-                \( P'(t) = \frac{-t^2 - 2t + 3}{(t^2 + t + 4)^2} = \frac{(t-1)(-t-3)}{(t^2 + t + 4)^2} \).<br>
-                \( P'(t) = 0 \) tại \( t = 1 \). Bảng biến thiên cho thấy \( P'(t) > 0 \) khi \( t < 1 \), \( P'(t) < 0 \) khi \( t > 1 \).<br>
-                Vậy vi khuẩn bắt đầu giảm sau \( t = 1 \) giờ.<br>
+</div>
+</div>
+</div>
+<!-- Câu 7 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Ứng dụng đạo hàm</h3>
+<p>Để xác định thời điểm hàm số bắt đầu giảm, xét dấu của \( f'(x) \). Nếu \( f'(x) &lt; 0 \), hàm số nghịch biến.</p>
+</div>
+<div class="question">
+<h3>Câu 7:</h3>
+<p>Sự ảnh hưởng khi sử dụng một loại độc tố với vi khuẩn \( X \) được mô tả bởi hàm số \( P(t) = \frac{t+1}{t^2 + t + 4} \), trong đó \( P(t) \) là số lượng vi khuẩn sau thời gian \( t \). Vào thời điểm nào thì số lượng vi khuẩn \( X \) bắt đầu giảm?</p>
+<div class="options">
+<div class="option">A. Ngay từ lúc bắt đầu sử dụng độc tố</div>
+<div class="option">B. Sau 0,5 giờ</div>
+<div class="option">C. Sau 2 giờ</div>
+<div class="option">D. Sau 1 giờ</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q7" type="radio" value="A"/> A</label>
+<label><input name="q7" type="radio" value="B"/> B</label>
+<label><input name="q7" type="radio" value="C"/> C</label>
+<label><input name="q7" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q7', 'D')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q7"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q7')">Xem lời giải</div>
+<div class="solution" id="solution-q7">
+<p><strong>Lời giải:</strong><br/>
+                Xét \( P(t) = \frac{t+1}{t^2 + t + 4} \), \( t &gt; 0 \). Đạo hàm:<br/>
+                \( P'(t) = \frac{-t^2 - 2t + 3}{(t^2 + t + 4)^2} = \frac{(t-1)(-t-3)}{(t^2 + t + 4)^2} \).<br/>
+                \( P'(t) = 0 \) tại \( t = 1 \). Bảng biến thiên cho thấy \( P'(t) &gt; 0 \) khi \( t &lt; 1 \), \( P'(t) &lt; 0 \) khi \( t &gt; 1 \).<br/>
+                Vậy vi khuẩn bắt đầu giảm sau \( t = 1 \) giờ.<br/>
                 Đáp án: D.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 8 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Tiệm cận của đồ thị hàm số</h3>
-            <p>Đồ thị hàm số \( y = \frac{ax + b}{cx + d} \) có tiệm cận đứng tại \( x = -\frac{d}{c} \).</p>
-        </div>
-        <div class="question">
-            <h3>Câu 8:</h3>
-            <p>Hình vẽ bên là đồ thị của hàm số \( y = \frac{ax + b}{cx + d} \):<br>
-            <img src="anh/18.8.png" alt="Hình 18.8"><br>
+</div>
+</div>
+</div>
+<!-- Câu 8 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Tiệm cận của đồ thị hàm số</h3>
+<p>Đồ thị hàm số \( y = \frac{ax + b}{cx + d} \) có tiệm cận đứng tại \( x = -\frac{d}{c} \).</p>
+</div>
+<div class="question">
+<h3>Câu 8:</h3>
+<p>Hình vẽ bên là đồ thị của hàm số \( y = \frac{ax + b}{cx + d} \):<br/>
+<img alt="Hình 18.8" loading="lazy" src="anh/18.8.png"/><br/>
             Đường tiệm cận đứng của đồ thị hàm số có phương trình là:</p>
-            <div class="options">
-                <div class="option">A. \( x = 1 \)</div>
-                <div class="option">B. \( x = 2 \)</div>
-                <div class="option">C. \( y = 1 \)</div>
-                <div class="option">D. \( y = 2 \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q8" value="A"> A</label>
-                <label><input type="radio" name="q8" value="B"> B</label>
-                <label><input type="radio" name="q8" value="C"> C</label>
-                <label><input type="radio" name="q8" value="D"> D</label>
-                <button onclick="checkAnswer('q8', 'A')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q8"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q8')">Xem lời giải</div>
-            <div class="solution" id="solution-q8">
-                <p><strong>Lời giải:</strong><br>
-                Quan sát đồ thị, tiệm cận đứng là \( x = 1 \).<br>
+<div class="options">
+<div class="option">A. \( x = 1 \)</div>
+<div class="option">B. \( x = 2 \)</div>
+<div class="option">C. \( y = 1 \)</div>
+<div class="option">D. \( y = 2 \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q8" type="radio" value="A"/> A</label>
+<label><input name="q8" type="radio" value="B"/> B</label>
+<label><input name="q8" type="radio" value="C"/> C</label>
+<label><input name="q8" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q8', 'A')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q8"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q8')">Xem lời giải</div>
+<div class="solution" id="solution-q8">
+<p><strong>Lời giải:</strong><br/>
+                Quan sát đồ thị, tiệm cận đứng là \( x = 1 \).<br/>
                 Đáp án: A.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 9 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Đồ thị hàm số bậc ba</h3>
-            <p>Hàm số \( y = ax^3 + bx^2 + cx + d \) có \( a > 0 \) thì đồ thị hướng lên. Hai cực trị trái dấu nếu \( x_1 \cdot x_2 = \frac{c}{a} < 0 \).</p>
-        </div>
-        <div class="question">
-            <h3>Câu 9:</h3>
-            <p>Cho hàm số \( y = ax^3 + bx^2 + cx + d (a \neq 0) \) có đồ thị như hình vẽ dưới đây:<br>
-            <img src="anh/18.9.png" alt="Hình 18.9"><br>
+</div>
+</div>
+</div>
+<!-- Câu 9 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Đồ thị hàm số bậc ba</h3>
+<p>Hàm số \( y = ax^3 + bx^2 + cx + d \) có \( a &gt; 0 \) thì đồ thị hướng lên. Hai cực trị trái dấu nếu \( x_1 \cdot x_2 = \frac{c}{a} &lt; 0 \).</p>
+</div>
+<div class="question">
+<h3>Câu 9:</h3>
+<p>Cho hàm số \( y = ax^3 + bx^2 + cx + d (a \neq 0) \) có đồ thị như hình vẽ dưới đây:<br/>
+<img alt="Hình 18.9" loading="lazy" src="anh/18.9.png"/><br/>
             Chọn khẳng định đúng về dấu của \( a, b, c, d \):</p>
-            <div class="options">
-                <div class="option">A. \( a > 0, b > 0, d > 0, c > 0 \)</div>
-                <div class="option">B. \( a > 0, c > 0, b < 0, d < 0 \)</div>
-                <div class="option">C. \( a > 0, b > 0, c > 0, d > 0 \)</div>
-                <div class="option">D. \( a > 0, b < 0, c < 0, d > 0 \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q9" value="A"> A</label>
-                <label><input type="radio" name="q9" value="B"> B</label>
-                <label><input type="radio" name="q9" value="C"> C</label>
-                <label><input type="radio" name="q9" value="D"> D</label>
-                <button onclick="checkAnswer('q9', 'D')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q9"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q9')">Xem lời giải</div>
-            <div class="solution" id="solution-q9">
-                <p><strong>Lời giải:</strong><br>
-                Từ đồ thị: \( a > 0 \) (đồ thị hướng lên), \( d > 0 \) (cắt \( Oy \) tại điểm dương), \( x_1 \cdot x_2 = \frac{c}{a} < 0 \Rightarrow c < 0 \).<br>
+<div class="options">
+<div class="option">A. \( a &gt; 0, b &gt; 0, d &gt; 0, c &gt; 0 \)</div>
+<div class="option">B. \( a &gt; 0, c &gt; 0, b &lt; 0, d &lt; 0 \)</div>
+<div class="option">C. \( a &gt; 0, b &gt; 0, c &gt; 0, d &gt; 0 \)</div>
+<div class="option">D. \( a &gt; 0, b &lt; 0, c &lt; 0, d &gt; 0 \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q9" type="radio" value="A"/> A</label>
+<label><input name="q9" type="radio" value="B"/> B</label>
+<label><input name="q9" type="radio" value="C"/> C</label>
+<label><input name="q9" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q9', 'D')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q9"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q9')">Xem lời giải</div>
+<div class="solution" id="solution-q9">
+<p><strong>Lời giải:</strong><br/>
+                Từ đồ thị: \( a &gt; 0 \) (đồ thị hướng lên), \( d &gt; 0 \) (cắt \( Oy \) tại điểm dương), \( x_1 \cdot x_2 = \frac{c}{a} &lt; 0 \Rightarrow c &lt; 0 \).<br/>
                 Đáp án: D.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 10 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Vector trong hình học không gian</h3>
-            <p>Trong hình hộp, các vector thỏa mãn các quy tắc hình bình hành.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 10:</h3>
-            <p>Cho hình hộp \( ABCD.A'B'C'D' \). Mệnh đề nào sau đây đúng?</p>
-            <div class="options">
-                <div class="option">A. \( \overrightarrow{AB} + \overrightarrow{A'D'} = \overrightarrow{AC} \)</div>
-                <div class="option">B. \( \overrightarrow{AB} + \overrightarrow{A'D'} = \overrightarrow{BD} \)</div>
-                <div class="option">C. \( \overrightarrow{AB} + \overrightarrow{A'D'} = \overrightarrow{AC'} \)</div>
-                <div class="option">D. \( \overrightarrow{AB} + \overrightarrow{A'D'} = \overrightarrow{CA} \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q10" value="A"> A</label>
-                <label><input type="radio" name="q10" value="B"> B</label>
-                <label><input type="radio" name="q10" value="C"> C</label>
-                <label><input type="radio" name="q10" value="D"> D</label>
-                <button onclick="checkAnswer('q10', 'A')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q10"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q10')">Xem lời giải</div>
-            <div class="solution" id="solution-q10">
-                <p><strong>Lời giải:</strong><br>
-                Trong hình hộp, theo quy tắc hình bình hành:<br>
-                \( \overrightarrow{AB} + \overrightarrow{A'D'} = \overrightarrow{AB} + \overrightarrow{AD} = \overrightarrow{AC} \).<br>
+</div>
+</div>
+</div>
+<!-- Câu 10 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Vector trong hình học không gian</h3>
+<p>Trong hình hộp, các vector thỏa mãn các quy tắc hình bình hành.</p>
+</div>
+<div class="question">
+<h3>Câu 10:</h3>
+<p>Cho hình hộp \( ABCD.A'B'C'D' \). Mệnh đề nào sau đây đúng?</p>
+<div class="options">
+<div class="option">A. \( \overrightarrow{AB} + \overrightarrow{A'D'} = \overrightarrow{AC} \)</div>
+<div class="option">B. \( \overrightarrow{AB} + \overrightarrow{A'D'} = \overrightarrow{BD} \)</div>
+<div class="option">C. \( \overrightarrow{AB} + \overrightarrow{A'D'} = \overrightarrow{AC'} \)</div>
+<div class="option">D. \( \overrightarrow{AB} + \overrightarrow{A'D'} = \overrightarrow{CA} \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q10" type="radio" value="A"/> A</label>
+<label><input name="q10" type="radio" value="B"/> B</label>
+<label><input name="q10" type="radio" value="C"/> C</label>
+<label><input name="q10" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q10', 'A')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q10"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q10')">Xem lời giải</div>
+<div class="solution" id="solution-q10">
+<p><strong>Lời giải:</strong><br/>
+                Trong hình hộp, theo quy tắc hình bình hành:<br/>
+                \( \overrightarrow{AB} + \overrightarrow{A'D'} = \overrightarrow{AB} + \overrightarrow{AD} = \overrightarrow{AC} \).<br/>
                 Đáp án: A.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 11 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Phép đối xứng qua trục</h3>
-            <p>Điểm \( A'(x', y', z') \) đối xứng với \( A(x, y, z) \) qua trục \( Oy \) có tọa độ: \( x' = -x \), \( y' = y \), \( z' = -z \).</p>
-        </div>
-        <div class="question">
-            <h3>Câu 11:</h3>
-            <p>Trong không gian \( Oxyz \), cho điểm \( A(2; -3; 5) \). Tìm tọa độ \( A' \) là điểm đối xứng với \( A \) qua trục \( Oy \).</p>
-            <div class="options">
-                <div class="option">A. \( A'(2; 3; 5) \)</div>
-                <div class="option">B. \( A'(2; -3; -5) \)</div>
-                <div class="option">C. \( A'(-2; -3; 5) \)</div>
-                <div class="option">D. \( A'(-2; -3; -5) \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q11" value="A"> A</label>
-                <label><input type="radio" name="q11" value="B"> B</label>
-                <label><input type="radio" name="q11" value="C"> C</label>
-                <label><input type="radio" name="q11" value="D"> D</label>
-                <button onclick="checkAnswer('q11', 'D')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q11"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q11')">Xem lời giải</div>
-            <div class="solution" id="solution-q11">
-                <p><strong>Lời giải:</strong><br>
-                Hình chiếu vuông góc của \( A(2; -3; 5) \) lên \( Oy \) là \( H(0; -3; 0) \). Vì \( A' \) đối xứng với \( A \) qua \( Oy \), \( H \) là trung điểm \( AA' \).<br>
-                Tọa độ \( A' \): \( x' = 2 \cdot 0 - 2 = -2 \), \( y' = 2 \cdot (-3) - (-3) = -3 \), \( z' = 2 \cdot 0 - 5 = -5 \).<br>
-                Vậy \( A'(-2; -3; -5) \).<br>
+</div>
+</div>
+</div>
+<!-- Câu 11 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phép đối xứng qua trục</h3>
+<p>Điểm \( A'(x', y', z') \) đối xứng với \( A(x, y, z) \) qua trục \( Oy \) có tọa độ: \( x' = -x \), \( y' = y \), \( z' = -z \).</p>
+</div>
+<div class="question">
+<h3>Câu 11:</h3>
+<p>Trong không gian \( Oxyz \), cho điểm \( A(2; -3; 5) \). Tìm tọa độ \( A' \) là điểm đối xứng với \( A \) qua trục \( Oy \).</p>
+<div class="options">
+<div class="option">A. \( A'(2; 3; 5) \)</div>
+<div class="option">B. \( A'(2; -3; -5) \)</div>
+<div class="option">C. \( A'(-2; -3; 5) \)</div>
+<div class="option">D. \( A'(-2; -3; -5) \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q11" type="radio" value="A"/> A</label>
+<label><input name="q11" type="radio" value="B"/> B</label>
+<label><input name="q11" type="radio" value="C"/> C</label>
+<label><input name="q11" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q11', 'D')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q11"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q11')">Xem lời giải</div>
+<div class="solution" id="solution-q11">
+<p><strong>Lời giải:</strong><br/>
+                Hình chiếu vuông góc của \( A(2; -3; 5) \) lên \( Oy \) là \( H(0; -3; 0) \). Vì \( A' \) đối xứng với \( A \) qua \( Oy \), \( H \) là trung điểm \( AA' \).<br/>
+                Tọa độ \( A' \): \( x' = 2 \cdot 0 - 2 = -2 \), \( y' = 2 \cdot (-3) - (-3) = -3 \), \( z' = 2 \cdot 0 - 5 = -5 \).<br/>
+                Vậy \( A'(-2; -3; -5) \).<br/>
                 Đáp án: D.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 12 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Tích phân</h3>
-            <p>Tích phân có tính chất tuyến tính: \( \int (af(x) + bg(x))dx = a \int f(x)dx + b \int g(x)dx \).</p>
-        </div>
-        <div class="question">
-            <h3>Câu 12:</h3>
-            <p>Cho \( \int_{-2}^{2} f(x) dx = -1 \) và \( \int_{-2}^{2} g(x) dx = 3 \). Tính giá trị của tích phân sau:</p>
-            <div class="options">
-                <div class="option">A. \( \int_{-2}^{2} [f(x) + g(x)] dx = 8 \)</div>
-                <div class="option">B. \( \int_{-2}^{2} [f(x) - g(x)] dx = 4 \)</div>
-                <div class="option">C. \( \int_{-2}^{2} 5f(x) dx = 5 \)</div>
-                <div class="option">D. \( \int_{-2}^{2} [3f(x) - 4g(x)] dx = -15 \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q12" value="A"> A</label>
-                <label><input type="radio" name="q12" value="B"> B</label>
-                <label><input type="radio" name="q12" value="C"> C</label>
-                <label><input type="radio" name="q12" value="D"> D</label>
-                <button onclick="checkAnswer('q12', 'D')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q12"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q12')">Xem lời giải</div>
-            <div class="solution" id="solution-q12">
-                <p><strong>Lời giải:</strong><br>
-                Kiểm tra từng phương án:<br>
-                A. \( \int_{-2}^{2} [f(x) + g(x)] dx = (-1) + 3 = 2 \neq 8 \) (sai).<br>
-                B. \( \int_{-2}^{2} [f(x) - g(x)] dx = (-1) - 3 = -4 \neq 4 \) (sai).<br>
-                C. \( \int_{-2}^{2} 5f(x) dx = 5 \cdot (-1) = -5 \neq 5 \) (sai).<br>
-                D. \( \int_{-2}^{2} [3f(x) - 4g(x)] dx = 3 \cdot (-1) - 4 \cdot 3 = -3 - 12 = -15 \) (đúng).<br>
+</div>
+</div>
+</div>
+<!-- Câu 12 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Tích phân</h3>
+<p>Tích phân có tính chất tuyến tính: \( \int (af(x) + bg(x))dx = a \int f(x)dx + b \int g(x)dx \).</p>
+</div>
+<div class="question">
+<h3>Câu 12:</h3>
+<p>Cho \( \int_{-2}^{2} f(x) dx = -1 \) và \( \int_{-2}^{2} g(x) dx = 3 \). Tính giá trị của tích phân sau:</p>
+<div class="options">
+<div class="option">A. \( \int_{-2}^{2} [f(x) + g(x)] dx = 8 \)</div>
+<div class="option">B. \( \int_{-2}^{2} [f(x) - g(x)] dx = 4 \)</div>
+<div class="option">C. \( \int_{-2}^{2} 5f(x) dx = 5 \)</div>
+<div class="option">D. \( \int_{-2}^{2} [3f(x) - 4g(x)] dx = -15 \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q12" type="radio" value="A"/> A</label>
+<label><input name="q12" type="radio" value="B"/> B</label>
+<label><input name="q12" type="radio" value="C"/> C</label>
+<label><input name="q12" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q12', 'D')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q12"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q12')">Xem lời giải</div>
+<div class="solution" id="solution-q12">
+<p><strong>Lời giải:</strong><br/>
+                Kiểm tra từng phương án:<br/>
+                A. \( \int_{-2}^{2} [f(x) + g(x)] dx = (-1) + 3 = 2 \neq 8 \) (sai).<br/>
+                B. \( \int_{-2}^{2} [f(x) - g(x)] dx = (-1) - 3 = -4 \neq 4 \) (sai).<br/>
+                C. \( \int_{-2}^{2} 5f(x) dx = 5 \cdot (-1) = -5 \neq 5 \) (sai).<br/>
+                D. \( \int_{-2}^{2} [3f(x) - 4g(x)] dx = 3 \cdot (-1) - 4 \cdot 3 = -3 - 12 = -15 \) (đúng).<br/>
                 Đáp án: D.</p>
-            </div>
-        </div>
-    </div>
-    
-    <h2>Phần II: Trắc Nghiệm Đúng/Sai</h2>
-    
-    <!-- Câu 13 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Hàm số lượng giác</h3>
-            <p>Đạo hàm của \( f(x) = \sin 2x + 2x \) là \( f'(x) = 2\cos 2x + 2 \). Giá trị lớn nhất trên đoạn được xác định bằng cách xét các điểm tới hạn và đầu mút.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 13:</h3>
-            <p>Cho hàm số \( f(x) = \sin 2x + 2x \). Xét các phát biểu sau:</p>
-            <div class="options">
-                <div class="option">a) \( f(0) = 0; f(\pi) = 2\pi \)</div>
-                <div class="option">b) Đạo hàm của hàm số đã cho là \( f'(x) = 2\cos 2x + 2 \)</div>
-                <div class="option">c) Nghiệm của phương trình \( f'(x) = 0 \) trên đoạn \([0; \pi]\) là \( 0 \) và \( \pi \)</div>
-                <div class="option">d) Giá trị lớn nhất của \( f(x) \) trên đoạn \([0; \pi]\) là \( \pi \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án cho từng phát biểu:</p>
-                <p>a) <label><input type="radio" name="q13a" value="Đúng"> Đúng</label> <label><input type="radio" name="q13a" value="Sai"> Sai</label></p>
-                <p>b) <label><input type="radio" name="q13b" value="Đúng"> Đúng</label> <label><input type="radio" name="q13b" value="Sai"> Sai</label></p>
-                <p>c) <label><input type="radio" name="q13c" value="Đúng"> Đúng</label> <label><input type="radio" name="q13c" value="Sai"> Sai</label></p>
-                <p>d) <label><input type="radio" name="q13d" value="Đúng"> Đúng</label> <label><input type="radio" name="q13d" value="Sai"> Sai</label></p>
-                <button onclick="checkTrueFalseAnswer('q13', ['Đúng', 'Đúng', 'Sai', 'Sai'])">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q13"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q13')">Xem lời giải</div>
-            <div class="solution" id="solution-q13">
-                <p><strong>Lời giải:</strong><br>
-                a) \( f(0) = \sin 0 + 2 \cdot 0 = 0 \), \( f(\pi) = \sin 2\pi + 2\pi = 2\pi \). Đúng.<br>
-                b) \( f'(x) = 2\cos 2x + 2 \). Đúng.<br>
-                c) \( f'(x) = 2\cos 2x + 2 = 0 \Rightarrow \cos 2x = -1 \Rightarrow 2x = \pi + 2k\pi \Rightarrow x = \frac{\pi}{2} \) (trong \([0; \pi]\)). Không có nghiệm tại \( x = 0, \pi \). Sai.<br>
-                d) Xét \( f'(x) = 0 \Rightarrow x = \frac{\pi}{2} \). Tính \( f(0) = 0 \), \( f(\pi) = 2\pi \), \( f\left(\frac{\pi}{2}\right) = \sin \pi + \pi = \pi \). Giá trị lớn nhất là \( 2\pi \neq \pi \). Sai.<br>
+</div>
+</div>
+</div>
+<h2>Phần II: Trắc Nghiệm Đúng/Sai</h2>
+<!-- Câu 13 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Hàm số lượng giác</h3>
+<p>Đạo hàm của \( f(x) = \sin 2x + 2x \) là \( f'(x) = 2\cos 2x + 2 \). Giá trị lớn nhất trên đoạn được xác định bằng cách xét các điểm tới hạn và đầu mút.</p>
+</div>
+<div class="question">
+<h3>Câu 13:</h3>
+<p>Cho hàm số \( f(x) = \sin 2x + 2x \). Xét các phát biểu sau:</p>
+<div class="options">
+<div class="option">a) \( f(0) = 0; f(\pi) = 2\pi \)</div>
+<div class="option">b) Đạo hàm của hàm số đã cho là \( f'(x) = 2\cos 2x + 2 \)</div>
+<div class="option">c) Nghiệm của phương trình \( f'(x) = 0 \) trên đoạn \([0; \pi]\) là \( 0 \) và \( \pi \)</div>
+<div class="option">d) Giá trị lớn nhất của \( f(x) \) trên đoạn \([0; \pi]\) là \( \pi \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q13a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q13a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q13b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q13b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q13c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q13c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q13d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q13d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q13', ['Đúng', 'Đúng', 'Sai', 'Sai'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q13"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q13')">Xem lời giải</div>
+<div class="solution" id="solution-q13">
+<p><strong>Lời giải:</strong><br/>
+                a) \( f(0) = \sin 0 + 2 \cdot 0 = 0 \), \( f(\pi) = \sin 2\pi + 2\pi = 2\pi \). Đúng.<br/>
+                b) \( f'(x) = 2\cos 2x + 2 \). Đúng.<br/>
+                c) \( f'(x) = 2\cos 2x + 2 = 0 \Rightarrow \cos 2x = -1 \Rightarrow 2x = \pi + 2k\pi \Rightarrow x = \frac{\pi}{2} \) (trong \([0; \pi]\)). Không có nghiệm tại \( x = 0, \pi \). Sai.<br/>
+                d) Xét \( f'(x) = 0 \Rightarrow x = \frac{\pi}{2} \). Tính \( f(0) = 0 \), \( f(\pi) = 2\pi \), \( f\left(\frac{\pi}{2}\right) = \sin \pi + \pi = \pi \). Giá trị lớn nhất là \( 2\pi \neq \pi \). Sai.<br/>
                 Đáp án: a) Đúng, b) Đúng, c) Sai, d) Sai.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 14 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Xác suất có điều kiện</h3>
-            <p>Xác suất có điều kiện: \( P(A|B) = \frac{P(A \cap B)}{P(B)} \). Xác suất của hai biến cố độc lập: \( P(A \cap B) = P(A) \cdot P(B) \).</p>
-        </div>
-        <div class="question">
-            <h3>Câu 14:</h3>
-            <p>Xét các biến cố: \( M \): "Quyển sách được chọn ở phòng A"; \( E \): "Quyển sách được chọn ở phòng B"; \( N \): "Quyển sách được chọn về chủ đề Khoa học tự nhiên"; \( Q \): "Quyển sách được chọn về chủ đề Khoa học tự nhiên và thuộc phòng A". Xét các phát biểu sau:</p>
-            <div class="options">
-                <div class="option">a) \( P(N) = P(Q) + P(R) = 0,25 + 0,5 = 0,75 \)</div>
-                <div class="option">b) \( P(Q) = 0,25 \)</div>
-                <div class="option">c) Xác suất quyển sách được chọn ở phòng A, biết rằng quyển sách đó về chủ đề Khoa học tự nhiên là \( \frac{1}{3} \)</div>
-                <div class="option">d) Xác suất ngẫu nhiên mỗi phòng một quyển sách, xác suất để 2 quyển được chọn đều thuộc về chủ đề Khoa học tự nhiên là \( 0,125 \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án cho từng phát biểu:</p>
-                <p>a) <label><input type="radio" name="q14a" value="Đúng"> Đúng</label> <label><input type="radio" name="q14a" value="Sai"> Sai</label></p>
-                <p>b) <label><input type="radio" name="q14b" value="Đúng"> Đúng</label> <label><input type="radio" name="q14b" value="Sai"> Sai</label></p>
-                <p>c) <label><input type="radio" name="q14c" value="Đúng"> Đúng</label> <label><input type="radio" name="q14c" value="Sai"> Sai</label></p>
-                <p>d) <label><input type="radio" name="q14d" value="Đúng"> Đúng</label> <label><input type="radio" name="q14d" value="Sai"> Sai</label></p>
-                <button onclick="checkTrueFalseAnswer('q14', ['Đúng', 'Sai', 'Sai', 'Đúng'])">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q14"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q14')">Xem lời giải</div>
-            <div class="solution" id="solution-q14">
-                <p><strong>Lời giải:</strong><br>
-                a) \( N = Q \cup R \), \( Q \) và \( R \) xung khắc, nên \( P(N) = P(Q) + P(R) = 0,25 + 0,5 = 0,75 \). Đúng.<br>
-                b) Từ phát biểu, \( P(Q) = 0,25 \) Sai.<br>
-                c) \( P(M|N) = \frac{P(M \cap N)}{P(N)} = \frac{P(Q)}{P(N)} = \frac{0,25}{0,75} = \frac{1}{3} \). Đúng (nhưng theo lời giải PDF là sai, có thể do lỗi).<br>
-                d) \( P(A \cap B) = P(A) \cdot P(B) = 0,25 \cdot 0,5 = 0,125 \). Đúng.<br>
+</div>
+</div>
+</div>
+<!-- Câu 14 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Xác suất có điều kiện</h3>
+<p>Xác suất có điều kiện: \( P(A|B) = \frac{P(A \cap B)}{P(B)} \). Xác suất của hai biến cố độc lập: \( P(A \cap B) = P(A) \cdot P(B) \).</p>
+</div>
+<div class="question">
+<h3>Câu 14:</h3>
+<p>Xét các biến cố: \( M \): "Quyển sách được chọn ở phòng A"; \( E \): "Quyển sách được chọn ở phòng B"; \( N \): "Quyển sách được chọn về chủ đề Khoa học tự nhiên"; \( Q \): "Quyển sách được chọn về chủ đề Khoa học tự nhiên và thuộc phòng A". Xét các phát biểu sau:</p>
+<div class="options">
+<div class="option">a) \( P(N) = P(Q) + P(R) = 0,25 + 0,5 = 0,75 \)</div>
+<div class="option">b) \( P(Q) = 0,25 \)</div>
+<div class="option">c) Xác suất quyển sách được chọn ở phòng A, biết rằng quyển sách đó về chủ đề Khoa học tự nhiên là \( \frac{1}{3} \)</div>
+<div class="option">d) Xác suất ngẫu nhiên mỗi phòng một quyển sách, xác suất để 2 quyển được chọn đều thuộc về chủ đề Khoa học tự nhiên là \( 0,125 \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q14a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q14a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q14b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q14b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q14c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q14c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q14d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q14d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q14', ['Đúng', 'Sai', 'Sai', 'Đúng'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q14"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q14')">Xem lời giải</div>
+<div class="solution" id="solution-q14">
+<p><strong>Lời giải:</strong><br/>
+                a) \( N = Q \cup R \), \( Q \) và \( R \) xung khắc, nên \( P(N) = P(Q) + P(R) = 0,25 + 0,5 = 0,75 \). Đúng.<br/>
+                b) Từ phát biểu, \( P(Q) = 0,25 \) Sai.<br/>
+                c) \( P(M|N) = \frac{P(M \cap N)}{P(N)} = \frac{P(Q)}{P(N)} = \frac{0,25}{0,75} = \frac{1}{3} \). Đúng (nhưng theo lời giải PDF là sai, có thể do lỗi).<br/>
+                d) \( P(A \cap B) = P(A) \cdot P(B) = 0,25 \cdot 0,5 = 0,125 \). Đúng.<br/>
                 Đáp án: a) Đúng, b) Sai, c) Sai, d) Đúng.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 15 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Ứng dụng tích phân trong vật lý</h3>
-            <p>Quãng đường là nguyên hàm của vận tốc: \( s(t) = \int v(t) dt \). Khi vận tốc bằng 0, xe dừng.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 15:</h3>
-            <p>Xét các phát biểu sau về một xe ô tô có vận tốc \( v(t) = -3t + 15 \) (m/s):</p>
-            <div class="options">
-                <div class="option">a) Thời gian kể từ lúc đạp phanh đến khi dừng hẳn là 5 giây</div>
-                <div class="option">b) Sau khi đạp phanh đến khi dừng hẳn, xe đi được quãng đường 37,5 m</div>
-                <div class="option">c) Xe ô tô dừng hẳn trước khi va chạm chướng ngại vật cách 50 m, nên tai nạn không xảy ra</div>
-                <div class="option">d) Tổng quãng đường xe đi được đến khi dừng hẳn (bao gồm 1 giây phản ứng đi 15 m) là 52,5 m, nên tai nạn xảy ra</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án cho từng phát biểu:</p>
-                <p>a) <label><input type="radio" name="q15a" value="Đúng"> Đúng</label> <label><input type="radio" name="q15a" value="Sai"> Sai</label></p>
-                <p>b) <label><input type="radio" name="q15b" value="Đúng"> Đúng</label> <label><input type="radio" name="q15b" value="Sai"> Sai</label></p>
-                <p>c) <label><input type="radio" name="q15c" value="Đúng"> Đúng</label> <label><input type="radio" name="q15c" value="Sai"> Sai</label></p>
-                <p>d) <label><input type="radio" name="q15d" value="Đúng"> Đúng</label> <label><input type="radio" name="q15d" value="Sai"> Sai</label></p>
-                <button onclick="checkTrueFalseAnswer('q15', ['Đúng', 'Sai', 'Đúng', 'Đúng'])">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q15"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q15')">Xem lời giải</div>
-            <div class="solution" id="solution-q15">
-                <p><strong>Lời giải:</strong><br>
-                a) \( v(t) = -3t + 15 = 0 \Rightarrow t = 5 \). Đúng.<br>
-                b) Quãng đường: \( s(t) = \int (-3t + 15) dt = -\frac{3t^2}{2} + 15t + C \), tại \( t = 0 \), \( s(0) = 0 \Rightarrow C = 0 \). Tại \( t = 5 \): \( s(5) = -\frac{3 \cdot 5^2}{2} + 15 \cdot 5 = 37,5 \). Đúng (nhưng PDF ghi sai).<br>
-                c) \( 50 > 37,5 \), xe dừng trước 50 m. Đúng.<br>
-                d) Tổng quãng đường: \( 15 + 37,5 = 52,5 > 50 \), tai nạn xảy ra. Đúng.<br>
+</div>
+</div>
+</div>
+<!-- Câu 15 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Ứng dụng tích phân trong vật lý</h3>
+<p>Quãng đường là nguyên hàm của vận tốc: \( s(t) = \int v(t) dt \). Khi vận tốc bằng 0, xe dừng.</p>
+</div>
+<div class="question">
+<h3>Câu 15:</h3>
+<p>Xét các phát biểu sau về một xe ô tô có vận tốc \( v(t) = -3t + 15 \) (m/s):</p>
+<div class="options">
+<div class="option">a) Thời gian kể từ lúc đạp phanh đến khi dừng hẳn là 5 giây</div>
+<div class="option">b) Sau khi đạp phanh đến khi dừng hẳn, xe đi được quãng đường 37,5 m</div>
+<div class="option">c) Xe ô tô dừng hẳn trước khi va chạm chướng ngại vật cách 50 m, nên tai nạn không xảy ra</div>
+<div class="option">d) Tổng quãng đường xe đi được đến khi dừng hẳn (bao gồm 1 giây phản ứng đi 15 m) là 52,5 m, nên tai nạn xảy ra</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q15a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q15a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q15b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q15b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q15c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q15c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q15d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q15d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q15', ['Đúng', 'Sai', 'Đúng', 'Đúng'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q15"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q15')">Xem lời giải</div>
+<div class="solution" id="solution-q15">
+<p><strong>Lời giải:</strong><br/>
+                a) \( v(t) = -3t + 15 = 0 \Rightarrow t = 5 \). Đúng.<br/>
+                b) Quãng đường: \( s(t) = \int (-3t + 15) dt = -\frac{3t^2}{2} + 15t + C \), tại \( t = 0 \), \( s(0) = 0 \Rightarrow C = 0 \). Tại \( t = 5 \): \( s(5) = -\frac{3 \cdot 5^2}{2} + 15 \cdot 5 = 37,5 \). Đúng (nhưng PDF ghi sai).<br/>
+                c) \( 50 &gt; 37,5 \), xe dừng trước 50 m. Đúng.<br/>
+                d) Tổng quãng đường: \( 15 + 37,5 = 52,5 &gt; 50 \), tai nạn xảy ra. Đúng.<br/>
                 Đáp án: a) Đúng, b) Sai, c) Đúng, d) Đúng.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 16 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Hình học không gian</h3>
-            <p>Khoảng cách từ điểm đến mặt phẳng: \( d = \frac{|ax_0 + by_0 + cz_0 + d|}{\sqrt{a^2 + b^2 + c^2}} \). Mặt phẳng cắt mặt cầu tạo đường tròn nếu khoảng cách từ tâm đến mặt phẳng nhỏ hơn bán kính.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 16:</h3>
-            <p>Trong không gian \( Oxyz \), cho mặt cầu \( (S): (x-3)^2 + y^2 + (z+4)^2 = 169 \) và mặt phẳng \( (P): 2x + 3y + z - 30 = 0 \). Các mệnh đề sau đúng hay sai?</p>
-            <div class="options">
-                <div class="option">a) Tọa độ tâm \( I \) của mặt cầu \( (S) \) là \( I(3; 0; -4) \)</div>
-                <div class="option">b) Khoảng cách từ tâm \( I \) đến mặt phẳng \( (P) \) bằng \( \sqrt{14} \)</div>
-                <div class="option">c) Mặt phẳng \( (P) \) cắt mặt cầu \( (S) \) theo một đường tròn</div>
-                <div class="option">d) Điểm \( N \) là hình chiếu của tâm \( I \) trên mặt phẳng \( (P) \). Tọa độ điểm \( N \) là \( N(7; 6; -2) \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án cho từng phát biểu:</p>
-                <p>a) <label><input type="radio" name="q16a" value="Đúng"> Đúng</label> <label><input type="radio" name="q16a" value="Sai"> Sai</label></p>
-                <p>b) <label><input type="radio" name="q16b" value="Đúng"> Đúng</label> <label><input type="radio" name="q16b" value="Sai"> Sai</label></p>
-                <p>c) <label><input type="radio" name="q16c" value="Đúng"> Đúng</label> <label><input type="radio" name="q16c" value="Sai"> Sai</label></p>
-                <p>d) <label><input type="radio" name="q16d" value="Đúng"> Đúng</label> <label><input type="radio" name="q16d" value="Sai"> Sai</label></p>
-                <button onclick="checkTrueFalseAnswer('q16', ['Đúng', 'Sai', 'Đúng', 'Đúng'])">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q16"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q16')">Xem lời giải</div>
-            <div class="solution" id="solution-q16">
-                <p><strong>Lời giải:</strong><br>
-                a) Tâm mặt cầu: \( I(3; 0; -4) \). Đúng.<br>
-                b) Khoảng cách: \( d = \frac{|2 \cdot 3 + 3 \cdot 0 + (-4) - 30|}{\sqrt{2^2 + 3^2 + 1^2}} = \frac{28}{\sqrt{14}} = 2\sqrt{14} \neq \sqrt{14} \). Sai.<br>
-                c) Bán kính \( R = \sqrt{169} = 13 \). Vì \( 2\sqrt{14} < 13 \), mặt phẳng cắt mặt cầu theo đường tròn. Đúng.<br>
-                d) Đường thẳng qua \( I \), vuông góc \( (P) \): \( x = 3 + 2t \), \( y = 3t \), \( z = -4 + t \). Giao với \( (P) \): \( t = 2 \Rightarrow N(7; 6; -2) \). Đúng.<br>
+</div>
+</div>
+</div>
+<!-- Câu 16 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Hình học không gian</h3>
+<p>Khoảng cách từ điểm đến mặt phẳng: \( d = \frac{|ax_0 + by_0 + cz_0 + d|}{\sqrt{a^2 + b^2 + c^2}} \). Mặt phẳng cắt mặt cầu tạo đường tròn nếu khoảng cách từ tâm đến mặt phẳng nhỏ hơn bán kính.</p>
+</div>
+<div class="question">
+<h3>Câu 16:</h3>
+<p>Trong không gian \( Oxyz \), cho mặt cầu \( (S): (x-3)^2 + y^2 + (z+4)^2 = 169 \) và mặt phẳng \( (P): 2x + 3y + z - 30 = 0 \). Các mệnh đề sau đúng hay sai?</p>
+<div class="options">
+<div class="option">a) Tọa độ tâm \( I \) của mặt cầu \( (S) \) là \( I(3; 0; -4) \)</div>
+<div class="option">b) Khoảng cách từ tâm \( I \) đến mặt phẳng \( (P) \) bằng \( \sqrt{14} \)</div>
+<div class="option">c) Mặt phẳng \( (P) \) cắt mặt cầu \( (S) \) theo một đường tròn</div>
+<div class="option">d) Điểm \( N \) là hình chiếu của tâm \( I \) trên mặt phẳng \( (P) \). Tọa độ điểm \( N \) là \( N(7; 6; -2) \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q16a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q16a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q16b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q16b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q16c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q16c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q16d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q16d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q16', ['Đúng', 'Sai', 'Đúng', 'Đúng'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q16"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q16')">Xem lời giải</div>
+<div class="solution" id="solution-q16">
+<p><strong>Lời giải:</strong><br/>
+                a) Tâm mặt cầu: \( I(3; 0; -4) \). Đúng.<br/>
+                b) Khoảng cách: \( d = \frac{|2 \cdot 3 + 3 \cdot 0 + (-4) - 30|}{\sqrt{2^2 + 3^2 + 1^2}} = \frac{28}{\sqrt{14}} = 2\sqrt{14} \neq \sqrt{14} \). Sai.<br/>
+                c) Bán kính \( R = \sqrt{169} = 13 \). Vì \( 2\sqrt{14} &lt; 13 \), mặt phẳng cắt mặt cầu theo đường tròn. Đúng.<br/>
+                d) Đường thẳng qua \( I \), vuông góc \( (P) \): \( x = 3 + 2t \), \( y = 3t \), \( z = -4 + t \). Giao với \( (P) \): \( t = 2 \Rightarrow N(7; 6; -2) \). Đúng.<br/>
                 Đáp án: a) Đúng, b) Sai, c) Đúng, d) Đúng.</p>
-            </div>
-        </div>
-    </div>
-    
-    <h2>Phần III: Trắc Nghiệm Trả Lời Ngắn</h2>
-    
-    <!-- Câu 17 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Lãi kép</h3>
-            <p>Công thức lãi kép: \( T = A(1 + r)^n \), trong đó \( A \) là vốn ban đầu, \( r \) là lãi suất mỗi kỳ, \( n \) là số kỳ.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 17:</h3>
-            <p>Đầu tháng 5/2019, cô Lưu Thêm cần mua xe máy Honda SH với giá 80.990.000 đồng. Cô gửi tiết kiệm vào ngân hàng với số tiền 60.000.000 đồng với lãi suất 0,8%/tháng. Biết rằng nếu không rút tiền ra khỏi ngân hàng thì cứ sau mỗi tháng, số tiền lãi sẽ được nhập vào vốn ban đầu để tính lãi cho tháng tiếp theo. Do sức ép thị trường nên mỗi tháng loại xe Honda SH giảm 500.000 đồng. Vậy sau ít nhất bao nhiêu tháng cô sẽ đủ tiền mua xe máy?</p>
-            <div class="answer-check">
-                <p>Nhập đáp án: <input type="text" id="q17-input"> <button onclick="checkShortAnswer('q17', '21')">Kiểm tra</button></p>
-            </div>
-            <div class="answer-feedback" id="feedback-q17"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q17')">Xem lời giải</div>
-            <div class="solution" id="solution-q17">
-                <p><strong>Lời giải:</strong><br>
-                Số tiền sau \( n \) tháng: \( T = 60 \cdot 10^6 \cdot (1 + 0,008)^n \).<br>
-                Giá xe sau \( n \) tháng: \( p = 80990000 - 500000n \).<br>
-                Điều kiện: \( 60 \cdot 10^6 \cdot 1,008^n \geq 80990000 - 500000n \).<br>
-                Giải: \( n \approx 20,58771778 \). Vậy \( n = 21 \).<br>
+</div>
+</div>
+</div>
+<h2>Phần III: Trắc Nghiệm Trả Lời Ngắn</h2>
+<!-- Câu 17 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Lãi kép</h3>
+<p>Công thức lãi kép: \( T = A(1 + r)^n \), trong đó \( A \) là vốn ban đầu, \( r \) là lãi suất mỗi kỳ, \( n \) là số kỳ.</p>
+</div>
+<div class="question">
+<h3>Câu 17:</h3>
+<p>Đầu tháng 5/2019, cô Lưu Thêm cần mua xe máy Honda SH với giá 80.990.000 đồng. Cô gửi tiết kiệm vào ngân hàng với số tiền 60.000.000 đồng với lãi suất 0,8%/tháng. Biết rằng nếu không rút tiền ra khỏi ngân hàng thì cứ sau mỗi tháng, số tiền lãi sẽ được nhập vào vốn ban đầu để tính lãi cho tháng tiếp theo. Do sức ép thị trường nên mỗi tháng loại xe Honda SH giảm 500.000 đồng. Vậy sau ít nhất bao nhiêu tháng cô sẽ đủ tiền mua xe máy?</p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q17-input" type="text"/> <button onclick="checkShortAnswer('q17', '21')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q17"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q17')">Xem lời giải</div>
+<div class="solution" id="solution-q17">
+<p><strong>Lời giải:</strong><br/>
+                Số tiền sau \( n \) tháng: \( T = 60 \cdot 10^6 \cdot (1 + 0,008)^n \).<br/>
+                Giá xe sau \( n \) tháng: \( p = 80990000 - 500000n \).<br/>
+                Điều kiện: \( 60 \cdot 10^6 \cdot 1,008^n \geq 80990000 - 500000n \).<br/>
+                Giải: \( n \approx 20,58771778 \). Vậy \( n = 21 \).<br/>
                 Đáp án: 21.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 18 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Tối ưu hóa</h3>
-            <p>Tìm giá trị tối ưu bằng cách lấy đạo hàm, giải \( f'(x) = 0 \), và kiểm tra bảng biến thiên hoặc đạo hàm cấp hai.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 18:</h3>
-            <p>Trong nội dung thi điền kinh, bơi lội và đua xe đạp phối hợp được diễn ra tại một hồ bơi có chiều rộng 50 m và chiều dài 250 m. Một vận động viên cần chạy phối hợp với bơi (bắt buộc cả hai) khi thực hiện lộ trình xuất phát từ \( A \) đến \( C \) và đua xe đạp tới \( D \) như hình vẽ:<br>
-            <img src="anh/18.18.png" alt="Hình 18.18"><br>
+</div>
+</div>
+</div>
+<!-- Câu 18 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Tối ưu hóa</h3>
+<p>Tìm giá trị tối ưu bằng cách lấy đạo hàm, giải \( f'(x) = 0 \), và kiểm tra bảng biến thiên hoặc đạo hàm cấp hai.</p>
+</div>
+<div class="question">
+<h3>Câu 18:</h3>
+<p>Trong nội dung thi điền kinh, bơi lội và đua xe đạp phối hợp được diễn ra tại một hồ bơi có chiều rộng 50 m và chiều dài 250 m. Một vận động viên cần chạy phối hợp với bơi (bắt buộc cả hai) khi thực hiện lộ trình xuất phát từ \( A \) đến \( C \) và đua xe đạp tới \( D \) như hình vẽ:<br/>
+<img alt="Hình 18.18" loading="lazy" src="anh/18.18.png"/><br/>
             Hỏi rằng sau khi chạy được bao xa (quãng đường \( x \)) thì vận động viên nên nhảy xuống để tiếp tục bơi về đích nhanh nhất (làm tròn kết quả đến hàng đơn vị)? Biết rằng vận tốc của vận động viên khi chạy trên bờ, khi bơi và đua xe lần lượt là 5 m/s, 1,5 m/s và 10 m/s.</p>
-            <div class="answer-check">
-                <p>Nhập đáp án: <input type="text" id="q18-input"> <button onclick="checkShortAnswer('q18', '234')">Kiểm tra</button></p>
-            </div>
-            <div class="answer-feedback" id="feedback-q18"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q18')">Xem lời giải</div>
-            <div class="solution" id="solution-q18">
-                <p><strong>Lời giải:</strong><br>
-                Gọi \( AB = x \) (0 < x < 250). Thời gian:<br>
-                Chạy: \( t_1 = \frac{x}{5} \).<br>
-                Bơi: \( t_2 = \frac{\sqrt{50^2 + (250-x)^2}}{1,5} \).<br>
-                Đua xe: \( t_3 = \frac{250}{10} = 25 \).<br>
-                Tổng thời gian: \( T(x) = \frac{x}{5} + \frac{\sqrt{50^2 + (250-x)^2}}{1,5} + 25 \).<br>
-                Đạo hàm: \( T'(x) = \frac{1}{5} - \frac{2(250-x)}{3\sqrt{50^2 + (250-x)^2}} \).<br>
-                \( T'(x) = 0 \Rightarrow 3\sqrt{50^2 + (250-x)^2} = 10(250-x) \Rightarrow x = 250 - \frac{150}{\sqrt{91}} \approx 234 \).<br>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q18-input" type="text"/> <button onclick="checkShortAnswer('q18', '234')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q18"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q18')">Xem lời giải</div>
+<div class="solution" id="solution-q18">
+<p><strong>Lời giải:</strong><br/>
+                Gọi \( AB = x \) (0 &lt; x &lt; 250). Thời gian:<br/>
+                Chạy: \( t_1 = \frac{x}{5} \).<br/>
+                Bơi: \( t_2 = \frac{\sqrt{50^2 + (250-x)^2}}{1,5} \).<br/>
+                Đua xe: \( t_3 = \frac{250}{10} = 25 \).<br/>
+                Tổng thời gian: \( T(x) = \frac{x}{5} + \frac{\sqrt{50^2 + (250-x)^2}}{1,5} + 25 \).<br/>
+                Đạo hàm: \( T'(x) = \frac{1}{5} - \frac{2(250-x)}{3\sqrt{50^2 + (250-x)^2}} \).<br/>
+                \( T'(x) = 0 \Rightarrow 3\sqrt{50^2 + (250-x)^2} = 10(250-x) \Rightarrow x = 250 - \frac{150}{\sqrt{91}} \approx 234 \).<br/>
                 Đáp án: 234.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 19 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Phương trình tham số</h3>
-            <p>Phương trình tham số đường thẳng: \( x = x_0 + at \), \( y = y_0 + bt \), \( z = z_0 + ct \). Khoảng cách được tính dựa trên vận tốc và thời gian.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 19:</h3>
-            <p>Một ống gầu thòng cáp có vector chỉ phương là \( \overrightarrow{u} = (0; -2; 6) \) với tốc độ là 4 m/s. Giả sử sau 5 giây kể từ lúc xuất phát, cabin đến điểm \( M \). Gọi tọa độ \( M(a; b; c) \). Tính \( a + 3b + c \).</p>
-            <div class="answer-check">
-                <p>Nhập đáp án: <input type="text" id="q19-input"> <button onclick="checkShortAnswer('q19', '6')">Kiểm tra</button></p>
-            </div>
-            <div class="answer-feedback" id="feedback-q19"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q19')">Xem lời giải</div>
-            <div class="solution" id="solution-q19">
-                <p><strong>Lời giải:</strong><br>
-                Phương trình tham số: \( x = -2 \), \( y = 1 - 2k \), \( z = 5 + 6k \).<br>
-                Tốc độ 4 m/s, sau 5 giây: \( AM = 4 \cdot 5 = 20 \).<br>
-                Tọa độ \( M(-2; 1-2k; 5+6k) \). Khoảng cách: \( \sqrt{(-2k)^2 + (6k)^2} = 20 \Rightarrow 40k^2 = 400 \Rightarrow k = \sqrt{10} \).<br>
-                \( M(-2; 1-2\sqrt{10}; 5+6\sqrt{10}) \). Tính: \( a + 3b + c = -2 + 3(1-2\sqrt{10}) + (5+6\sqrt{10}) = 6 \).<br>
+</div>
+</div>
+</div>
+<!-- Câu 19 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình tham số</h3>
+<p>Phương trình tham số đường thẳng: \( x = x_0 + at \), \( y = y_0 + bt \), \( z = z_0 + ct \). Khoảng cách được tính dựa trên vận tốc và thời gian.</p>
+</div>
+<div class="question">
+<h3>Câu 19:</h3>
+<p>Một ống gầu thòng cáp có vector chỉ phương là \( \overrightarrow{u} = (0; -2; 6) \) với tốc độ là 4 m/s. Giả sử sau 5 giây kể từ lúc xuất phát, cabin đến điểm \( M \). Gọi tọa độ \( M(a; b; c) \). Tính \( a + 3b + c \).</p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q19-input" type="text"/> <button onclick="checkShortAnswer('q19', '6')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q19"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q19')">Xem lời giải</div>
+<div class="solution" id="solution-q19">
+<p><strong>Lời giải:</strong><br/>
+                Phương trình tham số: \( x = -2 \), \( y = 1 - 2k \), \( z = 5 + 6k \).<br/>
+                Tốc độ 4 m/s, sau 5 giây: \( AM = 4 \cdot 5 = 20 \).<br/>
+                Tọa độ \( M(-2; 1-2k; 5+6k) \). Khoảng cách: \( \sqrt{(-2k)^2 + (6k)^2} = 20 \Rightarrow 40k^2 = 400 \Rightarrow k = \sqrt{10} \).<br/>
+                \( M(-2; 1-2\sqrt{10}; 5+6\sqrt{10}) \). Tính: \( a + 3b + c = -2 + 3(1-2\sqrt{10}) + (5+6\sqrt{10}) = 6 \).<br/>
                 Đáp án: 6.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 20 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Thể tích khối tròn xoay</h3>
-            <p>Thể tích khối tròn xoay quanh trục \( Ox \): \( V = \pi \int_a^b y^2 dx \).</p>
-        </div>
-        <div class="question">
-            <h3>Câu 20:</h3>
-            <p>Một bình hoa dạng khối tròn xoay được tạo thành khi quay hình phẳng giới hạn bởi đồ thị hàm số \( y = -\sin x + 2 \) và trục \( Ox \) (tham khảo hình vẽ):<br>
-            <img src="anh/18.20.png" alt="Hình 18.20"><br>
+</div>
+</div>
+</div>
+<!-- Câu 20 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Thể tích khối tròn xoay</h3>
+<p>Thể tích khối tròn xoay quanh trục \( Ox \): \( V = \pi \int_a^b y^2 dx \).</p>
+</div>
+<div class="question">
+<h3>Câu 20:</h3>
+<p>Một bình hoa dạng khối tròn xoay được tạo thành khi quay hình phẳng giới hạn bởi đồ thị hàm số \( y = -\sin x + 2 \) và trục \( Ox \) (tham khảo hình vẽ):<br/>
+<img alt="Hình 18.20" loading="lazy" src="anh/18.20.png"/><br/>
             Biết đáy bình hoa là hình tròn có bán kính 2 dm, miệng bình hoa là đường tròn bán kính 1,5 dm. Bỏ qua độ dày của bình hoa, tính thể tích (đơn vị \( dm^3 \)) của bình hoa (làm tròn kết quả đến hàng đơn vị).</p>
-            <div class="answer-check">
-                <p>Nhập đáp án: <input type="text" id="q20-input"> <button onclick="checkShortAnswer('q20', '103')">Kiểm tra</button></p>
-            </div>
-            <div class="answer-feedback" id="feedback-q20"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q20')">Xem lời giải</div>
-            <div class="solution" id="solution-q20">
-                <p><strong>Lời giải:</strong><br>
-                Đáy: \( y(0) = -\sin 0 + 2 = 2 \).<br>
-                Miệng: \( y(x_B) = -\sin x_B + 2 = 1,5 \Rightarrow \sin x_B = 0,5 \Rightarrow x_B = \frac{17\pi}{6} \).<br>
-                Thể tích: \( V = \pi \int_0^{\frac{17\pi}{6}} (-\sin x + 2)^2 dx \).<br>
-                Tính: \( V = \pi \int_0^{\frac{17\pi}{6}} (4 - 4\sin x + \sin^2 x) dx = \pi \left( \frac{9}{2}x + 4\cos x - \frac{\sin 2x}{4} \right)_0^{\frac{17\pi}{6}} \approx 103 \).<br>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q20-input" type="text"/> <button onclick="checkShortAnswer('q20', '103')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q20"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q20')">Xem lời giải</div>
+<div class="solution" id="solution-q20">
+<p><strong>Lời giải:</strong><br/>
+                Đáy: \( y(0) = -\sin 0 + 2 = 2 \).<br/>
+                Miệng: \( y(x_B) = -\sin x_B + 2 = 1,5 \Rightarrow \sin x_B = 0,5 \Rightarrow x_B = \frac{17\pi}{6} \).<br/>
+                Thể tích: \( V = \pi \int_0^{\frac{17\pi}{6}} (-\sin x + 2)^2 dx \).<br/>
+                Tính: \( V = \pi \int_0^{\frac{17\pi}{6}} (4 - 4\sin x + \sin^2 x) dx = \pi \left( \frac{9}{2}x + 4\cos x - \frac{\sin 2x}{4} \right)_0^{\frac{17\pi}{6}} \approx 103 \).<br/>
                 Đáp án: 103.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 21 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Xác suất có điều kiện</h3>
-            <p>Xác suất có điều kiện: \( P(A|B) = \frac{P(A \cap B)}{P(B)} \), với \( P(B) = P(B|A)P(A) + P(B|\bar{A})P(\bar{A}) \).</p>
-        </div>
-        <div class="question">
-            <h3>Câu 21:</h3>
-            <p>Một căn bệnh có 1% dân số mắc phải. Một phương pháp chẩn đoán có tỷ lệ chính xác 99%. Với những người không mắc bệnh, phương pháp cho kết quả đúng 99/100 trường hợp. Nếu một người kiểm tra kết quả là dương tính (bị bệnh), xác suất để người đó thực sự bị bệnh là bao nhiêu?</p>
-            <div class="answer-check">
-                <p>Nhập đáp án: <input type="text" id="q21-input"> <button onclick="checkShortAnswer('q21', '0.5')">Kiểm tra</button></p>
-            </div>
-            <div class="answer-feedback" id="feedback-q21"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q21')">Xem lời giải</div>
-            <div class="solution" id="solution-q21">
-                <p><strong>Lời giải:</strong><br>
-                Gọi \( A \): người bị bệnh, \( B \): kết quả dương tính.<br>
-                \( P(A) = 0,01 \), \( P(\bar{A}) = 0,99 \), \( P(B|A) = 0,99 \), \( P(B|\bar{A}) = 0,01 \).<br>
-                \( P(B) = P(B|A)P(A) + P(B|\bar{A})P(\bar{A}) = 0,99 \cdot 0,01 + 0,01 \cdot 0,99 = 0,0198 \).<br>
-                \( P(A|B) = \frac{P(B|A)P(A)}{P(B)} = \frac{0,99 \cdot 0,01}{0,0198} = 0,5 \).<br>
+</div>
+</div>
+</div>
+<!-- Câu 21 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Xác suất có điều kiện</h3>
+<p>Xác suất có điều kiện: \( P(A|B) = \frac{P(A \cap B)}{P(B)} \), với \( P(B) = P(B|A)P(A) + P(B|\bar{A})P(\bar{A}) \).</p>
+</div>
+<div class="question">
+<h3>Câu 21:</h3>
+<p>Một căn bệnh có 1% dân số mắc phải. Một phương pháp chẩn đoán có tỷ lệ chính xác 99%. Với những người không mắc bệnh, phương pháp cho kết quả đúng 99/100 trường hợp. Nếu một người kiểm tra kết quả là dương tính (bị bệnh), xác suất để người đó thực sự bị bệnh là bao nhiêu?</p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q21-input" type="text"/> <button onclick="checkShortAnswer('q21', '0.5')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q21"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q21')">Xem lời giải</div>
+<div class="solution" id="solution-q21">
+<p><strong>Lời giải:</strong><br/>
+                Gọi \( A \): người bị bệnh, \( B \): kết quả dương tính.<br/>
+                \( P(A) = 0,01 \), \( P(\bar{A}) = 0,99 \), \( P(B|A) = 0,99 \), \( P(B|\bar{A}) = 0,01 \).<br/>
+                \( P(B) = P(B|A)P(A) + P(B|\bar{A})P(\bar{A}) = 0,99 \cdot 0,01 + 0,01 \cdot 0,99 = 0,0198 \).<br/>
+                \( P(A|B) = \frac{P(B|A)P(A)}{P(B)} = \frac{0,99 \cdot 0,01}{0,0198} = 0,5 \).<br/>
                 Đáp án: 0.5.</p>
-            </div>
-        </div>
-    </div>
-    
 </div>
-<!-- PHẦN CUỐICUỐI -->   
-
+</div>
+</div>
+</div>
+<!-- PHẦN CUỐICUỐI -->
 <div class="navigation">
-    <button onclick="window.location.href='de4.html'">Chuyên Đề trước</button>
-    <button onclick="window.location.href='de66.html'">Chuyên Đề sau</button>
+<button onclick="window.location.href='de4.html'">Chuyên Đề trước</button>
+<button onclick="window.location.href='de66.html'">Chuyên Đề sau</button>
 </div>
-</div>
-<script defer>
+<script defer="">
 let isSolutionDisabled = false; function checkAnswer(questionId, correctAnswer) {
     const options = document.getElementsByName(questionId);
     let selectedAnswer = null;

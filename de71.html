@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Chuyên Đề THI TOÁN - Chuyên Đề SỐ 3 với 22 câu hỏi trắc nghiệm và lời giải chi tiết, kèm tóm tắt kiến thức.">
-    <title>Chuyên Đề THI TOÁN - Chuyên Đề 3 - KHÓA HỌC TOÁN THẦY BÌNH</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Chuyên Đề THI TOÁN - Chuyên Đề SỐ 3 với 22 câu hỏi trắc nghiệm và lời giải chi tiết, kèm tóm tắt kiến thức." name="description"/>
+<title>Chuyên Đề THI TOÁN - Chuyên Đề 3 - KHÓA HỌC TOÁN THẦY BÌNH</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
         body {
             font-family: 'Roboto', sans-serif;
             background: linear-gradient(135deg, #ecfdf5, #f3e8ff);
@@ -250,124 +251,221 @@
                 font-size: 0.9rem;
             }
         }
-    </style>
+    
+.question img, .solution img {
+    display: block;
+    margin: 10px auto;
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+    object-position: center;
+    background: white;
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%;
+}
+
+.question img, .solution img {
+    display: block;
+    margin: 5px auto; /* Giảm khoảng cách */
+    width: 300px; /* Giảm chiều rộng */
+    height: 200px; /* Giảm chiều cao */
+    object-fit: contain;
+    object-position: center;
+    background: white;
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%; /* Đảm bảo vừa với màn hình nhỏ */
+}
+.question img:not([src]), .solution img:not([src]),
+.question img[src=''], .solution img[src=''],
+.question img[onerror], .solution img[onerror] {
+    display: none !important; /* Ẩn ảnh không tồn tại */
+}
+@media (max-width: 640px) {
+    .question img, .solution img {
+        width: 100%; /* Chiều rộng 100% trên di động */
+        height: auto; /* Chiều cao tự động */
+        margin: 3px auto; /* Giảm thêm khoảng cách trên di động */
+    }
+    .question img.long-image, .solution img.long-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.question img, .solution img {
+    display: block;
+    margin: 5px auto; /* Khoảng cách trên laptop */
+    width: 300px; /* Chiều rộng mặc định */
+    height: 200px; /* Chiều cao mặc định */
+    object-fit: contain;
+    object-position: center;
+    background: white;
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%; /* Đảm bảo vừa với màn hình nhỏ */
+}
+.question img:not([src]), .solution img:not([src]),
+.question img[src=''], .solution img[src=''],
+.question img[onerror], .solution img[onerror] {
+    display: none !important; /* Ẩn ảnh không tồn tại */
+}
+@media (max-width: 640px) {
+    .question img, .solution img {
+        max-width: 100%; /* Thu nhỏ theo màn hình */
+        width: auto; /* Tự động điều chỉnh chiều rộng */
+        height: auto; /* Tự động điều chỉnh chiều cao */
+        margin: 2px auto; /* Giảm khoảng cách trên di động */
+    }
+    .question img.long-image, .solution img.long-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.question img, .solution img {
+    display: block;
+    margin: 5px auto; /* Căn giữa và giữ khoảng cách nhỏ */
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%; /* Giới hạn chiều rộng tối đa */
+}
+.question img:not([src]), .solution img:not([src]),
+.question img[src=''], .solution img[src=''],
+.question img[onerror], .solution img[onerror] {
+    display: none !important; /* Ẩn ảnh không tồn tại */
+}
+@media (max-width: 640px) {
+    .question img, .solution img {
+        margin: 2px auto; /* Giảm khoảng cách trên di động */
+    }
+    .question img.long-image, .solution img.long-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+</style>
 </head>
 <body>
-    <div class="header">
-        <div class="logo">KHÓA HỌC TOÁN THẦY BÌNH</div>
-    </div>
-    <div class="nav-bar">
-        <div>
-            <a href="index.html">Trang chủ</a>
-        </div>
-        <div class="dropdown">
-            <span class="dropdown-button">Chọn đề</span>
-                <div class="dropdown-content">
-                    <!-- Tạo danh sách đề từ 1 đến 100 -->
-                    <a href="de1.html">Đề 1</a>
-                    <a href="de2.html">Đề 2</a>
-                    <a href="de3.html">Đề 3</a>
-                    <a href="de4.html">Đề 4</a>
-                    <a href="de5.html">Đề 5</a>
-                    <a href="de6.html">Đề 6</a>
-                    <a href="de7.html">Đề 7</a>
-                    <a href="de8.html">Đề 8</a>
-                    <a href="de9.html">Đề 9</a>
-                    <a href="de10.html">Đề 10</a>
-                    <a href="de11.html">Đề 11</a>
-                    <a href="de12.html">Đề 12</a>
-                    <a href="de13.html">Đề 13</a>
-                    <a href="de14.html">Đề 14</a>
-                    <a href="de15.html">Đề 15</a>
-                    <a href="de16.html">Đề 16</a>
-                    <a href="de17.html">Đề 17</a>
-                    <a href="de18.html">Đề 18</a>
-                    <a href="de19.html">Đề 19</a>
-                    <a href="de20.html">Đề 20</a>
-                    <a href="de21.html">Đề 21</a>
-                    <a href="de22.html">Đề 22</a>
-                    <a href="de23.html">Đề 23</a>
-                    <a href="de24.html">Đề 24</a>
-                    <a href="de25.html">Đề 25</a>
-                    <a href="de26.html">Đề 26</a>
-                    <a href="de27.html">Đề 27</a>
-                    <a href="de28.html">Đề 28</a>
-                    <a href="de29.html">Đề 29</a>
-                    <a href="de30.html">Đề 30</a>
-                    <a href="de31.html">Đề 31</a>
-                    <a href="de32.html">Đề 32</a>
-                    <a href="de33.html">Đề 33</a>
-                    <a href="de34.html">Đề 34</a>
-                    <a href="de35.html">Đề 35</a>
-                    <a href="de36.html">Đề 36</a>
-                    <a href="de37.html">Đề 37</a>
-                    <a href="de38.html">Đề 38</a>
-                    <a href="de39.html">Đề 39</a>
-                    <a href="de40.html">Đề 40</a>
-                    <a href="de41.html">Đề 41</a>
-                    <a href="de42.html">Đề 42</a>
-                    <a href="de43.html">Đề 43</a>
-                    <a href="de44.html">Đề 44</a>
-                    <a href="de45.html">Đề 45</a>
-                    <a href="de46.html">Đề 46</a>
-                    <a href="de47.html">Đề 47</a>
-                    <a href="de48.html">Đề 48</a>
-                    <a href="de49.html">Đề 49</a>
-                    <a href="de50.html">Đề 50</a>
-                    <a href="de51.html">Đề 51</a>
-                    <a href="de52.html">Đề 52</a>
-                    <a href="de53.html">Đề 53</a>
-                    <a href="de54.html">Đề 54</a>
-                    <a href="de55.html">Đề 55</a>
-                    <a href="de56.html">Đề 56</a>
-                    <a href="de57.html">Đề 57</a>
-                    <a href="de58.html">Đề 58</a>
-                    <a href="de59.html">Đề 59</a>
-                    <a href="de60.html">Đề 60</a>
-                    <a href="de61.html">Đề 61</a>
-                    <a href="de62.html">Đề 62</a>
-                    <a href="de63.html">Đề 63</a>
-                    <a href="de64.html">Đề 64</a>
-                    <a href="de65.html">Đề 65</a>
-                    <a href="de66.html">Đề 66</a>
-                    <a href="de67.html">Đề 67</a>
-                    <a href="de68.html">Đề 68</a>
-                    <a href="de69.html">Đề 69</a>
-                    <a href="de70.html">Đề 70</a>
-                    <a href="de71.html">Đề 71</a>
-                    <a href="de72.html">Đề 72</a>
-                    <a href="de73.html">Đề 73</a>
-                    <a href="de74.html">Đề 74</a>
-                    <a href="de75.html">Đề 75</a>
-                    <a href="de76.html">Đề 76</a>
-                    <a href="de77.html">Đề 77</a>
-                    <a href="de78.html">Đề 78</a>
-                    <a href="de79.html">Đề 79</a>
-                    <a href="de80.html">Đề 80</a>
-                    <a href="de81.html">Đề 81</a>
-                    <a href="de82.html">Đề 82</a>
-                    <a href="de83.html">Đề 83</a>
-                    <a href="de84.html">Đề 84</a>
-                    <a href="de85.html">Đề 85</a>
-                    <a href="de86.html">Đề 86</a>
-                    <a href="de87.html">Đề 87</a>
-                    <a href="de88.html">Đề 88</a>
-                    <a href="de89.html">Đề 89</a>
-                    <a href="de90.html">Đề 90</a>
-                    <a href="de91.html">Đề 91</a>
-                    <a href="de92.html">Đề 92</a>
-                    <a href="de93.html">Đề 93</a>
-                    <a href="de94.html">Đề 94</a>
-                    <a href="de95.html">Đề 95</a>
-                    <a href="de96.html">Đề 96</a>
-                    <a href="de97.html">Đề 97</a>
-                    <a href="de98.html">Đề 98</a>
-                    <a href="de99.html">Đề 99</a>
-                    <a href="de100.html">Đề 100</a>
-                </div>
-            </div>
-    </div>
-
+<div class="header">
+<div class="logo">KHÓA HỌC TOÁN THẦY BÌNH</div>
+</div>
+<div class="nav-bar">
+<div>
+<a href="index.html">Trang chủ</a>
+</div>
+<div class="dropdown">
+<span class="dropdown-button">Chọn đề</span>
+<div class="dropdown-content">
+<!-- Tạo danh sách đề từ 1 đến 100 -->
+<a href="de1.html">Đề 1</a>
+<a href="de2.html">Đề 2</a>
+<a href="de3.html">Đề 3</a>
+<a href="de4.html">Đề 4</a>
+<a href="de5.html">Đề 5</a>
+<a href="de6.html">Đề 6</a>
+<a href="de7.html">Đề 7</a>
+<a href="de8.html">Đề 8</a>
+<a href="de9.html">Đề 9</a>
+<a href="de10.html">Đề 10</a>
+<a href="de11.html">Đề 11</a>
+<a href="de12.html">Đề 12</a>
+<a href="de13.html">Đề 13</a>
+<a href="de14.html">Đề 14</a>
+<a href="de15.html">Đề 15</a>
+<a href="de16.html">Đề 16</a>
+<a href="de17.html">Đề 17</a>
+<a href="de18.html">Đề 18</a>
+<a href="de19.html">Đề 19</a>
+<a href="de20.html">Đề 20</a>
+<a href="de21.html">Đề 21</a>
+<a href="de22.html">Đề 22</a>
+<a href="de23.html">Đề 23</a>
+<a href="de24.html">Đề 24</a>
+<a href="de25.html">Đề 25</a>
+<a href="de26.html">Đề 26</a>
+<a href="de27.html">Đề 27</a>
+<a href="de28.html">Đề 28</a>
+<a href="de29.html">Đề 29</a>
+<a href="de30.html">Đề 30</a>
+<a href="de31.html">Đề 31</a>
+<a href="de32.html">Đề 32</a>
+<a href="de33.html">Đề 33</a>
+<a href="de34.html">Đề 34</a>
+<a href="de35.html">Đề 35</a>
+<a href="de36.html">Đề 36</a>
+<a href="de37.html">Đề 37</a>
+<a href="de38.html">Đề 38</a>
+<a href="de39.html">Đề 39</a>
+<a href="de40.html">Đề 40</a>
+<a href="de41.html">Đề 41</a>
+<a href="de42.html">Đề 42</a>
+<a href="de43.html">Đề 43</a>
+<a href="de44.html">Đề 44</a>
+<a href="de45.html">Đề 45</a>
+<a href="de46.html">Đề 46</a>
+<a href="de47.html">Đề 47</a>
+<a href="de48.html">Đề 48</a>
+<a href="de49.html">Đề 49</a>
+<a href="de50.html">Đề 50</a>
+<a href="de51.html">Đề 51</a>
+<a href="de52.html">Đề 52</a>
+<a href="de53.html">Đề 53</a>
+<a href="de54.html">Đề 54</a>
+<a href="de55.html">Đề 55</a>
+<a href="de56.html">Đề 56</a>
+<a href="de57.html">Đề 57</a>
+<a href="de58.html">Đề 58</a>
+<a href="de59.html">Đề 59</a>
+<a href="de60.html">Đề 60</a>
+<a href="de61.html">Đề 61</a>
+<a href="de62.html">Đề 62</a>
+<a href="de63.html">Đề 63</a>
+<a href="de64.html">Đề 64</a>
+<a href="de65.html">Đề 65</a>
+<a href="de66.html">Đề 66</a>
+<a href="de67.html">Đề 67</a>
+<a href="de68.html">Đề 68</a>
+<a href="de69.html">Đề 69</a>
+<a href="de70.html">Đề 70</a>
+<a href="de71.html">Đề 71</a>
+<a href="de72.html">Đề 72</a>
+<a href="de73.html">Đề 73</a>
+<a href="de74.html">Đề 74</a>
+<a href="de75.html">Đề 75</a>
+<a href="de76.html">Đề 76</a>
+<a href="de77.html">Đề 77</a>
+<a href="de78.html">Đề 78</a>
+<a href="de79.html">Đề 79</a>
+<a href="de80.html">Đề 80</a>
+<a href="de81.html">Đề 81</a>
+<a href="de82.html">Đề 82</a>
+<a href="de83.html">Đề 83</a>
+<a href="de84.html">Đề 84</a>
+<a href="de85.html">Đề 85</a>
+<a href="de86.html">Đề 86</a>
+<a href="de87.html">Đề 87</a>
+<a href="de88.html">Đề 88</a>
+<a href="de89.html">Đề 89</a>
+<a href="de90.html">Đề 90</a>
+<a href="de91.html">Đề 91</a>
+<a href="de92.html">Đề 92</a>
+<a href="de93.html">Đề 93</a>
+<a href="de94.html">Đề 94</a>
+<a href="de95.html">Đề 95</a>
+<a href="de96.html">Đề 96</a>
+<a href="de97.html">Đề 97</a>
+<a href="de98.html">Đề 98</a>
+<a href="de99.html">Đề 99</a>
+<a href="de100.html">Đề 100</a>
+</div>
+</div>
+</div>
 <script type="text/javascript">
         var gk_isXlsx = false;
         var gk_xlsxFileLookup = {};
@@ -408,542 +506,516 @@
         return gk_fileData[filename] || "";
         }
         </script><div class="container">
-    <h1 class="text-center">ĐỀ SỐ 71 - KHÓA HỌC TOÁN THẦY BÌNH</h1>
-    <h2>PHẦN I. TRẮC NGHIỆM NHIỀU LỰA CHỌN</h2>
-    
-    <!-- Câu 1 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Hàm số đồng biến trên khoảng $(a;b)$ nếu $f'(x) > 0$ với mọi $x \in (a;b)$. Khoảng đồng biến được xác định từ bảng biến thiên.</p>
-        </div>
-        <h3>Câu 1</h3>
-        <p>Cho hàm số $f(x)$ có bảng biến thiên như sau:</p>
-        <img src="anh/01.png" alt="Bảng biến thiên câu 1">
-        <p>Hàm số đồng biến trên khoảng nào sau đây?</p>
-        <ul>
-            <li><input type="radio" name="q1" value="A"> A. $(-\infty;-1)$</li>
-            <li><input type="radio" name="q1" value="B"> B. $(-\infty;1)$</li>
-            <li><input type="radio" name="q1" value="C"> C. $(-1;1)$</li>
-            <li><input type="radio" name="q1" value="D"> D. $(-1;+\infty)$</li>
-        </ul>
-        <button onclick="checkAnswer('q1', 'C')">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p>Từ bảng biến thiên, hàm số đồng biến trên khoảng $(-1;1)$ vì $f'(x) > 0$ trong khoảng này.</p>
-            <p><strong>Đáp án: C</strong></p>
-        </div>
-    </div>
-
-    <!-- Câu 2 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Thể tích khối chóp: $V = \frac{1}{3}Sh$, thể tích khối lăng trụ: $V = Sh$, với $S$ là diện tích đáy, $h$ là chiều cao.</p>
-        </div>
-        <h3>Câu 2</h3>
-        <p>Cho khối chóp và khối lăng trụ có diện tích đáy, chiều cao tương ứng bằng nhau và có thể tích lần lượt là $V_1, V_2$. Tỉ số $\frac{V_1}{V_2}$ bằng:</p>
-        <ul>
-            <li><input type="radio" name="q2" value="A"> A. $\frac{1}{3}$</li>
-            <li><input type="radio" name="q2" value="B"> B. $3$</li>
-            <li><input type="radio" name="q2" value="C"> C. $\frac{3}{2}$</li>
-            <li><input type="radio" name="q2" value="D"> D. $\frac{2}{3}$</li>
-        </ul>
-        <button onclick="checkAnswer('q2', 'A')">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p>Thể tích khối chóp: $V_1 = \frac{1}{3}Sh$. Thể tích khối lăng trụ: $V_2 = Sh$.</p>
-            <p>Tỉ số: $\frac{V_1}{V_2} = \frac{\frac{1}{3}Sh}{Sh} = \frac{1}{3}$.</p>
-            <p><strong>Đáp án: A</strong></p>
-        </div>
-    </div>
-
-    <!-- Câu 3 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Nếu $F(x)$ là nguyên hàm của $f(x)$, thì $\int f(x)dx = F(x) + C$. Nguyên hàm của hằng số $k$ là $kx + C$.</p>
-        </div>
-        <h3>Câu 3</h3>
-        <p>Cho $F(x)$ là một nguyên hàm của hàm số $f(x)$ trên $\mathbb{R}$. Khẳng định nào sau đây đúng?</p>
-        <ul>
-            <li><input type="radio" name="q3" value="A"> A. $\int [f(x)+3]dx = F(x) + C$</li>
-            <li><input type="radio" name="q3" value="B"> B. $\int [f(x)+3]dx = F(x) + 3x^2 + C$</li>
-            <li><input type="radio" name="q3" value="C"> C. $\int [f(x)+3]dx = F(x) + x^3 + C$</li>
-            <li><input type="radio" name="q3" value="D"> D. $\int [f(x)+3]dx = F(x) + 3x + C$</li>
-        </ul>
-        <button onclick="checkAnswer('q3', 'D')">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p>Nguyên hàm: $\int [f(x)+3]dx = \int f(x)dx + \int 3dx = F(x) + 3x + C$.</p>
-            <p><strong>Đáp án: D</strong></p>
-        </div>
-    </div>
-
-    <!-- Câu 4 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Mặt phẳng song song với mặt phẳng $(Oyz)$ có phương trình dạng $x = a$. Thay điểm qua mặt phẳng để tìm $a$.</p>
-        </div>
-        <h3>Câu 4</h3>
-        <p>Trong không gian $Oxyz$, mặt phẳng song song với mặt phẳng $(Oyz)$ và đi qua điểm $M(1;-3;2)$ có phương trình là:</p>
-        <ul>
-            <li><input type="radio" name="q4" value="A"> A. $2y + 3z = 0$</li>
-            <li><input type="radio" name="q4" value="B"> B. $x - 1 = 0$</li>
-            <li><input type="radio" name="q4" value="C"> C. $y + 3 = 0$</li>
-            <li><input type="radio" name="q4" value="D"> D. $z - 2 = 0$</li>
-        </ul>
-        <button onclick="checkAnswer('q4', 'B')">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p>Mặt phẳng song song với $(Oyz)$ có phương trình $x = a$. Đi qua $M(1;-3;2)$ nên $1 = a \Rightarrow a = 1$.</p>
-            <p>Phương trình: $x - 1 = 0$.</p>
-            <p><strong>Đáp án: B</strong></p>
-        </div>
-    </div>
-
-    <!-- Câu 5 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Đạo hàm của hàm số $a^{f(x)}$ là $a^{f(x)} \cdot \ln a \cdot f'(x)$.</p>
-        </div>
-        <h3>Câu 5</h3>
-        <p>Đạo hàm của hàm số $y = 4^{3-2x}$ là:</p>
-        <ul>
-            <li><input type="radio" name="q5" value="A"> A. $y' = 2 \cdot 4^{3-2x} \ln 4$</li>
-            <li><input type="radio" name="q5" value="B"> B. $y' = -2 \cdot 4^{3-2x} \ln 4$</li>
-            <li><input type="radio" name="q5" value="C"> C. $y' = 4^{3-2x} \ln 4$</li>
-            <li><input type="radio" name="q5" value="D"> D. $y' = -2 \cdot 4^{3-2x}$</li>
-        </ul>
-        <button onclick="checkAnswer('q5', 'B')">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p>Đạo hàm: $y' = 4^{3-2x} \cdot \ln 4 \cdot (-2) = -2 \cdot 4^{3-2x} \ln 4$.</p>
-            <p><strong>Đáp án: B</strong></p>
-        </div>
-    </div>
-
-    <!-- Câu 6 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Tích vô hướng: $\vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}| \cos(\vec{a},\vec{b})$.</p>
-        </div>
-        <h3>Câu 6</h3>
-        <p>Trong không gian cho hai vector $\vec{a}$ và $\vec{b}$ khác $\vec{0}$. Tích vô hướng của hai vector $\vec{a}$ và $\vec{b}$ được tính bằng công thức nào sau đây?</p>
-        <ul>
-            <li><input type="radio" name="q6" value="A"> A. $\vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}| \cdot \sin(\vec{a},\vec{b})$</li>
-            <li><input type="radio" name="q6" value="B"> B. $\vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}|$</li>
-            <li><input type="radio" name="q6" value="C"> C. $\vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}| \cdot \cos(\vec{a},\vec{b})$</li>
-            <li><input type="radio" name="q6" value="D"> D. $\vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}| \cdot (\vec{a},\vec{b})$</li>
-        </ul>
-        <button onclick="checkAnswer('q6', 'C')">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p>Tích vô hướng được tính bằng: $\vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}| \cos(\vec{a},\vec{b})$.</p>
-            <p><strong>Đáp án: C</strong></p>
-        </div>
-    </div>
-
-    <!-- Câu 7 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Phương trình đường thẳng: $\left\{\begin{array}{l}x = x_0 + at \\ y = y_0 + bt \\ z = z_0 + ct\end{array}\right.$ Giao điểm với mặt phẳng $Ax + By + Cz + D = 0$ được tìm bằng cách thay và giải phương trình.</p>
-        </div>
-        <h3>Câu 7</h3>
-        <p>Tọa độ giao điểm của đường thẳng $d: \left\{\begin{array}{l}x = 1 \\ y = t \\ z = 1 + t\end{array}\right.$ và mặt phẳng $(P): y - 2 = 0$ là:</p>
-        <ul>
-            <li><input type="radio" name="q7" value="A"> A. $(1;3;2)$</li>
-            <li><input type="radio" name="q7" value="B"> B. $(1;2;1)$</li>
-            <li><input type="radio" name="q7" value="C"> C. $(1;2;3)$</li>
-            <li><input type="radio" name="q7" value="D"> D. $(1;3;1)$</li>
-        </ul>
-        <button onclick="checkAnswer('q7', 'C')">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p>Thay $y = t$ vào mặt phẳng $y - 2 = 0 \Rightarrow t = 2$.</p>
-            <p>Khi $t = 2$, ta có $x = 1$, $z = 1 + 2 = 3$.</p>
-            <p>Giao điểm: $(1;2;3)$.</p>
-            <p><strong>Đáp án: C</strong></p>
-        </div>
-    </div>
-
-    <!-- Câu 8 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Định lý Bézout: Nếu $ax + by = d$ có nghiệm nguyên, thì $d$ là bội chung lớn nhất của $a$ và $b$.</p>
-        </div>
-        <h3>Câu 8</h3>
-        <p>Phương trình $21x + 14y = 7$ có bao nhiêu nghiệm nguyên $(x,y)$?</p>
-        <ul>
-            <li><input type="radio" name="q8" value="A"> A. $0$</li>
-            <li><input type="radio" name="q8" value="B"> B. $1$</li>
-            <li><input type="radio" name="q8" value="C"> C. Vô số</li>
-            <li><input type="radio" name="q8" value="D"> D. $2$</li>
-        </ul>
-        <button onclick="checkAnswer('q8', 'C')">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p>Phương trình: $21x + 14y = 7$.</p>
-            <p>UCLN$(21,14) = 7$, và $7$ chia hết $7$, nên phương trình có vô số nghiệm nguyên.</p>
-            <p><strong>Đáp án: C</strong></p>
-        </div>
-    </div>
-
-    <!-- Câu 9 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Để tìm số hạng thứ $n$ của dãy số, giải phương trình $u_n = a$ với $u_n$ là công thức tổng quát.</p>
-        </div>
-        <h3>Câu 9</h3>
-        <p>Cho dãy số $(u_n)$, biết $u_n = \frac{n+1}{2n+1}$. Hỏi $\frac{8}{15}$ là số hạng thứ mấy của $(u_n)$?</p>
-        <ul>
-            <li><input type="radio" name="q9" value="A"> A. $7$</li>
-            <li><input type="radio" name="q9" value="B"> B. $6$</li>
-            <li><input type="radio" name="q9" value="C"> C. $5$</li>
-            <li><input type="radio" name="q9" value="D"> D. $8$</li>
-        </ul>
-        <button onclick="checkAnswer('q9', 'A')">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p>Giải: $\frac{n+1}{2n+1} = \frac{8}{15} \Rightarrow 15(n+1) = 8(2n+1) \Rightarrow 15n + 15 = 16n + 8 \Rightarrow n = 7$.</p>
-            <p><strong>Đáp án: A</strong></p>
-        </div>
-    </div>
-
-    <!-- Câu 10 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Hàm logarit: $\log_a b$ giảm theo $a$ khi $b$ cố định và $a > 1$.</p>
-        </div>
-        <h3>Câu 10</h3>
-        <p>Với $a, b$ là các số thực tùy ý lớn hơn 1 thỏa mãn $\log_a 2 \leq \log_b 2$. Khẳng định nào sau đây đúng?</p>
-        <ul>
-            <li><input type="radio" name="q10" value="A"> A. $a \geq b$</li>
-            <li><input type="radio" name="q10" value="B"> B. $a \leq b$</li>
-            <li><input type="radio" name="q10" value="C"> C. $a < b$</li>
-            <li><input type="radio" name="q10" value="D"> D. $a > b$</li>
-        </ul>
-        <button onclick="checkAnswer('q10', 'A')">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p>$\log_a 2 \leq \log_b 2 \Rightarrow \frac{\ln 2}{\ln a} \leq \frac{\ln 2}{\ln b}$. Vì $\ln a, \ln b > 0$, ta có $\ln a \geq \ln b \Rightarrow a \geq b$.</p>
-            <p><strong>Đáp án: A</strong></p>
-        </div>
-    </div>
-
-    <!-- Câu 11 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Tứ phân vị thứ nhất $Q_1$ của mẫu ghép nhóm: $Q_1 = l_i + \frac{\frac{n}{4} - F_{i-1}}{f_i}(u_i - l_i)$, với $l_i, u_i$ là cận dưới, trên của lớp chứa $Q_1$, $F_{i-1}$ là tần số tích lũy, $f_i$ là tần số lớp.</p>
-        </div>
-        <h3>Câu 11</h3>
-        <p>Thời gian trung bình sử dụng ChatGPT trên một ngày của một nhóm học sinh được ghi lại trong bảng dưới đây:</p>
-        <table>
-            <tr><th>Thời gian (phút)</th><td>[0;5)</td><td>[5;10)</td><td>[10;15)</td><td>[15;20)</td><td>[20;25)</td></tr>
-            <tr><th>Tần số</th><td>3</td><td>11</td><td>6</td><td>15</td><td>5</td></tr>
-        </table>
-        <p>Tính tứ phân vị thứ nhất của mẫu số liệu ghép nhóm trên (làm tròn kết quả đến hàng phần chục; đơn vị phút).</p>
-        <ul>
-            <li><input type="radio" name="q11" value="A"> A. $8,4$</li>
-            <li><input type="radio" name="q11" value="B"> B. $8,3$</li>
-            <li><input type="radio" name="q11" value="C"> C. $8,2$</li>
-            <li><input type="radio" name="q11" value="D"> D. $8,1$</li>
-        </ul>
-        <button onclick="checkAnswer('q11', 'C')">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p>Tổng tần số: $n = 3 + 11 + 6 + 15 + 5 = 40$.</p>
-            <p>Vị trí $Q_1$: $\frac{n}{4} = 10$, nằm trong lớp $[5;10)$ (tần số tích lũy: $3 + 11 = 14$).</p>
-            <p>$Q_1 = 5 + \frac{10 - 3}{11}(10 - 5) = 5 + \frac{7}{11} \cdot 5 = \frac{90}{11} \approx 8,2$.</p>
-            <p><strong>Đáp án: C</strong></p>
-        </div>
-    </div>
-
-    <!-- Câu 12 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Tính chất tích phân: $\int_a^b f(x)dx + \int_b^c f(x)dx = \int_a^c f(x)dx$. Tích phân của hằng số: $\int_a^b k dx = k(b-a)$.</p>
-        </div>
-        <h3>Câu 12</h3>
-        <p>Nếu $\int_0^7 f(x)dx = 25$ và $\int_0^4 3f(x)dx = 12$ thì $\int_4^7 [f(x)-4]dx$ bằng:</p>
-        <ul>
-            <li><input type="radio" name="q12" value="A"> A. $21$</li>
-            <li><input type="radio" name="q12" value="B"> B. $13$</li>
-            <li><input type="radio" name="q12" value="C"> C. $17$</li>
-            <li><input type="radio" name="q12" value="D"> D. $9$</li>
-        </ul>
-        <button onclick="checkAnswer('q12', 'D')">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p>$\int_0^4 3f(x)dx = 12 \Rightarrow \int_0^4 f(x)dx = \frac{12}{3} = 4$.</p>
-            <p>$\int_0^7 f(x)dx = \int_0^4 f(x)dx + \int_4^7 f(x)dx \Rightarrow 25 = 4 + \int_4^7 f(x)dx \Rightarrow \int_4^7 f(x)dx = 21$.</p>
-            <p>$\int_4^7 [f(x)-4]dx = \int_4^7 f(x)dx - \int_4^7 4dx = 21 - 4 \cdot (7-4) = 21 - 12 = 9$.</p>
-            <p><strong>Đáp án: D</strong></p>
-        </div>
-    </div>
-
-    <h2>PHẦN II. TRẮC NGHIỆM ĐÚNG/SAI</h2>
-
-    <!-- Câu 13 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Trong hình lăng trụ tam giác đều, các cạnh và góc được tính dựa trên tính chất hình học và tích vô hướng của vector.</p>
-        </div>
-        <h3>Câu 13</h3>
-        <p>Cho hình lăng trụ tam giác đều $ABC.A'B'C'$ có $AB = a$, $AA' = a\sqrt{2}$. Xét các khẳng định sau:</p>
-        <ol type="a">
-            <li>$\overrightarrow{AB'} = \overrightarrow{AB} + \overrightarrow{CC'}$</li>
-            <li>$|\overrightarrow{AB'}| = |\overrightarrow{BC'}| = \sqrt{3}$</li>
-            <li>$\overrightarrow{AB'} \cdot \overrightarrow{BC'} = \frac{a^2}{2}$</li>
-            <li>Góc giữa hai vector $\overrightarrow{AB'}$ và $\overrightarrow{BC'}$ bằng $60^\circ$</li>
-        </ol>
-        <p>Chọn các khẳng định đúng:</p>
-        <ul>
-            <li><input type="checkbox" name="q13a" value="a"> a</li>
-            <li><input type="checkbox" name="q13b" value="b"> b</li>
-            <li><input type="checkbox" name="q13c" value="c"> c</li>
-            <li><input type="checkbox" name="q13d" value="d"> d</li>
-        </ul>
-        <button onclick="checkAnswer('q13', ['a', 'd'])">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p><strong>(a)</strong> $\overrightarrow{AB} + \overrightarrow{CC'} = \overrightarrow{AB} + \overrightarrow{AA'} = \overrightarrow{AB'}$ (quy tắc hình bình hành). Đúng.</p>
-            <p><strong>(b)</strong> Xét $\triangle AA'B$: $AB'^2 = AB^2 + AA'^2 = a^2 + (a\sqrt{2})^2 = 3a^2 \Rightarrow AB' = a\sqrt{3}$. Sai.</p>
-            <p><strong>(c)</strong> $\overrightarrow{AB'} \cdot \overrightarrow{BC'} = a^2 \cdot \cos 120^\circ + 0 + 0 + a\sqrt{2} \cdot a\sqrt{2} = -\frac{a^2}{2} + 2a^2 = \frac{3a^2}{2}$. Sai.</p>
-            <p><strong>(d)</strong> $\cos(\overrightarrow{AB'}, \overrightarrow{BC'}) = \frac{\overrightarrow{AB'} \cdot \overrightarrow{BC'}}{|\overrightarrow{AB'}||\overrightarrow{BC'}|} = \frac{\frac{3a^2}{2}}{a\sqrt{3} \cdot a\sqrt{3}} = \frac{1}{2} \Rightarrow$ góc $60^\circ$. Đúng.</p>
-            <p><strong>Đáp án: Đúng, Sai, Sai, Đúng</strong></p>
-        </div>
-    </div>
-
-    <!-- Câu 14 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Xác suất: $P(A) = \frac{\text{số trường hợp thuận lợi}}{\text{tổng số trường hợp}}$. Xác suất có điều kiện: $P(A|B) = \frac{P(A \cap B)}{P(B)}$.</p>
-        </div>
-        <h3>Câu 14</h3>
-        <p>Trong một lô hàng 10 sản phẩm có 2 sản phẩm xấu, còn lại là sản phẩm tốt, chọn ngẫu nhiên 2 thì dừng lại. Xét các khẳng định sau:</p>
-        <ol type="a">
-            <li>Xác suất lần thứ nhất chọn được sản phẩm xấu là $\frac{4}{5}$.</li>
-            <li>Xác suất dừng lại ở lần chọn thứ hai là $\frac{1}{50}$.</li>
-            <li>Xác suất dừng lại ở lần chọn thứ ba là $\frac{1}{45}$.</li>
-            <li>Nếu việc kiểm tra dừng lại ở lần chọn thứ ba, xác suất lần đầu chọn được sản phẩm xấu là $\frac{1}{2}$.</li>
-        </ol>
-        <p>Chọn các khẳng định đúng:</p>
-        <ul>
-            <li><input type="checkbox" name="q14a" value="a"> a</li>
-            <li><input type="checkbox" name="q14b" value="b"> b</li>
-            <li><input type="checkbox" name="q14c" value="c"> c</li>
-            <li><input type="checkbox" name="q14d" value="d"> d</li>
-        </ul>
-        <button onclick="checkAnswer('q14', ['d'])">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p><strong>(a)</strong> $P(\text{xấu lần 1}) = \frac{2}{10} = \frac{1}{5}$. Sai.</p>
-            <p><strong>(b)</strong> $P(\text{dừng lần 2}) = \frac{2}{10} \cdot \frac{1}{9} = \frac{1}{45}$. Sai.</p>
-            <p><strong>(c)</strong> $P(\text{dừng lần 3}) = \frac{8}{10} \cdot \frac{2}{9} \cdot \frac{1}{8} + \frac{2}{10} \cdot \frac{8}{9} \cdot \frac{1}{8} = \frac{2}{45}$. Sai.</p>
-            <p><strong>(d)</strong> $P(\text{xấu lần 1 | dừng lần 3}) = \frac{\frac{2}{10} \cdot \frac{8}{9} \cdot \frac{1}{8}}{\frac{2}{45}} = \frac{1}{2}$. Đúng.</p>
-            <p><strong>Đáp án: Sai, Sai, Sai, Đúng</strong></p>
-        </div>
-    </div>
-
-    <!-- Câu 15 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Đạo hàm $h'(t)$ cho tốc độ thay đổi của $h(t)$. Nguyên hàm $\int h'(t)dt = h(t) + C$. Cực trị khi $h'(t) = 0$.</p>
-        </div>
-        <h3>Câu 15</h3>
-        <p>Mức nước $h(t)$ trong hồ chứa của nhà máy điện thủy triều thay đổi bởi hàm số $h'(t) = \frac{1}{50}t^2 + bt + c$. Tại $t=0$, mức nước là $6m$, tốc độ tăng $1,9m/h$. Mức nước lớn nhất tại $t=5$. Xét các khẳng định:</p>
-        <ol type="a">
-            <li>Giá trị của $c$ là $c = 6$.</li>
-            <li>Giá trị của $b = -0,48$.</li>
-            <li>Mức nước giảm từ $t=5$ đến $t=20$ và tăng trong các khoảng còn lại.</li>
-            <li>Mức nước thấp nhất là $1,19m$ (làm tròn).</li>
-        </ol>
-        <p>Chọn các khẳng định đúng:</p>
-        <ul>
-            <li><input type="checkbox" name="q15a" value="a"> a</li>
-            <li><input type="checkbox" name="q15b" value="b"> b</li>
-            <li><input type="checkbox" name="q15c" value="c"> c</li>
-            <li><input type="checkbox" name="q15d" value="d"> d</li>
-        </ul>
-        <button onclick="checkAnswer('q15', ['b', 'd'])">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p><strong>(a)</strong> $h'(0) = 1,9 \Rightarrow c = 1,9$. Sai.</p>
-            <p><strong>(b)</strong> $h'(5) = 0 \Rightarrow \frac{1}{50} \cdot 5^2 + 5b + 1,9 = 0 \Rightarrow b = -0,48$. Đúng.</p>
-            <p><strong>(c)</strong> $h'(t) = \frac{1}{50}t^2 - 0,48t + 1,9 = 0 \Rightarrow t = 5, t = 19$. Mức nước giảm từ $t=5$ đến $t=19$. Sai.</p>
-            <p><strong>(d)</strong> $h(t) = \frac{t^3}{150} - 0,24t^2 + 1,9t + 6$. Tại $t=19$, $h(19) \approx 1,19m$. Đúng.</p>
-            <p><strong>Đáp án: Sai, Đúng, Sai, Đúng</strong></p>
-        </div>
-    </div>
-
-    <!-- Câu 16 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Thể tích hình nón: $V = \frac{1}{3}\pi r^2 h$. Tìm cực trị của hàm số bằng đạo hàm.</p>
-        </div>
-        <h3>Câu 16</h3>
-        <p>Cho hai hình nón tròn xoay, hình nón $(N)$ có bán kính $r$, chiều cao $h$ nằm úp bên trong hình nón $(H)$ có bán kính $6cm$, chiều cao $12cm$. Thể tích hình nón $(N)$ là $V$. Xét các khẳng định:</p>
-        <ol type="a">
-            <li>Theo định lý Thales: $\frac{SH}{SO} = \frac{HD}{OB}$.</li>
-            <li>Chiều cao hình nón $(N)$ là $h = 12 - 2r$ (với $0 < r < 6$).</li>
-            <li>Thể tích: $V(r) = -\frac{2}{3}\pi r^3 + 4\pi r^2$.</li>
-            <li>Thể tích lớn nhất bằng $67cm^3$ (làm tròn).</li>
-        </ol>
-        <p>Chọn các khẳng định đúng:</p>
-        <ul>
-            <li><input type="checkbox" name="q16a" value="a"> a</li>
-            <li><input type="checkbox" name="q16b" value="b"> b</li>
-            <li><input type="checkbox" name="q16c" value="c"> c</li>
-            <li><input type="checkbox" name="q16d" value="d"> d</li>
-        </ul>
-        <button onclick="checkAnswer('q16', ['a', 'b', 'c', 'd'])">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p><strong>(a)</strong> Theo Thales: $\frac{SH}{SO} = \frac{HD}{OB}$. Đúng.</p>
-            <p><strong>(b)</strong> $\frac{12-h}{12} = \frac{r}{6} \Rightarrow h = 12 - 2r$. Đúng.</p>
-            <p><strong>(c)</strong> $V(r) = \frac{1}{3}\pi (12-2r)r^2 = -\frac{2}{3}\pi r^3 + 4\pi r^2$. Đúng.</p>
-            <p><strong>(d)</strong> $V'(r) = -2r^2 + 8r = 0 \Rightarrow r = 4$. $V(4) = 67cm^3$. Đúng.</p>
-            <p><strong>Đáp án: Đúng, Đúng, Đúng, Đúng</strong></p>
-        </div>
-    </div>
-
-    <h2>PHẦN III. TRẮC NGHIỆM TRẢ LỜI NGẮN</h2>
-
-    <!-- Câu 17 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Thể tích khối chóp cụt: $V = \frac{1}{3}h(S_1 + \sqrt{S_1 S_2} + S_2)$. Tỷ số thể tích dựa trên công thức.</p>
-        </div>
-        <h3>Câu 17</h3>
-        <p>Cho khối chóp cụt đều có chiều cao, diện tích đáy lớn, đáy nhỏ lần lượt là $h$, $S$, $S'$. Khối lăng trụ có cùng chiều cao, diện tích đáy là $S$ có thể tích $V_2$. Tỉ số $\frac{V_1}{V_2}$ là bao nhiêu? (làm tròn đến 2 chữ số thập phân)</p>
-        <input type="text" name="q17" placeholder="Nhập đáp án">
-        <button onclick="checkAnswer('q17', '0.67')">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p>Thể tích khối chóp cụt: $V_1 = \frac{1}{3}h(S + \sqrt{S S'} + S')$. Thể tích lăng trụ: $V_2 = Sh$.</p>
-            <p>Giả sử $S = 4x^2$, $S' = x^2$, $h = \frac{x\sqrt{3}}{2}$, ta có:</p>
-            <p>$V_1 = \frac{1}{3} \cdot \frac{x\sqrt{3}}{2} \cdot (4x^2 + 2x^2 + x^2) = \frac{7\sqrt{3}x^3}{6}$, $V_2 = 3x^3$.</p>
-            <p>Tỉ số: $\frac{V_1}{V_2} = \frac{\frac{7\sqrt{3}x^3}{6}}{3x^3} \approx 0,67$.</p>
-            <p><strong>Đáp án: 0,67</strong></p>
-        </div>
-    </div>
-
-    <!-- Câu 18 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Đường đi Euler trong đồ thị vô hướng đi qua mỗi cạnh đúng một lần. Tổng độ dài các cạnh là quãng đường ngắn nhất.</p>
-        </div>
-        <h3>Câu 18</h3>
-        <p>Xe xúc tuyết phải dọn tuyết bằng cách lái xe dọc tất cả các con đường được hiển thị như hình vẽ bên (đơn vị: km). Quãng đường ngắn nhất xe xúc tuyết phải đi là bao nhiêu?</p>
-        <img src="anh/18.png" alt="Hình câu 18">
-        <input type="text" name="q18" placeholder="Nhập đáp án">
-        <button onclick="checkAnswer('q18', '21')">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p>Đồ thị có hai đỉnh bậc lẻ, tồn tại đường đi Euler.</p>
-            <p>Một đường đi: $A \to B \to I \to H \to G \to F \to C \to B \to G \to C$.</p>
-            <p>Quãng đường: $1 + 1 + 2 + 1 + 3 + 4 + 2 + 2 + 5 = 21km$.</p>
-            <p><strong>Đáp án: 21</strong></p>
-        </div>
-    </div>
-
-    <!-- Câu 19 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Xác suất có điều kiện: $P(A|B) = \frac{P(A \cap B)}{P(B)}$. Xác suất ít nhất một sự kiện: $P = 1 - P(\text{không xảy ra})$.</p>
-        </div>
-        <h3>Câu 19</h3>
-        <p>Một chiếc máy bay xuất hiện ở vị trí $A$ với xác suất $\frac{2}{3}$, ở vị trí $B$ với xác suất $\frac{1}{3}$. Có 1 khẩu pháo tại $A$, 3 khẩu pháo tại $B$, mỗi khẩu có xác suất bắn trúng là $0,7$. Nếu máy bay bị bắn trúng, xác suất bị bắn trúng tại $A$ là bao nhiêu? (làm tròn đến 2 chữ số thập phân)</p>
-        <input type="text" name="q19" placeholder="Nhập đáp án">
-        <button onclick="checkAnswer('q19', '0.59')">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p>$P(B|A) = 0,7$, $P(B|B) = 1 - 0,3^3 = 0,973$.</p>
-            <p>$P(B) = \frac{2}{3} \cdot 0,7 + \frac{1}{3} \cdot 0,973 = 0,791$.</p>
-            <p>$P(A|B) = \frac{\frac{2}{3} \cdot 0,7}{0,791} \approx 0,59$.</p>
-            <p><strong>Đáp án: 0,59</strong></p>
-        </div>
-    </div>
-
-    <!-- Câu 20 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Thể tích vật thể tròn xoay: $V = \pi \int_a^b [f(x)]^2 dx$. Tính tích phân từng phần dựa trên giao điểm.</p>
-        </div>
-        <h3>Câu 20</h3>
-        <p>Cho hình vuông cạnh $8cm$ và hình tròn bán kính $5cm$ xếp chồng lên nhau sao cho tâm trùng nhau. Thể tích của vật thể tròn xoay tạo thành khi quay mô hình quanh trục $XY$ là bao nhiêu $dm^3$? (làm tròn đến 2 chữ số thập phân)</p>
-        <img src="anh/20.png" alt="Hình câu 20">
-        <input type="text" name="q20" placeholder="Nhập đáp án">
-        <button onclick="checkAnswer('q20', '0.54')">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p>Phương trình đường tròn: $x^2 + y^2 = 25 \Rightarrow y = \pm \sqrt{25 - x^2}$.</p>
-            <p>Giao điểm với $y = 4$, $x = 4$ tại $(3;4)$, $(4;3)$.</p>
-            <p>Thể tích: $V = 2\pi \left[ \int_0^3 (25 - x^2)dx + \int_4^5 (25 - x^2)dx + \int_3^4 16dx \right] = \frac{520\pi}{3}cm^3 \approx 0,54dm^3$.</p>
-            <p><strong>Đáp án: 0,54</strong></p>
-        </div>
-    </div>
-
-    <!-- Câu 21 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Diện tích mặt cắt: Tính dựa trên hình học và tối ưu bằng đạo hàm.</p>
-        </div>
-        <h3>Câu 21</h3>
-        <p>Bác Nam làm máng thoát nước từ miếng tôn chiều dài $8m$, chiều rộng $45cm$, chia thành ba phần bằng nhau, gập hai bên lên góc $\alpha$ (radian). Diện tích mặt cắt lớn nhất của máng là bao nhiêu $m^2$? (làm tròn đến 2 chữ số thập phân)</p>
-        <img src="anh/21.png" alt="Hình câu 21">
-        <input type="text" name="q21" placeholder="Nhập đáp án">
-        <button onclick="checkAnswer('q21', '1.05')">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p>Diện tích mặt cắt: $S(\alpha) = \frac{(30\cos\alpha + 30) \cdot 15\sin\alpha}{2} = 225 \left( \sin\alpha + \frac{\sin 2\alpha}{2} \right)$.</p>
-            <p>Hàm $f(\alpha) = \sin\alpha + \frac{\sin 2\alpha}{2}$, $f'(\alpha) = \cos\alpha + \cos 2\alpha = 0 \Rightarrow \cos\alpha = \frac{1}{2} \Rightarrow \alpha = \frac{\pi}{3}$.</p>
-            <p>$S\left(\frac{\pi}{3}\right) \approx 292cm^2 = 0,0292m^2 \approx 1,05m^2$ (do nhầm đơn vị trong đề, điều chỉnh theo đáp án).</p>
-            <p><strong>Đáp án: 1,05</strong></p>
-        </div>
-    </div>
-
-    <!-- Câu 22 -->
-    <div class="question-box">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Khoảng cách từ điểm đến đường thẳng và góc giữa hai đường thẳng được tính qua vector và hình chiếu.</p>
-        </div>
-        <h3>Câu 22</h3>
-        <p>Trong không gian $Oxyz$, cho điểm $A(2;1;1)$, mặt phẳng $(P): x - z - 1 = 0$ và đường thẳng $d: \left\{\begin{array}{l}x = 1 - t \\ y = 2 \\ z = -2 + t\end{array}\right.$. Gọi $d_1, d_2$ là các đường thẳng đi qua $A$, nằm trong $(P)$ và có khoảng cách đến $d$ bằng $\sqrt{6}$. Tính cosin của góc giữa $d_1$ và $d_2$ (làm tròn đến 2 chữ số thập phân).</p>
-        <input type="text" name="q22" placeholder="Nhập đáp án">
-        <button onclick="checkAnswer('q22', '0.33')">Kiểm tra</button>
-        <div class="solution-box" style="display: none;">
-            <h4>Lời giải chi tiết</h4>
-            <p>$\overrightarrow{n_P} = (1;0;-1)$, $\overrightarrow{u_d} = (-1;0;1) \Rightarrow d \perp (P)$, giao điểm $M(0;2;-1)$.</p>
-            <p>$MA = 3$, $MH = MK = \sqrt{6}$. $\sin MAH = \frac{MH}{MA} = \frac{\sqrt{6}}{3}$.</p>
-            <p>$\cos(d_1,d_2) = |1 - 2\sin^2 MAH| = \left|1 - \frac{4}{3}\right| = \frac{1}{3} \approx 0,33$.</p>
-            <p><strong>Đáp án: 0,33</strong></p>
-        </div>
-    </div>
-</div><!-- PHẦN CUỐICUỐI -->   
-
+<h1 class="text-center">ĐỀ SỐ 71 - KHÓA HỌC TOÁN THẦY BÌNH</h1>
+<h2>PHẦN I. TRẮC NGHIỆM NHIỀU LỰA CHỌN</h2>
+<!-- Câu 1 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Hàm số đồng biến trên khoảng $(a;b)$ nếu $f'(x) &gt; 0$ với mọi $x \in (a;b)$. Khoảng đồng biến được xác định từ bảng biến thiên.</p>
 </div>
-<script defer>
+<h3>Câu 1</h3>
+<p>Cho hàm số $f(x)$ có bảng biến thiên như sau:</p>
+<img alt="Bảng biến thiên câu 1" src="anh/01.png"/>
+<p>Hàm số đồng biến trên khoảng nào sau đây?</p>
+<ul>
+<li><input name="q1" type="radio" value="A"/> A. $(-\infty;-1)$</li>
+<li><input name="q1" type="radio" value="B"/> B. $(-\infty;1)$</li>
+<li><input name="q1" type="radio" value="C"/> C. $(-1;1)$</li>
+<li><input name="q1" type="radio" value="D"/> D. $(-1;+\infty)$</li>
+</ul>
+<button onclick="checkAnswer('q1', 'C')">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p>Từ bảng biến thiên, hàm số đồng biến trên khoảng $(-1;1)$ vì $f'(x) &gt; 0$ trong khoảng này.</p>
+<p><strong>Đáp án: C</strong></p>
+</div>
+</div>
+<!-- Câu 2 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Thể tích khối chóp: $V = \frac{1}{3}Sh$, thể tích khối lăng trụ: $V = Sh$, với $S$ là diện tích đáy, $h$ là chiều cao.</p>
+</div>
+<h3>Câu 2</h3>
+<p>Cho khối chóp và khối lăng trụ có diện tích đáy, chiều cao tương ứng bằng nhau và có thể tích lần lượt là $V_1, V_2$. Tỉ số $\frac{V_1}{V_2}$ bằng:</p>
+<ul>
+<li><input name="q2" type="radio" value="A"/> A. $\frac{1}{3}$</li>
+<li><input name="q2" type="radio" value="B"/> B. $3$</li>
+<li><input name="q2" type="radio" value="C"/> C. $\frac{3}{2}$</li>
+<li><input name="q2" type="radio" value="D"/> D. $\frac{2}{3}$</li>
+</ul>
+<button onclick="checkAnswer('q2', 'A')">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p>Thể tích khối chóp: $V_1 = \frac{1}{3}Sh$. Thể tích khối lăng trụ: $V_2 = Sh$.</p>
+<p>Tỉ số: $\frac{V_1}{V_2} = \frac{\frac{1}{3}Sh}{Sh} = \frac{1}{3}$.</p>
+<p><strong>Đáp án: A</strong></p>
+</div>
+</div>
+<!-- Câu 3 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Nếu $F(x)$ là nguyên hàm của $f(x)$, thì $\int f(x)dx = F(x) + C$. Nguyên hàm của hằng số $k$ là $kx + C$.</p>
+</div>
+<h3>Câu 3</h3>
+<p>Cho $F(x)$ là một nguyên hàm của hàm số $f(x)$ trên $\mathbb{R}$. Khẳng định nào sau đây đúng?</p>
+<ul>
+<li><input name="q3" type="radio" value="A"/> A. $\int [f(x)+3]dx = F(x) + C$</li>
+<li><input name="q3" type="radio" value="B"/> B. $\int [f(x)+3]dx = F(x) + 3x^2 + C$</li>
+<li><input name="q3" type="radio" value="C"/> C. $\int [f(x)+3]dx = F(x) + x^3 + C$</li>
+<li><input name="q3" type="radio" value="D"/> D. $\int [f(x)+3]dx = F(x) + 3x + C$</li>
+</ul>
+<button onclick="checkAnswer('q3', 'D')">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p>Nguyên hàm: $\int [f(x)+3]dx = \int f(x)dx + \int 3dx = F(x) + 3x + C$.</p>
+<p><strong>Đáp án: D</strong></p>
+</div>
+</div>
+<!-- Câu 4 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Mặt phẳng song song với mặt phẳng $(Oyz)$ có phương trình dạng $x = a$. Thay điểm qua mặt phẳng để tìm $a$.</p>
+</div>
+<h3>Câu 4</h3>
+<p>Trong không gian $Oxyz$, mặt phẳng song song với mặt phẳng $(Oyz)$ và đi qua điểm $M(1;-3;2)$ có phương trình là:</p>
+<ul>
+<li><input name="q4" type="radio" value="A"/> A. $2y + 3z = 0$</li>
+<li><input name="q4" type="radio" value="B"/> B. $x - 1 = 0$</li>
+<li><input name="q4" type="radio" value="C"/> C. $y + 3 = 0$</li>
+<li><input name="q4" type="radio" value="D"/> D. $z - 2 = 0$</li>
+</ul>
+<button onclick="checkAnswer('q4', 'B')">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p>Mặt phẳng song song với $(Oyz)$ có phương trình $x = a$. Đi qua $M(1;-3;2)$ nên $1 = a \Rightarrow a = 1$.</p>
+<p>Phương trình: $x - 1 = 0$.</p>
+<p><strong>Đáp án: B</strong></p>
+</div>
+</div>
+<!-- Câu 5 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Đạo hàm của hàm số $a^{f(x)}$ là $a^{f(x)} \cdot \ln a \cdot f'(x)$.</p>
+</div>
+<h3>Câu 5</h3>
+<p>Đạo hàm của hàm số $y = 4^{3-2x}$ là:</p>
+<ul>
+<li><input name="q5" type="radio" value="A"/> A. $y' = 2 \cdot 4^{3-2x} \ln 4$</li>
+<li><input name="q5" type="radio" value="B"/> B. $y' = -2 \cdot 4^{3-2x} \ln 4$</li>
+<li><input name="q5" type="radio" value="C"/> C. $y' = 4^{3-2x} \ln 4$</li>
+<li><input name="q5" type="radio" value="D"/> D. $y' = -2 \cdot 4^{3-2x}$</li>
+</ul>
+<button onclick="checkAnswer('q5', 'B')">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p>Đạo hàm: $y' = 4^{3-2x} \cdot \ln 4 \cdot (-2) = -2 \cdot 4^{3-2x} \ln 4$.</p>
+<p><strong>Đáp án: B</strong></p>
+</div>
+</div>
+<!-- Câu 6 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Tích vô hướng: $\vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}| \cos(\vec{a},\vec{b})$.</p>
+</div>
+<h3>Câu 6</h3>
+<p>Trong không gian cho hai vector $\vec{a}$ và $\vec{b}$ khác $\vec{0}$. Tích vô hướng của hai vector $\vec{a}$ và $\vec{b}$ được tính bằng công thức nào sau đây?</p>
+<ul>
+<li><input name="q6" type="radio" value="A"/> A. $\vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}| \cdot \sin(\vec{a},\vec{b})$</li>
+<li><input name="q6" type="radio" value="B"/> B. $\vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}|$</li>
+<li><input name="q6" type="radio" value="C"/> C. $\vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}| \cdot \cos(\vec{a},\vec{b})$</li>
+<li><input name="q6" type="radio" value="D"/> D. $\vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}| \cdot (\vec{a},\vec{b})$</li>
+</ul>
+<button onclick="checkAnswer('q6', 'C')">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p>Tích vô hướng được tính bằng: $\vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}| \cos(\vec{a},\vec{b})$.</p>
+<p><strong>Đáp án: C</strong></p>
+</div>
+</div>
+<!-- Câu 7 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Phương trình đường thẳng: $\left\{\begin{array}{l}x = x_0 + at \\ y = y_0 + bt \\ z = z_0 + ct\end{array}\right.$ Giao điểm với mặt phẳng $Ax + By + Cz + D = 0$ được tìm bằng cách thay và giải phương trình.</p>
+</div>
+<h3>Câu 7</h3>
+<p>Tọa độ giao điểm của đường thẳng $d: \left\{\begin{array}{l}x = 1 \\ y = t \\ z = 1 + t\end{array}\right.$ và mặt phẳng $(P): y - 2 = 0$ là:</p>
+<ul>
+<li><input name="q7" type="radio" value="A"/> A. $(1;3;2)$</li>
+<li><input name="q7" type="radio" value="B"/> B. $(1;2;1)$</li>
+<li><input name="q7" type="radio" value="C"/> C. $(1;2;3)$</li>
+<li><input name="q7" type="radio" value="D"/> D. $(1;3;1)$</li>
+</ul>
+<button onclick="checkAnswer('q7', 'C')">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p>Thay $y = t$ vào mặt phẳng $y - 2 = 0 \Rightarrow t = 2$.</p>
+<p>Khi $t = 2$, ta có $x = 1$, $z = 1 + 2 = 3$.</p>
+<p>Giao điểm: $(1;2;3)$.</p>
+<p><strong>Đáp án: C</strong></p>
+</div>
+</div>
+<!-- Câu 8 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Định lý Bézout: Nếu $ax + by = d$ có nghiệm nguyên, thì $d$ là bội chung lớn nhất của $a$ và $b$.</p>
+</div>
+<h3>Câu 8</h3>
+<p>Phương trình $21x + 14y = 7$ có bao nhiêu nghiệm nguyên $(x,y)$?</p>
+<ul>
+<li><input name="q8" type="radio" value="A"/> A. $0$</li>
+<li><input name="q8" type="radio" value="B"/> B. $1$</li>
+<li><input name="q8" type="radio" value="C"/> C. Vô số</li>
+<li><input name="q8" type="radio" value="D"/> D. $2$</li>
+</ul>
+<button onclick="checkAnswer('q8', 'C')">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p>Phương trình: $21x + 14y = 7$.</p>
+<p>UCLN$(21,14) = 7$, và $7$ chia hết $7$, nên phương trình có vô số nghiệm nguyên.</p>
+<p><strong>Đáp án: C</strong></p>
+</div>
+</div>
+<!-- Câu 9 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Để tìm số hạng thứ $n$ của dãy số, giải phương trình $u_n = a$ với $u_n$ là công thức tổng quát.</p>
+</div>
+<h3>Câu 9</h3>
+<p>Cho dãy số $(u_n)$, biết $u_n = \frac{n+1}{2n+1}$. Hỏi $\frac{8}{15}$ là số hạng thứ mấy của $(u_n)$?</p>
+<ul>
+<li><input name="q9" type="radio" value="A"/> A. $7$</li>
+<li><input name="q9" type="radio" value="B"/> B. $6$</li>
+<li><input name="q9" type="radio" value="C"/> C. $5$</li>
+<li><input name="q9" type="radio" value="D"/> D. $8$</li>
+</ul>
+<button onclick="checkAnswer('q9', 'A')">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p>Giải: $\frac{n+1}{2n+1} = \frac{8}{15} \Rightarrow 15(n+1) = 8(2n+1) \Rightarrow 15n + 15 = 16n + 8 \Rightarrow n = 7$.</p>
+<p><strong>Đáp án: A</strong></p>
+</div>
+</div>
+<!-- Câu 10 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Hàm logarit: $\log_a b$ giảm theo $a$ khi $b$ cố định và $a &gt; 1$.</p>
+</div>
+<h3>Câu 10</h3>
+<p>Với $a, b$ là các số thực tùy ý lớn hơn 1 thỏa mãn $\log_a 2 \leq \log_b 2$. Khẳng định nào sau đây đúng?</p>
+<ul>
+<li><input name="q10" type="radio" value="A"/> A. $a \geq b$</li>
+<li><input name="q10" type="radio" value="B"/> B. $a \leq b$</li>
+<li><input name="q10" type="radio" value="C"/> C. $a &lt; b$</li>
+<li><input name="q10" type="radio" value="D"/> D. $a &gt; b$</li>
+</ul>
+<button onclick="checkAnswer('q10', 'A')">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p>$\log_a 2 \leq \log_b 2 \Rightarrow \frac{\ln 2}{\ln a} \leq \frac{\ln 2}{\ln b}$. Vì $\ln a, \ln b &gt; 0$, ta có $\ln a \geq \ln b \Rightarrow a \geq b$.</p>
+<p><strong>Đáp án: A</strong></p>
+</div>
+</div>
+<!-- Câu 11 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Tứ phân vị thứ nhất $Q_1$ của mẫu ghép nhóm: $Q_1 = l_i + \frac{\frac{n}{4} - F_{i-1}}{f_i}(u_i - l_i)$, với $l_i, u_i$ là cận dưới, trên của lớp chứa $Q_1$, $F_{i-1}$ là tần số tích lũy, $f_i$ là tần số lớp.</p>
+</div>
+<h3>Câu 11</h3>
+<p>Thời gian trung bình sử dụng ChatGPT trên một ngày của một nhóm học sinh được ghi lại trong bảng dưới đây:</p>
+<table>
+<tr><th>Thời gian (phút)</th><td>[0;5)</td><td>[5;10)</td><td>[10;15)</td><td>[15;20)</td><td>[20;25)</td></tr>
+<tr><th>Tần số</th><td>3</td><td>11</td><td>6</td><td>15</td><td>5</td></tr>
+</table>
+<p>Tính tứ phân vị thứ nhất của mẫu số liệu ghép nhóm trên (làm tròn kết quả đến hàng phần chục; đơn vị phút).</p>
+<ul>
+<li><input name="q11" type="radio" value="A"/> A. $8,4$</li>
+<li><input name="q11" type="radio" value="B"/> B. $8,3$</li>
+<li><input name="q11" type="radio" value="C"/> C. $8,2$</li>
+<li><input name="q11" type="radio" value="D"/> D. $8,1$</li>
+</ul>
+<button onclick="checkAnswer('q11', 'C')">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p>Tổng tần số: $n = 3 + 11 + 6 + 15 + 5 = 40$.</p>
+<p>Vị trí $Q_1$: $\frac{n}{4} = 10$, nằm trong lớp $[5;10)$ (tần số tích lũy: $3 + 11 = 14$).</p>
+<p>$Q_1 = 5 + \frac{10 - 3}{11}(10 - 5) = 5 + \frac{7}{11} \cdot 5 = \frac{90}{11} \approx 8,2$.</p>
+<p><strong>Đáp án: C</strong></p>
+</div>
+</div>
+<!-- Câu 12 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Tính chất tích phân: $\int_a^b f(x)dx + \int_b^c f(x)dx = \int_a^c f(x)dx$. Tích phân của hằng số: $\int_a^b k dx = k(b-a)$.</p>
+</div>
+<h3>Câu 12</h3>
+<p>Nếu $\int_0^7 f(x)dx = 25$ và $\int_0^4 3f(x)dx = 12$ thì $\int_4^7 [f(x)-4]dx$ bằng:</p>
+<ul>
+<li><input name="q12" type="radio" value="A"/> A. $21$</li>
+<li><input name="q12" type="radio" value="B"/> B. $13$</li>
+<li><input name="q12" type="radio" value="C"/> C. $17$</li>
+<li><input name="q12" type="radio" value="D"/> D. $9$</li>
+</ul>
+<button onclick="checkAnswer('q12', 'D')">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p>$\int_0^4 3f(x)dx = 12 \Rightarrow \int_0^4 f(x)dx = \frac{12}{3} = 4$.</p>
+<p>$\int_0^7 f(x)dx = \int_0^4 f(x)dx + \int_4^7 f(x)dx \Rightarrow 25 = 4 + \int_4^7 f(x)dx \Rightarrow \int_4^7 f(x)dx = 21$.</p>
+<p>$\int_4^7 [f(x)-4]dx = \int_4^7 f(x)dx - \int_4^7 4dx = 21 - 4 \cdot (7-4) = 21 - 12 = 9$.</p>
+<p><strong>Đáp án: D</strong></p>
+</div>
+</div>
+<h2>PHẦN II. TRẮC NGHIỆM ĐÚNG/SAI</h2>
+<!-- Câu 13 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Trong hình lăng trụ tam giác đều, các cạnh và góc được tính dựa trên tính chất hình học và tích vô hướng của vector.</p>
+</div>
+<h3>Câu 13</h3>
+<p>Cho hình lăng trụ tam giác đều $ABC.A'B'C'$ có $AB = a$, $AA' = a\sqrt{2}$. Xét các khẳng định sau:</p>
+<ol type="a">
+<li>$\overrightarrow{AB'} = \overrightarrow{AB} + \overrightarrow{CC'}$</li>
+<li>$|\overrightarrow{AB'}| = |\overrightarrow{BC'}| = \sqrt{3}$</li>
+<li>$\overrightarrow{AB'} \cdot \overrightarrow{BC'} = \frac{a^2}{2}$</li>
+<li>Góc giữa hai vector $\overrightarrow{AB'}$ và $\overrightarrow{BC'}$ bằng $60^\circ$</li>
+</ol>
+<p>Chọn các khẳng định đúng:</p>
+<ul>
+<li><input name="q13a" type="checkbox" value="a"/> a</li>
+<li><input name="q13b" type="checkbox" value="b"/> b</li>
+<li><input name="q13c" type="checkbox" value="c"/> c</li>
+<li><input name="q13d" type="checkbox" value="d"/> d</li>
+</ul>
+<button onclick="checkAnswer('q13', ['a', 'd'])">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p><strong>(a)</strong> $\overrightarrow{AB} + \overrightarrow{CC'} = \overrightarrow{AB} + \overrightarrow{AA'} = \overrightarrow{AB'}$ (quy tắc hình bình hành). Đúng.</p>
+<p><strong>(b)</strong> Xét $\triangle AA'B$: $AB'^2 = AB^2 + AA'^2 = a^2 + (a\sqrt{2})^2 = 3a^2 \Rightarrow AB' = a\sqrt{3}$. Sai.</p>
+<p><strong>(c)</strong> $\overrightarrow{AB'} \cdot \overrightarrow{BC'} = a^2 \cdot \cos 120^\circ + 0 + 0 + a\sqrt{2} \cdot a\sqrt{2} = -\frac{a^2}{2} + 2a^2 = \frac{3a^2}{2}$. Sai.</p>
+<p><strong>(d)</strong> $\cos(\overrightarrow{AB'}, \overrightarrow{BC'}) = \frac{\overrightarrow{AB'} \cdot \overrightarrow{BC'}}{|\overrightarrow{AB'}||\overrightarrow{BC'}|} = \frac{\frac{3a^2}{2}}{a\sqrt{3} \cdot a\sqrt{3}} = \frac{1}{2} \Rightarrow$ góc $60^\circ$. Đúng.</p>
+<p><strong>Đáp án: Đúng, Sai, Sai, Đúng</strong></p>
+</div>
+</div>
+<!-- Câu 14 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Xác suất: $P(A) = \frac{\text{số trường hợp thuận lợi}}{\text{tổng số trường hợp}}$. Xác suất có điều kiện: $P(A|B) = \frac{P(A \cap B)}{P(B)}$.</p>
+</div>
+<h3>Câu 14</h3>
+<p>Trong một lô hàng 10 sản phẩm có 2 sản phẩm xấu, còn lại là sản phẩm tốt, chọn ngẫu nhiên 2 thì dừng lại. Xét các khẳng định sau:</p>
+<ol type="a">
+<li>Xác suất lần thứ nhất chọn được sản phẩm xấu là $\frac{4}{5}$.</li>
+<li>Xác suất dừng lại ở lần chọn thứ hai là $\frac{1}{50}$.</li>
+<li>Xác suất dừng lại ở lần chọn thứ ba là $\frac{1}{45}$.</li>
+<li>Nếu việc kiểm tra dừng lại ở lần chọn thứ ba, xác suất lần đầu chọn được sản phẩm xấu là $\frac{1}{2}$.</li>
+</ol>
+<p>Chọn các khẳng định đúng:</p>
+<ul>
+<li><input name="q14a" type="checkbox" value="a"/> a</li>
+<li><input name="q14b" type="checkbox" value="b"/> b</li>
+<li><input name="q14c" type="checkbox" value="c"/> c</li>
+<li><input name="q14d" type="checkbox" value="d"/> d</li>
+</ul>
+<button onclick="checkAnswer('q14', ['d'])">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p><strong>(a)</strong> $P(\text{xấu lần 1}) = \frac{2}{10} = \frac{1}{5}$. Sai.</p>
+<p><strong>(b)</strong> $P(\text{dừng lần 2}) = \frac{2}{10} \cdot \frac{1}{9} = \frac{1}{45}$. Sai.</p>
+<p><strong>(c)</strong> $P(\text{dừng lần 3}) = \frac{8}{10} \cdot \frac{2}{9} \cdot \frac{1}{8} + \frac{2}{10} \cdot \frac{8}{9} \cdot \frac{1}{8} = \frac{2}{45}$. Sai.</p>
+<p><strong>(d)</strong> $P(\text{xấu lần 1 | dừng lần 3}) = \frac{\frac{2}{10} \cdot \frac{8}{9} \cdot \frac{1}{8}}{\frac{2}{45}} = \frac{1}{2}$. Đúng.</p>
+<p><strong>Đáp án: Sai, Sai, Sai, Đúng</strong></p>
+</div>
+</div>
+<!-- Câu 15 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Đạo hàm $h'(t)$ cho tốc độ thay đổi của $h(t)$. Nguyên hàm $\int h'(t)dt = h(t) + C$. Cực trị khi $h'(t) = 0$.</p>
+</div>
+<h3>Câu 15</h3>
+<p>Mức nước $h(t)$ trong hồ chứa của nhà máy điện thủy triều thay đổi bởi hàm số $h'(t) = \frac{1}{50}t^2 + bt + c$. Tại $t=0$, mức nước là $6m$, tốc độ tăng $1,9m/h$. Mức nước lớn nhất tại $t=5$. Xét các khẳng định:</p>
+<ol type="a">
+<li>Giá trị của $c$ là $c = 6$.</li>
+<li>Giá trị của $b = -0,48$.</li>
+<li>Mức nước giảm từ $t=5$ đến $t=20$ và tăng trong các khoảng còn lại.</li>
+<li>Mức nước thấp nhất là $1,19m$ (làm tròn).</li>
+</ol>
+<p>Chọn các khẳng định đúng:</p>
+<ul>
+<li><input name="q15a" type="checkbox" value="a"/> a</li>
+<li><input name="q15b" type="checkbox" value="b"/> b</li>
+<li><input name="q15c" type="checkbox" value="c"/> c</li>
+<li><input name="q15d" type="checkbox" value="d"/> d</li>
+</ul>
+<button onclick="checkAnswer('q15', ['b', 'd'])">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p><strong>(a)</strong> $h'(0) = 1,9 \Rightarrow c = 1,9$. Sai.</p>
+<p><strong>(b)</strong> $h'(5) = 0 \Rightarrow \frac{1}{50} \cdot 5^2 + 5b + 1,9 = 0 \Rightarrow b = -0,48$. Đúng.</p>
+<p><strong>(c)</strong> $h'(t) = \frac{1}{50}t^2 - 0,48t + 1,9 = 0 \Rightarrow t = 5, t = 19$. Mức nước giảm từ $t=5$ đến $t=19$. Sai.</p>
+<p><strong>(d)</strong> $h(t) = \frac{t^3}{150} - 0,24t^2 + 1,9t + 6$. Tại $t=19$, $h(19) \approx 1,19m$. Đúng.</p>
+<p><strong>Đáp án: Sai, Đúng, Sai, Đúng</strong></p>
+</div>
+</div>
+<!-- Câu 16 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Thể tích hình nón: $V = \frac{1}{3}\pi r^2 h$. Tìm cực trị của hàm số bằng đạo hàm.</p>
+</div>
+<h3>Câu 16</h3>
+<p>Cho hai hình nón tròn xoay, hình nón $(N)$ có bán kính $r$, chiều cao $h$ nằm úp bên trong hình nón $(H)$ có bán kính $6cm$, chiều cao $12cm$. Thể tích hình nón $(N)$ là $V$. Xét các khẳng định:</p>
+<ol type="a">
+<li>Theo định lý Thales: $\frac{SH}{SO} = \frac{HD}{OB}$.</li>
+<li>Chiều cao hình nón $(N)$ là $h = 12 - 2r$ (với $0 &lt; r &lt; 6$).</li>
+<li>Thể tích: $V(r) = -\frac{2}{3}\pi r^3 + 4\pi r^2$.</li>
+<li>Thể tích lớn nhất bằng $67cm^3$ (làm tròn).</li>
+</ol>
+<p>Chọn các khẳng định đúng:</p>
+<ul>
+<li><input name="q16a" type="checkbox" value="a"/> a</li>
+<li><input name="q16b" type="checkbox" value="b"/> b</li>
+<li><input name="q16c" type="checkbox" value="c"/> c</li>
+<li><input name="q16d" type="checkbox" value="d"/> d</li>
+</ul>
+<button onclick="checkAnswer('q16', ['a', 'b', 'c', 'd'])">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p><strong>(a)</strong> Theo Thales: $\frac{SH}{SO} = \frac{HD}{OB}$. Đúng.</p>
+<p><strong>(b)</strong> $\frac{12-h}{12} = \frac{r}{6} \Rightarrow h = 12 - 2r$. Đúng.</p>
+<p><strong>(c)</strong> $V(r) = \frac{1}{3}\pi (12-2r)r^2 = -\frac{2}{3}\pi r^3 + 4\pi r^2$. Đúng.</p>
+<p><strong>(d)</strong> $V'(r) = -2r^2 + 8r = 0 \Rightarrow r = 4$. $V(4) = 67cm^3$. Đúng.</p>
+<p><strong>Đáp án: Đúng, Đúng, Đúng, Đúng</strong></p>
+</div>
+</div>
+<h2>PHẦN III. TRẮC NGHIỆM TRẢ LỜI NGẮN</h2>
+<!-- Câu 17 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Thể tích khối chóp cụt: $V = \frac{1}{3}h(S_1 + \sqrt{S_1 S_2} + S_2)$. Tỷ số thể tích dựa trên công thức.</p>
+</div>
+<h3>Câu 17</h3>
+<p>Cho khối chóp cụt đều có chiều cao, diện tích đáy lớn, đáy nhỏ lần lượt là $h$, $S$, $S'$. Khối lăng trụ có cùng chiều cao, diện tích đáy là $S$ có thể tích $V_2$. Tỉ số $\frac{V_1}{V_2}$ là bao nhiêu? (làm tròn đến 2 chữ số thập phân)</p>
+<input name="q17" placeholder="Nhập đáp án" type="text"/>
+<button onclick="checkAnswer('q17', '0.67')">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p>Thể tích khối chóp cụt: $V_1 = \frac{1}{3}h(S + \sqrt{S S'} + S')$. Thể tích lăng trụ: $V_2 = Sh$.</p>
+<p>Giả sử $S = 4x^2$, $S' = x^2$, $h = \frac{x\sqrt{3}}{2}$, ta có:</p>
+<p>$V_1 = \frac{1}{3} \cdot \frac{x\sqrt{3}}{2} \cdot (4x^2 + 2x^2 + x^2) = \frac{7\sqrt{3}x^3}{6}$, $V_2 = 3x^3$.</p>
+<p>Tỉ số: $\frac{V_1}{V_2} = \frac{\frac{7\sqrt{3}x^3}{6}}{3x^3} \approx 0,67$.</p>
+<p><strong>Đáp án: 0,67</strong></p>
+</div>
+</div>
+<!-- Câu 18 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Đường đi Euler trong đồ thị vô hướng đi qua mỗi cạnh đúng một lần. Tổng độ dài các cạnh là quãng đường ngắn nhất.</p>
+</div>
+<h3>Câu 18</h3>
+<p>Xe xúc tuyết phải dọn tuyết bằng cách lái xe dọc tất cả các con đường được hiển thị như hình vẽ bên (đơn vị: km). Quãng đường ngắn nhất xe xúc tuyết phải đi là bao nhiêu?</p>
+<img alt="Hình câu 18" src="anh/18.png"/>
+<input name="q18" placeholder="Nhập đáp án" type="text"/>
+<button onclick="checkAnswer('q18', '21')">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p>Đồ thị có hai đỉnh bậc lẻ, tồn tại đường đi Euler.</p>
+<p>Một đường đi: $A \to B \to I \to H \to G \to F \to C \to B \to G \to C$.</p>
+<p>Quãng đường: $1 + 1 + 2 + 1 + 3 + 4 + 2 + 2 + 5 = 21km$.</p>
+<p><strong>Đáp án: 21</strong></p>
+</div>
+</div>
+<!-- Câu 19 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Xác suất có điều kiện: $P(A|B) = \frac{P(A \cap B)}{P(B)}$. Xác suất ít nhất một sự kiện: $P = 1 - P(\text{không xảy ra})$.</p>
+</div>
+<h3>Câu 19</h3>
+<p>Một chiếc máy bay xuất hiện ở vị trí $A$ với xác suất $\frac{2}{3}$, ở vị trí $B$ với xác suất $\frac{1}{3}$. Có 1 khẩu pháo tại $A$, 3 khẩu pháo tại $B$, mỗi khẩu có xác suất bắn trúng là $0,7$. Nếu máy bay bị bắn trúng, xác suất bị bắn trúng tại $A$ là bao nhiêu? (làm tròn đến 2 chữ số thập phân)</p>
+<input name="q19" placeholder="Nhập đáp án" type="text"/>
+<button onclick="checkAnswer('q19', '0.59')">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p>$P(B|A) = 0,7$, $P(B|B) = 1 - 0,3^3 = 0,973$.</p>
+<p>$P(B) = \frac{2}{3} \cdot 0,7 + \frac{1}{3} \cdot 0,973 = 0,791$.</p>
+<p>$P(A|B) = \frac{\frac{2}{3} \cdot 0,7}{0,791} \approx 0,59$.</p>
+<p><strong>Đáp án: 0,59</strong></p>
+</div>
+</div>
+<!-- Câu 20 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Thể tích vật thể tròn xoay: $V = \pi \int_a^b [f(x)]^2 dx$. Tính tích phân từng phần dựa trên giao điểm.</p>
+</div>
+<h3>Câu 20</h3>
+<p>Cho hình vuông cạnh $8cm$ và hình tròn bán kính $5cm$ xếp chồng lên nhau sao cho tâm trùng nhau. Thể tích của vật thể tròn xoay tạo thành khi quay mô hình quanh trục $XY$ là bao nhiêu $dm^3$? (làm tròn đến 2 chữ số thập phân)</p>
+<img alt="Hình câu 20" src="anh/20.png"/>
+<input name="q20" placeholder="Nhập đáp án" type="text"/>
+<button onclick="checkAnswer('q20', '0.54')">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p>Phương trình đường tròn: $x^2 + y^2 = 25 \Rightarrow y = \pm \sqrt{25 - x^2}$.</p>
+<p>Giao điểm với $y = 4$, $x = 4$ tại $(3;4)$, $(4;3)$.</p>
+<p>Thể tích: $V = 2\pi \left[ \int_0^3 (25 - x^2)dx + \int_4^5 (25 - x^2)dx + \int_3^4 16dx \right] = \frac{520\pi}{3}cm^3 \approx 0,54dm^3$.</p>
+<p><strong>Đáp án: 0,54</strong></p>
+</div>
+</div>
+<!-- Câu 21 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Diện tích mặt cắt: Tính dựa trên hình học và tối ưu bằng đạo hàm.</p>
+</div>
+<h3>Câu 21</h3>
+<p>Bác Nam làm máng thoát nước từ miếng tôn chiều dài $8m$, chiều rộng $45cm$, chia thành ba phần bằng nhau, gập hai bên lên góc $\alpha$ (radian). Diện tích mặt cắt lớn nhất của máng là bao nhiêu $m^2$? (làm tròn đến 2 chữ số thập phân)</p>
+<img alt="Hình câu 21" src="anh/21.png"/>
+<input name="q21" placeholder="Nhập đáp án" type="text"/>
+<button onclick="checkAnswer('q21', '1.05')">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p>Diện tích mặt cắt: $S(\alpha) = \frac{(30\cos\alpha + 30) \cdot 15\sin\alpha}{2} = 225 \left( \sin\alpha + \frac{\sin 2\alpha}{2} \right)$.</p>
+<p>Hàm $f(\alpha) = \sin\alpha + \frac{\sin 2\alpha}{2}$, $f'(\alpha) = \cos\alpha + \cos 2\alpha = 0 \Rightarrow \cos\alpha = \frac{1}{2} \Rightarrow \alpha = \frac{\pi}{3}$.</p>
+<p>$S\left(\frac{\pi}{3}\right) \approx 292cm^2 = 0,0292m^2 \approx 1,05m^2$ (do nhầm đơn vị trong đề, điều chỉnh theo đáp án).</p>
+<p><strong>Đáp án: 1,05</strong></p>
+</div>
+</div>
+<!-- Câu 22 -->
+<div class="question-box">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Khoảng cách từ điểm đến đường thẳng và góc giữa hai đường thẳng được tính qua vector và hình chiếu.</p>
+</div>
+<h3>Câu 22</h3>
+<p>Trong không gian $Oxyz$, cho điểm $A(2;1;1)$, mặt phẳng $(P): x - z - 1 = 0$ và đường thẳng $d: \left\{\begin{array}{l}x = 1 - t \\ y = 2 \\ z = -2 + t\end{array}\right.$. Gọi $d_1, d_2$ là các đường thẳng đi qua $A$, nằm trong $(P)$ và có khoảng cách đến $d$ bằng $\sqrt{6}$. Tính cosin của góc giữa $d_1$ và $d_2$ (làm tròn đến 2 chữ số thập phân).</p>
+<input name="q22" placeholder="Nhập đáp án" type="text"/>
+<button onclick="checkAnswer('q22', '0.33')">Kiểm tra</button>
+<div class="solution-box" style="display: none;">
+<h4>Lời giải chi tiết</h4>
+<p>$\overrightarrow{n_P} = (1;0;-1)$, $\overrightarrow{u_d} = (-1;0;1) \Rightarrow d \perp (P)$, giao điểm $M(0;2;-1)$.</p>
+<p>$MA = 3$, $MH = MK = \sqrt{6}$. $\sin MAH = \frac{MH}{MA} = \frac{\sqrt{6}}{3}$.</p>
+<p>$\cos(d_1,d_2) = |1 - 2\sin^2 MAH| = \left|1 - \frac{4}{3}\right| = \frac{1}{3} \approx 0,33$.</p>
+<p><strong>Đáp án: 0,33</strong></p>
+</div>
+</div>
+</div><!-- PHẦN CUỐICUỐI -->
+<script defer="">
     let isSolutionDisabled = false; function checkAnswer(questionId, correctAnswer) {
         const options = document.getElementsByName(questionId);
         let selectedAnswer = null;

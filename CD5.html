@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Chuyên Đề THI TOÁN - Chuyên Đề SỐ 3 với 22 câu hỏi trắc nghiệm và lời giải chi tiết, kèm tóm tắt kiến thức.">
-    <title>Chuyên Đề THI TOÁN - Chuyên Đề 3 - KHÓA HỌC TOÁN THẦY BÌNH</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Chuyên Đề THI TOÁN - Chuyên Đề SỐ 3 với 22 câu hỏi trắc nghiệm và lời giải chi tiết, kèm tóm tắt kiến thức." name="description"/>
+<title>Chuyên Đề THI TOÁN - Chuyên Đề 3 - KHÓA HỌC TOÁN THẦY BÌNH</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
         body {
             font-family: 'Roboto', sans-serif;
             background: linear-gradient(135deg, #ecfdf5, #f3e8ff);
@@ -250,123 +251,221 @@
                 font-size: 0.9rem;
             }
         }
-    </style>
+    
+.question img, .solution img {
+    display: block;
+    margin: 10px auto;
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+    object-position: center;
+    background: white;
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%;
+}
+
+.question img, .solution img {
+    display: block;
+    margin: 5px auto; /* Giảm khoảng cách */
+    width: 300px; /* Giảm chiều rộng */
+    height: 200px; /* Giảm chiều cao */
+    object-fit: contain;
+    object-position: center;
+    background: white;
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%; /* Đảm bảo vừa với màn hình nhỏ */
+}
+.question img:not([src]), .solution img:not([src]),
+.question img[src=''], .solution img[src=''],
+.question img[onerror], .solution img[onerror] {
+    display: none !important; /* Ẩn ảnh không tồn tại */
+}
+@media (max-width: 640px) {
+    .question img, .solution img {
+        width: 100%; /* Chiều rộng 100% trên di động */
+        height: auto; /* Chiều cao tự động */
+        margin: 3px auto; /* Giảm thêm khoảng cách trên di động */
+    }
+    .question img.long-image, .solution img.long-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.question img, .solution img {
+    display: block;
+    margin: 5px auto; /* Khoảng cách trên laptop */
+    width: 300px; /* Chiều rộng mặc định */
+    height: 200px; /* Chiều cao mặc định */
+    object-fit: contain;
+    object-position: center;
+    background: white;
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%; /* Đảm bảo vừa với màn hình nhỏ */
+}
+.question img:not([src]), .solution img:not([src]),
+.question img[src=''], .solution img[src=''],
+.question img[onerror], .solution img[onerror] {
+    display: none !important; /* Ẩn ảnh không tồn tại */
+}
+@media (max-width: 640px) {
+    .question img, .solution img {
+        max-width: 100%; /* Thu nhỏ theo màn hình */
+        width: auto; /* Tự động điều chỉnh chiều rộng */
+        height: auto; /* Tự động điều chỉnh chiều cao */
+        margin: 2px auto; /* Giảm khoảng cách trên di động */
+    }
+    .question img.long-image, .solution img.long-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.question img, .solution img {
+    display: block;
+    margin: 5px auto; /* Căn giữa và giữ khoảng cách nhỏ */
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%; /* Giới hạn chiều rộng tối đa */
+}
+.question img:not([src]), .solution img:not([src]),
+.question img[src=''], .solution img[src=''],
+.question img[onerror], .solution img[onerror] {
+    display: none !important; /* Ẩn ảnh không tồn tại */
+}
+@media (max-width: 640px) {
+    .question img, .solution img {
+        margin: 2px auto; /* Giảm khoảng cách trên di động */
+    }
+    .question img.long-image, .solution img.long-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+</style>
 </head>
 <body>
-    <div class="header">
-        <div class="logo">KHÓA HỌC TOÁN THẦY BÌNH</div>
-    </div>
-    <div class="nav-bar">
-        <div>
-            <a href="index.html">Trang chủ</a>
-        </div>
-        <div class="dropdown">
-            <span class="dropdown-button">Chọn đề</span>
-                <div class="dropdown-content">
-                    <!-- Tạo danh sách đề từ 1 đến 100 -->
-                    <a href="de1.html">Đề 1</a>
-                    <a href="de2.html">Đề 2</a>
-                    <a href="de3.html">Đề 3</a>
-                    <a href="de4.html">Đề 4</a>
-                    <a href="de5.html">Đề 5</a>
-                    <a href="de6.html">Đề 6</a>
-                    <a href="de7.html">Đề 7</a>
-                    <a href="de8.html">Đề 8</a>
-                    <a href="de9.html">Đề 9</a>
-                    <a href="de10.html">Đề 10</a>
-                    <a href="de11.html">Đề 11</a>
-                    <a href="de12.html">Đề 12</a>
-                    <a href="de13.html">Đề 13</a>
-                    <a href="de14.html">Đề 14</a>
-                    <a href="de15.html">Đề 15</a>
-                    <a href="de16.html">Đề 16</a>
-                    <a href="de17.html">Đề 17</a>
-                    <a href="de18.html">Đề 18</a>
-                    <a href="de19.html">Đề 19</a>
-                    <a href="de20.html">Đề 20</a>
-                    <a href="de21.html">Đề 21</a>
-                    <a href="de22.html">Đề 22</a>
-                    <a href="de23.html">Đề 23</a>
-                    <a href="de24.html">Đề 24</a>
-                    <a href="de25.html">Đề 25</a>
-                    <a href="de26.html">Đề 26</a>
-                    <a href="de27.html">Đề 27</a>
-                    <a href="de28.html">Đề 28</a>
-                    <a href="de29.html">Đề 29</a>
-                    <a href="de30.html">Đề 30</a>
-                    <a href="de31.html">Đề 31</a>
-                    <a href="de32.html">Đề 32</a>
-                    <a href="de33.html">Đề 33</a>
-                    <a href="de34.html">Đề 34</a>
-                    <a href="de35.html">Đề 35</a>
-                    <a href="de36.html">Đề 36</a>
-                    <a href="de37.html">Đề 37</a>
-                    <a href="de38.html">Đề 38</a>
-                    <a href="de39.html">Đề 39</a>
-                    <a href="de40.html">Đề 40</a>
-                    <a href="de41.html">Đề 41</a>
-                    <a href="de42.html">Đề 42</a>
-                    <a href="de43.html">Đề 43</a>
-                    <a href="de44.html">Đề 44</a>
-                    <a href="de45.html">Đề 45</a>
-                    <a href="de46.html">Đề 46</a>
-                    <a href="de47.html">Đề 47</a>
-                    <a href="de48.html">Đề 48</a>
-                    <a href="de49.html">Đề 49</a>
-                    <a href="de50.html">Đề 50</a>
-                    <a href="de51.html">Đề 51</a>
-                    <a href="de52.html">Đề 52</a>
-                    <a href="de53.html">Đề 53</a>
-                    <a href="de54.html">Đề 54</a>
-                    <a href="de55.html">Đề 55</a>
-                    <a href="de56.html">Đề 56</a>
-                    <a href="de57.html">Đề 57</a>
-                    <a href="de58.html">Đề 58</a>
-                    <a href="de59.html">Đề 59</a>
-                    <a href="de60.html">Đề 60</a>
-                    <a href="de61.html">Đề 61</a>
-                    <a href="de62.html">Đề 62</a>
-                    <a href="de63.html">Đề 63</a>
-                    <a href="de64.html">Đề 64</a>
-                    <a href="de65.html">Đề 65</a>
-                    <a href="de66.html">Đề 66</a>
-                    <a href="de67.html">Đề 67</a>
-                    <a href="de68.html">Đề 68</a>
-                    <a href="de69.html">Đề 69</a>
-                    <a href="de70.html">Đề 70</a>
-                    <a href="de71.html">Đề 71</a>
-                    <a href="de72.html">Đề 72</a>
-                    <a href="de73.html">Đề 73</a>
-                    <a href="de74.html">Đề 74</a>
-                    <a href="de75.html">Đề 75</a>
-                    <a href="de76.html">Đề 76</a>
-                    <a href="de77.html">Đề 77</a>
-                    <a href="de78.html">Đề 78</a>
-                    <a href="de79.html">Đề 79</a>
-                    <a href="de80.html">Đề 80</a>
-                    <a href="de81.html">Đề 81</a>
-                    <a href="de82.html">Đề 82</a>
-                    <a href="de83.html">Đề 83</a>
-                    <a href="de84.html">Đề 84</a>
-                    <a href="de85.html">Đề 85</a>
-                    <a href="de86.html">Đề 86</a>
-                    <a href="de87.html">Đề 87</a>
-                    <a href="de88.html">Đề 88</a>
-                    <a href="de89.html">Đề 89</a>
-                    <a href="de90.html">Đề 90</a>
-                    <a href="de91.html">Đề 91</a>
-                    <a href="de92.html">Đề 92</a>
-                    <a href="de93.html">Đề 93</a>
-                    <a href="de94.html">Đề 94</a>
-                    <a href="de95.html">Đề 95</a>
-                    <a href="de96.html">Đề 96</a>
-                    <a href="de97.html">Đề 97</a>
-                    <a href="de98.html">Đề 98</a>
-                    <a href="de99.html">Đề 99</a>
-                    <a href="de100.html">Đề 100</a>
-                </div>
-            </div>
-    </div>
+<div class="header">
+<div class="logo">KHÓA HỌC TOÁN THẦY BÌNH</div>
+</div>
+<div class="nav-bar">
+<div>
+<a href="index.html">Trang chủ</a>
+</div>
+<div class="dropdown">
+<span class="dropdown-button">Chọn đề</span>
+<div class="dropdown-content">
+<!-- Tạo danh sách đề từ 1 đến 100 -->
+<a href="de1.html">Đề 1</a>
+<a href="de2.html">Đề 2</a>
+<a href="de3.html">Đề 3</a>
+<a href="de4.html">Đề 4</a>
+<a href="de5.html">Đề 5</a>
+<a href="de6.html">Đề 6</a>
+<a href="de7.html">Đề 7</a>
+<a href="de8.html">Đề 8</a>
+<a href="de9.html">Đề 9</a>
+<a href="de10.html">Đề 10</a>
+<a href="de11.html">Đề 11</a>
+<a href="de12.html">Đề 12</a>
+<a href="de13.html">Đề 13</a>
+<a href="de14.html">Đề 14</a>
+<a href="de15.html">Đề 15</a>
+<a href="de16.html">Đề 16</a>
+<a href="de17.html">Đề 17</a>
+<a href="de18.html">Đề 18</a>
+<a href="de19.html">Đề 19</a>
+<a href="de20.html">Đề 20</a>
+<a href="de21.html">Đề 21</a>
+<a href="de22.html">Đề 22</a>
+<a href="de23.html">Đề 23</a>
+<a href="de24.html">Đề 24</a>
+<a href="de25.html">Đề 25</a>
+<a href="de26.html">Đề 26</a>
+<a href="de27.html">Đề 27</a>
+<a href="de28.html">Đề 28</a>
+<a href="de29.html">Đề 29</a>
+<a href="de30.html">Đề 30</a>
+<a href="de31.html">Đề 31</a>
+<a href="de32.html">Đề 32</a>
+<a href="de33.html">Đề 33</a>
+<a href="de34.html">Đề 34</a>
+<a href="de35.html">Đề 35</a>
+<a href="de36.html">Đề 36</a>
+<a href="de37.html">Đề 37</a>
+<a href="de38.html">Đề 38</a>
+<a href="de39.html">Đề 39</a>
+<a href="de40.html">Đề 40</a>
+<a href="de41.html">Đề 41</a>
+<a href="de42.html">Đề 42</a>
+<a href="de43.html">Đề 43</a>
+<a href="de44.html">Đề 44</a>
+<a href="de45.html">Đề 45</a>
+<a href="de46.html">Đề 46</a>
+<a href="de47.html">Đề 47</a>
+<a href="de48.html">Đề 48</a>
+<a href="de49.html">Đề 49</a>
+<a href="de50.html">Đề 50</a>
+<a href="de51.html">Đề 51</a>
+<a href="de52.html">Đề 52</a>
+<a href="de53.html">Đề 53</a>
+<a href="de54.html">Đề 54</a>
+<a href="de55.html">Đề 55</a>
+<a href="de56.html">Đề 56</a>
+<a href="de57.html">Đề 57</a>
+<a href="de58.html">Đề 58</a>
+<a href="de59.html">Đề 59</a>
+<a href="de60.html">Đề 60</a>
+<a href="de61.html">Đề 61</a>
+<a href="de62.html">Đề 62</a>
+<a href="de63.html">Đề 63</a>
+<a href="de64.html">Đề 64</a>
+<a href="de65.html">Đề 65</a>
+<a href="de66.html">Đề 66</a>
+<a href="de67.html">Đề 67</a>
+<a href="de68.html">Đề 68</a>
+<a href="de69.html">Đề 69</a>
+<a href="de70.html">Đề 70</a>
+<a href="de71.html">Đề 71</a>
+<a href="de72.html">Đề 72</a>
+<a href="de73.html">Đề 73</a>
+<a href="de74.html">Đề 74</a>
+<a href="de75.html">Đề 75</a>
+<a href="de76.html">Đề 76</a>
+<a href="de77.html">Đề 77</a>
+<a href="de78.html">Đề 78</a>
+<a href="de79.html">Đề 79</a>
+<a href="de80.html">Đề 80</a>
+<a href="de81.html">Đề 81</a>
+<a href="de82.html">Đề 82</a>
+<a href="de83.html">Đề 83</a>
+<a href="de84.html">Đề 84</a>
+<a href="de85.html">Đề 85</a>
+<a href="de86.html">Đề 86</a>
+<a href="de87.html">Đề 87</a>
+<a href="de88.html">Đề 88</a>
+<a href="de89.html">Đề 89</a>
+<a href="de90.html">Đề 90</a>
+<a href="de91.html">Đề 91</a>
+<a href="de92.html">Đề 92</a>
+<a href="de93.html">Đề 93</a>
+<a href="de94.html">Đề 94</a>
+<a href="de95.html">Đề 95</a>
+<a href="de96.html">Đề 96</a>
+<a href="de97.html">Đề 97</a>
+<a href="de98.html">Đề 98</a>
+<a href="de99.html">Đề 99</a>
+<a href="de100.html">Đề 100</a>
+</div>
+</div>
+</div>
 <script type="text/javascript">
         var gk_isXlsx = false;
         var gk_xlsxFileLookup = {};
@@ -407,892 +506,852 @@
         return gk_fileData[filename] || "";
         }
         </script><div class="container">
-    <!-- Tóm tắt kiến thức -->
-    <div class="card" id="theory">
-        <h2>1.A Tóm tắt kiến thức cần nhớ</h2>
-        
-        <h3>1.1. Quan hệ vuông góc trong không gian</h3>
-        <h4>a) Hai đường thẳng vuông góc</h4>
-        <p>Hai đường thẳng \(a\) và \(b\) vuông góc nếu góc giữa chúng bằng \(90^\circ\), ký hiệu \(a \perp b\).</p>
-
-        <h4>b) Đường thẳng vuông góc với mặt phẳng</h4>
-        <ul class="list-disc ml-6">
-            <li><strong>Định nghĩa:</strong> Đường thẳng \(d\) vuông góc với mặt phẳng \((P)\) nếu \(d\) vuông góc với mọi đường thẳng trong \((P)\), ký hiệu \(d \perp (P)\) hoặc \((P) \perp d\).</li>
-            <img src="anh/c5.d2.png" alt="">
-            <li><strong>Dấu hiệu nhận biết:</strong> Đường thẳng \(d\) vuông góc với mặt phẳng \((P)\) nếu \(d\) vuông góc với hai đường thẳng cắt nhau nằm trong \((P)\).</li>
-            <li><strong>Tính chất:</strong>
-                <ul class="list-disc ml-6">
-                    <li>Có duy nhất một đường thẳng đi qua một điểm và vuông góc với một mặt phẳng cho trước.</li>
-                    <li>Nếu hai đường thẳng cùng vuông góc với một mặt phẳng thì chúng song song.</li>
-                    <li>Nếu một đường thẳng vuông góc với một mặt phẳng thì nó vuông góc với mọi đường thẳng nằm trong mặt phẳng đó.</li>
-                </ul>
-            </li>
-        </ul>
-
-        <h4>c) Mặt phẳng vuông góc với mặt phẳng</h4>
-        <p>Hai mặt phẳng \((P)\) và \((Q)\) vuông góc nếu \((P)\) chứa một đường thẳng vuông góc với \((Q)\).</p>
-
-        <h4>d) Góc giữa đường thẳng và mặt phẳng</h4>
-        <p>Góc giữa đường thẳng \(d\) và mặt phẳng \((P)\) là góc giữa \(d\) và hình chiếu \(d'\) của \(d\) trên \((P)\), ký hiệu \((d, (P))\). Góc này có số đo từ \(0^\circ\) đến \(90^\circ\).</p>
-
-        <h4>e) Góc nhị diện</h4>
-        <ul class="list-disc ml-6">
-            <li>Góc nhị diện là hình gồm hai nửa mặt phẳng có chung bờ \(d\), ký hiệu \([P, d, Q]\) hoặc \([M, d, N]\), trong đó \((P)\), \((Q)\) là hai nửa mặt phẳng, \(M \in (P)\), \(N \in (Q)\).</li>
-            <li>Góc phẳng nhị diện là góc có đỉnh trên bờ, hai cạnh thuộc hai mặt và vuông góc với bờ.</li>
-            <li>Góc nhị diện vuông nếu góc phẳng nhị diện bằng \(90^\circ\).</li>
-            <li>Số đo góc nhị diện từ \(0^\circ\) đến \(180^\circ\).</li>
-        </ul>
-
-        <h3>1.2. Khoảng cách trong không gian</h3>
-        <h4>a) Khoảng cách từ điểm đến đường thẳng</h4>
-        <p>Khoảng cách từ điểm \(M\) đến đường thẳng \(\Delta\) là khoảng cách từ \(M\) đến hình chiếu vuông góc \(H\) của \(M\) trên \(\Delta\), ký hiệu \(d(M, \Delta)\).</p>
-
-        <h4>b) Khoảng cách từ điểm đến mặt phẳng</h4>
-        <p>Khoảng cách từ điểm \(M\) đến mặt phẳng \((P)\) là khoảng cách từ \(M\) đến hình chiếu vuông góc \(H\) của \(M\) trên \((P)\), ký hiệu \(d(M, (P))\).</p>
-
-        <h4>c) Khoảng cách giữa hai đường thẳng song song</h4>
-        <p>Khoảng cách giữa hai đường thẳng song song \((P)\) và \((Q)\) là khoảng cách từ một điểm bất kỳ trên \((P)\) đến mặt phẳng chứa \((Q)\) và song song với \((P)\), ký hiệu \(d((P), (Q))\).</p>
-
-        <h4>d) Khoảng cách giữa hai đường thẳng chéo nhau</h4>
-        <ul class="list-disc ml-6">
-            <li>Có duy nhất một đường thẳng \(c\) vuông góc và cắt cả hai đường thẳng \(a\) và \(b\), gọi là đường vuông góc chung.</li>
-            <li>Khoảng cách giữa \(a\) và \(b\) là độ dài đoạn vuông góc chung, ký hiệu \(d(a, b)\).</li>
-            <li><strong>Nhận xét:</strong>
-                <ul class="list-disc ml-6">
-                    <li>Gọi \((P)\) là mặt phẳng chứa \(b\) và song song với \(a\), hình chiếu của \(a\) trên \((P)\) là \(a'\), giao điểm của \(a'\) và \(b\) là \(K\), hình chiếu của \(K\) trên \(a\) là \(H\). Khi đó, \(HK\) là đoạn vuông góc chung, và \(d(a, b) = HK = d(a, (P))\).</li>
-                    <li>Nếu \(a \perp b\), gọi \((P)\) là mặt phẳng chứa \(b\) và vuông góc với \(a\), giao điểm của \(a\) và \((P)\) là \(H\), hình chiếu của \(H\) trên \(b\) là \(K\). Khi đó, \(HK\) là đoạn vuông góc chung.</li>
-                </ul>
-            </li>
-        </ul>
-
-        <h3>1.3. Thể tích của một số khối đa diện</h3>
-        <ul class="list-disc ml-6">
-            <li>Khối lăng trụ: \( V = S \cdot h \), với \(S\) là diện tích đáy, \(h\) là chiều cao.</li>
-            <li>Khối chóp: \( V = \frac{1}{3} S \cdot h \), với \(S\) là diện tích đáy, \(h\) là chiều cao.</li>
-            <li>Khối chóp cụt đều: \( V = \frac{1}{3} h (S_1 + \sqrt{S_1 S_2} + S_2) \), với \(S_1\), \(S_2\) là diện tích hai đáy, \(h\) là chiều cao.</li>
-        </ul>
-    </div>
-
-    <!-- Ví dụ minh họa -->
-    <div class="card example-box" id="example">
-        <h2>2. Ví dụ minh họa</h2>
-
-        <!-- Ví dụ 1 -->
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Có duy nhất một đường thẳng vuông góc và cắt cả hai đường thẳng chéo nhau.</p>
-        </div>
-        <p><strong>Ví dụ 1:</strong> Cho hai đường thẳng \(a\) và \(b\) chéo nhau. Có bao nhiêu đường thẳng vừa vuông góc vừa cắt cả hai đường thẳng \(a\) và \(b\)?</p>
-        <ul class="list-disc ml-6">
-            <li>A. 0</li>
-            <li>B. 1</li>
-            <li>C. 2</li>
-            <li>D. Vô số</li>
-        </ul>
-        <div class="solution" id="solution-example1">
-            <p><strong>Lời giải:</strong></p>
-            <p>Có và chỉ có một đường thẳng \(c\) vừa vuông góc vừa cắt cả hai đường thẳng \(a\) và \(b\).</p>
-            <p>Chọn <strong>B</strong>.</p>
-        </div>
-        <button class="solution-toggle" onclick="toggleSolution('solution-example1')">Hiện lời giải</button>
-
-        <!-- Ví dụ 2 -->
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Đường thẳng vuông góc với mặt phẳng: Nếu \(d \perp (P)\), thì \(d\) vuông góc với mọi đường thẳng trong \((P)\).</p>
-        </div>
-        <p><strong>Ví dụ 2:</strong> Cho hình chóp \(S.ABC\) có \(SA \perp (ABC)\), \(SB \perp BC\) (Hình 8: <img src="anh/hinh8.png" alt="Hình 8">). Trong tất cả các mặt của hình chóp \(S.ABC\), có bao nhiêu mặt là tam giác vuông?</p>
-        <img src="anh/c5.v2.png" alt="">
-        <ul class="list-disc ml-6">
-            <li>A. 1</li>
-            <li>B. 2</li>
-            <li>C. 3</li>
-            <li>D. 4</li>
-        </ul>
-        <div class="solution" id="solution-example2">
-            <p><strong>Lời giải:</strong></p>
-            <p>Vì \(SA \perp (ABC)\), nên \(SA \perp AB\), \(SA \perp AC\), \(SA \perp BC\).</p>
-            <p>Vì \(SB \perp BC\), và \(BC \perp SA\), suy ra \(BC \perp (SAB)\), do đó \(BC \perp BA\).</p>
-            <p>Vậy các tam giác \(SAB\), \(SAC\), \(SBC\), \(ABC\) đều là tam giác vuông.</p>
-            <p>Chọn <strong>D</strong>.</p>
-        </div>
-        <button class="solution-toggle" onclick="toggleSolution('solution-example2')">Hiện lời giải</button>
-
-        <!-- Ví dụ 3 -->
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Góc giữa đường thẳng và mặt phẳng: Góc giữa \(d\) và \((P)\) là góc giữa \(d\) và hình chiếu của \(d\) trên \((P)\).</p>
-        </div>
-        <p><strong>Ví dụ 3:</strong> Cho hình chóp \(S.ABC\) có \(SA \perp (ABC)\), \(AB \perp BC\), \(SA = AB = a\), \(AC = a\sqrt{3}\) (Hình 9: <img src="anh/hinh9.png" alt="Hình 9">). Xác định các khẳng định sau là đúng hay sai:</p>
-        <img src="anh/c5.v3.png" alt="">
-        <ul class="list-disc ml-6">
-            <li>a) \(BC \perp (SAB)\).</li>
-            <li>b) Góc giữa đường thẳng \(SC\) và mặt phẳng \((SAB)\) bằng \(\angle CSA\).</li>
-            <li>c) \(\tan \angle CSB = 1\).</li>
-            <li>d) Góc giữa đường thẳng \(SC\) và mặt phẳng \((SAB)\) bằng \(60^\circ\).</li>
-        </ul>
-        <div class="solution" id="solution-example3">
-            <p><strong>Lời giải:</strong></p>
-            <p>Vì \(SA \perp (ABC)\), nên \(SA \perp BC\). Vì \(AB \perp BC\), suy ra \(BC \perp (SAB)\). Vậy a) Đúng.</p>
-            <p>Tam giác \(ABC\) vuông tại \(B\), nên:
+<!-- Tóm tắt kiến thức -->
+<div class="card" id="theory">
+<h2>1.A Tóm tắt kiến thức cần nhớ</h2>
+<h3>1.1. Quan hệ vuông góc trong không gian</h3>
+<h4>a) Hai đường thẳng vuông góc</h4>
+<p>Hai đường thẳng \(a\) và \(b\) vuông góc nếu góc giữa chúng bằng \(90^\circ\), ký hiệu \(a \perp b\).</p>
+<h4>b) Đường thẳng vuông góc với mặt phẳng</h4>
+<ul class="list-disc ml-6">
+<li><strong>Định nghĩa:</strong> Đường thẳng \(d\) vuông góc với mặt phẳng \((P)\) nếu \(d\) vuông góc với mọi đường thẳng trong \((P)\), ký hiệu \(d \perp (P)\) hoặc \((P) \perp d\).</li>
+<img alt="" src="anh/c5.d2.png"/>
+<li><strong>Dấu hiệu nhận biết:</strong> Đường thẳng \(d\) vuông góc với mặt phẳng \((P)\) nếu \(d\) vuông góc với hai đường thẳng cắt nhau nằm trong \((P)\).</li>
+<li><strong>Tính chất:</strong>
+<ul class="list-disc ml-6">
+<li>Có duy nhất một đường thẳng đi qua một điểm và vuông góc với một mặt phẳng cho trước.</li>
+<li>Nếu hai đường thẳng cùng vuông góc với một mặt phẳng thì chúng song song.</li>
+<li>Nếu một đường thẳng vuông góc với một mặt phẳng thì nó vuông góc với mọi đường thẳng nằm trong mặt phẳng đó.</li>
+</ul>
+</li>
+</ul>
+<h4>c) Mặt phẳng vuông góc với mặt phẳng</h4>
+<p>Hai mặt phẳng \((P)\) và \((Q)\) vuông góc nếu \((P)\) chứa một đường thẳng vuông góc với \((Q)\).</p>
+<h4>d) Góc giữa đường thẳng và mặt phẳng</h4>
+<p>Góc giữa đường thẳng \(d\) và mặt phẳng \((P)\) là góc giữa \(d\) và hình chiếu \(d'\) của \(d\) trên \((P)\), ký hiệu \((d, (P))\). Góc này có số đo từ \(0^\circ\) đến \(90^\circ\).</p>
+<h4>e) Góc nhị diện</h4>
+<ul class="list-disc ml-6">
+<li>Góc nhị diện là hình gồm hai nửa mặt phẳng có chung bờ \(d\), ký hiệu \([P, d, Q]\) hoặc \([M, d, N]\), trong đó \((P)\), \((Q)\) là hai nửa mặt phẳng, \(M \in (P)\), \(N \in (Q)\).</li>
+<li>Góc phẳng nhị diện là góc có đỉnh trên bờ, hai cạnh thuộc hai mặt và vuông góc với bờ.</li>
+<li>Góc nhị diện vuông nếu góc phẳng nhị diện bằng \(90^\circ\).</li>
+<li>Số đo góc nhị diện từ \(0^\circ\) đến \(180^\circ\).</li>
+</ul>
+<h3>1.2. Khoảng cách trong không gian</h3>
+<h4>a) Khoảng cách từ điểm đến đường thẳng</h4>
+<p>Khoảng cách từ điểm \(M\) đến đường thẳng \(\Delta\) là khoảng cách từ \(M\) đến hình chiếu vuông góc \(H\) của \(M\) trên \(\Delta\), ký hiệu \(d(M, \Delta)\).</p>
+<h4>b) Khoảng cách từ điểm đến mặt phẳng</h4>
+<p>Khoảng cách từ điểm \(M\) đến mặt phẳng \((P)\) là khoảng cách từ \(M\) đến hình chiếu vuông góc \(H\) của \(M\) trên \((P)\), ký hiệu \(d(M, (P))\).</p>
+<h4>c) Khoảng cách giữa hai đường thẳng song song</h4>
+<p>Khoảng cách giữa hai đường thẳng song song \((P)\) và \((Q)\) là khoảng cách từ một điểm bất kỳ trên \((P)\) đến mặt phẳng chứa \((Q)\) và song song với \((P)\), ký hiệu \(d((P), (Q))\).</p>
+<h4>d) Khoảng cách giữa hai đường thẳng chéo nhau</h4>
+<ul class="list-disc ml-6">
+<li>Có duy nhất một đường thẳng \(c\) vuông góc và cắt cả hai đường thẳng \(a\) và \(b\), gọi là đường vuông góc chung.</li>
+<li>Khoảng cách giữa \(a\) và \(b\) là độ dài đoạn vuông góc chung, ký hiệu \(d(a, b)\).</li>
+<li><strong>Nhận xét:</strong>
+<ul class="list-disc ml-6">
+<li>Gọi \((P)\) là mặt phẳng chứa \(b\) và song song với \(a\), hình chiếu của \(a\) trên \((P)\) là \(a'\), giao điểm của \(a'\) và \(b\) là \(K\), hình chiếu của \(K\) trên \(a\) là \(H\). Khi đó, \(HK\) là đoạn vuông góc chung, và \(d(a, b) = HK = d(a, (P))\).</li>
+<li>Nếu \(a \perp b\), gọi \((P)\) là mặt phẳng chứa \(b\) và vuông góc với \(a\), giao điểm của \(a\) và \((P)\) là \(H\), hình chiếu của \(H\) trên \(b\) là \(K\). Khi đó, \(HK\) là đoạn vuông góc chung.</li>
+</ul>
+</li>
+</ul>
+<h3>1.3. Thể tích của một số khối đa diện</h3>
+<ul class="list-disc ml-6">
+<li>Khối lăng trụ: \( V = S \cdot h \), với \(S\) là diện tích đáy, \(h\) là chiều cao.</li>
+<li>Khối chóp: \( V = \frac{1}{3} S \cdot h \), với \(S\) là diện tích đáy, \(h\) là chiều cao.</li>
+<li>Khối chóp cụt đều: \( V = \frac{1}{3} h (S_1 + \sqrt{S_1 S_2} + S_2) \), với \(S_1\), \(S_2\) là diện tích hai đáy, \(h\) là chiều cao.</li>
+</ul>
+</div>
+<!-- Ví dụ minh họa -->
+<div class="card example-box" id="example">
+<h2>2. Ví dụ minh họa</h2>
+<!-- Ví dụ 1 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Có duy nhất một đường thẳng vuông góc và cắt cả hai đường thẳng chéo nhau.</p>
+</div>
+<p><strong>Ví dụ 1:</strong> Cho hai đường thẳng \(a\) và \(b\) chéo nhau. Có bao nhiêu đường thẳng vừa vuông góc vừa cắt cả hai đường thẳng \(a\) và \(b\)?</p>
+<ul class="list-disc ml-6">
+<li>A. 0</li>
+<li>B. 1</li>
+<li>C. 2</li>
+<li>D. Vô số</li>
+</ul>
+<div class="solution" id="solution-example1">
+<p><strong>Lời giải:</strong></p>
+<p>Có và chỉ có một đường thẳng \(c\) vừa vuông góc vừa cắt cả hai đường thẳng \(a\) và \(b\).</p>
+<p>Chọn <strong>B</strong>.</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example1')">Hiện lời giải</button>
+<!-- Ví dụ 2 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Đường thẳng vuông góc với mặt phẳng: Nếu \(d \perp (P)\), thì \(d\) vuông góc với mọi đường thẳng trong \((P)\).</p>
+</div>
+<p><strong>Ví dụ 2:</strong> Cho hình chóp \(S.ABC\) có \(SA \perp (ABC)\), \(SB \perp BC\) (Hình 8: <img alt="Hình 8" src="anh/hinh8.png"/>). Trong tất cả các mặt của hình chóp \(S.ABC\), có bao nhiêu mặt là tam giác vuông?</p>
+<img alt="" src="anh/c5.v2.png"/>
+<ul class="list-disc ml-6">
+<li>A. 1</li>
+<li>B. 2</li>
+<li>C. 3</li>
+<li>D. 4</li>
+</ul>
+<div class="solution" id="solution-example2">
+<p><strong>Lời giải:</strong></p>
+<p>Vì \(SA \perp (ABC)\), nên \(SA \perp AB\), \(SA \perp AC\), \(SA \perp BC\).</p>
+<p>Vì \(SB \perp BC\), và \(BC \perp SA\), suy ra \(BC \perp (SAB)\), do đó \(BC \perp BA\).</p>
+<p>Vậy các tam giác \(SAB\), \(SAC\), \(SBC\), \(ABC\) đều là tam giác vuông.</p>
+<p>Chọn <strong>D</strong>.</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example2')">Hiện lời giải</button>
+<!-- Ví dụ 3 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Góc giữa đường thẳng và mặt phẳng: Góc giữa \(d\) và \((P)\) là góc giữa \(d\) và hình chiếu của \(d\) trên \((P)\).</p>
+</div>
+<p><strong>Ví dụ 3:</strong> Cho hình chóp \(S.ABC\) có \(SA \perp (ABC)\), \(AB \perp BC\), \(SA = AB = a\), \(AC = a\sqrt{3}\) (Hình 9: <img alt="Hình 9" src="anh/hinh9.png"/>). Xác định các khẳng định sau là đúng hay sai:</p>
+<img alt="" src="anh/c5.v3.png"/>
+<ul class="list-disc ml-6">
+<li>a) \(BC \perp (SAB)\).</li>
+<li>b) Góc giữa đường thẳng \(SC\) và mặt phẳng \((SAB)\) bằng \(\angle CSA\).</li>
+<li>c) \(\tan \angle CSB = 1\).</li>
+<li>d) Góc giữa đường thẳng \(SC\) và mặt phẳng \((SAB)\) bằng \(60^\circ\).</li>
+</ul>
+<div class="solution" id="solution-example3">
+<p><strong>Lời giải:</strong></p>
+<p>Vì \(SA \perp (ABC)\), nên \(SA \perp BC\). Vì \(AB \perp BC\), suy ra \(BC \perp (SAB)\). Vậy a) Đúng.</p>
+<p>Tam giác \(ABC\) vuông tại \(B\), nên:
                 \[
                 BC = \sqrt{AC^2 - AB^2} = \sqrt{(a\sqrt{3})^2 - a^2} = a\sqrt{2}
                 \]
             </p>
-            <p>Tam giác \(SAB\) vuông tại \(A\), nên:
+<p>Tam giác \(SAB\) vuông tại \(A\), nên:
                 \[
                 SB = \sqrt{SA^2 + AB^2} = \sqrt{a^2 + a^2} = a\sqrt{2}
                 \]
             </p>
-            <p>Tam giác \(SBC\) vuông tại \(B\), nên:
+<p>Tam giác \(SBC\) vuông tại \(B\), nên:
                 \[
                 \tan \angle CSB = \frac{BC}{SB} = \frac{a\sqrt{2}}{a\sqrt{2}} = 1 \Rightarrow \angle CSB = 45^\circ
                 \]
             </p>
-            <p>Góc giữa \(SC\) và \((SAB)\) là \(\angle CSB = 45^\circ\). Vậy:</p>
-            <ul class="list-disc ml-6">
-                <li>b) Sai (góc đúng là \(\angle CSB\), không phải \(\angle CSA\)).</li>
-                <li>c) Đúng.</li>
-                <li>d) Sai (\(\angle CSB = 45^\circ \neq 60^\circ\)).</li>
-            </ul>
-            <p>Đáp án: a) Đ, b) S, c) Đ, d) S.</p>
-        </div>
-        <button class="solution-toggle" onclick="toggleSolution('solution-example3')">Hiện lời giải</button>
-
-        <!-- Ví dụ 4 -->
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Khoảng cách:
+<p>Góc giữa \(SC\) và \((SAB)\) là \(\angle CSB = 45^\circ\). Vậy:</p>
+<ul class="list-disc ml-6">
+<li>b) Sai (góc đúng là \(\angle CSB\), không phải \(\angle CSA\)).</li>
+<li>c) Đúng.</li>
+<li>d) Sai (\(\angle CSB = 45^\circ \neq 60^\circ\)).</li>
+</ul>
+<p>Đáp án: a) Đ, b) S, c) Đ, d) S.</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example3')">Hiện lời giải</button>
+<!-- Ví dụ 4 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Khoảng cách:
                 <ul class="list-disc ml-6">
-                    <li>Giữa hai mặt phẳng song song: Khoảng cách từ một điểm trên mặt phẳng này đến mặt phẳng kia.</li>
-                    <li>Giữa đường thẳng và mặt phẳng song song: Khoảng cách từ một điểm trên đường thẳng đến mặt phẳng.</li>
-                    <li>Giữa hai đường thẳng chéo nhau: Độ dài đoạn vuông góc chung.</li>
-                </ul>
-            </p>
-        </div>
-        <p><strong>Ví dụ 4:</strong> Cho hình lăng trụ tam giác đều \(ABC.A'B'C'\) có \(AB = a\), \(AA' = 2a\) (Hình 10: <img src="anh/hinh10.png" alt="Hình 10">). Xác định các khẳng định sau là đúng hay sai:</p>
-        <img src="anh/c5.v4.png" alt="">
-        <ul class="list-disc ml-6">
-            <li>a) Khoảng cách giữa hai mặt phẳng \((ABC)\) và \((A'B'C')\) bằng \(2a\).</li>
-            <li>b) Khoảng cách giữa đường thẳng \(B'C'\) và mặt phẳng \((ABC)\) bằng \(a\).</li>
-            <li>c) Khoảng cách từ điểm \(A\) đến mặt phẳng \((BCC'B')\) bằng \(a\).</li>
-            <li>d) Khoảng cách giữa hai đường thẳng \(AA'\) và \(BC\) bằng \(a\sqrt{3}\).</li>
-        </ul>
-        <div class="solution" id="solution-example4">
-            <p><strong>Lời giải:</strong></p>
-            <p>Vì \((ABC) \parallel (A'B'C')\), \(AA' \perp (ABC)\), \(AA' \perp (A'B'C')\), nên:
+<li>Giữa hai mặt phẳng song song: Khoảng cách từ một điểm trên mặt phẳng này đến mặt phẳng kia.</li>
+<li>Giữa đường thẳng và mặt phẳng song song: Khoảng cách từ một điểm trên đường thẳng đến mặt phẳng.</li>
+<li>Giữa hai đường thẳng chéo nhau: Độ dài đoạn vuông góc chung.</li>
+</ul>
+</p>
+</div>
+<p><strong>Ví dụ 4:</strong> Cho hình lăng trụ tam giác đều \(ABC.A'B'C'\) có \(AB = a\), \(AA' = 2a\) (Hình 10: <img alt="Hình 10" src="anh/hinh10.png"/>). Xác định các khẳng định sau là đúng hay sai:</p>
+<img alt="" src="anh/c5.v4.png"/>
+<ul class="list-disc ml-6">
+<li>a) Khoảng cách giữa hai mặt phẳng \((ABC)\) và \((A'B'C')\) bằng \(2a\).</li>
+<li>b) Khoảng cách giữa đường thẳng \(B'C'\) và mặt phẳng \((ABC)\) bằng \(a\).</li>
+<li>c) Khoảng cách từ điểm \(A\) đến mặt phẳng \((BCC'B')\) bằng \(a\).</li>
+<li>d) Khoảng cách giữa hai đường thẳng \(AA'\) và \(BC\) bằng \(a\sqrt{3}\).</li>
+</ul>
+<div class="solution" id="solution-example4">
+<p><strong>Lời giải:</strong></p>
+<p>Vì \((ABC) \parallel (A'B'C')\), \(AA' \perp (ABC)\), \(AA' \perp (A'B'C')\), nên:
                 \[
                 d((ABC), (A'B'C')) = d(A, (A'B'C')) = AA' = 2a
                 \]
                 Vậy a) Đúng.
             </p>
-            <p>Vì \(B'C' \parallel (ABC)\), \(BB' \perp (ABC)\), nên:
+<p>Vì \(B'C' \parallel (ABC)\), \(BB' \perp (ABC)\), nên:
                 \[
                 d(B'C', (ABC)) = d(B', (ABC)) = BB' = AA' = 2a \neq a
                 \]
                 Vậy b) Sai.
             </p>
-            <p>Lấy \(M\) là trung điểm của \(BC\). Vì tam giác \(ABC\) đều, nên \(AM \perp BC\). Vì \((ABC) \perp (BCC'B')\), nên \(AM \perp (BCC'B')\). Do đó:
+<p>Lấy \(M\) là trung điểm của \(BC\). Vì tam giác \(ABC\) đều, nên \(AM \perp BC\). Vì \((ABC) \perp (BCC'B')\), nên \(AM \perp (BCC'B')\). Do đó:
                 \[
                 d(A, (BCC'B')) = AM = \frac{AB \sqrt{3}}{2} = \frac{a \sqrt{3}}{2} \neq a
                 \]
                 Vậy c) Sai.
             </p>
-            <p>Vì \(AM \perp AA'\), \(AM \perp BC\), nên \(AM\) là đoạn vuông góc chung của \(AA'\) và \(BC\). Do đó:
+<p>Vì \(AM \perp AA'\), \(AM \perp BC\), nên \(AM\) là đoạn vuông góc chung của \(AA'\) và \(BC\). Do đó:
                 \[
                 d(AA', BC) = AM = \frac{a \sqrt{3}}{2} \neq a \sqrt{3}
                 \]
                 Vậy d) Sai.
             </p>
-            <p>Đáp án: a) Đ, b) S, c) S, d) S.</p>
-        </div>
-        <button class="solution-toggle" onclick="toggleSolution('solution-example4')">Hiện lời giải</button>
-
-        <!-- Ví dụ 5 -->
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức</h3>
-            <p>Thể tích khối lăng trụ: \( V = S \cdot h \), với \(S\) là diện tích đáy, \(h\) là chiều cao.</p>
-        </div>
-        <p><strong>Ví dụ 5:</strong> Hai mẫu lều cắm trại có dạng khối lăng trụ đứng ngũ giác (Hình 11: <img src="anh/hinh11.png" alt="Hình 11">). Tính \(V_1 - V_2\), trong đó \(V_1\), \(V_2\) là thể tích của lều ở Hình 11a, 11b (kết quả làm tròn đến hàng đơn vị, đơn vị \(\text{dm}^3\)).</p>
-        <img src="anh/c5.v55.png" alt="">
-        <div class="solution" id="solution-example5">
-            <p><strong>Lời giải:</strong></p>
-            <p><strong>Lều 11a:</strong> Mặt đáy gồm hình chữ nhật (rộng 180 cm, dài 350 cm) và tam giác cân (cạnh đáy 350 cm, chiều cao 40 cm) (Hình 12: <img src="anh/hinh12.png" alt="Hình 12">).</p>
-            <p>Diện tích đáy:
+<p>Đáp án: a) Đ, b) S, c) S, d) S.</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example4')">Hiện lời giải</button>
+<!-- Ví dụ 5 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Thể tích khối lăng trụ: \( V = S \cdot h \), với \(S\) là diện tích đáy, \(h\) là chiều cao.</p>
+</div>
+<p><strong>Ví dụ 5:</strong> Hai mẫu lều cắm trại có dạng khối lăng trụ đứng ngũ giác (Hình 11: <img alt="Hình 11" src="anh/hinh11.png"/>). Tính \(V_1 - V_2\), trong đó \(V_1\), \(V_2\) là thể tích của lều ở Hình 11a, 11b (kết quả làm tròn đến hàng đơn vị, đơn vị \(\text{dm}^3\)).</p>
+<img alt="" src="anh/c5.v55.png"/>
+<div class="solution" id="solution-example5">
+<p><strong>Lời giải:</strong></p>
+<p><strong>Lều 11a:</strong> Mặt đáy gồm hình chữ nhật (rộng 180 cm, dài 350 cm) và tam giác cân (cạnh đáy 350 cm, chiều cao 40 cm) (Hình 12: <img alt="Hình 12" loading="lazy" src="anh/hinh12.png"/>).</p>
+<p>Diện tích đáy:
                 \[
                 S_1 = 180 \cdot 350 + \frac{1}{2} \cdot 40 \cdot 350 = 63000 + 7000 = 70000 \, \text{cm}^2
                 \]
             </p>
-            <p>Thể tích: \( V_1 = S_1 \cdot h_1 = 70000 \cdot 460 = 32200000 \, \text{cm}^3 \).</p>
-            <p><strong>Lều 11b:</strong> Mặt đáy gồm hình thang cân (đáy lớn 370 cm, đáy nhỏ 260 cm, chiều cao 210 cm) và tam giác cân (cạnh đáy 260 cm, chiều cao 50 cm) (Hình 13: <img src="anh/hinh13.png" alt="Hình 13">).</p>
-            <p>Diện tích đáy:
+<p>Thể tích: \( V_1 = S_1 \cdot h_1 = 70000 \cdot 460 = 32200000 \, \text{cm}^3 \).</p>
+<p><strong>Lều 11b:</strong> Mặt đáy gồm hình thang cân (đáy lớn 370 cm, đáy nhỏ 260 cm, chiều cao 210 cm) và tam giác cân (cạnh đáy 260 cm, chiều cao 50 cm) (Hình 13: <img alt="Hình 13" loading="lazy" src="anh/hinh13.png"/>).</p>
+<p>Diện tích đáy:
                 \[
                 S_2 = \frac{1}{2} (370 + 260) \cdot 210 + \frac{1}{2} \cdot 260 \cdot 50 = 66150 + 6500 = 72650 \, \text{cm}^2
                 \]
             </p>
-            <p>Thể tích: \( V_2 = S_2 \cdot h_2 = 72650 \cdot 430 = 31239500 \, \text{cm}^3 \).</p>
-            <p>Chênh lệch:
+<p>Thể tích: \( V_2 = S_2 \cdot h_2 = 72650 \cdot 430 = 31239500 \, \text{cm}^3 \).</p>
+<p>Chênh lệch:
                 \[
                 V_1 - V_2 = 32200000 - 31239500 = 960500 \, \text{cm}^3 = 960.5 \, \text{dm}^3 \approx 961 \, \text{dm}^3
                 \]
             </p>
-            <p>Giá trị \( V_1 - V_2 \approx 961 \, \text{dm}^3 \).</p>
-        </div>
-        <button class="solution-toggle" onclick="toggleSolution('solution-example5')">Hiện lời giải</button>
-    </div>
-    <h1>BÀI TẬP RÈN LUYỆN</span></h1>
-    
-    <h2>Phần I: Trắc Nghiệm Nhiều Phương Án Lựa Chọn</h2>
-    
-    <!-- Câu 1 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Vuông góc trong hình chóp</h3>
-            <p>Đường thẳng \( AC \) vuông góc với mặt phẳng \( (P) \) nếu \( AC \perp \) mọi đường thẳng trong \( (P) \). Với \( SD \perp (ABCD) \), kiểm tra \( AC \perp \) các đường thẳng trong mặt phẳng.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 1:</h3>
-            <p>Cho hình chóp \( S.ABCD \) có đáy \( ABCD \) là hình vuông và \( SD \perp (ABCD) \). Đường thẳng \( AC \) vuông góc với mặt phẳng nào trong các mặt phẳng sau?</p>
-            <div class="options">
-                <div class="option">A. \( (SAB) \)</div>
-                <div class="option">B. \( (SAD) \)</div>
-                <div class="option">C. \( (SCD) \)</div>
-                <div class="option">D. \( (SBD) \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q1" value="A"> A</label>
-                <label><input type="radio" name="q1" value="B"> B</label>
-                <label><input type="radio" name="q1" value="C"> C</label>
-                <label><input type="radio" name="q1" value="D"> D</label>
-                <button onclick="checkAnswer('q1', 'D')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q1"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q1')">Xem lời giải</div>
-            <div class="solution" id="solution-q1">
-                <p><strong>Lời giải:</strong><br>
-                Vì \( ABCD \) là hình vuông, \( AC \) là đường chéo, nên \( AC \perp BD \). Vì \( SD \perp (ABCD) \), suy ra \( SD \perp AC \). Do đó, \( AC \perp (SBD) \). Kiểm tra các mặt phẳng khác: \( AC \) không vuông góc với \( SA, SB, SC \), nên không vuông góc với \( (SAB), (SAD), (SCD) \).<br>
+<p>Giá trị \( V_1 - V_2 \approx 961 \, \text{dm}^3 \).</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example5')">Hiện lời giải</button>
+</div>
+<h1>BÀI TẬP RÈN LUYỆN</h1>
+<h2>Phần I: Trắc Nghiệm Nhiều Phương Án Lựa Chọn</h2>
+<!-- Câu 1 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Vuông góc trong hình chóp</h3>
+<p>Đường thẳng \( AC \) vuông góc với mặt phẳng \( (P) \) nếu \( AC \perp \) mọi đường thẳng trong \( (P) \). Với \( SD \perp (ABCD) \), kiểm tra \( AC \perp \) các đường thẳng trong mặt phẳng.</p>
+</div>
+<div class="question">
+<h3>Câu 1:</h3>
+<p>Cho hình chóp \( S.ABCD \) có đáy \( ABCD \) là hình vuông và \( SD \perp (ABCD) \). Đường thẳng \( AC \) vuông góc với mặt phẳng nào trong các mặt phẳng sau?</p>
+<div class="options">
+<div class="option">A. \( (SAB) \)</div>
+<div class="option">B. \( (SAD) \)</div>
+<div class="option">C. \( (SCD) \)</div>
+<div class="option">D. \( (SBD) \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q1" type="radio" value="A"/> A</label>
+<label><input name="q1" type="radio" value="B"/> B</label>
+<label><input name="q1" type="radio" value="C"/> C</label>
+<label><input name="q1" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q1', 'D')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q1"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q1')">Xem lời giải</div>
+<div class="solution" id="solution-q1">
+<p><strong>Lời giải:</strong><br/>
+                Vì \( ABCD \) là hình vuông, \( AC \) là đường chéo, nên \( AC \perp BD \). Vì \( SD \perp (ABCD) \), suy ra \( SD \perp AC \). Do đó, \( AC \perp (SBD) \). Kiểm tra các mặt phẳng khác: \( AC \) không vuông góc với \( SA, SB, SC \), nên không vuông góc với \( (SAB), (SAD), (SCD) \).<br/>
                 Đáp án: D.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 2 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Góc nhị diện</h3>
-            <p>Góc phẳng nhị diện của góc nhị diện \( [B, AD, S] \) là góc giữa hai đường thẳng trong hai mặt phẳng \( (B, AD) \) và \( (B, S) \), cắt nhau tại \( B \).</p>
-        </div>
-        <div class="question">
-            <h3>Câu 2:</h3>
-            <p>Cho hình chóp tứ giác đều \( S.ABCD \), \( O \) là giao điểm của \( AC \) và \( BD \), \( M \) là trung điểm \( AD \). Góc nào sau đây là góc phẳng nhị diện của góc nhị diện \( [B, AD, S] \)?</p>
-            <div class="options">
-                <div class="option">A. \( \angle SAB \)</div>
-                <div class="option">B. \( \angle SDB \)</div>
-                <div class="option">C. \( \angle SMO \)</div>
-                <div class="option">D. \( \angle SMB \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q2" value="A"> A</label>
-                <label><input type="radio" name="q2" value="B"> B</label>
-                <label><input type="radio" name="q2" value="C"> C</label>
-                <label><input type="radio" name="q2" value="D"> D</label>
-                <button onclick="checkAnswer('q2', 'C')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q2"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q2')">Xem lời giải</div>
-            <div class="solution" id="solution-q2">
-                <p><strong>Lời giải:</strong><br>
-                Góc nhị diện \( [B, AD, S] \) có góc phẳng nhị diện là góc giữa \( BM \) (thuộc \( (BAD) \)) và một đường trong \( (SBD) \) qua \( B \). Vì \( M \) là trung điểm \( AD \), \( O \) là giao điểm \( AC \) và \( BD \), nên \( MO \perp BD \). Do đó, góc \( \angle SMO \) là góc phẳng nhị diện.<br>
+</div>
+</div>
+</div>
+<!-- Câu 2 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Góc nhị diện</h3>
+<p>Góc phẳng nhị diện của góc nhị diện \( [B, AD, S] \) là góc giữa hai đường thẳng trong hai mặt phẳng \( (B, AD) \) và \( (B, S) \), cắt nhau tại \( B \).</p>
+</div>
+<div class="question">
+<h3>Câu 2:</h3>
+<p>Cho hình chóp tứ giác đều \( S.ABCD \), \( O \) là giao điểm của \( AC \) và \( BD \), \( M \) là trung điểm \( AD \). Góc nào sau đây là góc phẳng nhị diện của góc nhị diện \( [B, AD, S] \)?</p>
+<div class="options">
+<div class="option">A. \( \angle SAB \)</div>
+<div class="option">B. \( \angle SDB \)</div>
+<div class="option">C. \( \angle SMO \)</div>
+<div class="option">D. \( \angle SMB \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q2" type="radio" value="A"/> A</label>
+<label><input name="q2" type="radio" value="B"/> B</label>
+<label><input name="q2" type="radio" value="C"/> C</label>
+<label><input name="q2" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q2', 'C')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q2"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q2')">Xem lời giải</div>
+<div class="solution" id="solution-q2">
+<p><strong>Lời giải:</strong><br/>
+                Góc nhị diện \( [B, AD, S] \) có góc phẳng nhị diện là góc giữa \( BM \) (thuộc \( (BAD) \)) và một đường trong \( (SBD) \) qua \( B \). Vì \( M \) là trung điểm \( AD \), \( O \) là giao điểm \( AC \) và \( BD \), nên \( MO \perp BD \). Do đó, góc \( \angle SMO \) là góc phẳng nhị diện.<br/>
                 Đáp án: C.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 3 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Vuông góc giữa đường thẳng và mặt phẳng</h3>
-            <p>Nếu hai mặt phẳng \( (P) \perp (Q) \), giao tuyến là \( l \). Đường thẳng \( a \subset (P) \), \( a \perp l \), thì \( a \perp (Q) \).</p>
-        </div>
-        <div class="question">
-            <h3>Câu 3:</h3>
-            <p>Cho đường thẳng \( a \) và hai mặt phẳng \( (P) \), \( (Q) \) vuông góc với nhau. Phát biểu nào sau đây là đúng về đường thẳng \( a \)?</p>
-            <div class="options">
-                <div class="option">A. Đường thẳng \( a \) nằm trong mặt phẳng \( (P) \) thì vuông góc với mặt phẳng \( (Q) \).</div>
-                <div class="option">B. Đường thẳng \( a \) vuông góc với mặt phẳng \( (Q) \) thì nằm trong mặt phẳng \( (P) \).</div>
-                <div class="option">C. Đường thẳng \( a \) vuông góc với mặt phẳng \( (P) \) thì nằm trong mặt phẳng \( (Q) \).</div>
-                <div class="option">D. Đường thẳng \( a \) nằm trong mặt phẳng \( (P) \) và vuông góc với giao tuyến của \( (P), (Q) \) thì \( a \) vuông góc với mặt phẳng \( (Q) \).</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q3" value="A"> A</label>
-                <label><input type="radio" name="q3" value="B"> B</label>
-                <label><input type="radio" name="q3" value="C"> C</label>
-                <label><input type="radio" name="q3" value="D"> D</label>
-                <button onclick="checkAnswer('q3', 'D')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q3"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q3')">Xem lời giải</div>
-            <div class="solution" id="solution-q3">
-                <p><strong>Lời giải:</strong><br>
-                Gọi \( l \) là giao tuyến của \( (P) \perp (Q) \). Nếu \( a \subset (P) \) và \( a \perp l \), thì \( a \perp (Q) \). Các phát biểu khác không luôn đúng: \( a \subset (P) \) không đảm bảo \( a \perp (Q) \); \( a \perp (Q) \) không cần \( a \subset (P) \); \( a \perp (P) \) không đảm bảo \( a \subset (Q) \).<br>
+</div>
+</div>
+</div>
+<!-- Câu 3 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Vuông góc giữa đường thẳng và mặt phẳng</h3>
+<p>Nếu hai mặt phẳng \( (P) \perp (Q) \), giao tuyến là \( l \). Đường thẳng \( a \subset (P) \), \( a \perp l \), thì \( a \perp (Q) \).</p>
+</div>
+<div class="question">
+<h3>Câu 3:</h3>
+<p>Cho đường thẳng \( a \) và hai mặt phẳng \( (P) \), \( (Q) \) vuông góc với nhau. Phát biểu nào sau đây là đúng về đường thẳng \( a \)?</p>
+<div class="options">
+<div class="option">A. Đường thẳng \( a \) nằm trong mặt phẳng \( (P) \) thì vuông góc với mặt phẳng \( (Q) \).</div>
+<div class="option">B. Đường thẳng \( a \) vuông góc với mặt phẳng \( (Q) \) thì nằm trong mặt phẳng \( (P) \).</div>
+<div class="option">C. Đường thẳng \( a \) vuông góc với mặt phẳng \( (P) \) thì nằm trong mặt phẳng \( (Q) \).</div>
+<div class="option">D. Đường thẳng \( a \) nằm trong mặt phẳng \( (P) \) và vuông góc với giao tuyến của \( (P), (Q) \) thì \( a \) vuông góc với mặt phẳng \( (Q) \).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q3" type="radio" value="A"/> A</label>
+<label><input name="q3" type="radio" value="B"/> B</label>
+<label><input name="q3" type="radio" value="C"/> C</label>
+<label><input name="q3" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q3', 'D')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q3"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q3')">Xem lời giải</div>
+<div class="solution" id="solution-q3">
+<p><strong>Lời giải:</strong><br/>
+                Gọi \( l \) là giao tuyến của \( (P) \perp (Q) \). Nếu \( a \subset (P) \) và \( a \perp l \), thì \( a \perp (Q) \). Các phát biểu khác không luôn đúng: \( a \subset (P) \) không đảm bảo \( a \perp (Q) \); \( a \perp (Q) \) không cần \( a \subset (P) \); \( a \perp (P) \) không đảm bảo \( a \subset (Q) \).<br/>
                 Đáp án: D.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 4 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Góc giữa hai đường thẳng trong hình lập phương</h3>
-            <p>Trong hình lập phương, sử dụng tọa độ để tính góc giữa hai đường thẳng bằng công thức cosin.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 4:</h3>
-            <p>Cho hình lập phương \( ABCD.A'B'C'D' \). Góc giữa hai đường thẳng \( AC \) và \( A'B \) bằng</p>
-            <div class="options">
-                <div class="option">A. \( 30^\circ \)</div>
-                <div class="option">B. \( 45^\circ \)</div>
-                <div class="option">C. \( 60^\circ \)</div>
-                <div class="option">D. \( 90^\circ \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q4" value="A"> A</label>
-                <label><input type="radio" name="q4" value="B"> B</label>
-                <label><input type="radio" name="q4" value="C"> C</label>
-                <label><input type="radio" name="q4" value="D"> D</label>
-                <button onclick="checkAnswer('q4', 'C')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q4"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q4')">Xem lời giải</div>
-            <div class="solution" id="solution-q4">
-                <p><strong>Lời giải:</strong><br>
-                Đặt hình lập phương cạnh \( a \), tọa độ: \( A(0,0,0) \), \( C(a,a,0) \), \( A'(0,0,a) \), \( B(a,0,0) \). Vector \( \overrightarrow{AC} = (a,a,0) \), \( \overrightarrow{A'B} = (a,0,-a) \).<br>
-                \( \cos \theta = \frac{|\overrightarrow{AC} \cdot \overrightarrow{A'B}|}{|\overrightarrow{AC}| \cdot |\overrightarrow{A'B}|} = \frac{|a \cdot a|}{\sqrt{a^2+a^2} \cdot \sqrt{a^2+a^2}} = \frac{a^2}{\sqrt{2a^2} \cdot \sqrt{2a^2}} = \frac{1}{2} \).<br>
-                \( \theta = 60^\circ \).<br>
+</div>
+</div>
+</div>
+<!-- Câu 4 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Góc giữa hai đường thẳng trong hình lập phương</h3>
+<p>Trong hình lập phương, sử dụng tọa độ để tính góc giữa hai đường thẳng bằng công thức cosin.</p>
+</div>
+<div class="question">
+<h3>Câu 4:</h3>
+<p>Cho hình lập phương \( ABCD.A'B'C'D' \). Góc giữa hai đường thẳng \( AC \) và \( A'B \) bằng</p>
+<div class="options">
+<div class="option">A. \( 30^\circ \)</div>
+<div class="option">B. \( 45^\circ \)</div>
+<div class="option">C. \( 60^\circ \)</div>
+<div class="option">D. \( 90^\circ \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q4" type="radio" value="A"/> A</label>
+<label><input name="q4" type="radio" value="B"/> B</label>
+<label><input name="q4" type="radio" value="C"/> C</label>
+<label><input name="q4" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q4', 'C')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q4"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q4')">Xem lời giải</div>
+<div class="solution" id="solution-q4">
+<p><strong>Lời giải:</strong><br/>
+                Đặt hình lập phương cạnh \( a \), tọa độ: \( A(0,0,0) \), \( C(a,a,0) \), \( A'(0,0,a) \), \( B(a,0,0) \). Vector \( \overrightarrow{AC} = (a,a,0) \), \( \overrightarrow{A'B} = (a,0,-a) \).<br/>
+                \( \cos \theta = \frac{|\overrightarrow{AC} \cdot \overrightarrow{A'B}|}{|\overrightarrow{AC}| \cdot |\overrightarrow{A'B}|} = \frac{|a \cdot a|}{\sqrt{a^2+a^2} \cdot \sqrt{a^2+a^2}} = \frac{a^2}{\sqrt{2a^2} \cdot \sqrt{2a^2}} = \frac{1}{2} \).<br/>
+                \( \theta = 60^\circ \).<br/>
                 Đáp án: C.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 5 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Góc giữa đường thẳng và mặt phẳng</h3>
-            <p>Trong hình chóp tứ giác đều, góc giữa cạnh bên và mặt đáy được tính qua tam giác vuông chứa cạnh bên và hình chiếu của nó.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 5:</h3>
-            <p>Cho hình chóp tứ giác đều \( S.ABCD \) có tất cả các cạnh đều bằng \( a \). Góc giữa đường thẳng \( SA \) với mặt phẳng \( (ABCD) \) bằng</p>
-            <div class="options">
-                <div class="option">A. \( 30^\circ \)</div>
-                <div class="option">B. \( 45^\circ \)</div>
-                <div class="option">C. \( 60^\circ \)</div>
-                <div class="option">D. \( 90^\circ \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q5" value="A"> A</label>
-                <label><input type="radio" name="q5" value="B"> B</label>
-                <label><input type="radio" name="q5" value="C"> C</label>
-                <label><input type="radio" name="q5" value="D"> D</label>
-                <button onclick="checkAnswer('q5', 'B')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q5"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q5')">Xem lời giải</div>
-            <div class="solution" id="solution-q5">
-                <p><strong>Lời giải:</strong><br>
-                Gọi \( O \) là giao điểm của \( AC \) và \( BD \). Vì \( ABCD \) là hình vuông cạnh \( a \), tam giác \( SAB \) đều, nên \( SO \perp (ABCD) \). Trong tam giác vuông \( SAO \), \( AO = \frac{a\sqrt{2}}{2} \), \( SA = a \).<br>
-                \( \sin \theta = \frac{AO}{SA} = \frac{\frac{a\sqrt{2}}{2}}{a} = \frac{\sqrt{2}}{2} \Rightarrow \theta = 45^\circ \).<br>
+</div>
+</div>
+</div>
+<!-- Câu 5 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Góc giữa đường thẳng và mặt phẳng</h3>
+<p>Trong hình chóp tứ giác đều, góc giữa cạnh bên và mặt đáy được tính qua tam giác vuông chứa cạnh bên và hình chiếu của nó.</p>
+</div>
+<div class="question">
+<h3>Câu 5:</h3>
+<p>Cho hình chóp tứ giác đều \( S.ABCD \) có tất cả các cạnh đều bằng \( a \). Góc giữa đường thẳng \( SA \) với mặt phẳng \( (ABCD) \) bằng</p>
+<div class="options">
+<div class="option">A. \( 30^\circ \)</div>
+<div class="option">B. \( 45^\circ \)</div>
+<div class="option">C. \( 60^\circ \)</div>
+<div class="option">D. \( 90^\circ \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q5" type="radio" value="A"/> A</label>
+<label><input name="q5" type="radio" value="B"/> B</label>
+<label><input name="q5" type="radio" value="C"/> C</label>
+<label><input name="q5" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q5', 'B')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q5"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q5')">Xem lời giải</div>
+<div class="solution" id="solution-q5">
+<p><strong>Lời giải:</strong><br/>
+                Gọi \( O \) là giao điểm của \( AC \) và \( BD \). Vì \( ABCD \) là hình vuông cạnh \( a \), tam giác \( SAB \) đều, nên \( SO \perp (ABCD) \). Trong tam giác vuông \( SAO \), \( AO = \frac{a\sqrt{2}}{2} \), \( SA = a \).<br/>
+                \( \sin \theta = \frac{AO}{SA} = \frac{\frac{a\sqrt{2}}{2}}{a} = \frac{\sqrt{2}}{2} \Rightarrow \theta = 45^\circ \).<br/>
                 Đáp án: B.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 6 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Khoảng cách trong hình chóp</h3>
-            <p>Khoảng cách từ đỉnh đến mặt đáy trong hình chóp tứ giác đều là độ dài đường cao, tính qua tam giác vuông.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 6:</h3>
-            <p>Cho hình chóp tứ giác đều \( S.ABCD \) có tất cả các cạnh đều bằng \( a \). Khoảng cách từ đỉnh đến mặt đáy bằng</p>
-            <div class="options">
-                <div class="option">A. \( a \)</div>
-                <div class="option">B. \( \frac{a\sqrt{2}}{2} \)</div>
-                <div class="option">C. \( a\sqrt{2} \)</div>
-                <div class="option">D. \( \frac{a}{2} \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q6" value="A"> A</label>
-                <label><input type="radio" name="q6" value="B"> B</label>
-                <label><input type="radio" name="q6" value="C"> C</label>
-                <label><input type="radio" name="q6" value="D"> D</label>
-                <button onclick="checkAnswer('q6', 'B')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q6"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q6')">Xem lời giải</div>
-            <div class="solution" id="solution-q6">
-                <p><strong>Lời giải:</strong><br>
-                Gọi \( O \) là giao điểm \( AC \) và \( BD \). Tam giác \( SAB \) đều, \( SO \perp (ABCD) \). Trong tam giác vuông \( SAO \), \( AO = \frac{a\sqrt{2}}{2} \), \( SA = a \).<br>
-                \( SO = \sqrt{SA^2 - AO^2} = \sqrt{a^2 - \left(\frac{a\sqrt{2}}{2}\right)^2} = \sqrt{a^2 - \frac{a^2}{2}} = \frac{a\sqrt{2}}{2} \).<br>
+</div>
+</div>
+</div>
+<!-- Câu 6 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Khoảng cách trong hình chóp</h3>
+<p>Khoảng cách từ đỉnh đến mặt đáy trong hình chóp tứ giác đều là độ dài đường cao, tính qua tam giác vuông.</p>
+</div>
+<div class="question">
+<h3>Câu 6:</h3>
+<p>Cho hình chóp tứ giác đều \( S.ABCD \) có tất cả các cạnh đều bằng \( a \). Khoảng cách từ đỉnh đến mặt đáy bằng</p>
+<div class="options">
+<div class="option">A. \( a \)</div>
+<div class="option">B. \( \frac{a\sqrt{2}}{2} \)</div>
+<div class="option">C. \( a\sqrt{2} \)</div>
+<div class="option">D. \( \frac{a}{2} \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q6" type="radio" value="A"/> A</label>
+<label><input name="q6" type="radio" value="B"/> B</label>
+<label><input name="q6" type="radio" value="C"/> C</label>
+<label><input name="q6" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q6', 'B')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q6"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q6')">Xem lời giải</div>
+<div class="solution" id="solution-q6">
+<p><strong>Lời giải:</strong><br/>
+                Gọi \( O \) là giao điểm \( AC \) và \( BD \). Tam giác \( SAB \) đều, \( SO \perp (ABCD) \). Trong tam giác vuông \( SAO \), \( AO = \frac{a\sqrt{2}}{2} \), \( SA = a \).<br/>
+                \( SO = \sqrt{SA^2 - AO^2} = \sqrt{a^2 - \left(\frac{a\sqrt{2}}{2}\right)^2} = \sqrt{a^2 - \frac{a^2}{2}} = \frac{a\sqrt{2}}{2} \).<br/>
                 Đáp án: B.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 7 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Khoảng cách từ đường thẳng đến mặt phẳng</h3>
-            <p>Khoảng cách từ đường thẳng đến mặt phẳng song song là khoảng cách từ một điểm trên đường thẳng đến mặt phẳng.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 7:</h3>
-            <p>Cho hình hộp chữ nhật \( ABCD.A'B'C'D' \) có \( AA' = 2a \), \( A'B' = 2a \), \( A'D' = a \). Khoảng cách từ đường thẳng \( AA' \) đến mặt phẳng \( (BDD'B') \) bằng</p>
-            <div class="options">
-                <div class="option">A. \( \frac{2a\sqrt{5}}{5} \)</div>
-                <div class="option">B. \( a\sqrt{2} \)</div>
-                <div class="option">C. \( \frac{a}{2} \)</div>
-                <div class="option">D. \( \frac{a\sqrt{2}}{2} \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q7" value="A"> A</label>
-                <label><input type="radio" name="q7" value="B"> B</label>
-                <label><input type="radio" name="q7" value="C"> C</label>
-                <label><input type="radio" name="q7" value="D"> D</label>
-                <button onclick="checkAnswer('q7', 'A')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q7"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q7')">Xem lời giải</div>
-            <div class="solution" id="solution-q7">
-                <p><strong>Lời giải:</strong><br>
-                Đặt tọa độ: \( A(0,0,0) \), \( A'(0,0,2a) \), \( B'(2a,0,2a) \), \( D'(0,a,2a) \), \( B(2a,0,0) \), \( D(0,a,0) \). Mặt phẳng \( (BDD'B') \): \( x + 2y - 2a = 0 \). Đường thẳng \( AA' \): \( \frac{x}{0} = \frac{y}{0} = \frac{z}{2a} \). Khoảng cách từ \( A(0,0,0) \) đến mặt phẳng: \( d = \frac{|0 + 2 \cdot 0 - 2a|}{\sqrt{1^2 + 2^2}} = \frac{2a}{\sqrt{5}} = \frac{2a\sqrt{5}}{5} \).<br>
+</div>
+</div>
+</div>
+<!-- Câu 7 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Khoảng cách từ đường thẳng đến mặt phẳng</h3>
+<p>Khoảng cách từ đường thẳng đến mặt phẳng song song là khoảng cách từ một điểm trên đường thẳng đến mặt phẳng.</p>
+</div>
+<div class="question">
+<h3>Câu 7:</h3>
+<p>Cho hình hộp chữ nhật \( ABCD.A'B'C'D' \) có \( AA' = 2a \), \( A'B' = 2a \), \( A'D' = a \). Khoảng cách từ đường thẳng \( AA' \) đến mặt phẳng \( (BDD'B') \) bằng</p>
+<div class="options">
+<div class="option">A. \( \frac{2a\sqrt{5}}{5} \)</div>
+<div class="option">B. \( a\sqrt{2} \)</div>
+<div class="option">C. \( \frac{a}{2} \)</div>
+<div class="option">D. \( \frac{a\sqrt{2}}{2} \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q7" type="radio" value="A"/> A</label>
+<label><input name="q7" type="radio" value="B"/> B</label>
+<label><input name="q7" type="radio" value="C"/> C</label>
+<label><input name="q7" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q7', 'A')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q7"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q7')">Xem lời giải</div>
+<div class="solution" id="solution-q7">
+<p><strong>Lời giải:</strong><br/>
+                Đặt tọa độ: \( A(0,0,0) \), \( A'(0,0,2a) \), \( B'(2a,0,2a) \), \( D'(0,a,2a) \), \( B(2a,0,0) \), \( D(0,a,0) \). Mặt phẳng \( (BDD'B') \): \( x + 2y - 2a = 0 \). Đường thẳng \( AA' \): \( \frac{x}{0} = \frac{y}{0} = \frac{z}{2a} \). Khoảng cách từ \( A(0,0,0) \) đến mặt phẳng: \( d = \frac{|0 + 2 \cdot 0 - 2a|}{\sqrt{1^2 + 2^2}} = \frac{2a}{\sqrt{5}} = \frac{2a\sqrt{5}}{5} \).<br/>
                 Đáp án: A.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 8 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Thể tích khối chóp</h3>
-            <p>Thể tích khối chóp: \( V = \frac{1}{3} \cdot S_{\text{đáy}} \cdot h \).</p>
-        </div>
-        <div class="question">
-            <h3>Câu 8:</h3>
-            <p>Cho khối chóp có diện tích đáy là \( 3a^2 \) và chiều cao là \( a \). Thể tích của khối chóp đó bằng</p>
-            <div class="options">
-                <div class="option">A. \( 3a^3 \)</div>
-                <div class="option">B. \( a^3 \)</div>
-                <div class="option">C. \( \frac{a^3}{3} \)</div>
-                <div class="option">D. \( 9a^3 \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q8" value="A"> A</label>
-                <label><input type="radio" name="q8" value="B"> B</label>
-                <label><input type="radio" name="q8" value="C"> C</label>
-                <label><input type="radio" name="q8" value="D"> D</label>
-                <button onclick="checkAnswer('q8', 'B')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q8"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q8')">Xem lời giải</div>
-            <div class="solution" id="solution-q8">
-                <p><strong>Lời giải:</strong><br>
-                \( V = \frac{1}{3} \cdot 3a^2 \cdot a = a^3 \).<br>
+</div>
+</div>
+</div>
+<!-- Câu 8 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Thể tích khối chóp</h3>
+<p>Thể tích khối chóp: \( V = \frac{1}{3} \cdot S_{\text{đáy}} \cdot h \).</p>
+</div>
+<div class="question">
+<h3>Câu 8:</h3>
+<p>Cho khối chóp có diện tích đáy là \( 3a^2 \) và chiều cao là \( a \). Thể tích của khối chóp đó bằng</p>
+<div class="options">
+<div class="option">A. \( 3a^3 \)</div>
+<div class="option">B. \( a^3 \)</div>
+<div class="option">C. \( \frac{a^3}{3} \)</div>
+<div class="option">D. \( 9a^3 \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q8" type="radio" value="A"/> A</label>
+<label><input name="q8" type="radio" value="B"/> B</label>
+<label><input name="q8" type="radio" value="C"/> C</label>
+<label><input name="q8" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q8', 'B')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q8"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q8')">Xem lời giải</div>
+<div class="solution" id="solution-q8">
+<p><strong>Lời giải:</strong><br/>
+                \( V = \frac{1}{3} \cdot 3a^2 \cdot a = a^3 \).<br/>
                 Đáp án: B.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 9 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Thể tích khối lăng trụ</h3>
-            <p>Thể tích khối lăng trụ: \( V = S_{\text{đáy}} \cdot h \).</p>
-        </div>
-        <div class="question">
-            <h3>Câu 9:</h3>
-            <p>Cho khối lăng trụ có diện tích đáy là \( 3a^2 \) và chiều cao là \( a \). Thể tích của khối lăng trụ bằng</p>
-            <div class="options">
-                <div class="option">A. \( 3a^3 \)</div>
-                <div class="option">B. \( a^3 \)</div>
-                <div class="option">C. \( \frac{a^3}{3} \)</div>
-                <div class="option">D. \( 9a^3 \)</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án:</p>
-                <label><input type="radio" name="q9" value="A"> A</label>
-                <label><input type="radio" name="q9" value="B"> B</label>
-                <label><input type="radio" name="q9" value="C"> C</label>
-                <label><input type="radio" name="q9" value="D"> D</label>
-                <button onclick="checkAnswer('q9', 'A')">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q9"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q9')">Xem lời giải</div>
-            <div class="solution" id="solution-q9">
-                <p><strong>Lời giải:</strong><br>
-                \( V = 3a^2 \cdot a = 3a^3 \).<br>
+</div>
+</div>
+</div>
+<!-- Câu 9 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Thể tích khối lăng trụ</h3>
+<p>Thể tích khối lăng trụ: \( V = S_{\text{đáy}} \cdot h \).</p>
+</div>
+<div class="question">
+<h3>Câu 9:</h3>
+<p>Cho khối lăng trụ có diện tích đáy là \( 3a^2 \) và chiều cao là \( a \). Thể tích của khối lăng trụ bằng</p>
+<div class="options">
+<div class="option">A. \( 3a^3 \)</div>
+<div class="option">B. \( a^3 \)</div>
+<div class="option">C. \( \frac{a^3}{3} \)</div>
+<div class="option">D. \( 9a^3 \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q9" type="radio" value="A"/> A</label>
+<label><input name="q9" type="radio" value="B"/> B</label>
+<label><input name="q9" type="radio" value="C"/> C</label>
+<label><input name="q9" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q9', 'A')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q9"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q9')">Xem lời giải</div>
+<div class="solution" id="solution-q9">
+<p><strong>Lời giải:</strong><br/>
+                \( V = 3a^2 \cdot a = 3a^3 \).<br/>
                 Đáp án: A.</p>
-            </div>
-        </div>
-    </div>
-    
-    <h2>Phần II: Trắc Nghiệm Đúng/Sai</h2>
-    
-    <!-- Câu 10 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Hình chóp và góc</h3>
-            <p>Kiểm tra các tính chất vuông góc, góc giữa đường thẳng và mặt phẳng, và khoảng cách trong hình chóp có đáy hình vuông.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 10:</h3>
-            <p>Cho hình chóp \( S.ABCD \) có đáy \( ABCD \) là hình vuông cạnh \( a \), \( SAB \) là tam giác đều và nằm trong mặt phẳng vuông góc với mặt phẳng \( (ABCD) \). Gọi \( H \) là trung điểm của \( AB \).<br>
-            <img src="anh/5.5.15.png" alt="Hình 5.5.15"><br>
+</div>
+</div>
+</div>
+<h2>Phần II: Trắc Nghiệm Đúng/Sai</h2>
+<!-- Câu 10 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Hình chóp và góc</h3>
+<p>Kiểm tra các tính chất vuông góc, góc giữa đường thẳng và mặt phẳng, và khoảng cách trong hình chóp có đáy hình vuông.</p>
+</div>
+<div class="question">
+<h3>Câu 10:</h3>
+<p>Cho hình chóp \( S.ABCD \) có đáy \( ABCD \) là hình vuông cạnh \( a \), \( SAB \) là tam giác đều và nằm trong mặt phẳng vuông góc với mặt phẳng \( (ABCD) \). Gọi \( H \) là trung điểm của \( AB \).<br/>
+<img alt="Hình 5.5.15" loading="lazy" src="anh/5.5.15.png"/><br/>
             Xét các phát biểu sau:</p>
-            <div class="options">
-                <div class="option">a) \( SH \perp (ABCD) \).</div>
-                <div class="option">b) Góc giữa đường thẳng \( SC \) và mặt phẳng \( (ABCD) \) bằng \( \angle SCA \).</div>
-                <div class="option">c) \( CH = \frac{a\sqrt{5}}{2} \).</div>
-                <div class="option">d) Gọi \( \alpha \) là góc giữa đường thẳng \( SC \) và mặt phẳng \( (ABCD) \). Giá trị \( \cos \alpha \) bằng \( \frac{3}{4} \).</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án cho từng phát biểu:</p>
-                <p>a) <label><input type="radio" name="q10a" value="Đúng"> Đúng</label> <label><input type="radio" name="q10a" value="Sai"> Sai</label></p>
-                <p>b) <label><input type="radio" name="q10b" value="Đúng"> Đúng</label> <label><input type="radio" name="q10b" value="Sai"> Sai</label></p>
-                <p>c) <label><input type="radio" name="q10c" value="Đúng"> Đúng</label> <label><input type="radio" name="q10c" value="Sai"> Sai</label></p>
-                <p>d) <label><input type="radio" name="q10d" value="Đúng"> Đúng</label> <label><input type="radio" name="q10d" value="Sai"> Sai</label></p>
-                <button onclick="checkTrueFalseAnswer('q10', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q10"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q10')">Xem lời giải</div>
-            <div class="solution" id="solution-q10">
-                <p><strong>Lời giải:</strong><br>
-                a) Vì \( (SAB) \perp (ABCD) \), \( H \) là trung điểm \( AB \), tam giác \( SAB \) đều, nên \( SH \perp AB \). Suy ra \( SH \perp (ABCD) \). Đúng.<br>
-                b) Góc giữa \( SC \) và \( (ABCD) \) là \( \angle SCH \), không phải \( \angle SCA \). Sai.<br>
-                c) Trong tam giác vuông \( CBH \), \( BH = \frac{a}{2} \), \( BC = a \), nên \( CH = \sqrt{\left(\frac{a}{2}\right)^2 + a^2} = \frac{a\sqrt{5}}{2} \). Đúng.<br>
-                d) Trong tam giác vuông \( SCH \), \( SH = \frac{a\sqrt{3}}{2} \), \( CH = \frac{a\sqrt{5}}{2} \), \( SC = \sqrt{\left(\frac{a\sqrt{3}}{2}\right)^2 + \left(\frac{a\sqrt{5}}{2}\right)^2} = a\sqrt{2} \).<br>
-                \( \cos \alpha = \frac{CH}{SC} = \frac{\frac{a\sqrt{5}}{2}}{a\sqrt{2}} = \frac{\sqrt{10}}{4} \neq \frac{3}{4} \). Sai.<br>
+<div class="options">
+<div class="option">a) \( SH \perp (ABCD) \).</div>
+<div class="option">b) Góc giữa đường thẳng \( SC \) và mặt phẳng \( (ABCD) \) bằng \( \angle SCA \).</div>
+<div class="option">c) \( CH = \frac{a\sqrt{5}}{2} \).</div>
+<div class="option">d) Gọi \( \alpha \) là góc giữa đường thẳng \( SC \) và mặt phẳng \( (ABCD) \). Giá trị \( \cos \alpha \) bằng \( \frac{3}{4} \).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q10a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q10a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q10b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q10b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q10c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q10c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q10d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q10d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q10', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q10"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q10')">Xem lời giải</div>
+<div class="solution" id="solution-q10">
+<p><strong>Lời giải:</strong><br/>
+                a) Vì \( (SAB) \perp (ABCD) \), \( H \) là trung điểm \( AB \), tam giác \( SAB \) đều, nên \( SH \perp AB \). Suy ra \( SH \perp (ABCD) \). Đúng.<br/>
+                b) Góc giữa \( SC \) và \( (ABCD) \) là \( \angle SCH \), không phải \( \angle SCA \). Sai.<br/>
+                c) Trong tam giác vuông \( CBH \), \( BH = \frac{a}{2} \), \( BC = a \), nên \( CH = \sqrt{\left(\frac{a}{2}\right)^2 + a^2} = \frac{a\sqrt{5}}{2} \). Đúng.<br/>
+                d) Trong tam giác vuông \( SCH \), \( SH = \frac{a\sqrt{3}}{2} \), \( CH = \frac{a\sqrt{5}}{2} \), \( SC = \sqrt{\left(\frac{a\sqrt{3}}{2}\right)^2 + \left(\frac{a\sqrt{5}}{2}\right)^2} = a\sqrt{2} \).<br/>
+                \( \cos \alpha = \frac{CH}{SC} = \frac{\frac{a\sqrt{5}}{2}}{a\sqrt{2}} = \frac{\sqrt{10}}{4} \neq \frac{3}{4} \). Sai.<br/>
                 Đáp án: a) Đúng, b) Sai, c) Đúng, d) Sai.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 11 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Hình chóp và góc nhị diện</h3>
-            <p>Kiểm tra vuông góc, khoảng cách, và góc nhị diện trong hình chóp có đáy hình thoi.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 11:</h3>
-            <p>Cho hình chóp \( S.ABCD \) có \( SA \perp (ABCD) \), \( ABCD \) là hình thoi cạnh \( a \), \( AC = a \), \( SA = \frac{a}{2} \). Gọi \( H \) là hình chiếu của \( S \) trên cạnh \( CD \).<br>
-            <img src="anh/5.5.16.png" alt="Hình 5.5.16"><br>
+</div>
+</div>
+</div>
+<!-- Câu 11 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Hình chóp và góc nhị diện</h3>
+<p>Kiểm tra vuông góc, khoảng cách, và góc nhị diện trong hình chóp có đáy hình thoi.</p>
+</div>
+<div class="question">
+<h3>Câu 11:</h3>
+<p>Cho hình chóp \( S.ABCD \) có \( SA \perp (ABCD) \), \( ABCD \) là hình thoi cạnh \( a \), \( AC = a \), \( SA = \frac{a}{2} \). Gọi \( H \) là hình chiếu của \( S \) trên cạnh \( CD \).<br/>
+<img alt="Hình 5.5.16" loading="lazy" src="anh/5.5.16.png"/><br/>
             Xét các phát biểu sau:</p>
-            <div class="options">
-                <div class="option">a) \( AH \perp CD \).</div>
-                <div class="option">b) \( AH = \frac{a\sqrt{3}}{2} \).</div>
-                <div class="option">c) Góc \( \angle SDC \) là góc phẳng nhị diện của góc nhị diện \( [S, CD, A] \).</div>
-                <div class="option">d) Số đo của góc nhị diện \( [S, CD, A] \) bằng \( 30^\circ \).</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án cho từng phát biểu:</p>
-                <p>a) <label><input type="radio" name="q11a" value="Đúng"> Đúng</label> <label><input type="radio" name="q11a" value="Sai"> Sai</label></p>
-                <p>b) <label><input type="radio" name="q11b" value="Đúng"> Đúng</label> <label><input type="radio" name="q11b" value="Sai"> Sai</label></p>
-                <p>c) <label><input type="radio" name="q11c" value="Đúng"> Đúng</label> <label><input type="radio" name="q11c" value="Sai"> Sai</label></p>
-                <p>d) <label><input type="radio" name="q11d" value="Đúng"> Đúng</label> <label><input type="radio" name="q11d" value="Sai"> Sai</label></p>
-                <button onclick="checkTrueFalseAnswer('q11', ['Đúng', 'Đúng', 'Sai', 'Đúng'])">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q11"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q11')">Xem lời giải</div>
-            <div class="solution" id="solution-q11">
-                <p><strong>Lời giải:</strong><br>
-                a) Vì \( SA \perp (ABCD) \), \( H \in CD \), nên \( SH \perp CD \). Mặt phẳng \( (SHA) \perp CD \), suy ra \( AH \perp CD \). Đúng.<br>
-                b) Trong tam giác đều \( ACD \), \( AC = a \), \( AH = \frac{a\sqrt{3}}{2} \). Đúng.<br>
-                c) Góc phẳng nhị diện của \( [S, CD, A] \) là \( \angle SHA \), không phải \( \angle SDC \). Sai.<br>
-                d) Trong tam giác vuông \( SAH \), \( SA = \frac{a}{2} \), \( AH = \frac{a\sqrt{3}}{2} \), \( \tan \angle SHA = \frac{SA}{AH} = \frac{\frac{a}{2}}{\frac{a\sqrt{3}}{2}} = \frac{\sqrt{3}}{3} \Rightarrow \angle SHA = 30^\circ \). Đúng.<br>
+<div class="options">
+<div class="option">a) \( AH \perp CD \).</div>
+<div class="option">b) \( AH = \frac{a\sqrt{3}}{2} \).</div>
+<div class="option">c) Góc \( \angle SDC \) là góc phẳng nhị diện của góc nhị diện \( [S, CD, A] \).</div>
+<div class="option">d) Số đo của góc nhị diện \( [S, CD, A] \) bằng \( 30^\circ \).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q11a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q11a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q11b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q11b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q11c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q11c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q11d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q11d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q11', ['Đúng', 'Đúng', 'Sai', 'Đúng'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q11"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q11')">Xem lời giải</div>
+<div class="solution" id="solution-q11">
+<p><strong>Lời giải:</strong><br/>
+                a) Vì \( SA \perp (ABCD) \), \( H \in CD \), nên \( SH \perp CD \). Mặt phẳng \( (SHA) \perp CD \), suy ra \( AH \perp CD \). Đúng.<br/>
+                b) Trong tam giác đều \( ACD \), \( AC = a \), \( AH = \frac{a\sqrt{3}}{2} \). Đúng.<br/>
+                c) Góc phẳng nhị diện của \( [S, CD, A] \) là \( \angle SHA \), không phải \( \angle SDC \). Sai.<br/>
+                d) Trong tam giác vuông \( SAH \), \( SA = \frac{a}{2} \), \( AH = \frac{a\sqrt{3}}{2} \), \( \tan \angle SHA = \frac{SA}{AH} = \frac{\frac{a}{2}}{\frac{a\sqrt{3}}{2}} = \frac{\sqrt{3}}{3} \Rightarrow \angle SHA = 30^\circ \). Đúng.<br/>
                 Đáp án: a) Đúng, b) Đúng, c) Sai, d) Đúng.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 12 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Góc trong hình lập phương</h3>
-            <p>Kiểm tra góc giữa đường thẳng và mặt phẳng, góc nhị diện trong hình lập phương bằng tọa độ hoặc hình học.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 12:</h3>
-            <p>Cho hình lập phương \( ABCD.A'B'C'D' \).<br>
-            <img src="anh/5.5.17.png" alt="Hình 5.5.17"><br>
+</div>
+</div>
+</div>
+<!-- Câu 12 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Góc trong hình lập phương</h3>
+<p>Kiểm tra góc giữa đường thẳng và mặt phẳng, góc nhị diện trong hình lập phương bằng tọa độ hoặc hình học.</p>
+</div>
+<div class="question">
+<h3>Câu 12:</h3>
+<p>Cho hình lập phương \( ABCD.A'B'C'D' \).<br/>
+<img alt="Hình 5.5.17" loading="lazy" src="anh/5.5.17.png"/><br/>
             Xét các phát biểu sau:</p>
-            <div class="options">
-                <div class="option">a) Góc giữa hai đường thẳng \( AB \) và \( A'C' \) bằng \( 45^\circ \).</div>
-                <div class="option">b) Gọi \( \alpha \) là góc giữa đường thẳng \( A'C \) và mặt phẳng \( (A'B'C'D') \). Giá trị \( \tan \alpha \) bằng \( \sqrt{2} \).</div>
-                <div class="option">c) Gọi \( \beta \) là số đo của góc nhị diện \( [B, A'C', B'] \). Giá trị \( \tan \beta \) bằng \( \frac{\sqrt{2}}{2} \).</div>
-                <div class="option">d) Số đo của góc nhị diện \( [B', A'C, D'] \) bằng \( 120^\circ \).</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án cho từng phát biểu:</p>
-                <p>a) <label><input type="radio" name="q12a" value="Đúng"> Đúng</label> <label><input type="radio" name="q12a" value="Sai"> Sai</label></p>
-                <p>b) <label><input type="radio" name="q12b" value="Đúng"> Đúng</label> <label><input type="radio" name="q12b" value="Sai"> Sai</label></p>
-                <p>c) <label><input type="radio" name="q12c" value="Đúng"> Đúng</label> <label><input type="radio" name="q12c" value="Sai"> Sai</label></p>
-                <p>d) <label><input type="radio" name="q12d" value="Đúng"> Đúng</label> <label><input type="radio" name="q12d" value="Sai"> Sai</label></p>
-                <button onclick="checkTrueFalseAnswer('q12', ['Đúng', 'Sai', 'Sai', 'Đúng'])">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q12"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q12')">Xem lời giải</div>
-            <div class="solution" id="solution-q12">
-                <p><strong>Lời giải:</strong><br>
-                a) Vì \( AB \parallel A'B' \), góc \( (AB, A'C') = \angle B'A'C' \). Trong tam giác đều \( A'B'C' \), \( \angle B'A'C' = 45^\circ \). Đúng.<br>
-                b) Trong tam giác vuông \( A'C'C \), \( C'C = a \), \( A'C' = a\sqrt{2} \), \( \tan \alpha = \frac{C'C}{C'A'} = \frac{a}{a\sqrt{2}} = \frac{\sqrt{2}}{2} \neq \sqrt{2} \). Sai.<br>
-                c) Góc nhị diện \( [B, A'C', B'] = \angle B'O'B \), với \( O' \) là giao điểm \( A'C' \) và \( B'D' \). Trong tam giác vuông \( B'O'B \), \( B'B = a \), \( B'O' = \frac{a\sqrt{2}}{2} \), \( \tan \beta = \frac{B'B}{B'O'} = \sqrt{2} \neq \frac{\sqrt{2}}{2} \). Sai.<br>
-                d) Góc nhị diện \( [B', A'C, D'] = \angle B'HD' \), với \( H \) là giao điểm của \( A'C \) và \( (AB'D') \). \( H \) là tâm đường tròn ngoại tiếp tam giác đều \( AB'D' \), nên \( \angle B'HD' = 120^\circ \). Đúng.<br>
+<div class="options">
+<div class="option">a) Góc giữa hai đường thẳng \( AB \) và \( A'C' \) bằng \( 45^\circ \).</div>
+<div class="option">b) Gọi \( \alpha \) là góc giữa đường thẳng \( A'C \) và mặt phẳng \( (A'B'C'D') \). Giá trị \( \tan \alpha \) bằng \( \sqrt{2} \).</div>
+<div class="option">c) Gọi \( \beta \) là số đo của góc nhị diện \( [B, A'C', B'] \). Giá trị \( \tan \beta \) bằng \( \frac{\sqrt{2}}{2} \).</div>
+<div class="option">d) Số đo của góc nhị diện \( [B', A'C, D'] \) bằng \( 120^\circ \).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q12a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q12a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q12b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q12b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q12c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q12c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q12d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q12d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q12', ['Đúng', 'Sai', 'Sai', 'Đúng'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q12"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q12')">Xem lời giải</div>
+<div class="solution" id="solution-q12">
+<p><strong>Lời giải:</strong><br/>
+                a) Vì \( AB \parallel A'B' \), góc \( (AB, A'C') = \angle B'A'C' \). Trong tam giác đều \( A'B'C' \), \( \angle B'A'C' = 45^\circ \). Đúng.<br/>
+                b) Trong tam giác vuông \( A'C'C \), \( C'C = a \), \( A'C' = a\sqrt{2} \), \( \tan \alpha = \frac{C'C}{C'A'} = \frac{a}{a\sqrt{2}} = \frac{\sqrt{2}}{2} \neq \sqrt{2} \). Sai.<br/>
+                c) Góc nhị diện \( [B, A'C', B'] = \angle B'O'B \), với \( O' \) là giao điểm \( A'C' \) và \( B'D' \). Trong tam giác vuông \( B'O'B \), \( B'B = a \), \( B'O' = \frac{a\sqrt{2}}{2} \), \( \tan \beta = \frac{B'B}{B'O'} = \sqrt{2} \neq \frac{\sqrt{2}}{2} \). Sai.<br/>
+                d) Góc nhị diện \( [B', A'C, D'] = \angle B'HD' \), với \( H \) là giao điểm của \( A'C \) và \( (AB'D') \). \( H \) là tâm đường tròn ngoại tiếp tam giác đều \( AB'D' \), nên \( \angle B'HD' = 120^\circ \). Đúng.<br/>
                 Đáp án: a) Đúng, b) Sai, c) Sai, d) Đúng.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 13 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Khoảng cách trong lăng trụ</h3>
-            <p>Khoảng cách giữa hai đường thẳng chéo nhau và đoạn vuông góc chung được tính qua hình chiếu và tam giác vuông.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 13:</h3>
-            <p>Cho hình lăng trụ \( ABC.A'B'C' \) có \( (A'ABB') \perp (ABC) \), \( AA' = 2a \), \( \angle A'AB = 60^\circ \). Gọi \( H \) là hình chiếu của \( A' \) trên \( AB \).<br>
-            <img src="anh/5.5.18.png" alt="Hình 5.5.18"><br>
+</div>
+</div>
+</div>
+<!-- Câu 13 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Khoảng cách trong lăng trụ</h3>
+<p>Khoảng cách giữa hai đường thẳng chéo nhau và đoạn vuông góc chung được tính qua hình chiếu và tam giác vuông.</p>
+</div>
+<div class="question">
+<h3>Câu 13:</h3>
+<p>Cho hình lăng trụ \( ABC.A'B'C' \) có \( (A'ABB') \perp (ABC) \), \( AA' = 2a \), \( \angle A'AB = 60^\circ \). Gọi \( H \) là hình chiếu của \( A' \) trên \( AB \).<br/>
+<img alt="Hình 5.5.18" loading="lazy" src="anh/5.5.18.png"/><br/>
             Xét các phát biểu sau:</p>
-            <div class="options">
-                <div class="option">a) Khoảng cách giữa hai đường thẳng chéo nhau \( A'C' \) và \( AB \) bằng khoảng cách giữa hai mặt phẳng \( (A'B'C') \) và \( (ABC) \).</div>
-                <div class="option">b) \( A'H \) không phải là đoạn vuông góc chung của hai đường thẳng chéo nhau \( A'C' \) và \( AB \).</div>
-                <div class="option">c) \( A'H = a\sqrt{3} \).</div>
-                <div class="option">d) Khoảng cách giữa hai đường thẳng chéo nhau \( A'C' \) và \( AB \) bằng \( a \).</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án cho từng phát biểu:</p>
-                <p>a) <label><input type="radio" name="q13a" value="Đúng"> Đúng</label> <label><input type="radio" name="q13a" value="Sai"> Sai</label></p>
-                <p>b) <label><input type="radio" name="q13b" value="Đúng"> Đúng</label> <label><input type="radio" name="q13b" value="Sai"> Sai</label></p>
-                <p>c) <label><input type="radio" name="q13c" value="Đúng"> Đúng</label> <label><input type="radio" name="q13c" value="Sai"> Sai</label></p>
-                <p>d) <label><input type="radio" name="q13d" value="Đúng"> Đúng</label> <label><input type="radio" name="q13d" value="Sai"> Sai</label></p>
-                <button onclick="checkTrueFalseAnswer('q13', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q13"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q13')">Xem lời giải</div>
-            <div class="solution" id="solution-q13">
-                <p><strong>Lời giải:</strong><br>
-                a) Vì \( (A'ABB') \perp (ABC) \), \( A'H \perp (ABC) \), và \( (ABC) \parallel (A'B'C') \), nên \( A'H \) là khoảng cách giữa \( (A'B'C') \) và \( (ABC) \), cũng là đoạn vuông góc chung của \( A'C' \) và \( AB \). Đúng.<br>
-                b) \( A'H \perp AB \), \( A'H \perp A'C' \), nên \( A'H \) là đoạn vuông góc chung. Sai.<br>
-                c) Trong tam giác vuông \( A'AH \), \( A'A = 2a \), \( \angle A'AB = 60^\circ \), \( A'H = A'A \sin 60^\circ = 2a \cdot \frac{\sqrt{3}}{2} = a\sqrt{3} \). Đúng.<br>
-                d) Khoảng cách \( d(A'C', AB) = A'H = a\sqrt{3} \neq a \). Sai.<br>
+<div class="options">
+<div class="option">a) Khoảng cách giữa hai đường thẳng chéo nhau \( A'C' \) và \( AB \) bằng khoảng cách giữa hai mặt phẳng \( (A'B'C') \) và \( (ABC) \).</div>
+<div class="option">b) \( A'H \) không phải là đoạn vuông góc chung của hai đường thẳng chéo nhau \( A'C' \) và \( AB \).</div>
+<div class="option">c) \( A'H = a\sqrt{3} \).</div>
+<div class="option">d) Khoảng cách giữa hai đường thẳng chéo nhau \( A'C' \) và \( AB \) bằng \( a \).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q13a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q13a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q13b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q13b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q13c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q13c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q13d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q13d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q13', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q13"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q13')">Xem lời giải</div>
+<div class="solution" id="solution-q13">
+<p><strong>Lời giải:</strong><br/>
+                a) Vì \( (A'ABB') \perp (ABC) \), \( A'H \perp (ABC) \), và \( (ABC) \parallel (A'B'C') \), nên \( A'H \) là khoảng cách giữa \( (A'B'C') \) và \( (ABC) \), cũng là đoạn vuông góc chung của \( A'C' \) và \( AB \). Đúng.<br/>
+                b) \( A'H \perp AB \), \( A'H \perp A'C' \), nên \( A'H \) là đoạn vuông góc chung. Sai.<br/>
+                c) Trong tam giác vuông \( A'AH \), \( A'A = 2a \), \( \angle A'AB = 60^\circ \), \( A'H = A'A \sin 60^\circ = 2a \cdot \frac{\sqrt{3}}{2} = a\sqrt{3} \). Đúng.<br/>
+                d) Khoảng cách \( d(A'C', AB) = A'H = a\sqrt{3} \neq a \). Sai.<br/>
                 Đáp án: a) Đúng, b) Sai, c) Đúng, d) Sai.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 14 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Khoảng cách trong hình lập phương</h3>
-            <p>Khoảng cách giữa đường thẳng, điểm và mặt phẳng trong hình lập phương được tính qua hình chiếu và tọa độ.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 14:</h3>
-            <p>Cho hình lập phương \( ABCD.A'B'C'D' \) có cạnh bằng \( a \).<br>
-            <img src="anh/5.5.19.png" alt="Hình 5.5.19"><br>
+</div>
+</div>
+</div>
+<!-- Câu 14 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Khoảng cách trong hình lập phương</h3>
+<p>Khoảng cách giữa đường thẳng, điểm và mặt phẳng trong hình lập phương được tính qua hình chiếu và tọa độ.</p>
+</div>
+<div class="question">
+<h3>Câu 14:</h3>
+<p>Cho hình lập phương \( ABCD.A'B'C'D' \) có cạnh bằng \( a \).<br/>
+<img alt="Hình 5.5.19" loading="lazy" src="anh/5.5.19.png"/><br/>
             Xét các phát biểu sau:</p>
-            <div class="options">
-                <div class="option">a) Khoảng cách giữa hai đường thẳng \( AB \) và \( DD' \) bằng \( a \).</div>
-                <div class="option">b) Khoảng cách từ điểm \( B \) đến mặt phẳng \( (ACC'A') \) bằng \( \frac{a\sqrt{2}}{2} \).</div>
-                <div class="option">c) Khoảng cách từ điểm \( B \) đến đường thẳng \( A'C' \) bằng \( \frac{a\sqrt{3}}{2} \).</div>
-                <div class="option">d) Khoảng cách giữa hai đường thẳng \( BD \) và \( A'C \) bằng \( \frac{a}{2} \).</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án cho từng phát biểu:</p>
-                <p>a) <label><input type="radio" name="q14a" value="Đúng"> Đúng</label> <label><input type="radio" name="q14a" value="Sai"> Sai</label></p>
-                <p>b) <label><input type="radio" name="q14b" value="Đúng"> Đúng</label> <label><input type="radio" name="q14b" value="Sai"> Sai</label></p>
-                <p>c) <label><input type="radio" name="q14c" value="Đúng"> Đúng</label> <label><input type="radio" name="q14c" value="Sai"> Sai</label></p>
-                <p>d) <label><input type="radio" name="q14d" value="Đúng"> Đúng</label> <label><input type="radio" name="q14d" value="Sai"> Sai</label></p>
-                <button onclick="checkTrueFalseAnswer('q14', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q14"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q14')">Xem lời giải</div>
-            <div class="solution" id="solution-q14">
-                <p><strong>Lời giải:</strong><br>
-                a) \( AB \perp AD \), \( DD' \perp AD \), nên \( d(AB, DD') = AD = a \). Đúng.<br>
-                b) Gọi \( O \) là giao điểm \( AC \) và \( BD \). \( BO \perp (ACC'A') \), \( BO = \frac{a\sqrt{2}}{2} \). Đúng.<br>
-                c) \( A'C' \perp B'O' \), \( B'O' = \sqrt{\left(\frac{a\sqrt{2}}{2}\right)^2 + a^2} = \frac{a\sqrt{6}}{2} \neq \frac{a\sqrt{3}}{2} \). Sai (lưu ý: đề có lỗi, đáp án đúng là \( \frac{a\sqrt{6}}{2} \)).<br>
-                d) Đoạn vuông góc chung \( OH \), \( OH = \frac{a\sqrt{6}}{6} \neq \frac{a}{2} \). Sai.<br>
+<div class="options">
+<div class="option">a) Khoảng cách giữa hai đường thẳng \( AB \) và \( DD' \) bằng \( a \).</div>
+<div class="option">b) Khoảng cách từ điểm \( B \) đến mặt phẳng \( (ACC'A') \) bằng \( \frac{a\sqrt{2}}{2} \).</div>
+<div class="option">c) Khoảng cách từ điểm \( B \) đến đường thẳng \( A'C' \) bằng \( \frac{a\sqrt{3}}{2} \).</div>
+<div class="option">d) Khoảng cách giữa hai đường thẳng \( BD \) và \( A'C \) bằng \( \frac{a}{2} \).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q14a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q14a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q14b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q14b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q14c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q14c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q14d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q14d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q14', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q14"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q14')">Xem lời giải</div>
+<div class="solution" id="solution-q14">
+<p><strong>Lời giải:</strong><br/>
+                a) \( AB \perp AD \), \( DD' \perp AD \), nên \( d(AB, DD') = AD = a \). Đúng.<br/>
+                b) Gọi \( O \) là giao điểm \( AC \) và \( BD \). \( BO \perp (ACC'A') \), \( BO = \frac{a\sqrt{2}}{2} \). Đúng.<br/>
+                c) \( A'C' \perp B'O' \), \( B'O' = \sqrt{\left(\frac{a\sqrt{2}}{2}\right)^2 + a^2} = \frac{a\sqrt{6}}{2} \neq \frac{a\sqrt{3}}{2} \). Sai (lưu ý: đề có lỗi, đáp án đúng là \( \frac{a\sqrt{6}}{2} \)).<br/>
+                d) Đoạn vuông góc chung \( OH \), \( OH = \frac{a\sqrt{6}}{6} \neq \frac{a}{2} \). Sai.<br/>
                 Đáp án: a) Đúng, b) Đúng, c) Đúng (theo đề), d) Sai.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 15 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Lăng trụ và thể tích</h3>
-            <p>Trong lăng trụ, đường cao, diện tích đáy, và thể tích được tính dựa trên hình học của đáy và chiều cao.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 15:</h3>
-            <p>Cho hình lăng trụ \( ABCD.A'B'C'D' \) có đáy là hình thoi cạnh \( 3a \), \( \angle ABC = 60^\circ \), \( AA' = 2a \). Đỉnh \( A' \) cách đều ba đỉnh \( A, B, C \). Gọi \( G \) là trọng tâm của tam giác \( ABC \).<br>
-            <img src="anh/5.5.20.png" alt="Hình 5.5.20"><br>
+</div>
+</div>
+</div>
+<!-- Câu 15 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Lăng trụ và thể tích</h3>
+<p>Trong lăng trụ, đường cao, diện tích đáy, và thể tích được tính dựa trên hình học của đáy và chiều cao.</p>
+</div>
+<div class="question">
+<h3>Câu 15:</h3>
+<p>Cho hình lăng trụ \( ABCD.A'B'C'D' \) có đáy là hình thoi cạnh \( 3a \), \( \angle ABC = 60^\circ \), \( AA' = 2a \). Đỉnh \( A' \) cách đều ba đỉnh \( A, B, C \). Gọi \( G \) là trọng tâm của tam giác \( ABC \).<br/>
+<img alt="Hình 5.5.20" loading="lazy" src="anh/5.5.20.png"/><br/>
             Xét các phát biểu sau:</p>
-            <div class="options">
-                <div class="option">a) \( A'G \) là đường cao của hình lăng trụ \( ABCD.A'B'C'D' \).</div>
-                <div class="option">b) Độ dài đường cao của hình lăng trụ \( ABCD.A'B'C'D' \) bằng \( a\sqrt{3} \).</div>
-                <div class="option">c) Diện tích hình thoi \( ABCD \) bằng \( \frac{9a^2\sqrt{3}}{2} \).</div>
-                <div class="option">d) Thể tích của khối lăng trụ \( ABCD.A'B'C'D' \) bằng \( \frac{9a^3\sqrt{3}}{2} \).</div>
-            </div>
-            <div class="answer-check">
-                <p>Chọn đáp án cho từng phát biểu:</p>
-                <p>a) <label><input type="radio" name="q15a" value="Đúng"> Đúng</label> <label><input type="radio" name="q15a" value="Sai"> Sai</label></p>
-                <p>b) <label><input type="radio" name="q15b" value="Đúng"> Đúng</label> <label><input type="radio" name="q15b" value="Sai"> Sai</label></p>
-                <p>c) <label><input type="radio" name="q15c" value="Đúng"> Đúng</label> <label><input type="radio" name="q15c" value="Sai"> Sai</label></p>
-                <p>d) <label><input type="radio" name="q15d" value="Đúng"> Đúng</label> <label><input type="radio" name="q15d" value="Sai"> Sai</label></p>
-                <button onclick="checkTrueFalseAnswer('q15', ['Đúng', 'Sai', 'Đúng', 'Đúng'])">Kiểm tra</button>
-            </div>
-            <div class="answer-feedback" id="feedback-q15"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q15')">Xem lời giải</div>
-            <div class="solution" id="solution-q15">
-                <p><strong>Lời giải:</strong><br>
-                a) Vì \( ABC \) đều, \( A' \) cách đều \( A, B, C \), nên \( A'G \perp (ABC) \). \( A'G \) là đường cao. Đúng.<br>
-                b) Trong tam giác đều \( ABC \), \( AG = a\sqrt{3} \). Trong tam giác vuông \( A'AH \), \( A'G = \sqrt{(2a)^2 - (a\sqrt{3})^2} = a \neq a\sqrt{3} \). Sai.<br>
-                c) Diện tích hình thoi: \( 3a \cdot 3a \cdot \sin 60^\circ = \frac{9a^2\sqrt{3}}{2} \). Đúng.<br>
-                d) Thể tích: \( V = \frac{9a^2\sqrt{3}}{2} \cdot a = \frac{9a^3\sqrt{3}}{2} \). Đúng.<br>
+<div class="options">
+<div class="option">a) \( A'G \) là đường cao của hình lăng trụ \( ABCD.A'B'C'D' \).</div>
+<div class="option">b) Độ dài đường cao của hình lăng trụ \( ABCD.A'B'C'D' \) bằng \( a\sqrt{3} \).</div>
+<div class="option">c) Diện tích hình thoi \( ABCD \) bằng \( \frac{9a^2\sqrt{3}}{2} \).</div>
+<div class="option">d) Thể tích của khối lăng trụ \( ABCD.A'B'C'D' \) bằng \( \frac{9a^3\sqrt{3}}{2} \).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q15a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q15a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q15b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q15b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q15c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q15c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q15d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q15d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q15', ['Đúng', 'Sai', 'Đúng', 'Đúng'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q15"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q15')">Xem lời giải</div>
+<div class="solution" id="solution-q15">
+<p><strong>Lời giải:</strong><br/>
+                a) Vì \( ABC \) đều, \( A' \) cách đều \( A, B, C \), nên \( A'G \perp (ABC) \). \( A'G \) là đường cao. Đúng.<br/>
+                b) Trong tam giác đều \( ABC \), \( AG = a\sqrt{3} \). Trong tam giác vuông \( A'AH \), \( A'G = \sqrt{(2a)^2 - (a\sqrt{3})^2} = a \neq a\sqrt{3} \). Sai.<br/>
+                c) Diện tích hình thoi: \( 3a \cdot 3a \cdot \sin 60^\circ = \frac{9a^2\sqrt{3}}{2} \). Đúng.<br/>
+                d) Thể tích: \( V = \frac{9a^2\sqrt{3}}{2} \cdot a = \frac{9a^3\sqrt{3}}{2} \). Đúng.<br/>
                 Đáp án: a) Đúng, b) Sai, c) Đúng, d) Đúng.</p>
-            </div>
-        </div>
-    </div>
-    
-    <h2>Phần III: Trắc Nghiệm Trả Lời Ngắn</h2>
-    
-    <!-- Câu 16 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Góc giữa đường thẳng và mặt phẳng</h3>
-            <p>Góc giữa đường thẳng và mặt phẳng được tính qua tam giác vuông chứa hình chiếu của đường thẳng.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 16:</h3>
-            <p>Cho hình chóp tứ giác đều \( S.ABCD \) có cạnh đáy bằng \( a \), cạnh bên bằng \( 2a\sqrt{2} \). Gọi \( M \) là trung điểm của \( SA \). Góc giữa đường thẳng \( BM \) với mặt phẳng \( (ABCD) \) bằng bao nhiêu độ?<br>
-            <img src="anh/5.5.21.png" alt="Hình 5.5.21"></p>
-            <div class="answer-check">
-                <p>Nhập đáp án: <input type="text" id="q16-input"> <button onclick="checkShortAnswer('q16', '60')">Kiểm tra</button></p>
-            </div>
-            <div class="answer-feedback" id="feedback-q16"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q16')">Xem lời giải</div>
-            <div class="solution" id="solution-q16">
-                <p><strong>Lời giải:</strong><br>
-                Gọi \( O \) là giao điểm \( AC \) và \( BD \), \( I \) là trung điểm \( AO \). Vì hình chóp đều, \( SO \perp (ABCD) \), \( MI \parallel SO \), nên \( MI \perp (ABCD) \). Góc \( (BM, (ABCD)) = \angle MBI \).<br>
-                Trong tam giác vuông \( SAO \), \( AO = \frac{a\sqrt{2}}{2} \), \( SA = 2a\sqrt{2} \), \( SO = \sqrt{(2a\sqrt{2})^2 - \left(\frac{a\sqrt{2}}{2}\right)^2} = \frac{a\sqrt{30}}{2} \).<br>
-                \( MI = \frac{SO}{2} = \frac{a\sqrt{30}}{4} \). Trong tam giác vuông \( BIO \), \( BI = \sqrt{\left(\frac{a\sqrt{2}}{2}\right)^2 + \left(\frac{a\sqrt{2}}{2}\right)^2} = \frac{a\sqrt{10}}{4} \).<br>
-                \( \tan \angle MBI = \frac{MI}{BI} = \frac{\frac{a\sqrt{30}}{4}}{\frac{a\sqrt{10}}{4}} = \sqrt{3} \Rightarrow \angle MBI = 60^\circ \).<br>
+</div>
+</div>
+</div>
+<h2>Phần III: Trắc Nghiệm Trả Lời Ngắn</h2>
+<!-- Câu 16 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Góc giữa đường thẳng và mặt phẳng</h3>
+<p>Góc giữa đường thẳng và mặt phẳng được tính qua tam giác vuông chứa hình chiếu của đường thẳng.</p>
+</div>
+<div class="question">
+<h3>Câu 16:</h3>
+<p>Cho hình chóp tứ giác đều \( S.ABCD \) có cạnh đáy bằng \( a \), cạnh bên bằng \( 2a\sqrt{2} \). Gọi \( M \) là trung điểm của \( SA \). Góc giữa đường thẳng \( BM \) với mặt phẳng \( (ABCD) \) bằng bao nhiêu độ?<br/>
+<img alt="Hình 5.5.21" loading="lazy" src="anh/5.5.21.png"/></p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q16-input" type="text"/> <button onclick="checkShortAnswer('q16', '60')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q16"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q16')">Xem lời giải</div>
+<div class="solution" id="solution-q16">
+<p><strong>Lời giải:</strong><br/>
+                Gọi \( O \) là giao điểm \( AC \) và \( BD \), \( I \) là trung điểm \( AO \). Vì hình chóp đều, \( SO \perp (ABCD) \), \( MI \parallel SO \), nên \( MI \perp (ABCD) \). Góc \( (BM, (ABCD)) = \angle MBI \).<br/>
+                Trong tam giác vuông \( SAO \), \( AO = \frac{a\sqrt{2}}{2} \), \( SA = 2a\sqrt{2} \), \( SO = \sqrt{(2a\sqrt{2})^2 - \left(\frac{a\sqrt{2}}{2}\right)^2} = \frac{a\sqrt{30}}{2} \).<br/>
+                \( MI = \frac{SO}{2} = \frac{a\sqrt{30}}{4} \). Trong tam giác vuông \( BIO \), \( BI = \sqrt{\left(\frac{a\sqrt{2}}{2}\right)^2 + \left(\frac{a\sqrt{2}}{2}\right)^2} = \frac{a\sqrt{10}}{4} \).<br/>
+                \( \tan \angle MBI = \frac{MI}{BI} = \frac{\frac{a\sqrt{30}}{4}}{\frac{a\sqrt{10}}{4}} = \sqrt{3} \Rightarrow \angle MBI = 60^\circ \).<br/>
                 Đáp án: 60.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 17 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Khoảng cách từ điểm đến mặt phẳng</h3>
-            <p>Khoảng cách từ điểm đến mặt phẳng được tính qua đoạn vuông góc từ điểm đến mặt phẳng.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 17:</h3>
-            <p>Cho hình chóp \( S.ABCD \) có đáy \( ABCD \) là hình thoi cạnh \( a \), \( \angle ABC = 60^\circ \). Gọi \( O \) là giao điểm của \( AC \) và \( BD \). Biết rằng \( SO \perp (ABCD) \), \( SO = \frac{3a}{4} \). Khoảng cách từ \( O \) đến mặt phẳng \( (SCD) \) bằng \( \frac{ma}{n} \) với \( \frac{m}{n} \) là phân số tối giản, \( m > 0 \), \( n > 0 \). Giá trị \( m + n \) bằng bao nhiêu?<br>
-            <img src="anh/5.5.22.png" alt="Hình 5.5.22"></p>
-            <div class="answer-check">
-                <p>Nhập đáp án: <input type="text" id="q17-input"> <button onclick="checkShortAnswer('q17', '11')">Kiểm tra</button></p>
-            </div>
-            <div class="answer-feedback" id="feedback-q17"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q17')">Xem lời giải</div>
-            <div class="solution" id="solution-q17">
-                <p><strong>Lời giải:</strong><br>
-                Gọi \( I \) là hình chiếu của \( O \) trên \( CD \), \( H \) là hình chiếu của \( O \) trên \( SI \). Vì \( CD \perp (SOI) \), \( OH \perp SI \), nên \( OH \perp (SCD) \), \( d(O, (SCD)) = OH \).<br>
-                Tam giác \( ABC \) đều, nên \( OB = OD = \frac{a\sqrt{3}}{2} \), \( OA = OC = \frac{a}{2} \). Trong tam giác vuông \( DOC \), \( OI = \frac{a\sqrt{3}}{4} \).<br>
-                Trong tam giác vuông \( SOI \), \( SI = \sqrt{\left(\frac{3a}{4}\right)^2 + \left(\frac{a\sqrt{3}}{4}\right)^2} = \frac{a\sqrt{3}}{2} \), \( OH = \frac{\frac{3a}{4} \cdot \frac{a\sqrt{3}}{4}}{\frac{a\sqrt{3}}{2}} = \frac{3a}{8} \).<br>
-                \( \frac{m}{n} = \frac{3}{8} \), \( m + n = 3 + 8 = 11 \).<br>
+</div>
+</div>
+</div>
+<!-- Câu 17 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Khoảng cách từ điểm đến mặt phẳng</h3>
+<p>Khoảng cách từ điểm đến mặt phẳng được tính qua đoạn vuông góc từ điểm đến mặt phẳng.</p>
+</div>
+<div class="question">
+<h3>Câu 17:</h3>
+<p>Cho hình chóp \( S.ABCD \) có đáy \( ABCD \) là hình thoi cạnh \( a \), \( \angle ABC = 60^\circ \). Gọi \( O \) là giao điểm của \( AC \) và \( BD \). Biết rằng \( SO \perp (ABCD) \), \( SO = \frac{3a}{4} \). Khoảng cách từ \( O \) đến mặt phẳng \( (SCD) \) bằng \( \frac{ma}{n} \) với \( \frac{m}{n} \) là phân số tối giản, \( m &gt; 0 \), \( n &gt; 0 \). Giá trị \( m + n \) bằng bao nhiêu?<br/>
+<img alt="Hình 5.5.22" loading="lazy" src="anh/5.5.22.png"/></p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q17-input" type="text"/> <button onclick="checkShortAnswer('q17', '11')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q17"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q17')">Xem lời giải</div>
+<div class="solution" id="solution-q17">
+<p><strong>Lời giải:</strong><br/>
+                Gọi \( I \) là hình chiếu của \( O \) trên \( CD \), \( H \) là hình chiếu của \( O \) trên \( SI \). Vì \( CD \perp (SOI) \), \( OH \perp SI \), nên \( OH \perp (SCD) \), \( d(O, (SCD)) = OH \).<br/>
+                Tam giác \( ABC \) đều, nên \( OB = OD = \frac{a\sqrt{3}}{2} \), \( OA = OC = \frac{a}{2} \). Trong tam giác vuông \( DOC \), \( OI = \frac{a\sqrt{3}}{4} \).<br/>
+                Trong tam giác vuông \( SOI \), \( SI = \sqrt{\left(\frac{3a}{4}\right)^2 + \left(\frac{a\sqrt{3}}{4}\right)^2} = \frac{a\sqrt{3}}{2} \), \( OH = \frac{\frac{3a}{4} \cdot \frac{a\sqrt{3}}{4}}{\frac{a\sqrt{3}}{2}} = \frac{3a}{8} \).<br/>
+                \( \frac{m}{n} = \frac{3}{8} \), \( m + n = 3 + 8 = 11 \).<br/>
                 Đáp án: 11.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 18 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Khoảng cách giữa hai đường thẳng chéo nhau</h3>
-            <p>Khoảng cách giữa hai đường thẳng chéo nhau là độ dài đoạn vuông góc chung.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 18:</h3>
-            <p>Cho hình chóp \( S.ABCD \) có đáy là hình vuông cạnh \( a \), \( SA \perp (ABCD) \), số đo của góc nhị diện \( [S, BC, A] \) bằng \( 60^\circ \). Khoảng cách giữa hai đường thẳng \( SC \) và \( BD \) bằng \( \frac{a\sqrt{30}}{n} \). Giá trị của \( n \) bằng bao nhiêu?<br>
-            <img src="anh/5.5.23.png" alt="Hình 5.5.23"></p>
-            <div class="answer-check">
-                <p>Nhập đáp án: <input type="text" id="q18-input"> <button onclick="checkShortAnswer('q18', '10')">Kiểm tra</button></p>
-            </div>
-            <div class="answer-feedback" id="feedback-q18"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q18')">Xem lời giải</div>
-            <div class="solution" id="solution-q18">
-                <p><strong>Lời giải:</strong><br>
-                Vì \( BC \perp SA \), \( BC \perp AB \), nên \( BC \perp (SAB) \), \( \angle SBA = 60^\circ \). Trong tam giác vuông \( SAB \), \( SA = a\tan 60^\circ = a\sqrt{3} \).<br>
-                Gọi \( O \) là giao điểm \( AC \) và \( BD \), \( H \) là hình chiếu của \( O \) trên \( SC \). Vì \( BD \perp (SAC) \), \( OH \perp BD \), nên \( OH \) là đoạn vuông góc chung.<br>
-                Gọi \( I \) là hình chiếu của \( A \) trên \( SC \). Trong tam giác vuông \( SAC \), \( AI = \frac{a\sqrt{3} \cdot a\sqrt{2}}{\sqrt{(a\sqrt{3})^2 + (a\sqrt{2})^2}} = \frac{a\sqrt{30}}{5} \).<br>
-                Vì \( OH \parallel AI \), \( \frac{OH}{AI} = \frac{OC}{CA} = \frac{1}{2} \), nên \( OH = \frac{1}{2} \cdot \frac{a\sqrt{30}}{5} = \frac{a\sqrt{30}}{10} \).<br>
-                \( \frac{a\sqrt{30}}{n} = \frac{a\sqrt{30}}{10} \Rightarrow n = 10 \).<br>
+</div>
+</div>
+</div>
+<!-- Câu 18 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Khoảng cách giữa hai đường thẳng chéo nhau</h3>
+<p>Khoảng cách giữa hai đường thẳng chéo nhau là độ dài đoạn vuông góc chung.</p>
+</div>
+<div class="question">
+<h3>Câu 18:</h3>
+<p>Cho hình chóp \( S.ABCD \) có đáy là hình vuông cạnh \( a \), \( SA \perp (ABCD) \), số đo của góc nhị diện \( [S, BC, A] \) bằng \( 60^\circ \). Khoảng cách giữa hai đường thẳng \( SC \) và \( BD \) bằng \( \frac{a\sqrt{30}}{n} \). Giá trị của \( n \) bằng bao nhiêu?<br/>
+<img alt="Hình 5.5.23" loading="lazy" src="anh/5.5.23.png"/></p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q18-input" type="text"/> <button onclick="checkShortAnswer('q18', '10')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q18"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q18')">Xem lời giải</div>
+<div class="solution" id="solution-q18">
+<p><strong>Lời giải:</strong><br/>
+                Vì \( BC \perp SA \), \( BC \perp AB \), nên \( BC \perp (SAB) \), \( \angle SBA = 60^\circ \). Trong tam giác vuông \( SAB \), \( SA = a\tan 60^\circ = a\sqrt{3} \).<br/>
+                Gọi \( O \) là giao điểm \( AC \) và \( BD \), \( H \) là hình chiếu của \( O \) trên \( SC \). Vì \( BD \perp (SAC) \), \( OH \perp BD \), nên \( OH \) là đoạn vuông góc chung.<br/>
+                Gọi \( I \) là hình chiếu của \( A \) trên \( SC \). Trong tam giác vuông \( SAC \), \( AI = \frac{a\sqrt{3} \cdot a\sqrt{2}}{\sqrt{(a\sqrt{3})^2 + (a\sqrt{2})^2}} = \frac{a\sqrt{30}}{5} \).<br/>
+                Vì \( OH \parallel AI \), \( \frac{OH}{AI} = \frac{OC}{CA} = \frac{1}{2} \), nên \( OH = \frac{1}{2} \cdot \frac{a\sqrt{30}}{5} = \frac{a\sqrt{30}}{10} \).<br/>
+                \( \frac{a\sqrt{30}}{n} = \frac{a\sqrt{30}}{10} \Rightarrow n = 10 \).<br/>
                 Đáp án: 10.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Câu 19 -->
-    <div class="card">
-        <div class="summary-box">
-            <h3>Tóm tắt kiến thức: Thể tích khối lăng trụ</h3>
-            <p>Thể tích khối lăng trụ: \( V = S_{\text{đáy}} \cdot h \). Tổng thể tích là tổng các khối lăng trụ có đáy là tam giác, hình chữ nhật, hình thang.</p>
-        </div>
-        <div class="question">
-            <h3>Câu 19:</h3>
-            <p>Người ta cần xây dựng công trình đê để ngăn nước lũ của sông. Mặt cắt của đê được thiết kế với số đo như trong Hình 14. Tổng thể tích vật liệu cần dùng để xây dựng đoạn đê đó bằng bao nhiêu mét khối (làm tròn kết quả đến hàng đơn vị)? Biết rằng đoạn đê thẳng và dài \( 100 \, \text{m} \).<br>
-            <img src="anh/5.5.24.png" alt="Hình 5.5.24"></p>
-            <div class="answer-check">
-                <p>Nhập đáp án: <input type="text" id="q19-input"> <button onclick="checkShortAnswer('q19', '9363')">Kiểm tra</button></p>
-            </div>
-            <div class="answer-feedback" id="feedback-q19"></div>
-            <div class="solution-toggle" onclick="toggleSolution('solution-q19')">Xem lời giải</div>
-            <div class="solution" id="solution-q19">
-                <p><strong>Lời giải:</strong><br>
-                Mặt cắt gồm: tam giác vuông \( ABC \), hình chữ nhật \( ACDI \), hình thang vuông \( DEHI \), hình thang vuông \( EFGH \). Chiều cao lăng trụ: \( 100 \, \text{m} \).<br>
-                - Tam giác \( ABC \): \( V_1 = \frac{1}{2} \cdot 9 \cdot 6.5 \cdot 100 = 2925 \, \text{m}^3 \).<br>
-                - Hình chữ nhật \( ACDI \): \( V_2 = 5 \cdot 6.5 \cdot 100 = 3250 \, \text{m}^3 \).<br>
-                - Hình thang \( DEHI \): \( V_3 = \frac{1}{2} \cdot (6.5 + 3) \cdot 4.5 \cdot 100 = 2137.5 \, \text{m}^3 \).<br>
-                - Hình thang \( EFGH \): \( V_4 = \frac{1}{2} \cdot (6 + 1) \cdot 3 \cdot 100 = 1050 \, \text{m}^3 \).<br>
-                Tổng: \( V = 2925 + 3250 + 2137.5 + 1050 = 9362.5 \approx 9363 \, \text{m}^3 \).<br>
+</div>
+</div>
+</div>
+<!-- Câu 19 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Thể tích khối lăng trụ</h3>
+<p>Thể tích khối lăng trụ: \( V = S_{\text{đáy}} \cdot h \). Tổng thể tích là tổng các khối lăng trụ có đáy là tam giác, hình chữ nhật, hình thang.</p>
+</div>
+<div class="question">
+<h3>Câu 19:</h3>
+<p>Người ta cần xây dựng công trình đê để ngăn nước lũ của sông. Mặt cắt của đê được thiết kế với số đo như trong Hình 14. Tổng thể tích vật liệu cần dùng để xây dựng đoạn đê đó bằng bao nhiêu mét khối (làm tròn kết quả đến hàng đơn vị)? Biết rằng đoạn đê thẳng và dài \( 100 \, \text{m} \).<br/>
+<img alt="Hình 5.5.24" loading="lazy" src="anh/5.5.24.png"/></p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q19-input" type="text"/> <button onclick="checkShortAnswer('q19', '9363')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q19"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q19')">Xem lời giải</div>
+<div class="solution" id="solution-q19">
+<p><strong>Lời giải:</strong><br/>
+                Mặt cắt gồm: tam giác vuông \( ABC \), hình chữ nhật \( ACDI \), hình thang vuông \( DEHI \), hình thang vuông \( EFGH \). Chiều cao lăng trụ: \( 100 \, \text{m} \).<br/>
+                - Tam giác \( ABC \): \( V_1 = \frac{1}{2} \cdot 9 \cdot 6.5 \cdot 100 = 2925 \, \text{m}^3 \).<br/>
+                - Hình chữ nhật \( ACDI \): \( V_2 = 5 \cdot 6.5 \cdot 100 = 3250 \, \text{m}^3 \).<br/>
+                - Hình thang \( DEHI \): \( V_3 = \frac{1}{2} \cdot (6.5 + 3) \cdot 4.5 \cdot 100 = 2137.5 \, \text{m}^3 \).<br/>
+                - Hình thang \( EFGH \): \( V_4 = \frac{1}{2} \cdot (6 + 1) \cdot 3 \cdot 100 = 1050 \, \text{m}^3 \).<br/>
+                Tổng: \( V = 2925 + 3250 + 2137.5 + 1050 = 9362.5 \approx 9363 \, \text{m}^3 \).<br/>
                 Đáp án: 9363.</p>
-            </div>
-        </div>
-    </div>
 </div>
-<!-- PHẦN CUỐICUỐI -->   
-
+</div>
+</div>
+</div>
+<!-- PHẦN CUỐICUỐI -->
 <div class="navigation">
-    <button onclick="window.location.href='de4.html'">Chuyên Đề trước</button>
-    <button onclick="window.location.href='de66.html'">Chuyên Đề sau</button>
+<button onclick="window.location.href='de4.html'">Chuyên Đề trước</button>
+<button onclick="window.location.href='de66.html'">Chuyên Đề sau</button>
 </div>
-</div>
-<script defer>
+<script defer="">
 let isSolutionDisabled = false; function checkAnswer(questionId, correctAnswer) {
     const options = document.getElementsByName(questionId);
     let selectedAnswer = null;
