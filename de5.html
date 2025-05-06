@@ -1229,8 +1229,14 @@
 <button onclick="window.location.href='de66.html'">Chuyên Đề sau</button>
 </div>
 </div>
-<script defer="">
-    let isSolutionDisabled = false; function checkAnswer(questionId, correctAnswer) {
+<script>
+    const isExamTime = false; // true: khóa kiểm tra và lời giải, false: mở khóa
+    
+    function checkAnswer(questionId, correctAnswer) {
+        if (isExamTime) {
+            alert('Không thể kiểm tra đáp án trong thời gian làm bài!');
+            return;
+        }
         const options = document.getElementsByName(questionId);
         let selectedAnswer = null;
         for (const option of options) {
@@ -1253,7 +1259,12 @@
             feedback.className = 'answer-feedback incorrect';
         }
     }
+    
     function checkTrueFalseAnswer(questionId, correctAnswers) {
+        if (isExamTime) {
+            alert('Không thể kiểm tra đáp án trong thời gian làm bài!');
+            return;
+        }
         const feedback = document.getElementById(`feedback-${questionId}`);
         let allCorrect = true;
         let results = [];
@@ -1277,14 +1288,19 @@
             results.push(`Phát biểu ${String.fromCharCode(97 + i)}: ${selected === correctAnswers[i] ? 'Đúng' : `Sai (Đáp án đúng: ${correctAnswers[i]})`}`);
         }
         if (allCorrect) {
-            feedback.textContent = 'Tất cả Chuyên Đều đúng!';
+            feedback.textContent = 'Tất cả đều đúng!';
             feedback.className = 'answer-feedback correct';
         } else {
             feedback.textContent = results.join('\n');
             feedback.className = 'answer-feedback incorrect';
         }
     }
+    
     function checkShortAnswer(questionId, correctAnswer) {
+        if (isExamTime) {
+            alert('Không thể kiểm tra đáp án trong thời gian làm bài!');
+            return;
+        }
         const input = document.getElementById(`${questionId}-input`).value.trim();
         const feedback = document.getElementById(`feedback-${questionId}`);
         if (!input) {
@@ -1300,15 +1316,15 @@
             feedback.className = 'answer-feedback incorrect';
         }
     }
+    
     function toggleSolution(solutionId) {
-if (isSolutionDisabled) {
-    alert('Hãy cố gắng giải, thầy sẽ cho xem lời giải sau, nhớ quay lại xem lời giải nhé.');
-    return;
-}
-const solution = document.getElementById(solutionId);
-solution.classList.toggle('show');
-
-}
-</script>
+        if (isExamTime) {
+            alert('Không thể xem lời giải trong thời gian làm bài!');
+            return;
+        }
+        const solution = document.getElementById(solutionId);
+        solution.classList.toggle('show');
+    }
+    </script>
 </body>
 </html>

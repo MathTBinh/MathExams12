@@ -575,9 +575,8 @@
 <div class="solution-toggle" onclick="toggleSolution('solution-q1')">Xem lời giải</div>
 <div class="solution" id="solution-q1">
 <p><strong>Lời giải:</strong><br/>
-                Đặt \( u = -8x - 4 \), thì \( du = -8 \, dx \Rightarrow dx = -\frac{1}{8} du \).<br/>
-                \( \int 2 e^{u} \cdot \left(-\frac{1}{8}\right) du = -\frac{2}{8} \int e^u \, du = -\frac{1}{4} e^u + C = -\frac{1}{4} e^{-8x-4} + C \).<br/>
-                Đáp án: D.</p>
+    \( \int k e^{ax+b} \, dx = \frac{k}{a} e^{ax+b} + C \)  
+           Đáp án: D.</p>
 </div>
 </div>
 </div>
@@ -1026,7 +1025,8 @@
 </div>
 <div class="question">
 <h3>Câu 14:</h3>
-<p>Một người điều khiển ô tô trên đường cao tốc muốn tách làn. Tốc độ và quãng đường được mô tả như sau:</p>
+<p>Một người điều khiển ô tô trên đường cao tốc muốn tách làn. Khi ô tô cách điểm tách làn 320 m, tốc độ của ô tô là  90 km/hh. Bốn giây sau đó, ô tô bắt đầu giảm tốc với tốc độ \(v(t)=at+b\)  với \( a, b \in \mathbb{R}, a < 0 \)  , trong đó  t là thời gian tính bằng giây kể từ khi bắt đầu giảm tốc. 
+Biết rằng ô tô tách khỏi làn đường cao tốc sau 10 giây và duy trì sự giảm tốc trong 20 giây kể từ khi bắt đầu giảm tốc.</p>
 <div class="options">
 <div class="option">a) Quãng đường ô tô đi được từ khi bắt đầu giảm tốc đến khi tách khỏi làn là 220 m.</div>
 <div class="option">b) Giá trị của \( b \) là 20.</div>
@@ -1293,87 +1293,105 @@
 <button onclick="window.location.href='de4.html'">Chuyên Đề trước</button>
 <button onclick="window.location.href='de66.html'">Chuyên Đề sau</button>
 </div>
-</div>
-<script defer="">
-let isSolutionDisabled = false; function checkAnswer(questionId, correctAnswer) {
-    const options = document.getElementsByName(questionId);
-    let selectedAnswer = null;
-    for (const option of options) {
-        if (option.checked) {
-            selectedAnswer = option.value;
-            break;
+
+<script>
+    const isExamTime = true; // true: khóa kiểm tra và lời giải, false: mở khóa
+    
+    function checkAnswer(questionId, correctAnswer) {
+        if (isExamTime) {
+            alert('Không thể kiểm tra đáp án trong thời gian làm bài!');
+            return;
         }
-    }
-    const feedback = document.getElementById(`feedback-${questionId}`);
-    if (!selectedAnswer) {
-        feedback.textContent = 'Vui lòng chọn một đáp án!';
-        feedback.className = 'answer-feedback incorrect';
-        return;
-    }
-    if (selectedAnswer === correctAnswer) {
-        feedback.textContent = 'Đúng!';
-        feedback.className = 'answer-feedback correct';
-    } else {
-        feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
-        feedback.className = 'answer-feedback incorrect';
-    }
-}
-function checkTrueFalseAnswer(questionId, correctAnswers) {
-    const feedback = document.getElementById(`feedback-${questionId}`);
-    let allCorrect = true;
-    let results = [];
-    for (let i = 0; i < correctAnswers.length; i++) {
-        const options = document.getElementsByName(`${questionId}${String.fromCharCode(97 + i)}`);
-        let selected = null;
+        const options = document.getElementsByName(questionId);
+        let selectedAnswer = null;
         for (const option of options) {
             if (option.checked) {
-                selected = option.value;
+                selectedAnswer = option.value;
                 break;
             }
         }
-        if (!selected) {
-            feedback.textContent = 'Vui lòng chọn đáp án cho tất cả phát biểu!';
+        const feedback = document.getElementById(`feedback-${questionId}`);
+        if (!selectedAnswer) {
+            feedback.textContent = 'Vui lòng chọn một đáp án!';
             feedback.className = 'answer-feedback incorrect';
             return;
         }
-        if (selected !== correctAnswers[i]) {
-            allCorrect = false;
+        if (selectedAnswer === correctAnswer) {
+            feedback.textContent = 'Đúng!';
+            feedback.className = 'answer-feedback correct';
+        } else {
+            feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
+            feedback.className = 'answer-feedback incorrect';
         }
-        results.push(`Phát biểu ${String.fromCharCode(97 + i)}: ${selected === correctAnswers[i] ? 'Đúng' : `Sai (Đáp án đúng: ${correctAnswers[i]})`}`);
     }
-    if (allCorrect) {
-        feedback.textContent = 'Tất cả Chuyên Đều đúng!';
-        feedback.className = 'answer-feedback correct';
-    } else {
-        feedback.textContent = results.join('\n');
-        feedback.className = 'answer-feedback incorrect';
+    
+    function checkTrueFalseAnswer(questionId, correctAnswers) {
+        if (isExamTime) {
+            alert('Không thể kiểm tra đáp án trong thời gian làm bài!');
+            return;
+        }
+        const feedback = document.getElementById(`feedback-${questionId}`);
+        let allCorrect = true;
+        let results = [];
+        for (let i = 0; i < correctAnswers.length; i++) {
+            const options = document.getElementsByName(`${questionId}${String.fromCharCode(97 + i)}`);
+            let selected = null;
+            for (const option of options) {
+                if (option.checked) {
+                    selected = option.value;
+                    break;
+                }
+            }
+            if (!selected) {
+                feedback.textContent = 'Vui lòng chọn đáp án cho tất cả phát biểu!';
+                feedback.className = 'answer-feedback incorrect';
+                return;
+            }
+            if (selected !== correctAnswers[i]) {
+                allCorrect = false;
+            }
+            results.push(`Phát biểu ${String.fromCharCode(97 + i)}: ${selected === correctAnswers[i] ? 'Đúng' : `Sai (Đáp án đúng: ${correctAnswers[i]})`}`);
+        }
+        if (allCorrect) {
+            feedback.textContent = 'Tất cả đều đúng!';
+            feedback.className = 'answer-feedback correct';
+        } else {
+            feedback.textContent = results.join('\n');
+            feedback.className = 'answer-feedback incorrect';
+        }
     }
-}
-function checkShortAnswer(questionId, correctAnswer) {
-    const input = document.getElementById(`${questionId}-input`).value.trim();
-    const feedback = document.getElementById(`feedback-${questionId}`);
-    if (!input) {
-        feedback.textContent = 'Vui lòng nhập đáp án!';
-        feedback.className = 'answer-feedback incorrect';
-        return;
+    
+    function checkShortAnswer(questionId, correctAnswer) {
+        if (isExamTime) {
+            alert('Không thể kiểm tra đáp án trong thời gian làm bài!');
+            return;
+        }
+        const input = document.getElementById(`${questionId}-input`).value.trim();
+        const feedback = document.getElementById(`feedback-${questionId}`);
+        if (!input) {
+            feedback.textContent = 'Vui lòng nhập đáp án!';
+            feedback.className = 'answer-feedback incorrect';
+            return;
+        }
+        if (input === correctAnswer) {
+            feedback.textContent = 'Đúng!';
+            feedback.className = 'answer-feedback correct';
+        } else {
+            feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
+            feedback.className = 'answer-feedback incorrect';
+        }
     }
-    if (input === correctAnswer) {
-        feedback.textContent = 'Đúng!';
-        feedback.className = 'answer-feedback correct';
-    } else {
-        feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
-        feedback.className = 'answer-feedback incorrect';
+    
+    function toggleSolution(solutionId) {
+        if (isExamTime) {
+            alert('Không thể xem lời giải trong thời gian làm bài!');
+            return;
+        }
+        const solution = document.getElementById(solutionId);
+        solution.classList.toggle('show');
     }
-}
-function toggleSolution(solutionId) {
-if (isSolutionDisabled) {
-alert('Hãy cố gắng giải, thầy sẽ cho xem lời giải sau, nhớ quay lại xem lời giải nhé.');
-return;
-}
-const solution = document.getElementById(solutionId);
-solution.classList.toggle('show');
+    </script>
 
-}
-</script>
-</div></body>
+
+</body>
 </html>
