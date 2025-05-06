@@ -1211,86 +1211,103 @@
 <button onclick="window.location.href='de4.html'">Chuyên Đề trước</button>
 <button onclick="window.location.href='de66.html'">Chuyên Đề sau</button>
 </div>
-<script defer="">
-let isSolutionDisabled = false; function checkAnswer(questionId, correctAnswer) {
-    const options = document.getElementsByName(questionId);
-    let selectedAnswer = null;
-    for (const option of options) {
-        if (option.checked) {
-            selectedAnswer = option.value;
-            break;
+<script>
+    const isExamTime = false; // true: khóa kiểm tra và lời giải, false: mở khóa
+    
+    function checkAnswer(questionId, correctAnswer) {
+        if (isExamTime) {
+            alert('Không thể kiểm tra đáp án trong thời gian làm bài!');
+            return;
         }
-    }
-    const feedback = document.getElementById(`feedback-${questionId}`);
-    if (!selectedAnswer) {
-        feedback.textContent = 'Vui lòng chọn một đáp án!';
-        feedback.className = 'answer-feedback incorrect';
-        return;
-    }
-    if (selectedAnswer === correctAnswer) {
-        feedback.textContent = 'Đúng!';
-        feedback.className = 'answer-feedback correct';
-    } else {
-        feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
-        feedback.className = 'answer-feedback incorrect';
-    }
-}
-function checkTrueFalseAnswer(questionId, correctAnswers) {
-    const feedback = document.getElementById(`feedback-${questionId}`);
-    let allCorrect = true;
-    let results = [];
-    for (let i = 0; i < correctAnswers.length; i++) {
-        const options = document.getElementsByName(`${questionId}${String.fromCharCode(97 + i)}`);
-        let selected = null;
+        const options = document.getElementsByName(questionId);
+        let selectedAnswer = null;
         for (const option of options) {
             if (option.checked) {
-                selected = option.value;
+                selectedAnswer = option.value;
                 break;
             }
         }
-        if (!selected) {
-            feedback.textContent = 'Vui lòng chọn đáp án cho tất cả phát biểu!';
+        const feedback = document.getElementById(`feedback-${questionId}`);
+        if (!selectedAnswer) {
+            feedback.textContent = 'Vui lòng chọn một đáp án!';
             feedback.className = 'answer-feedback incorrect';
             return;
         }
-        if (selected !== correctAnswers[i]) {
-            allCorrect = false;
+        if (selectedAnswer === correctAnswer) {
+            feedback.textContent = 'Đúng!';
+            feedback.className = 'answer-feedback correct';
+        } else {
+            feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
+            feedback.className = 'answer-feedback incorrect';
         }
-        results.push(`Phát biểu ${String.fromCharCode(97 + i)}: ${selected === correctAnswers[i] ? 'Đúng' : `Sai (Đáp án đúng: ${correctAnswers[i]})`}`);
     }
-    if (allCorrect) {
-        feedback.textContent = 'Tất cả Chuyên Đều đúng!';
-        feedback.className = 'answer-feedback correct';
-    } else {
-        feedback.textContent = results.join('\n');
-        feedback.className = 'answer-feedback incorrect';
+    
+    function checkTrueFalseAnswer(questionId, correctAnswers) {
+        if (isExamTime) {
+            alert('Không thể kiểm tra đáp án trong thời gian làm bài!');
+            return;
+        }
+        const feedback = document.getElementById(`feedback-${questionId}`);
+        let allCorrect = true;
+        let results = [];
+        for (let i = 0; i < correctAnswers.length; i++) {
+            const options = document.getElementsByName(`${questionId}${String.fromCharCode(97 + i)}`);
+            let selected = null;
+            for (const option of options) {
+                if (option.checked) {
+                    selected = option.value;
+                    break;
+                }
+            }
+            if (!selected) {
+                feedback.textContent = 'Vui lòng chọn đáp án cho tất cả phát biểu!';
+                feedback.className = 'answer-feedback incorrect';
+                return;
+            }
+            if (selected !== correctAnswers[i]) {
+                allCorrect = false;
+            }
+            results.push(`Phát biểu ${String.fromCharCode(97 + i)}: ${selected === correctAnswers[i] ? 'Đúng' : `Sai (Đáp án đúng: ${correctAnswers[i]})`}`);
+        }
+        if (allCorrect) {
+            feedback.textContent = 'Tất cả đều đúng!';
+            feedback.className = 'answer-feedback correct';
+        } else {
+            feedback.textContent = results.join('\n');
+            feedback.className = 'answer-feedback incorrect';
+        }
     }
-}
-function checkShortAnswer(questionId, correctAnswer) {
-    const input = document.getElementById(`${questionId}-input`).value.trim();
-    const feedback = document.getElementById(`feedback-${questionId}`);
-    if (!input) {
-        feedback.textContent = 'Vui lòng nhập đáp án!';
-        feedback.className = 'answer-feedback incorrect';
-        return;
+    
+    function checkShortAnswer(questionId, correctAnswer) {
+        if (isExamTime) {
+            alert('Không thể kiểm tra đáp án trong thời gian làm bài!');
+            return;
+        }
+        const input = document.getElementById(`${questionId}-input`).value.trim();
+        const feedback = document.getElementById(`feedback-${questionId}`);
+        if (!input) {
+            feedback.textContent = 'Vui lòng nhập đáp án!';
+            feedback.className = 'answer-feedback incorrect';
+            return;
+        }
+        if (input === correctAnswer) {
+            feedback.textContent = 'Đúng!';
+            feedback.className = 'answer-feedback correct';
+        } else {
+            feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
+            feedback.className = 'answer-feedback incorrect';
+        }
     }
-    if (input === correctAnswer) {
-        feedback.textContent = 'Đúng!';
-        feedback.className = 'answer-feedback correct';
-    } else {
-        feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
-        feedback.className = 'answer-feedback incorrect';
+    
+    function toggleSolution(solutionId) {
+        if (isExamTime) {
+            alert('Không thể xem lời giải trong thời gian làm bài!');
+            return;
+        }
+        const solution = document.getElementById(solutionId);
+        solution.classList.toggle('show');
     }
-}
-function toggleSolution(solutionId) {
-if (isSolutionDisabled) {
-alert('Hãy cố gắng giải, thầy sẽ cho xem lời giải sau, nhớ quay lại xem lời giải nhé.');
-return;
-}
-const solution = document.getElementById(solutionId);
-solution.classList.toggle('show');
+    </script>
 
-}
-</script>
 </body>
 </html>
