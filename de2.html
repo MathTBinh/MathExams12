@@ -1277,7 +1277,7 @@ Biết rằng ô tô tách khỏi làn đường cao tốc sau 10 giây và duy 
 </div>
 <div class="question">
 <h3>Câu 22:</h3>
-<p>Một lô hàng gồm 10 sản phẩm, trong đó có 3 sản phẩm kém chất lượng. Người ta lấy ngẫu nhiên 2 sản phẩm từ lô hàng rồi trả lại, sau đó lấy tiếp 1 sản phẩm. Tính xác suất để sản phẩm cuối cùng lấy được là sản phẩm đạt chất lượng. (Kết quả làm tròn đến hai chữ số thập phân).</p>
+<p>Câu 6: Có hai thùng I và II chứa các sản phẩm có khuyết tật và không khuyết tật. Thường I có 99 sản phẩm tốt trong đó 4 phế  phẩm , thùng II có 14 sản phẩm trong đó 8 phế  phẩm  Lấy ngẫu nhiên 1 sản phẩm từ thùng I sang thùng II. Sau đó, lấy ngẫu nhiên 1 sản phẩm từ thùng II để sử dụng. Xác suất lấy đúng chính phẩm (không khuyết tật) từ thùng II là bao nhiêu (làm tròn kết quả đến hàng phần trăm)?</p>
 <div class="answer-check">
 <p>Nhập đáp án: <input id="q22-input" type="text"/> <button onclick="checkShortAnswer('q22', '0.44')">Kiểm tra</button></p>
 </div>
@@ -1285,6 +1285,24 @@ Biết rằng ô tô tách khỏi làn đường cao tốc sau 10 giây và duy 
 <div class="solution-toggle" onclick="toggleSolution('solution-q22')">Xem lời giải</div>
 <div class="solution" id="solution-q22">
 <p><strong>Lời giải:</strong><br/>
+    <p>Tra loi: 0,44</p>
+    <p>Xét các biến cố:</p>
+    <ul>
+        <li>\( A \): "Lấy đúng một chínhchính phẩm từ thùng I sang thùng II"</li>
+        <li>\( B \): "Lấy đúng một chínhchính phẩm từ thùng II"</li>
+    </ul>
+
+    <p>Khởi đầu:</p>
+    \[
+    P(A) = \frac{5}{9}, \quad P(\overline{A}) = \frac{4}{9}, \quad P(B|A) = \frac{7}{15}, \quad P(B|\overline{A}) = \frac{6}{15} = \frac{2}{5}
+    \]
+
+    <p>Theo công thức xác suất toàn phần, xác suất của biến cố \( B \) là:</p>
+    \[
+    P(B) = P(A) \cdot P(B|A) + P(\overline{A}) \cdot P(B|\overline{A}) = \frac{5}{9} \cdot \frac{7}{15} + \frac{4}{9} \cdot \frac{2}{5} \approx 0.44
+    \]
+
+    <p>Vậy xác suất lấy đúng sản phẩm từ thùng II là khoảng 0,44.</p>
 </p></div>
 </div>
 </div>
@@ -1295,7 +1313,7 @@ Biết rằng ô tô tách khỏi làn đường cao tốc sau 10 giây và duy 
 </div>
 
 <script>
-    const isExamTime = true; // true: khóa kiểm tra và lời giải, false: mở khóa
+    const isExamTime = false; // true: khóa kiểm tra và lời giải, false: mở khóa
     
     function checkAnswer(questionId, correctAnswer) {
         if (isExamTime) {
