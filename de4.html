@@ -1,262 +1,308 @@
 <!DOCTYPE html>
-
 <html lang="vi">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="Chuyên Đề THI TOÁN - Chuyên Đề SỐ 3 với 22 câu hỏi trắc nghiệm và lời giải chi tiết, kèm tóm tắt kiến thức." name="description"/>
-<title>Chuyên Đề THI TOÁN - Chuyên Đề 3 - KHÓA HỌC TOÁN THẦY BÌNH</title>
+<meta content="Chuyên Đề THI TOÁN - Chuyên Đề SỐ 2 với 17 câu hỏi trắc nghiệm và lời giải chi tiết, kèm tóm tắt kiến thức." name="description"/>
+<title>Chuyên Đề THI TOÁN - Chuyên Đề 2 - KHÓA HỌC TOÁN THẦY BÌNH</title>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #ecfdf5, #f3e8ff);
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .header {
-            position: sticky;
-            top: 0;
-            background: white;
-            padding: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            z-index: 1000;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
-        .header .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #6b21a8;
-        }
-        .nav-bar {
-            position: sticky;
-            top: 60px;
-            background: white;
-            padding: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            z-index: 999;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .nav-bar a {
-            color: #6b21a8;
-            margin-right: 15px;
-            text-decoration: none;
-            font-weight: 700;
-        }
-        .nav-bar a:hover {
-            color: #10b981;
-        }
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        .dropdown-button {
-            background: #6b21a8;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 700;
-            transition: background 0.3s;
-        }
-        .dropdown-button:hover {
-            background: #5b1a8b;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background: white;
-            min-width: 100px;
-            max-height: 300px;
-            overflow-y: auto;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            z-index: 1;
-            border-radius: 10px;
-            right: 0;
-        }
-        .dropdown-content a {
-            color: #6b21a8;
-            padding: 8px 16px;
-            text-decoration: none;
-            display: block;
-            font-weight: 400;
-        }
-        .dropdown-content a:hover {
-            background: #f0fdf4;
-            color: #10b981;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        .card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-            padding: 25px;
-            margin-bottom: 25px;
-            transition: transform 0.3s;
-        }
-        .card:hover {
-            transform: translateY(-8px);
-        }
-        h1 {
-            color: #6b21a8;
-            text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 30px;
-        }
-        h2 {
-            color: #10b981;
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-        h3 {
-            color: #6b21a8;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        .summary-box {
-            background: #f0fdf4;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            border-left: 5px solid #10b981;
-        }
-        .options {
-            margin: 10px 0;
-        }
-        .option {
-            margin: 5px 0;
-        }
-        .answer-check {
-            margin-top: 10px;
-        }
-        .answer-check button {
-            padding: 12px 24px;
-            background: #6b21a8;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .answer-check button:hover {
-            background: #5b1a8b;
-        }
-        .answer-feedback {
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        .correct {
-            color: #22c55e;
-        }
-        .incorrect {
-            color: #ef4444;
-        }
-        .solution {
-            display: none;
-            background: #fef3c7;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 10px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .solution.show {
-            display: block;
-            opacity: 1;
-        }
-        .solution-toggle {
-            display: inline-block;
-            background: #6b21a8;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 25px;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: background 0.3s;
-        }
-        .solution-toggle:hover {
-            background: #5b1a8b;
-        }
-        .hot {
-            color: #ef4444;
-            font-weight: bold;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background: #6b21a8;
-            color: white;
-        }
-        .navigation {
-            display: flex;
-            justify-content: space-between;
-            margin: 20px 0;
-        }
-        .navigation button {
-            padding: 12px 24px;
-            background: #6b21a8;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .navigation button:hover {
-            background: #5b1a8b;
-        }
-        .navigation button:disabled {
-            background: #9ca3af;
-            cursor: not-allowed;
-        }
-        @media (max-width: 640px) {
-            h1 { font-size: 2rem; }
-            h2 { font-size: 1.6rem; }
-            h3 { font-size: 1.3rem; }
-            .card { padding: 15px; }
-            .header .logo { font-size: 1.4rem; }
-            .nav-bar { top: 50px; flex-direction: column; align-items: flex-start; }
-            .nav-bar a { font-size: 0.9rem; margin-right: 10px; }
-            .dropdown-button { font-size: 0.9rem; padding: 6px 12px; }
-            .dropdown-content { min-width: 80px; }
-            table { font-size: 0.85rem; }
-            .answer-check button, .navigation button {
-                padding: 8px 16px;
-                font-size: 0.9rem;
-            }
-        }
-    
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #ecfdf5, #f3e8ff);
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.header {
+    position: sticky;
+    top: 0;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+.header .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #6b21a8;
+}
+.nav-bar {
+    position: sticky;
+    top: 60px;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 999;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nav-bar a {
+    color: #6b21a8;
+    margin-right: 15px;
+    text-decoration: none;
+    font-weight: 700;
+}
+.nav-bar a:hover {
+    color: #10b981;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-button {
+    background: #6b21a8;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background 0.3s;
+}
+.dropdown-button:hover {
+    background: #5b1a8b;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: white;
+    min-width: 100px;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 10px;
+    right: 0;
+}
+.dropdown-content a {
+    color: #6b21a8;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    font-weight: 400;
+}
+.dropdown-content a:hover {
+    background: #f0fdf4;
+    color: #10b981;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin-bottom: 25px;
+    transition: transform 0.3s;
+}
+.card:hover {
+    transform: translateY(-8px);
+}
+h1 {
+    color: #6b21a8;
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+}
+h2 {
+    color: #10b981;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+h3 {
+    color: #6b21a8;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.summary-box {
+    background: #f0fdf4;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border-left: 5px solid #10b981;
+}
+.options {
+    margin: 10px 0;
+}
+.option {
+    margin: 5px 0;
+}
+.answer-check {
+    margin-top: 10px;
+    background: #e0f7fa;
+    padding: 10px;
+    border: 1px solid #4dd0e1;
+    border-radius: 8px;
+}
+.answer-check button {
+    padding: 12px 24px;
+    background: #6b21a8;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.answer-check button:hover:not(:disabled) {
+    background: #5b1a8b;
+}
+.answer-check button:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+}
+.answer-check input[type="text"] {
+    padding: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+}
+.answer-check input:disabled {
+    background: #e5e7eb;
+    cursor: not-allowed;
+}
+.answer-feedback {
+    margin-top: 10px;
+    font-weight: bold;
+}
+.correct {
+    color: #22c55e;
+}
+.incorrect {
+    color: #ef4444;
+}
+.solution {
+    display: none;
+    background: #fef3c7;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.solution.show {
+    display: block;
+    opacity: 1;
+}
+.solution-toggle {
+    display: inline-block;
+    background: #6b21a8;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+.solution-toggle:hover:not(.disabled) {
+    background: #5b1a8b;
+}
+.solution-toggle.disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+}
+.hot {
+    color: #ef4444;
+    font-weight: bold;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+th {
+    background: #6b21a8;
+    color: white;
+}
+.score-section {
+    margin: 20px 0;
+    background: #f0fdf4;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 5px solid #10b981;
+}
+.score-section input {
+    padding: 8px;
+    margin-right: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+}
+.score-section button {
+    padding: 12px 24px;
+    background: #6b21a8;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.score-section button:hover {
+    background: #5b1a8b;
+}
+.score-result {
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #6b21a8;
+}
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+.navigation button {
+    padding: 12px 24px;
+    background: #6b21a8;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.navigation button:hover {
+    background: #5b1a8b;
+}
+@media (max-width: 640px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.6rem; }
+    h3 { font-size: 1.3rem; }
+    .card { padding: 15px; }
+    .header .logo { font-size: 1.4rem; }
+    .nav-bar { top: 50px; flex-direction: column; align-items: flex-start; }
+    .nav-bar a { font-size: 0.9rem; margin-right: 10px; }
+    .dropdown-button { font-size: 0.9rem; padding: 6px 12px; }
+    .dropdown-content { min-width: 80px; }
+    table { font-size: 0.85rem; }
+    .answer-check button, .navigation button, .score-section button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
 .question img, .solution img {
     display: block;
-    margin: 10px auto;
-    width: 400px;
-    height: 300px;
+    margin: 5px auto;
+    width: 300px;
+    height: 200px;
     object-fit: contain;
     object-position: center;
     background: white;
@@ -265,84 +311,17 @@
     height: auto;
     max-width: 100%;
 }
-
-.question img, .solution img {
-    display: block;
-    margin: 5px auto; /* Giảm khoảng cách */
-    width: 300px; /* Giảm chiều rộng */
-    height: 200px; /* Giảm chiều cao */
-    object-fit: contain;
-    object-position: center;
-    background: white;
-}
-.question img.long-image, .solution img.long-image {
-    height: auto;
-    max-width: 100%; /* Đảm bảo vừa với màn hình nhỏ */
-}
 .question img:not([src]), .solution img:not([src]),
 .question img[src=''], .solution img[src=''],
 .question img[onerror], .solution img[onerror] {
-    display: none !important; /* Ẩn ảnh không tồn tại */
+    display: none !important;
 }
 @media (max-width: 640px) {
     .question img, .solution img {
-        width: 100%; /* Chiều rộng 100% trên di động */
-        height: auto; /* Chiều cao tự động */
-        margin: 3px auto; /* Giảm thêm khoảng cách trên di động */
-    }
-    .question img.long-image, .solution img.long-image {
         max-width: 100%;
+        width: auto;
         height: auto;
-    }
-}
-
-.question img, .solution img {
-    display: block;
-    margin: 5px auto; /* Khoảng cách trên laptop */
-    width: 300px; /* Chiều rộng mặc định */
-    height: 200px; /* Chiều cao mặc định */
-    object-fit: contain;
-    object-position: center;
-    background: white;
-}
-.question img.long-image, .solution img.long-image {
-    height: auto;
-    max-width: 100%; /* Đảm bảo vừa với màn hình nhỏ */
-}
-.question img:not([src]), .solution img:not([src]),
-.question img[src=''], .solution img[src=''],
-.question img[onerror], .solution img[onerror] {
-    display: none !important; /* Ẩn ảnh không tồn tại */
-}
-@media (max-width: 640px) {
-    .question img, .solution img {
-        max-width: 100%; /* Thu nhỏ theo màn hình */
-        width: auto; /* Tự động điều chỉnh chiều rộng */
-        height: auto; /* Tự động điều chỉnh chiều cao */
-        margin: 2px auto; /* Giảm khoảng cách trên di động */
-    }
-    .question img.long-image, .solution img.long-image {
-        max-width: 100%;
-        height: auto;
-    }
-}
-
-.question img, .solution img {
-    display: block;
-    margin: 5px auto; /* Căn giữa và giữ khoảng cách nhỏ */
-}
-.question img.long-image, .solution img.long-image {
-    height: auto;
-    max-width: 100%; /* Giới hạn chiều rộng tối đa */
-}
-.question img:not([src]), .solution img:not([src]),
-.question img[src=''], .solution img[src=''],
-.question img[onerror], .solution img[onerror] {
-    display: none !important; /* Ẩn ảnh không tồn tại */
-}
-@media (max-width: 640px) {
-    .question img, .solution img {
-        margin: 2px auto; /* Giảm khoảng cách trên di động */
+        margin: 2px auto;
     }
     .question img.long-image, .solution img.long-image {
         max-width: 100%;
@@ -352,160 +331,321 @@
 </style>
 </head>
 <body>
-<div class="header">
-<div class="logo">KHÓA HỌC TOÁN THẦY BÌNH</div>
-</div>
-<div class="nav-bar">
-<div>
-<a href="index.html">Trang chủ</a>
-</div>
-<div class="dropdown">
-<span class="dropdown-button">Chọn đề</span>
-<div class="dropdown-content">
-<!-- Tạo danh sách đề từ 1 đến 100 -->
-<a href="de1.html">Đề 1</a>
-<a href="de2.html">Đề 2</a>
-<a href="de3.html">Đề 3</a>
-<a href="de4.html">Đề 4</a>
-<a href="de5.html">Đề 5</a>
-<a href="de6.html">Đề 6</a>
-<a href="de7.html">Đề 7</a>
-<a href="de8.html">Đề 8</a>
-<a href="de9.html">Đề 9</a>
-<a href="de10.html">Đề 10</a>
-<a href="de11.html">Đề 11</a>
-<a href="de12.html">Đề 12</a>
-<a href="de13.html">Đề 13</a>
-<a href="de14.html">Đề 14</a>
-<a href="de15.html">Đề 15</a>
-<a href="de16.html">Đề 16</a>
-<a href="de17.html">Đề 17</a>
-<a href="de18.html">Đề 18</a>
-<a href="de19.html">Đề 19</a>
-<a href="de20.html">Đề 20</a>
-<a href="de21.html">Đề 21</a>
-<a href="de22.html">Đề 22</a>
-<a href="de23.html">Đề 23</a>
-<a href="de24.html">Đề 24</a>
-<a href="de25.html">Đề 25</a>
-<a href="de26.html">Đề 26</a>
-<a href="de27.html">Đề 27</a>
-<a href="de28.html">Đề 28</a>
-<a href="de29.html">Đề 29</a>
-<a href="de30.html">Đề 30</a>
-<a href="de31.html">Đề 31</a>
-<a href="de32.html">Đề 32</a>
-<a href="de33.html">Đề 33</a>
-<a href="de34.html">Đề 34</a>
-<a href="de35.html">Đề 35</a>
-<a href="de36.html">Đề 36</a>
-<a href="de37.html">Đề 37</a>
-<a href="de38.html">Đề 38</a>
-<a href="de39.html">Đề 39</a>
-<a href="de40.html">Đề 40</a>
-<a href="de41.html">Đề 41</a>
-<a href="de42.html">Đề 42</a>
-<a href="de43.html">Đề 43</a>
-<a href="de44.html">Đề 44</a>
-<a href="de45.html">Đề 45</a>
-<a href="de46.html">Đề 46</a>
-<a href="de47.html">Đề 47</a>
-<a href="de48.html">Đề 48</a>
-<a href="de49.html">Đề 49</a>
-<a href="de50.html">Đề 50</a>
-<a href="de51.html">Đề 51</a>
-<a href="de52.html">Đề 52</a>
-<a href="de53.html">Đề 53</a>
-<a href="de54.html">Đề 54</a>
-<a href="de55.html">Đề 55</a>
-<a href="de56.html">Đề 56</a>
-<a href="de57.html">Đề 57</a>
-<a href="de58.html">Đề 58</a>
-<a href="de59.html">Đề 59</a>
-<a href="de60.html">Đề 60</a>
-<a href="de61.html">Đề 61</a>
-<a href="de62.html">Đề 62</a>
-<a href="de63.html">Đề 63</a>
-<a href="de64.html">Đề 64</a>
-<a href="de65.html">Đề 65</a>
-<a href="de66.html">Đề 66</a>
-<a href="de67.html">Đề 67</a>
-<a href="de68.html">Đề 68</a>
-<a href="de69.html">Đề 69</a>
-<a href="de70.html">Đề 70</a>
-<a href="de71.html">Đề 71</a>
-<a href="de72.html">Đề 72</a>
-<a href="de73.html">Đề 73</a>
-<a href="de74.html">Đề 74</a>
-<a href="de75.html">Đề 75</a>
-<a href="de76.html">Đề 76</a>
-<a href="de77.html">Đề 77</a>
-<a href="de78.html">Đề 78</a>
-<a href="de79.html">Đề 79</a>
-<a href="de80.html">Đề 80</a>
-<a href="de81.html">Đề 81</a>
-<a href="de82.html">Đề 82</a>
-<a href="de83.html">Đề 83</a>
-<a href="de84.html">Đề 84</a>
-<a href="de85.html">Đề 85</a>
-<a href="de86.html">Đề 86</a>
-<a href="de87.html">Đề 87</a>
-<a href="de88.html">Đề 88</a>
-<a href="de89.html">Đề 89</a>
-<a href="de90.html">Đề 90</a>
-<a href="de91.html">Đề 91</a>
-<a href="de92.html">Đề 92</a>
-<a href="de93.html">Đề 93</a>
-<a href="de94.html">Đề 94</a>
-<a href="de95.html">Đề 95</a>
-<a href="de96.html">Đề 96</a>
-<a href="de97.html">Đề 97</a>
-<a href="de98.html">Đề 98</a>
-<a href="de99.html">Đề 99</a>
-<a href="de100.html">Đề 100</a>
-</div>
-</div>
-</div>
 <script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
+var gk_isXlsx = false;
+var gk_xlsxFileLookup = {};
+var gk_fileData = {};
+function filledCell(cell) {
+    return cell !== '' && cell != null;
+}
+function loadFileData(filename) {
+    if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+        try {
+            var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+            var firstSheetName = workbook.SheetNames[0];
+            var worksheet = workbook.Sheets[firstSheetName];
+            var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+            var filteredData = jsonData.filter(row => row.some(filledCell));
+            var headerRowIndex = filteredData.findIndex((row, index) =>
+                row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+            );
+            if (headerRowIndex === -1 || headerRowIndex > 25) {
+                headerRowIndex = 0;
+            }
+            var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
+            csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+            return csv;
+        } catch (e) {
+            console.error(e);
+            return "";
         }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
+    }
+    return gk_fileData[filename] || "";
+}
 
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
+var isScoreCalculated = false;
+var studentAnswers = {};
+var checkedQuestions = {};
 
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
+function lockInputs(questionId, prefix = '') {
+    var inputs = document.getElementsByName(questionId + prefix);
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].disabled = true;
+    }
+    var feedback = document.getElementById('feedback-' + questionId);
+    feedback.innerHTML += '<br>Đáp án đã được khóa.';
+    checkedQuestions[questionId] = true;
+}
 
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
+function checkAnswer(questionId, correctAnswer) {
+    if (checkedQuestions[questionId]) return;
+    var inputs = document.getElementsByName(questionId);
+    var selectedAnswer = null;
+    for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].checked) {
+            selectedAnswer = inputs[i].value;
+            break;
+        }
+    }
+    var feedback = document.getElementById('feedback-' + questionId);
+    if (selectedAnswer === null) {
+        feedback.innerHTML = 'Vui lòng chọn một đáp án!';
+        feedback.className = 'answer-feedback incorrect';
+        studentAnswers[questionId] = null;
+    } else if (selectedAnswer === correctAnswer) {
+        feedback.innerHTML = 'Đúng!';
+        feedback.className = 'answer-feedback correct';
+        studentAnswers[questionId] = selectedAnswer;
+    } else {
+        feedback.innerHTML = 'Sai!';
+        feedback.className = 'answer-feedback incorrect';
+        studentAnswers[questionId] = selectedAnswer;
+    }
+    lockInputs(questionId);
+}
+
+function checkTrueFalseAnswer(questionId, correctAnswers) {
+    if (checkedQuestions[questionId]) return;
+    var feedback = document.getElementById('feedback-' + questionId);
+    var selectedAnswers = [];
+    for (var i = 0; i < correctAnswers.length; i++) {
+        var inputs = document.getElementsByName(questionId + (String.fromCharCode(97 + i)));
+        var selected = null;
+        for (var j = 0; j < inputs.length; j++) {
+            if (inputs[j].checked) {
+                selected = inputs[j].value;
+                break;
             }
         }
-        return gk_fileData[filename] || "";
+        selectedAnswers.push(selected);
+    }
+    var correctCount = 0;
+    for (var i = 0; i < correctAnswers.length; i++) {
+        if (selectedAnswers[i] === correctAnswers[i]) {
+            correctCount++;
         }
-        </script><div class="container">
+    }
+    if (correctCount === correctAnswers.length && selectedAnswers.every(a => a !== null)) {
+        feedback.innerHTML = 'Đúng!';
+        feedback.className = 'answer-feedback correct';
+    } else {
+        feedback.innerHTML = 'Sai hoặc chưa chọn đủ đáp án!';
+        feedback.className = 'answer-feedback incorrect';
+    }
+    studentAnswers[questionId] = selectedAnswers;
+    for (var i = 0; i < correctAnswers.length; i++) {
+        lockInputs(questionId, String.fromCharCode(97 + i));
+    }
+}
+
+function checkShortAnswer(questionId, correctAnswer) {
+    if (checkedQuestions[questionId]) return;
+    var input = document.getElementById(questionId + '-input');
+    var value = input.value.trim();
+    var feedback = document.getElementById('feedback-' + questionId);
+    if (value === '') {
+        feedback.innerHTML = 'Vui lòng nhập đáp án!';
+        feedback.className = 'answer-feedback incorrect';
+        studentAnswers[questionId] = null;
+    } else if (value === correctAnswer) {
+        feedback.innerHTML = 'Đúng!';
+        feedback.className = 'answer-feedback correct';
+        studentAnswers[questionId] = value;
+    } else {
+        feedback.innerHTML = 'Sai!';
+        feedback.className = 'answer-feedback incorrect';
+        studentAnswers[questionId] = value;
+    }
+    input.disabled = true;
+    lockInputs(questionId);
+}
+
+function notifySolutionRestriction(solutionId) {
+    if (!isScoreCalculated) {
+        alert('Vui lòng hoàn thành và tính tổng điểm trước khi xem lời giải!');
+    } else {
+        var solution = document.getElementById(solutionId);
+        solution.classList.add('show');
+    }
+}
+
+function calculateScore() {
+    var studentName = document.getElementById('student-name').value.trim();
+    var resultDiv = document.getElementById('score-result');
+    if (studentName === '') {
+        resultDiv.innerHTML = 'Vui lòng nhập họ và tên!';
+        resultDiv.className = 'score-result incorrect';
+        return;
+    }
+    var totalScore = 0;
+
+    // Câu 1-12: 0.25 điểm/câu đúng
+    for (var i = 1; i <= 12; i++) {
+        var qId = 'q' + i;
+        var correctAnswer = {
+            q1: 'D', q2: 'C', q3: 'C', q4: 'B', q5: 'C', q6: 'A',
+            q7: 'D', q8: 'D', q9: 'C', q10: 'C', q11: 'A', q12: 'B'
+        }[qId];
+        if (studentAnswers[qId] === correctAnswer) {
+            totalScore += 0.25;
+        }
+    }
+
+    // Câu 13-16: Đúng/sai
+    var trueFalseQuestions = {
+        q13: ['Đúng', 'Sai', 'Sai', 'Đúng'],
+        q14: ['Đúng', 'Sai', 'Sai', 'Đúng'],
+        q15: ['Đúng', 'Sai', 'Đúng', 'Đúng'],
+        q16: ['Sai', 'Đúng', 'Sai', 'Sai']
+    };
+    for (var i = 13; i <= 16; i++) {
+        var qId = 'q' + i;
+        var correctAnswers = trueFalseQuestions[qId];
+        var selectedAnswers = studentAnswers[qId] || [];
+        var correctCount = 0;
+        for (var j = 0; j < correctAnswers.length; j++) {
+            if (selectedAnswers[j] === correctAnswers[j]) {
+                correctCount++;
+            }
+        }
+        if (correctCount === 1) totalScore += 0.1;
+        else if (correctCount === 2) totalScore += 0.25;
+        else if (correctCount === 3) totalScore += 0.5;
+        else if (correctCount === 4) totalScore += 1;
+    }
+
+    // Câu 17: 0.5 điểm/câu đúng
+    if (studentAnswers['q17'] === '2.4') {
+        totalScore += 0.5;
+    }
+
+    totalScore = Math.round(totalScore * 100) / 100; // Làm tròn 2 chữ số thập phân
+    resultDiv.innerHTML = `Học sinh: ${studentName}<br>Tổng điểm: ${totalScore}/7.5`;
+    resultDiv.className = 'score-result';
+    isScoreCalculated = true;
+
+    // Kích hoạt các nút "Xem lời giải"
+    var solutionToggles = document.getElementsByClassName('solution-toggle');
+    for (var i = 0; i < solutionToggles.length; i++) {
+        solutionToggles[i].classList.remove('disabled');
+    }
+}
+</script>
+
+<div class="header">
+    <div class="logo">KHÓA HỌC TOÁN THẦY BÌNH</div>
+</div>
+<div class="nav-bar">
+    <div>
+        <a href="index.html">Trang chủ</a>
+    </div>
+    <div class="dropdown">
+        <span class="dropdown-button">Chọn đề</span>
+        <div class="dropdown-content">
+            <a href="de1.html">Đề 1</a>
+            <a href="de2.html">Đề 2</a>
+            <a href="de3.html">Đề 3</a>
+            <a href="de4.html">Đề 4</a>
+            <a href="de5.html">Đề 5</a>
+            <a href="de6.html">Đề 6</a>
+            <a href="de7.html">Đề 7</a>
+            <a href="de8.html">Đề 8</a>
+            <a href="de9.html">Đề 9</a>
+            <a href="de10.html">Đề 10</a>
+            <a href="de11.html">Đề 11</a>
+            <a href="de12.html">Đề 12</a>
+            <a href="de13.html">Đề 13</a>
+            <a href="de14.html">Đề 14</a>
+            <a href="de15.html">Đề 15</a>
+            <a href="de16.html">Đề 16</a>
+            <a href="de17.html">Đề 17</a>
+            <a href="de18.html">Đề 18</a>
+            <a href="de19.html">Đề 19</a>
+            <a href="de20.html">Đề 20</a>
+            <a href="de21.html">Đề 21</a>
+            <a href="de22.html">Đề 22</a>
+            <a href="de23.html">Đề 23</a>
+            <a href="de24.html">Đề 24</a>
+            <a href="de25.html">Đề 25</a>
+            <a href="de26.html">Đề 26</a>
+            <a href="de27.html">Đề 27</a>
+            <a href="de28.html">Đề 28</a>
+            <a href="de29.html">Đề 29</a>
+            <a href="de30.html">Đề 30</a>
+            <a href="de31.html">Đề 31</a>
+            <a href="de32.html">Đề 32</a>
+            <a href="de33.html">Đề 33</a>
+            <a href="de34.html">Đề 34</a>
+            <a href="de35.html">Đề 35</a>
+            <a href="de36.html">Đề 36</a>
+            <a href="de37.html">Đề 37</a>
+            <a href="de38.html">Đề 38</a>
+            <a href="de39.html">Đề 39</a>
+            <a href="de40.html">Đề 40</a>
+            <a href="de41.html">Đề 41</a>
+            <a href="de42.html">Đề 42</a>
+            <a href="de43.html">Đề 43</a>
+            <a href="de44.html">Đề 44</a>
+            <a href="de45.html">Đề 45</a>
+            <a href="de46.html">Đề 46</a>
+            <a href="de47.html">Đề 47</a>
+            <a href="de48.html">Đề 48</a>
+            <a href="de49.html">Đề 49</a>
+            <a href="de50.html">Đề 50</a>
+            <a href="de51.html">Đề 51</a>
+            <a href="de52.html">Đề 52</a>
+            <a href="de53.html">Đề 53</a>
+            <a href="de54.html">Đề 54</a>
+            <a href="de55.html">Đề 55</a>
+            <a href="de56.html">Đề 56</a>
+            <a href="de57.html">Đề 57</a>
+            <a href="de58.html">Đề 58</a>
+            <a href="de59.html">Đề 59</a>
+            <a href="de60.html">Đề 60</a>
+            <a href="de61.html">Đề 61</a>
+            <a href="de62.html">Đề 62</a>
+            <a href="de63.html">Đề 63</a>
+            <a href="de64.html">Đề 64</a>
+            <a href="de65.html">Đề 65</a>
+            <a href="de66.html">Đề 66</a>
+            <a href="de67.html">Đề 67</a>
+            <a href="de68.html">Đề 68</a>
+            <a href="de69.html">Đề 69</a>
+            <a href="de70.html">Đề 70</a>
+            <a href="de71.html">Đề 71</a>
+            <a href="de72.html">Đề 72</a>
+            <a href="de73.html">Đề 73</a>
+            <a href="de74.html">Đề 74</a>
+            <a href="de75.html">Đề 75</a>
+            <a href="de76.html">Đề 76</a>
+            <a href="de77.html">Đề 77</a>
+            <a href="de78.html">Đề 78</a>
+            <a href="de79.html">Đề 79</a>
+            <a href="de80.html">Đề 80</a>
+            <a href="de81.html">Đề 81</a>
+            <a href="de82.html">Đề 82</a>
+            <a href="de83.html">Đề 83</a>
+            <a href="de84.html">Đề 84</a>
+            <a href="de85.html">Đề 85</a>
+            <a href="de86.html">Đề 86</a>
+            <a href="de87.html">Đề 87</a>
+            <a href="de88.html">Đề 88</a>
+            <a href="de89.html">Đề 89</a>
+            <a href="de90.html">Đề 90</a>
+            <a href="de91.html">Đề 91</a>
+            <a href="de92.html">Đề 92</a>
+            <a href="de93.html">Đề 93</a>
+            <a href="de94.html">Đề 94</a>
+            <a href="de95.html">Đề 95</a>
+            <a href="de96.html">Đề 96</a>
+            <a href="de97.html">Đề 97</a>
+            <a href="de98.html">Đề 98</a>
+            <a href="de99.html">Đề 99</a>
+            <a href="de100.html">Đề 100</a>
+        </div>
+    </div>
+</div>
+<div class="container">
 <h1>ĐỀ THI TOÁN - ĐỀ SỐ 4 <span class="hot">HOT</span></h1>
 <h2>Phần I: Trắc Nghiệm Nhiều Lựa Chọn</h2>
 <!-- Câu 1 -->
@@ -1212,108 +1352,13 @@
 </div>
 </div>
 </div>
+<!-- Phần tính điểm -->
+<div class="score-section">
+    <h3>Tính tổng điểm</h3>
+    <p>Nhập họ và tên:</p>
+    <input id="student-name" type="text" placeholder="Họ và tên"/>
+    <button onclick="calculateScore()">Tính điểm</button>
+    <div class="score-result" id="score-result" aria-live="polite"></div>
 </div>
-<!-- PHẦN CUỐICUỐI -->
-<div class="navigation">
-<button onclick="window.location.href='de4.html'">Chuyên Đề trước</button>
-<button onclick="window.location.href='de66.html'">Chuyên Đề sau</button>
-</div>
-<script>
-    const isExamTime = true; // true: khóa kiểm tra và lời giải, false: mở khóa
-    
-    function checkAnswer(questionId, correctAnswer) {
-        if (isExamTime) {
-            alert('Không thể kiểm tra đáp án trong thời gian làm bài!');
-            return;
-        }
-        const options = document.getElementsByName(questionId);
-        let selectedAnswer = null;
-        for (const option of options) {
-            if (option.checked) {
-                selectedAnswer = option.value;
-                break;
-            }
-        }
-        const feedback = document.getElementById(`feedback-${questionId}`);
-        if (!selectedAnswer) {
-            feedback.textContent = 'Vui lòng chọn một đáp án!';
-            feedback.className = 'answer-feedback incorrect';
-            return;
-        }
-        if (selectedAnswer === correctAnswer) {
-            feedback.textContent = 'Đúng!';
-            feedback.className = 'answer-feedback correct';
-        } else {
-            feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
-            feedback.className = 'answer-feedback incorrect';
-        }
-    }
-    
-    function checkTrueFalseAnswer(questionId, correctAnswers) {
-        if (isExamTime) {
-            alert('Không thể kiểm tra đáp án trong thời gian làm bài!');
-            return;
-        }
-        const feedback = document.getElementById(`feedback-${questionId}`);
-        let allCorrect = true;
-        let results = [];
-        for (let i = 0; i < correctAnswers.length; i++) {
-            const options = document.getElementsByName(`${questionId}${String.fromCharCode(97 + i)}`);
-            let selected = null;
-            for (const option of options) {
-                if (option.checked) {
-                    selected = option.value;
-                    break;
-                }
-            }
-            if (!selected) {
-                feedback.textContent = 'Vui lòng chọn đáp án cho tất cả phát biểu!';
-                feedback.className = 'answer-feedback incorrect';
-                return;
-            }
-            if (selected !== correctAnswers[i]) {
-                allCorrect = false;
-            }
-            results.push(`Phát biểu ${String.fromCharCode(97 + i)}: ${selected === correctAnswers[i] ? 'Đúng' : `Sai (Đáp án đúng: ${correctAnswers[i]})`}`);
-        }
-        if (allCorrect) {
-            feedback.textContent = 'Tất cả đều đúng!';
-            feedback.className = 'answer-feedback correct';
-        } else {
-            feedback.textContent = results.join('\n');
-            feedback.className = 'answer-feedback incorrect';
-        }
-    }
-    
-    function checkShortAnswer(questionId, correctAnswer) {
-        if (isExamTime) {
-            alert('Không thể kiểm tra đáp án trong thời gian làm bài!');
-            return;
-        }
-        const input = document.getElementById(`${questionId}-input`).value.trim();
-        const feedback = document.getElementById(`feedback-${questionId}`);
-        if (!input) {
-            feedback.textContent = 'Vui lòng nhập đáp án!';
-            feedback.className = 'answer-feedback incorrect';
-            return;
-        }
-        if (input === correctAnswer) {
-            feedback.textContent = 'Đúng!';
-            feedback.className = 'answer-feedback correct';
-        } else {
-            feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
-            feedback.className = 'answer-feedback incorrect';
-        }
-    }
-    
-    function toggleSolution(solutionId) {
-        if (isExamTime) {
-            alert('Không thể xem lời giải trong thời gian làm bài!');
-            return;
-        }
-        const solution = document.getElementById(solutionId);
-        solution.classList.toggle('show');
-    }
-    </script>
 </body>
 </html>
