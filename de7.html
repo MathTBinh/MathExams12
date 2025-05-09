@@ -335,9 +335,11 @@ th {
 var gk_isXlsx = false;
 var gk_xlsxFileLookup = {};
 var gk_fileData = {};
+
 function filledCell(cell) {
     return cell !== '' && cell != null;
 }
+
 function loadFileData(filename) {
     if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
         try {
@@ -409,7 +411,7 @@ function checkTrueFalseAnswer(questionId, correctAnswers) {
     var feedback = document.getElementById('feedback-' + questionId);
     var selectedAnswers = [];
     for (var i = 0; i < correctAnswers.length; i++) {
-        var inputs = document.getElementsByName(questionId + (String.fromCharCode(97 + i)));
+        var inputs = document.getElementsByName(questionId + String.fromCharCode(97 + i));
         var selected = null;
         for (var j = 0; j < inputs.length; j++) {
             if (inputs[j].checked) {
@@ -441,8 +443,14 @@ function checkTrueFalseAnswer(questionId, correctAnswers) {
 function checkShortAnswer(questionId, correctAnswer) {
     if (checkedQuestions[questionId]) return;
     var input = document.getElementById(questionId + '-input');
-    var value = input.value.trim();
     var feedback = document.getElementById('feedback-' + questionId);
+    if (!input) {
+        feedback.innerHTML = 'Lỗi: Không tìm thấy input cho câu hỏi!';
+        feedback.className = 'answer-feedback incorrect';
+        console.error('Input element not found: ' + questionId + '-input');
+        return;
+    }
+    var value = input.value.trim();
     if (value === '') {
         feedback.innerHTML = 'Vui lòng nhập đáp án!';
         feedback.className = 'answer-feedback incorrect';
@@ -460,12 +468,16 @@ function checkShortAnswer(questionId, correctAnswer) {
     lockInputs(questionId);
 }
 
-function notifySolutionRestriction(solutionId) {
+function toggleSolution(solutionId) {
     if (!isScoreCalculated) {
         alert('Vui lòng hoàn thành và tính tổng điểm trước khi xem lời giải!');
     } else {
         var solution = document.getElementById(solutionId);
-        solution.classList.add('show');
+        if (solution) {
+            solution.classList.add('show');
+        } else {
+            console.error('Solution element not found: ' + solutionId);
+        }
     }
 }
 
@@ -480,23 +492,23 @@ function calculateScore() {
     var totalScore = 0;
 
     // Câu 1-12: 0.25 điểm/câu đúng
+    var correctAnswers1to12 = {
+        'q1': 'A', 'q2': 'B', 'q3': 'C', 'q4': 'C', 'q5': 'D', 'q6': 'B',
+        'q7': 'B', 'q8': 'D', 'q9': 'A', 'q10': 'A', 'q11': 'C', 'q12': 'D'
+    };
     for (var i = 1; i <= 12; i++) {
         var qId = 'q' + i;
-        var correctAnswer = {
-            q1: 'D', q2: 'C', q3: 'C', q4: 'B', q5: 'C', q6: 'A',
-            q7: 'D', q8: 'D', q9: 'C', q10: 'C', q11: 'A', q12: 'B'
-        }[qId];
-        if (studentAnswers[qId] === correctAnswer) {
+        if (studentAnswers[qId] === correctAnswers1to12[qId]) {
             totalScore += 0.25;
         }
     }
 
     // Câu 13-16: Đúng/sai
     var trueFalseQuestions = {
-        q13: ['Đúng', 'Sai', 'Sai', 'Đúng'],
-        q14: ['Đúng', 'Sai', 'Sai', 'Đúng'],
-        q15: ['Đúng', 'Sai', 'Đúng', 'Đúng'],
-        q16: ['Sai', 'Đúng', 'Sai', 'Sai']
+        'q13': ['Đúng', 'Sai', 'Đúng', 'Đúng'],
+        'q14': ['Sai', 'Đúng', 'Đúng', 'Sai'],
+        'q15': ['Sai', 'Đúng', 'Sai', 'Sai'],
+        'q16': ['Đúng', 'Sai', 'Đúng', 'Sai']
     };
     for (var i = 13; i <= 16; i++) {
         var qId = 'q' + i;
@@ -514,13 +526,24 @@ function calculateScore() {
         else if (correctCount === 4) totalScore += 1;
     }
 
-    // Câu 17: 0.5 điểm/câu đúng
-    if (studentAnswers['q17'] === '2.4') {
-        totalScore += 0.5;
+    // Câu 17-22: 0.5 điểm/câu đúng
+    var shortAnswerQuestions = {
+        'q17': '15',
+        'q18': '√10 - 1',
+        'q19': '0,7',
+        'q20': '0,3',
+        'q21': '25',
+        'q22': '0.3'
+    };
+    for (var i = 17; i <= 22; i++) {
+        var qId = 'q' + i;
+        if (studentAnswers[qId] === shortAnswerQuestions[qId]) {
+            totalScore += 0.5;
+        }
     }
 
     totalScore = Math.round(totalScore * 100) / 100; // Làm tròn 2 chữ số thập phân
-    resultDiv.innerHTML = `Học sinh: ${studentName}<br>Tổng điểm: ${totalScore}/7.5`;
+    resultDiv.innerHTML = `Học sinh: ${studentName}<br>Tổng điểm: ${totalScore}/10`;
     resultDiv.className = 'score-result';
     isScoreCalculated = true;
 
