@@ -331,38 +331,8 @@ th {
 </style>
 </head>
 <body>
-<script type="text/javascript">
-var gk_isXlsx = false;
-var gk_xlsxFileLookup = {};
-var gk_fileData = {};
-function filledCell(cell) {
-    return cell !== '' && cell != null;
-}
-function loadFileData(filename) {
-    if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-        try {
-            var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-            var firstSheetName = workbook.SheetNames[0];
-            var worksheet = workbook.Sheets[firstSheetName];
-            var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-            var filteredData = jsonData.filter(row => row.some(filledCell));
-            var headerRowIndex = filteredData.findIndex((row, index) =>
-                row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-            );
-            if (headerRowIndex === -1 || headerRowIndex > 25) {
-                headerRowIndex = 0;
-            }
-            var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
-            csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-            return csv;
-        } catch (e) {
-            console.error(e);
-            return "";
-        }
-    }
-    return gk_fileData[filename] || "";
-}
 
+<script type="text/javascript">
 var isScoreCalculated = false;
 var studentAnswers = {};
 var checkedQuestions = {};
@@ -409,7 +379,7 @@ function checkTrueFalseAnswer(questionId, correctAnswers) {
     var feedback = document.getElementById('feedback-' + questionId);
     var selectedAnswers = [];
     for (var i = 0; i < correctAnswers.length; i++) {
-        var inputs = document.getElementsByName(questionId + (String.fromCharCode(97 + i)));
+        var inputs = document.getElementsByName(questionId + String.fromCharCode(97 + i));
         var selected = null;
         for (var j = 0; j < inputs.length; j++) {
             if (inputs[j].checked) {
@@ -460,7 +430,7 @@ function checkShortAnswer(questionId, correctAnswer) {
     lockInputs(questionId);
 }
 
-function notifySolutionRestriction(solutionId) {
+function toggleSolution(solutionId) {
     if (!isScoreCalculated) {
         alert('Vui lòng hoàn thành và tính tổng điểm trước khi xem lời giải!');
     } else {
@@ -480,23 +450,23 @@ function calculateScore() {
     var totalScore = 0;
 
     // Câu 1-12: 0.25 điểm/câu đúng
+    var correctAnswers1to12 = {
+        'q1': 'A', 'q2': 'B', 'q3': 'D', 'q4': 'D', 'q5': 'B', 'q6': 'A',
+        'q7': 'D', 'q8': 'B', 'q9': 'A', 'q10': 'C', 'q11': 'A', 'q12': 'D'
+    };
     for (var i = 1; i <= 12; i++) {
         var qId = 'q' + i;
-        var correctAnswer = {
-            q1: 'D', q2: 'C', q3: 'C', q4: 'B', q5: 'C', q6: 'A',
-            q7: 'D', q8: 'D', q9: 'C', q10: 'C', q11: 'A', q12: 'B'
-        }[qId];
-        if (studentAnswers[qId] === correctAnswer) {
+        if (studentAnswers[qId] === correctAnswers1to12[qId]) {
             totalScore += 0.25;
         }
     }
 
-    // Câu 13-16: Đúng/sai
+    // Câu 13-16: Đúng/sai, điểm dựa trên số phát biểu đúng
     var trueFalseQuestions = {
-        q13: ['Đúng', 'Sai', 'Sai', 'Đúng'],
-        q14: ['Đúng', 'Sai', 'Sai', 'Đúng'],
-        q15: ['Đúng', 'Sai', 'Đúng', 'Đúng'],
-        q16: ['Sai', 'Đúng', 'Sai', 'Sai']
+        'q13': ['Đúng', 'Đúng', 'Sai', 'Sai'],
+        'q14': ['Đúng', 'Đúng', 'Sai', 'Sai'],
+        'q15': ['Đúng', 'Sai', 'Đúng', 'Đúng'],
+        'q16': ['Đúng', 'Đúng', 'Đúng', 'Sai']
     };
     for (var i = 13; i <= 16; i++) {
         var qId = 'q' + i;
@@ -514,24 +484,31 @@ function calculateScore() {
         else if (correctCount === 4) totalScore += 1;
     }
 
-    // Câu 17: 0.5 điểm/câu đúng
-    if (studentAnswers['q17'] === '2.4') {
-        totalScore += 0.5;
+    // Câu 17-22: 0.5 điểm/câu đúng
+    var shortAnswerQuestions = {
+        'q17': '47.4',
+        'q18': '45', // Thay bằng đáp án thực tế
+        'q19': '5.1', // Thay bằng đáp án thực tế
+        'q20': '18.7', // Thay bằng đáp án thực tế
+        'q21': '15', // Thay bằng đáp án thực tế
+        'q22': '10'  // Thay bằng đáp án thực tế
+    };
+    for (var i = 17; i <= 22; i++) {
+        var qId = 'q' + i;
+        if (studentAnswers[qId] === shortAnswerQuestions[qId]) {
+            totalScore += 0.5;
+        }
     }
-
-    totalScore = Math.round(totalScore * 100) / 100; // Làm tròn 2 chữ số thập phân
-    resultDiv.innerHTML = `Học sinh: ${studentName}<br>Tổng điểm: ${totalScore}/7.5`;
+    totalScore = Math.round(totalScore * 100) / 100;
+    resultDiv.innerHTML = `Học sinh: ${studentName}<br>Tổng điểm: ${totalScore}/10`; // Sửa từ /10.5 thành /10
     resultDiv.className = 'score-result';
     isScoreCalculated = true;
-
-    // Kích hoạt các nút "Xem lời giải"
     var solutionToggles = document.getElementsByClassName('solution-toggle');
     for (var i = 0; i < solutionToggles.length; i++) {
         solutionToggles[i].classList.remove('disabled');
     }
 }
 </script>
-
 <div class="header">
     <div class="logo">KHÓA HỌC TOÁN THẦY BÌNH</div>
 </div>
