@@ -3,12 +3,161 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="Chuyên Đề THI TOÁN - Chuyên Đề SỐ 2 với 17 câu hỏi trắc nghiệm và lời giải chi tiết, kèm tóm tắt kiến thức." name="description"/>
+<meta content="Chuyên Đề THI TOÁN - Chuyên Đề SỐ 2 với 22 câu hỏi trắc nghiệm và lời giải chi tiết, kèm tóm tắt kiến thức." name="description"/>
 <title>Chuyên Đề THI TOÁN - Chuyên Đề 2 - KHÓA HỌC TOÁN THẦY BÌNH</title>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+<!-- Thêm Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+<script>
+  // Khởi tạo Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyDEZP8Dx4LtTOcWR-skRprj7Hryxp1HTos",
+    authDomain: "mathbinh-0879.firebaseapp.com",
+    projectId: "mathbinh-0879",
+    storageBucket: "mathbinh-0879.firebasestorage.app",
+    messagingSenderId: "948042135811",
+    appId: "1:948042135811:web:441c23af46801e41f49136"
+  };
+
+  // Khởi tạo Firebase App và Firestore
+  const app = firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  // Biến toàn cục để lưu đáp án
+  let studentAnswers = {};
+  let isScoreCalculated = false;
+
+  // Hàm kiểm tra đáp án trắc nghiệm
+  function checkAnswer(questionId, correctAnswer) {
+    const selected = document.querySelector(`input[name="${questionId}"]:checked`);
+    if (selected) {
+      studentAnswers[questionId] = selected.value;
+      const feedback = document.getElementById(`feedback-${questionId}`);
+      if (selected.value === correctAnswer) {
+        feedback.innerHTML = '<span class="correct">Đúng!</span>';
+      } else {
+        feedback.innerHTML = '<span class="incorrect">Sai!</span>';
+      }
+    }
+  }
+
+  // Hàm kiểm tra đáp án đúng/sai
+  function checkTrueFalseAnswer(questionId, correctAnswers) {
+    const subQuestions = ['a', 'b', 'c', 'd'];
+    let allCorrect = true;
+    subQuestions.forEach((sub, index) => {
+      const selected = document.querySelector(`input[name="${questionId}${sub}"]:checked`);
+      if (selected) {
+        studentAnswers[`${questionId}${sub}`] = selected.value;
+        const feedback = document.getElementById(`feedback-${questionId}`);
+        if (selected.value !== correctAnswers[index]) {
+          allCorrect = false;
+        }
+      }
+    });
+    const feedback = document.getElementById(`feedback-${questionId}`);
+    feedback.innerHTML = allCorrect ? '<span class="correct">Đúng!</span>' : '<span class="incorrect">Sai!</span>';
+  }
+
+  // Hàm kiểm tra đáp án ngắn
+  function checkShortAnswer(questionId, correctAnswer) {
+    const input = document.getElementById(`${questionId}-input`).value.trim();
+    studentAnswers[questionId] = input;
+    const feedback = document.getElementById(`feedback-${questionId}`);
+    if (input === correctAnswer) {
+      feedback.innerHTML = '<span class="correct">Đúng!</span>';
+    } else {
+      feedback.innerHTML = '<span class="incorrect">Sai!</span>';
+    }
+  }
+
+  // Hàm hiển thị/hide lời giải
+  function toggleSolution(solutionId) {
+    const solution = document.getElementById(solutionId);
+    solution.classList.toggle('show');
+  }
+
+  // Hàm tính điểm
+  function calculateScore() {
+    var studentName = document.getElementById('student-name').value.trim();
+    var resultDiv = document.getElementById('score-result');
+    if (studentName === '') {
+      resultDiv.innerHTML = 'Vui lòng nhập họ và tên!';
+      resultDiv.className = 'score-result incorrect';
+      return;
+    }
+    var totalScore = 0;
+
+    // Tính điểm cho câu 1-12 (0.25 điểm/câu đúng)
+    const correctAnswers1_12 = { q1: 'A', q2: 'D', q3: 'A', q4: 'D', q5: 'D', q6: 'D', q7: 'A', q8: 'B', q9: 'B', q10: 'B', q11: 'B', q12: 'D' };
+    for (var i = 1; i <= 12; i++) {
+      var qId = 'q' + i;
+      if (studentAnswers[qId] === correctAnswers1_12[qId]) {
+        totalScore += 0.25;
+      }
+    }
+
+    // Tính điểm cho câu 13-16 (đúng/sai, tối đa 1 điểm/câu)
+    const correctAnswers13_16 = {
+      q13: ['Sai', 'Đúng', 'Sai', 'Sai'],
+      q14: ['Sai', 'Đúng', 'Sai', 'Sai'],
+      q15: ['Sai', 'Đúng', 'Đúng', 'Đúng'],
+      q16: ['Sai', 'Đúng', 'Sai', 'Đúng']
+    };
+    for (var i = 13; i <= 16; i++) {
+      var qId = 'q' + i;
+      var correctAnswers = correctAnswers13_16[qId];
+      var selectedAnswers = ['a', 'b', 'c', 'd'].map(sub => studentAnswers[`${qId}${sub}`] || '');
+      var correctCount = 0;
+      for (var j = 0; j < 4; j++) {
+        if (selectedAnswers[j] === correctAnswers[j]) {
+          correctCount++;
+        }
+      }
+      if (correctCount === 1) totalScore += 0.1;
+      else if (correctCount === 2) totalScore += 0.25;
+      else if (correctCount === 3) totalScore += 0.5;
+      else if (correctCount === 4) totalScore += 1;
+    }
+
+    // Tính điểm cho câu 17-22 (0.5 điểm/câu đúng)
+    const correctAnswers17_22 = { q17: '1.58', q18: '15', q19: '529', q20: '-6', q21: '0.77', q22: '1340' };
+    for (var qId in correctAnswers17_22) {
+      if (studentAnswers[qId] === correctAnswers17_22[qId]) {
+        totalScore += 0.5;
+      }
+    }
+
+    totalScore = Math.round(totalScore * 100) / 100;
+
+    // Lưu kết quả vào Firestore
+    db.collection("results").add({
+      studentName: studentName,
+      testId: "de3",
+      answers: studentAnswers,
+      score: totalScore,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    })
+    .then(() => {
+      resultDiv.innerHTML = `Học sinh: ${studentName}<br>Tổng điểm: ${totalScore}/10<br>Kết quả đã được lưu!`;
+      resultDiv.className = 'score-result';
+      isScoreCalculated = true;
+      var solutionToggles = document.getElementsByClassName('solution-toggle');
+      for (var i = 0; i < solutionToggles.length; i++) {
+        solutionToggles[i].classList.remove('disabled');
+      }
+    })
+    .catch(error => {
+      resultDiv.innerHTML = `Học sinh: ${studentName}<br>Tổng điểm: ${totalScore}/10<br>Lỗi khi lưu kết quả: ${error.message}`;
+      resultDiv.className = 'score-result incorrect';
+      console.error('Error:', error);
+    });
+  }
+</script>
 <style>
 body {
     font-family: 'Roboto', sans-serif;
@@ -331,187 +480,7 @@ th {
 </style>
 </head>
 <body>
-<script type="text/javascript">
-var isScoreCalculated = false;
-var studentAnswers = {};
-var checkedQuestions = {};
 
-function lockInputs(questionId, prefix = '') {
-    var inputs = document.getElementsByName(questionId + prefix);
-    for (var i = 0; i < inputs.length; i++) {
-        inputs[i].disabled = true;
-    }
-    var feedback = document.getElementById('feedback-' + questionId);
-    feedback.innerHTML += '<br>Đáp án đã được khóa.';
-    checkedQuestions[questionId] = true;
-}
-
-function checkAnswer(questionId, correctAnswer) {
-    if (checkedQuestions[questionId]) return;
-    var inputs = document.getElementsByName(questionId);
-    var selectedAnswer = null;
-    for (var i = 0; i < inputs.length; i++) {
-        if (inputs[i].checked) {
-            selectedAnswer = inputs[i].value;
-            break;
-        }
-    }
-    var feedback = document.getElementById('feedback-' + questionId);
-    if (selectedAnswer === null) {
-        feedback.innerHTML = 'Vui lòng chọn một đáp án!';
-        feedback.className = 'answer-feedback incorrect';
-        studentAnswers[questionId] = null;
-    } else if (selectedAnswer === correctAnswer) {
-        feedback.innerHTML = 'Đúng!';
-        feedback.className = 'answer-feedback correct';
-        studentAnswers[questionId] = selectedAnswer;
-    } else {
-        feedback.innerHTML = 'Sai!';
-        feedback.className = 'answer-feedback incorrect';
-        studentAnswers[questionId] = selectedAnswer;
-    }
-    lockInputs(questionId);
-}
-
-function checkTrueFalseAnswer(questionId, correctAnswers) {
-    if (checkedQuestions[questionId]) return;
-    var feedback = document.getElementById('feedback-' + questionId);
-    var selectedAnswers = [];
-    for (var i = 0; i < correctAnswers.length; i++) {
-        var inputs = document.getElementsByName(questionId + String.fromCharCode(97 + i));
-        var selected = null;
-        for (var j = 0; j < inputs.length; j++) {
-            if (inputs[j].checked) {
-                selected = inputs[j].value;
-                break;
-            }
-        }
-        selectedAnswers.push(selected);
-    }
-    var correctCount = 0;
-    for (var i = 0; i < correctAnswers.length; i++) {
-        if (selectedAnswers[i] === correctAnswers[i]) {
-            correctCount++;
-        }
-    }
-    if (correctCount === correctAnswers.length && selectedAnswers.every(a => a !== null)) {
-        feedback.innerHTML = 'Đúng!';
-        feedback.className = 'answer-feedback correct';
-    } else {
-        feedback.innerHTML = 'Sai hoặc chưa chọn đủ đáp án!';
-        feedback.className = 'answer-feedback incorrect';
-    }
-    studentAnswers[questionId] = selectedAnswers;
-    for (var i = 0; i < correctAnswers.length; i++) {
-        lockInputs(questionId, String.fromCharCode(97 + i));
-    }
-}
-
-function checkShortAnswer(questionId, correctAnswer) {
-    if (checkedQuestions[questionId]) return;
-    var input = document.getElementById(questionId + '-input');
-    var value = input.value.trim();
-    var feedback = document.getElementById('feedback-' + questionId);
-    if (value === '') {
-        feedback.innerHTML = 'Vui lòng nhập đáp án!';
-        feedback.className = 'answer-feedback incorrect';
-        studentAnswers[questionId] = null;
-    } else if (value === correctAnswer) {
-        feedback.innerHTML = 'Đúng!';
-        feedback.className = 'answer-feedback correct';
-        studentAnswers[questionId] = value;
-    } else {
-        feedback.innerHTML = 'Sai!';
-        feedback.className = 'answer-feedback incorrect';
-        studentAnswers[questionId] = value;
-    }
-    input.disabled = true;
-    lockInputs(questionId);
-}
-
-function toggleSolution(solutionId) {
-    if (!isScoreCalculated) {
-        alert('Vui lòng hoàn thành và tính tổng điểm trước khi xem lời giải!');
-    } else {
-        var solution = document.getElementById(solutionId);
-        solution.classList.add('show');
-    }
-}
-
-function calculateScore() {
-    var studentName = document.getElementById('student-name').value.trim();
-    var resultDiv = document.getElementById('score-result');
-    if (studentName === '') {
-        resultDiv.innerHTML = 'Vui lòng nhập họ và tên!';
-        resultDiv.className = 'score-result incorrect';
-        return;
-    }
-    var totalScore = 0;
-
-    // Câu 1-12: 0.25 điểm/câu đúng
-    for (var i = 1; i <= 12; i++) {
-        var qId = 'q' + i;
-        var correctAnswer = {
-            q1: 'A', q2: 'D', q3: 'A', q4: 'D', q5: 'D', q6: 'D',
-            q7: 'A', q8: 'B', q9: 'B', q10: 'B', q11: 'B', q12: 'D'
-        }[qId];
-        if (studentAnswers[qId] === correctAnswer) {
-            totalScore += 0.25;
-        }
-    }
-
-    // Câu 13-16: Đúng/sai
-    var trueFalseQuestions = {
-        q13: ['Sai', 'Đúng', 'Sai', 'Sai'],
-        q14: ['Sai', 'Đúng', 'Sai', 'Sai'],
-        q15: ['Sai', 'Đúng', 'Đúng', 'Đúng'],
-        q16: ['Sai', 'Đúng', 'Sai', 'Đúng']
-    };
-    for (var i = 13; i <= 16; i++) {
-        var qId = 'q' + i;
-        var correctAnswers = trueFalseQuestions[qId];
-        var selectedAnswers = studentAnswers[qId] || [];
-        var correctCount = 0;
-        for (var j = 0; j < correctAnswers.length; j++) {
-            if (selectedAnswers[j] === correctAnswers[j]) {
-                correctCount++;
-            }
-        }
-        if (correctCount === 1) totalScore += 0.1;
-        else if (correctCount === 2) totalScore += 0.25;
-        else if (correctCount === 3) totalScore += 0.5;
-        else if (correctCount === 4) totalScore += 1;
-    }
-
-    // Câu 17-22: 0.5 điểm/câu đúng
-    if (studentAnswers['q17'] === '1.58') {
-        totalScore += 0.5;
-    }
-    if (studentAnswers['q18'] === '15') {
-        totalScore += 0.5;
-    }
-    if (studentAnswers['q19'] === '529') {
-        totalScore += 0.5;
-    }
-    if (studentAnswers['q20'] === '-6') {
-        totalScore += 0.5;
-    }
-    if (studentAnswers['q21'] === '0.77') {
-        totalScore += 0.5;
-    }
-    if (studentAnswers['q22'] === '1340') {
-        totalScore += 0.5;
-    }
-    totalScore = Math.round(totalScore * 100) / 100;
-    resultDiv.innerHTML = `Học sinh: ${studentName}<br>Tổng điểm: ${totalScore}/10`; // Sửa từ /10.5 thành /10
-    resultDiv.className = 'score-result';
-    isScoreCalculated = true;
-    var solutionToggles = document.getElementsByClassName('solution-toggle');
-    for (var i = 0; i < solutionToggles.length; i++) {
-        solutionToggles[i].classList.remove('disabled');
-    }
-}
-</script>
 <div class="header">
     <div class="logo">KHÓA HỌC TOÁN THẦY BÌNH</div>
 </div>
