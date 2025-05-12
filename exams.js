@@ -71,7 +71,11 @@ const examList = [
     { id: 71, title: "Đề thi Toán – Đề số 60 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de60.html", available: true },
     { id: 72, title: "Đề thi Toán – Đề số 60 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de60.html", available: true },
     { id: 73, title: "Đề thi Toán – Đề số 60 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de60.html", available: true },
-    { id: 755, title: "Đề thi Toán – Đề số 60 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de60.html", available: true },
+    { id: 75, title: "Đề thi Toán – Đề số 60 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de60.html", available: true },
+    { id: 76, title: "Đề thi Toán – Đề số 60 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de60.html", available: true },
+    { id: 77, title: "Đề thi Toán – Đề số 77 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de77.html", available: true },
+    { id: 78, title: "Đề thi Toán – Đề số 78 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de78.html", available: true },
+    { id: 79, title: "Đề thi Toán – Đề số 79 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de79.html", available: true },
 ];
 
 function createDropdownMenu() {
