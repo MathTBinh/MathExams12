@@ -467,226 +467,45 @@
 </div>
 </div>
 <script type="text/javascript">
-var gk_isXlsx = false;
-var gk_xlsxFileLookup = {};
-var gk_fileData = {};
-function filledCell(cell) {
-    return cell !== '' && cell != null;
-}
-function loadFileData(filename) {
-    if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-        try {
-            var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-            var firstSheetName = workbook.SheetNames[0];
-            var worksheet = workbook.Sheets[firstSheetName];
-            var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-            var filteredData = jsonData.filter(row => row.some(filledCell));
-            var headerRowIndex = filteredData.findIndex((row, index) =>
-                row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-            );
-            if (headerRowIndex === -1 || headerRowIndex > 25) {
-                headerRowIndex = 0;
-            }
-            var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
-            csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-            return csv;
-        } catch (e) {
-            console.error(e);
-            return "";
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
         }
-    }
-    return gk_fileData[filename] || "";
-}
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
 
-var isScoreCalculated = false;
-var studentAnswers = {};
-var checkedQuestions = {};
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
 
-function lockInputs(questionId, prefix = '') {
-    var inputs = document.getElementsByName(questionId + prefix);
-    for (var i = 0; i < inputs.length; i++) {
-        inputs[i].disabled = true;
-    }
-    var feedback = document.getElementById('feedback-' + questionId);
-    feedback.innerHTML += '<br>Đáp án đã được khóa.';
-    checkedQuestions[questionId] = true;
-}
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
 
-function checkAnswer(questionId, correctAnswer) {
-    if (checkedQuestions[questionId]) return;
-    var inputs = document.getElementsByName(questionId);
-    var selectedAnswer = null;
-    for (var i = 0; i < inputs.length; i++) {
-        if (inputs[i].checked) {
-            selectedAnswer = inputs[i].value;
-            break;
-        }
-    }
-    var feedback = document.getElementById('feedback-' + questionId);
-    if (selectedAnswer === null) {
-        feedback.innerHTML = 'Vui lòng chọn một đáp án!';
-        feedback.className = 'answer-feedback incorrect';
-        studentAnswers[questionId] = null;
-    } else if (selectedAnswer === correctAnswer) {
-        feedback.innerHTML = 'Đúng!';
-        feedback.className = 'answer-feedback correct';
-        studentAnswers[questionId] = selectedAnswer;
-    } else {
-        feedback.innerHTML = 'Sai!';
-        feedback.className = 'answer-feedback incorrect';
-        studentAnswers[questionId] = selectedAnswer;
-    }
-    lockInputs(questionId);
-}
-
-function checkTrueFalseAnswer(questionId, correctAnswers) {
-    if (checkedQuestions[questionId]) return;
-    var feedback = document.getElementById('feedback-' + questionId);
-    var selectedAnswers = [];
-    for (var i = 0; i < correctAnswers.length; i++) {
-        var inputs = document.getElementsByName(questionId + (String.fromCharCode(97 + i)));
-        var selected = null;
-        for (var j = 0; j < inputs.length; j++) {
-            if (inputs[j].checked) {
-                selected = inputs[j].value;
-                break;
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
             }
         }
-        selectedAnswers.push(selected);
-    }
-    var correctCount = 0;
-    for (var i = 0; i < correctAnswers.length; i++) {
-        if (selectedAnswers[i] === correctAnswers[i]) {
-            correctCount++;
+        return gk_fileData[filename] || "";
         }
-    }
-    if (correctCount === correctAnswers.length && selectedAnswers.every(a => a !== null)) {
-        feedback.innerHTML = 'Đúng!';
-        feedback.className = 'answer-feedback correct';
-    } else {
-        feedback.innerHTML = 'Sai hoặc chưa chọn đủ đáp án!';
-        feedback.className = 'answer-feedback incorrect';
-    }
-    studentAnswers[questionId] = selectedAnswers;
-    for (var i = 0; i < correctAnswers.length; i++) {
-        lockInputs(questionId, String.fromCharCode(97 + i));
-    }
-}
-
-function checkShortAnswer(questionId, correctAnswer) {
-    if (checkedQuestions[questionId]) return;
-    var input = document.getElementById(questionId + '-input');
-    var value = input.value.trim();
-    var feedback = document.getElementById('feedback-' + questionId);
-    if (value === '') {
-        feedback.innerHTML = 'Vui lòng nhập đáp án!';
-        feedback.className = 'answer-feedback incorrect';
-        studentAnswers[questionId] = null;
-    } else if (value === correctAnswer) {
-        feedback.innerHTML = 'Đúng!';
-        feedback.className = 'answer-feedback correct';
-        studentAnswers[questionId] = value;
-    } else {
-        feedback.innerHTML = 'Sai!';
-        feedback.className = 'answer-feedback incorrect';
-        studentAnswers[questionId] = value;
-    }
-    input.disabled = true;
-    lockInputs(questionId);
-}
-
-function notifySolutionRestriction(solutionId) {
-    if (!isScoreCalculated) {
-        alert('Vui lòng hoàn thành và tính tổng điểm trước khi xem lời giải!');
-    } else {
-        var solution = document.getElementById(solutionId);
-        solution.classList.add('show');
-    }
-}
-
-function calculateScore() {
-    var studentName = document.getElementById('student-name').value.trim();
-    var resultDiv = document.getElementById('score-result');
-    if (studentName === '') {
-        resultDiv.innerHTML = 'Vui lòng nhập họ và tên!';
-        resultDiv.className = 'score-result incorrect';
-        return;
-    }
-    var totalScore = 0;
-
-    // Câu 1-12: 0.25 điểm/câu đúng
-    for (var i = 1; i <= 12; i++) {
-        var qId = 'q' + i;
-        var correctAnswer = {
-            q1: 'B', q2: 'D', q3: 'A', q4: 'D', q5: 'A', q6: 'C',
-            q7: 'C', q8: 'A', q9: 'A', q10: 'C', q11: 'B', q12: 'D'
-        }[qId];
-        if (studentAnswers[qId] === correctAnswer) {
-            totalScore += 0.25;
-        }
-    }
-
-    // Câu 13-16: Đúng/sai
-    var trueFalseQuestions = {
-        q13: ['Đúng', 'Sai', 'Đúng', 'Sai'],
-        q14: ['Đúng', 'Đúng', 'Đúng', 'Sai'],
-        q15: ['Sai', 'Đúng', 'Đúng', 'Đúng'],
-        q16: ['Đúng', 'Đúng', 'Đúng', 'Sai']
-    };
-    for (var i = 13; i <= 16; i++) {
-        var qId = 'q' + i;
-        var correctAnswers = trueFalseQuestions[qId];
-        var selectedAnswers = studentAnswers[qId] || [];
-        var correctCount = 0;
-        for (var j = 0; j < correctAnswers.length; j++) {
-            if (selectedAnswers[j] === correctAnswers[j]) {
-                correctCount++;
-            }
-        }
-        if (correctCount === 1) totalScore += 0.1;
-        else if (correctCount === 2) totalScore += 0.25;
-        else if (correctCount === 3) totalScore += 0.5;
-        else if (correctCount === 4) totalScore += 1;
-    }
-
-    // Câu 166: 0.5 điểm/câu đúng
-    if (studentAnswers['q17'] === '30') {
-        totalScore += 0.5;
-    }
-// Câu 17: 0.5 điểm/câu đúng
-    if (studentAnswers['q18'] === '17,71') {
-        totalScore += 0.5;
-    }
-    // Câu 17: 0.5 điểm/câu đúng
-    if (studentAnswers['q19'] === '5') {
-        totalScore += 0.5;
-    }
-    // Câu 17: 0.5 điểm/câu đúng
-    if (studentAnswers['q20'] === '4,5') {
-        totalScore += 0.5;
-    }
-    // Câu 17: 0.5 điểm/câu đúng
-    if (studentAnswers['q21'] === '8,1') {
-        totalScore += 0.5;
-    }
-    // Câu 17: 0.5 điểm/câu đúng
-    if (studentAnswers['q22'] === '338') {
-        totalScore += 0.5;
-    }
-    totalScore = Math.round(totalScore * 100) / 100; // Làm tròn 2 chữ số thập phân
-    resultDiv.innerHTML = `Học sinh: ${studentName}<br>Tổng điểm: ${totalScore}/1010`;
-    resultDiv.className = 'score-result';
-    isScoreCalculated = true;
-
-    // Kích hoạt các nút "Xem lời giải"
-    var solutionToggles = document.getElementsByClassName('solution-toggle');
-    for (var i = 0; i < solutionToggles.length; i++) {
-        solutionToggles[i].classList.remove('disabled');
-    }
-}
-</script>
-
-<div class="container">
+        </script><div class="container">
 <h1>ĐỀ THI TOÁN - ĐỀ SỐ 15 <span class="hot">HOT</span></h1>
 <h2>Phần I: Trắc Nghiệm Nhiều Lựa Chọn</h2>
 <!-- Câu 1 -->
@@ -1392,6 +1211,90 @@ function calculateScore() {
 </div>
 </div>
 <!-- PHẦN CUỐICUỐI -->
+<div class="navigation">
+<button onclick="window.location.href='de4.html'">Chuyên Đề trước</button>
+<button onclick="window.location.href='de66.html'">Chuyên Đề sau</button>
+</div>
+<script defer="">
+let isSolutionDisabled = false; function checkAnswer(questionId, correctAnswer) {
+    const options = document.getElementsByName(questionId);
+    let selectedAnswer = null;
+    for (const option of options) {
+        if (option.checked) {
+            selectedAnswer = option.value;
+            break;
+        }
+    }
+    const feedback = document.getElementById(`feedback-${questionId}`);
+    if (!selectedAnswer) {
+        feedback.textContent = 'Vui lòng chọn một đáp án!';
+        feedback.className = 'answer-feedback incorrect';
+        return;
+    }
+    if (selectedAnswer === correctAnswer) {
+        feedback.textContent = 'Đúng!';
+        feedback.className = 'answer-feedback correct';
+    } else {
+        feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
+        feedback.className = 'answer-feedback incorrect';
+    }
+}
+function checkTrueFalseAnswer(questionId, correctAnswers) {
+    const feedback = document.getElementById(`feedback-${questionId}`);
+    let allCorrect = true;
+    let results = [];
+    for (let i = 0; i < correctAnswers.length; i++) {
+        const options = document.getElementsByName(`${questionId}${String.fromCharCode(97 + i)}`);
+        let selected = null;
+        for (const option of options) {
+            if (option.checked) {
+                selected = option.value;
+                break;
+            }
+        }
+        if (!selected) {
+            feedback.textContent = 'Vui lòng chọn đáp án cho tất cả phát biểu!';
+            feedback.className = 'answer-feedback incorrect';
+            return;
+        }
+        if (selected !== correctAnswers[i]) {
+            allCorrect = false;
+        }
+        results.push(`Phát biểu ${String.fromCharCode(97 + i)}: ${selected === correctAnswers[i] ? 'Đúng' : `Sai (Đáp án đúng: ${correctAnswers[i]})`}`);
+    }
+    if (allCorrect) {
+        feedback.textContent = 'Tất cả Chuyên Đều đúng!';
+        feedback.className = 'answer-feedback correct';
+    } else {
+        feedback.textContent = results.join('\n');
+        feedback.className = 'answer-feedback incorrect';
+    }
+}
+function checkShortAnswer(questionId, correctAnswer) {
+    const input = document.getElementById(`${questionId}-input`).value.trim();
+    const feedback = document.getElementById(`feedback-${questionId}`);
+    if (!input) {
+        feedback.textContent = 'Vui lòng nhập đáp án!';
+        feedback.className = 'answer-feedback incorrect';
+        return;
+    }
+    if (input === correctAnswer) {
+        feedback.textContent = 'Đúng!';
+        feedback.className = 'answer-feedback correct';
+    } else {
+        feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
+        feedback.className = 'answer-feedback incorrect';
+    }
+}
+function toggleSolution(solutionId) {
+if (isSolutionDisabled) {
+alert('Hãy cố gắng giải, thầy sẽ cho xem lời giải sau, nhớ quay lại xem lời giải nhé.');
+return;
+}
+const solution = document.getElementById(solutionId);
+solution.classList.toggle('show');
 
+}
+</script>
 </body>
 </html>
