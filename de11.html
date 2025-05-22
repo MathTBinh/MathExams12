@@ -1203,8 +1203,76 @@
 <button onclick="window.location.href='de4.html'">Chuyên Đề trước</button>
 <button onclick="window.location.href='de66.html'">Chuyên Đề sau</button>
 </div>
+<div class="score-section">
+        <h3>Kết Quả Điểm Số</h3>
+        <label for="studentName">Nhập tên học sinh: </label>
+        <input type="text" id="studentName" placeholder="Nhập tên">
+        <button onclick="calculateScore()">Tính Điểm</button>
+        <div id="result" style="margin-top: 10px;"></div>
+    </div>
+
+    <script>
+        // Tính điểm cho các câu trắc nghiệm nhiều lựa chọn (Câu 1–12)
+        const correctAnswers = {
+            'q1': 'A', 'q2': 'B', 'q3': 'D', 'q4': 'A', 'q5': 'D', 'q6': 'B',
+            'q7': 'B', 'q8': 'A', 'q9': 'D', 'q10': 'C', 'q11': 'B', 'q12': 'B'
+        };
+        let totalScore = 0;
+
+        // Tính điểm cho các câu đúng/sai (Câu 13–16)
+        const trueFalseScores = {
+            'q13': ['Đúng', 'Sai', 'Đúng', 'Sai'],
+            'q14': ['Đúng', 'Sai', 'Sai'],
+            'q15': ['Đúng', 'Sai', 'Đúng', 'Sai'],
+            'q16': ['Đúng', 'Đúng', 'Sai', 'Sai']
+        };
+
+        // Tính điểm cho các câu trả lời ngắn (Câu 17–22)
+        const shortAnswerScores = {
+            'q17': 15,
+            'q18': 5300,
+            'q19': 1300,
+            'q20': 16.7,
+            'q21': 8.94,
+            'q22': 280
+        };
+
+        function calculateScore() {
+            totalScore = 0;
+
+            // Tính điểm trắc nghiệm nhiều lựa chọn
+            for (let i = 1; i <= 12; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selected && selected.value === correctAnswers[`q${i}`]) totalScore += 1;
+            }
+
+            // Tính điểm trắc nghiệm đúng/sai
+            for (let i = 13; i <= 16; i++) {
+                let score = 0;
+                const subQuestions = i === 14 ? 3 : 4; // Câu 14 có 3 ý, các câu khác có 4 ý
+                for (let j = 0; j < subQuestions; j++) {
+                    const selected = document.querySelector(`input[name="q${i}${String.fromCharCode(97 + j)}"]:checked`);
+                    if (selected && selected.value === trueFalseScores[`q${i}`][j]) score++;
+                }
+                totalScore += score / subQuestions;
+            }
+
+            // Tính điểm trả lời ngắn
+            for (let i = 17; i <= 22; i++) {
+                const answerInput = document.querySelector(`input[id="input-q${i}"]`);
+                if (answerInput && answerInput.value.trim() === shortAnswerScores[`q${i}`].toString()) totalScore += 1;
+            }
+
+            // Lấy tên học sinh
+            const studentName = document.getElementById('studentName').value.trim() || 'Học sinh';
+            const maxScore = 12 + (4 * 4 + 3) / 4 + 6; // Tổng điểm tối đa: 12 (trắc nghiệm) + 4 (đúng/sai) + 6 (trả lời ngắn)
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `${studentName}, bạn được ${totalScore.toFixed(2)}/${maxScore} điểm.`;
+            resultDiv.style.color = totalScore === maxScore ? 'green' : 'red';
+        }
+    </script>
 <script defer="">
-let isSolutionDisabled = false; function checkAnswer(questionId, correctAnswer) {
+let isSolutionDisabled = true; function checkAnswer(questionId, correctAnswer) {
     const options = document.getElementsByName(questionId);
     let selectedAnswer = null;
     for (const option of options) {
