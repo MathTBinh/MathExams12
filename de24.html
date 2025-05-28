@@ -1251,10 +1251,11 @@ Tổng số tiệm cận đứng và tiệm cận ngang của đồ thị hàm s
       if (span) span.innerHTML = icon;
     }
 
+    
     function lockQuestionInputs(questionId) {
-      const radios = document.querySelectorAll(`input[name^='${questionId}']`);
-      radios.forEach(input => input.disabled = true);
-    }
+    const radios = document.querySelectorAll(`input[name="${questionId}"]`);
+    radios.forEach(input => input.disabled = true);
+}
 
     function addSolutionLink(questionId, url) {
       if (!checkedQuestions[questionId]) return;
