@@ -170,8 +170,8 @@
          background-color: #0b3a2e;
         color: #ffffff;
          font-family: 'Courier New', 'Segoe Script', cursive;
-         padding: 20px;
-        margin-top: 10px;
+         padding: 10px;
+        margin-top: 5px;
         border-radius: 8px;
         border: 1px solid #0a2e23;
         box-shadow: 2px 2px 8px rgba(0,0,0,0.4);
@@ -179,9 +179,9 @@
         max-width: 1000px;
         min-height: 500px;
         white-space: pre-wrap;
-        line-height: 0.8;
+        line-height: 1.0;
          }
-
+       
         .solution.visible {
          display: block;
          }
@@ -816,6 +816,7 @@ Tổng số tiệm cận đứng và tiệm cận ngang của đồ thị hàm s
 <button class="solution-toggle" onclick="toggleSolution('solution-q10')">Xem lời giải</button>
 <div class="solution" id="solution-q10">
   <p><strong>Lời giải chi tiết:</strong></p>
+  <img alt="Bảng biến thiên 24.1" loading="lazy" src="anh/24.10g.png"/><br/>
   <p>Hình chóp \( S.ABC \) có đáy là tam giác vuông cân tại \( C \), \( AC = a \), \( SA \perp (ABC) \).</p>
   <p>Tam giác \( ABC \) vuông tại \( C \), nên \( BC = AC = a \), và \( AC \perp BC \).</p>
   <p>Vì \( SA \perp (ABC) \), suy ra \( SA \perp BC \). Do đó, \( BC \perp (SAC) \) (vì \( BC \) vuông góc với cả \( SA \) và \( AC \)).</p>
@@ -832,18 +833,13 @@ Tổng số tiệm cận đứng và tiệm cận ngang của đồ thị hàm s
 </div>
 <div class="options">
 <label><input name="q11" onchange="showOptionIcon('q11', 'A', 'A')" type="radio" value="A"/> A. \( (-\infty; \log_3 2) \)<span class="option-icon" id="icon-q11-A"></span></label>
-<label><input name="q11" onchange="showOptionIcon('q11', 'B', 'A')" type="radio" value="B"/> B. \( (\log_3 2; +\infty) \)<span class=" moving="lazy" src="anh/24.1.png"/><br/>
-Hàm số đã cho nghịch biến trên khoảng nào dưới đây?</p>
-</div>
-<div class="options">
-<label><input name="q1" onchange="showOptionIcon('q1', 'A', 'B')" type="radio" value="A"/> A. \( (1; +\infty) \)<span class="option-icon" id="icon-q1-A"></span></label>
-<label><input name="q1" onchange="showOptionIcon('q1', 'B', 'B')" type="radio" value="B"/> B. \( (0; 1) \)<span class="option-icon" id="icon-q1-B"></span></label>
-<label><input name="q1" onchange="showOptionIcon('q1', 'C', 'B')" type="radio" value="C"/> C. \( (-1; 0) \)<span class="option-icon" id="icon-q1-C"></span></label>
-<label><input name="q1" onchange="showOptionIcon('q1', 'D', 'B')" type="radio" value="D"/> D. \( (0; +\infty) \)<span class="option-icon" id="icon-q1-D"></span></label>
+<label><input name="q11" onchange="showOptionIcon('q11', 'B', 'A')" type="radio" value="B"/> B. \( (0; 1) \)<span class="option-icon" id="icon-q11-B"></span></label>
+<label><input name="q11" onchange="showOptionIcon('q11', 'C', 'A')" type="radio" value="C"/> C. \( (-1; 0) \)<span class="option-icon" id="icon-q11-C"></span></label>
+<label><input name="q11" onchange="showOptionIcon('q11', 'D', 'A')" type="radio" value="D"/> D. \( (0; +\infty) \)<span class="option-icon" id="icon-q11-D"></span></label>
 </div>
 <div class="answer-check">
-<button onclick="checkAnswer('q11', 'B')">Kiểm tra</button>
-<button class="solution-toggle" onclick="toggleSolution('solution-q1')">Xem lời giải</button>
+<button onclick="checkAnswer('q11', 'A')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q11')">Xem lời giải</button>
 <div class="solution" id="solution-q11">
   <p><strong>Lời giải chi tiết:</strong></p>
   <p>Bất phương trình: \( 3^x < 2 \).</p>
@@ -978,6 +974,7 @@ Hàm số đã cho nghịch biến trên khoảng nào dưới đây?</p>
 <div class="solution" id="solution-q15">
   <p><strong>Lời giải chi tiết:</strong></p>
   <p>Mặt cầu \( (S): x^2 + y^2 + z^2 - 6x + 4y - 2z + 5 = 0 \).</p>
+  <img alt="" loading="lazy" src="anh/24.15g.png"/><br/>
   <p>Hoàn phương bình phương: \( (x - 3)^2 - 9 + (y + 2)^2 - 4 + (z - 1)^2 - 1 + 5 = 0 \Rightarrow (x - 3)^2 + (y + 2)^2 + (z - 1)^2 = 9 \).</p>
   <p>Tâm \( I(3; -2; 1) \), bán kính \( R = 3 \).</p>
   <p>a) Tâm \( I(-3; 2; -1) \), \( R = 3 \). Sai, vì tâm là \( (3; -2; 1) \).</p>
@@ -1015,16 +1012,27 @@ Hàm số đã cho nghịch biến trên khoảng nào dưới đây?</p>
 <button class="solution-toggle" onclick="toggleSolution('solution-q16')">Xem lời giải</button>
 <div class="solution" id="solution-q16">
   <p><strong>Lời giải chi tiết:</strong></p>
-  <p>Gọi \( A \): "Mưa thứ hai", \( B \): "Mưa thứ ba".</p>
-  <p>Cho: \( P(A) = x^2 \), \( P(\bar{A}) = 1 - x^2 \), \( P(B|A) = \frac{1}{4}x \), \( P(B|\bar{A}) = x \).</p>
-  <p>a) Xác suất mưa cả thứ hai và thứ ba: \( P(A \cap B) = P(A) \cdot P(B|A) = x^2 \cdot \frac{1}{4}x = \frac{x^3}{4} \neq x^2 - \frac{3x^3}{4} \). Sai.</p>
-  <p>b) \( P(A \cap B) = \frac{x^3}{4} = 0.25 \Rightarrow x^3 = 1 \Rightarrow x = 1 \). Đúng.</p>
-  <p>c) Xác suất mưa thứ ba: \( P(B) = P(A)P(B|A) + P(\bar{A})P(B|\bar{A}) = x^2 \cdot \frac{1}{4}x + (1 - x^2)x = \frac{x^3}{4} + x - x^3 = x - \frac{3x^3}{4} \). Đúng.</p>
-  <p>d) Tìm \( x \) để \( P(B) = x - \frac{3x^3}{4} \) lớn nhất trên \( [0; 1] \). Đạo hàm: \( y' = 1 - \frac{9x^2}{4} = 0 \Rightarrow x = \frac{2}{3} \). Tại \( x = \frac{2}{3} \), \( P(B) = \frac{4}{9} \). Theo Bayes: \( P(A|B) = \frac{P(A)P(B|A)}{P(B)} = \frac{\left(\frac{2}{3}\right)^2 \cdot \frac{1}{4} \cdot \frac{2}{3}}{\frac{4}{9}} = \frac{1}{6} \). Đúng.</p>
-  <p><strong>Đáp án: a) Sai, b) Đúng, c) Đúng, d) Đúng</strong></p>
-</div>
-</div>
+  <p>Gọi biến cố A là: “Có mưa vào thứ hai”. B là: “Có mưa vào thứ ba”.</p>
+<p>Từ giả thiết có \(P(A) = x^2 \Rightarrow P(\bar{A}) = 1-x^2\)</p>
+<p>\(P(B|A) = \frac{1}{4}\) và \(P(B|\bar{A}) = x\)</p>
 
+<p><strong>a)</strong> Xác suất để mưa sẽ rơi vào cả thứ hai và thứ ba là \(P(A).P(B|A) = x^2 \cdot \frac{1}{4} = \frac{x^3}{4}\) suy ra mệnh đề <strong>sai</strong>.</p>
+
+<p><strong>b)</strong> Để khả năng trời sẽ có mưa vào cả thứ hai và thứ ba là 25% thì \(\frac{x^3}{4} = 25\% \Leftrightarrow x=1\) suy ra mệnh đề <strong>sai</strong>.</p>
+
+<p><strong>c)</strong> Xác suất để trời sẽ mưa vào thứ ba là \(P(B) = P(A).P(B|A) + P(\bar{A}).P(B|\bar{A})\)</p>
+<p>\(= x^2 \cdot \frac{1}{4} + (1-x^2) \cdot x\)</p>
+<p>\(= x - \frac{3x^3}{4}\) suy ra mệnh đề <strong>sai</strong>.</p>
+
+<p><strong>d)</strong> Điều kiện của biến \(0 \le x \le 1\)</p>
+<p>Xét hàm số \(y = x - \frac{3}{4}x^3\) trên đoạn \([0;1]\)</p>
+<p>Ta có \(y' = 1 - \frac{9}{4}x^2\); \(y' = 0 \Leftrightarrow \left[ \begin{array}{l} x = \frac{2}{3} \\ x = -\frac{2}{3} (l) \end{array} \right.\)</p>
+<p>\(y(0)=0\); \(y\left(\frac{2}{3}\right) = \frac{4}{9}\); \(y(1) = \frac{1}{4}\). Suy ra \(\max_{[0;1]} y = y\left(\frac{2}{3}\right)\)</p>
+<p>Như vậy, khi \(x = \frac{2}{3}\) thì xác suất trời sẽ mưa vào thứ ba là <strong>lớn nhất</strong>.</p>
+<p>Theo công thức Bayes, xác suất để có mưa vào thứ hai là</p>
+<p>\(P(A|B) = \frac{P(A)P(B|A)}{P(B)} = \frac{x^2 \cdot \frac{1}{4}}{x - \frac{3}{4}x^3} = \frac{\left(\frac{2}{3}\right)^2 \cdot \frac{1}{4}}{\frac{2}{3} - \frac{3}{4}\left(\frac{2}{3}\right)^3} = \frac{1}{6}\) suy ra mệnh đề <strong>đúng</strong>.</p>
+</div>
+</div>
 </div>
 
 <h3>Phần III: Trắc Nghiệm Trả Lời Ngắn - từ câu 17 đến câu 22</h3>
@@ -1042,11 +1050,15 @@ Hàm số đã cho nghịch biến trên khoảng nào dưới đây?</p>
 
 <div class="solution" id="solution-q17">
   <p><strong>Lời giải chi tiết:</strong></p>
-  <p>Lăng trụ tam giác đều \( ABC.A_1B_1C_1 \), \( AB = 6 \), \( M \) là trung điểm \( AA_1 \), góc giữa \( CM \) và \( A_1B \) là \( 45^\circ \).</p>
-  <p>Gọi \( N \) là trung điểm \( AB \). Ta có \( CN \perp (A_1B_1BA) \Rightarrow CN \perp MN \). Vì \( MN \parallel A_1B \), nên \( \angle(CM, A_1B) = \angle(CM, MN) = 45^\circ \).</p>
-  <p>Trong tam giác đều \( ABC \), \( CN = \frac{\sqrt{3}}{2} \cdot 6 = 3\sqrt{3} \). Vì \( CM \) vuông tại \( C \), \( CM = \sqrt{(3\sqrt{3})^2 + 6^2} = 3\sqrt{6} \). Suy ra \( AM = \sqrt{(3\sqrt{6})^2 - 6^2} = 3\sqrt{2} \).</p>
-  <p>Khoảng cách \( d(CM, A_1B) = d(B, (CMN)) = AH \), với \( AH \perp (CMN) \). Tính \( AH \): \( \frac{1}{AH^2} = \frac{1}{AM^2} + \frac{1}{AN^2} = \frac{1}{(3\sqrt{2})^2} + \frac{1}{(3\sqrt{3})^2} \approx 0.1667 \Rightarrow AH \approx 2.45 \).</p>
-  <p><strong>Đáp án: 2.45</strong></p>
+  <img alt="" loading="lazy" src="anh/24.17g.png"/><br/>
+  <p>Gọi \(N\) là trung điểm của \(AB\), dễ thấy \(CN \perp (A_1B_1BA) \Rightarrow CN \perp MN\).</p>
+<p>Ta có \(MN \parallel A_1B \Rightarrow (CM, A_1B) = (CM, MN) = \widehat{NMC} = 45^\circ\).</p>
+<p>Dẫn đến \(CN = MN = 6 \cdot \frac{\sqrt{3}}{2} = 3\sqrt{3}\) ; \(CM = 3\sqrt{3} \cdot \sqrt{2} = 3\sqrt{6}\)</p>
+<p>\(\Rightarrow AM = \sqrt{CM^2 - AC^2} = \sqrt{9 \cdot 6 - 6^2} = 3\sqrt{2}\).</p>
+<p>Do đó: \(d(CM, A_1B) = d((CMN), A_1B) = d(B, (CMN)) = d(A, (CMN))\).</p>
+<p>Từ \(A\) kẻ \(AH \perp MN\) mà ta có \(AH \perp CN\) nên \(AH \perp (CMN)\).</p>
+<p>Suy ra \(d(A, (CMN))) = AH\).</p>
+<p>\(\frac{1}{AH^2} = \frac{1}{AM^2} + \frac{1}{AN^2} \Rightarrow AH \approx 2,45\).</p>
 </div>
 </div>
 
@@ -1089,10 +1101,35 @@ Hàm số đã cho nghịch biến trên khoảng nào dưới đây?</p>
 <button class="solution-toggle" onclick="toggleSolution('solution-q19')">Xem lời giải</button>
 <div class="solution" id="solution-q19">
   <p><strong>Lời giải chi tiết:</strong></p>
-  <p>Ngọn hải đăng tại \( I(21; 35; 50) \), bán kính phủ sóng \( R = 4 \, \text{km} \). Đường thẳng \( IA \) từ \( I(21; 35; 50) \) đến \( A(5121; 658; 0) \).</p>
-  <p>Vector \( \overrightarrow{IA} = (5100; 623; -50) \). Phương trình tham số: \( x = 21 + 5100t \), \( y = 35 + 623t \), \( z = 50 - 50t \).</p>
-  <p>Điểm \( H \) trên \( IA \) sao cho \( IH = 4 \): \( \sqrt{(5100t)^2 + (623t)^2 + (-50t)^2} = 4 \). Giải: \( t \approx 0.78 \). Tọa độ \( H(3900; 520.94; 11) \). Cao độ \( z = 11 \).</p>
-  <p><strong>Đáp án: 11</strong></p>
+   <p>Đường thẳng \(IA\) đi qua điểm I và nhận \(\vec{IA}(5100; 623; -50)\) làm vectơ chỉ phương.</p>
+
+    <p>Phương trình tham số của đường thẳng \(IA\) là
+    \(\left\{
+    \begin{aligned}
+    x &= 21 + 5100t \\
+    y &= 35 + 623t \\
+    z &= 50 - 50t
+    \end{aligned}
+    \right.\) .
+    </p>
+
+    <p>Giả sử H là vị trí cuối cùng trên đoạn thẳng \(IA\) sao cho người đi biển có thể nhìn thấy ánh sáng từ ngọn hải đăng. Khi đó IH = R.</p>
+
+    <p>Ta có \(H \in IA\) nên gọi tọa độ điểm \(H(21+5100t; 35+623t; 50-50t) \Rightarrow \vec{IH}(5100t; 623t; -50t)\).</p>
+
+    <p>\(IH = R \Leftrightarrow \sqrt{(5100t)^2 + (623t)^2 + (-50t)^2} = 4000\)</p>
+
+    <p>\(\Leftrightarrow t \approx \pm 0,78\).</p>
+
+    <p>+ Với \(t \approx 0,78\), ta có \(H(3900; 520,94; 11)\) và \(\vec{IH}(3978; 485,94; -39)\)</p>
+
+    <p>Khi đó \(\vec{IA} = \frac{50}{39}\vec{IH}\) nên hai vectơ \(\vec{IA}, \vec{IH}\) cùng hướng, vậy thỏa mãn H thuộc đoạn thẳng \(IA\).</p>
+
+    <p>+ Với \(t \approx -0,78\), ta có \(H(-3957; -450,94; 89)\) và \(\vec{IH}(-3978; -485,94; 39)\)</p>
+
+    <p>Khi đó \(\vec{IA} = -\frac{50}{39}\vec{IH}\) nên hai vectơ \(\vec{IA}, \vec{IH}\) ngược hướng, vậy thỏa mãn H không thuộc đoạn thẳng \(IA\).</p>
+
+    <p>Vậy vị trí cuối cùng trên đoạn thẳng \(IA\) sao cho người đi biển còn có thể nhìn thấy được ánh sáng từ ngọn hải đăng là điểm \(H(3900; 520,94; 11)\), cao độ là 11.</p>
 </div>
 </div>
 
@@ -1111,11 +1148,28 @@ Hàm số đã cho nghịch biến trên khoảng nào dưới đây?</p>
 <button class="solution-toggle" onclick="toggleSolution('solution-q20')">Xem lời giải</button>
 <div class="solution" id="solution-q20">
   <p><strong>Lời giải chi tiết:</strong></p>
-  <p>Bồn hoa hình tròn tâm \( O \), bán kính \( OB = 2\sqrt{2} \), phương trình: \( x^2 + y^2 = 8 \). Parabol: \( y = \frac{1}{2}x^2 \).</p>
-  <p>Diện tích trồng hoa \( S_1 = \int_{-2}^2 \left( \sqrt{8 - x^2} - \frac{1}{2}x^2 \right) dx \approx 7.6165 \, \text{m}^2 \). Tổng diện tích trồng hoa: \( S_1 + S_2 = 15.23 \, \text{m}^2 \). Chi phí: \( 15.23 \cdot 150,000 = 2,280,000 \).</p>
-  <p>Diện tích trồng cỏ: \( 8\pi - 15.23 \approx 9.90 \, \text{m}^2 \). Chi phí: \( 9.90 \cdot 100,000 = 990,000 \).</p>
-  <p>Tổng chi phí: \( 2,280,000 + 990,000 = 3,270,000 \approx 3270 \, \text{nghìn đồng} \).</p>
-  <p><strong>Đáp án: 3270</strong></p>
+  <img alt="" loading="lazy" src="anh/24.20g.png"/><br/>
+   <p>Chọn hệ trục tọa độ vuông góc Oxy như hình vẽ.</p>
+
+    <p>Bồn hoa là hình tròn tâm O, bán kính bằng \(OB = 2\sqrt{2}\) suy ra phương trình đường tròn biểu diễn cho bồn hoa là \(x^2 + y^2 = 8\)</p>
+
+    <p>\(\Rightarrow\) Phương trình nửa đường tròn phía trên trục hoành là \(y = \sqrt{8 - x^2}\).</p>
+
+    <p>Đường parabol nằm phía trên trục hoành có phương trình \(y = \frac{1}{2}x^2\).</p>
+
+    <p>Phần diện tích \(S_1 = \int_{-2}^{2} \left(\sqrt{8 - x^2} - \frac{1}{2}x^2\right) dx = 7,6165 \text{ m}^2\).</p>
+
+    <p>Dễ thấy \(S_2 = S_1\) nên diện tích phần trồng hoa là \(S = 15,23 \text{ m}^2\).</p>
+
+    <p>Vậy kinh phí trồng hoa là 2.280.000 đồng.</p>
+
+    <p>Diện tích trồng cỏ bằng diện tích bồn hoa trừ đi diện tích trồng hoa, bằng \(8\pi - 15,23 = 9,90 \text{ m}^2\).</p>
+
+    <p>Suy ra kinh phí trồng cỏ là 990.000 đồng.</p>
+
+    <p>Vậy số tiền nhà trường cần để trồng bồn hoa đó là 2.280.000 + 990.000 = 3.270.000 (đồng).</p>
+
+    <p>Vậy số tiền nhà trường cần để trồng bồn hoa đó là 3270 (nghìn đồng),</p>
 </div>
 </div>
 
@@ -1134,9 +1188,14 @@ Hàm số đã cho nghịch biến trên khoảng nào dưới đây?</p>
 <button class="solution-toggle" onclick="toggleSolution('solution-q21')">Xem lời giải</button>
 <div class="solution" id="solution-q21">
   <p><strong>Lời giải chi tiết:</strong></p>
-  <p>Độ dài que sào: \( L = \frac{18}{\cos x} + \frac{2}{\sin x} \). Đạo hàm: \( L' = \frac{18 \sin x}{\cos^2 x} - \frac{2 \cos x}{\sin^2 x} = 0 \Rightarrow \tan x = \sqrt[3]{\frac{1}{9}} \).</p>
-  <p>Tại \( x \approx 25^\circ 40' \), \( L \approx 24.6 \, \text{m} \).</p>
-  <p><strong>Đáp án: 24.6</strong></p>
+  <img alt="" loading="lazy" src="anh/24.21g.png"/><br/>
+  <p>Xác định các điểm và vẽ thêm các đường như hình vẽ</p>
+    <p>Đặt x (m) là độ lớn \(\widehat{BAC} = \widehat{CMQ}\) (điều kiện \(0 < x < 90^\circ\))</p>
+    <p>Ta có độ dài thanh: \(L = AC = AM + CM = \frac{AN}{\cos x} + \frac{CQ}{\sin x} = \frac{18}{\cos x} + \frac{2}{\sin x}\)</p>
+    <p>\(L' = \frac{18\sin x}{\cos^2 x} - \frac{2\cos x}{\sin^2 x} \Rightarrow L' = 0 \Rightarrow 18\sin^3 x - 2\cos^3 x = 0 \Rightarrow \tan x = \sqrt[3]{\frac{1}{9}} \Rightarrow x \approx 25^\circ 40'33,29''\)</p>
+    <p><strong>Bảng biến thiên</strong></p>
+    <img alt="" loading="lazy" src="anh/24.21g2.png"/><br/>
+    <p>Vậy chiều dài L ngắn nhất là 24,6 m</p>
 </div>
 </div>
 
@@ -1376,7 +1435,7 @@ Hàm số đã cho nghịch biến trên khoảng nào dưới đây?</p>
       isScoreCalculated = true;
     }
 
-let allowShowSolution = false; // Đặt thành false nếu muốn khóa lời giải
+let allowShowSolution = true; // Đặt thành false nếu muốn khóa lời giải
 
   function toggleSolution(id) {
     if (!allowShowSolution) {
