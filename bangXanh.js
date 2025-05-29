@@ -64,7 +64,8 @@ function bangXanh(containerId) {
             border: 2px solid #000;
             background-color: #0A3D2E;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            touch-action: none; /* Ngăn chặn hành vi mặc định như cuộn trang */
+            touch-action: none; /* Ngăn chặn cuộn trang */
+            -ms-touch-action: none; /* Hỗ trợ IE */
         }
         #${containerId} .text-input {
             display: none;
@@ -102,11 +103,14 @@ function bangXanh(containerId) {
         let x, y;
 
         if (event.type.includes('touch')) {
-            x = event.touches[0].clientX - rect.left;
-            y = event.touches[0].clientY - rect.top;
-        } else if (event.type.includes('pointer') || event.type.includes('mouse')) {
+            x = event.touches[0].pageX - rect.left;
+            y = event.touches[0].pageY - rect.top;
+        } else if (event.type.includes('pointer')) {
             x = event.clientX - rect.left;
             y = event.clientY - rect.top;
+        } else if (event.type.includes('mouse')) {
+            x = event.offsetX;
+            y = event.offsetY;
         }
 
         return { x, y };
@@ -127,8 +131,8 @@ function bangXanh(containerId) {
 
         if (mode === 'text') {
             textInput.style.display = 'block';
-            textInput.style.left = `${event.clientX || event.touches[0].clientX}px`;
-            textInput.style.top = `${event.clientY || event.touches[0].clientY}px`;
+            textInput.style.left = `${event.pageX || event.clientX || event.touches[0].pageX}px`;
+            textInput.style.top = `${event.pageY || event.clientY || event.touches[0].pageY}px`;
             textInput.focus();
         } else {
             ctx.beginPath();
@@ -179,11 +183,19 @@ function bangXanh(containerId) {
         }
     }
 
-    // Đăng ký sự kiện Pointer Events
+    // Đăng ký sự kiện cho tất cả các loại đầu vào
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseout', stopDrawing);
     canvas.addEventListener('pointerdown', startDrawing);
     canvas.addEventListener('pointermove', draw);
     canvas.addEventListener('pointerup', stopDrawing);
     canvas.addEventListener('pointercancel', stopDrawing);
+    canvas.addEventListener('touchstart', startDrawing, { passive: false });
+    canvas.addEventListener('touchmove', draw, { passive: false });
+    canvas.addEventListener('touchend', stopDrawing);
+    canvas.addEventListener('touchcancel', stopDrawing);
 
     // Tạo canvas tạm để lưu trạng thái
     const tempCanvas = document.createElement('canvas');
