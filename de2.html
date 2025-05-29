@@ -10,6 +10,20 @@
 <script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Khối bảng xanhxanh-->
+  <script src="bangXanh.js" defer></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+      for (let i = 1; i <= 2; i++) {
+        bangXanh('whiteboard' + i);
+        document.getElementById('whiteboard' + i).style.display = 'none';
+      }
+    });
+  </script>
+  <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+ <!-- Khối bảng xanhxanh-->
 <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -577,7 +591,14 @@
 <p><strong>Lời giải:</strong><br/>
     \( \int k e^{ax+b} \, dx = \frac{k}{a} e^{ax+b} + C \)  
            Đáp án: D.</p>
+
+
 </div>
+ <!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard1()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard1"></div></div>
+  </div>
+   <!-- Khối bảng xanhxanh-->
 </div>
 </div>
 <!-- Câu 2 -->

@@ -10,6 +10,20 @@
 <script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Khối bảng xanhxanh-->
+  <script src="bangXanh.js" defer></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+      for (let i = 1; i <= 22; i++) {
+        bangXanh('whiteboard' + i);
+        document.getElementById('whiteboard' + i).style.display = 'none';
+      }
+    });
+  </script>
+  <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+ <!-- Khối bảng xanhxanh-->
 <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -530,9 +544,14 @@
 <label><input name="q1" type="radio" value="C"/> C</label>
 <label><input name="q1" type="radio" value="D"/> D</label>
 <button onclick="checkAnswer('q1', 'D')">Kiểm tra</button>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard1()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard1"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q1"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q1')">Xem lời giải</div>
+
 <div class="solution" id="solution-q1">
 <p><strong>Lời giải:</strong><br/>
                 Ta có: \( f'(x) = (x - 2)(x + 1) = 0 \Leftrightarrow x = 2 \) hoặc \( x = -1 \).<br/>
@@ -565,6 +584,10 @@
 <label><input name="q2" type="radio" value="C"/> C</label>
 <label><input name="q2" type="radio" value="D"/> D</label>
 <button onclick="checkAnswer('q2', 'C')">Kiểm tra</button>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard2()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard2"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q2"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q2')">Xem lời giải</div>
@@ -598,6 +621,10 @@
 <label><input name="q3" type="radio" value="C"/> C</label>
 <label><input name="q3" type="radio" value="D"/> D</label>
 <button onclick="checkAnswer('q3', 'A')">Kiểm tra</button>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard3()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard3"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q3"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q3')">Xem lời giải</div>
@@ -632,6 +659,10 @@
 <label><input name="q4" type="radio" value="C"/> C</label>
 <label><input name="q4" type="radio" value="D"/> D</label>
 <button onclick="checkAnswer('q4', 'D')">Kiểm tra</button>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard4()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard4"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q4"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q4')">Xem lời giải</div>
@@ -671,6 +702,10 @@
 <label><input name="q5" type="radio" value="C"/> C</label>
 <label><input name="q5" type="radio" value="D"/> D</label>
 <button onclick="checkAnswer('q5', 'C')">Kiểm tra</button>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard5()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard5"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q5"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q5')">Xem lời giải</div>
@@ -703,6 +738,10 @@
 <label><input name="q6" type="radio" value="C"/> C</label>
 <label><input name="q6" type="radio" value="D"/> D</label>
 <button onclick="checkAnswer('q6', 'A')">Kiểm tra</button>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard6()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard6"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q6"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q6')">Xem lời giải</div>
@@ -738,6 +777,10 @@
 <label><input name="q7" type="radio" value="C"/> C</label>
 <label><input name="q7" type="radio" value="D"/> D</label>
 <button onclick="checkAnswer('q7', 'A')">Kiểm tra</button>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard7()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard7"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q7"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q7')">Xem lời giải</div>
@@ -775,6 +818,10 @@
 <label><input name="q8" type="radio" value="C"/> C</label>
 <label><input name="q8" type="radio" value="D"/> D</label>
 <button onclick="checkAnswer('q8', 'B')">Kiểm tra</button>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard8()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard8"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q8"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q8')">Xem lời giải</div>
@@ -811,6 +858,10 @@
 <label><input name="q9" type="radio" value="C"/> C</label>
 <label><input name="q9" type="radio" value="D"/> D</label>
 <button onclick="checkAnswer('q9', 'A')">Kiểm tra</button>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard9()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard9"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q9"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q9')">Xem lời giải</div>
@@ -845,6 +896,10 @@
 <label><input name="q10" type="radio" value="C"/> C</label>
 <label><input name="q10" type="radio" value="D"/> D</label>
 <button onclick="checkAnswer('q10', 'A')">Kiểm tra</button>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard1010()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard10"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q10"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q10')">Xem lời giải</div>
@@ -877,6 +932,10 @@
 <label><input name="q11" type="radio" value="C"/> C</label>
 <label><input name="q11" type="radio" value="D"/> D</label>
 <button onclick="checkAnswer('q11', 'A')">Kiểm tra</button>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard11()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard11"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q11"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q11')">Xem lời giải</div>
@@ -909,6 +968,10 @@
 <label><input name="q12" type="radio" value="C"/> C</label>
 <label><input name="q12" type="radio" value="D"/> D</label>
 <button onclick="checkAnswer('q12', 'C')">Kiểm tra</button>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard12()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard12"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q12"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q12')">Xem lời giải</div>
@@ -942,6 +1005,10 @@
 <p>c) <label><input name="q13c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q13c" type="radio" value="Sai"/> Sai</label></p>
 <p>d) <label><input name="q13d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q13d" type="radio" value="Sai"/> Sai</label></p>
 <button onclick="checkTrueFalseAnswer('q13', ['Đúng', 'Sai', 'Đúng', 'Đúng'])">Kiểm tra</button>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard13()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard13"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q13"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q13')">Xem lời giải</div>
@@ -981,6 +1048,10 @@
 <p>c) <label><input name="q14c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q14c" type="radio" value="Sai"/> Sai</label></p>
 <p>d) <label><input name="q14d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q14d" type="radio" value="Sai"/> Sai</label></p>
 <button onclick="checkTrueFalseAnswer('q14', ['Sai', 'Sai', 'Sai', 'Đúng'])">Kiểm tra</button>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard14()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard14"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q14"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q14')">Xem lời giải</div>
@@ -1019,6 +1090,10 @@
 <p>c) <label><input name="q15c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q15c" type="radio" value="Sai"/> Sai</label></p>
 <p>d) <label><input name="q15d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q15d" type="radio" value="Sai"/> Sai</label></p>
 <button onclick="checkTrueFalseAnswer('q15', ['Đúng', 'Sai', 'Đúng', 'Đúng'])">Kiểm tra</button>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard15()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard15"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q15"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q15')">Xem lời giải</div>
@@ -1053,6 +1128,10 @@
 <p>b) <label><input name="q16b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q16b" type="radio" value="Sai"/> Sai</label></p>
 <p>c) <label><input name="q16c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q16c" type="radio" value="Sai"/> Sai</label></p>
 <button onclick="checkTrueFalseAnswer('q16', ['Đúng', 'Đúng', 'Sai'])">Kiểm tra</button>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard166()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard16"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q16"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q16')">Xem lời giải</div>
@@ -1079,6 +1158,10 @@
 <p>Cho hình chóp \( S.ABCD \) có đáy là hình chữ nhật cạnh \( AB = 2AD = 2 \). Tam giác \( SAB \) đều và nằm trong mặt phẳng vuông góc với đáy \( (ABCD) \). Tính khoảng cách từ \( A \) đến mặt phẳng \( (SBD) \) (làm tròn kết quả đến chữ số thập phân thứ hai).</p>
 <div class="answer-check">
 <p>Nhập đáp án: <input id="q17-input" type="text"/> <button onclick="checkShortAnswer('q17', '0.87')">Kiểm tra</button></p>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard17()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard17"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q17"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q17')">Xem lời giải</div>
@@ -1106,6 +1189,10 @@
 <img alt="Hình 25.6" loading="lazy" src="anh/25.18.png"/>
 <div class="answer-check">
 <p>Nhập đáp án: <input id="q18-input" type="text"/> <button onclick="checkShortAnswer('q18', '21')">Kiểm tra</button></p>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard18()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard18"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q18"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q18')">Xem lời giải</div>
@@ -1130,6 +1217,10 @@
 <img src="anh/25.19.png" alt="">
 <div class="answer-check">
 <p>Nhập đáp án: <input id="q19-input" type="text"/> <button onclick="checkShortAnswer('q19', '55.4')">Kiểm tra</button></p>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard19()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard19"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q19"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q19')">Xem lời giải</div>
@@ -1155,6 +1246,10 @@
 <p>Trong không gian hệ trục tọa độ \( Oxyz \) (đơn vị trên mỗi trục là kilomet), đài kiểm soát không lưu sân bay Cam Ranh - Khánh Hòa ở vị trí \( O(0; 0; 0) \) và được thiết kế phát hiện máy bay ở khoảng cách tối đa 600 km. Một máy bay của hãng Vietnam Airlines đang chuyển động theo đường thẳng \( d: \begin{cases} x = -1000 + 100t \\ y = -200 + 80t \\ z = 10 \end{cases} \) và hướng về đài kiểm soát không lưu. Xác định quãng đường mà máy bay nhận được tín hiệu của đài kiểm soát không lưu (làm tròn kết quả đến hàng đơn vị, đơn vị km).</p>
 <div class="answer-check">
 <p>Nhập đáp án: <input id="q20-input" type="text"/> <button onclick="checkShortAnswer('q20', '749')">Kiểm tra</button></p>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard20()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard20"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q20"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q20')">Xem lời giải</div>
@@ -1180,6 +1275,10 @@
 <img src="anh/25.21.png" alt="">
 <div class="answer-check">
 <p>Nhập đáp án: <input id="q21-input" type="text"/> <button onclick="checkShortAnswer('q21', '6')">Kiểm tra</button></p>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard21()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard21"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q21"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q21')">Xem lời giải</div>
@@ -1205,6 +1304,10 @@
 <p>Có hai lô hàng. Lô 1: Có 7 chính phẩm và 3 phế phẩm. Lô 2: Có 8 chính phẩm và 2 phế phẩm. Từ lô thứ nhất lấy ra 2 sản phẩm, từ lô thứ hai lấy ra 3 sản phẩm, rồi trong số sản phẩm lấy được, tính xác suất để lấy ra ít nhất 1 chính phẩm (làm tròn đến hai chữ số thập phân).</p>
 <div class="answer-check">
 <p>Nhập đáp án: <input id="q22-input" type="text"/> <button onclick="checkShortAnswer('q22', '0.95')">Kiểm tra</button></p>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard22()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard22"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 <div class="answer-feedback" id="feedback-q22"></div>
 <div class="solution-toggle" onclick="toggleSolution('solution-q22')">Xem lời giải</div>

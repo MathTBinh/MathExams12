@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="vi">
 <head>
 <meta charset="utf-8"/>
@@ -10,6 +9,20 @@
 <script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Khối bảng xanhxanh-->
+  <script src="bangXanh.js" defer></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+      for (let i = 1; i <= 22; i++) {
+        bangXanh('whiteboard' + i);
+        document.getElementById('whiteboard' + i).style.display = 'none';
+      }
+    });
+  </script>
+  <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+ <!-- Khối bảng xanhxanh-->
 <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -579,8 +592,13 @@ Hàm số đã cho nghịch biến trên khoảng nào dưới đây?</p>
   <p>Do đó, hàm số nghịch biến trên các khoảng \( (-\infty; -1) \) và \( (0; 1) \). Trong các lựa chọn, chỉ có khoảng \( (0; 1) \) xuất hiện.</p>
   <p><strong>Đáp án: B</strong></p>
 </div>
+ <!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard1()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard1"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 </div>
+
 
 <!-- Câu 2 -->
 <div class="question" id="q2">
@@ -607,6 +625,10 @@ Hàm số đã cho nghịch biến trên khoảng nào dưới đây?</p>
   <p>Tổng giá trị lớn nhất và nhỏ nhất: \( M + m = 3 + (-2) = 1 \).</p>
   <p><strong>Đáp án: C</strong></p>
 </div>
+<!-- Khối bảng xanhxanh-->
+    <button class="toggle-button" onclick="toggleBoardwhiteboard2()">Ẩn/Hiện Bảng Vẽ</button>
+    <div class="whiteboard-wrapper"><div id="whiteboard2"></div></div>
+  <!-- Khối bảng xanhxanh-->
 </div>
 </div>
 
@@ -909,8 +931,6 @@ Tổng số tiệm cận đứng và tiệm cận ngang của đồ thị hàm s
   <p>d) Tập giá trị: Từ \( f'(x) \), ta thấy tại \( x = -1 \), \( f(-1) = -1 \); tại \( x = 4 \), \( f(4) = \frac{1}{4} \). Tập giá trị là \( [-1; \frac{1}{4}] \). Với \( a = -1 \), \( b = \frac{1}{4} \), thì \( 3a + 4b = 3(-1) + 4 \cdot \frac{1}{4} = -3 + 1 = -2 \neq 5 \). Sai.</p>
   <p><strong>Đáp án: a) Đúng, b) Đúng, c) Sai, d) Sai</strong></p>
 </div>
-</div>
-
 </div>
 
 <!-- Câu 14 -->
