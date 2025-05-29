@@ -64,19 +64,18 @@ function bangXanh(containerId) {
             border: 2px solid #000;
             background-color: #0A3D2E;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            touch-action: none; /* Ngăn chặn hành vi mặc định như cuộn trang */
         }
         #${containerId} .text-input {
             display: none;
             position: absolute;
             font-size: 16px;
             padding: 5px;
-        }
-        #${containerId} .latex-label {
+            #${containerId} .latex-label {
             font-size: 20px;
             font-weight: normal;
-            white-space: nowrap;
+             white-space: nowrap;
             z-index: 10;
+            }
         }
     `;
     document.head.appendChild(style);
@@ -96,54 +95,32 @@ function bangXanh(containerId) {
     const brushSize = document.getElementById(`brushSize-${containerId}`);
     const fontSize = document.getElementById(`fontSize-${containerId}`);
 
-    // Tính tọa độ tương đối trên canvas
-    function getCanvasCoordinates(event) {
-        const rect = canvas.getBoundingClientRect();
-        let x, y;
-
-        if (event.type.includes('touch')) {
-            x = event.touches[0].clientX - rect.left;
-            y = event.touches[0].clientY - rect.top;
-        } else if (event.type.includes('pointer') || event.type.includes('mouse')) {
-            x = event.clientX - rect.left;
-            y = event.clientY - rect.top;
-        }
-
-        return { x, y };
-    }
-
     window[`setMode${containerId}`] = function(newMode) {
         mode = newMode;
         textInput.style.display = 'none';
     };
 
-    // Xử lý sự kiện bắt đầu vẽ
-    function startDrawing(event) {
-        event.preventDefault();
+    canvas.addEventListener('mousedown', (e) => {
         isDrawing = true;
-        const coords = getCanvasCoordinates(event);
-        startX = coords.x;
-        startY = coords.y;
+        startX = e.offsetX;
+        startY = e.offsetY;
 
         if (mode === 'text') {
             textInput.style.display = 'block';
-            textInput.style.left = `${event.clientX || event.touches[0].clientX}px`;
-            textInput.style.top = `${event.clientY || event.touches[0].clientY}px`;
+            textInput.style.left = `${e.clientX}px`;
+            textInput.style.top = `${e.clientY}px`;
             textInput.focus();
         } else {
             ctx.beginPath();
             ctx.moveTo(startX, startY);
         }
-    }
+    });
 
-    // Xử lý sự kiện vẽ khi di chuyển
-    function draw(event) {
-        event.preventDefault();
+    canvas.addEventListener('mousemove', (e) => {
         if (!isDrawing || mode === 'text') return;
 
-        const coords = getCanvasCoordinates(event);
-        const currentX = coords.x;
-        const currentY = coords.y;
+        const currentX = e.offsetX;
+        const currentY = e.offsetY;
 
         ctx.strokeStyle = colorPicker.value;
         ctx.lineWidth = brushSize.value;
@@ -168,47 +145,44 @@ function bangXanh(containerId) {
             }
             ctx.stroke();
         }
-    }
+    });
 
-    // Xử lý sự kiện kết thúc vẽ
-    function stopDrawing() {
+    canvas.addEventListener('mouseup', () => {
         if (mode !== 'text') {
             isDrawing = false;
             ctx.closePath();
             tempCanvas.getContext('2d').drawImage(canvas, 0, 0);
         }
-    }
+    });
 
-    // Đăng ký sự kiện Pointer Events
-    canvas.addEventListener('pointerdown', startDrawing);
-    canvas.addEventListener('pointermove', draw);
-    canvas.addEventListener('pointerup', stopDrawing);
-    canvas.addEventListener('pointercancel', stopDrawing);
+    canvas.addEventListener('mouseout', () => {
+        if (mode !== 'text') {
+            isDrawing = false;
+            ctx.closePath();
+        }
+    });
 
-    // Tạo canvas tạm để lưu trạng thái
     const tempCanvas = document.createElement('canvas');
     tempCanvas.width = canvas.width;
     tempCanvas.height = canvas.height;
-
-    // Xử lý nhập văn bản với LaTeX
-    textInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            const latexContainer = document.createElement('div');
-            latexContainer.className = 'latex-label';
-            latexContainer.style.position = 'absolute';
-            latexContainer.style.left = (canvas.offsetLeft + startX) + 'px';
-            latexContainer.style.top = (canvas.offsetTop + startY) + 'px';
-            latexContainer.style.color = colorPicker.value;
-            latexContainer.innerHTML = `\\(${textInput.value}\\)`;
-            container.appendChild(latexContainer);
-            if (window.MathJax && MathJax.typeset) {
-                MathJax.typeset([latexContainer]);
-            }
-            textInput.value = '';
-            textInput.style.display = 'none';
-            tempCanvas.getContext('2d').drawImage(canvas, 0, 0);
+textInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        const latexContainer = document.createElement('div');
+        latexContainer.className = 'latex-label';
+        latexContainer.style.position = 'absolute';
+        latexContainer.style.left = (canvas.offsetLeft + startX) + 'px';
+        latexContainer.style.top = (canvas.offsetTop + startY) + 'px';
+        latexContainer.style.color = colorPicker.value;
+        latexContainer.innerHTML = `\\(${textInput.value}\\)`;
+        container.appendChild(latexContainer);
+        if (window.MathJax && MathJax.typeset) {
+            MathJax.typeset([latexContainer]);
         }
-    });
+        textInput.value = '';
+        textInput.style.display = 'none';
+        tempCanvas.getContext('2d').drawImage(canvas, 0, 0);
+    }
+});
 
     window[`clearBoard${containerId}`] = function() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
