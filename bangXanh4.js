@@ -89,6 +89,7 @@ function bangXanh(containerId) {
     let isDrawing = false;
     let mode = 'draw';
     let startX, startY;
+    let lastX, lastY; // Để theo dõi điểm vẽ trước đó
 
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
@@ -128,6 +129,8 @@ function bangXanh(containerId) {
         const coords = getCanvasCoordinates(event);
         startX = coords.x;
         startY = coords.y;
+        lastX = startX;
+        lastY = startY;
 
         if (mode === 'text') {
             textInput.style.display = 'block';
@@ -152,10 +155,13 @@ function bangXanh(containerId) {
         ctx.strokeStyle = colorPicker.value;
         ctx.lineWidth = brushSize.value;
 
-        if (mode === 'draw') {
+        // Lọc điểm vẽ để tránh nét gãy trên cảm ứng
+        if (mode === 'draw' && (Math.abs(currentX - lastX) > 2 || Math.abs(currentY - lastY) > 2)) {
             ctx.lineTo(currentX, currentY);
             ctx.stroke();
-        } else {
+            lastX = currentX;
+            lastY = currentY;
+        } else if (mode !== 'draw') {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(tempCanvas, 0, 0);
 
