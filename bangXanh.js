@@ -51,7 +51,10 @@ function bangXanh(containerId) {
         }
         #whiteboard-${containerId} {
             border: 2px solid #000;
-            background-color: #fff;
+            background-color: #0A3D2E; /* Thay đổi nền thành xanh lá cây */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm shadow cho thẩm mỹ */
+            touch-action: none; /* Ngăn chặn cuộn trang */
+            -ms-touch-action: none; /* Hỗ trợ IE */
         }
         #${containerId} .text-input {
             display: none;
@@ -88,6 +91,7 @@ function bangXanh(containerId) {
         textInput.style.display = 'none';
     };
 
+    // Chuột
     canvas.addEventListener('mousedown', (e) => {
         isDrawing = true;
         startX = e.offsetX;
@@ -148,7 +152,7 @@ function bangXanh(containerId) {
         }
     });
 
-    // Touch events
+    // Cảm ứng
     canvas.addEventListener('touchstart', (e) => {
         e.preventDefault();
         const touch = e.touches[0];
