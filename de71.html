@@ -1167,6 +1167,7 @@ Gọi \( M \) và \( m \) lần lượt là giá trị lớn nhất và giá tr�
 }
     function calculateScore() {
   if (isScoreCalculated) return;
+
   const correctAnswers = {
     q1: 'A',
     q2: 'A',
@@ -1191,36 +1192,80 @@ Gọi \( M \) và \( m \) lần lượt là giá trị lớn nhất và giá tr�
     q21: '5,3',
     q22: '0,96'
   };
-      let totalScore = 0;
 
-      for (let i = 1; i <= 22; i++) {
-        const key = 'q' + i;
-        const userAns = studentAnswers[key];
-        const correctAns = correctAnswers[key];
+  let studentAnswers = {};
 
-        if (i >= 1 && i <= 12) {
-          if (userAns && userAns === correctAns) totalScore += 0.25;
-        } else if (i >= 13 && i <= 16) {
-          if (Array.isArray(correctAns) && Array.isArray(userAns)) {
-            let correctCount = 0;
-            for (let j = 0; j < correctAns.length; j++) {
-              if (userAns[j] === correctAns[j]) correctCount++;
-            }
-            if (correctCount === 1) totalScore += 0.1;
-            else if (correctCount === 2) totalScore += 0.25;
-            else if (correctCount === 3) totalScore += 0.5;
-            else if (correctCount === 4) totalScore += 1;
-          }
-        } else if (i >= 17 && i <= 22) {
-          if (userAns && userAns.toString().trim() === correctAns.toString()) totalScore += 0.5;
-        }
-      }
-
-      const scoreElement = document.getElementById("score-result");
-      scoreElement.textContent = `Tổng điểm của bạn: ${totalScore.toFixed(2)} / 10`;
-      scoreElement.className = "correct";
-      isScoreCalculated = true;
+  // Câu 1 → 12: Trắc nghiệm ABCD
+  for (let i = 1; i <= 12; i++) {
+    const name = 'q' + i;
+    const selected = document.querySelector(`input[name="${name}"]:checked`);
+    if (selected) {
+      studentAnswers[name] = selected.value.trim();
     }
+  }
+
+  // Câu 13 → 16: Đúng / Sai từng mệnh đề
+  for (let i = 13; i <= 16; i++) {
+    const subAnswers = [];
+    ['a', 'b', 'c', 'd'].forEach(letter => {
+      const inputName = `q${i}${letter}`;
+      const selected = document.querySelector(`input[name="${inputName}"]:checked`);
+      if (selected) {
+        subAnswers.push(selected.value.trim());
+      } else {
+        subAnswers.push(''); // Không chọn gì
+      }
+    });
+    studentAnswers['q' + i] = subAnswers;
+    console.log(`q${i}:`, subAnswers);  // Ghi ra console
+  }
+
+  // Câu 17 → 22: Tự luận (text input)
+  for (let i = 17; i <= 22; i++) {
+    const input = document.querySelector(`input[name="q${i}"]`);
+    if (input) {
+      studentAnswers['q' + i] = input.value.trim().replace(',', '.');
+    }
+  }
+
+  // Bắt đầu tính điểm
+  let totalScore = 0;
+
+  for (let i = 1; i <= 22; i++) {
+    const key = 'q' + i;
+    const userAns = studentAnswers[key];
+    const correctAns = correctAnswers[key];
+
+    if (i >= 1 && i <= 12) {
+      if (userAns && userAns === correctAns) totalScore += 0.25;
+    } else if (i >= 13 && i <= 16) {
+      if (Array.isArray(userAns) && Array.isArray(correctAns)) {
+        let correctCount = 0;
+        for (let j = 0; j < correctAns.length; j++) {
+          if (userAns[j] === correctAns[j]) correctCount++;
+        }
+        console.log(`Câu ${key} đúng ${correctCount} phần`);
+        if (correctCount === 1) totalScore += 0.1;
+        else if (correctCount === 2) totalScore += 0.25;
+        else if (correctCount === 3) totalScore += 0.5;
+        else if (correctCount === 4) totalScore += 1;
+      }
+    } else if (i >= 17 && i <= 22) {
+      if (
+        typeof userAns === 'string' &&
+        userAns.replace(',', '.').trim() === correctAns.toString().replace(',', '.')
+      ) {
+        totalScore += 0.5;
+      }
+    }
+  }
+
+  const scoreElement = document.getElementById("score-result");
+  scoreElement.textContent = `Tổng điểm của bạn: ${totalScore.toFixed(2)} / 10`;
+  scoreElement.className = "correct";
+  isScoreCalculated = true;
+}
+
 
 let allowShowSolution = true; // Đặt thành false nếu muốn khóa lời giải
 
