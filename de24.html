@@ -23,6 +23,8 @@
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>
  <!-- Khối bảng xanhxanh-->
+  
+
 <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -391,6 +393,14 @@
         height: auto;
     }
 }
+.latex-solution {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-family: Courier New, monospace;
+  font-size: 18px;
+  border-radius: 6px;
+  padding: 6px;
+}
 </style>
 <style>
 input[type="text"].short-answer {
@@ -596,6 +606,16 @@ Hàm số đã cho nghịch biến trên khoảng nào dưới đây?</p>
     <button class="toggle-button" onclick="toggleBoardwhiteboard1()">Ẩn/Hiện Bảng Vẽ</button>
     <div class="whiteboard-wrapper"><div id="whiteboard1"></div></div>
   <!-- Khối bảng xanhxanh-->
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      bangXanh('whiteboard1');
+      addSolutionToBoard('whiteboard1', `
+        <p><b>Lời giải:</b></p>
+        <p>Xét đạo hàm \\( f'(x) = (x - 2)(x + 1) \\), hàm số nghịch biến trên khoảng \\( (-1; 2) \\).</p>
+        <p><b>Đáp án: C</b></p>
+      `);
+    });
+  </script>
 </div>
 </div>
 
@@ -965,7 +985,6 @@ Tổng số tiệm cận đứng và tiệm cận ngang của đồ thị hàm s
   <p><strong>Đáp án: a) Đúng, b) Đúng, c) Đúng, d) Đúng</strong></p>
 </div>
 </div>
-
 </div>
 
 <!-- Câu 15 -->
