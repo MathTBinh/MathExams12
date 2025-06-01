@@ -9,10 +9,15 @@ function bangXanh(containerId) {
     container.innerHTML = `
         <div class="controls">
             <button onclick="setMode${containerId}('draw')">✏️</button>
+            <button onclick="setMode${containerId}('eraser')">🧹</button>
             <button onclick="setMode${containerId}('line')">➖</button>
             <button onclick="setMode${containerId}('circle')">⚪</button>
             <button onclick="setMode${containerId}('square')">⬜</button>
             <button onclick="setMode${containerId}('text')">🖋️</button>
+            <button onclick="setMode${containerId}('triangularPyramid')">▲</button>
+            <button onclick="setMode${containerId}('squarePyramid')">◼</button>
+            <button onclick="setMode${containerId}('prism')">🔲</button>
+            <button onclick="setMode${containerId}('sphere')">🌐</button>
             <button onclick="clearBoard${containerId}()">🗑️</button>
             <button onclick="saveImage${containerId}()">💾</button>
             <input type="color" id="color-${containerId}" value="#000000">
@@ -51,10 +56,10 @@ function bangXanh(containerId) {
         }
         #whiteboard-${containerId} {
             border: 2px solid #000;
-            background-color: #0A3D2E; /* Thay đổi nền thành xanh lá cây */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm shadow cho thẩm mỹ */
-            touch-action: none; /* Ngăn chặn cuộn trang */
-            -ms-touch-action: none; /* Hỗ trợ IE */
+            background-color: #0A3D2E;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            touch-action: none;
+            -ms-touch-action: none;
         }
         #${containerId} .text-input {
             display: none;
@@ -85,11 +90,90 @@ function bangXanh(containerId) {
     const tempCanvas = document.createElement('canvas');
     tempCanvas.width = canvas.width;
     tempCanvas.height = canvas.height;
+    const tempCtx = tempCanvas.getContext('2d');
 
     window[`setMode${containerId}`] = function(newMode) {
         mode = newMode;
         textInput.style.display = 'none';
     };
+
+    // Hàm vẽ chóp tam giác
+    function drawTriangularPyramid(ctx, startX, startY, endX, endY) {
+        const height = Math.abs(endY - startY);
+        const base = Math.abs(endX - startX);
+        const apexX = startX + base / 2;
+        const apexY = startY - height;
+
+        ctx.beginPath();
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(startX + base, startY);
+        ctx.lineTo(apexX, apexY);
+        ctx.lineTo(startX, startY);
+        ctx.moveTo(startX + base, startY);
+        ctx.lineTo(apexX, apexY);
+        ctx.stroke();
+        ctx.setLineDash([5, 5]);
+        ctx.moveTo(startX + base / 2, startY);
+        ctx.lineTo(apexX, apexY);
+        ctx.stroke();
+        ctx.setLineDash([]);
+    }
+
+    // Hàm vẽ chóp tứ giác
+    function drawSquarePyramid(ctx, startX, startY, endX, endY) {
+        const size = Math.max(Math.abs(endX - startX), Math.abs(endY - startY));
+        const apexX = startX + size / 2;
+        const apexY = startY - size;
+
+        ctx.beginPath();
+        ctx.rect(startX, startY, size, size);
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(apexX, apexY);
+        ctx.moveTo(startX + size, startY);
+        ctx.lineTo(apexX, apexY);
+        ctx.moveTo(startX + size, startY + size);
+        ctx.lineTo(apexX, apexY);
+        ctx.moveTo(startX, startY + size);
+        ctx.lineTo(apexX, apexY);
+        ctx.stroke();
+        ctx.setLineDash([5, 5]);
+        ctx.moveTo(startX + size / 2, startY + size / 2);
+        ctx.lineTo(apexX, apexY);
+        ctx.stroke();
+        ctx.setLineDash([]);
+    }
+
+    // Hàm vẽ lăng trụ
+    function drawPrism(ctx, startX, startY, endX, endY) {
+        const size = Math.max(Math.abs(endX - startX), Math.abs(endY - startY));
+        const offset = size / 3;
+
+        ctx.beginPath();
+        ctx.rect(startX, startY, size, size);
+        ctx.rect(startX + offset, startY - offset, size, size);
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(startX + offset, startY - offset);
+        ctx.moveTo(startX + size, startY);
+        ctx.lineTo(startX + size + offset, startY - offset);
+        ctx.moveTo(startX, startY + size);
+        ctx.lineTo(startX + offset, startY + size - offset);
+        ctx.moveTo(startX + size, startY + size);
+        ctx.lineTo(startX + size + offset, startY + size - offset);
+        ctx.stroke();
+    }
+
+    // Hàm vẽ hình cầu với giao tuyến
+    function drawSphere(ctx, startX, startY, endX, endY) {
+        const radius = Math.sqrt((endX - startX) ** 2 + (endY - startY) ** 2);
+        ctx.beginPath();
+        ctx.arc(startX, startY, radius, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.setLineDash([5, 5]);
+        ctx.beginPath();
+        ctx.ellipse(startX, startY, radius * 0.7, radius * 0.3, 0, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.setLineDash([]);
+    }
 
     // Chuột
     canvas.addEventListener('mousedown', (e) => {
@@ -112,10 +196,10 @@ function bangXanh(containerId) {
         if (!isDrawing || mode === 'text') return;
         const currentX = e.offsetX;
         const currentY = e.offsetY;
-        ctx.strokeStyle = colorPicker.value;
+        ctx.strokeStyle = mode === 'eraser' ? '#0A3D2E' : colorPicker.value;
         ctx.lineWidth = brushSize.value;
 
-        if (mode === 'draw') {
+        if (mode === 'draw' || mode === 'eraser') {
             ctx.lineTo(currentX, currentY);
             ctx.stroke();
         } else {
@@ -132,6 +216,14 @@ function bangXanh(containerId) {
             } else if (mode === 'square') {
                 const size = Math.max(Math.abs(currentX - startX), Math.abs(currentY - startY));
                 ctx.rect(startX, startY, size, size);
+            } else if (mode === 'triangularPyramid') {
+                drawTriangularPyramid(ctx, startX, startY, currentX, currentY);
+            } else if (mode === 'squarePyramid') {
+                drawSquarePyramid(ctx, startX, startY, currentX, currentY);
+            } else if (mode === 'prism') {
+                drawPrism(ctx, startX, startY, currentX, currentY);
+            } else if (mode === 'sphere') {
+                drawSphere(ctx, startX, startY, currentX, currentY);
             }
             ctx.stroke();
         }
@@ -180,10 +272,10 @@ function bangXanh(containerId) {
         const currentX = touch.clientX - rect.left;
         const currentY = touch.clientY - rect.top;
 
-        ctx.strokeStyle = colorPicker.value;
+        ctx.strokeStyle = mode === 'eraser' ? '#0A3D2E' : colorPicker.value;
         ctx.lineWidth = brushSize.value;
 
-        if (mode === 'draw') {
+        if (mode === 'draw' || mode === 'eraser') {
             ctx.lineTo(currentX, currentY);
             ctx.stroke();
         } else {
@@ -200,6 +292,14 @@ function bangXanh(containerId) {
             } else if (mode === 'square') {
                 const size = Math.max(Math.abs(currentX - startX), Math.abs(currentY - startY));
                 ctx.rect(startX, startY, size, size);
+            } else if (mode === 'triangularPyramid') {
+                drawTriangularPyramid(ctx, startX, startY, currentX, currentY);
+            } else if (mode === 'squarePyramid') {
+                drawSquarePyramid(ctx, startX, startY, currentX, currentY);
+            } else if (mode === 'prism') {
+                drawPrism(ctx, startX, startY, currentX, currentY);
+            } else if (mode === 'sphere') {
+                drawSphere(ctx, startX, startY, currentX, currentY);
             }
             ctx.stroke();
         }
