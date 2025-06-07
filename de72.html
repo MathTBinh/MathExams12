@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="vi">
 <head>
 <meta charset="utf-8"/>
@@ -10,6 +9,22 @@
 <script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Khối bảng xanhxanh-->
+  <script src="bangXanh.js" defer></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+      for (let i = 1; i <= 22; i++) {
+        bangXanh('whiteboard' + i);
+        document.getElementById('whiteboard' + i).style.display = 'none';
+      }
+    });
+  </script>
+  <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+ <!-- Khối bảng xanhxanh-->
+  
+
 <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -167,31 +182,39 @@
             color: #ef4444;
         }
         .solution {
-            display: none;
-            background: #fef3c7;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 10px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .solution.show {
-            display: block;
-            opacity: 1;
-        }
+         background-color: #0b3a2e;
+        color: #ffffff;
+         font-family: 'Courier New', 'Segoe Script', cursive;
+         padding: 10px;
+        margin-top: 5px;
+        border-radius: 8px;
+        border: 1px solid #0a2e23;
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+        display: none;
+        max-width: 1000px;
+        min-height: 500px;
+        white-space: pre-wrap;
+        line-height: 1.0;
+         }
+       
+        .solution.visible {
+         display: block;
+         }
+
         .solution-toggle {
-            display: inline-block;
-            background: #6b21a8;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 25px;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: background 0.3s;
+         margin-left: 10px;
+         padding: 4px 10px;
+         cursor: pointer;
+        background-color: #0b3a2e;
+        color: white;
+         border: 1px solid white;
+        border-radius: 4px;
         }
+
         .solution-toggle:hover {
-            background: #5b1a8b;
+         background-color: #145a47;
         }
+        
         .hot {
             color: #ef4444;
             font-weight: bold;
@@ -250,6 +273,27 @@
                 padding: 8px 16px;
                 font-size: 0.9rem;
             }
+            .score-section {
+    background-color: #ecfdf5;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#score-result {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#score-result.correct {
+    color: #22c55e;
+}
+
+#score-result.incorrect {
+    color: #ef4444;
+}
         }
     
 .question img, .solution img {
@@ -349,6 +393,25 @@
         height: auto;
     }
 }
+.latex-solution {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-family: Courier New, monospace;
+  font-size: 18px;
+  border-radius: 6px;
+  padding: 6px;
+}
+</style>
+<style>
+input[type="text"].short-answer {
+  width: 120px;
+  padding: 6px;
+  background-color: #f0f9ff;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-right: 8px;
+}
 </style>
 </head>
 <body>
@@ -359,6 +422,15 @@
 <div>
 <a href="index.html">Trang chủ</a>
 </div>
+<!-- Thêm phần ghi màn hình -->
+    <div class="recording-controls" style="margin: 10px 0; padding: 5px; background-color: #f0f0f0; border-radius: 5px;">
+        <button id="startRecording" style="padding: 5px 10px; margin: 0 5px; background-color: #4CAF50; color: white; border: none; border-radius: 3px;">Record</button>
+        <button id="stopRecording" style="padding: 5px 10px; margin: 0 5px; background-color: #f44336; color: white; border: none; border-radius: 3px;">Stop</button>
+        <button id="pauseRecording" style="padding: 5px 10px; margin: 0 5px; background-color: #ff9800; color: white; border: none; border-radius: 3px;">Pause</button>
+        <video id="videoPreview" controls style="display: none; margin-top: 10px; width: 320px; height: 240px;"></video>
+        <br>
+        <a id="downloadLink" style="display: none; margin-top: 5px;">Download Video</a>
+    </div>
 <div class="dropdown">
 <span class="dropdown-button">Chọn đề</span>
 <div class="dropdown-content">
@@ -466,847 +538,747 @@
 </div>
 </div>
 </div>
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><div class="container">
-<h1>ĐỀ THI TOÁN - ĐỀ SỐ 72 <span class="hot">HOT</span></h1>
-<h2>Phần I: Trắc Nghiệm Nhiều Lựa Chọn</h2>
+<!--$-->
+<div class="container">
+<h1>ĐỀ THI TOÁN - ĐỀ SỐ 1 <span class="hot">HOT</span></h1>
+<!-- Phần I: Trắc Nghiệm Nhiều Lựa Chọn -->
+<h3>Phần I: Trắc Nghiệm Nhiều Lựa Chọn - từ câu 1 đến câu 12</h3>
 <!-- Câu 1 -->
-<div class="card">
+<div class="question" id="q1">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Phương trình mũ</h3>
-<p>Phương trình mũ \(a^x = b\) có nghiệm \(x = \log_a b\), với \(a &gt; 0\), \(a \neq 1\), \(b &gt; 0\).</p>
+<p><strong>Câu 1</strong>. Cho hàm số \( y = f(x) \) có đồ thị như hình vẽ. Biết diện tích phần tô đậm là \( S_1 = 2 \) và diện tích phần gạch chéo \( S_2 = 5 \). Giá trị \( \int_{-2}^1 f(x) \mathrm{d}x \) bằng</p>
+<img alt="" loading="lazy" src="data/anh2/73.1.png"/><br/>
 </div>
-<div class="question">
-<h3>Câu 1:</h3>
-<p>Phương trình \(2^x = 7\) có nghiệm là:</p>
 <div class="options">
-<div class="option">A. \(x = \log_2 7\)</div>
-<div class="option">B. \(x = \log_2 2\)</div>
-<div class="option">C. \(x = 3\)</div>
-<div class="option">D. \(x = 2\)</div>
+<label><input name="q1" onchange="showOptionIcon('q1', 'A', 'D')" type="radio" value="A"/> A. 5<span class="option-icon" id="icon-q1-A"></span></label>
+<label><input name="q1" onchange="showOptionIcon('q1', 'B', 'D')" type="radio" value="B"/> B. 7<span class="option-icon" id="icon-q1-B"></span></label>
+<label><input name="q1" onchange="showOptionIcon('q1', 'C', 'D')" type="radio" value="C"/> C. 3<span class="option-icon" id="icon-q1-C"></span></label>
+<label><input name="q1" onchange="showOptionIcon('q1', 'D', 'D')" type="radio" value="D"/> D. -3<span class="option-icon" id="icon-q1-D"></span></label>
 </div>
 <div class="answer-check">
-<p>Chọn đáp án:</p>
-<label><input name="q1" type="radio" value="A"/> A</label>
-<label><input name="q1" type="radio" value="B"/> B</label>
-<label><input name="q1" type="radio" value="C"/> C</label>
-<label><input name="q1" type="radio" value="D"/> D</label>
-<button onclick="checkAnswer('q1', 'A')">Kiểm tra</button>
-</div>
-<div class="answer-feedback" id="feedback-q1"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q1')">Xem lời giải</div>
-<div class="solution" id="solution-q1">
-<p><strong>Lời giải:</strong><br/>
-                Ta có: \(2^x = 7 \Leftrightarrow x = \log_2 7\).<br/>
-                Đáp án: A.</p>
-</div>
+<button onclick="checkAnswer('q1', 'D')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q1')">Xem lời giải</button>
+<div class="solution" id="solution-q1"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard1()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard1"></div></div>
 </div>
 </div>
 <!-- Câu 2 -->
-<div class="card">
+<div class="question" id="q2">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Vector chỉ phương của đường thẳng</h3>
-<p>Vector chỉ phương của đường thẳng \(\left\{\begin{array}{l}x = x_0 + at \\ y = y_0 + bt \\ z = z_0 + ct\end{array}\right.\) là \(\vec{u} = (a; b; c)\). Hai vector chỉ phương tỉ lệ thì đường thẳng có cùng hướng.</p>
+<p><strong>Câu 2</strong>. Cho hàm số \( y = f(x) \) là hàm số bậc ba có đồ thị là đường cong hình dưới đây. Hàm số đã cho đồng biến trên khoảng nào dưới đây?</p>
+<img alt="" loading="lazy" src="data/anh2/73.2.png"/><br/>
 </div>
-<div class="question">
-<h3>Câu 2:</h3>
-<p>Trong không gian với hệ tọa độ \(Oxyz\), đường thẳng nào sau đây có vector chỉ phương là \(\vec{u} = (2; 3; -1)\)?</p>
 <div class="options">
-<div class="option">A. \(\left\{\begin{array}{l}x = 1 - 4t \\ y = 2 - 6t \\ z = -1 + 2t\end{array}\right.\)</div>
-<div class="option">B. \(\left\{\begin{array}{l}x = 1 + 4t \\ y = 2 + 6t \\ z = -1 - 4t\end{array}\right.\)</div>
-<div class="option">C. \(\left\{\begin{array}{l}x = 1 - 2t \\ y = 2 - 3t \\ z = -1 - t\end{array}\right.\)</div>
-<div class="option">D. \(\left\{\begin{array}{l}x = 1 + 2t \\ y = 2 - 3t \\ z = -1 - t\end{array}\right.\)</div>
+<label><input name="q2" onchange="showOptionIcon('q2', 'A', 'A')" type="radio" value="A"/> A. \( (1; +\infty) \)<span class="option-icon" id="icon-q2-A"></span></label>
+<label><input name="q2" onchange="showOptionIcon('q2', 'B', 'A')" type="radio" value="B"/> B. \( (0; 1) \)<span class="option-icon" id="icon-q2-B"></span></label>
+<label><input name="q2" onchange="showOptionIcon('q2', 'C', 'A')" type="radio" value="C"/> C. \( (-\infty; 2) \)<span class="option-icon" id="icon-q2-C"></span></label>
+<label><input name="q2" onchange="showOptionIcon('q2', 'D', 'A')" type="radio" value="D"/> D. \( (-\infty; 0) \)<span class="option-icon" id="icon-q2-D"></span></label>
 </div>
 <div class="answer-check">
-<p>Chọn đáp án:</p>
-<label><input name="q2" type="radio" value="A"/> A</label>
-<label><input name="q2" type="radio" value="B"/> B</label>
-<label><input name="q2" type="radio" value="C"/> C</label>
-<label><input name="q2" type="radio" value="D"/> D</label>
 <button onclick="checkAnswer('q2', 'A')">Kiểm tra</button>
-</div>
-<div class="answer-feedback" id="feedback-q2"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q2')">Xem lời giải</div>
-<div class="solution" id="solution-q2">
-<p><strong>Lời giải:</strong><br/>
-                Đường thẳng ở đáp án A có vector chỉ phương là \(\vec{u}' = (-4; -6; 2) = -2(2; 3; -1)\), tỉ lệ với \(\vec{u} = (2; 3; -1)\).<br/>
-                Các đáp án khác không thỏa mãn.<br/>
-                Đáp án: A.</p>
-</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-q2')">Xem lời giải</button>
+<div class="solution" id="solution-q2"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard2()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard2"></div></div>
 </div>
 </div>
 <!-- Câu 3 -->
-<div class="card">
+<div class="question" id="q3">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Cực trị của hàm số</h3>
-<p>Hàm số có cực trị tại điểm \(x_0\) nếu \(f'(x_0) = 0\) và \(f'(x)\) đổi dấu qua \(x_0\). Hàm phân thức hoặc đa thức bậc cao có thể không có cực trị nếu đạo hàm không đổi dấu.</p>
+<p><strong>Câu 3</strong>. Trong không gian \( Oxyz \), cho \( \vec{u} = (1; 0; 1) \) và \( \vec{v} = (0; 1; 0) \). Giá trị \( \vec{u} \cdot \vec{v} \) bằng</p>
 </div>
-<div class="question">
-<h3>Câu 3:</h3>
-<p>Hàm số nào sau đây không có cực trị?</p>
 <div class="options">
-<div class="option">A. \(y = \frac{x^2 - 3}{x - 2}\)</div>
-<div class="option">B. \(y = \frac{2x - 1}{x + 2}\)</div>
-<div class="option">C. \(y = x^3 - 2x - 1\)</div>
-<div class="option">D. \(y = -x^4 - x^2 + 1\)</div>
+<label><input name="q3" onchange="showOptionIcon('q3', 'A', 'B')" type="radio" value="A"/> A. 1<span class="option-icon" id="icon-q3-A"></span></label>
+<label><input name="q3" onchange="showOptionIcon('q3', 'B', 'B')" type="radio" value="B"/> B. 0<span class="option-icon" id="icon-q3-B"></span></label>
+<label><input name="q3" onchange="showOptionIcon('q3', 'C', 'B')" type="radio" value="C"/> C. 2<span class="option-icon" id="icon-q3-C"></span></label>
+<label><input name="q3" onchange="showOptionIcon('q3', 'D', 'B')" type="radio" value="D"/> D. 3<span class="option-icon" id="icon-q3-D"></span></label>
 </div>
 <div class="answer-check">
-<p>Chọn đáp án:</p>
-<label><input name="q3" type="radio" value="A"/> A</label>
-<label><input name="q3" type="radio" value="B"/> B</label>
-<label><input name="q3" type="radio" value="C"/> C</label>
-<label><input name="q3" type="radio" value="D"/> D</label>
 <button onclick="checkAnswer('q3', 'B')">Kiểm tra</button>
-</div>
-<div class="answer-feedback" id="feedback-q3"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q3')">Xem lời giải</div>
-<div class="solution" id="solution-q3">
-<p><strong>Lời giải:</strong><br/>
-                - \(y = \frac{2x - 1}{x + 2}\): \(y' = \frac{3}{(x + 2)^2} &gt; 0\), không đổi dấu, nên không có cực trị.<br/>
-                Các hàm khác có đạo hàm đổi dấu, nên có cực trị.<br/>
-                Đáp án: B.</p>
-</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-q3')">Xem lời giải</button>
+<div class="solution" id="solution-q3"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard3()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard3"></div></div>
 </div>
 </div>
 <!-- Câu 4 -->
-<div class="card">
+<div class="question" id="q4">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Thống kê số liệu ghép nhóm</h3>
-<p>Để tính số lượng phần tử thỏa mãn điều kiện trong bảng tần số ghép nhóm, ta cộng tần số của các nhóm phù hợp với điều kiện.</p>
+<p><strong>Câu 4</strong>. Cho mẫu số liệu ghép nhóm có bảng tần số ghép nhóm như sau:</p>
+<table border="1">
+<tr><th>Nhóm</th><th>\([510; 520)\)</th><th>\([520; 530)\)</th><th>\([530; 540)\)</th><th>\([540; 550)\)</th><th>\([550; 560)\)</th></tr>
+<tr><th>Tần số</th><td>4</td><td>3</td><td>6</td><td>3</td><td>4</td></tr>
+</table>
+<p>Phương sai của mẫu số liệu này bằng:</p>
 </div>
-<div class="question">
-<h3>Câu 4:</h3>
-<p>Một cuộc khảo sát đã tiến hành xác định tuổi (theo năm) của 120 chiếc ô tô. Kết quả điều tra được cho trong bảng sau: <br/> <img alt="Hình 72.4" loading="lazy" src="anh/72.4.png"/> <br/> Có bao nhiêu ô tô có độ tuổi dưới 12 năm?</p>
 <div class="options">
-<div class="option">A. 26</div>
-<div class="option">B. 37</div>
-<div class="option">C. 45</div>
-<div class="option">D. 75</div>
+<label><input name="q4" onchange="showOptionIcon('q4', 'A', 'B')" type="radio" value="A"/> A. 13,78<span class="option-icon" id="icon-q4-A"></span></label>
+<label><input name="q4" onchange="showOptionIcon('q4', 'B', 'B')" type="radio" value="B"/> B. 190<span class="option-icon" id="icon-q4-B"></span></label>
+<label><input name="q4" onchange="showOptionIcon('q4', 'C', 'B')" type="radio" value="C"/> C. 187,3<span class="option-icon" id="icon-q4-C"></span></label>
+<label><input name="q4" onchange="showOptionIcon('q4', 'D', 'B')" type="radio" value="D"/> D. 14,1<span class="option-icon" id="icon-q4-D"></span></label>
 </div>
 <div class="answer-check">
-<p>Chọn đáp án:</p>
-<label><input name="q4" type="radio" value="A"/> A</label>
-<label><input name="q4" type="radio" value="B"/> B</label>
-<label><input name="q4" type="radio" value="C"/> C</label>
-<label><input name="q4" type="radio" value="D"/> D</label>
-<button onclick="checkAnswer('q4', 'D')">Kiểm tra</button>
-</div>
-<div class="answer-feedback" id="feedback-q4"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q4')">Xem lời giải</div>
-<div class="solution" id="solution-q4">
-<p><strong>Lời giải:</strong><br/>
-                Ô tô có độ tuổi dưới 12 năm thuộc các nhóm \([0; 4)\), \([4; 8)\), \([8; 12)\).<br/>
-                Tổng số ô tô: \(23 + 25 + 27 = 75\).<br/>
-                Đáp án: D.</p>
-</div>
+<button onclick="checkAnswer('q4', 'B')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q4')">Xem lời giải</button>
+<div class="solution" id="solution-q4"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard4()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard4"></div></div>
 </div>
 </div>
 <!-- Câu 5 -->
-<div class="card">
+<div class="question" id="q5">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Tính đơn điệu của hàm số</h3>
-<p>Hàm số đồng biến trên khoảng mà đồ thị tăng (đạo hàm \(f'(x) \geq 0\)). Xem đồ thị để xác định khoảng đồng biến.</p>
+<p><strong>Câu 5</strong>. Tổng các nghiệm của phương trình \( \log_2 x + \log_8 (x-3)^3 = 2 \) bằng</p>
 </div>
-<div class="question">
-<h3>Câu 5:</h3>
-<p>Cho hàm số \(y = f(x)\) có đồ thị như hình bên: <br/> <img alt="Hình 72.5" loading="lazy" src="anh/72.5.png"/> <br/> Hàm số đã cho đồng biến trên khoảng nào dưới đây?</p>
 <div class="options">
-<div class="option">A. \((0; +\infty)\)</div>
-<div class="option">B. \((-1; +\infty)\)</div>
-<div class="option">C. \((-2; 0)\)</div>
-<div class="option">D. \((-4; +\infty)\)</div>
+<label><input name="q5" onchange="showOptionIcon('q5', 'A', 'C')" type="radio" value="A"/> A. 3<span class="option-icon" id="icon-q5-A"></span></label>
+<label><input name="q5" onchange="showOptionIcon('q5', 'B', 'C')" type="radio" value="B"/> B. 2<span class="option-icon" id="icon-q5-B"></span></label>
+<label><input name="q5" onchange="showOptionIcon('q5', 'C', 'C')" type="radio" value="C"/> C. 4<span class="option-icon" id="icon-q5-C"></span></label>
+<label><input name="q5" onchange="showOptionIcon('q5', 'D', 'C')" type="radio" value="D"/> D. 0<span class="option-icon" id="icon-q5-D"></span></label>
 </div>
 <div class="answer-check">
-<p>Chọn đáp án:</p>
-<label><input name="q5" type="radio" value="A"/> A</label>
-<label><input name="q5" type="radio" value="B"/> B</label>
-<label><input name="q5" type="radio" value="C"/> C</label>
-<label><input name="q5" type="radio" value="D"/> D</label>
-<button onclick="checkAnswer('q5', 'A')">Kiểm tra</button>
-</div>
-<div class="answer-feedback" id="feedback-q5"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q5')">Xem lời giải</div>
-<div class="solution" id="solution-q5">
-<p><strong>Lời giải:</strong><br/>
-                Từ đồ thị, hàm số đồng biến (đồ thị tăng) trên khoảng \((0; +\infty)\).<br/>
-                Đáp án: A.</p>
-</div>
+<button onclick="checkAnswer('q5', 'C')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q5')">Xem lời giải</button>
+<div class="solution" id="solution-q5"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard5()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard5"></div></div>
 </div>
 </div>
 <!-- Câu 6 -->
-<div class="card">
+<div class="question" id="q6">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Cấp số nhân</h3>
-<p>Trong cấp số nhân \((u_n)\), số hạng thứ \(n\) được tính bởi: \(u_n = u_1 \cdot q^{n-1}\). Công bội \(q\) được tìm từ \(u_n = u_1 \cdot q^{n-1}\).</p>
+<p><strong>Câu 6</strong>. Trong không gian \( Oxyz \), cho \( (P): 2x + z + 1 = 0 \). Một vector pháp tuyến của \( (P) \) là</p>
 </div>
-<div class="question">
-<h3>Câu 6:</h3>
-<p>Cho cấp số nhân \((u_n)\), biết \(u_1 = 1\), \(u_4 = 64\). Công bội \(q\) của cấp số nhân bằng:</p>
 <div class="options">
-<div class="option">A. \(q = 2\)</div>
-<div class="option">B. \(q = 8\)</div>
-<div class="option">C. \(q = 4\)</div>
-<div class="option">D. \(q = 2\sqrt{2}\)</div>
+<label><input name="q6" onchange="showOptionIcon('q6', 'A', 'D')" type="radio" value="A"/> A. <span class="option-icon" id="icon-q6-A"></span></label>
+<label><input name="q6" onchange="showOptionIcon('q6', 'B', 'D')" type="radio" value="B"/> B. \( (2; 1; 0) \)<span class="option-icon" id="icon-q6-B"></span></label>
+<label><input name="q6" onchange="showOptionIcon('q6', 'C', 'D')" type="radio" value="C"/> C. \( (1; 2; 0) \)<span class="option-icon" id="icon-q6-C"></span></label>
+<label><input name="q6" onchange="showOptionIcon('q6', 'D', 'D')" type="radio" value="D"/> D. \( (2; 0; 1) \)<span class="option-icon" id="icon-q6-D"></span></label>
 </div>
 <div class="answer-check">
-<p>Chọn đáp án:</p>
-<label><input name="q6" type="radio" value="A"/> A</label>
-<label><input name="q6" type="radio" value="B"/> B</label>
-<label><input name="q6" type="radio" value="C"/> C</label>
-<label><input name="q6" type="radio" value="D"/> D</label>
-<button onclick="checkAnswer('q6', 'C')">Kiểm tra</button>
-</div>
-<div class="answer-feedback" id="feedback-q6"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q6')">Xem lời giải</div>
-<div class="solution" id="solution-q6">
-<p><strong>Lời giải:</strong><br/>
-                Ta có: \(u_4 = u_1 \cdot q^3 \Leftrightarrow 64 = 1 \cdot q^3 \Leftrightarrow q^3 = 64 \Leftrightarrow q = 4\).<br/>
-                Đáp án: C.</p>
-</div>
+<button onclick="checkAnswer('q6', 'D')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q6')">Xem lời giải</button>
+<div class="solution" id="solution-q6"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard6()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard6"></div></div>
 </div>
 </div>
 <!-- Câu 7 -->
-<div class="card">
+<div class="question" id="q7">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Tích phân và nguyên hàm</h3>
-<p>Nếu \(F(x)\) là nguyên hàm của \(f(x)\), thì \(\int_a^b f(x) \, dx = F(b) - F(a)\). Nguyên hàm của \(f(x) = -\sin x\) là \(F(x) = \cos x\).</p>
+<p><strong>Câu 7</strong>. Một khối lăng trụ đứng có cạnh bên bằng 4, đáy là hình vuông có cạnh bằng 2 thì thể tích của khối lăng trụ bằng</p>
 </div>
-<div class="question">
-<h3>Câu 7:</h3>
-<p>Biết \(F(x) = \cos x\) là một nguyên hàm của hàm số \(f(x)\) trên \(\mathbb{R}\). Giá trị của \(\int_0^\pi 2 f(x) \, dx\) bằng:</p>
 <div class="options">
-<div class="option">A. \(-1\)</div>
-<div class="option">B. \(3\)</div>
-<div class="option">C. \(1\)</div>
-<div class="option">D. \(\sqrt{3}\)</div>
+<label><input name="q7" onchange="showOptionIcon('q7', 'A', 'B')" type="radio" value="A"/> A. \( \frac{16}{3} \)<span class="option-icon" id="icon-q7-A"></span></label>
+<label><input name="q7" onchange="showOptionIcon('q7', 'B', 'B')" type="radio" value="B"/> B. 16<span class="option-icon" id="icon-q7-B"></span></label>
+<label><input name="q7" onchange="showOptionIcon('q7', 'C', 'B')" type="radio" value="C"/> C. 32<span class="option-icon" id="icon-q7-C"></span></label>
+<label><input name="q7" onchange="showOptionIcon('q7', 'D', 'B')" type="radio" value="D"/> D. \( \frac{32}{3} \)<span class="option-icon" id="icon-q7-D"></span></label>
 </div>
 <div class="answer-check">
-<p>Chọn đáp án:</p>
-<label><input name="q7" type="radio" value="A"/> A</label>
-<label><input name="q7" type="radio" value="B"/> B</label>
-<label><input name="q7" type="radio" value="C"/> C</label>
-<label><input name="q7" type="radio" value="D"/> D</label>
-<button onclick="checkAnswer('q7', 'A')">Kiểm tra</button>
-</div>
-<div class="answer-feedback" id="feedback-q7"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q7')">Xem lời giải</div>
-<div class="solution" id="solution-q7">
-<p><strong>Lời giải:</strong><br/>
-                Vì \(F(x) = \cos x\) là nguyên hàm của \(f(x)\), nên \(f(x) = -\sin x\).<br/>
-                Ta có: \(\int_0^\pi 2 f(x) \, dx = \int_0^\pi 2 (-\sin x) \, dx = -2 \cos x |_0^\pi = -2(-1 - 1) = -2(-2) = 4 \neq -1\).<br/>
-                Tuy nhiên, nếu tích phân là \(\int_0^{\pi/2} 2 f(x) \, dx = 2 \cos x |_0^{\pi/2} = 2(0 - 1) = -2\), hoặc kiểm tra lại đáp án, ta thấy đáp án A phù hợp với bài giải trong đề.<br/>
-                Đáp án: A.</p>
-</div>
+<button onclick="checkAnswer('q7', 'B')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q7')">Xem lời giải</button>
+<div class="solution" id="solution-q7"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard7()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard7"></div></div>
 </div>
 </div>
 <!-- Câu 8 -->
-<div class="card">
+<div class="question" id="q8">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Góc giữa hai đường thẳng</h3>
-<p>Góc giữa hai đường thẳng được xác định qua góc giữa các vector chỉ phương hoặc qua các tam giác liên quan. Trong hình lăng trụ đều, các cạnh bằng nhau giúp đơn giản hóa tính toán.</p>
+<p><strong>Câu 8</strong>. Cho hàm số \( y = \left(\frac{1}{2}\right)^x \). Khẳng định nào sau đây là sai?</p>
 </div>
-<div class="question">
-<h3>Câu 8:</h3>
-<p>Cho hình lăng trụ đứng \(ABC.A'B'C'\) có tất cả các cạnh bằng nhau và bằng 4 (tham khảo hình bên: <img alt="Hình 72.8" loading="lazy" src="anh/72.8.png"/>). Góc giữa đường thẳng \(AA'\) và \(BC'\) bằng:</p>
 <div class="options">
-<div class="option">A. \(30^\circ\)</div>
-<div class="option">B. \(90^\circ\)</div>
-<div class="option">C. \(45^\circ\)</div>
-<div class="option">D. \(60^\circ\)</div>
+<label><input name="q8" onchange="showOptionIcon('q8', 'A', 'B')" type="radio" value="A"/> A. Hàm số nghịch biến trên \( \mathbb{R} \).<span class="option-icon" id="icon-q8-A"></span></label>
+<label><input name="q8" onchange="showOptionIcon('q8', 'B', 'B')" type="radio" value="B"/> B. Đồ thị hàm số nhận \( Oy \) làm tiệm cận đứng.<span class="option-icon" id="icon-q8-B"></span></label>
+<label><input name="q8" onchange="showOptionIcon('q8', 'C', 'B')" type="radio" value="C"/> C. Đồ thị hàm số luôn nằm trên \( Ox \).<span class="option-icon" id="icon-q8-C"></span></label>
+<label><input name="q8" onchange="showOptionIcon('q8', 'D', 'B')" type="radio" value="D"/> D. Đồ thị hàm số nhận \( Ox \) làm tiệm cận ngang.<span class="option-icon" id="icon-q8-D"></span></label>
 </div>
 <div class="answer-check">
-<p>Chọn đáp án:</p>
-<label><input name="q8" type="radio" value="A"/> A</label>
-<label><input name="q8" type="radio" value="B"/> B</label>
-<label><input name="q8" type="radio" value="C"/> C</label>
-<label><input name="q8" type="radio" value="D"/> D</label>
-<button onclick="checkAnswer('q8', 'C')">Kiểm tra</button>
-</div>
-<div class="answer-feedback" id="feedback-q8"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q8')">Xem lời giải</div>
-<div class="solution" id="solution-q8">
-<p><strong>Lời giải:</strong><br/>
-                Ta có: \(AA' \parallel CC'\), nên \(\angle(AA', BC') = \angle(CC', BC')\).<br/>
-                Tam giác \(BCC'\) vuông tại \(C\), với \(CC' = BC = 4\), nên là tam giác vuông cân.<br/>
-                Góc \(\angle CC'B = 45^\circ\).<br/>
-                Đáp án: C.</p>
-</div>
+<button onclick="checkAnswer('q8', 'B')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q8')">Xem lời giải</button>
+<div class="solution" id="solution-q8"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard8()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard8"></div></div>
 </div>
 </div>
 <!-- Câu 9 -->
-<div class="card">
+<div class="question" id="q9">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Tích vô hướng của vector</h3>
-<p>Tích vô hướng: \(\vec{a} \cdot \vec{b} = |\vec{a}| |\vec{b}| \cos \theta\), với \(\theta\) là góc giữa hai vector.</p>
+<p><strong>Câu 9</strong>. Tiệm cận xiên của đồ thị hàm số \( y = \frac{-x^2 - 3x + 4}{x + 2} \) là đường thẳng có phương trình</p>
 </div>
-<div class="question">
-<h3>Câu 9:</h3>
-<p>Cho hình lăng trụ đứng \(ABC.A'B'C'\) có tất cả các cạnh bằng nhau và bằng 4 (tham khảo hình bên: <img alt="Hình 72.9" loading="lazy" src="anh/72.9.png"/>). Tính giá trị của \(\overrightarrow{AA'} \cdot \overrightarrow{BC'}\).</p>
 <div class="options">
-<div class="option">A. \(8\)</div>
-<div class="option">B. \(16\)</div>
-<div class="option">C. \(16\sqrt{2}\)</div>
-<div class="option">D. \(8\sqrt{2}\)</div>
+<label><input name="q9" onchange="showOptionIcon('q9', 'A', 'A')" type="radio" value="A"/> A. \( y = -x - 1 \)<span class="option-icon" id="icon-q9-A"></span></label>
+<label><input name="q9" onchange="showOptionIcon('q9', 'B', 'A')" type="radio" value="B"/> B. \( y = x - 1 \)<span class="option-icon" id="icon-q9-B"></span></label>
+<label><input name="q9" onchange="showOptionIcon('q9', 'C', 'A')" type="radio" value="C"/> C. \( y = -x + 1 \)<span class="option-icon" id="icon-q9-C"></span></label>
+<label><input name="q9" onchange="showOptionIcon('q9', 'D', 'A')" type="radio" value="D"/> D. \( y = x + 1 \)<span class="option-icon" id="icon-q9-D"></span></label>
 </div>
 <div class="answer-check">
-<p>Chọn đáp án:</p>
-<label><input name="q9" type="radio" value="A"/> A</label>
-<label><input name="q9" type="radio" value="B"/> B</label>
-<label><input name="q9" type="radio" value="C"/> C</label>
-<label><input name="q9" type="radio" value="D"/> D</label>
-<button onclick="checkAnswer('q9', 'B')">Kiểm tra</button>
-</div>
-<div class="answer-feedback" id="feedback-q9"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q9')">Xem lời giải</div>
-<div class="solution" id="solution-q9">
-<p><strong>Lời giải:</strong><br/>
-                Ta có: \(\overrightarrow{AA'} \cdot \overrightarrow{BC'} = |\overrightarrow{AA'}| |\overrightarrow{BC'}| \cos \theta\), với \(\theta = 45^\circ\) (từ câu 8).<br/>
-                \(|\overrightarrow{AA'}| = 4\), \(|\overrightarrow{BC'}| = \sqrt{4^2 + 4^2} = 4\sqrt{2}\).<br/>
-                \(\overrightarrow{AA'} \cdot \overrightarrow{BC'} = 4 \cdot 4\sqrt{2} \cdot \cos 45^\circ = 4 \cdot 4\sqrt{2} \cdot \frac{\sqrt{2}}{2} = 16\).<br/>
-                Đáp án: B.</p>
-</div>
+<button onclick="checkAnswer('q9', 'A')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q9')">Xem lời giải</button>
+<div class="solution" id="solution-q9"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard9()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard9"></div></div>
 </div>
 </div>
 <!-- Câu 10 -->
-<div class="card">
+<div class="question" id="q10">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Phương trình mũ</h3>
-<p>Phương trình \(a^x = b\) có thể được giải bằng cách đặt \(t = a^x\) và giải phương trình bậc hai.</p>
+<p><-strong>Câu 10</strong>. Cho hàm số \( f(x) \) liên tục trên \( \mathbb{R} \). Diện tích hình phẳng giới hạn bởi đồ thị hàm số \( y = f(x) \), trục hoành và hai đường thẳng \( x = a \), \( x = b \) (\( a < b \)) là:</p>
 </div>
-<div class="question">
-<h3>Câu 10:</h3>
-<p>Gọi \(S\) là tập nghiệm của phương trình \(9^x - 10 \cdot 3^x + 9 = 0\). Tổng các phần tử của \(S\) bằng:</p>
 <div class="options">
-<div class="option">A. \(1\)</div>
-<div class="option">B. \(2\)</div>
-<div class="option">C. \(10\)</div>
-<div class="option">D. \(\frac{10}{3}\)</div>
+<label><input name="q10" onchange="showOptionIcon('q10', 'A', 'A')" type="radio" value="A"/> A. \( \int_a^b |f(x)| \mathrm{d}x \)<span class="option-icon" id="icon-q10-A"></span></label>
+<label><input name="q10" onchange="showOptionIcon('q10', 'B', 'A')" type="radio" value="B"/> B. \( \int_a^b f(x) \mathrm{d}x \)<span class="option-icon" id="icon-q10-B"></span></label>
+<label><input name="q10" onchange="showOptionIcon('q10', 'C', 'A')" type="radio" value="C"/> C. \( \int_b^a -f(x) \mathrm{d}x \)<span class="option-icon" id="icon-q10-C"></span></label>
+<label><input name="q10" onchange="showOptionIcon('q10', 'D', 'A')" type="radio" value="D"/> D. \( \pi \int_a^b |f(x)| \mathrm{d}x \)<span class="option-icon" id="icon-q10-D"></span></label>
 </div>
 <div class="answer-check">
-<p>Chọn đáp án:</p>
-<label><input name="q10" type="radio" value="A"/> A</label>
-<label><input name="q10" type="radio" value="B"/> B</label>
-<label><input name="q10" type="radio" value="C"/> C</label>
-<label><input name="q10" type="radio" value="D"/> D</label>
-<button onclick="checkAnswer('q10', 'B')">Kiểm tra</button>
-</div>
-<div class="answer-feedback" id="feedback-q10"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q10')">Xem lời giải</div>
-<div class="solution" id="solution-q10">
-<p><strong>Lời giải:</strong><br/>
-                Đặt \(t = 3^x\), phương trình trở thành: \(t^2 - 10t + 9 = 0 \Rightarrow t = 1\) hoặc \(t = 9\).<br/>
-                - \(t = 1 \Rightarrow 3^x = 1 \Rightarrow x = 0\).<br/>
-                - \(t = 9 \Rightarrow 3^x = 9 \Rightarrow x = 2\).<br/>
-                Tập nghiệm: \(S = \{0, 2\}\), tổng: \(0 + 2 = 2\).<br/>
-                Đáp án: B.</p>
-</div>
+<button onclick="checkAnswer('q10', 'A')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q10')">Xem lời giải</button>
+<div class="solution" id="solution-q10"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard10()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard10"></div></div>
 </div>
 </div>
 <!-- Câu 11 -->
-<div class="card">
+<div class="question" id="q11">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Nguyên hàm của hàm mũ</h3>
-<p>Nguyên hàm của \(e^{kx + m}\) là \(\frac{1}{k} e^{kx + m} + C\).</p>
+<p><strong>Câu 11</strong>. Trong không gian \( Oxyz \), cho đường thẳng \( d: \frac{x}{2} = \frac{y}{2} = \frac{z}{-1} \). Mặt phẳng nào sau đây song song với \( d \)?</p>
 </div>
-<div class="question">
-<h3>Câu 11:</h3>
-<p>Họ tất cả các nguyên hàm của hàm số \(f(x) = e^{4x + 3}\) là:</p>
 <div class="options">
-<div class="option">A. \(e^{4x + 3} + C\)</div>
-<div class="option">B. \(4 e^{4x + 3} + C\)</div>
-<div class="option">C. \((4x + 3) e^{4x + 3} + C\)</div>
-<div class="option">D. \(\frac{1}{4} e^{4x + 3} + C\)</div>
+<label><input name="q11" onchange="showOptionIcon('q11', 'A', 'C')" type="radio" value="A"/> A. \( x - y = 0 \)<span class="option-icon" id="icon-q11-A"></span></label>
+<label><input name="q11" onchange="showOptionIcon('q11', 'B', 'C')" type="radio" value="B"/> B. \( x + y - z - 1 = 0 \)<span class="option-icon" id="icon-q11-B"></span></label>
+<label><input name="q11" onchange="showOptionIcon('q11', 'C', 'C')" type="radio" value="C"/> C. \( x + 2z - 1 = 0 \)<span class="option-icon" id="icon-q11-C"></span></label>
+<label><input name="q11" onchange="showOptionIcon('q11', 'D', 'C')" type="radio" value="D"/> D. \( x + 2y + 3z + 4 = 0 \)<span class="option-icon" id="icon-q11-D"></span></label>
 </div>
 <div class="answer-check">
-<p>Chọn đáp án:</p>
-<label><input name="q11" type="radio" value="A"/> A</label>
-<label><input name="q11" type="radio" value="B"/> B</label>
-<label><input name="q11" type="radio" value="C"/> C</label>
-<label><input name="q11" type="radio" value="D"/> D</label>
-<button onclick="checkAnswer('q11', 'D')">Kiểm tra</button>
-</div>
-<div class="answer-feedback" id="feedback-q11"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q11')">Xem lời giải</div>
-<div class="solution" id="solution-q11">
-<p><strong>Lời giải:</strong><br/>
-                Ta có: \(\int e^{4x + 3} \, dx = \frac{1}{4} e^{4x + 3} + C\).<br/>
-                Đáp án: D.</p>
-</div>
+<button onclick="checkAnswer('q11', 'C')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q11')">Xem lời giải</button>
+<div class="solution" id="solution-q11"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard11()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard11"></div></div>
 </div>
 </div>
 <!-- Câu 12 -->
-<div class="card">
+<div class="question" id="q12">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Phương trình mặt cầu</h3>
-<p>Mặt cầu tâm \(I(a; b; c)\), bán kính \(R\) có phương trình: \((x - a)^2 + (y - b)^2 + (z - c)^2 = R^2\). Bán kính được tính bằng khoảng cách từ tâm đến mặt phẳng tiếp xúc.</p>
+<p><strong>Câu 12</strong>. Hộp 1 chứa 1 quả bóng màu trắng, 3 quả bóng màu đỏ và 2 quả bóng màu đen. Hộp 2 chứa 2 quả bóng màu trắng, 3 quả bóng màu đỏ và 4 quả bóng màu đen. Hộp 3 chứa 3 quả bóng màu trắng, 4 quả bóng màu đỏ và 5 quả bóng màu đen. Nếu mỗi hộp lấy ra 1 quả bóng, xác suất để 3 quả bóng được lấy ra cùng màu là:</p>
 </div>
-<div class="question">
-<h3>Câu 12:</h3>
-<p>Trong không gian \(Oxyz\), mặt cầu có tâm \(I(1; 2; -1)\) và tiếp xúc với mặt phẳng \((P): 2x - 2y - z - 8 = 0\) có phương trình là:</p>
 <div class="options">
-<div class="option">A. \((x + 1)^2 + (y + 2)^2 + (z - 1)^2 = 9\)</div>
-<div class="option">B. \((x + 1)^2 + (y + 2)^2 + (z - 1)^2 = 3\)</div>
-<div class="option">C. \((x - 1)^2 + (y - 2)^2 + (z + 1)^2 = 3\)</div>
-<div class="option">D. \((x - 1)^2 + (y - 2)^2 + (z + 1)^2 = 9\)</div>
+<label><input name="q12" onchange="showOptionIcon('q12', 'A', 'A')" type="radio" value="A"/> A. \( \frac{41}{324} \)<span class="option-icon" id="icon-q12-A"></span></label>
+<label><input name="q12" onchange="showOptionIcon('q12', 'B', 'A')" type="radio" value="B"/> B. \( \frac{5}{36} \)<span class="option-icon" id="icon-q12-B"></span></label>
+<label><input name="q12" onchange="showOptionIcon('q12', 'C', 'A')" type="radio" value="C"/> C. \( \frac{283}{324} \)<span class="option-icon" id="icon-q12-C"></span></label>
+<label><input name="q12" onchange="showOptionIcon('q12', 'D', 'A')" type="radio" value="D"/> D. \( \frac{31}{36} \)<span class="option-icon" id="icon-q12-D"></span></label>
 </div>
 <div class="answer-check">
-<p>Chọn đáp án:</p>
-<label><input name="q12" type="radio" value="A"/> A</label>
-<label><input name="q12" type="radio" value="B"/> B</label>
-<label><input name="q12" type="radio" value="C"/> C</label>
-<label><input name="q12" type="radio" value="D"/> D</label>
-<button onclick="checkAnswer('q12', 'D')">Kiểm tra</button>
-</div>
-<div class="answer-feedback" id="feedback-q12"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q12')">Xem lời giải</div>
-<div class="solution" id="solution-q12">
-<p><strong>Lời giải:</strong><br/>
-                Khoảng cách từ \(I(1; 2; -1)\) đến \((P): 2x - 2y - z - 8 = 0\) là:<br/>
-                \(d = \frac{|2 \cdot 1 - 2 \cdot 2 - (-1) - 8|}{\sqrt{2^2 + (-2)^2 + (-1)^2}} = \frac{|-9|}{\sqrt{9}} = 3\).<br/>
-                Bán kính \(R = 3\), phương trình mặt cầu: \((x - 1)^2 + (y - 2)^2 + (z + 1)^2 = 9\).<br/>
-                Đáp án: D.</p>
+<button onclick="checkAnswer('q12', 'A')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q12')">Xem lời giải</button>
+<div class="solution" id="solution-q12"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard12()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard12"></div></div>
 </div>
 </div>
-</div>
-<h2>Phần II: Trắc Nghiệm Đúng/Sai</h2>
+<!-- Phần II: Trắc Nghiệm Đúng/Sai -->
+<h3>Phần II: Trắc Nghiệm Đúng/Sai - từ câu 13 đến câu 16</h3>
 <!-- Câu 13 -->
-<div class="card">
+<div class="question" id="q13">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Hàm số lượng giác</h3>
-<p>- Giá trị hàm số: Thay \(x\) vào hàm để tính.<br/>
-            - Đạo hàm: \(f(x) = \sin x \cos x = \frac{1}{2} \sin 2x\), nên \(f'(x) = \cos 2x\).<br/>
-            - Cực trị: Tìm \(f'(x) = 0\) và kiểm tra dấu đạo hàm.<br/>
-            - Giá trị lớn nhất: So sánh giá trị tại điểm cực trị và biên.</p>
+<p><strong>Câu 13</strong>. Giả sử chi phí tiền xăng \( C \) (nghìn đồng) khi xe đi được \( 100 \, \mathrm{km} \) phụ thuộc vào tốc độ trung bình \( v \, (\mathrm{km/h}) \) trên cả đoạn đường theo công thức:</p>
+<p>\[ C(v) = \frac{16000}{v} + \frac{5}{2}v \quad (0 < v \leq 120) \]</p>
 </div>
-<div class="question">
-<h3>Câu 13:</h3>
-<p>Cho hàm số \(f(x) = 4 \sin x \cos x + 2x\). Xét các phát biểu sau:</p>
 <div class="options">
-<div class="option">a) \(f(0) = 0\), \(f(\pi) = 2\pi\).</div>
-<div class="option">b) Đạo hàm của hàm số đã cho là \(f'(x) = 4 \sin 2x + 2\).</div>
-<div class="option">c) Hàm số \(y = f(x)\) có hai điểm cực trị thuộc đoạn \([0; \pi]\).</div>
-<div class="option">d) Giá trị lớn nhất của \(f(x)\) trên đoạn \([0; \pi]\) là \(\frac{2\pi}{3} + \sqrt{3}\).</div>
+<p>a) Nếu tài xế lái xe với tốc độ trung bình là \( 40 \, \mathrm{km/h} \) thì chi phí tiền xăng là \( 500 \) nghìn đồng.</p>
+<label><input name="q13a" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q13a-Đúng"></span></label>
+<label><input name="q13a" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q13a-Sai"></span></label>
+<p>b) \( C'(v) = \frac{16000}{v^2} + \frac{5}{2} \quad (0 < v < 120) \).</p>
+<label><input name="q13b" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q13b-Đúng"></span></label>
+<label><input name="q13b" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q13b-Sai"></span></label>
+<p>c) Tài xế càng đi nhanh thì chi phí tiền xăng càng giảm.</p>
+<label><input name="q13c" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q13c-Đúng"></span></label>
+<label><input name="q13c" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q13c-Sai"></span></label>
+<p>d) Khi gặp biển báo tốc độ tối đa cho phép \( 50 \, \mathrm{km/h} \). Nếu tài xế tuân thủ luật giao thông, chi phí tiền xăng tối thiểu của tài xế khi đi \( 100 \, \mathrm{km} \) trên đoạn đường này là \( 445 \) nghìn đồng.</p>
+<label><input name="q13d" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q13d-Đúng"></span></label>
+<label><input name="q13d" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q13d-Sai"></span></label>
 </div>
 <div class="answer-check">
-<p>Chọn đáp án cho từng phát biểu:</p>
-<p>a) <label><input name="q13a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q13a" type="radio" value="Sai"/> Sai</label></p>
-<p>b) <label><input name="q13b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q13b" type="radio" value="Sai"/> Sai</label></p>
-<p>c) <label><input name="q13c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q13c" type="radio" value="Sai"/> Sai</label></p>
-<p>d) <label><input name="q13d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q13d" type="radio" value="Sai"/> Sai</label></p>
-<button onclick="checkTrueFalseAnswer('q13', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
-</div>
+<button onclick="checkTrueFalseAnswer('q13', ['Đúng', 'Sai', 'Sai', 'Đúng'])">Kiểm tra</button>
 <div class="answer-feedback" id="feedback-q13"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q13')">Xem lời giải</div>
-<div class="solution" id="solution-q13">
-<p><strong>Lời giải:</strong><br/>
-                a) Đúng. \(f(0) = 4 \sin 0 \cos 0 + 2 \cdot 0 = 0\), \(f(\pi) = 4 \sin \pi \cos \pi + 2\pi = 2\pi\).<br/>
-                b) Sai. \(f(x) = 2 \sin 2x + 2x \Rightarrow f'(x) = 2 \cos 2x \cdot 2 + 2 = 4 \cos 2x + 2\).<br/>
-                c) Đúng. \(f'(x) = 4 \cos 2x + 2 = 0 \Rightarrow \cos 2x = -\frac{1}{2} \Rightarrow 2x = \pm \frac{2\pi}{3} + k2\pi \Rightarrow x = \frac{\pi}{3}, \frac{2\pi}{3}\) (trong \([0; \pi]\)).<br/>
-                d) Sai. Tại \(x = \frac{\pi}{3}\): \(f\left(\frac{\pi}{3}\right) = \sqrt{3} + \frac{2\pi}{3}\); tại \(x = \frac{2\pi}{3}\): \(f\left(\frac{2\pi}{3}\right) = -\sqrt{3} + \frac{4\pi}{3}\); tại \(x = \pi\): \(f(\pi) = 2\pi\). Giá trị lớn nhất là \(2\pi\).<br/>
-                Đáp án: a) Đúng, b) Sai, c) Đúng, d) Sai.</p>
-</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-q13')">Xem lời giải</button>
+<div class="solution" id="solution-q13"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard13()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard13"></div></div>
 </div>
 </div>
 <!-- Câu 14 -->
-<div class="card">
+<div class="question" id="q14">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Tích phân và tối ưu hóa</h3>
-<p>- Tích phân vận tốc cho độ cao: \(h(t) = \int v(t) \, dt\).<br/>
-            - Giá trị lớn nhất: Tìm \(h'(t) = v(t) = 0\) và so sánh giá trị tại các điểm tới hạn và biên.<br/>
-            - Điều kiện quay lại điểm xuất phát: \(h(t) = h(0)\).</p>
+<p><strong>Câu 14</strong>. Vào một buổi sáng, bạn Bảo đi xe đạp từ nhà tới trường với vận tốc \( v(t) = 2t^2 + 1 \) (mét/phút) (với \( t \) là thời gian tính bằng phút, kể từ lúc bắt đầu đi).</p>
+<img alt="" loading="lazy" src="data/anh2/73.14.png"/><br/>
 </div>
-<div class="question">
-<h3>Câu 14:</h3>
-<p>Một khinh khí cầu bay với độ cao (so với mặt đất) tại thời điểm \(t\) là \(h(t)\), trong đó \(t\) tính bằng phút, \(h(t)\) tính bằng mét. Vận tốc bay của khinh khí cầu được cho bởi hàm số \(v(t) = -0,12t^2 + 1,2t\), với \(t\) tính bằng phút, \(v(t)\) tính bằng mét/phút. Từ thời điểm xuất phát (\(t = 0\)), thì 5 phút sau khi xuất phát, khinh khí cầu đã ở cao 530 m. Xét các phát biểu sau:</p>
 <div class="options">
-<div class="option">a) \(\int v(t) \, dt = -0,04t^3 + 0,6t^2 + C\).</div>
-<div class="option">b) Độ cao tối đa của khinh khí cầu khi bay là 540 mét.</div>
-<div class="option">c) Sau 15 phút, khinh khí cầu sẽ trở lại độ cao khi xuất phát.</div>
-<div class="option">d) Khinh khí cầu tiếp đất khi \(t \approx 29,7189\) phút.</div>
+<p>a) Vận tốc của Bảo tại thời điểm \( t = 10 \) phút là \( 12,06 \, \mathrm{km/h} \).</p>
+<label><input name="q14a" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q14a-Đúng"></span></label>
+<label><input name="q14a" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q14a-Sai"></span></label>
+<p>b) Quãng đường Bảo đi được sau \( 5 \) phút là \( 51 \, \mathrm{m} \).</p>
+<label><input name="q14b" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q14b-Đúng"></span></label>
+<label><input name="q14b" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q14b-Sai"></span></label>
+<p>c) Biết quãng đường từ nhà tới trường của Bảo là \( 2265 \) mét. Thời gian cần để di chuyển tới trường của Bảo là \( 15 \) phút.</p>
+<label><input name="q14c" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q14c-Đúng"></span></label>
+<label><input name="q14c" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q14c-Sai"></span></label>
+<p>d) Sau khi di chuyển được 9 phút, Bảo nhìn thấy phía trước có công trường, nên đã thay đổi tốc độ và di chuyển chậm dần đều với gia tốc không đổi. Đi được thêm 30 giây thì Bảo tới công trường. Biết công trường cách nhà Bảo 545 mét. Vận tốc tức thời của Bảo khi tới công trường là 37 mét/phút.</p>
+<label><input name="q14d" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q14d-Đúng"></span></label>
+<label><input name="q14d" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q14d-Sai"></span></label>
 </div>
 <div class="answer-check">
-<p>Chọn đáp án cho từng phát biểu:</p>
-<p>a) <label><input name="q14a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q14a" type="radio" value="Sai"/> Sai</label></p>
-<p>b) <label><input name="q14b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q14b" type="radio" value="Sai"/> Sai</label></p>
-<p>c) <label><input name="q14c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q14c" type="radio" value="Sai"/> Sai</label></p>
-<p>d) <label><input name="q14d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q14d" type="radio" value="Sai"/> Sai</label></p>
-<button onclick="checkTrueFalseAnswer('q14', ['Đúng', 'Đúng', 'Đúng', 'Đúng'])">Kiểm tra</button>
-</div>
+<button onclick="checkTrueFalseAnswer('q14', ['Đúng', 'Sai', 'Đúng', 'Đúng'])">Kiểm tra</button>
 <div class="answer-feedback" id="feedback-q14"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q14')">Xem lời giải</div>
-<div class="solution" id="solution-q14">
-<p><strong>Lời giải:</strong><br/>
-                a) Đúng. \(\int (-0,12t^2 + 1,2t) \, dt = -0,04t^3 + 0,6t^2 + C\).<br/>
-                b) Đúng. \(h(t) = -0,04t^3 + 0,6t^2 + C\), tại \(t = 5\), \(h(5) = 530 \Rightarrow C = 520\). \(h'(t) = v(t) = 0 \Rightarrow t = 0, 10\). \(h(10) = 540\), \(h(0) = 520\), \(h(29) \approx 49,04\). Giá trị lớn nhất: 540 m.<br/>
-                c) Đúng. \(h(t) = 520 \Rightarrow -0,04t^3 + 0,6t^2 = 0 \Rightarrow t = 15\). Sau 15 phút, \(h(15) = 520\).<br/>
-                d) Đúng. \(h(t) = 0 \Rightarrow t \approx 29,7189\).<br/>
-                Đáp án: a) Đúng, b) Đúng, c) Đúng, d) Đúng.</p>
-</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-q14')">Xem lời giải</button>
+<div class="solution" id="solution-q14"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard14()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard14"></div></div>
 </div>
 </div>
 <!-- Câu 15 -->
-<div class="card">
+<div class="question" id="q15">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Xác suất có điều kiện</h3>
-<p>- Xác suất: \(P(A \cap B) = P(A) \cdot P(B|A)\).<br/>
-            - Xác suất có điều kiện: \(P(A|B) = \frac{P(A \cap B)}{P(B)}\).<br/>
-            - Sơ đồ cây giúp tính xác suất các biến cố kết hợp.</p>
+<p><strong>Câu 15</strong>. Trong một cuộc trưng cầu dân ý ở một khu vực, đối với các hộ gia đình sống ở một vùng ngoại ô (mỗi hộ gia đình có một cặp vợ chồng và các con), xác suất để người chồng sẽ đi bỏ phiếu là \( 0,2 \), xác suất để người vợ sẽ đi bỏ phiếu là \( 0,35 \) và xác suất để cả hai vợ chồng sẽ đi bỏ phiếu là \( 0,11 \).</p>
 </div>
-<div class="question">
-<h3>Câu 15:</h3>
-<p>Hai công nhân cần phải hoàn thành hai phần 55% số sản phẩm. Khả năng xảy ra sai sót của công nhân thứ nhất là 3% và của công nhân thứ hai là 1%. Chọn ngẫu nhiên 1 sản phẩm. Gọi \(A\) là biến cố "Sản phẩm được chọn là của công nhân thứ nhất", \(B\) là biến cố "Sản phẩm được chọn bị lỗi". Xét các phát biểu sau:</p>
 <div class="options">
-<div class="option">a) \(P(A) = 0,5\).</div>
-<div class="option">b) Xác suất sản phẩm được chọn là sản phẩm bị lỗi của công nhân thứ nhất là \(P(B|A) = 0,03\).</div>
-<div class="option">c) \(P(B) = 0,02\).</div>
-<div class="option">d) Xác suất để sản phẩm được chọn là sản phẩm của công nhân thứ nhất bị lỗi là \(P(A|B) = \frac{27}{38}\).</div>
+<p>a) Xác suất để có ít nhất một trong hai vợ chồng sẽ đi bỏ phiếu là \( 0,44 \).</p>
+<label><input name="q15a" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q15a-Đúng"></span></label>
+<label><input name="q15a" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q15a-Sai"></span></label>
+<p>b) Xác suất để người chồng sẽ đi bỏ phiếu, biết rằng người vợ đã đi bỏ phiếu là \( 0,31 \) (làm tròn kết quả tới hàng phần trăm).</p>
+<label><input name="q15b" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q15b-Đúng"></span></label>
+<label><input name="q15b" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q15b-Sai"></span></label>
+<p>c) Giả sử khảo sát \( 13 \) hộ gia đình, khi đó xác suất để có đúng \( 2 \) hộ gia đình mà cả vợ và chồng đều tham gia bỏ phiếu là \( 0,26 \) (làm tròn kết quả tới hàng phần trăm).</p>
+<label><input name="q15c" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q15c-Đúng"></span></label>
+<label><input name="q15c" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q15c-Sai"></span></label>
+<p>d) Bên cạnh đó, người ta cũng nhận thấy rằng nếu cả hai vợ chồng đều tham gia bỏ phiếu thì xác suất ít nhất một người con của họ cũng tham gia bỏ phiếu là 0,99. Ngược lại, nếu vợ hoặc chồng hoặc cả hai không tham gia bỏ phiếu thì xác suất không có người con nào của họ tham gia bỏ phiếu là 0,79. Xác suất để chọn ngẫu nhiên một hộ gia đình thì có ít nhất một người con tham gia bỏ phiếu là \( 0,29 \) (làm tròn kết quả tới hàng phần trăm).</p>
+<label><input name="q15d" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q15d-Đúng"></span></label>
+<label><input name="q15d" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q15d-Sai"></span></label>
 </div>
 <div class="answer-check">
-<p>Chọn đáp án cho từng phát biểu:</p>
-<p>a) <label><input name="q15a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q15a" type="radio" value="Sai"/> Sai</label></p>
-<p>b) <label><input name="q15b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q15b" type="radio" value="Sai"/> Sai</label></p>
-<p>c) <label><input name="q15c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q15c" type="radio" value="Sai"/> Sai</label></p>
-<p>d) <label><input name="q15d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q15d" type="radio" value="Sai"/> Sai</label></p>
-<button onclick="checkTrueFalseAnswer('q15', ['Sai', 'Đúng', 'Sai', 'Đúng'])">Kiểm tra</button>
-</div>
+<button onclick="checkTrueFalseAnswer('q15', ['Đúng', 'Đúng', 'Đúng', 'Sai'])">Kiểm tra</button>
 <div class="answer-feedback" id="feedback-q15"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q15')">Xem lời giải</div>
-<div class="solution" id="solution-q15">
-<p><strong>Lời giải:</strong><br/>
-                a) Sai. Công nhân thứ nhất làm 45% sản phẩm, nên \(P(A) = 0,45\).<br/>
-                b) Đúng. Tỉ lệ lỗi của công nhân thứ nhất là 3%, nên \(P(B|A) = 0,03\).<br/>
-                c) Sai. \(P(B) = P(A) \cdot P(B|A) + P(\bar{A}) \cdot P(B|\bar{A}) = 0,45 \cdot 0,03 + 0,55 \cdot 0,01 = 0,019 \neq 0,02\).<br/>
-                d) Đúng. \(P(A|B) = \frac{P(A) \cdot P(B|A)}{P(B)} = \frac{0,45 \cdot 0,03}{0,019} = \frac{27}{38}\).<br/>
-                Đáp án: a) Sai, b) Đúng, c) Sai, d) Đúng.</p>
-</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-q15')">Xem lời giải</button>
+<div class="solution" id="solution-q15"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard15()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard15"></div></div>
 </div>
 </div>
 <!-- Câu 16 -->
-<div class="card">
+<div class="question" id="q16">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Hình học không gian</h3>
-<p>- Tọa độ vector: \(\overrightarrow{AB} = (x_B - x_A; y_B - y_A; z_B - z_A)\).<br/>
-            - Độ dài đoạn thẳng: \(|\overrightarrow{AB}| = \sqrt{(x_B - x_A)^2 + (y_B - y_A)^2 + (z_B - z_A)^2}\).<br/>
-            - Đường phân giác: Tỉ lệ \(\frac{DA}{DC} = \frac{BA}{BC}\).</p>
+<p><strong>Câu 16</strong>. Trong một sân chơi, người ta dựng lên một tấm chắn nắng hình tam giác để che bóng cho một bề cát. Để làm điều này, họ cắm các thanh kim loại vào ba góc của bề cát và cố định tấm chắn nắng vào các đầu thanh kim loại. Trong hệ tọa độ \( Oxyz \), mặt phẳng \( Oxy \) biểu diễn mặt đất nằm ngang. Bề cát được mô hình hóa bởi hình chữ nhật có các đỉnh \( K_1(0; 4; 0) \), \( K_2(0; 0; 0) \), \( K_3(3; 0; 0) \) và \( K_4(3; 4; 0) \). Tấm chắn nắng được mô tả bởi tam giác phẳng có các đỉnh \( S_1(0; 6; 2,5) \), \( S_2(0; 0; 3) \) và \( S_3(6; 0; 2,5) \) (hình vẽ). Một đơn vị độ dài trong hệ tọa độ tương ứng với một mét trong thực tế.</p>
+<img alt="" loading="lazy" src="data/anh2/73.16.png"/><br/>
 </div>
-<div class="question">
-<h3>Câu 16:</h3>
-<p>Trong không gian với hệ tọa độ \(Oxyz\), cho tam giác \(ABC\) với tọa độ 3 điểm là \(A(1; 2; -1)\), \(B(2; -1; 3)\), \(C(-4; 7; 5)\). Xét các phát biểu sau:</p>
 <div class="options">
-<div class="option">a) Tọa độ \(\overrightarrow{AB} = (1; -3; 4)\).</div>
-<div class="option">b) Độ dài \(BC = 2 AB\).</div>
-<div class="option">c) Gọi điểm \(D(a; b; c)\) là chân đường phân giác trong kẻ từ đỉnh \(B\) xuống cạnh \(AC\), thì ta có \(a + b + c = 3\).</div>
-<div class="option">d) Đường phân giác của góc \(ABC\) cắt mặt phẳng \((Oxy)\) tại điểm \((-2; 6; 0)\).</div>
+<p>a) Nhà sản xuất tấm chắn nắng khuyến cáo rằng, đối với tấm chắn nắng có diện tích lớn hơn \( 20 \, \mathrm{m}^2 \), nên sử dụng thêm dây cáp để cố định giữa các thanh kim loại nhằm tăng cường độ ổn định. Trong tình huống này không cần thiết phải thêm dây cáp để bảo vệ.</p>
+<label><input name="q16a" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q16a-Đúng"></span></label>
+<label><input name="q16a" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q16a-Sai"></span></label>
+<p>b) Để đảm bảo cho nước mưa có thể thoát đi, tấm chắn nắng phải có góc nghiêng ít nhất là \( 8^\circ \) so với mặt đất nằm ngang. Trong trường hợp này, việc thoát nước mưa chưa được đảm bảo.</p>
+<label><input name="q16b" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q16b-Đúng"></span></label>
+<label><input name="q16b" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q16b-Sai"></span></label>
+<p>c) Ánh sáng mặt trời chiếu vào tấm chắn nắng được biểu diễn bằng các đường thẳng song song có vector chỉ phương là \( \overrightarrow{S_1 K_1} \). Tấm chắn nắng tạo ra bóng hình tam giác trên mặt đất. Bóng của các đỉnh \( S_2 \) và \( S_3 \) của tấm chắn nắng lần lượt được ký hiệu là \( S_2' \) và \( S_3' \), khi đó \( S_2' \) nằm trên trục \( Oy \) và \( S_3'(6; -2; 0) \).</p>
+<label><input name="q16c" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q16c-Đúng"></span></label>
+<label><input name="q16c" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q16c-Sai"></span></label>
+<p>d) Có hơn một nửa bề cát được che nắng.</p>
+<label><input name="q16d" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q16d-Đúng"></span></label>
+<label><input name="q16d" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q16d-Sai"></span></label>
 </div>
 <div class="answer-check">
-<p>Chọn đáp án cho từng phát biểu:</p>
-<p>a) <label><input name="q16a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q16a" type="radio" value="Sai"/> Sai</label></p>
-<p>b) <label><input name="q16b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q16b" type="radio" value="Sai"/> Sai</label></p>
-<p>c) <label><input name="q16c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q16c" type="radio" value="Sai"/> Sai</label></p>
-<p>d) <label><input name="q16d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q16d" type="radio" value="Sai"/> Sai</label></p>
-<button onclick="checkTrueFalseAnswer('q16', ['Đúng', 'Đúng', 'Sai', 'Sai'])">Kiểm tra</button>
-</div>
+<button onclick="checkTrueFalseAnswer('q16', ['Đúng', 'Đúng', 'Đúng', 'Đúng'])">Kiểm tra</button>
 <div class="answer-feedback" id="feedback-q16"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q16')">Xem lời giải</div>
-<div class="solution" id="solution-q16">
-<p><strong>Lời giải:</strong><br/>
-                a) Đúng. \(\overrightarrow{AB} = (2 - 1; -1 - 2; 3 - (-1)) = (1; -3; 4)\).<br/>
-                b) Đúng. \(AB = \sqrt{1^2 + (-3)^2 + 4^2} = \sqrt{26}\), \(\overrightarrow{BC} = (-6; 8; 2)\), \(BC = \sqrt{36 + 64 + 4} = \sqrt{104} = 2\sqrt{26} = 2AB\).<br/>
-                c) Sai. \(\frac{DA}{DC} = \frac{BA}{BC} = \frac{1}{2}\). \(D(a; b; c)\) trên \(AC\): \(\overrightarrow{DA} = \frac{1}{2} \overrightarrow{DC}\). Giải: \(a = -\frac{2}{3}\), \(b = \frac{11}{3}\), \(c = 1 \Rightarrow a + b + c = 4 \neq 3\).<br/>
-                d) Sai. Đường phân giác qua \(B\), \(D\): \(\left\{\begin{array}{l}x = 2 - \frac{8}{3}t \\ y = -1 + \frac{14}{3}t \\ z = 3 + 2t\end{array}\right.\). Giao với \((Oxy)\): \(z = 0 \Rightarrow t = -\frac{3}{2} \Rightarrow (6; -8; 0) \neq (-2; 6; 0)\).<br/>
-                Đáp án: a) Đúng, b) Đúng, c) Sai, d) Sai.</p>
+<button class="solution-toggle" onclick="toggleSolution('solution-q16')">Xem lời giải</button>
+<div class="solution" id="solution-q16"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard16()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard16"></div></div>
 </div>
 </div>
-</div>
-<h2>Phần III: Trắc Nghiệm Trả Lời Ngắn</h2>
+<!-- Phần III: Trả Lời Ngắn -->
+<h3>Phần III: Trả Lời Ngắn - từ câu 17 đến câu 22</h3>
 <!-- Câu 17 -->
-<div class="card">
+<div class="question" id="q17">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Khoảng cách giữa hai đường thẳng chéo nhau</h3>
-<p>Khoảng cách giữa hai đường thẳng chéo nhau được tính bằng khoảng cách từ một điểm trên đường này đến mặt phẳng chứa đường kia và một điểm trên đường đó.</p>
+<p><strong>Câu 17</strong>. Cho hình hộp chữ nhật \( ABCD.EFGH \) có \( AB = AE = 2 \, (\mathrm{m}) \), \( AD = 3 \, (\mathrm{m}) \). Lấy hai điểm \( M, N \) thỏa mãn \( \overrightarrow{AM} = \frac{1}{5}\overrightarrow{AD} \), \( \overrightarrow{EN} = \frac{2}{5}\overrightarrow{EC} \). Độ dài đoạn \( MN \) bằng bao nhiêu mét? (làm tròn kết quả đến hàng phần trăm)</p>
+<img alt="" loading="lazy" src="data/anh2/73.17.png"/><br/>
 </div>
-<div class="question">
-<h3>Câu 17:</h3>
-<p>Cho hình lăng trụ đứng \(ABC.A'B'C'\) có đáy \(ABC\) là tam giác đều cạnh \(\sqrt{2}\), \(BA' = \sqrt{6}\). Khoảng cách giữa hai đường thẳng \(A'B\) và \(B'C\) là bao nhiêu? (Làm tròn kết quả đến hàng phần trăm).</p>
 <div class="answer-check">
-<p>Nhập đáp án: <input id="q17-input" type="text"/> <button onclick="checkShortAnswer('q17', '0,67')">Kiểm tra</button></p>
-</div>
+<input type="text" id="input-q17" placeholder="Nhập đáp án">
+<button onclick="checkShortAnswer('q17', '1,56')">Kiểm tra</button>
 <div class="answer-feedback" id="feedback-q17"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q17')">Xem lời giải</div>
-<div class="solution" id="solution-q17">
-<p><strong>Lời giải:</strong><br/>
-                Gọi \(D\) là điểm đối xứng của \(B'\) qua \(A'\). Mặt phẳng \((B'DC)\) chứa \(B'C\). Khoảng cách \(d(A'B, B'C) = d(B, (B'DC))\).<br/>
-                Diện tích \(\triangle BCD = \triangle ABC = \frac{1}{2} \cdot \sqrt{2} \cdot \sqrt{2} \cdot \sin 60^\circ = \frac{\sqrt{3}}{2}\).<br/>
-                \(CD = \sqrt{6}\), \(BB' = \sqrt{BA'^2 - AB^2} = \sqrt{6 - 2} = 2\).<br/>
-                Kẻ \(BH \perp CD\), thì \(BH = \frac{2 \cdot S_{BCD}}{CD} = \frac{\sqrt{3}}{\sqrt{6}} = \sqrt{\frac{3}{6}} = \frac{1}{\sqrt{2}}\).<br/>
-                Trong \(\triangle B'BH\), \(BE = \frac{1}{\sqrt{\frac{1}{BB'^2} + \frac{1}{BH^2}}} = \frac{1}{\sqrt{\frac{1}{4} + 1}} = \frac{2}{3} \approx 0,67\).<br/>
-                Đáp án: 0,67.</p>
-</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-q17')">Xem lời giải</button>
+<div class="solution" id="solution-q17"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard17()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard17"></div></div>
 </div>
 </div>
 <!-- Câu 18 -->
-<div class="card">
+<div class="question" id="q18">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Tối ưu hóa tuyến tính</h3>
-<p>Lợi nhuận tối đa được tìm bằng cách đánh giá hàm mục tiêu tại các đỉnh của miền xác định bởi hệ bất phương trình ràng buộc.</p>
+<p><strong>Câu 18</strong>. Người ta chế tạo một món đồ chơi trẻ em (như hình vẽ), theo các công đoạn như sau:<br/>
+- Bước 1: Chế tạo hình trụ tròn xoay bằng thủy tinh trong suốt, chiều cao \( 12 \, \mathrm{cm} \), bán kính đường tròn đáy \( 5 \, \mathrm{cm} \).<br/>
+- Bước 2: Đặt bên trong hình trụ một khối nón tròn xoay (phần màu vàng như hình vẽ) có đáy trùng với một đường tròn đáy của hình trụ và đỉnh trùng với tâm đường tròn đáy còn lại của hình trụ.<br/>
+- Bước 3: Đặt vào hai quả cầu (phần màu xanh và hồng như hình vẽ).<br/>
+Phần còn lại bên ngoài khối nón, bên ngoài hai khối cầu và bên trong hình trụ người ta đổ đầy nước. Bỏ qua bề dày của các lớp vỏ. Hỏi thể tích nước cần đổ bằng bao nhiêu? (đơn vị \( \mathrm{cm}^3 \), kết quả làm tròn tới hàng đơn vị)</p>
+<img alt="" loading="lazy" src="data/anh2/73.18.png"/><br/>
 </div>
-<div class="question">
-<h3>Câu 18:</h3>
-<p>Một công ty sản xuất hai loại thiết bị dạy học \(A\) và \(B\) dành cho môn Toán lớp 12. Mỗi sản phẩm loại \(A\) cần 9 giờ lao động để gia công và 1 giờ lao động để hoàn thiện. Mỗi sản phẩm loại \(B\) cần 12 giờ gia công và 3 giờ hoàn thiện. Tổng thời gian gia công và hoàn thiện lần lượt là 180 giờ và 30 giờ. Công ty thu được lợi nhuận là 80000 đồng trên mỗi sản phẩm loại \(A\) và 120000 đồng trên mỗi sản phẩm loại \(B\). Cần sản xuất \(x\) sản phẩm loại \(A\) và \(y\) sản phẩm loại \(B\) mỗi tuần để có được lợi nhuận tối đa. Lợi nhuận tối đa mỗi tuần là bao nhiêu nghìn đồng?</p>
 <div class="answer-check">
-<p>Nhập đáp án: <input id="q18-input" type="text"/> <button onclick="checkShortAnswer('q18', '1680')">Kiểm tra</button></p>
-</div>
+<input type="text" id="input-q18" placeholder="Nhập đáp án">
+<button onclick="checkShortAnswer('q18', '585')">Kiểm tra</button>
 <div class="answer-feedback" id="feedback-q18"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q18')">Xem lời giải</div>
-<div class="solution" id="solution-q18">
-<p><strong>Lời giải:</strong><br/>
-                Lợi nhuận: \(L = 80000x + 120000y\) (đồng).<br/>
-                Ràng buộc: \(\left\{\begin{array}{l}x \geq 0 \\ y \geq 0 \\ 9x + 12y \leq 180 \\ x + 3y \leq 30\end{array}\right.\).<br/>
-                Miền xác định là tứ giác \(OBAC\). Tính \(L\) tại các đỉnh:<br/>
-                - \(O(0; 0)\): \(L = 0\).<br/>
-                - \(B(20; 0)\): \(L = 1600000\).<br/>
-                - \(A(12; 6)\): \(L = 1680000\).<br/>
-                - \(C(0; 10)\): \(L = 1200000\).<br/>
-                Lợi nhuận tối đa: 1680000 đồng = 1680 nghìn đồng.<br/>
-                Đáp án: 1680.</p>
-</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-q18')">Xem lời giải</button>
+<div class="solution" id="solution-q18"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard18()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard18"></div></div>
 </div>
 </div>
 <!-- Câu 19 -->
-<div class="card">
+<div class="question" id="q19">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Xác suất có điều kiện và công thức Bayes</h3>
-<p>Công thức Bayes: \(P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}\), với \(P(B) = \sum P(B|A_i) \cdot P(A_i)\).</p>
+<p><strong>Câu 19</strong>. Công thức xấp xỉ dân số thế giới có thể được mô phỏng thông qua mô hình tăng trưởng dân số như sau: \( P(t) = A \cdot 10^9 \cdot 1,01395^t \) (người). Trong đó \( t \) là số năm, tính từ năm \( 1900 \) (\( t = 0 \) tương ứng năm \( 1900 \)). Năm \( 2000 \) dân số ước tính là \( 6,1 \) tỷ người. Hãy ước tính dân số thế giới vào năm \( 2050 \) (đơn vị tỷ người, làm tròn kết quả tới hàng phần chục).</p>
 </div>
-<div class="question">
-<h3>Câu 19:</h3>
-<p>Hộp thứ nhất có 3 viên bi xanh và 6 viên bi đỏ. Hộp thứ hai có 3 viên bi xanh và 7 viên bi đỏ. Các viên bi có cùng kích thước và khối lượng. Lấy ngẫu nhiên một viên bi từ hộp thứ nhất chuyển sang hộp thứ hai. Sau đó lại lấy ngẫu nhiên đồng thời hai viên từ hộp thứ hai, biết rằng hai bi lấy ra từ hộp thứ hai là bi đỏ. Tính xác suất viên bi lấy ra từ hộp thứ nhất là màu đỏ (làm tròn đến hàng phần trăm).</p>
 <div class="answer-check">
-<p>Nhập đáp án: <input id="q19-input" type="text"/> <button onclick="checkShortAnswer('q19', '0,73')">Kiểm tra</button></p>
-</div>
+<input type="text" id="input-q19" placeholder="Nhập đáp án">
+<button onclick="checkShortAnswer('q19', '12,2')">Kiểm tra</button>
 <div class="answer-feedback" id="feedback-q19"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q19')">Xem lời giải</div>
-<div class="solution" id="solution-q19">
-<p><strong>Lời giải:</strong><br/>
-                Gọi \(A_1\): Lấy bi xanh từ hộp 1, \(A_2\): Lấy bi đỏ từ hộp 1, \(B\): Hai bi lấy từ hộp 2 đều đỏ.<br/>
-                \(P(A_1) = \frac{3}{9} = \frac{1}{3}\), \(P(A_2) = \frac{6}{9} = \frac{2}{3}\).<br/>
-                - Nếu lấy bi xanh (\(A_1\)): Hộp 2 có 4 xanh, 7 đỏ. \(P(B|A_1) = \frac{C_2^7}{C_2^{11}} = \frac{21}{55}\).<br/>
-                - Nếu lấy bi đỏ (\(A_2\)): Hộp 2 có 3 xanh, 8 đỏ. \(P(B|A_2) = \frac{C_2^8}{C_2^{11}} = \frac{28}{55}\).<br/>
-                \(P(B) = P(B|A_1) \cdot P(A_1) + P(B|A_2) \cdot P(A_2) = \frac{21}{55} \cdot \frac{1}{3} + \frac{28}{55} \cdot \frac{2}{3} = \frac{7}{15}\).<br/>
-                \(P(A_2|B) = \frac{P(B|A_2) \cdot P(A_2)}{P(B)} = \frac{\frac{28}{55} \cdot \frac{2}{3}}{\frac{7}{15}} = \frac{8}{11} \approx 0,73\).<br/>
-                Đáp án: 0,73.</p>
-</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-q19')">Xem lời giải</button>
+<div class="solution" id="solution-q19"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard19()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard19"></div></div>
 </div>
 </div>
 <!-- Câu 20 -->
-<div class="card">
+<div class="question" id="q20">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Tính toán chuyển động</h3>
-<p>- Tiếp tuyến của đường cong: \(y = y_0 + y'_0 (x - x_0)\).<br/>
-            - Gia tốc và vận tốc: \(v = v_0 + at\), \(x = x_0 + v_0 t + \frac{1}{2} a t^2\).</p>
+<p><strong>Câu 20</strong>. Một ngôi nhà có dạng hình hộp chữ nhật, chiều cao \( 4 \, \mathrm{m} \), mặt tiền \( 10 \, \mathrm{m} \) và chiều dài \( 20 \, \mathrm{m} \). Trong nhà có một con nhện ở vị trí \( A \), cách mặt đất \( 3 \, \mathrm{m} \), cách hai bức tường lần lượt là \( 2 \, \mathrm{m} \) và \( 1 \, \mathrm{m} \) (như hình minh họa). Con nhện di chuyển theo đường thẳng đến góc nhà ở điểm \( B \) với vận tốc không đổi \( 5 \, \mathrm{cm/s} \). Thời gian con nhện di chuyển là bao nhiêu giây (làm tròn tới hàng đơn vị).</p>
+<img alt="" loading="lazy" src="data/anh2/73.20.png"/><br/>
 </div>
-<div class="question">
-<h3>Câu 20:</h3>
-<p>Một quân nhân đang ở trong một chiếc xe tăng \(X\) (loại quân sự) di chuyển dọc theo trục \(Oy\). Quân địch đứng tại điểm \((3; 0)\) và chỉ có thể nhìn thấy xe tăng khi đường ngắm từ \((3; 0)\) là tiếp tuyến với đường cong \(xy = 1\). Tại thời điểm đầu tiên quân địch phát hiện xe tăng, tốc độ của xe tăng \(X\) bằng bao nhiêu km/h? (Làm tròn kết quả đến hàng phần mười). Biết tại thời điểm \(t = 0\), xe cách gốc tọa độ 4 km, và 10 phút sau xe cách gốc tọa độ 2 km. Tốc độ của xe tỉ lệ nghịch với khoảng cách đến gốc tọa độ.</p>
 <div class="answer-check">
-<p>Nhập đáp án: <input id="q20-input" type="text"/> <button onclick="checkShortAnswer('q20', '27,7')">Kiểm tra</button></p>
-</div>
+<input type="text" id="input-q20" placeholder="Nhập đáp án">
+<button onclick="checkShortAnswer('q20', '413')">Kiểm tra</button>
 <div class="answer-feedback" id="feedback-q20"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q20')">Xem lời giải</div>
-<div class="solution" id="solution-q20">
-<p><strong>Lời giải:</strong><br/>
-                Đường cong: \(xy = 1 \Rightarrow y = \frac{1}{x}\), \(y' = -\frac{1}{x^2}\).<br/>
-                Tiếp tuyến tại \((x_0; y_0)\): \(y = -\frac{1}{x_0^2} (x - x_0) + \frac{1}{x_0}\). Qua \((3; 0)\): \(0 = -\frac{1}{x_0^2} (3 - x_0) + \frac{1}{x_0} \Rightarrow x_0 = \frac{3}{2}\), \(y_0 = \frac{2}{3}\).<br/>
-                Tiếp tuyến: \(y = -\frac{4}{9} (x - \frac{3}{2}) + \frac{2}{3}\). Giao với \(Oy\): \(x = 0 \Rightarrow y = \frac{4}{3}\).<br/>
-                Vị trí xe tăng: \((0; \frac{4}{3})\).<br/>
-                Khoảng cách đến gốc: \(y(t)\). Tại \(t = 0\), \(y = 4\); tại \(t = \frac{10}{60} = \frac{1}{6}\), \(y = 2\).<br/>
-                Gia tốc: \(y = y_0 + \frac{1}{2} a t^2 \Rightarrow 2 = 4 + \frac{1}{2} a \left(\frac{1}{6}\right)^2 \Rightarrow a = -144 \, \text{km/h}^2\).<br/>
-                Tại \(y = \frac{4}{3}\): \(\frac{4}{3} = 4 + \frac{1}{2} (-144) t^2 \Rightarrow t = \frac{1}{\sqrt{27}}\).<br/>
-                Tốc độ: \(v = a t = -144 \cdot \frac{1}{\sqrt{27}} \approx 27,7 \, \text{km/h}\).<br/>
-                Đáp án: 27,7.</p>
-</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-q20')">Xem lời giải</button>
+<div class="solution" id="solution-q20"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard20()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard20"></div></div>
 </div>
 </div>
 <!-- Câu 21 -->
-<div class="card">
+<div class="question" id="q21">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Hình học không gian</h3>
-<p>- Mặt phẳng giao mặt cầu tạo đường tròn.<br/>
-            - Độ dài dây cung: \(BC = 2 \sqrt{OB^2 - OH^2}\), tối thiểu khi \(OH = OA\).<br/>
-            - Vector chỉ phương vuông góc với mặt phẳng.</p>
+<p><strong>Câu 21</strong>. Một chiếc ly bằng thủy tinh đang chứa nước bên trong được tạo thành khi quay một phần đồ thị hàm số \( y = 2^x \) xung quanh trục \( Oy \). Người ta thả vào chiếc ly một viên bi hình cầu có bán kính \( R \) thì mực nước dâng lên phủ kín viên bi đồng thời chạm tới miệng ly. Biết điểm tiếp xúc của viên bi và chiếc ly cách đáy của chiếc ly \( 3 \, \mathrm{cm} \) (như hình vẽ). Tính thể tích nước trong ly sau khi thả viên bi (đơn vị \( \mathrm{cm}^3 \), làm tròn tới hàng đơn vị).</p>
+<img alt="" loading="lazy" src="data/anh2/73.21.png"/><br/>
 </div>
-<div class="question">
-<h3>Câu 21:</h3>
-<p>Trong không gian với hệ tọa độ \(Oxyz\), cho hai mặt cầu \((S): (x - 1)^2 + y^2 + (z + 2)^2 = 25\) và điểm \(A(2; 2; 0)\). Gọi \(d\) là đường thẳng nằm trong mặt phẳng \((P): x - 2y + 2z + 2 = 0\) và đi qua điểm \(A\) sao cho \(d\) cắt \((S)\) theo mặt dây cung có độ dài nhỏ nhất. Biết \(d\) có một vector chỉ phương là \((a; b; -1)\). Giá trị của \(a + b\) bằng bao nhiêu?</p>
 <div class="answer-check">
-<p>Nhập đáp án: <input id="q21-input" type="text"/> <button onclick="checkShortAnswer('q21', '2')">Kiểm tra</button></p>
-</div>
+<input type="text" id="input-q21" placeholder="Nhập đáp án">
+<button onclick="checkShortAnswer('q21', '29,7')">Kiểm tra</button>
 <div class="answer-feedback" id="feedback-q21"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q21')">Xem lời giải</div>
-<div class="solution" id="solution-q21">
-<p><strong>Lời giải:</strong><br/>
-                Mặt cầu \((S)\): Tâm \(I(1; 0; -2)\), \(R = 5\). Gọi \(O\) là hình chiếu của \(I\) xuống \((P)\).<br/>
-                Đường thẳng vuông góc với \((P)\), qua \(I\): \(\left\{\begin{array}{l}x = 1 + t \\ y = -2t \\ z = -2 + 2t\end{array}\right.\). Giao với \((P)\): \(t = \frac{1}{9} \Rightarrow O\left(\frac{10}{9}; -\frac{2}{9}; -\frac{16}{9}\right)\).<br/>
-                \(IO = \frac{|1 - 4 + 2|}{\sqrt{9}} = \frac{1}{3}\), \(OB = \sqrt{25 - \frac{1}{9}} = \sqrt{\frac{224}{9}}\).<br/>
-                Dây cung \(BC = 2 \sqrt{OB^2 - OH^2}\), nhỏ nhất khi \(OH = OA\). \(OA \perp d\), \(IA \perp d\):<br/>
-                - \(\overrightarrow{OA} = \left(\frac{8}{9}; \frac{20}{9}; \frac{16}{9}\right)\), \(\overrightarrow{OA} \cdot (a; b; -1) = 0 \Rightarrow 8a + 20b - 16 = 0\).<br/>
-                - \(\overrightarrow{IA} = (1; 2; 2)\), \(\overrightarrow{IA} \cdot (a; b; -1) = 0 \Rightarrow a + 2b - 2 = 0\).<br/>
-                Giải: \(a = 2\), \(b = 0 \Rightarrow a + b = 2\).<br/>
-                Đáp án: 2.</p>
-</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-q21')">Xem lời giải</button>
+<div class="solution" id="solution-q21"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard21()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard21"></div></div>
 </div>
 </div>
 <!-- Câu 22 -->
-<div class="card">
+<div class="question" id="q22">
 <div class="summary-box">
-<h3>Tóm tắt kiến thức: Hình học phẳng và diện tích</h3>
-<p>- Đường phân giác của góc tạo bởi tiệm cận là trục đối xứng.<br/>
-            - Khoảng cách từ điểm đến đường thẳng: \(d = \frac{|ax_0 + by_0 + c|}{\sqrt{a^2 + b^2}}\).<br/>
-            - Diện tích hình vuông: \(S = a^2\), với \(a\) là cạnh.</p>
+<p><strong>Câu 22</strong>. Có 3 hộp sản phẩm hình thức bên ngoài giống hệt nhau. Hộp 1 chứa 15 sản phẩm, trong đó có 10 chính phẩm và 5 phế phẩm. Hộp 2 chứa 10 sản phẩm, trong đó có 6 chính phẩm và 4 phế phẩm. Hộp 3 chứa 10 sản phẩm, trong đó có 8 chính phẩm và 2 phế phẩm. Người ta chọn ngẫu nhiên 1 hộp và từ hộp đó lấy ra 2 sản phẩm, thì thấy cả 2 sản phẩm đó đều là phế phẩm. Người ta tiếp tục lấy ra 1 sản phẩm nữa từ hộp đang chọn. Tìm xác suất sản phẩm tiếp theo cũng là phế phẩm (kết quả làm tròn tới hàng phần trăm).</p>
 </div>
-<div class="question">
-<h3>Câu 22:</h3>
-<p>Người ta muốn làm một sàn nổi hình vuông nối liền một sân khấu nổi trên mặt hồ có bờ là một nhánh đồ thị của hàm số \(y = \frac{x + 1}{x - 1}\) (\(C\)) với đất liền là nửa mặt phẳng giới hạn bởi đường thẳng \(y = -x + 1\). Tính diện tích \(S\) của mặt sàn nổi, biết hình vuông có 2 đỉnh nằm trên \((C)\), hai đỉnh còn lại nằm trên \(d\). (Làm tròn đến hàng phần mười).</p>
 <div class="answer-check">
-<p>Nhập đáp án: <input id="q22-input" type="text"/> <button onclick="checkShortAnswer('q22', '10,9')">Kiểm tra</button></p>
-</div>
+<input type="text" id="input-q22" placeholder="Nhập đáp án">
+<button onclick="checkShortAnswer('q22', '0,22')">Kiểm tra</button>
 <div class="answer-feedback" id="feedback-q22"></div>
-<div class="solution-toggle" onclick="toggleSolution('solution-q22')">Xem lời giải</div>
-<div class="solution" id="solution-q22">
-<p><strong>Lời giải:</strong><br/>
-                Đồ thị \((C)\): Tiệm cận \(x = 1\), \(y = 1\). Giao điểm tiệm cận: \(I(1; 1)\).<br/>
-                Đường phân giác của góc tiệm cận: \(d_1: y = x\). Đường thẳng \(d: y = -x + 1\).<br/>
-                Hình vuông có 2 đỉnh trên \((C)\), 2 đỉnh trên \(d\). Gọi \(A\left(x; \frac{x + 1}{x - 1}\right)\) trên \((C)\).<br/>
-                \(2 d(A, d_1) = d(A, d)\): \(2 \frac{\left|-x + \frac{x + 1}{x - 1}\right|}{\sqrt{2}} = \frac{\left|x + \frac{x + 1}{x - 1} - 1\right|}{\sqrt{2}}\).<br/>
-                Giải: \(x = \frac{5}{3}\). Cạnh hình vuông: \(AD = \frac{7\sqrt{2}}{3}\).<br/>
-                Diện tích: \(S = \left(\frac{7\sqrt{2}}{3}\right)^2 = \frac{98}{9} \approx 10,9\).<br/>
-                Đáp án: 10,9.</p>
+<button class="solution-toggle" onclick="toggleSolution('solution-q22')">Xem lời giải</button>
+<div class="solution" id="solution-q22"></div>
+<button class="toggle-button" onclick="toggleBoardwhiteboard22()">Ẩn/Hiện Bảng Vẽ</button>
+<div class="whiteboard-wrapper"><div id="whiteboard22"></div></div>
 </div>
 </div>
 </div>
-</div><!-- PHẦN CUỐICUỐI -->
-<div class="navigation">
-<button onclick="window.location.href='de4.html'">Chuyên Đề trước</button>
-<button onclick="window.location.href='de66.html'">Chuyên Đề sau</button>
-</div>
-<script defer="">
-        let isSolutionDisabled = false; function checkAnswer(questionId, correctAnswer) {
-            const options = document.getElementsByName(questionId);
-            let selectedAnswer = null;
-            for (const option of options) {
-                if (option.checked) {
-                    selectedAnswer = option.value;
-                    break;
-                }
-            }
-            const feedback = document.getElementById(`feedback-${questionId}`);
-            if (!selectedAnswer) {
-                feedback.textContent = 'Vui lòng chọn một đáp án!';
-                feedback.className = 'answer-feedback incorrect';
-                return;
-            }
-            if (selectedAnswer === correctAnswer) {
-                feedback.textContent = 'Đúng!';
-                feedback.className = 'answer-feedback correct';
-            } else {
-                feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
-                feedback.className = 'answer-feedback incorrect';
-            }
-        }
-        function checkTrueFalseAnswer(questionId, correctAnswers) {
-            const feedback = document.getElementById(`feedback-${questionId}`);
-            let allCorrect = true;
-            let results = [];
-            for (let i = 0; i < correctAnswers.length; i++) {
-                const options = document.getElementsByName(`${questionId}${String.fromCharCode(97 + i)}`);
-                let selected = null;
-                for (const option of options) {
-                    if (option.checked) {
-                        selected = option.value;
-                        break;
-                    }
-                }
-                if (!selected) {
-                    feedback.textContent = 'Vui lòng chọn đáp án cho tất cả phát biểu!';
-                    feedback.className = 'answer-feedback incorrect';
-                    return;
-                }
-                if (selected !== correctAnswers[i]) {
-                    allCorrect = false;
-                }
-                results.push(`Phát biểu ${String.fromCharCode(97 + i)}: ${selected === correctAnswers[i] ? 'Đúng' : `Sai (Đáp án đúng: ${correctAnswers[i]})`}`);
-            }
-            if (allCorrect) {
-                feedback.textContent = 'Tất cả Chuyên Đều đúng!';
-                feedback.className = 'answer-feedback correct';
-            } else {
-                feedback.textContent = results.join('\n');
-                feedback.className = 'answer-feedback incorrect';
-            }
-        }
-        function checkShortAnswer(questionId, correctAnswer) {
-            const input = document.getElementById(`${questionId}-input`).value.trim();
-            const feedback = document.getElementById(`feedback-${questionId}`);
-            if (!input) {
-                feedback.textContent = 'Vui lòng nhập đáp án!';
-                feedback.className = 'answer-feedback incorrect';
-                return;
-            }
-            if (input === correctAnswer) {
-                feedback.textContent = 'Đúng!';
-                feedback.className = 'answer-feedback correct';
-            } else {
-                feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
-                feedback.className = 'answer-feedback incorrect';
-            }
-        }
-        function toggleSolution(solutionId) {
-    if (isSolutionDisabled) {
-        alert('Hãy cố gắng giải, thầy sẽ cho xem lời giải sau, nhớ quay lại xem lời giải nhé.');
-        return;
-    }
-    const solution = document.getElementById(solutionId);
-    solution.classList.toggle('show');
+<!-- Thêm phần tính điểm vào cuối -->
 
+ <div class="score-section">
+ <h3>Tính tổng điểm</h3>
+    <p>Nhập họ và tên:</p>
+    <input id="student-name" type="text" placeholder="Họ và tên"/>   
+<button onclick="calculateScore()">Tính điểm</button>
+<div id="score-result"></div>
+</div>
+
+  <script>
+    function showOptionIcon(questionId, selectedValue, correctAnswer) {
+      if (!checkedQuestions[questionId]) return;
+      ['A', 'B', 'C', 'D'].forEach(letter => {
+        const iconSpan = document.getElementById(`icon-${questionId}-${letter}`);
+        if (iconSpan) iconSpan.innerHTML = '';
+      });
+      const icon = selectedValue === correctAnswer ? '✅' : '❌';
+      const selectedSpan = document.getElementById(`icon-${questionId}-${selectedValue}`);
+      if (selectedSpan) selectedSpan.innerHTML = icon;
+    }
+
+    function showTFOptionIcon(name, selectedValue, correctValue, questionId) {
+      if (!checkedQuestions[questionId]) return;
+      const icon = selectedValue === correctValue ? '✅' : '❌';
+      const span = document.getElementById(`icon-${name}`);
+      if (span) span.innerHTML = icon;
+    }
+
+    
+    function lockQuestionInputs(questionId) {
+    const radios = document.querySelectorAll(`input[name="${questionId}"]`);
+    radios.forEach(input => input.disabled = true);
 }
-    </script>
+
+    function addSolutionLink(questionId, url) {
+      if (!checkedQuestions[questionId]) return;
+      const container = document.getElementById(`feedback-${questionId}`);
+      if (container && !container.querySelector("a")) {
+        const link = document.createElement("a");
+        link.href = url;
+        link.target = "_blank";
+        link.style.marginLeft = "10px";
+        link.textContent = "Xem lời giải";
+        container.appendChild(link);
+      }
+    }
+
+    var studentAnswers = {};
+    var checkedQuestions = {};
+    var isScoreCalculated = false;
+
+    function checkAnswer(questionId, correctAnswer) {
+      if (checkedQuestions[questionId]) return;
+      const inputs = document.getElementsByName(questionId);
+      let selectedAnswer = null;
+      for (let input of inputs) {
+        if (input.checked) {
+          selectedAnswer = input.value;
+          break;
+        }
+      }
+      studentAnswers[questionId] = selectedAnswer;
+      checkedQuestions[questionId] = true;
+      lockQuestionInputs(questionId);
+      showOptionIcon(questionId, selectedAnswer, correctAnswer);
+      addSolutionLink(questionId, `giai/${questionId}.html`);
+    }
+
+    function checkTrueFalseAnswer(questionId, correctAnswers) {
+  for (let i = 0; i < correctAnswers.length; i++) {
+    const name = questionId + String.fromCharCode(97 + i);
+    const inputs = document.getElementsByName(name);
+    let selected = '';
+    for (const input of inputs) {
+      if (input.checked) {
+        selected = input.value;
+        break;
+      }
+    }
+
+    const iconId = `icon-${name}`;
+    let icon = document.getElementById(iconId);
+    if (!icon && inputs.length) {
+      icon = document.createElement('span');
+      icon.id = iconId;
+      icon.className = 'option-icon';
+      inputs[0].parentNode.appendChild(icon);
+    }
+    if (icon) {
+      icon.innerHTML = selected === correctAnswers[i] ? '✅' : '❌';
+    }
+  }
+}
+   function checkShortAnswer(questionId, correctAnswer) {
+      if (checkedQuestions[questionId]) return;
+      const input = document.getElementById('input-' + questionId);
+      const feedback = document.getElementById('feedback-' + questionId);
+
+      // Tự động tạo span hiển thị nếu chưa tồn tại
+      let icon = document.getElementById('icon-' + questionId);
+      if (!icon && input) {
+        icon = document.createElement('span');
+        icon.id = 'icon-' + questionId;
+        icon.className = 'option-icon';
+        icon.setAttribute('aria-label', 'Biểu tượng kiểm tra');
+        input.insertAdjacentElement('afterend', icon);
+      }
+
+      if (!input) {
+        feedback.innerHTML = 'Lỗi: Không tìm thấy input cho câu hỏi!';
+        feedback.className = 'answer-feedback incorrect';
+        return;
+      }
+
+      const value = input.value.trim();
+      if (value === '') {
+        feedback.innerHTML = 'Vui lòng nhập đáp án!';
+        feedback.className = 'answer-feedback incorrect';
+        if (icon) icon.innerHTML = '';
+        return;
+      }
+
+      if (!isNaN(correctAnswer)) {
+        const numeric = parseFloat(value);
+        if (isNaN(numeric)) {
+          feedback.innerHTML = 'Vui lòng nhập một số hợp lệ!';
+          feedback.className = 'answer-feedback incorrect';
+          if (icon) icon.innerHTML = '';
+          return;
+        }
+        const correct = parseFloat(correctAnswer);
+        if (Math.abs(numeric - correct) < 0.001) {
+          feedback.innerHTML = 'Đúng!';
+          feedback.className = 'answer-feedback correct';
+          studentAnswers[questionId] = numeric;
+          if (icon) icon.innerHTML = '✅';
+        } else {
+          feedback.innerHTML = 'Sai!';
+          feedback.className = 'answer-feedback incorrect';
+          studentAnswers[questionId] = numeric;
+          if (icon) icon.innerHTML = '❌';
+        }
+      } else {
+        if (value === correctAnswer) {
+          feedback.innerHTML = 'ĐúngĐúng';
+            feedback.className = 'answer-feedback correct';
+          studentAnswers[questionId] = value;
+          if (icon) icon.innerHTML = '✅';
+        } else {
+          feedback.innerHTML = 'Sai!';
+          feedback.className = 'answer-feedback incorrect';
+          studentAnswers[questionId] = value;
+          if (icon) icon.innerHTML = '❌';
+        }
+      }
+}
+    function calculateScore() {
+  if (isScoreCalculated) return;
+
+  const correctAnswers = {
+    q1: 'A',
+    q2: 'A',
+    q3: 'B',
+    q4: 'D',
+    q5: 'C',
+    q6: 'B',
+    q7: 'A',
+    q8: 'B',
+    q9: 'D',
+    q10: 'C',
+    q11: 'B',
+    q12: 'D',
+    q13: ['Đúng', 'Đúng', 'Sai', 'Sai'],
+    q14: ['Sai', 'Đúng', 'Sai', 'Đúng'],
+    q15: ['Đúng', 'Đúng', 'Sai', 'Sai'],
+    q16: ['Đúng', 'Sai', 'Sai', 'Sai'],
+    q17: '2',
+    q18: '0,14',
+    q19: '733',
+    q20: '1',
+    q21: '5,3',
+    q22: '0,96'
+  };
+
+  let studentAnswers = {};
+
+  // Câu 1 → 12: Trắc nghiệm ABCD
+  for (let i = 1; i <= 12; i++) {
+    const name = 'q' + i;
+    const selected = document.querySelector(`input[name="${name}"]:checked`);
+    if (selected) {
+      studentAnswers[name] = selected.value.trim();
+    }
+  }
+
+  // Câu 13 → 16: Đúng / Sai từng mệnh đề
+  for (let i = 13; i <= 16; i++) {
+    const subAnswers = [];
+    ['a', 'b', 'c', 'd'].forEach(letter => {
+      const inputName = `q${i}${letter}`;
+      const selected = document.querySelector(`input[name="${inputName}"]:checked`);
+      if (selected) {
+        subAnswers.push(selected.value.trim());
+      } else {
+        subAnswers.push(''); // Không chọn gì
+      }
+    });
+    studentAnswers['q' + i] = subAnswers;
+    console.log(`q${i}:`, subAnswers);  // Ghi ra console
+  }
+
+  // Câu 17 → 22: Tự luận (text input)
+  for (let i = 17; i <= 22; i++) {
+    const input = document.querySelector(`input[name="q${i}"]`);
+    if (input) {
+      studentAnswers['q' + i] = input.value.trim().replace(',', '.');
+    }
+  }
+
+  // Bắt đầu tính điểm
+  let totalScore = 0;
+
+  for (let i = 1; i <= 22; i++) {
+    const key = 'q' + i;
+    const userAns = studentAnswers[key];
+    const correctAns = correctAnswers[key];
+
+    if (i >= 1 && i <= 12) {
+      if (userAns && userAns === correctAns) totalScore += 0.25;
+    } else if (i >= 13 && i <= 16) {
+      if (Array.isArray(userAns) && Array.isArray(correctAns)) {
+        let correctCount = 0;
+        for (let j = 0; j < correctAns.length; j++) {
+          if (userAns[j] === correctAns[j]) correctCount++;
+        }
+        console.log(`Câu ${key} đúng ${correctCount} phần`);
+        if (correctCount === 1) totalScore += 0.1;
+        else if (correctCount === 2) totalScore += 0.25;
+        else if (correctCount === 3) totalScore += 0.5;
+        else if (correctCount === 4) totalScore += 1;
+      }
+    } else if (i >= 17 && i <= 22) {
+      if (
+        typeof userAns === 'string' &&
+        userAns.replace(',', '.').trim() === correctAns.toString().replace(',', '.')
+      ) {
+        totalScore += 0.5;
+      }
+    }
+  }
+
+  const scoreElement = document.getElementById("score-result");
+  scoreElement.textContent = `Tổng điểm của bạn: ${totalScore.toFixed(2)} / 10`;
+  scoreElement.className = "correct";
+  isScoreCalculated = true;
+}
+
+
+let allowShowSolution = true; // Đặt thành false nếu muốn khóa lời giải
+
+  function toggleSolution(id) {
+    if (!allowShowSolution) {
+      alert("Lời giải đang bị khóa. Liên hệ giáo viên để mở.");
+      return;
+    }
+    const el = document.getElementById(id);
+    if (el) {
+      el.classList.toggle("hidden");
+      el.classList.toggle('visible');
+    }
+  }
+
+  function showVideoSolution(url, qid) {
+    if (!allowShowSolution) {
+      alert("Lời giải đang bị khóa. Liên hệ giáo viên để mở.");
+      return;
+    }
+    window.open(url, '_blank');
+  }
+  </script>
+      
+
+  <script src="recorder.js"></script>
 </body>
 </html>

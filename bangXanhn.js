@@ -5,6 +5,7 @@ function bangXanh(containerId) {
         return;
     }
 
+    // Tạo HTML cho bảng vẽ
     container.innerHTML = `
         <div class="whiteboard-container">
             <canvas id="whiteboard-${containerId}" width="800" height="600"></canvas>
@@ -29,6 +30,7 @@ function bangXanh(containerId) {
         </div>
     `;
 
+    // Thêm CSS
     const style = document.createElement('style');
     style.textContent = `
         #${containerId} {
@@ -37,7 +39,7 @@ function bangXanh(containerId) {
             background-color: #f0f0f0;
             font-family: Arial, sans-serif;
             width: 100%;
-            height: 100%;
+            height: 100vh;
             padding: 0;
             margin: 0;
             box-sizing: border-box;
@@ -59,7 +61,6 @@ function bangXanh(containerId) {
             padding: 5px;
             border-radius: 8px;
             width: 40px;
-            z-index: 5;
         }
         #${containerId} button, #${containerId} input {
             margin: 2px 0;
@@ -132,9 +133,10 @@ function bangXanh(containerId) {
     tempCanvas.height = canvas.height;
     const tempCtx = tempCanvas.getContext('2d');
 
+    // Điều chỉnh kích thước canvas theo kích thước container
     function resizeCanvas() {
         const containerRect = container.getBoundingClientRect();
-        canvas.width = containerRect.width - 60;
+        canvas.width = containerRect.width - 60; // Trừ chiều rộng của controls
         canvas.height = containerRect.height;
         tempCanvas.width = canvas.width;
         tempCanvas.height = canvas.height;
@@ -149,11 +151,13 @@ function bangXanh(containerId) {
         ctx.globalCompositeOperation = (newMode === 'eraser') ? 'destination-out' : 'source-over';
     };
 
+    // Hàm vẽ chóp tam giác
     function drawTriangularPyramid(ctx, startX, startY, endX, endY) {
         const height = Math.abs(endY - startY);
         const base = Math.abs(endX - startX);
         const apexX = startX + base / 2;
         const apexY = startY - height;
+
         ctx.beginPath();
         ctx.moveTo(startX, startY);
         ctx.lineTo(startX + base, startY);
@@ -169,10 +173,12 @@ function bangXanh(containerId) {
         ctx.setLineDash([]);
     }
 
+    // Hàm vẽ chóp tứ giác
     function drawSquarePyramid(ctx, startX, startY, endX, endY) {
         const size = Math.max(Math.abs(endX - startX), Math.abs(endY - startY));
         const apexX = startX + size / 2;
         const apexY = startY - size;
+
         ctx.beginPath();
         ctx.rect(startX, startY, size, size);
         ctx.moveTo(startX, startY);
@@ -191,9 +197,11 @@ function bangXanh(containerId) {
         ctx.setLineDash([]);
     }
 
+    // Hàm vẽ lăng trụ
     function drawPrism(ctx, startX, startY, endX, endY) {
         const size = Math.max(Math.abs(endX - startX), Math.abs(endY - startY));
         const offset = size / 3;
+
         ctx.beginPath();
         ctx.rect(startX, startY, size, size);
         ctx.rect(startX + offset, startY - offset, size, size);
@@ -208,25 +216,30 @@ function bangXanh(containerId) {
         ctx.stroke();
     }
 
+    // Hàm vẽ hình cầu cải tiến
     function drawSphere(ctx, startX, startY, endX, endY) {
         const radius = Math.sqrt((endX - startX) ** 2 + (endY - startY) ** 2);
         ctx.beginPath();
         ctx.arc(startX, startY, radius, 0, 2 * Math.PI);
         ctx.stroke();
+
+        // Vẽ các đường elip để mô phỏng hình cầu 3D
         ctx.setLineDash([5, 5]);
         ctx.beginPath();
         ctx.ellipse(startX, startY, radius * 0.8, radius * 0.4, 0, 0, 2 * Math.PI);
         ctx.stroke();
         ctx.beginPath();
-        ctx.ellipse(startX, startY, radius * 0.4, radius * 0.8, Math.PI / 2);
+        ctx.ellipse(startX, startY, radius * 0.4, radius * 0.8, Math.PI / 2, 0, 2 * Math.PI);
         ctx.stroke();
         ctx.setLineDash([]);
     }
 
+    // Chuột
     canvas.addEventListener('mousedown', (e) => {
         isDrawing = true;
         startX = e.offsetX;
         startY = e.offsetY;
+
         if (mode === 'text') {
             textInput.style.display = 'block';
             textInput.style.left = `${e.clientX}px`;
@@ -244,12 +257,14 @@ function bangXanh(containerId) {
         const currentY = e.offsetY;
         ctx.strokeStyle = colorPicker.value;
         ctx.lineWidth = brushSize.value;
+
         if (mode === 'draw' || mode === 'eraser') {
             ctx.lineTo(currentX, currentY);
             ctx.stroke();
         } else {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(tempCanvas, 0, 0);
+
             ctx.beginPath();
             if (mode === 'line') {
                 ctx.moveTo(startX, startY);
@@ -288,6 +303,7 @@ function bangXanh(containerId) {
         }
     });
 
+    // Cảm ứng
     canvas.addEventListener('touchstart', (e) => {
         e.preventDefault();
         const touch = e.touches[0];
@@ -295,6 +311,7 @@ function bangXanh(containerId) {
         startX = touch.clientX - rect.left;
         startY = touch.clientY - rect.top;
         isDrawing = true;
+
         if (mode === 'text') {
             textInput.style.display = 'block';
             textInput.style.left = `${touch.clientX}px`;
@@ -313,14 +330,17 @@ function bangXanh(containerId) {
         const rect = canvas.getBoundingClientRect();
         const currentX = touch.clientX - rect.left;
         const currentY = touch.clientY - rect.top;
+
         ctx.strokeStyle = colorPicker.value;
         ctx.lineWidth = brushSize.value;
+
         if (mode === 'draw' || mode === 'eraser') {
             ctx.lineTo(currentX, currentY);
             ctx.stroke();
         } else {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(tempCanvas, 0, 0);
+
             ctx.beginPath();
             if (mode === 'line') {
                 ctx.moveTo(startX, startY);
@@ -353,6 +373,7 @@ function bangXanh(containerId) {
         }
     });
 
+    // Nhập công thức LaTeX
     textInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             const latexContainer = document.createElement('div');
@@ -388,255 +409,4 @@ function bangXanh(containerId) {
     window[`toggleBoard${containerId}`] = function () {
         container.style.display = (container.style.display === 'none') ? 'flex' : 'none';
     };
-}
-
-function bangXanhSimple(containerId) {
-    const container = document.getElementById(containerId);
-    if (!container) {
-        console.error(`Không tìm thấy container với ID: ${containerId}`);
-        return;
-    }
-
-    container.innerHTML = `
-        <div class="whiteboard-simple-wrapper">
-            <div class="controls">
-                <button title="Vẽ" onclick="setMode${containerId}('draw')">✏️</button>
-                <button title="Xóa nét" onclick="setMode${containerId}('eraser')">🧹</button>
-                <button title="Gõ LaTeX" onclick="setMode${containerId}('text')">🖋️</button>
-                <input type="color" id="color-${containerId}" title="Chọn màu" value="#FF0000">
-                <button title="Xóa tất cả" onclick="clearDrawing${containerId}()">🗑️</button>
-            </div>
-            <canvas id="whiteboard-${containerId}"></canvas>
-            <input type="text" id="textInput-${containerId}" class="text-input" placeholder="Nhập LaTeX...">
-        </div>
-    `;
-
-    const style = document.createElement('style');
-    style.textContent = `
-        #${containerId} {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        #${containerId} .whiteboard-simple-wrapper {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-        #${containerId} .controls {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 5;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            background-color: rgba(0,0,0,0.7);
-            padding: 8px;
-            border-radius: 6px;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        #${containerId} button {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            padding: 4px;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        #${containerId} input[type="color"] {
-            width: 32px;
-            height: 32px;
-            border: none;
-            padding: 0;
-            margin: 0;
-            cursor: pointer;
-            background: none;
-        }
-        #${containerId} input[type="color"]::-webkit-color-swatch {
-            border: none;
-            border-radius: 4px;
-        }
-        #whiteboard-${containerId} {
-            background-color: transparent;
-            touch-action: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            pointer-events: auto;
-        }
-        #${containerId} .text-input {
-            display: none;
-            position: absolute;
-            font-size: 13px;
-            padding: 8px;
-            width: 200px;
-            height: 40px;
-            background-color: #FFFF00;
-            border: 1px solid #000;
-            border-radius: 4px;
-            z-index: 10;
-        }
-        #${containerId} .latex-label {
-            position: absolute;
-            font-size: 13px;
-            white-space: nowrap;
-            z-index: 10;
-        }
-    `;
-    document.head.appendChild(style);
-
-    const canvas = document.getElementById(`whiteboard-${containerId}`);
-    const ctx = canvas.getContext('2d');
-    const colorPicker = document.getElementById(`color-${containerId}`);
-    const textInput = document.getElementById(`textInput-${containerId}`);
-    let isDrawing = false;
-    let mode = 'draw';
-    let startX, startY;
-
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    ctx.lineWidth = 2;
-
-    function resizeCanvas() {
-        const parent = canvas.parentElement;
-        canvas.width = parent.offsetWidth;
-        canvas.height = parent.offsetHeight;
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-        ctx.lineWidth = 2;
-    }
-    resizeCanvas();
-    setTimeout(resizeCanvas, 100);
-    setTimeout(resizeCanvas, 300);
-    window.addEventListener('resize', resizeCanvas);
-
-    window[`setMode${containerId}`] = function(newMode) {
-        mode = newMode;
-        textInput.style.display = 'none';
-        ctx.globalCompositeOperation = (newMode === 'eraser') ? 'destination-out' : 'source-over';
-    };
-
-    canvas.addEventListener('mousedown', (e) => {
-        isDrawing = true;
-        startX = e.offsetX;
-        startY = e.offsetY;
-        if (mode === 'text') {
-            textInput.style.display = 'block';
-            textInput.style.left = `${e.clientX}px`;
-            textInput.style.top = `${e.clientY}px`;
-            textInput.focus();
-        } else {
-            ctx.beginPath();
-            ctx.moveTo(startX, startY);
-        }
-    });
-
-    canvas.addEventListener('mousemove', (e) => {
-        if (!isDrawing || mode === 'text') return;
-        ctx.strokeStyle = colorPicker.value;
-        ctx.lineTo(e.offsetX, e.offsetY);
-        ctx.stroke();
-    });
-
-    canvas.addEventListener('mouseup', () => {
-        if (mode !== 'text') {
-            isDrawing = false;
-            ctx.closePath();
-        }
-    });
-
-    canvas.addEventListener('mouseout', () => {
-        if (mode !== 'text') {
-            isDrawing = false;
-            ctx.closePath();
-        }
-    });
-
-    canvas.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        const touch = e.touches[0];
-        const rect = canvas.getBoundingClientRect();
-        startX = touch.clientX - rect.left;
-        startY = touch.clientY - rect.top;
-        isDrawing = true;
-        if (mode === 'text') {
-            textInput.style.display = 'block';
-            textInput.style.left = `${touch.clientX}px`;
-            textInput.style.top = `${touch.clientY}px`;
-            textInput.focus();
-        } else {
-            ctx.beginPath();
-            ctx.moveTo(startX, startY);
-        }
-    });
-
-    canvas.addEventListener('touchmove', (e) => {
-        if (!isDrawing || mode === 'text') return;
-        e.preventDefault();
-        const touch = e.touches[0];
-        const rect = canvas.getBoundingClientRect();
-        ctx.strokeStyle = colorPicker.value;
-        ctx.lineTo(touch.clientX - rect.left, touch.clientY - rect.top);
-        ctx.stroke();
-    });
-
-    canvas.addEventListener('touchend', (e) => {
-        e.preventDefault();
-        if (mode !== 'text') {
-            isDrawing = false;
-            ctx.closePath();
-        }
-    });
-
-    textInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            const latexContainer = document.createElement('div');
-            latexContainer.className = 'latex-label';
-            latexContainer.style.left = `${canvas.offsetLeft + startX}px`;
-            latexContainer.style.top = `${canvas.offsetTop + startY}px`;
-            latexContainer.style.color = colorPicker.value;
-            latexContainer.innerHTML = `\\(${textInput.value}\\)`;
-            latexContainer.style.position = 'absolute';
-            container.appendChild(latexContainer);
-            if (window.MathJax && MathJax.typeset) {
-                MathJax.typeset([latexContainer]);
-            }
-            textInput.value = '';
-            textInput.style.display = 'none';
-        }
-    });
-
-    window[`clearDrawing${containerId}`] = function () {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        const labels = container.querySelectorAll('.latex-label');
-        labels.forEach(label => label.remove());
-    };
-
-    window[`toggleDrawing${containerId}`] = function () {
-        canvas.style.pointerEvents = canvas.style.pointerEvents === 'none' ? 'auto' : 'none';
-    };
-}
-
-function ve3(fullIds, simpleIds) {
-    if (!Array.isArray(fullIds) || !Array.isArray(simpleIds)) {
-        console.error('ve3 yêu cầu hai mảng container IDs: một cho bangXanh và một cho bangXanhSimple');
-        return;
-    }
-    fullIds.forEach(id => {
-        if (document.getElementById(id)) bangXanh(id);
-    });
-    simpleIds.forEach(id => {
-        if (document.getElementById(id)) bangXanhSimple(id);
-    });
 }

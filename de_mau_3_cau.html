@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KHÓA HỌC TOÁN THẦY BÌNH - ĐỀ SỐ 2</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="bangXanh.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .whiteboard-container {
+            display: none;
+            height: 300px;
+            margin-top: 10px;
+        }
+        .controls button {
+            margin: 5px;
+            padding: 10px;
+        }
+        .de-list {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .de-item {
+            display: inline-block;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>KHÓA HỌC TOÁN THẦY BÌNH</h1>
+    
+    <div class="controls">
+        <button onclick="startRecording()">Record</button>
+        <button onclick="stopRecording()">Stop</button>
+        <button onclick="pauseRecording()">Pause</button>
+        <button onclick="downloadVideo()">Download Video</button>
+    </div>
+
+    <h2>Chọn đề</h2>
+    <div class="de-list">
+        <span class="de-item"><a href="#">Đề 1</a></span>
+        <span class="de-item"><a href="#">Đề 2</a></span>
+        <!-- Thêm các đề khác tương tự, từ Đề 3 đến Đề 100 -->
+    </div>
+
+    <h2>ĐỀ THI TOÁN - ĐỀ SỐ 2</h2>
+
+    <div class="question">
+        <p><strong>Câu 1.</strong> Cho hàm số \( y = f(x) \) có bảng biến thiên như sau:</p>
+        <p>Hàm số \( y = f(x) \) nghịch biến trên khoảng nào dưới đây?</p>
+        <p>
+            A. \( (-\infty ; -2) \)<br>
+            B. \( (0 ; +\infty) \)<br>
+            C. \( (-3 ; 1) \)<br>
+            D. \( (-2 ; 0) \)
+        </p>
+        <button onclick="checkAnswer(1)">Kiểm tra</button>
+        <button onclick="showSolution(1)">Xem lời giải</button>
+        <button onclick="toggleWhiteboard('whiteboard-1')">Ẩn/Hiện Bảng Vẽ</button>
+        <div id="whiteboard-1" class="whiteboard-container"></div>
+    </div>
+
+    <div class="question">
+        <p><strong>Câu 2.</strong> Hàm số nào dưới đây có đồ thị như đường cong trong hình bên?</p>
+        <p>
+            A. \( y = \frac{x+1}{x-1} \)<br>
+            B. \( y = x^4 - 2x^2 - 1 \)<br>
+            C. \( y = x^3 - 3x - 1 \)<br>
+            D. \( y = x^2 + x - 1 \)
+        </p>
+        <button onclick="checkAnswer(2)">Kiểm tra</button>
+        <button onclick="showSolution(2)">Xem lời giải</button>
+        <button onclick="toggleWhiteboard('whiteboard-2')">Ẩn/Hiện Bảng Vẽ</button>
+        <div id="whiteboard-2" class="whiteboard-container"></div>
+    </div>
+
+    <!-- Thêm các câu hỏi khác tương tự, từ Câu 3 đến Câu 22 -->
+
+    <div>
+        <h2>Tính tổng điểm</h2>
+        <label>Nhập họ và tên: <input type="text" id="studentName"></label>
+        <button onclick="calculateScore()">Tính điểm</button>
+    </div>
+
+    <script>
+        // Khởi tạo bảng trắng cho tất cả các câu hỏi
+        const simpleIds = Array.from({length: 22}, (_, i) => `whiteboard-${i + 1}`);
+        ve3([], simpleIds);
+
+        // Hàm toggle bảng trắng
+        function toggleWhiteboard(id) {
+            const container = document.getElementById(id);
+            container.style.display = container.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Hàm xử lý kiểm tra, lời giải, ghi âm (chưa triển khai)
+        function checkAnswer(questionId) {
+            alert(`Kiểm tra câu ${questionId} - Chưa triển khai`);
+        }
+
+        function showSolution(questionId) {
+            alert(`Xem lời giải câu ${questionId} - Chưa triển khai`);
+        }
+
+        function startRecording() {
+            alert('Bắt đầu ghi âm - Chưa triển khai');
+        }
+
+        function stopRecording() {
+            alert('Dừng ghi âm - Chưa triển khai');
+        }
+
+        function pauseRecording() {
+            alert('Tạm dừng ghi âm - Chưa triển khai');
+        }
+
+        function downloadVideo() {
+            alert('Tải video - Chưa triển khai');
+        }
+
+        function calculateScore() {
+            const name = document.getElementById('studentName').value;
+            alert(`Tính điểm cho ${name} - Chưa triển khai`);
+        }
+    </script>
+</body>
+</html>
