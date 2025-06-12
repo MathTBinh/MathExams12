@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>KHÓA HỌC TOÁN THẦY BÌNH</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh; /* Đảm bảo body chiếm toàn bộ chiều cao màn hình */
+    }
+    .container {
+      display: flex; /* Sử dụng Flexbox để chia cột */
+      height: 100%; /* Đảm bảo container chiếm toàn bộ chiều cao */
+    }
+    #whiteboard-section {
+      flex: 4; /* Chiếm 40% chiều rộng */
+      border-right: 1px solid #ccc; /* Đường phân cách */
+      overflow-y: auto; /* Cuộn dọc độc lập */
+      padding: 20px;
+      box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước */
+    }
+    #content-section {
+      flex: 6; /* Chiếm 60% chiều rộng */
+      overflow-y: auto; /* Cuộn dọc độc lập */
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    #whiteboard {
+      width: 100%;
+      height: 600px; /* Chiều cao mặc định, có thể điều chỉnh */
+      border: 1px solid #ccc;
+      overflow: auto; /* Cuộn nội dung bên trong nếu cần */
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Phần bảng trắng (40%) -->
+    <div id="whiteboard-section">
+      <h2>Bảng trắng</h2>
+      <div id="whiteboard">
+        <iframe src="https://excalidraw.com/#room=2bd0e56...,xxxxxxxxxxxxxxxxxxxx" width="100%" height="100%" frameborder="0"></iframe>
+      </div>
+    </div>
+
+    <!-- Phần đề bài (60%) -->
+    <div id="content-section">
+      <h1>KHÓA HỌC TOÁN THẦY BÌNH</h1>
+      <a href="#">Trang chủ</a> | <a href="#">Học online</a>
+      <div>
+        <button>Record</button>
+        <button>Stop</button>
+        <button>Pause</button>
+        <button>Download Video</button>
+      </div>
+
+      <h2>Chọn đề</h2>
+      <ul>
+        <li><a href="#">Đề 1</a></li>
+        <li><a href="#">Đề 2</a></li>
+        <!-- ... Các đề khác ... -->
+        <li><a href="#">Đề 100</a></li>
+      </ul>
+
+      <h2>ĐỀ THI TOÁN - ĐỀ SỐ 2</h2>
+      <h3>Câu 1</h3>
+      <p>Cho hàm số \( y = f(x) \) có bảng biến thiên như sau:...</p>
+      <div>Ẩn/Hiện Bảng Vẽ</div>
+
+      <h3>Câu 2</h3>
+      <p>Hàm số nào dưới đây có đồ thị như đường cong trong hình bên?...</p>
+      <div>Ẩn/Hiện Bảng Vẽ</div>
+
+      <!-- Thêm các câu hỏi khác -->
+      <h3>Câu 3</h3>
+      <p>Cho hàm số \( f(x) \) liên tục trên \( \mathbb{R} \). Biết hàm số \( F(x) \) là một nguyên hàm của \( f(x) \) trên \( \mathbb{R} \) và \( F(1) = 3 \), \( F(3) = 6 \). Tích phân \( \int_1^3 f(x) \, dx \) bằng...</p>
+      <div>Ẩn/Hiện Bảng Vẽ</div>
+      <!-- ... Tiếp tục cho các câu còn lại đến Câu 22 ... -->
+    </div>
+  </div>
+</body>
+</html>

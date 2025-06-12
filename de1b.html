@@ -412,7 +412,46 @@ input[type="text"].short-answer {
   font-size: 16px;
   margin-right: 8px;
 }
-</style>
+<style>
+    /* Giữ nguyên style hiện có của bạn */
+    /* ... (các style cũ nếu có) ... */
+
+    /* Thêm style mới cho bố cục 40%-60% */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+    }
+    .container {
+      display: flex;
+      height: 100%;
+    }
+    #whiteboard-section {
+      flex: 4; /* 40% chiều rộng */
+      border-right: 1px solid #ccc;
+      overflow-y: auto; /* Cuộn dọc độc lập */
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    #content-section {
+      flex: 6; /* 60% chiều rộng */
+      overflow-y: auto; /* Cuộn dọc độc lập */
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    #whiteboard {
+      width: 100%;
+      height: 600px; /* Chiều cao mặc định, có thể điều chỉnh */
+      border: 1px solid #ccc;
+      overflow: auto; /* Cuộn nội dung bên trong nếu cần */
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
 </head>
 <body>
 <div class="header">
@@ -540,6 +579,9 @@ input[type="text"].short-answer {
 </div>
 <div class="container">
 <h1>ĐỀ THI TOÁN - ĐỀ SỐ 1 <span class="hot">HOT</span></h1>
+<div id="whiteboard">
+    <iframe src="https://excalidraw.com/#room=2bdd0e5623488bd03b83,OtTAq1B-u8ybfHs73IVB2Q" width="100%" height="600px" frameborder="0"></iframe>
+  </div>
 <!-- Phần I: Trắc Nghiệm Nhiều Lựa Chọn -->
 <h3>Phần I: Trắc Nghiệm Nhiều Lựa Chọn - từ câu 1 đến câu 12</h3>
 
@@ -1010,6 +1052,9 @@ Japan
 </div>
 </div>
 </div>
+<div id="whiteboard">
+    <iframe src="https://excalidraw.com/#room=2bdd0e5623488bd03b83,OtTAq1B-u8ybfHs73IVB2Q" width="100%" height="600px" frameborder="0"></iframe>
+  </div>
 <!-- Thêm phần tính điểm vào cuối -->
 
  <div class="score-section">
