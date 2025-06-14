@@ -70,12 +70,12 @@ const examList = [
     { id: 70, title: "Đề thi Toán – Đề số 69 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de69.html", available: true },
     { id: 71, title: "Đề thi Toán – Đề số 71 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de71.html", available: true },
     { id: 72, title: "Đề thi Toán – Đề số 72 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de72.html", available: true },
-    { id: 73, title: "Đề thi Toán – Đề số 60 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de60.html", available: true },
-    { id: 75, title: "Đề thi Toán – Đề số 60 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de60.html", available: true },
-    { id: 76, title: "Đề thi Toán – Đề số 60 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de60.html", available: true },
-    { id: 77, title: "Đề thi Toán – Đề số 60 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de77.html", available: true },
-    { id: 78, title: "Đề thi Toán – Đề số 60 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de78.html", available: true },
-    { id: 79, title: "Đề thi Toán – Đề số 6060 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de79.html", available: true },
+    { id: 73, title: "Đề thi Toán – Đề số 74 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de60.html", available: true },
+    { id: 75, title: "Đề thi Toán – Đề số 75 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de60.html", available: true },
+    { id: 76, title: "Đề thi Toán – Đề số 76 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de60.html", available: true },
+    { id: 77, title: "Đề thi Toán – Đề số 77 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de77.html", available: true },
+    { id: 78, title: "Đề thi Toán – Đề số 78 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de78.html", available: true },
+    { id: 79, title: "Đề thi Toán – Đề số 79 – Ôn thi TN THPT", topic: "Luyện Đề", file: "de79.html", available: true },
 ];
 
 function createDropdownMenu() {
