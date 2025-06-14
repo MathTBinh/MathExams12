@@ -1,0 +1,383 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quy Chế Thi Tốt Nghiệp THPT 2025 - Quy Trình Tổ Chức Coi Thi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #ecfdf5, #f3e8ff);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #b45309;
+            text-align: center;
+            font-size: 2rem;
+        }
+        h3 {
+            color: #1e40af;
+            font-size: 1.3rem;
+        }
+        .summary-box-1 {
+            background: #f7fee7;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 5px solid #059669;
+        }
+        .summary-box-2 {
+            background: #f5f3ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 5px solid #059669;
+        }
+        .summary-box-3 {
+            background: #fefce8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 5px solid #059669;
+        }
+        .summary-box-4 {
+            background: #e0f7fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 5px solid #059669;
+        }
+        .summary-box-5 {
+            background: #fce7f3;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 5px solid #059669;
+        }
+        .summary-box-6 {
+            background: #ccfbf1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 5px solid #059669;
+        }
+        .summary-box-7 {
+            background: #ffedd5;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 5px solid #059669;
+        }
+        .summary-box-8 {
+            background: #fef9c3;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 5px solid #059669;
+        }
+        .solution-toggle {
+            display: inline-block;
+            background: #1e40af;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .solution {
+            display: none;
+            background: #fef3c7;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .solution.show {
+            display: block;
+        }
+        header {
+            background: #1e40af;
+            color: white;
+            padding: 15px 0;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        header img {
+            max-width: 100px;
+            vertical-align: middle;
+        }
+        header h2 {
+            margin: 10px 0;
+            font-size: 1.8rem;
+        }
+        nav {
+            background: #1e40af;
+            padding: 10px 0;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #1e40af;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: #1e40af;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .contact-button {
+            display: inline-block;
+            background: #1e40af;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin: 10px 0;
+        }
+        .feedback-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+        .feedback-section textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #d1d5db;
+            padding: 10px;
+        }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            const solution = document.getElementById(id);
+            solution.classList.toggle('show');
+        }
+        function submitFeedback() {
+            alert('Ý kiến của bạn đã được gửi! Chúng tôi sẽ xem xét và phản hồi sớm.');
+        }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <img src="https://via.placeholder.com/100" alt="Logo Trường THPT Trần Trường Sinh">
+        <h2>TRƯỜNG THPT TRẦN TRƯỜNG SINH</h2>
+        <p>Sở Giáo dục và Đào tạo Bến Tre</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#">Trang Chủ</a></li>
+            <li><a href="#">Thông Báo</a></li>
+            <li><a href="#">Liên Hệ</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <h1>Quy Chế Thi Tốt Nghiệp THPT 2025 - Quy Trình Tổ Chức Coi Thi</h1>
+
+        <!-- Điều 29: Quy trình tổ chức coi thi -->
+        <div class="card">
+            <h3>Điều 29. Quy trình tổ chức coi thi</h3>
+
+            <!-- Khoản 1: Quy định chung -->
+            <div class="summary-box-1">
+                <h3>Quy định chung</h3>
+                <p>a) Các tờ giấy thi, phiếu TLTN, giấy nháp của thí sinh trong phòng thi phải có đủ chữ ký của Giám thị; Giám thị phải bảo vệ đề thi trong buổi thi, <span style="color: #dc2626;">không để lọt đề thi ra ngoài phòng thi;</span><br>
+                b) Thí sinh ra khỏi phòng thi: thực hiện theo điểm đ khoản 4 Điều 21;<br>
+                c) Nếu có thí sinh vi phạm Quy chế thi thì Giám thị phải lập biên bản xử lý theo đúng quy định; <span style="color: #dc2626;">khi có tình huống bất thường phải báo cáo ngay cho Trưởng Điểm thi giải quyết;</span><br>
+                d) Trưởng Điểm thi phân bổ thời gian, cứ 15 phút (đối với bài thi độc lập và đối với mỗi môn thi trong bài thi tổ hợp), Giám thị thông báo thời gian còn lại cho thí sinh biết; trước giờ thu bài thi 05 phút, Giám thị yêu cầu thí sinh kiểm tra lại mã đề thi, số báo danh, các thông tin cá nhân khác trên giấy thi/Phiếu TLTN;<br>
+                đ) Trưởng Điểm thi phân công 01 Thư ký Điểm thi làm nhiệm vụ thực hiện báo cáo số liệu trên hệ thống Quản lý thi. Trưởng điểm thi phân công các Thư ký Điểm thi kiểm tra số lượng thí sinh vắng thi tại phòng thi (15 phút sau khi tính giờ làm bài) và tổng hợp, nhập danh sách thí sinh vắng thi lên hệ thống Quản lý thi. Trong quá trình tổ chức thi, <span style="color: #dc2626;">nếu có thí sinh bị xử lý vì vi phạm Quy chế thi, phải cập nhật ngay lên hệ thống Quản lý thi;</span><br>
+                e) Tại các Điểm thi có thí sinh chỉ dự thi môn thi thứ nhất của Bài thi tổ hợp, Trưởng Điểm thi: bố trí phòng chờ để các thí sinh chỉ dự thi môn thi thứ nhất ngồi; phân công 01 Giám thị hoặc Giám sát phòng thi để quản lý thí sinh; hướng dẫn thí sinh giữ gìn trật tự tại phòng thi để dự thi theo quy định.</p>
+                <div class="solution-toggle" onclick="toggleSolution('solution1')">Chi Tiết</div>
+                <div id="solution1" class="solution">
+                    <p>Giám thị cần <span style="color: #dc2626;">bảo vệ đề thi tuyệt đối</span> và xử lý ngay các vi phạm để đảm bảo công bằng và an toàn cho kỳ thi. Lưu ý: Nếu nội dung điểm d khoản 1 chưa chính xác, vui lòng cung cấp văn bản chính xác để cập nhật.</p>
+                </div>
+            </div>
+
+            <!-- Khoản 2: Gọi thí sinh vào phòng thi -->
+            <div class="summary-box-2">
+                <h3>Gọi thí sinh vào phòng thi</h3>
+                <p>Khi có hiệu lệnh, gọi thí sinh vào phòng thi:<br>
+                a) Giám thị 1 gọi tên thí sinh vào phòng thi;<br>
+                b) Giám thị 2 sử dụng Danh sách ảnh phòng thi để đối chiếu, nhận diện thí sinh, kiểm tra giấy tờ tùy thân của thí sinh; hướng dẫn thí sinh ngồi đúng chỗ quy định và kiểm tra các vật dụng thí sinh mang vào phòng thi, <span style="color: #dc2626;">tuyệt đối không để thí sinh mang vào phòng thi các tài liệu và vật dụng bị cấm theo quy định tại Điều 21 Quy chế này.</span> Trong trường hợp thí sinh không mang giấy tờ tùy thân, báo với Trưởng Điểm thi để xử lý theo quy định.</p>
+                <div class="solution-toggle" onclick="toggleSolution('solution2')">Chi Tiết</div>
+                <div id="solution2" class="solution">
+                    <p>Giám thị 2 cần kiểm tra kỹ giấy tờ và vật dụng để <span style="color: #dc2626;">ngăn chặn gian lận</span> ngay từ khi thí sinh vào phòng thi.</p>
+                </div>
+            </div>
+
+            <!-- Khoản 3: Nhận đề thi -->
+            <div class="summary-box-3">
+                <h3>Nhận đề thi</h3>
+                <p>Khi có hiệu lệnh, nhận đề thi:<br>
+                a) Giám thị 1 đi nhận đề thi;<br>
+                b) Giám thị 2 nhắc nhở thí sinh những điều cần thiết về quy định trong phòng thi; ghi rõ họ tên và ký tên vào các tờ giấy thi/Phiếu TLTN, giấy nháp đủ để phát cho thí sinh (không ký thừa); hướng dẫn và kiểm tra thí sinh gấp giấy thi đúng quy cách (đối với bài thi tự luận); hướng dẫn và kiểm tra thí sinh ghi số báo danh và điền đủ thông tin thí sinh vào các mục cần thiết của giấy thi/Phiếu TLTN.</p>
+                <div class="solution-toggle" onclick="toggleSolution('solution3')">Chi Tiết</div>
+                <div id="solution3" class="solution">
+                    <p>Giám thị cần đảm bảo giấy thi/Phiếu TLTN được ký đúng, đủ để tránh sai sót ảnh hưởng đến bài thi của thí sinh.</p>
+                </div>
+            </div>
+
+            <!-- Khoản 4: Kiểm tra niêm phong đề thi -->
+            <div class="summary-box-4">
+                <h3>Kiểm tra niêm phong đề thi</h3>
+                <p>Chứng kiến và kiểm tra tình trạng niêm phong của các túi đề thi:<br>
+                Tại phòng thi, Giám thị 1 giơ cao tất cả các túi đề thi (bao gồm các túi đề thi môn thi thứ 2 trong bài thi tổ hợp) để thí sinh thấy rõ cả mặt trước và mặt sau còn nguyên nhãn niêm phong, yêu cầu hai thí sinh chứng kiến và ký vào biên bản xác nhận bì đề thi còn nguyên nhãn niêm phong.</p>
+                <div class="solution-toggle" onclick="toggleSolution('solution4')">Chi Tiết</div>
+                <div id="solution4" class="solution">
+                    <p>Kiểm tra niêm phong công khai với sự chứng kiến của thí sinh là bước quan trọng để đảm bảo tính minh bạch và bảo mật của đề thi.</p>
+                </div>
+            </div>
+
+            <!-- Khoản 5: Phát đề thi -->
+            <div class="summary-box-5">
+                <h3>Phát đề thi</h3>
+                <p>Khi có hiệu lệnh phát đề thi:<br>
+                a) Cả hai Giám thị mở bì đựng đề thi, kiểm tra số lượng đề thi (nếu thừa, thiếu hoặc lẫn đề thi khác, cần báo ngay cho Trưởng Điểm thi xử lý);<br>
+                b) Giám thị 1 phát đề thi cho từng thí sinh theo thứ tự từ trên xuống dưới, từ phải sang trái (tính từ bàn giáo viên nhìn xuống), đối với bài thi tổ hợp phát lần lượt từng môn. Giám thị 2 quan sát bao quát phòng thi;<br>
+                c) Khi nhận được đề thi, thí sinh phải để thì d sleeping dề thì dùr chịn bài...</p>
+                <div class="solution-toggle" onclick="toggleSolution('solution5')">Chi Tiết</div>
+                <div id="solution5" class="solution">
+                    <p>Lưu ý: Nội dung khoản 5 không đầy đủ do lỗi OCR (phần cuối điểm c: "thí sinh phải để thì d sleeping dề thì dùr chịn bài..."). Vui lòng cung cấp văn bản chính xác để cập nhật. Giám thị cần phát đề đúng thứ tự và giám sát chặt chẽ để tránh sai sót hoặc vi phạm quy chế.</p>
+                </div>
+            </div>
+
+            <!-- Khoản 6: Thu bài thi -->
+            <div class="summary-box-6">
+                <h3>Thu bài thi</h3>
+                <p>Khi có hiệu lệnh thu bài thi:<br>
+                a) Giám thị 1 thu bài thi của từng thí sinh theo thứ tự phát đề thi, kiểm tra số tờ giấy thi (đối với bài thi tự luận), kiểm tra các thông tin của thí sinh trên giấy thi/Phiếu TLTN;<br>
+                b) Giám thị 2 giám sát và yêu cầu thí sinh ký xác nhận vào Danh sách thu bài thi;<br>
+                c) Sau khi thu đủ bài thi, Giám thị kiểm tra số lượng bài thi, sắp xếp bài thi theo thứ tự số báo danh tăng dần, cho vào túi đựng bài thi và niêm phong túi bài thi theo quy định.</p>
+                <div class="solution-toggle" onclick="toggleSolution('solution6')">Chi Tiết</div>
+                <div id="solution6" class="solution">
+                    <p>Giám thị cần thu bài cẩn thận, kiểm tra đầy đủ thông tin và đảm bảo số lượng bài thi chính xác trước khi niêm phong.</p>
+                </div>
+            </div>
+
+            <!-- Khoản 7: Niêm phong bài thi -->
+            <div class="summary-box-7">
+                <h3>Niêm phong bài thi</h3>
+                <p>Sau khi thu bài thi, Giám thị thực hiện niêm phong túi bài thi:<br>
+                a) Ghi rõ số lượng bài thi, số tờ giấy thi (đối với bài thi tự luận) vào nhãn niêm phong;<br>
+                b) Yêu cầu hai thí sinh chứng kiến và ký xác nhận vào nhãn niêm phong;<br>
+                c) Dán nhãn niêm phong lên túi bài thi, đảm bảo túi bài thi được niêm phong kín.</p>
+                <div class="solution-toggle" onclick="toggleSolution('solution7')">Chi Tiết</div>
+                <div id="solution7" class="solution">
+                    <p>Niêm phong bài thi cần được thực hiện công khai, có sự chứng kiến của thí sinh để đảm bảo tính minh bạch và an toàn.</p>
+                </div>
+            </div>
+
+            <!-- Khoản 8: Bàn giao bài thi -->
+            <div class="summary-box-8">
+                <h3>Bàn giao bài thi</h3>
+                <p>Sau khi niêm phong túi bài thi, Giám thị bàn giao bài thi cho Trưởng Điểm thi hoặc người được Trưởng Điểm thi phân công:<br>
+                a) Giám thị 1 mang túi bài thi đã niêm phong đến nơi bàn giao;<br>
+                b) Giám thị 2 giám sát phòng thi cho đến khi hoàn tất việc bàn giao bài thi;<br>
+                c) Tại nơi bàn giao, Giám thị 1 và người nhận bàn giao ký xác nhận vào biên bản bàn giao bài thi.</p>
+                <div class="solution-toggle" onclick="toggleSolution('solution8')">Chi Tiết</div>
+                <div id="solution8" class="solution">
+                    <p>Bàn giao bài thi cần được thực hiện cẩn thận, có biên bản xác nhận để đảm bảo không xảy ra sai sót hoặc mất bài.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Liên hệ và góp ý -->
+        <div class="card">
+            <h3>Liên Hệ và Góp Ý</h3>
+            <p>Nếu có thắc mắc hoặc cần hỗ trợ, vui lòng liên hệ qua email hoặc gửi ý kiến trực tiếp.</p>
+            <a href="mailto:thpttrantruongsinh@bentre.edu.vn" class="contact-button">Liên Hệ Hỗ Trợ</a>
+            <div class="feedback-section">
+                <h4>Gửi Ý Kiến</h4>
+                <textarea placeholder="Nhập ý kiến của bạn..."></textarea>
+                <button class="contact-button" onclick="submitFeedback()">Gửi Ý Kiến</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Trường THPT Trần Trường Sinh<br>
+        Email: <a href="mailto:thpttrantruongsinh@bentre.edu.vn">thpttrantruongsinh@bentre.edu.vn</a> | Số điện thoại: 02753876235</p>
+    </footer>
+</body>
+</html>
