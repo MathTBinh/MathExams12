@@ -1462,6 +1462,20 @@ canvas.addEventListener("touchstart", startDraw, { passive: false });
 canvas.addEventListener("touchmove", drawMove, { passive: false });
 canvas.addEventListener("touchend", endDraw);
 </script>
-
+<script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-firestore.js"></script>
+<script>
+  // Thêm cấu hình Firebase (thay bằng giá trị thực tế bạn sao chép từ Firebase Console)
+  const firebaseConfig = {
+    apiKey: "AIzaSyDDACFZgZazMOnjzmGM_lrKswVcsoTFHxA",
+  authDomain: "veonline-3bcbf.firebaseapp.com",
+  projectId: "veonline-3bcbf",
+  storageBucket: "veonline-3bcbf.firebasestorage.app",
+  messagingSenderId: "83902304195",
+  appId: "1:83902304195:web:2f9ec1ee0c23d6e21bb776",
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
 </body>
 </html>
