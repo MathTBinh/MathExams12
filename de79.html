@@ -1337,7 +1337,15 @@ exitBtn.onclick = () => {
 };
 
 toolSelect.onchange = () => currentTool = toolSelect.value;
-clearBtn.onclick = () => ctx.clearRect(0, 0, canvas.width, canvas.height);
+clearBtn.onclick = () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Ghi một ảnh rỗng lên Firebase để đồng bộ xoá cho mọi người
+  if (typeof saveDrawingToFirebase === "function") {
+    saveDrawingToFirebase(); // Lưu canvas trống
+  }
+};
+
 saveBtn.onclick = () => {
   const link = document.createElement("a");
   link.download = "ban_ve.png";
