@@ -1,4 +1,4 @@
-// webrtc.js - truyền giọng nói 2 chiều dùng Firebase, có log chi tiết
+// webrtc.js - truyền giọng nói 2 chiều dùng Firebase, đã fix lỗi isCaller
 
 // 1. Cấu hình Firebase
 const firebaseConfig = {
@@ -38,16 +38,6 @@ navigator.mediaDevices.getUserMedia({ audio: true }).then(async (stream) => {
     remoteAudio.srcObject = event.streams[0];
   };
 
-  peer.onicecandidate = (event) => {
-    if (event.candidate) {
-      console.log("📡 Gửi ICE Candidate");
-      const candidatesCollection = isCaller
-        ? callDoc.collection("callerCandidates")
-        : callDoc.collection("calleeCandidates");
-      candidatesCollection.add(event.candidate.toJSON());
-    }
-  };
-
   const callDoc = db.collection("calls").doc("room-v1");
   const callSnapshot = await callDoc.get();
 
@@ -68,7 +58,6 @@ navigator.mediaDevices.getUserMedia({ audio: true }).then(async (stream) => {
       }
     });
   } else {
-    isCaller = false;
     console.log("📞 Là người tham gia → nhận offer và tạo answer");
     const data = callSnapshot.data();
     await peer.setRemoteDescription(new RTCSessionDescription(data.offer));
@@ -76,6 +65,17 @@ navigator.mediaDevices.getUserMedia({ audio: true }).then(async (stream) => {
     await peer.setLocalDescription(answer);
     await callDoc.update({ answer });
   }
+
+  // Đặt lại xử lý ICE sau khi có isCaller
+  peer.onicecandidate = (event) => {
+    if (event.candidate) {
+      console.log("📡 Gửi ICE Candidate");
+      const candidatesCollection = isCaller
+        ? callDoc.collection("callerCandidates")
+        : callDoc.collection("calleeCandidates");
+      candidatesCollection.add(event.candidate.toJSON());
+    }
+  };
 
   // Lắng nghe ICE candidate của bên kia
   const candidatesCollection = isCaller
