@@ -124,7 +124,7 @@
             margin-bottom: 15px;
         }
         h3 {
-            color: #6b21a8;
+            color: #c62828;
             font-size: 1.5rem;
             margin-bottom: 10px;
         }
@@ -593,63 +593,446 @@ input[type="text"].short-answer {
 </div>
 </div>
 </div>
-<!--$-->
+<!--@@-->
 <div class="container">
-<h1>ĐỀ THI TOÁN - ĐỀ SỐ 2 <span class="hot">HOT</span></h1>
-<!-- Phần II: Trắc Nghiệm Đúng/Sai -->
- <!-- Câu 1 -->
+  <!-- Giao tiếp âm thanh 2 chiều -->
+<div style="text-align:center; margin-top: 20px;">
+  <h2 class="text-lg font-bold text-purple-700">Giao tiếp âm thanh</h2>
+  <button id="btnToggleMic" style="padding: 8px 16px; margin: 5px; background: #6b21a8; color: white; border-radius: 6px;">🎙️ Bật/Tắt Micro</button>
+  <button id="btnToggleSpeaker" style="padding: 8px 16px; margin: 5px; background: #10b981; color: white; border-radius: 6px;">🔊 Bật/Tắt Loa</button>
+</div>
+<audio id="remoteAudio" autoplay></audio>
+
+<h1>ĐỀ THI TOÁN - ĐỀ SỐ 102 <span class="hot">HOT</span></h1>
+<h3>Phần I: Trắc Nghiệm Nhiều Lựa Chọn - từ câu 1 đến câu 12</h3>
+
+<!-- Câu 1 -->
 <div class="question" id="q1">
 <div class="summary-box">
-<p><strong>Câu 1</strong>. Cho hàm số \( y = f(x) \) có bảng biến thiên như sau:<br/>
-<img alt="" loading="lazy" src="data/anh2/101.1.png"/><br/>
-Hàm số \( y = f(x) \) nghịch biến trên khoảng nào dưới đây?</p>
-</div>
+<p><strong>Câu 1</strong>. Cho \( A \) và \( B \) là hai biến cố thỏa mãn \( P(A)=0,4 \); \( P(B)=0,5 \) và \( P(A \cup B)=0,6 \). Tính xác suất của biến cố \( A \cap B \).</p>
 <div class="options">
-<label><input name="q1" onchange="showOptionIcon('q1', 'A', 'D')" type="radio" value="A"/> A. \( (-\infty ; -2) \)<span class="option-icon" id="icon-q1-A"></span></label>
-<label><input name="q1" onchange="showOptionIcon('q1', 'B', 'D')" type="radio" value="B"/> B. \( (0 ; +\infty) \)<span class="option-icon" id="icon-q1-B"></span></label>
-<label><input name="q1" onchange="showOptionIcon('q1', 'C', 'D')" type="radio" value="C"/> C. \( (-3 ; 1) \)<span class="option-icon" id="icon-q1-C"></span></label>
-<label><input name="q1" onchange="showOptionIcon('q1', 'D', 'D')" type="radio" value="D"/> D. \( (-2 ; 0) \)<span class="option-icon" id="icon-q1-D"></span></label>
+<label><input name="q1" onchange="showOptionIcon('q1', 'A', 'D')" type="radio" value="A"/> A. 0,4<span class="option-icon" id="icon-q1-A"></span></label>
+<label><input name="q1" onchange="showOptionIcon('q1', 'B', 'D')" type="radio" value="B"/> B. 0,65<span class="option-icon" id="icon-q1-B"></span></label>
+<label><input name="q1" onchange="showOptionIcon('q1', 'C', 'D')" type="radio" value="C"/> C. 0,2<span class="option-icon" id="icon-q1-C"></span></label>
+<label><input name="q1" onchange="showOptionIcon('q1', 'D', 'D')" type="radio" value="D"/> D. 0,3<span class="option-icon" id="icon-q1-D"></span></label>
+</div>
 </div>
 <div class="answer-check">
 <button onclick="checkAnswer('q1', 'D')">Kiểm tra</button>
 <button class="solution-toggle" onclick="toggleSolution('solution-q1')">Xem lời giải</button>
-<div class="solution" id="solution-q1"></div>
+<div class="solution" id="solution-q1">
+<p><strong>Lời giải:</strong><br/>
+Ta có: \( P(A \cup B) = P(A) + P(B) - P(A \cap B) \)<br/>
+\(\Leftrightarrow P(A \cap B) = P(A) + P(B) - P(A \cup B) = 0,4 + 0,5 - 0,6 = 0,3 \).<br/>
+Đáp án: D.</p>
 </div>
 </div>
+</div>
+
 <!-- Câu 2 -->
 <div class="question" id="q2">
 <div class="summary-box">
-<p><strong>Câu 2</strong>. Hàm số nào dưới đây có đồ thị như đường cong trong hình bên?<br/>
-<img alt="" loading="lazy" src="data/anh2/101.2.png"/><br/>
-</p>
-</div>
+<p><strong>Câu 2</strong>. Một cấp số cộng \(\left(u_n\right)\) có \( u_{13}=8 \) và \( d=-3 \). Tìm số hạng thứ ba của cấp số cộng \(\left(u_n\right)\).</p>
 <div class="options">
-<label><input name="q2" onchange="showOptionIcon('q2', 'A', 'C')" type="radio" value="A"/> A. \( y = \frac{x+1}{x-1} \)<span class="option-icon" id="icon-q2-A"></span></label>
-<label><input name="q2" onchange="showOptionIcon('q2', 'B', 'C')" type="radio" value="B"/> B. \( y = x^4 - 2x^2 - 1 \)<span class="option-icon" id="icon-q2-B"></span></label>
-<label><input name="q2" onchange="showOptionIcon('q2', 'C', 'C')" type="radio" value="C"/> C. \( y = x^3 - 3x - 1 \)<span class="option-icon" id="icon-q2-C"></span></label>
-<label><input name="q2" onchange="showOptionIcon('q2', 'D', 'C')" type="radio" value="D"/> D. \( y = x^2 + x - 1 \)<span class="option-icon" id="icon-q2-D"></span></label>
+<label><input name="q2" onchange="showOptionIcon('q2', 'A', 'A')" type="radio" value="A"/> A. 38<span class="option-icon" id="icon-q2-A"></span></label>
+<label><input name="q2" onchange="showOptionIcon('q2', 'B', 'A')" type="radio" value="B"/> B. 50<span class="option-icon" id="icon-q2-B"></span></label>
+<label><input name="q2" onchange="showOptionIcon('q2', 'C', 'A')" type="radio" value="C"/> C. 44<span class="option-icon" id="icon-q2-C"></span></label>
+<label><input name="q2" onchange="showOptionIcon('q2', 'D', 'A')" type="radio" value="D"/> D. 28<span class="option-icon" id="icon-q2-D"></span></label>
+</div>
 </div>
 <div class="answer-check">
-<button onclick="checkAnswer('q2', 'C')">Kiểm tra</button>
+<button onclick="checkAnswer('q2', 'A')">Kiểm tra</button>
 <button class="solution-toggle" onclick="toggleSolution('solution-q2')">Xem lời giải</button>
-
 <div class="solution" id="solution-q2">
-            <p><strong>Lời giải:</strong><br/>
-                Vì \( A \) và \( B \) độc lập, ta có \( P(A \cap B) = P(A)P(B) \).<br/>
-                Công thức: \( P(A \cup B) = P(A) + P(B) - P(A \cap B) \).<br/>
-                Thay số: \( \frac{1}{2} = \frac{1}{4} + P(B) - \frac{1}{4}P(B) \).<br/>
-                Rút gọn: \( \frac{1}{2} = \frac{1}{4} + \frac{3}{4}P(B) \).<br/>
-                \( \frac{3}{4}P(B) = \frac{1}{4} \Rightarrow P(B) = \frac{1}{3} \).<br/>
-                Đáp án: D.</p>
-
-
-
+<p><strong>Lời giải:</strong><br/>
+Ta có: \( u_{13} = u_1 + 12d \Leftrightarrow 8 = u_1 + 12 \cdot (-3) \Rightarrow u_1 = 44 \).<br/>
+Số hạng thứ ba: \( u_3 = u_1 + 2d = 44 - 6 = 38 \).<br/>
+Đáp án: A.</p>
+</div>
 </div>
 </div>
 
-<!-- Thêm phần tính điểm vào cuối -->
+<!-- Câu 3 -->
+<div class="question" id="q3">
+<div class="summary-box">
+<p><strong>Câu 3</strong>. Cho hàm số \( y = f(x) \) có bảng biến thiên như sau:<br/>
+<img alt="" loading="lazy" src="data/anh2/101.3.png"/><br/>
+Hàm số đã cho nghịch biến trên khoảng nào dưới đây?</p>
+<div class="options">
+<label><input name="q3" onchange="showOptionIcon('q3', 'A', 'D')" type="radio" value="A"/> A. \((-2 ; 2)\)<span class="option-icon" id="icon-q3-A"></span></label>
+<label><input name="q3" onchange="showOptionIcon('q3', 'B', 'D')" type="radio" value="B"/> B. \((2 ; +\infty)\)<span class="option-icon" id="icon-q3-B"></span></label>
+<label><input name="q3" onchange="showOptionIcon('q3', 'C', 'D')" type="radio" value="C"/> C. \((-\infty ; 0)\)<span class="option-icon" id="icon-q3-C"></span></label>
+<label><input name="q3" onchange="showOptionIcon('q3', 'D', 'D')" type="radio" value="D"/> D. \((0 ; 2)\)<span class="option-icon" id="icon-q3-D"></span></label>
+</div>
+</div>
+<div class="answer-check">
+<button onclick="checkAnswer('q3', 'D')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q3')">Xem lời giải</button>
+<div class="solution" id="solution-q3">
+<p><strong>Lời giải:</strong><br/>
+Từ bảng biến thiên, hàm số nghịch biến khi \( y' < 0 \), tức là trên khoảng \((0 ; 2)\).<br/>
+Đáp án: D.</p>
+</div>
+</div>
+</div>
 
+<!-- Câu 4 -->
+<div class="question" id="q4">
+<div class="summary-box">
+<p><strong>Câu 4</strong>. Trong không gian \( Oxyz \), cho mặt cầu \((S): (x+3)^2 + (y-1)^2 + z^2 = 10\). Tâm của \((S)\) có tọa độ là:</p>
+<div class="options">
+<label><input name="q4" onchange="showOptionIcon('q4', 'A', 'A')" type="radio" value="A"/> A. \((-3 ; 1 ; 0)\)<span class="option-icon" id="icon-q4-A"></span></label>
+<label><input name="q4" onchange="showOptionIcon('q4', 'B', 'A')" type="radio" value="B"/> B. \((3 ; -1 ; 0)\)<span class="option-icon" id="icon-q4-B"></span></label>
+<label><input name="q4" onchange="showOptionIcon('q4', 'C', 'A')" type="radio" value="C"/> C. \((3 ; 1 ; 0)\)<span class="option-icon" id="icon-q4-C"></span></label>
+<label><input name="q4" onchange="showOptionIcon('q4', 'D', 'A')" type="radio" value="D"/> D. \((3 ; -1 ; 0)\)<span class="option-icon" id="icon-q4-D"></span></label>
+</div>
+</div>
+<div class="answer-check">
+<button onclick="checkAnswer('q4', 'A')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q4')">Xem lời giải</button>
+<div class="solution" id="solution-q4">
+<p><strong>Lời giải:</strong><br/>
+Phương trình mặt cầu có dạng \((x-a)^2 + (y-b)^2 + (z-c)^2 = R^2\). So với \((x+3)^2 + (y-1)^2 + z^2 = 10\), tâm là \((-3 ; 1 ; 0)\).<br/>
+Đáp án: A.</p>
+</div>
+</div>
+</div>
 
+<!-- Câu 5 -->
+<div class="question" id="q5">
+<div class="summary-box">
+<p><strong>Câu 5</strong>. Một mẫu số liệu được cho bởi bảng sau. Gọi số trung bình là \(\bar{x}\), mốt là \(M_0\) và số trung vị là \(M_e\).</p>
+<table>
+<tr><th>Giá trị</th><td>3</td><td>4</td><td>6</td><td>7</td><td>9</td></tr>
+<tr><th>Tần số</th><td>1</td><td>3</td><td>4</td><td>5</td><td>2</td></tr>
+</table>
+<p>Khẳng định nào sau đây là đúng?</p>
+<div class="options">
+<label><input name="q5" onchange="showOptionIcon('q5', 'A', 'D')" type="radio" value="A"/> A. \(M_e < M_0 < \bar{x}\)<span class="option-icon" id="icon-q5-A"></span></label>
+<label><input name="q5" onchange="showOptionIcon('q5', 'B', 'D')" type="radio" value="B"/> B. \(\bar{x} < M_e < M_0\)<span class="option-icon" id="icon-q5-B"></span></label>
+<label><input name="q5" onchange="showOptionIcon('q5', 'C', 'D')" type="radio" value="C"/> C. \(M_0 < M_e < \bar{x}\)<span class="option-icon" id="icon-q5-C"></span></label>
+<label><input name="q5" onchange="showOptionIcon('q5', 'D', 'D')" type="radio" value="D"/> D. \(M_e < \bar{x} < M_0\)<span class="option-icon" id="icon-q5-D"></span></label>
+</div>
+</div>
+<div class="answer-check">
+<button onclick="checkAnswer('q5', 'D')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q5')">Xem lời giải</button>
+<div class="solution" id="solution-q5">
+<p><strong>Lời giải:</strong><br/>
+Tính: \(\bar{x} = \frac{3 \cdot 1 + 4 \cdot 3 + 6 \cdot 4 + 7 \cdot 5 + 9 \cdot 2}{15} = \frac{91}{15} \approx 6,1\).<br/>
+Mốt \(M_0 = 7\) (tần số cao nhất là 5). Trung vị \(M_e = 6\) (giá trị ở vị trí thứ 8).<br/>
+So sánh: \(M_e = 6 < \bar{x} \approx 6,1 < M_0 = 7 \).<br/>
+Đáp án: D.</p>
+</div>
+</div>
+</div>
+
+<!-- Câu 6 -->
+<div class="question" id="q6">
+<div class="summary-box">
+<p><strong>Câu 6</strong>. Cho hàm số \( y = f(x) \) liên tục trên đoạn \([-3;4]\) và có đồ thị như hình vẽ:<br/>
+<img alt="Hình 3.6" loading="lazy" src="anh/3.6.png"/><br/>
+Gọi \( M \) và \( m \) lần lượt là giá trị lớn nhất và giá trị nhỏ nhất của hàm số đã cho trên đoạn \([-3;4]\). Giá trị \( M - m \) bằng:</p>
+<div class="options">
+<label><input name="q6" onchange="showOptionIcon('q6', 'A', 'A')" type="radio" value="A"/> A. 7<span class="option-icon" id="icon-q6-A"></span></label>
+<label><input name="q6" onchange="showOptionIcon('q6', 'B', 'A')" type="radio" value="B"/> B. 5<span class="option-icon" id="icon-q6-B"></span></label>
+<label><input name="q6" onchange="showOptionIcon('q6', 'C', 'A')" type="radio" value="C"/> C. -5<span class="option-icon" id="icon-q6-C"></span></label>
+<label><input name="q6" onchange="showOptionIcon('q6', 'D', 'A')" type="radio" value="D"/> D. -7<span class="option-icon" id="icon-q6-D"></span></label>
+</div>
+</div>
+<div class="answer-check">
+<button onclick="checkAnswer('q6', 'A')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q6')">Xem lời giải</button>
+<div class="solution" id="solution-q6">
+<p><strong>Lời giải:</strong><br/>
+Từ đồ thị: \( M = f(4) = 6 \), \( m = f(-1) = -1 \).<br/>
+Vậy \( M - m = 6 - (-1) = 7 \).<br/>
+Đáp án: A.</p>
+</div>
+</div>
+</div>
+
+<!-- Câu 7 -->
+<div class="question" id="q7">
+<div class="summary-box">
+<p><strong>Câu 7</strong>. Cho \( f(x) \) và \( g(x) \) là các hàm số liên tục trên \(\mathbb{R}\). Mệnh đề nào dưới đây là sai?</p>
+<div class="options">
+<label><input name="q7" onchange="showOptionIcon('q7', 'A', 'D')" type="radio" value="A"/> A. \(\int [f(x) + g(x)] \, dx = \int f(x) \, dx + \int g(x) \, dx\)<span class="option-icon" id="icon-q7-A"></span></label>
+<label><input name="q7" onchange="showOptionIcon('q7', 'B', 'D')" type="radio" value="B"/> B. \(\int f'(x) \, dx = f(x) + C \, (C \in \mathbb{R})\)<span class="option-icon" id="icon-q7-B"></span></label>
+<label><input name="q7" onchange="showOptionIcon('q7', 'C', 'D')" type="radio" value="C"/> C. \(\int k f(x) \, dx = k \int f(x) \, dx + C \, (k \in \mathbb{R}^*)\)<span class="option-icon" id="icon-q7-C"></span></label>
+<label><input name="q7" onchange="showOptionIcon('q7', 'D', 'D')" type="radio" value="D"/> D. \(\int [f(x) g(x)] \, dx = \int f(x) \, dx \cdot \int g(x) \, dx\)<span class="option-icon" id="icon-q7-D"></span></label>
+</div>
+</div>
+<div class="answer-check">
+<button onclick="checkAnswer('q7', 'D')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q7')">Xem lời giải</button>
+<div class="solution" id="solution-q7">
+<p><strong>Lời giải:</strong><br/>
+Không có công thức \(\int [f(x) g(x)] \, dx = \int f(x) \, dx \cdot \int g(x) \, dx\). Các mệnh đề A, B, C đều đúng.<br/>
+Đáp án: D.</p>
+</div>
+</div>
+</div>
+
+<!-- Câu 8 -->
+<div class="question" id="q8">
+<div class="summary-box">
+<p><strong>Câu 8</strong>. Trong không gian \( Oxyz \), cho hai điểm \( A(-2;-1;3) \) và \( B(0;3;1) \). Gọi \((\alpha)\) là mặt phẳng trung trực của đoạn \( AB \). Một vector pháp tuyến của \((\alpha)\) có tọa độ là:</p>
+<div class="options">
+<label><input name="q8" onchange="showOptionIcon('q8', 'A', 'D')" type="radio" value="A"/> A. \(\vec{n} = (1;0;1)\)<span class="option-icon" id="icon-q8-A"></span></label>
+<label><input name="q8" onchange="showOptionIcon('q8', 'B', 'D')" type="radio" value="B"/> B. \(\vec{n} = (2;4;-1)\)<span class="option-icon" id="icon-q8-B"></span></label>
+<label><input name="q8" onchange="showOptionIcon('q8', 'C', 'D')" type="radio" value="C"/> C. \(\vec{n} = (-1;1;2)\)<span class="option-icon" id="icon-q8-C"></span></label>
+<label><input name="q8" onchange="showOptionIcon('q8', 'D', 'D')" type="radio" value="D"/> D. \(\vec{n} = (1;2;-1)\)<span class="option-icon" id="icon-q8-D"></span></label>
+</div>
+</div>
+<div class="answer-check">
+<button onclick="checkAnswer('q8', 'D')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q8')">Xem lời giải</button>
+<div class="solution" id="solution-q8">
+<p><strong>Lời giải:</strong><br/>
+Mặt phẳng trung trực của \( AB \) có vector pháp tuyến là \(\overrightarrow{AB} = (0 - (-2); 3 - (-1); 1 - 3) = (2;4;-2) = 2(1;2;-1)\). Vậy vector pháp tuyến là \((1;2;-1)\).<br/>
+Đáp án: D.</p>
+</div>
+</div>
+</div>
+
+<!-- Câu 9 -->
+<div class="question" id="q9">
+<div class="summary-box">
+<p><strong>Câu 9</strong>. Tính diện tích hình phẳng giới hạn bởi đồ thị hai hàm số \( y = -x^2 + 4 \) và \( y = -x + 2 \).</p>
+<div class="options">
+<label><input name="q9" onchange="showOptionIcon('q9', 'A', 'D')" type="radio" value="A"/> A. \(\frac{5}{7}\)<span class="option-icon" id="icon-q9-A"></span></label>
+<label><input name="q9" onchange="showOptionIcon('q9', 'B', 'D')" type="radio" value="B"/> B. \(\frac{8}{3}\)<span class="option-icon" id="icon-q9-B"></span></label>
+<label><input name="q9" onchange="showOptionIcon('q9', 'C', 'D')" type="radio" value="C"/> C. 9<span class="option-icon" id="icon-q9-C"></span></label>
+<label><input name="q9" onchange="showOptionIcon('q9', 'D', 'D')" type="radio" value="D"/> D. \(\frac{9}{2}\)<span class="option-icon" id="icon-q9-D"></span></label>
+</div>
+</div>
+<div class="answer-check">
+<button onclick="checkAnswer('q9', 'D')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q9')">Xem lời giải</button>
+<div class="solution" id="solution-q9">
+<p><strong>Lời giải:</strong><br/>
+Tìm giao điểm: \(-x^2 + 4 = -x + 2 \Leftrightarrow x^2 - x - 2 = 0 \Leftrightarrow x = -1, 2\).<br/>
+Diện tích: \( S = \int_{-1}^2 [(-x^2 + 4) - (-x + 2)] \, dx = \int_{-1}^2 (-x^2 + x + 2) \, dx = \left(-\frac{x^3}{3} + \frac{x^2}{2} + 2x\right) \Big|_{-1}^2 = \frac{9}{2} \).<br/>
+Đáp án: D.</p>
+</div>
+</div>
+</div>
+
+<!-- Câu 10 -->
+<div class="question" id="q10">
+<div class="summary-box">
+<p><strong>Câu 10</strong>. Tập xác định của hàm số \( y = \left(x^2 - 3x + 2\right)^{\frac{-1}{3}} \).</p>
+<div class="options">
+<label><input name="q10" onchange="showOptionIcon('q10', 'A', 'A')" type="radio" value="A"/> A. \((-\infty ; 1) \cup (2 ; +\infty)\)<span class="option-icon" id="icon-q10-A"></span></label>
+<label><input name="q10" onchange="showOptionIcon('q10', 'B', 'A')" type="radio" value="B"/> B. \((-\infty ; 1] \cup [2 ; +\infty)\)<span class="option-icon" id="icon-q10-B"></span></label>
+<label><input name="q10" onchange="showOptionIcon('q10', 'C', 'A')" type="radio" value="C"/> C. \(\mathbb{R}\)<span class="option-icon" id="icon-q10-C"></span></label>
+<label><input name="q10" onchange="showOptionIcon('q10', 'D', 'A')" type="radio" value="D"/> D. \(\mathbb{R} \backslash \{1 ; 2\}\)<span class="option-icon" id="icon-q10-D"></span></label>
+</div>
+</div>
+<div class="answer-check">
+<button onclick="checkAnswer('q10', 'A')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q10')">Xem lời giải</button>
+<div class="solution" id="solution-q10">
+<p><strong>Lời giải:</strong><br/>
+Hàm số xác định khi \( x^2 - 3x + 2 > 0 \). Giải: \( x^2 - 3x + 2 = (x-1)(x-2) > 0 \Rightarrow x \in (-\infty ; 1) \cup (2 ; +\infty) \).<br/>
+Đáp án: A.</p>
+</div>
+</div>
+</div>
+
+<!-- Câu 11 -->
+<div class="question" id="q11">
+<div class="summary-box">
+<p><strong>Câu 11</strong>. Nghiệm của phương trình \( 7^x = 2 \) là:</p>
+<div class="options">
+<label><input name="q11" onchange="showOptionIcon('q11', 'A', 'A')" type="radio" value="A"/> A. \( x = \log_7 2 \)<span class="option-icon" id="icon-q11-A"></span></label>
+<label><input name="q11" onchange="showOptionIcon('q11', 'B', 'A')" type="radio" value="B"/> B. \( x = \sqrt{7} \)<span class="option-icon" id="icon-q11-B"></span></label>
+<label><input name="q11" onchange="showOptionIcon('q11', 'C', 'A')" type="radio" value="C"/> C. \( x = \log_2 7 \)<span class="option-icon" id="icon-q11-C"></span></label>
+<label><input name="q11" onchange="showOptionIcon('q11', 'D', 'A')" type="radio" value="D"/> D. \( x = \frac{2}{7} \)<span class="option-icon" id="icon-q11-D"></span></label>
+</div>
+</div>
+<div class="answer-check">
+<button onclick="checkAnswer('q11', 'A')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q11')">Xem lời giải</button>
+<div class="solution" id="solution-q11">
+<p><strong>Lời giải:</strong><br/>
+\( 7^x = 2 \Leftrightarrow x = \log_7 2 \).<br/>
+Đáp án: A.</p>
+</div>
+</div>
+</div>
+
+<!-- Câu 12 -->
+<div class="question" id="q12">
+<div class="summary-box">
+<p><strong>Câu 12</strong>. Số đường tiệm cận ngang của đồ thị hàm số \( y = \frac{x-2}{x+1} \) là:</p>
+<div class="options">
+<label><input name="q12" onchange="showOptionIcon('q12', 'A', 'D')" type="radio" value="A"/> A. 0<span class="option-icon" id="icon-q12-A"></span></label>
+<label><input name="q12" onchange="showOptionIcon('q12', 'B', 'D')" type="radio" value="B"/> B. 2<span class="option-icon" id="icon-q12-B"></span></label>
+<label><input name="q12" onchange="showOptionIcon('q12', 'C', 'D')" type="radio" value="C"/> C. 3<span class="option-icon" id="icon-q12-C"></span></label>
+<label><input name="q12" onchange="showOptionIcon('q12', 'D', 'D')" type="radio" value="D"/> D. 1<span class="option-icon" id="icon-q12-D"></span></label>
+</div>
+</div>
+<div class="answer-check">
+<button onclick="checkAnswer('q12', 'D')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q12')">Xem lời giải</button>
+<div class="solution" id="solution-q12">
+<p><strong>Lời giải:</strong><br/>
+Ta có: \(\lim_{x \to +\infty} \frac{x-2}{x+1} = 1\), \(\lim_{x \to -\infty} \frac{x-2}{x+1} = 1\). Vậy \( y = 1 \) là tiệm cận ngang.<br/>
+Số tiệm cận ngang: 1.<br/>
+Đáp án: D.</p>
+</div>
+</div>
+</div>
+<h3>Phần II: Trắc Nghiệm Đúng/Sai - từ câu 1 đến câu 4</h3>
+
+<!-- Câu 1 -->
+<div class="question" id="q1">
+<div class="summary-box">
+<p><strong>Câu 1</strong>. Cho hàm số \( y = \frac{-x^2 + 2(m+1)x - 5}{x-1} \) có đồ thị \((C)\) với \( m \) là tham số.</p>
+<div class="options">
+<p>a) Để hàm số có cực trị thì \( m > 4 \).</p>
+<label><input name="q1a" type="radio" value="Đúng" onchange="showOptionIcon('q1a', 'Đúng', 'Sai')"/> Đúng<span class="option-icon" id="icon-q1a-Đúng"></span></label>
+<label><input name="q1a" type="radio" value="Sai" onchange="showOptionIcon('q1a', 'Sai', 'Sai')"/> Sai<span class="option-icon" id="icon-q1a-Sai"></span></label>
+<p>b) Khi \( m = 0 \) thì đồ thị hàm số có tiệm cận xiên là \( y = -x + 1 \).</p>
+<label><input name="q1b" type="radio" value="Đúng" onchange="showOptionIcon('q1b', 'Đúng', 'Đúng')"/> Đúng<span class="option-icon" id="icon-q1b-Đúng"></span></label>
+<label><input name="q1b" type="radio" value="Sai" onchange="showOptionIcon('q1b', 'Sai', 'Đúng')"/> Sai<span class="option-icon" id="icon-q1b-Sai"></span></label>
+<p>c) Khi \( m = 0 \) thì đồ thị hàm số không cắt \( Ox \).</p>
+<label><input name="q1c" type="radio" value="Đúng" onchange="showOptionIcon('q1c', 'Đúng', 'Đúng')"/> Đúng<span class="option-icon" id="icon-q1c-Đúng"></span></label>
+<label><input name="q1c" type="radio" value="Sai" onchange="showOptionIcon('q1c', 'Sai', 'Đúng')"/> Sai<span class="option-icon" id="icon-q1c-Sai"></span></label>
+<p>d) Tồn tại 1 điểm \( M \) thuộc đồ thị \((C)\) sao cho \( x_M > 1 \) và độ dài \( IM \) ngắn nhất (\( I \) là tâm đường tiệm cận) khi hoành độ \( y_M < -4 \).</p>
+<label><input name="q1d" type="radio" value="Đúng" onchange="showOptionIcon('q1d', 'Đúng', 'Đúng')"/> Đúng<span class="option-icon" id="icon-q1d-Đúng"></span></label>
+<label><input name="q1d" type="radio" value="Sai" onchange="showOptionIcon('q1d', 'Sai', 'Đúng')"/> Sai<span class="option-icon" id="icon-q1d-Sai"></span></label>
+</div>
+</div>
+<div class="answer-check">
+<button onclick="checkTrueFalseAnswer('q1', ['Sai', 'Đúng', 'Đúng', 'Đúng'])">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q1')">Xem lời giải</button>
+<div class="solution" id="solution-q1">
+<p><strong>Lời giải:</strong><br/>
+a) Sai. Hàm số \( y = \frac{-x^2 + 2(m+1)x - m - 5}{x-1} \), đạo hàm \( y' = \frac{-x^2 + 2x - m + 3}{(x-1)^2} \). Để có cực trị, phương trình \( -x^2 + 2x - m + 3 = 0 \) phải có hai nghiệm phân biệt: \( \Delta' = 1 - m + 3 = 4 - m > 0 \Rightarrow m < 4 \). Tại \( x = 1 \), \( y' \neq 0 \Rightarrow m \neq 4 \). Do đó, điều kiện là \( m < 4 \).<br/>
+b) Đúng. Khi \( m = 0 \), \( y = \frac{-x^2 + 2x - 5}{x-1} = -x + 1 - \frac{4}{x-1} \). Tiệm cận xiên: \( \lim_{x \to \pm \infty} (y - (-x + 1)) = \lim_{x \to \pm \infty} -\frac{4}{x-1} = 0 \), nên tiệm cận xiên là \( y = -x + 1 \).<br/>
+c) Đúng. Khi \( m = 0 \), \( y = 0 \Rightarrow -x^2 + 2x - 5 = 0 \), phương trình vô nghiệm (\(\Delta < 0\)). Do đó, đồ thị không cắt \( Ox \).<br/>
+d) Đúng. Tâm tiệm cận \( I(1;0) \). Với \( M(x_M; y_M) \), \( y_M = -x_M + 1 - \frac{4}{x_M - 1} \), khoảng cách \( IM^2 = (x_M - 1)^2 + \left(-x_M + 1 - \frac{4}{x_M - 1}\right)^2 \). Khi \( x_M = 1 + \sqrt[4]{8} \), \( IM \) nhỏ nhất và \( y_M = -\sqrt[4]{8} - \frac{4}{\sqrt[4]{8}} < -4 \).<br/>
+Đáp án: a) Sai, b) Đúng, c) Đúng, d) Đúng.</p>
+</div>
+</div>
+</div>
+
+<!-- Câu 2 -->
+<div class="question" id="q2">
+<div class="summary-box">
+<p><strong>Câu 2</strong>. Trong 5 giây đầu tiên, một chất điểm chuyển động với vận tốc \( v(t) = -3t^2 + 12t + 1 \) (m/s). Trong các khẳng định sau, khẳng định nào đúng hay sai?</p>
+<div class="options">
+<p>a) Vận tốc của vật tại thời điểm \( t = 2 \) là \( v(2) = 1 \) (m/s).</p>
+<label><input name="q2a" type="radio" value="Đúng" onchange="showOptionIcon('q2a', 'Đúng', 'Sai')"/> Đúng<span class="option-icon" id="icon-q2a-Đúng"></span></label>
+<label><input name="q2a" type="radio" value="Sai" onchange="showOptionIcon('q2a', 'Sai', 'Sai')"/> Sai<span class="option-icon" id="icon-q2a-Sai"></span></label>
+<p>b) Quãng đường chuyển động của chất điểm trong 5 giây đầu tiên là 30 (m).</p>
+<label><input name="q2b" type="radio" value="Đúng" onchange="showOptionIcon('q2b', 'Đúng', 'Sai')"/> Đúng<span class="option-icon" id="icon-q2b-Đúng"></span></label>
+<label><input name="q2b" type="radio" value="Sai" onchange="showOptionIcon('q2b', 'Sai', 'Sai')"/> Sai<span class="option-icon" id="icon-q2b-Sai"></span></label>
+<p>c) Trong 5 giây đầu tiên, vận tốc lớn nhất của chất điểm là 13 (m/s).</p>
+<label><input name="q2c" type="radio" value="Đúng" onchange="showOptionIcon('q2c', 'Đúng', 'Đúng')"/> Đúng<span class="option-icon" id="icon-q2c-Đúng"></span></label>
+<label><input name="q2c" type="radio" value="Sai" onchange="showOptionIcon('q2c', 'Sai', 'Đúng')"/> Sai<span class="option-icon" id="icon-q2c-Sai"></span></label>
+<p>d) Trong khoảng thời gian từ \( t = 2 \) đến \( t = 5 \), vận tốc của chất điểm giảm dần.</p>
+<label><input name="q2d" type="radio" value="Đúng" onchange="showOptionIcon('q2d', 'Đúng', 'Đúng')"/> Đúng<span class="option-icon" id="icon-q2d-Đúng"></span></label>
+<label><input name="q2d" type="radio" value="Sai" onchange="showOptionIcon('q2d', 'Sai', 'Đúng')"/> Sai<span class="option-icon" id="icon-q2d-Sai"></span></label>
+</div>
+</div>
+<div class="answer-check">
+<button onclick="checkTrueFalseAnswer('q2', ['Sai', 'Sai', 'Đúng', 'Đúng'])">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q2')">Xem lời giải</button>
+<div class="solution" id="solution-q2">
+<p><strong>Lời giải:</strong><br/>
+a) Sai. \( v(2) = -3 \cdot 2^2 + 12 \cdot 2 + 1 = -12 + 24 + 1 = 13 \neq 1 \) (m/s).<br/>
+b) Sai. Quãng đường \( s(t) = \int_0^5 (-3t^2 + 12t + 1) \, dt = \left[-t^3 + 6t^2 + t\right]_0^5 = -125 + 150 + 5 = 40 \) (m), không phải 30 (m).<br/>
+c) Đúng. \( v'(t) = -6t + 12 = 0 \Rightarrow t = 2 \). Tại \( t = 2 \), \( v(2) = 13 \). Kiểm tra biên: \( v(0) = 1 \), \( v(5) = -14 \). Vậy vận tốc lớn nhất là 13 (m/s).<br/>
+d) Đúng. Trong khoảng \( t \in [2; 5] \), \( v'(t) = -6t + 12 < 0 \) (vì \( t > 2 \)), nên vận tốc giảm dần.<br/>
+Đáp án: a) Sai, b) Sai, c) Đúng, d) Đúng.</p>
+</div>
+</div>
+</div>
+
+<!-- Câu 3 -->
+<div class="question" id="q3">
+<div class="summary-box">
+<p><strong>Câu 3</strong>. Cho hình hộp chữ nhật \( ABCD.A'B'C'D' \) có đáy \( ABCD \) là hình vuông cạnh \( a \), \( AA' = 2a \). Xét các khẳng định sau:</p>
+<div class="options">
+<p>a) Khoảng cách giữa \( BD \) và \( CD' \) bằng \( \frac{a}{3} \).</p>
+<label><input name="q3a" type="radio" value="Đúng" onchange="showOptionIcon('q3a', 'Đúng', 'Sai')"/> Đúng<span class="option-icon" id="icon-q3a-Đúng"></span></label>
+<label><input name="q3a" type="radio" value="Sai" onchange="showOptionIcon('q3a', 'Sai', 'Sai')"/> Sai<span class="option-icon" id="icon-q3a-Sai"></span></label>
+<p>b) Độ dài \( A'C \) bằng \( a\sqrt{3} \).</p>
+<label><input name="q3b" type="radio" value="Đúng" onchange="showOptionIcon('q3b', 'Đúng', 'Sai')"/> Đúng<span class="option-icon" id="icon-q3b-Đúng"></span></label>
+<label><input name="q3b" type="radio" value="Sai" onchange="showOptionIcon('q3b', 'Sai', 'Sai')"/> Sai<span class="option-icon" id="icon-q3b-Sai"></span></label>
+<p>c) Khoảng cách từ \( A \) đến mặt phẳng \( (BCC'B') \) bằng \( a \).</p>
+<label><input name="q3c" type="radio" value="Đúng" onchange="showOptionIcon('q3c', 'Đúng', 'Đúng')"/> Đúng<span class="option-icon" id="icon-q3c-Đúng"></span></label>
+<label><input name="q3c" type="radio" value="Sai" onchange="showOptionIcon('q3c', 'Sai', 'Đúng')"/> Sai<span class="option-icon" id="icon-q3c-Sai"></span></label>
+<p>d) Khoảng cách giữa \( B'D' \) và \( AC \) bằng \( 2a \).</p>
+<label><input name="q3d" type="radio" value="Đúng" onchange="showOptionIcon('q3d', 'Đúng', 'Đúng')"/> Đúng<span class="option-icon" id="icon-q3d-Đúng"></span></label>
+<label><input name="q3d" type="radio" value="Sai" onchange="showOptionIcon('q3d', 'Sai', 'Đúng')"/> Sai<span class="option-icon" id="icon-q3d-Sai"></span></label>
+</div>
+</div>
+<div class="answer-check">
+<button onclick="checkTrueFalseAnswer('q3', ['Sai', 'Sai', 'Đúng', 'Đúng'])">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q3')">Xem lời giải</button>
+<div class="solution" id="solution-q3">
+<p><strong>Lời giải:</strong><br/>
+Đặt tọa độ: \( A(0;0;0) \), \( B(a;0;0) \), \( C(a;a;0) \), \( D(0;a;0) \), \( A'(0;0;2a) \), \( B'(a;0;2a) \), \( C'(a;a;2a) \), \( D'(0;a;2a) \).<br/>
+a) Sai. \( CD' \parallel A'B \), \( A'B \subset (A'BD) \), \( BD \subset (A'BD) \). Khoảng cách \( d(BD, CD') = d(C, (A'BD)) = d(A, (A'BD)) \). Trong tứ diện \( AA'BD \), \( AB \perp AD \), \( AB \perp AA' \), nên \( \frac{1}{d^2} = \frac{1}{AA'^2} + \frac{1}{AB^2} + \frac{1}{AD^2} = \frac{1}{4a^2} + \frac{1}{a^2} + \frac{1}{a^2} = \frac{9}{4a^2} \Rightarrow d = \frac{2a}{3} \neq \frac{a}{3} \).<br/>
+b) Sai. \( A'C = \sqrt{(a-0)^2 + (a-0)^2 + (2a-0)^2} = \sqrt{a^2 + a^2 + 4a^2} = a\sqrt{6} \neq a\sqrt{3} \).<br/>
+c) Đúng. \( AB \perp BC \), \( AB \perp BB' \), nên \( AB \perp (BCC'B') \). Do đó, \( d(A, (BCC'B')) = AB = a \).<br/>
+d) Đúng. \( B'D' \subset (A'B'C'D') \parallel (ABCD) \), \( AC \subset (ABCD) \). Khoảng cách \( d(B'D', AC) = d((A'B'C'D'), (ABCD)) = AA' = 2a \).<br/>
+Đáp án: a) Sai, b) Sai, c) Đúng, d) Đúng.</p>
+</div>
+</div>
+</div>
+
+<!-- Câu 4 -->
+<div class="question" id="q4">
+<div class="summary-box">
+<p><strong>Câu 4</strong>. Trong không gian \( Oxyz \), cho đường thẳng \( \Delta: \frac{x-2024}{2} = \frac{y}{1} = \frac{z+2025}{-2} \) và mặt phẳng \( (P): 2x + 2y - z + 1 = 0 \). Xét các vector \( \vec{u} = (2;1;-2) \), \( \vec{n} = (2;2;-1) \). Xét các khẳng định sau:</p>
+<div class="options">
+<p>a) \( \vec{u} \) là một vector chỉ phương của đường thẳng \( \Delta \).</p>
+<label><input name="q4a" type="radio" value="Đúng" onchange="showOptionIcon('q4a', 'Đúng', 'Đúng')"/> Đúng<span class="option-icon" id="icon-q4a-Đúng"></span></label>
+<label><input name="q4a" type="radio" value="Sai" onchange="showOptionIcon('q4a', 'Sai', 'Đúng')"/> Sai<span class="option-icon" id="icon-q4a-Sai"></span></label>
+<p>b) \( \cos(\Delta, (P)) = \frac{8}{9} \).</p>
+<label><input name="q4b" type="radio" value="Đúng" onchange="showOptionIcon('q4b', 'Đúng', 'Sai')"/> Đúng<span class="option-icon" id="icon-q4b-Đúng"></span></label>
+<label><input name="q4b" type="radio" value="Sai" onchange="showOptionIcon('q4b', 'Sai', 'Sai')"/> Sai<span class="option-icon" id="icon-q4b-Sai"></span></label>
+<p>c) Góc giữa đường thẳng \( \Delta \) và mặt phẳng \( (P) \) bằng khoảng \( 63^\circ \).</p>
+<label><input name="q4c" type="radio" value="Đúng" onchange="showOptionIcon('q4c', 'Đúng', 'Đúng')"/> Đúng<span class="option-icon" id="icon-q4c-Đúng"></span></label>
+<label><input name="q4c" type="radio" value="Sai" onchange="showOptionIcon('q4c', 'Sai', 'Đúng')"/> Sai<span class="option-icon" id="icon-q4c-Sai"></span></label>
+<p>d) \( \vec{n} \) là một vector pháp tuyến của mặt phẳng \( (P) \).</p>
+<label><input name="q4d" type="radio" value="Đúng" onchange="showOptionIcon('q4d', 'Đúng', 'Đúng')"/> Đúng<span class="option-icon" id="icon-q4d-Đúng"></span></label>
+<label><input name="q4d" type="radio" value="Sai" onchange="showOptionIcon('q4d', 'Sai', 'Đúng')"/> Sai<span class="option-icon" id="icon-q4d-Sai"></span></label>
+</div>
+</div>
+<div class="answer-check">
+<button onclick="checkTrueFalseAnswer('q4', ['Đúng', 'Sai', 'Đúng', 'Đúng'])">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q4')">Xem lời giải</button>
+<div class="solution" id="solution-q4">
+<p><strong>Lời giải:</strong><br/>
+a) Đúng. \( \Delta: \frac{x-2024}{2} = \frac{y}{1} = \frac{z+2025}{-2} \), vector chỉ phương \( \vec{u} = (2;1;-2) \).<br/>
+b) Sai. \( \sin(\Delta, (P)) = \frac{|\vec{u} \cdot \vec{n}|}{|\vec{u}| |\vec{n}|} = \frac{|2 \cdot 2 + 1 \cdot 2 + (-2) \cdot (-1)|}{\sqrt{4+1+4} \cdot \sqrt{4+4+1}} = \frac{8}{9} \). Do đó, \( \cos(\Delta, (P)) = \sqrt{1 - \frac{64}{81}} = \frac{\sqrt{17}}{9} \neq \frac{8}{9} \).<br/>
+c) Đúng. \( \cos(\Delta, (P)) = \frac{\sqrt{17}}{9} \approx 0.458 \Rightarrow (\Delta, (P)) \approx \arccos(0.458) \approx 63^\circ \).<br/>
+d) Đúng. Mặt phẳng \( (P): 2x + 2y - z + 1 = 0 \), vector pháp tuyến \( \vec{n} = (2;2;-1) \).<br/>
+Đáp án: a) Đúng, b) Sai, c) Đúng, d) Đúng.</p>
+</div>
+</div>
+</div>
+<h3>Phần III: Trắc Nghiệm Trả Lời Ngắn - từ câu 17 đến câu 22</h3>
+<!-- Câu 17 -->
+<div class="question" id="q17">
+<div class="summary-box">
+<p><strong>Câu 17</strong>. Cho hình chóp \( S.ABCD \) có đáy là hình vuông cạnh \( a \), \( SA \perp (ABCD) \), số đo của góc nhị diện \( [S,BC,A] \) bằng \( 60^\circ \). Khoảng cách giữa hai đường thẳng \( SC \) và \( BD \) bằng \( \frac{a\sqrt{30}}{n} \). Giá trị của \( n \) bằng bao nhiêu?</p>
+</div>
+<div class="answer-check">
+<input type="text" id="input-q17" placeholder="Nhập đáp án">
+<button onclick="checkShortAnswer('q17', '10')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q17')">Xem lời giải</button>
+<div class="solution" id="solution-q17"></div>
+<div class="answer-feedback" id="feedback-q17"></div>
+</div>
+</div>
 
  <div class="score-section">
  <h3>Tính tổng điểm</h3>
@@ -808,7 +1191,7 @@ Hàm số \( y = f(x) \) nghịch biến trên khoảng nào dưới đây?</p>
 }
     function calculateScore() {
   if (isScoreCalculated) return;
-
+/* @@ */
   const correctAnswers = {
     q1: 'D',
     q2: 'C',
@@ -1096,6 +1479,78 @@ canvas.addEventListener("mouseup", endDraw);
 canvas.addEventListener("touchstart", startDraw, { passive: false });
 canvas.addEventListener("touchmove", drawMove, { passive: false });
 canvas.addEventListener("touchend", endDraw);
+</script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import { getFirestore, doc, setDoc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+// Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyDDACFZgZazMOnjzmGM_lrKswVcsoTFHxA",
+  authDomain: "veonline-3bcbf.firebaseapp.com",
+  projectId: "veonline-3bcbf",
+  storageBucket: "veonline-3bcbf.appspot.com",
+  messagingSenderId: "83902304195",
+  appId: "1:83902304195:web:2f9ec1ee0c23d6e21bb776"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const peer = new RTCPeerConnection({ iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] });
+const remoteAudio = document.getElementById("remoteAudio");
+let localStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+let micEnabled = false;
+let speakerEnabled = true;
+
+// Mặc định mic tắt
+localStream.getAudioTracks()[0].enabled = false;
+
+// Gửi track âm thanh của bạn
+localStream.getTracks().forEach(track => peer.addTrack(track, localStream));
+
+// Nhận âm thanh từ người khác
+peer.ontrack = event => {
+  remoteAudio.srcObject = event.streams[0];
+};
+
+const callDoc = doc(db, "calls", "room-v1");
+const snapshot = await getDoc(callDoc);
+
+// Nếu bạn là người đầu tiên → tạo offer
+if (!snapshot.exists()) {
+  const offer = await peer.createOffer();
+  await peer.setLocalDescription(offer);
+  await setDoc(callDoc, { offer });
+
+  onSnapshot(callDoc, async docSnap => {
+    const data = docSnap.data();
+    if (data?.answer && !peer.currentRemoteDescription) {
+      await peer.setRemoteDescription(new RTCSessionDescription(data.answer));
+    }
+  });
+} else {
+  const data = snapshot.data();
+  await peer.setRemoteDescription(new RTCSessionDescription(data.offer));
+  const answer = await peer.createAnswer();
+  await peer.setLocalDescription(answer);
+  await setDoc(callDoc, { ...data, answer });
+}
+
+// Nút bật/tắt mic
+document.getElementById("btnToggleMic").onclick = () => {
+  micEnabled = !micEnabled;
+  localStream.getAudioTracks()[0].enabled = micEnabled;
+  document.getElementById("btnToggleMic").textContent = micEnabled ? "🎙️ Mic đang bật" : "🎙️ Bật/Tắt Micro";
+};
+
+// Nút bật/tắt loa
+document.getElementById("btnToggleSpeaker").onclick = () => {
+  speakerEnabled = !speakerEnabled;
+  remoteAudio.muted = !speakerEnabled;
+  document.getElementById("btnToggleSpeaker").textContent = speakerEnabled ? "🔊 Loa đang bật" : "🔇 Loa tắt";
+};
 </script>
 
 </body>
