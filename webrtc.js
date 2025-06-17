@@ -21,8 +21,16 @@ let micEnabled = false;
 let speakerEnabled = true;
 
 let peer = new RTCPeerConnection({
-  iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
+  iceServers: [
+    { urls: "stun:stun.l.google.com:19302" },
+    {
+      urls: "turn:relay1.expressturn.com:3478",
+      username: "efzV2kTkZ5sMfA0FoZzN2A==",
+      credential: "tJzpCwbknxKyFCrKeIn1xAHC7GzDqaJBNd+U1V2yz0E="
+    }
+  ]
 });
+
 
 console.log("🚀 WebRTC script bắt đầu...");
 
