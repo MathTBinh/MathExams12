@@ -1,4 +1,4 @@
-// webrtc.js - truyền giọng nói 2 chiều dùng Firebase, hỗ trợ mọi trình duyệt (không dùng module)
+// webrtc.js - truyền giọng nói 2 chiều dùng Firebase, có log chi tiết
 
 // 1. Cấu hình Firebase
 const firebaseConfig = {
@@ -24,22 +24,38 @@ let peer = new RTCPeerConnection({
   iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
 });
 
-navigator.mediaDevices.getUserMedia({ audio: true }).then(async (stream) => {
-  stream.getAudioTracks()[0].enabled = false; // mic mặc định tắt
+console.log("🚀 WebRTC script bắt đầu...");
 
-  // gửi stream local
+// Bắt đầu lấy mic
+navigator.mediaDevices.getUserMedia({ audio: true }).then(async (stream) => {
+  console.log("🎤 Đã truy cập được micro");
+
+  stream.getAudioTracks()[0].enabled = false; // mic mặc định tắt
   stream.getTracks().forEach((track) => peer.addTrack(track, stream));
 
-  // nhận âm thanh từ peer
   peer.ontrack = (event) => {
+    console.log("🔊 Nhận stream từ peer");
     remoteAudio.srcObject = event.streams[0];
+  };
+
+  peer.onicecandidate = (event) => {
+    if (event.candidate) {
+      console.log("📡 Gửi ICE Candidate");
+      const candidatesCollection = isCaller
+        ? callDoc.collection("callerCandidates")
+        : callDoc.collection("calleeCandidates");
+      candidatesCollection.add(event.candidate.toJSON());
+    }
   };
 
   const callDoc = db.collection("calls").doc("room-v1");
   const callSnapshot = await callDoc.get();
 
+  let isCaller = false;
+
   if (!callSnapshot.exists) {
-    // bạn là người đầu tiên → tạo offer
+    isCaller = true;
+    console.log("📞 Là người đầu tiên → tạo offer");
     const offer = await peer.createOffer();
     await peer.setLocalDescription(offer);
     await callDoc.set({ offer });
@@ -47,31 +63,56 @@ navigator.mediaDevices.getUserMedia({ audio: true }).then(async (stream) => {
     callDoc.onSnapshot(async (snap) => {
       const data = snap.data();
       if (data.answer && !peer.currentRemoteDescription) {
+        console.log("✅ Nhận answer từ peer");
         await peer.setRemoteDescription(new RTCSessionDescription(data.answer));
       }
     });
   } else {
-    // người sau → tạo answer
+    isCaller = false;
+    console.log("📞 Là người tham gia → nhận offer và tạo answer");
     const data = callSnapshot.data();
     await peer.setRemoteDescription(new RTCSessionDescription(data.offer));
     const answer = await peer.createAnswer();
     await peer.setLocalDescription(answer);
-    await callDoc.set({ ...data, answer });
+    await callDoc.update({ answer });
   }
 
-  // Mic toggle
+  // Lắng nghe ICE candidate của bên kia
+  const candidatesCollection = isCaller
+    ? callDoc.collection("calleeCandidates")
+    : callDoc.collection("callerCandidates");
+
+  candidatesCollection.onSnapshot((snapshot) => {
+    snapshot.docChanges().forEach(async (change) => {
+      if (change.type === "added") {
+        const candidate = new RTCIceCandidate(change.doc.data());
+        await peer.addIceCandidate(candidate);
+        console.log("🔁 Thêm ICE candidate từ peer");
+      }
+    });
+  });
+
+  // Toggle MIC
   micButton.onclick = () => {
     micEnabled = !micEnabled;
     stream.getAudioTracks()[0].enabled = micEnabled;
+    console.log(micEnabled ? "🎙️ Mic BẬT" : "🎙️ Mic TẮT");
     micButton.textContent = micEnabled ? "🎙️ Mic đang bật" : "🎙️ Bật/Tắt Micro";
   };
 
-  // Loa toggle
+  // Toggle Loa
   speakerButton.onclick = () => {
     speakerEnabled = !speakerEnabled;
     remoteAudio.muted = !speakerEnabled;
+    console.log(speakerEnabled ? "🔊 Loa BẬT" : "🔇 Loa TẮT");
     speakerButton.textContent = speakerEnabled ? "🔊 Loa đang bật" : "🔇 Loa tắt";
   };
+
+  peer.onconnectionstatechange = () => {
+    console.log("📶 Trạng thái kết nối:", peer.connectionState);
+  };
+
 }).catch((err) => {
-  alert("Không truy cập được micro: " + err);
+  console.error("❌ Không truy cập được micro:", err);
+  alert("Không truy cập được micro: " + err.message);
 });
