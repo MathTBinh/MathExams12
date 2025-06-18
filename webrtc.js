@@ -1,3 +1,4 @@
+
 // webrtc.js - phiên bản đã sửa đầy đủ, tương thích trình duyệt cũ và mới, dùng Firebase compat SDK
 
 // 1. Cấu hình Firebase (sử dụng compat SDK)
@@ -77,14 +78,14 @@ navigator.mediaDevices.getUserMedia({ audio: true }).then(async (stream) => {
   micButton.onclick = () => {
     micEnabled = !micEnabled;
     stream.getAudioTracks()[0].enabled = micEnabled;
-    micButton.textContent = micEnabled ? "🎙️ Mic đang bật" : "🎙️";
+    micButton.textContent = micEnabled ? "🎙️ Mic đang bật" : "🎙️ Bật/Tắt Micro";
   };
 
   // Loa toggle
   speakerButton.onclick = () => {
     speakerEnabled = !speakerEnabled;
     remoteAudio.muted = !speakerEnabled;
-    speakerButton.textContent = speakerEnabled ? "🔊" : "🔇";
+    speakerButton.textContent = speakerEnabled ? "🔊 Loa đang bật" : "🔊 Bật/Tắt Loa";
   };
 }).catch((err) => {
   alert("❌ Không truy cập được microphone: " + err.message);

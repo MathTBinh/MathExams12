@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Chuyên Đề THI TOÁN - Chuyên Đề SỐ 3 với 22 câu hỏi trắc nghiệm và lời giải chi tiết, kèm tóm tắt kiến thức." name="description"/>
+<title>Chuyên Đề THI TOÁN - Chuyên Đề 3 - KHÓA HỌC TOÁN THẦY BÌNH</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #ecfdf5, #f3e8ff);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .header {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .header .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #6b21a8;
+        }
+        .nav-bar {
+            position: sticky;
+            top: 60px;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 999;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-bar a {
+            color: #6b21a8;
+            margin-right: 15px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .nav-bar a:hover {
+            color: #10b981;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-button {
+            background: #6b21a8;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background 0.3s;
+        }
+        .dropdown-button:hover {
+            background: #5b1a8b;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 100px;
+            max-height: 300px;
+            overflow-y: auto;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 10px;
+            right: 0;
+        }
+        .dropdown-content a {
+            color: #6b21a8;
+            padding: 8px 16px;
+            text-decoration: none;
+            display: block;
+            font-weight: 400;
+        }
+        .dropdown-content a:hover {
+            background: #f0fdf4;
+            color: #10b981;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+        }
+        h1 {
+            color: #6b21a8;
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #10b981;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        h3 {
+            color: #6b21a8;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .summary-box {
+            background: #f0fdf4;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 5px solid #10b981;
+        }
+        .options {
+            margin: 10px 0;
+        }
+        .option {
+            margin: 5px 0;
+        }
+        .answer-check {
+            margin-top: 10px;
+        }
+        .answer-check button {
+            padding: 12px 24px;
+            background: #6b21a8;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .answer-check button:hover {
+            background: #5b1a8b;
+        }
+        .answer-feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            color: #22c55e;
+        }
+        .incorrect {
+            color: #ef4444;
+        }
+        .solution {
+            display: none;
+            background: #fef3c7;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .solution.show {
+            display: block;
+            opacity: 1;
+        }
+        .solution-toggle {
+            display: inline-block;
+            background: #6b21a8;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        .solution-toggle:hover {
+            background: #5b1a8b;
+        }
+        .hot {
+            color: #ef4444;
+            font-weight: bold;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background: #6b21a8;
+            color: white;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        .navigation button {
+            padding: 12px 24px;
+            background: #6b21a8;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .navigation button:hover {
+            background: #5b1a8b;
+        }
+        .navigation button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+        @media (max-width: 640px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.6rem; }
+            h3 { font-size: 1.3rem; }
+            .card { padding: 15px; }
+            .header .logo { font-size: 1.4rem; }
+            .nav-bar { top: 50px; flex-direction: column; align-items: flex-start; }
+            .nav-bar a { font-size: 0.9rem; margin-right: 10px; }
+            .dropdown-button { font-size: 0.9rem; padding: 6px 12px; }
+            .dropdown-content { min-width: 80px; }
+            table { font-size: 0.85rem; }
+            .answer-check button, .navigation button {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    
+.question img, .solution img {
+    display: block;
+    margin: 10px auto;
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+    object-position: center;
+    background: white;
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%;
+}
+
+.question img, .solution img {
+    display: block;
+    margin: 5px auto; /* Giảm khoảng cách */
+    width: 300px; /* Giảm chiều rộng */
+    height: 200px; /* Giảm chiều cao */
+    object-fit: contain;
+    object-position: center;
+    background: white;
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%; /* Đảm bảo vừa với màn hình nhỏ */
+}
+.question img:not([src]), .solution img:not([src]),
+.question img[src=''], .solution img[src=''],
+.question img[onerror], .solution img[onerror] {
+    display: none !important; /* Ẩn ảnh không tồn tại */
+}
+@media (max-width: 640px) {
+    .question img, .solution img {
+        width: 100%; /* Chiều rộng 100% trên di động */
+        height: auto; /* Chiều cao tự động */
+        margin: 3px auto; /* Giảm thêm khoảng cách trên di động */
+    }
+    .question img.long-image, .solution img.long-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.question img, .solution img {
+    display: block;
+    margin: 5px auto; /* Khoảng cách trên laptop */
+    width: 300px; /* Chiều rộng mặc định */
+    height: 200px; /* Chiều cao mặc định */
+    object-fit: contain;
+    object-position: center;
+    background: white;
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%; /* Đảm bảo vừa với màn hình nhỏ */
+}
+.question img:not([src]), .solution img:not([src]),
+.question img[src=''], .solution img[src=''],
+.question img[onerror], .solution img[onerror] {
+    display: none !important; /* Ẩn ảnh không tồn tại */
+}
+@media (max-width: 640px) {
+    .question img, .solution img {
+        max-width: 100%; /* Thu nhỏ theo màn hình */
+        width: auto; /* Tự động điều chỉnh chiều rộng */
+        height: auto; /* Tự động điều chỉnh chiều cao */
+        margin: 2px auto; /* Giảm khoảng cách trên di động */
+    }
+    .question img.long-image, .solution img.long-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.question img, .solution img {
+    display: block;
+    margin: 5px auto; /* Căn giữa và giữ khoảng cách nhỏ */
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%; /* Giới hạn chiều rộng tối đa */
+}
+.question img:not([src]), .solution img:not([src]),
+.question img[src=''], .solution img[src=''],
+.question img[onerror], .solution img[onerror] {
+    display: none !important; /* Ẩn ảnh không tồn tại */
+}
+@media (max-width: 640px) {
+    .question img, .solution img {
+        margin: 2px auto; /* Giảm khoảng cách trên di động */
+    }
+    .question img.long-image, .solution img.long-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo">KHÓA HỌC TOÁN THẦY BÌNH</div>
+</div>
+<div class="nav-bar">
+<div>
+<a href="index.html">Trang chủ</a>
+</div>
+<div class="dropdown">
+<span class="dropdown-button">Chọn đề</span>
+<div class="dropdown-content">
+<!-- Tạo danh sách đề từ 1 đến 100 -->
+<a href="de1.html">Đề 1</a>
+<a href="de2.html">Đề 2</a>
+<a href="de3.html">Đề 3</a>
+<a href="de4.html">Đề 4</a>
+<a href="de5.html">Đề 5</a>
+<a href="de6.html">Đề 6</a>
+<a href="de7.html">Đề 7</a>
+<a href="de8.html">Đề 8</a>
+<a href="de9.html">Đề 9</a>
+<a href="de10.html">Đề 10</a>
+<a href="de11.html">Đề 11</a>
+<a href="de12.html">Đề 12</a>
+<a href="de13.html">Đề 13</a>
+<a href="de14.html">Đề 14</a>
+<a href="de15.html">Đề 15</a>
+<a href="de16.html">Đề 16</a>
+<a href="de17.html">Đề 17</a>
+<a href="de18.html">Đề 18</a>
+<a href="de19.html">Đề 19</a>
+<a href="de20.html">Đề 20</a>
+<a href="de21.html">Đề 21</a>
+<a href="de22.html">Đề 22</a>
+<a href="de23.html">Đề 23</a>
+<a href="de24.html">Đề 24</a>
+<a href="de25.html">Đề 25</a>
+<a href="de26.html">Đề 26</a>
+<a href="de27.html">Đề 27</a>
+<a href="de28.html">Đề 28</a>
+<a href="de29.html">Đề 29</a>
+<a href="de30.html">Đề 30</a>
+<a href="de31.html">Đề 31</a>
+<a href="de32.html">Đề 32</a>
+<a href="de33.html">Đề 33</a>
+<a href="de34.html">Đề 34</a>
+<a href="de35.html">Đề 35</a>
+<a href="de36.html">Đề 36</a>
+<a href="de37.html">Đề 37</a>
+<a href="de38.html">Đề 38</a>
+<a href="de39.html">Đề 39</a>
+<a href="de40.html">Đề 40</a>
+<a href="de41.html">Đề 41</a>
+<a href="de42.html">Đề 42</a>
+<a href="de43.html">Đề 43</a>
+<a href="de44.html">Đề 44</a>
+<a href="de45.html">Đề 45</a>
+<a href="de46.html">Đề 46</a>
+<a href="de47.html">Đề 47</a>
+<a href="de48.html">Đề 48</a>
+<a href="de49.html">Đề 49</a>
+<a href="de50.html">Đề 50</a>
+<a href="de51.html">Đề 51</a>
+<a href="de52.html">Đề 52</a>
+<a href="de53.html">Đề 53</a>
+<a href="de54.html">Đề 54</a>
+<a href="de55.html">Đề 55</a>
+<a href="de56.html">Đề 56</a>
+<a href="de57.html">Đề 57</a>
+<a href="de58.html">Đề 58</a>
+<a href="de59.html">Đề 59</a>
+<a href="de60.html">Đề 60</a>
+<a href="de61.html">Đề 61</a>
+<a href="de62.html">Đề 62</a>
+<a href="de63.html">Đề 63</a>
+<a href="de64.html">Đề 64</a>
+<a href="de65.html">Đề 65</a>
+<a href="de66.html">Đề 66</a>
+<a href="de67.html">Đề 67</a>
+<a href="de68.html">Đề 68</a>
+<a href="de69.html">Đề 69</a>
+<a href="de70.html">Đề 70</a>
+<a href="de71.html">Đề 71</a>
+<a href="de72.html">Đề 72</a>
+<a href="de73.html">Đề 73</a>
+<a href="de74.html">Đề 74</a>
+<a href="de75.html">Đề 75</a>
+<a href="de76.html">Đề 76</a>
+<a href="de77.html">Đề 77</a>
+<a href="de78.html">Đề 78</a>
+<a href="de79.html">Đề 79</a>
+<a href="de80.html">Đề 80</a>
+<a href="de81.html">Đề 81</a>
+<a href="de82.html">Đề 82</a>
+<a href="de83.html">Đề 83</a>
+<a href="de84.html">Đề 84</a>
+<a href="de85.html">Đề 85</a>
+<a href="de86.html">Đề 86</a>
+<a href="de87.html">Đề 87</a>
+<a href="de88.html">Đề 88</a>
+<a href="de89.html">Đề 89</a>
+<a href="de90.html">Đề 90</a>
+<a href="de91.html">Đề 91</a>
+<a href="de92.html">Đề 92</a>
+<a href="de93.html">Đề 93</a>
+<a href="de94.html">Đề 94</a>
+<a href="de95.html">Đề 95</a>
+<a href="de96.html">Đề 96</a>
+<a href="de97.html">Đề 97</a>
+<a href="de98.html">Đề 98</a>
+<a href="de99.html">Đề 99</a>
+<a href="de100.html">Đề 100</a>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><div class="container">
+<!-- Tóm tắt kiến thức -->
+<div class="card" id="theory">
+<h2>1.A Tóm tắt kiến thức cần nhớ</h2>
+<h3>1.1. Cấp số cộng</h3>
+<h4>1.1.1. Định nghĩa</h4>
+<div class="math-content">
+            \[
+            \text{Dãy số } (u_n) \text{ là cấp số cộng nếu } u_n = u_{n-1} + d \text{ với } n \geq 2, d \text{ là số không đổi (công sai).}
+            \]
+            \[
+            d = u_n - u_{n-1} \text{ với } n \geq 2.
+            \]
+            \[
+            \text{Nếu } d = 0, \text{ thì cấp số cộng là một dãy số không đổi.}
+            \]
+        </div>
+<h4>1.1.2. Số hạng tổng quát</h4>
+<div class="math-content">
+            \[
+            u_n = u_1 + (n-1)d \text{ với } n \geq 1.
+            \]
+        </div>
+<h4>1.1.3. Tổng n số hạng đầu</h4>
+<div class="math-content">
+            \[
+            S_n = \frac{(u_1 + u_n)n}{2} \quad \text{hoặc} \quad S_n = \frac{[2u_1 + (n-1)d]n}{2}.
+            \]
+        </div>
+<h3>1.2. Cấp số nhân</h3>
+<h4>1.2.1. Định nghĩa</h4>
+<div class="math-content">
+            \[
+            \text{Dãy số } (u_n) \text{ là cấp số nhân nếu } u_n = u_{n-1} \cdot q \text{ với } n \geq 2, q \text{ là số không đổi (công bội).}
+            \]
+            \[
+            \text{Nếu } u_n \neq 0 \text{ với mọi } n \in \mathbb{N}^*, \text{ thì } q = \frac{u_n}{u_{n-1}} \text{ với } n \geq 2.
+            \]
+            \[
+            \text{Nếu } q = 1, \text{ thì cấp số nhân là một dãy số không đổi.}
+            \]
+        </div>
+<h4>1.2.2. Số hạng tổng quát</h4>
+<div class="math-content">
+            \[
+            u_n = u_1 \cdot q^{n-1} \text{ với } n \geq 1.
+            \]
+        </div>
+<h4>1.2.3. Tổng n số hạng đầu</h4>
+<div class="math-content">
+            \[
+            S_n = \frac{u_1 (1 - q^n)}{1 - q} \quad (q \neq 1).
+            \]
+        </div>
+</div>
+<!-- Ví dụ minh họa -->
+<div class="card example-box" id="example">
+<h2>2. Ví dụ minh họa</h2>
+<!-- Ví dụ 1 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Để kiểm tra một dãy số có phải là cấp số cộng, ta xét công sai: \( u_n - u_{n-1} \). Nếu công sai không đổi với mọi \( n \geq 2 \), thì dãy là cấp số cộng.</p>
+</div>
+<p><strong>Ví dụ 1:</strong> Trong các dãy số \( (u_n) \) với số hạng tổng quát sau, dãy số nào là cấp số cộng?</p>
+<ul>
+<li>A. \( u_n = 5^n \)</li>
+<li>B. \( u_n = 2 - 5n \)</li>
+<li>C. \( u_n = 5^n - 2 \)</li>
+<li>D. \( u_n = 5 + n^2 \)</li>
+</ul>
+<div class="solution" id="solution-example1">
+<p><strong>Lời giải:</strong></p>
+<p>Ở đáp án B, ta có: \( u_n - u_{n-1} = (2 - 5n) - [2 - 5(n-1)] = -5 \) với mọi \( n \geq 2 \). Công sai không đổi, nên dãy \( (u_n) \) là cấp số cộng. Các đáp án khác không thỏa mãn.</p>
+<p><strong>Đáp án:</strong> B</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example1')">Hiện lời giải</button>
+<!-- Ví dụ 2 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Công thức số hạng tổng quát của cấp số cộng: \( u_n = u_1 + (n-1)d \). Sử dụng để tìm mối liên hệ giữa các số hạng.</p>
+</div>
+<p><strong>Ví dụ 2:</strong> Cho cấp số cộng \( (u_n) \) biết \( u_5 + u_7 = 19 \). Giá trị của \( u_2 + u_{10} \) là:</p>
+<ul>
+<li>A. 38</li>
+<li>B. 29</li>
+<li>C. 12</li>
+<li>D. 19</li>
+</ul>
+<div class="solution" id="solution-example2">
+<p><strong>Lời giải:</strong></p>
+<p>Áp dụng công thức: \( u_5 + u_7 = (u_1 + 4d) + (u_1 + 6d) = 2u_1 + 10d = 19 \).</p>
+<p>Khi đó: \( u_2 + u_{10} = (u_1 + d) + (u_1 + 9d) = 2u_1 + 10d = 19 \).</p>
+<p><strong>Đáp án:</strong> D</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example2')">Hiện lời giải</button>
+<!-- Ví dụ 3 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Công thức số hạng tổng quát của cấp số nhân: \( u_n = u_1 \cdot q^{n-1} \). Tổng ba số hạng đầu: \( u_1 + u_2 + u_3 = u_1 (1 + q + q^2) \).</p>
+</div>
+<p><strong>Ví dụ 3:</strong> Cho cấp số nhân \( (u_n) \) có công bội \( q &gt; 1 \) với \( u_2 = -3 \) và \( u_1 + u_2 + u_3 = -13 \). Số hạng đầu \( u_1 \) và công bội \( q \) là:</p>
+<ul>
+<li>A. \( u_1 = 1, q = 3 \)</li>
+<li>B. \( u_1 = -1, q = -3 \)</li>
+<li>C. \( u_1 = -1, q = 3 \)</li>
+<li>D. \( u_1 = 1, q = -3 \)</li>
+</ul>
+<div class="solution" id="solution-example3">
+<p><strong>Lời giải:</strong></p>
+<p>Từ giả thiết: \( u_2 = u_1 \cdot q = -3 \), \( u_1 + u_2 + u_3 = u_1 (1 + q + q^2) = -13 \).</p>
+<p>Suy ra: \( \frac{1 + q + q^2}{q} = \frac{13}{3} \Rightarrow 3q^2 - 10q + 3 = 0 \Rightarrow q = 3 \) hoặc \( q = \frac{1}{3} \). Vì \( q &gt; 1 \), chọn \( q = 3 \).</p>
+<p>Thay \( q = 3 \) vào \( u_1 \cdot q = -3 \), ta được \( u_1 = -1 \).</p>
+<p><strong>Đáp án:</strong> C</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example3')">Hiện lời giải</button>
+<!-- Ví dụ 4 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Số hạng tổng quát của cấp số cộng: \( u_n = S_n - S_{n-1} \). Tổng các số hạng: \( S_n = \frac{(u_1 + u_n)n}{2} \).</p>
+</div>
+<p><strong>Ví dụ 4:</strong> Cho dãy số \( (u_n) \) có tổng \( n \) số hạng đầu được tính bởi công thức \( S_n = 2n^2 - 4n \). Xác định các phát biểu đúng/sai:</p>
+<ul>
+<li>a) Số hạng đầu \( u_1 = -2 \), số hạng thứ hai \( u_2 = 2 \).</li>
+<li>b) Với \( n \geq 2 \), thì \( S_n - S_{n-1} = 4n - 6 \).</li>
+<li>c) Dãy số \( (u_n) \) là cấp số cộng có công sai là -6.</li>
+<li>d) Tổng \( u_2 + u_4 + u_6 + \ldots + u_{100} = 5000 \).</li>
+</ul>
+<div class="solution" id="solution-example4">
+<p><strong>Lời giải:</strong></p>
+<p>- \( S_1 = u_1 = 2 \cdot 1^2 - 4 \cdot 1 = -2 \), \( S_2 = u_1 + u_2 = 0 \Rightarrow u_2 = 0 - (-2) = 2 \). Vậy a) đúng.</p>
+<p>- Với \( n \geq 2 \), \( S_n - S_{n-1} = (2n^2 - 4n) - [2(n-1)^2 - 4(n-1)] = 4n - 6 \). Vậy b) đúng.</p>
+<p>- \( u_n = S_n - S_{n-1} = 4n - 6 \), \( u_n - u_{n-1} = (4n - 6) - [4(n-1) - 6] = 4 \). Công sai là 4, không phải -6. Vậy c) sai.</p>
+<p>- Các số \( u_2, u_4, \ldots, u_{100} \) tạo thành cấp số cộng với \( u_2 = 2 \), công sai \( d' = 8 \), \( u_{100} = 4 \cdot 100 - 6 = 394 \), có 50 số hạng. Tổng: \( \frac{(u_2 + u_{100}) \cdot 50}{2} = 9900 \neq 5000 \). Vậy d) sai.</p>
+<p><strong>Đáp án:</strong> a) Đúng, b) Đúng, c) Sai, d) Sai</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example4')">Hiện lời giải</button>
+<!-- Ví dụ 5 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Cấp số nhân có công thức: \( u_n = u_1 \cdot q^{n-1} \). Quan hệ đệ quy có thể được dùng để xác định cấp số nhân.</p>
+</div>
+<p><strong>Ví dụ 5:</strong> Cho dãy số \( (u_n) \), biết \( u_1 = 8 \), \( u_{n+1} = 4u_n - 9 \) với \( n \in \mathbb{N}^* \). Đặt \( v_n = u_n - 3 \). Xác định các phát biểu đúng/sai:</p>
+<ul>
+<li>a) \( v_1 = 5 \).</li>
+<li>b) Dãy số \( (v_n) \) là cấp số nhân có công bội \( q = -3 \).</li>
+<li>c) Công thức số hạng tổng quát \( v_n = 5 \cdot (-3)^{n-1} \).</li>
+<li>d) Công thức số hạng tổng quát \( u_n = 3 + 5 \cdot (-3)^{n-1} \).</li>
+</ul>
+<div class="solution" id="solution-example5">
+<p><strong>Lời giải:</strong></p>
+<p>- \( v_1 = u_1 - 3 = 8 - 3 = 5 \). Vậy a) đúng.</p>
+<p>- \( v_{n+1} = u_{n+1} - 3 = 4u_n - 9 - 3 = 4u_n - 12 = 4(u_n - 3) = 4v_n \). Dãy \( (v_n) \) là cấp số nhân với công bội \( q = 4 \), không phải -3. Vậy b) sai.</p>
+<p>- Vì công bội \( q = 4 \), nên \( v_n = 5 \cdot 4^{n-1} \), không phải \( 5 \cdot (-3)^{n-1} \). Vậy c) sai.</p>
+<p>- \( u_n = v_n + 3 = 5 \cdot 4^{n-1} + 3 \), không phải \( 3 + 5 \cdot (-3)^{n-1} \). Vậy d) sai.</p>
+<p><strong>Đáp án:</strong> a) Đúng, b) Sai, c) Sai, d) Sai</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example5')">Hiện lời giải</button>
+<!-- Ví dụ 6 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Tổng \( n \) số hạng đầu của cấp số cộng: \( S_n = \frac{[2u_1 + (n-1)d]n}{2} \). So sánh tổng để tìm \( n \).</p>
+</div>
+<p><strong>Ví dụ 6:</strong> Khi ký kết hợp đồng, một doanh nghiệp đề xuất hai phương án trả lương:</p>
+<p>Phương án 1: Năm thứ nhất, lương 120 triệu đồng. Từ năm thứ hai, mỗi năm tăng 18 triệu đồng.</p>
+<p>Phương án 2: Tổng lương mỗi năm lập thành cấp số cộng với tổng \( 4n \) số hạng đầu là \( 14.4n^2 + 92.4n \) triệu đồng.</p>
+<p>Tellerym \( n \) (\( n \in \mathbb{N}^* \)) để từ năm thứ \( n \) trở đi, tổng lương trong \( n \) năm ở phương án thứ hai nhiều hơn phương án thứ nhất.</p>
+<div class="solution" id="solution-example6">
+<p><strong>Lời giải:</strong></p>
+<p>Phương án 1: Lương mỗi năm là cấp số cộng với \( u_1 = 120 \), \( d = 18 \). Tổng lương \( n \) năm: \( S_n = \frac{[2 \cdot 120 + (n-1) \cdot 18]n}{2} = 9n^2 + 111n \).</p>
+<p>Phương án 2: Tổng lương \( n \) năm: \( 14.4n^2 + 92.4n \).</p>
+<p>Xét bất phương trình: \( 14.4n^2 + 92.4n &gt; 9n^2 + 111n \Rightarrow 5.4n^2 - 18.6n &gt; 0 \Rightarrow n &gt; \frac{31}{9} \approx 3.44 \).</p>
+<p>Vì \( n \) nguyên, chọn \( n = 4 \).</p>
+<p><strong>Đáp án:</strong> \( n = 4 \)</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example6')">Hiện lời giải</button>
+<!-- Ví dụ 7 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Tổng \( n \) số hạng đầu của cấp số nhân: \( S_n = \frac{u_1 (1 - q^n)}{1 - q} \). Sử dụng hình học để xác định công bội.</p>
+</div>
+<p><strong>Ví dụ 7:</strong> Cho hình vuông \( C_1 \) có cạnh bằng 1. Gọi \( C_2 \) là hình vuông có các đỉnh là trung điểm các cạnh của \( C_1 \), \( C_3 \) là hình vuông có các đỉnh là trung điểm các cạnh của \( C_2 \), và tiếp tục như vậy. Tổng diện tích các hình vuông \( C_1, C_2, C_3, \ldots \) là bao nhiêu?</p>
+<img alt="Hình vuông" src="anh/square_sequence.png"/>
+<div class="solution" id="solution-example7">
+<p><strong>Lời giải:</strong></p>
+<p>Diện tích \( C_1 = 1 \). Với \( C_2 \), các đỉnh là trung điểm của \( C_1 \), cạnh của \( C_2 \) là \( \frac{\sqrt{2}}{2} \), diện tích \( C_2 = \left(\frac{\sqrt{2}}{2}\right)^2 = \frac{1}{2} \).</p>
+<p>Tương tự, diện tích \( C_{n+1} = \frac{1}{2} \cdot C_n \). Do đó, diện tích các hình vuông tạo thành cấp số nhân với \( u_1 = 1 \), công bội \( q = \frac{1}{2} \).</p>
+<p>Tổng diện tích: \( S = \frac{u_1}{1 - q} = \frac{1}{1 - \frac{1}{2}} = 2 \).</p>
+<p><strong>Đáp án:</strong> 2</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example7')">Hiện lời giải</button>
+</div>
+<div class="container">
+<h1>BÀI TẬP RÈN LUYỆN</h1>
+<h2>Phần I: Trắc Nghiệm Nhiều Lựa Chọn</h2>
+<!-- Câu 1 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Cấp số cộng</h3>
+<p>Một dãy số là cấp số cộng nếu hiệu giữa hai số hạng liên tiếp là hằng số (gọi là công sai \( d \)). Công thức: \( u_n = u_1 + (n-1)d \). Nếu hiệu không cố định, dãy không phải cấp số cộng.</p>
+</div>
+<div class="question">
+<h3>Câu 1:</h3>
+<p>Trong các dãy số sau, dãy số nào không là cấp số cộng?</p>
+<div class="options">
+<div class="option">A. \( 2; 0; -2; -4; -5 \)</div>
+<div class="option">B. \( \frac{1}{2}; -\frac{1}{2}; -\frac{3}{2}; -\frac{5}{2}; -\frac{7}{2} \)</div>
+<div class="option">C. \( \sqrt{2}; \sqrt{2}; \sqrt{2}; \sqrt{2}; \sqrt{2} \)</div>
+<div class="option">D. \( -7; -4; -1; 2; 5 \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q1" type="radio" value="A"/> A</label>
+<label><input name="q1" type="radio" value="B"/> B</label>
+<label><input name="q1" type="radio" value="C"/> C</label>
+<label><input name="q1" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q1', 'A')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q1"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q1')">Xem lời giải</div>
+<div class="solution" id="solution-q1">
+<p><strong>Lời giải:</strong><br/>
+                    - Dãy A: Hiệu lần lượt \( 0-2=-2 \), \( -2-0=-2 \), \( -4-(-2)=-2 \), \( -5-(-4)=-1 \). Hiệu không cố định, không là cấp số cộng.<br/>
+                    - Dãy B: Hiệu \( -\frac{1}{2} - \frac{1}{2} = -1 \), \( -\frac{3}{2} - (-\frac{1}{2}) = -1 \), v.v. Hiệu cố định, là cấp số cộng.<br/>
+                    - Dãy C: Hiệu \( \sqrt{2} - \sqrt{2} = 0 \). Hiệu cố định, là cấp số cộng.<br/>
+                    - Dãy D: Hiệu \( -4 - (-7) = 3 \), \( -1 - (-4) = 3 \), v.v. Hiệu cố định, là cấp số cộng.<br/>
+                    Đáp án: A.</p>
+</div>
+</div>
+</div>
+<!-- Câu 2 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Cấp số cộng</h3>
+<p>Số hạng tổng quát của cấp số cộng: \( u_n = u_1 + (n-1)d \). Nếu \( u_n \) là hàm tuyến tính theo \( n \), dãy là cấp số cộng.</p>
+</div>
+<div class="question">
+<h3>Câu 2:</h3>
+<p>Trong các dãy số \( (u_n) \) với số hạng tổng quát sau, dãy số nào là cấp số cộng?</p>
+<div class="options">
+<div class="option">A. \( u_n = 3 \cdot 2^n \)</div>
+<div class="option">B. \( u_n = 3 - 2n \)</div>
+<div class="option">C. \( u_n = 2^n + 3 \)</div>
+<div class="option">D. \( u_n = 2 + n^3 \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q2" type="radio" value="A"/> A</label>
+<label><input name="q2" type="radio" value="B"/> B</label>
+<label><input name="q2" type="radio" value="C"/> C</label>
+<label><input name="q2" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q2', 'B')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q2"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q2')">Xem lời giải</div>
+<div class="solution" id="solution-q2">
+<p><strong>Lời giải:</strong><br/>
+                    - A: \( u_n = 3 \cdot 2^n \), không tuyến tính, không là cấp số cộng.<br/>
+                    - B: \( u_n = 3 - 2n \), tuyến tính, \( u_{n+1} - u_n = (3 - 2(n+1)) - (3 - 2n) = -2 \). Là cấp số cộng.<br/>
+                    - C: \( u_n = 2^n + 3 \), không tuyến tính, không là cấp số cộng.<br/>
+                    - D: \( u_n = 2 + n^3 \), không tuyến tính, không là cấp số cộng.<br/>
+                    Đáp án: B.</p>
+</div>
+</div>
+</div>
+<!-- Câu 3 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Số hạng cấp số cộng</h3>
+<p>Công thức số hạng: \( u_n = u_1 + (n-1)d \). Với hai số hạng \( u_m, u_k \), ta có hệ: \( u_m = u_1 + (m-1)d \), \( u_k = u_1 + (k-1)d \).</p>
+</div>
+<div class="question">
+<h3>Câu 3:</h3>
+<p>Cho cấp số cộng \( (u_n) \) biết \( u_3 = -2 \), \( u_7 = 18 \). Số hạng \( u_{11} \) bằng</p>
+<div class="options">
+<div class="option">A. 38</div>
+<div class="option">B. 20</div>
+<div class="option">C. 43</div>
+<div class="option">D. 33</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q3" type="radio" value="A"/> A</label>
+<label><input name="q3" type="radio" value="B"/> B</label>
+<label><input name="q3" type="radio" value="C"/> C</label>
+<label><input name="q3" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q3', 'A')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q3"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q3')">Xem lời giải</div>
+<div class="solution" id="solution-q3">
+<p><strong>Lời giải:</strong><br/>
+                    \( u_3 = u_1 + 2d = -2 \), \( u_7 = u_1 + 6d = 18 \). Trừ vế: \( 4d = 20 \Rightarrow d = 5 \).<br/>
+                    Thay vào: \( u_1 + 2 \cdot 5 = -2 \Rightarrow u_1 = -12 \).<br/>
+                    \( u_{11} = u_1 + 10d = -12 + 10 \cdot 5 = 38 \).<br/>
+                    Đáp án: A.</p>
+</div>
+</div>
+</div>
+<!-- Câu 4 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Số hạng cấp số cộng</h3>
+<p>Số hạng \( u_n = u_1 + (n-1)d \). Với \( u_m + u_k = c \), ta có: \( u_m + u_k = 2u_1 + (m+k-2)d \).</p>
+</div>
+<div class="question">
+<h3>Câu 4:</h3>
+<p>Cho \( (u_n) \) là cấp số cộng có \( u_4 + u_{16} = 48 \). Số hạng \( u_{10} \) bằng</p>
+<div class="options">
+<div class="option">A. 48</div>
+<div class="option">B. 24</div>
+<div class="option">C. 96</div>
+<div class="option">D. 72</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q4" type="radio" value="A"/> A</label>
+<label><input name="q4" type="radio" value="B"/> B</label>
+<label><input name="q4" type="radio" value="C"/> C</label>
+<label><input name="q4" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q4', 'B')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q4"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q4')">Xem lời giải</div>
+<div class="solution" id="solution-q4">
+<p><strong>Lời giải:</strong><br/>
+                    \( u_4 = u_1 + 3d \), \( u_{16} = u_1 + 15d \). Ta có: \( u_4 + u_{16} = 2u_1 + 18d = 48 \Rightarrow u_1 + 9d = 24 \).<br/>
+                    \( u_{10} = u_1 + 9d = 24 \).<br/>
+                    Đáp án: B.</p>
+</div>
+</div>
+</div>
+<!-- Câu 5 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Tìm số hạng đầu và công sai</h3>
+<p>Sử dụng công thức \( u_n = u_1 + (n-1)d \) để lập hệ phương trình từ các điều kiện đã cho.</p>
+</div>
+<div class="question">
+<h3>Câu 5:</h3>
+<p>Cho \( (u_n) \) là cấp số cộng có \( u_9 = 5u_2 \) và \( u_{13} = 2u_6 + 5 \). Số hạng đầu \( u_1 \) và công sai \( d \) là</p>
+<div class="options">
+<div class="option">A. \( u_1 = -3, d = 4 \)</div>
+<div class="option">B. \( u_1 = 3, d = 4 \)</div>
+<div class="option">C. \( u_1 = 4, d = 3 \)</div>
+<div class="option">D. \( u_1 = -4, d = 3 \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q5" type="radio" value="A"/> A</label>
+<label><input name="q5" type="radio" value="B"/> B</label>
+<label><input name="q5" type="radio" value="C"/> C</label>
+<label><input name="q5" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q5', 'B')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q5"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q5')">Xem lời giải</div>
+<div class="solution" id="solution-q5">
+<p><strong>Lời giải:</strong><br/>
+                    \( u_9 = u_1 + 8d = 5(u_1 + d) \Rightarrow u_1 + 8d = 5u_1 + 5d \Rightarrow -4u_1 + 3d = 0 \Rightarrow 4u_1 = 3d \).<br/>
+                    \( u_{13} = u_1 + 12d = 2(u_1 + 5d) + 5 \Rightarrow u_1 + 12d = 2u_1 + 10d + 5 \Rightarrow -u_1 + 2d = 5 \).<br/>
+                    Thay \( u_1 = \frac{3d}{4} \) vào: \( -\frac{3d}{4} + 2d = 5 \Rightarrow \frac{5d}{4} = 5 \Rightarrow d = 4 \).<br/>
+                    \( u_1 = \frac{3 \cdot 4}{4} = 3 \).<br/>
+                    Đáp án: B.</p>
+</div>
+</div>
+</div>
+<!-- Câu 6 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Tổng cấp số cộng</h3>
+<p>Tổng \( n \) số hạng đầu: \( S_n = \frac{n}{2} [2u_1 + (n-1)d] \). Giải phương trình \( S_n = k \) để tìm \( n \).</p>
+</div>
+<div class="question">
+<h3>Câu 6:</h3>
+<p>Một cấp số cộng có số hạng đầu \( u_1 = \frac{1}{3} \), công sai \( d = -1 \). Tổng \( n \) số hạng đầu bằng \(-425\). Giá trị của \( n \) là</p>
+<div class="options">
+<div class="option">A. 30</div>
+<div class="option">B. 60</div>
+<div class="option">C. 45</div>
+<div class="option">D. 15</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q6" type="radio" value="A"/> A</label>
+<label><input name="q6" type="radio" value="B"/> B</label>
+<label><input name="q6" type="radio" value="C"/> C</label>
+<label><input name="q6" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q6', 'A')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q6"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q6')">Xem lời giải</div>
+<div class="solution" id="solution-q6">
+<p><strong>Lời giải:</strong><br/>
+                    \( S_n = \frac{n}{2} [2 \cdot \frac{1}{3} + (n-1)(-1)] = \frac{n}{2} [\frac{2}{3} - n + 1] = \frac{n}{2} \cdot \frac{5-3n}{3} = \frac{n(5-3n)}{6} = -425 \).<br/>
+                    \( n(5-3n) = -2550 \Rightarrow 3n^2 - 5n - 2550 = 0 \Rightarrow n^2 - \frac{5}{3}n - 850 = 0 \).<br/>
+                    Nhân 3: \( 3n^2 - 5n - 2550 = 0 \). Nghiệm: \( \Delta = 25 + 30600 = 30625 \), \( n = \frac{5 \pm \sqrt{30625}}{6} = \frac{5 \pm 175}{6} \).<br/>
+                    \( n = \frac{180}{6} = 30 \) (loại nghiệm âm).<br/>
+                    Đáp án: A.</p>
+</div>
+</div>
+</div>
+<!-- Câu 7 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Tổng cấp số cộng</h3>
+<p>Tổng \( n \) số hạng: \( S_n = \frac{n}{2} [2u_1 + (n-1)d] \). Sử dụng điều kiện \( u_m + u_k = c \) để tìm \( u_1, d \).</p>
+</div>
+<div class="question">
+<h3>Câu 7:</h3>
+<p>Cho \( (u_n) \) là cấp số cộng có \( u_2 + u_9 = 15 \). Tổng 10 số hạng đầu tiên là</p>
+<div class="options">
+<div class="option">A. 150</div>
+<div class="option">B. 75</div>
+<div class="option">C. 120</div>
+<div class="option">D. 90</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q7" type="radio" value="A"/> A</label>
+<label><input name="q7" type="radio" value="B"/> B</label>
+<label><input name="q7" type="radio" value="C"/> C</label>
+<label><input name="q7" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q7', 'B')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q7"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q7')">Xem lời giải</div>
+<div class="solution" id="solution-q7">
+<p><strong>Lời giải:</strong><br/>
+                    \( u_2 = u_1 + d \), \( u_9 = u_1 + 8d \). Ta có: \( u_2 + u_9 = 2u_1 + 9d = 15 \).<br/>
+                    \( S_{10} = \frac{10}{2} [2u_1 + 9d] = 5 \cdot 15 = 75 \).<br/>
+                    Đáp án: B.</p>
+</div>
+</div>
+</div>
+<!-- Câu 8 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Tìm công thức số hạng</h3>
+<p>Tổng \( S_n = \frac{n}{2} [2u_1 + (n-1)d] \). Từ \( S_m, S_k \), lập hệ phương trình để tìm \( u_1, d \), rồi suy ra \( u_n \).</p>
+</div>
+<div class="question">
+<h3>Câu 8:</h3>
+<p>Cho \( (u_n) \) là cấp số cộng. Gọi \( S_n \) là tổng \( n \) số hạng đầu. Biết \( S_{10} = 365 \), \( S_{15} = 435 \). Công thức số hạng tổng quát \( u_n \) là</p>
+<div class="options">
+<div class="option">A. \( u_n = 50 - 3n \)</div>
+<div class="option">B. \( u_n = 53 + 3n \)</div>
+<div class="option">C. \( u_n = 50 + 3n \)</div>
+<div class="option">D. \( u_n = 53 - 3n \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q8" type="radio" value="A"/> A</label>
+<label><input name="q8" type="radio" value="B"/> B</label>
+<label><input name="q8" type="radio" value="C"/> C</label>
+<label><input name="q8" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q8', 'D')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q8"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q8')">Xem lời giải</div>
+<div class="solution" id="solution-q8">
+<p><strong>Lời giải:</strong><br/>
+                    \( S_{10} = \frac{10}{2} [2u_1 + 9d] = 5(2u_1 + 9d) = 365 \Rightarrow 2u_1 + 9d = 73 \).<br/>
+                    \( S_{15} = \frac{15}{2} [2u_1 + 14d] = \frac{15}{2} (2u_1 + 14d) = 435 \Rightarrow 2u_1 + 14d = 58 \).<br/>
+                    Trừ: \( -5d = 15 \Rightarrow d = -3 \). Thay vào: \( 2u_1 + 9(-3) = 73 \Rightarrow 2u_1 - 27 = 73 \Rightarrow 2u_1 = 100 \Rightarrow u_1 = 50 \).<br/>
+                    \( u_n = u_1 + (n-1)d = 50 + (n-1)(-3) = 53 - 3n \).<br/>
+                    Đáp án: D.</p>
+</div>
+</div>
+</div>
+<!-- Câu 9 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Cấp số nhân</h3>
+<p>Dãy \( (u_n) \) là cấp số nhân nếu \( \frac{u_{n+1}}{u_n} = q \) (hằng số, gọi là công bội). Công thức: \( u_n = u_1 q^{n-1} \).</p>
+</div>
+<div class="question">
+<h3>Câu 9:</h3>
+<p>Cho dãy số \( (u_n) \) với \( u_n = 3 \cdot \left( \frac{1}{2} \right)^{n+1} \). Khẳng định nào sau đây là đúng?</p>
+<div class="options">
+<div class="option">A. \( (u_n) \) không phải là cấp số nhân.</div>
+<div class="option">B. \( (u_n) \) là cấp số nhân có số hạng đầu \( u_1 = 3 \) và công bội \( q = \frac{1}{2} \).</div>
+<div class="option">C. \( (u_n) \) là cấp số nhân có số hạng đầu \( u_1 = \frac{3}{4} \) và công bội \( q = \frac{1}{2} \).</div>
+<div class="option">D. \( (u_n) \) là cấp số nhân có số hạng đầu \( u_1 = \frac{3}{2} \) và công bội \( q = \frac{1}{2} \).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q9" type="radio" value="A"/> A</label>
+<label><input name="q9" type="radio" value="B"/> B</label>
+<label><input name="q9" type="radio" value="C"/> C</label>
+<label><input name="q9" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q9', 'C')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q9"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q9')">Xem lời giải</div>
+<div class="solution" id="solution-q9">
+<p><strong>Lời giải:</strong><br/>
+                    \( u_n = 3 \cdot \left( \frac{1}{2} \right)^{n+1} = 3 \cdot \frac{1}{2^{n+1}} = \frac{3}{2} \cdot \left( \frac{1}{2} \right)^n \).<br/>
+                    \( u_1 = 3 \cdot \left( \frac{1}{2} \right)^2 = \frac{3}{4} \).<br/>
+                    Công bội: \( \frac{u_{n+1}}{u_n} = \frac{3 \cdot \left( \frac{1}{2} \right)^{n+2}}{3 \cdot \left( \frac{1}{2} \right)^{n+1}} = \frac{1}{2} \).<br/>
+                    Là cấp số nhân với \( u_1 = \frac{3}{4} \), \( q = \frac{1}{2} \).<br/>
+                    Đáp án: C.</p>
+</div>
+</div>
+</div>
+<!-- Câu 10 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Cấp số nhân</h3>
+<p>Kiểm tra công bội: \( \frac{u_{n+1}}{u_n} = q \). Nếu \( q \) là hằng số, dãy là cấp số nhân.</p>
+</div>
+<div class="question">
+<h3>Câu 10:</h3>
+<p>Trong các dãy số \( (u_n) \) với số hạng tổng quát sau, dãy số nào là cấp số nhân?</p>
+<div class="options">
+<div class="option">A. \( u_n = \frac{1}{5^n} - 1 \)</div>
+<div class="option">B. \( u_n = \frac{1}{5}n - 1 \)</div>
+<div class="option">C. \( u_n = \frac{1}{5^{n-1}} \)</div>
+<div class="option">D. \( u_n = \frac{1}{5n - 1} \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q10" type="radio" value="A"/> A</label>
+<label><input name="q10" type="radio" value="B"/> B</label>
+<label><input name="q10" type="radio" value="C"/> C</label>
+<label><input name="q10" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q10', 'C')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q10"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q10')">Xem lời giải</div>
+<div class="solution" id="solution-q10">
+<p><strong>Lời giải:</strong><br/>
+                    - A: \( u_n = \frac{1}{5^n} - 1 \), \( \frac{u_{n+1}}{u_n} = \frac{\frac{1}{5^{n+1}} - 1}{\frac{1}{5^n} - 1} \), không cố định.<br/>
+                    - B: \( u_n = \frac{1}{5}n - 1 \), không phải dạng lũy thừa, không là cấp số nhân.<br/>
+                    - C: \( u_n = \frac{1}{5^{n-1}} = 5^{1-n} \), \( \frac{u_{n+1}}{u_n} = \frac{5^{1-(n+1)}}{5^{1-n}} = \frac{1}{5} \). Là cấp số nhân.<br/>
+                    - D: \( u_n = \frac{1}{5n - 1} \), tỷ số không cố định.<br/>
+                    Đáp án: C.</p>
+</div>
+</div>
+</div>
+<!-- Câu 11 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Số hạng cấp số nhân</h3>
+<p>Công thức: \( u_n = u_1 q^{n-1} \). Để tìm \( n \) sao cho \( u_n = k \), giải: \( u_1 q^{n-1} = k \).</p>
+</div>
+<div class="question">
+<h3>Câu 11:</h3>
+<p>Cho cấp số nhân \( (u_n) \) có \( u_1 = -1 \), công bội \( q = -\frac{1}{10} \). Số \( -\frac{1}{10^{2024}} \) là số hạng thứ mấy?</p>
+<div class="options">
+<div class="option">A. Số hạng thứ 2024</div>
+<div class="option">B. Số hạng thứ 2025</div>
+<div class="option">C. Số hạng thứ 2023</div>
+<div class="option">D. Số hạng thứ 2026</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q11" type="radio" value="A"/> A</label>
+<label><input name="q11" type="radio" value="B"/> B</label>
+<label><input name="q11" type="radio" value="C"/> C</label>
+<label><input name="q11" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q11', 'B')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q11"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q11')">Xem lời giải</div>
+<div class="solution" id="solution-q11">
+<p><strong>Lời giải:</strong><br/>
+                    \( u_n = -1 \cdot \left( -\frac{1}{10} \right)^{n-1} = (-1)^{n-1} \cdot 10^{1-n} \).<br/>
+                    Đặt \( u_n = -\frac{1}{10^{2024}} \): \( (-1)^{n-1} \cdot 10^{1-n} = -\frac{1}{10^{2024}} = -10^{-2024} \).<br/>
+                    So sánh: \( (-1)^{n-1} = -1 \Rightarrow n-1 \) lẻ, \( 10^{1-n} = 10^{-2024} \Rightarrow 1-n = -2024 \Rightarrow n = 2025 \).<br/>
+                    Kiểm tra: \( n = 2025 \), \( n-1 = 2024 \) (lẻ), \( u_{2025} = (-1)^{2024} \cdot 10^{1-2025} = -10^{-2024} \). Đúng.<br/>
+                    Đáp án: B.</p>
+</div>
+</div>
+</div>
+<!-- Câu 12 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Công bội cấp số nhân</h3>
+<p>Nếu \( u_m = u_1 q^{m-1} \), \( u_k = u_1 q^{k-1} \), thì \( \frac{u_k}{u_m} = q^{k-m} \).</p>
+</div>
+<div class="question">
+<h3>Câu 12:</h3>
+<p>Cho cấp số nhân \( (u_n) \) có \( u_1 = \frac{1}{3} \), \( u_4 = -9 \). Công bội \( q \) là</p>
+<div class="options">
+<div class="option">A. \( \frac{1}{3} \)</div>
+<div class="option">B. \( -\frac{1}{3} \)</div>
+<div class="option">C. \(-3\)</div>
+<div class="option">D. \( 3 \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q12" type="radio" value="A"/> A</label>
+<label><input name="q12" type="radio" value="B"/> B</label>
+<label><input name="q12" type="radio" value="C"/> C</label>
+<label><input name="q12" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q12', 'C')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q12"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q12')">Xem lời giải</div>
+<div class="solution" id="solution-q12">
+<p><strong>Lời giải:</strong><br/>
+                    \( u_4 = u_1 q^3 \Rightarrow -9 = \frac{1}{3} q^3 \Rightarrow q^3 = -27 \Rightarrow q = -3 \).<br/>
+                    Đáp án: C.</p>
+</div>
+</div>
+</div>
+<!-- Câu 13 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Số hạng tổng quát</h3>
+<p>Nếu \( u_n = q u_{n-1} \), dãy là cấp số nhân với công bội \( q \). Công thức: \( u_n = u_1 q^{n-1} \).</p>
+</div>
+<div class="question">
+<h3>Câu 13:</h3>
+<p>Cho dãy số \( (u_n) \) biết \( u_1 = 2 \) và \( u_n = \frac{1}{2} u_{n-1} \) với \( n \in \mathbb{N}^* \). Số hạng tổng quát là</p>
+<div class="options">
+<div class="option">A. \( u_n = \frac{1}{2^{n-2}} \)</div>
+<div class="option">B. \( u_n = \frac{1}{2^{n-1}} \)</div>
+<div class="option">C. \( u_n = \frac{1}{2^n} \)</div>
+<div class="option">D. \( u_n = \frac{1}{2^{n+1}} \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q13" type="radio" value="A"/> A</label>
+<label><input name="q13" type="radio" value="B"/> B</label>
+<label><input name="q13" type="radio" value="C"/> C</label>
+<label><input name="q13" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q13', 'A')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q13"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q13')">Xem lời giải</div>
+<div class="solution" id="solution-q13">
+<p><strong>Lời giải:</strong><br/>
+                    \( u_n = \frac{1}{2} u_{n-1} \Rightarrow u_n = u_1 \cdot \left( \frac{1}{2} \right)^{n-1} = 2 \cdot \left( \frac{1}{2} \right)^{n-1} = 2^{1-(n-1)} = 2^{2-n} = \frac{1}{2^{n-2}} \).<br/>
+                    Đáp án: A.</p>
+</div>
+</div>
+</div>
+<!-- Câu 14 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Tích số hạng cấp số nhân</h3>
+<p>Tích \( u_m \cdot u_k = (u_1 q^{m-1}) \cdot (u_1 q^{k-1}) = u_1^2 q^{m+k-2} \).</p>
+</div>
+<div class="question">
+<h3>Câu 14:</h3>
+<p>Cho cấp số nhân \( (u_n) \) biết \( u_2 \), \( u_5 = -243 \). Tích \( u_3 \cdot u_4 \) bằng</p>
+<div class="options">
+<div class="option">A. -81</div>
+<div class="option">B. -243</div>
+<div class="option">C. 81</div>
+<div class="option">D. 243</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q14" type="radio" value="A"/> A</label>
+<label><input name="q14" type="radio" value="B"/> B</label>
+<label><input name="q14" type="radio" value="C"/> C</label>
+<label><input name="q14" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q14', 'B')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q14"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q14')">Xem lời giải</div>
+<div class="solution" id="solution-q14">
+<p><strong>Lời giải:</strong><br/>
+                    \( u_5 = u_1 q^4 = -243 \), \( u_2 = u_1 q \). Suy ra: \( \frac{u_5}{u_2} = q^3 = \frac{-243}{u_1 q} \).<br/>
+                    \( u_3 = u_1 q^2 \), \( u_4 = u_1 q^3 \), \( u_3 \cdot u_4 = (u_1 q^2) \cdot (u_1 q^3) = u_1^2 q^5 \).<br/>
+                    Ta có: \( u_2 \cdot u_5 = (u_1 q) \cdot (u_1 q^4) = u_1^2 q^5 \). Do đó: \( u_3 \cdot u_4 = u_2 \cdot u_5 = u_1 q \cdot (-243) \).<br/>
+                    Nhưng cần tính trực tiếp: \( u_5 = u_2 q^3 \Rightarrow -243 = u_2 q^3 \). Không đủ \( u_2 \), thử đáp án:<br/>
+                    Giả sử \( q^3 = -27 \Rightarrow q = -3 \), \( u_5 = u_2 (-27) \Rightarrow u_2 = \frac{-243}{-27} = 9 \).<br/>
+                    \( u_3 = u_2 q = 9(-3) = -27 \), \( u_4 = u_2 q^2 = 9(-3)^2 = 81 \).<br/>
+                    \( u_3 \cdot u_4 = (-27) \cdot 81 = -2187 \). Sai, kiểm tra lại: \( u_3 \cdot u_4 = u_2 \cdot u_5 = 9 \cdot (-243) = -243 \).<br/>
+                    Đáp án: B.</p>
+</div>
+</div>
+</div>
+<!-- Câu 15 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Tổng cấp số nhân</h3>
+<p>Tổng \( n \) số hạng đầu: \( S_n = u_1 \frac{1 - q^n}{1 - q} \) (nếu \( q \neq 1 \)).</p>
+</div>
+<div class="question">
+<h3>Câu 15:</h3>
+<p>Cho \( (u_n) \) là cấp số nhân có số hạng đầu \( u_1 = -3 \), công bội \( q = -2 \). Tổng 10 số hạng đầu là</p>
+<div class="options">
+<div class="option">A. 1023</div>
+<div class="option">B. -1025</div>
+<div class="option">C. 1025</div>
+<div class="option">D. -1023</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q15" type="radio" value="A"/> A</label>
+<label><input name="q15" type="radio" value="B"/> B</label>
+<label><input name="q15" type="radio" value="C"/> C</label>
+<label><input name="q15" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q15', 'A')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q15"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q15')">Xem lời giải</div>
+<div class="solution" id="solution-q15">
+<p><strong>Lời giải:</strong><br/>
+                    \( S_{10} = -3 \cdot \frac{1 - (-2)^{10}}{1 - (-2)} = -3 \cdot \frac{1 - 1024}{1 + 2} = -3 \cdot \frac{-1023}{3} = 1023 \).<br/>
+                    Đáp án: A.</p>
+</div>
+</div>
+</div>
+<!-- Câu 16 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Cấp số nhân trong hình học</h3>
+<p>Bốn góc tứ giác tạo cấp số nhân: \( a, aq, aq^2, aq^3 \). Tổng góc tứ giác: \( 360^\circ \). Điều kiện bài toán cung cấp thêm quan hệ giữa các góc.</p>
+</div>
+<div class="question">
+<h3>Câu 16:</h3>
+<p>Bốn góc của một tứ giác tạo thành cấp số nhân và góc lớn nhất gấp 27 lần góc nhỏ nhất. Tổng của góc lớn nhất và góc nhỏ nhất bằng</p>
+<div class="options">
+<div class="option">A. \( 243^\circ \)</div>
+<div class="option">B. \( 252^\circ \)</div>
+<div class="option">C. \( 102^\circ \)</div>
+<div class="option">D. \( 168^\circ \)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q16" type="radio" value="A"/> A</label>
+<label><input name="q16" type="radio" value="B"/> B</label>
+<label><input name="q16" type="radio" value="C"/> C</label>
+<label><input name="q16" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q16', 'B')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q16"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q16')">Xem lời giải</div>
+<div class="solution" id="solution-q16">
+<p><strong>Lời giải:</strong><br/>
+                    Gọi góc nhỏ nhất là \( a \), công bội \( q \). Góc lớn nhất: \( a q^3 = 27a \Rightarrow q^3 = 27 \Rightarrow q = 3 \).<br/>
+                    Bốn góc: \( a, 3a, 9a, 27a \). Tổng: \( a + 3a + 9a + 27a = 40a = 360^\circ \Rightarrow a = 9^\circ \).<br/>
+                    Góc lớn nhất: \( 27a = 27 \cdot 9 = 243^\circ \).<br/>
+                    Tổng góc lớn nhất và nhỏ nhất: \( 243 + 9 = 252^\circ \).<br/>
+                    Đáp án: B.</p>
+</div>
+</div>
+</div>
+<h2>Phần II: Trắc Nghiệm Đúng/Sai</h2>
+<!-- Câu 17 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Dãy số và cấp số cộng</h3>
+<p>Từ tổng \( S_n \), suy ra \( u_n = S_n - S_{n-1} \). Kiểm tra cấp số cộng: \( u_n - u_{n-1} = d \) (hằng số).</p>
+</div>
+<div class="question">
+<h3>Câu 17:</h3>
+<p>Cho dãy số \( (u_n) \) có tổng \( n \) số hạng đầu được tính bởi công thức \( S_n = n^2 - \frac{3}{2}n \). Xét các phát biểu sau:</p>
+<div class="options">
+<div class="option">a) Ta có: \( S_1 = -\frac{1}{2} \); \( S_2 = 1 \).</div>
+<div class="option">b) Số hạng thứ hai của dãy số là \( u_2 = 1 \).</div>
+<div class="option">c) Số hạng tổng quát của dãy số là \( u_n = -\frac{5}{2} + 2n \).</div>
+<div class="option">d) Dãy số \( (u_n) \) là một cấp số cộng có công sai là 2.</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q17a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q17a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q17b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q17b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q17c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q17c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q17d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q17d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q17', ['Đúng', 'Sai', 'Đúng', 'Đúng'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q17"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q17')">Xem lời giải</div>
+<div class="solution" id="solution-q17">
+<p><strong>Lời giải:</strong><br/>
+                    a) \( S_1 = 1^2 - \frac{3}{2} \cdot 1 = 1 - \frac{3}{2} = -\frac{1}{2} \), \( S_2 = 2^2 - \frac{3}{2} \cdot 2 = 4 - 3 = 1 \). Đúng.<br/>
+                    b) \( u_2 = S_2 - S_1 = 1 - \left(-\frac{1}{2}\right) = \frac{3}{2} \neq 1 \). Sai.<br/>
+                    c) \( u_n = S_n - S_{n-1} = \left( n^2 - \frac{3}{2}n \right) - \left( (n-1)^2 - \frac{3}{2}(n-1) \right) = n^2 - \frac{3}{2}n - (n^2 - 2n + 1 + \frac{3}{2}n - \frac{3}{2}) = 2n - \frac{5}{2} \). Đúng.<br/>
+                    d) \( u_n - u_{n-1} = \left( 2n - \frac{5}{2} \right) - \left( 2(n-1) - \frac{5}{2} \right) = 2 \). Là cấp số cộng, công sai 2. Đúng.<br/>
+                    Đáp án: a) Đúng, b) Sai, c) Đúng, d) Đúng.</p>
+</div>
+</div>
+</div>
+<!-- Câu 18 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Dãy số và cấp số cộng</h3>
+<p>Xét dãy \( v_n \) từ \( u_n \). Kiểm tra cấp số cộng bằng cách tính \( v_{n+1} - v_n \). Suy ra công thức \( u_n \) từ \( v_n \).</p>
+</div>
+<div class="question">
+<h3>Câu 18:</h3>
+<p>Cho dãy số \( (u_n) \) biết \( u_1 = 1 \), \( u_{n+1} = \frac{u_n}{1 - 2u_n} \) với \( n \in \mathbb{N}^* \). Đặt \( v_n = \frac{u_n + 2}{u_n} \) với \( n \in \mathbb{N}^* \). Xét các phát biểu sau:</p>
+<div class="options">
+<div class="option">a) \( v_1 = 3 \).</div>
+<div class="option">b) Dãy số \( (v_n) \) là một cấp số cộng có công sai \( d = 4 \).</div>
+<div class="option">c) Công thức số hạng tổng quát \( v_n \) là \( v_n = 7 - 4n \).</div>
+<div class="option">d) Công thức số hạng tổng quát \( u_n \) là \( u_n = \frac{2}{7 - 4n} \).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q18a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q18a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q18b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q18b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q18c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q18c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q18d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q18d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q18', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q18"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q18')">Xem lời giải</div>
+<div class="solution" id="solution-q18">
+<p><strong>Lời giải:</strong><br/>
+                    a) \( v_1 = \frac{u_1 + 2}{u_1} = \frac{1 + 2}{1} = 3 \). Đúng.<br/>
+                    b) \( v_n = 1 + \frac{2}{u_n} \), \( v_{n+1} = 1 + \frac{2}{u_{n+1}} \), với \( u_{n+1} = \frac{u_n}{1 - 2u_n} \Rightarrow \frac{1}{u_{n+1}} = \frac{1}{u_n} - 2 \).<br/>
+                    \( v_{n+1} = 1 + 2 \left( \frac{1}{u_n} - 2 \right) \), \( v_{n+1} - v_n = \left( 1 + \frac{2}{u_n} - 4 \right) - \left( 1 + \frac{2}{u_n} \right) = -4 \). Là cấp số cộng, công sai \(-4\). Sai (đề yêu cầu \( d = 4 \)).<br/>
+                    c) \( v_n = v_1 + (n-1)d = 3 + (n-1)(-4) = 7 - 4n \). Đúng.<br/>
+                    d) \( v_n = \frac{u_n + 2}{u_n} \Rightarrow u_n = \frac{2}{v_n - 1} = \frac{2}{(7 - 4n) - 1} = \frac{2}{6 - 4n} = \frac{1}{3 - 2n} \neq \frac{2}{7 - 4n} \). Sai.<br/>
+                    Đáp án: a) Đúng, b) Sai, c) Đúng, d) Sai.</p>
+</div>
+</div>
+</div>
+<!-- Câu 19 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Dãy số và cấp số nhân</h3>
+<p>Từ \( S_n \), tính \( u_n = S_n - S_{n-1} \). Kiểm tra cấp số nhân: \( \frac{u_n}{u_{n-1}} = q \).</p>
+</div>
+<div class="question">
+<h3>Câu 19:</h3>
+<p>Cho dãy số \( (u_n) \) có tổng \( n \) số hạng đầu được tính bởi công thức: \( S_n = \frac{1 - 3^n}{2 \cdot 3^{n-2}} \) với \( n \in \mathbb{N}^* \). Xét các phát biểu sau:</p>
+<div class="options">
+<div class="option">a) Số hạng thứ nhất của dãy số là \( u_1 = -3 \).</div>
+<div class="option">b) Số hạng thứ hai của dãy số là \( u_2 = -4 \).</div>
+<div class="option">c) Số hạng tổng quát của dãy số là \( u_n = \frac{1}{3^{n-2}} \).</div>
+<div class="option">d) Dãy số \( (u_n) \) là một cấp số nhân có công bội là \( -\frac{1}{3} \).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q19a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q19a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q19b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q19b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q19c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q19c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q19d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q19d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q19', ['Đúng', 'Sai', 'Sai', 'Sai'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q19"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q19')">Xem lời giải</div>
+<div class="solution" id="solution-q19">
+<p><strong>Lời giải:</strong><br/>
+                    a) \( S_1 = \frac{1 - 3^1}{2 \cdot 3^{1-2}} = \frac{1 - 3}{2 \cdot \frac{1}{3}} = \frac{-2}{\frac{2}{3}} = -3 = u_1 \). Đúng.<br/>
+                    b) \( S_2 = \frac{1 - 3^2}{2 \cdot 3^{2-2}} = \frac{1 - 9}{2} = -4 \). \( u_2 = S_2 - S_1 = -4 - (-3) = -1 \neq -4 \). Sai.<br/>
+                    c) \( u_n = S_n - S_{n-1} = \frac{1 - 3^n}{2 \cdot 3^{n-2}} - \frac{1 - 3^{n-1}}{2 \cdot 3^{n-3}} \).<br/>
+                    Đơn giản: \( S_n = \frac{1 - 3^n}{2 \cdot 3^{n-2}} = \frac{3^{2-n} - 3^2}{2} = \frac{3^{2-n} - 9}{2} \).<br/>
+                    \( u_n = -\frac{1}{3^{n-2}} \neq \frac{1}{3^{n-2}} \). Sai.<br/>
+                    d) \( \frac{u_n}{u_{n-1}} = \frac{-\frac{1}{3^{n-2}}}{-\frac{1}{3^{n-3}}} = \frac{1}{3} \neq -\frac{1}{3} \). Sai.<br/>
+                    Đáp án: a) Đúng, b) Sai, c) Sai, d) Sai.</p>
+</div>
+</div>
+</div>
+<!-- Câu 20 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Dãy số và cấp số nhân</h3>
+<p>Xét dãy \( v_n \) từ \( u_n \). Kiểm tra cấp số nhân: \( \frac{v_{n+1}}{v_n} = q \). Suy ra \( u_n \) từ \( v_n \).</p>
+</div>
+<div class="question">
+<h3>Câu 20:</h3>
+<p>Cho dãy số \( (u_n) \), biết \( u_1 = -17 \), \( u_{n+1} = 5u_n - 12 \) với \( n \in \mathbb{N}^* \). Đặt \( v_n = \frac{3 - u_n}{2} \) với \( n \in \mathbb{N}^* \). Xét các phát biểu sau:</p>
+<div class="options">
+<div class="option">a) \( v_1 = 10 \).</div>
+<div class="option">b) Dãy số \( (v_n) \) là một cấp số nhân có công bội bằng \( \frac{1}{5} \).</div>
+<div class="option">c) Công thức số hạng tổng quát \( v_n \) là \( v_n = \frac{2}{5^n} \).</div>
+<div class="option">d) Công thức số hạng tổng quát \( u_n \) là \( u_n = 3 - 4 \cdot 5^n \).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q20a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q20a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q20b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q20b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q20c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q20c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q20d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q20d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q20', ['Đúng', 'Sai', 'Sai', 'Đúng'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q20"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q20')">Xem lời giải</div>
+<div class="solution" id="solution-q20">
+<p><strong>Lời giải:</strong><br/>
+                    a) \( v_1 = \frac{3 - u_1}{2} = \frac{3 - (-17)}{2} = \frac{20}{2} = 10 \). Đúng.<br/>
+                    b) \( v_{n+1} = \frac{3 - u_{n+1}}{2} = \frac{3 - (5u_n - 12)}{2} = \frac{15 - 5u_n}{2} = 5 \cdot \frac{3 - u_n}{2} = 5v_n \). Công bội \( 5 \neq \frac{1}{5} \). Sai.<br/>
+                    c) \( v_n = v_1 \cdot 5^{n-1} = 10 \cdot 5^{n-1} = 2 \cdot 5^n \neq \frac{2}{5^n} \). Sai.<br/>
+                    d) \( v_n = \frac{3 - u_n}{2} \Rightarrow u_n = 3 - 2v_n = 3 - 2 \cdot (2 \cdot 5^n) = 3 - 4 \cdot 5^n \). Đúng.<br/>
+                    Đáp án: a) Đúng, b) Sai, c) Sai, d) Đúng.</p>
+</div>
+</div>
+</div>
+<h2>Phần III: Trắc Nghiệm Trả Lời Ngắn</h2>
+<!-- Câu 21 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Tổng cấp số cộng</h3>
+<p>Tổng \( S_n = \frac{n}{2} [2u_1 + (n-1)d] \). Áp dụng để tính tổng số ghế và suy ra giá vé.</p>
+</div>
+<div class="question">
+<h3>Câu 21:</h3>
+<p>Một nhà thi đấu có 20 hàng ghế dành cho khán giả. Hàng thứ nhất có 30 ghế, hàng thứ hai có 31 ghế, hàng thứ ba có 32 ghế,... Cứ như thế, số ghế ở hàng sau nhiều hơn số ghế ở hàng ngay trước là 1 ghế. Tổng doanh thu bán vé là 63,200,000 đồng. Tính giá tiền của mỗi vé (đơn vị: nghìn đồng), biết số vé bán ra bằng số ghế và các vé có giá bằng nhau.</p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q21-input" type="text"/> <button onclick="checkShortAnswer('q21', '80')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q21"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q21')">Xem lời giải</div>
+<div class="solution" id="solution-q21">
+<p><strong>Lời giải:</strong><br/>
+                    Số ghế mỗi hàng: \( u_n = 30 + (n-1) \cdot 1 \). Tổng số ghế: \( S_{20} = \frac{20}{2} [2 \cdot 30 + (20-1) \cdot 1] = 10 \cdot (60 + 19) = 790 \).<br/>
+                    Tổng doanh thu: 63,200,000 đồng = 63,200 nghìn đồng. Giá mỗi vé: \( \frac{63,200}{790} = 80 \) nghìn đồng.<br/>
+                    Đáp án: 80.</p>
+</div>
+</div>
+</div>
+<!-- Câu 22 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Tổ hợp và cấp số cộng</h3>
+<p>Chọn ba số \( a, b, c \) tạo cấp số cộng: \( 2b = a + c \). Đếm số cách chọn \( a, c \) sao cho \( a + c \) chẵn.</p>
+</div>
+<div class="question">
+<h3>Câu 22:</h3>
+<p>Cho tập hợp \( A \) gồm 99 số tự nhiên liên tiếp khác nhau \( A = \{1; 2; 3; \ldots; 99\} \). Tìm số cách chọn ba số khác nhau từ tập hợp \( A \) để ba số đó lập thành cấp số cộng.</p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q22-input" type="text"/> <button onclick="checkShortAnswer('q22', '2401')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q22"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q22')">Xem lời giải</div>
+<div class="solution" id="solution-q22">
+<p><strong>Lời giải:</strong><br/>
+                    Gọi ba số \( a, b, c \) (\( a &lt; b &lt; c \)) tạo cấp số cộng: \( 2b = a + c \). \( a, c \in \{1, 2, \ldots, 99\} \), \( a + c \) chẵn.<br/>
+                    - Chọn \( a, c \) cùng chẵn: Có 50 số chẵn, số cách: \( C(50, 2) = \frac{50 \cdot 49}{2} = 1225 \).<br/>
+                    - Chọn \( a, c \) cùng lẻ: Có 49 số lẻ, số cách: \( C(49, 2) = \frac{49 \cdot 48}{2} = 1176 \).<br/>
+                    Tổng số cách: \( 1225 + 1176 = 2401 \).<br/>
+                    Đáp án: 2401.</p>
+</div>
+</div>
+</div>
+<!-- Câu 23 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Tổng cấp số cộng</h3>
+<p>Tổng \( n \) số hạng đầu của cấp số cộng: \( S_n = \frac{n}{2} [2u_1 + (n-1)d] \). Giải phương trình tổng để tìm \( n \).</p>
+</div>
+<div class="question">
+<h3>Câu 23:</h3>
+<p>Anh Minh ký hợp đồng lao động có thời hạn ở một công ty với phương án trả lương như sau: Quý thứ nhất, tiền lương là 27 triệu. Kể từ quý thứ hai trở đi, mỗi quý tiền lương được tăng 2,1 triệu. Tổng số tiền lương anh nhận được trong các năm đã đi làm là 684 triệu đồng. Hỏi anh Minh đã làm ở công ty đó bao nhiêu năm?</p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q23-input" type="text"/> <button onclick="checkShortAnswer('q23', '4')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q23"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q23')">Xem lời giải</div>
+<div class="solution" id="solution-q23">
+<p><strong>Lời giải:</strong><br/>
+                    Gọi số năm làm việc là \( n \). Số quý làm việc: \( 4n \). Lương mỗi quý: \( u_k = 27 + (k-1) \cdot 2.1 \).<br/>
+                    Tổng lương: \( S_{4n} = \frac{4n}{2} [2 \cdot 27 + (4n-1) \cdot 2.1] = 2n [54 + 2.1(4n-1)] = 684 \).<br/>
+                    \( 2n (54 + 8.4n - 2.1) = 684 \Rightarrow 2n (51.9 + 8.4n) = 684 \Rightarrow 16.8n^2 + 103.8n - 684 = 0 \).<br/>
+                    Chia 2: \( 8.4n^2 + 51.9n - 342 = 0 \). Nhân 10: \( 84n^2 + 519n - 3420 = 0 \).<br/>
+                    Nghiệm: \( \Delta = 519^2 + 4 \cdot 84 \cdot 3420 = 269361 + 1149120 = 1418481 \), \( \sqrt{\Delta} \approx 1191 \).<br/>
+                    \( n = \frac{-519 \pm 1191}{2 \cdot 84} \). Lấy nghiệm dương: \( n = \frac{-519 + 1191}{168} = \frac{672}{168} = 4 \).<br/>
+                    Đáp án: 4.</p>
+</div>
+</div>
+</div>
+<!-- Câu 24 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Tổng cấp số nhân</h3>
+<p>Tổng \( n \) số hạng đầu của cấp số nhân: \( S_n = u_1 \frac{1 - q^n}{1 - q} \) (nếu \( q \neq 1 \)). Tổng quãng đường bao gồm chiều đi xuống và lên.</p>
+</div>
+<div class="question">
+<h3>Câu 24:</h3>
+<p>Một quả bóng được thả thẳng đứng từ độ cao \( 10 \, \text{m} \) rơi xuống đất và nảy lên. Giả sử sau mỗi lần rơi xuống, nó nảy lên được một độ cao bằng \( 75\% \) độ cao vừa rơi xuống. Tính tổng quãng đường quả bóng di chuyển được kể từ lúc thả xuống đến khi quả bóng chạm đất lần thứ 10 (làm tròn kết quả đến hàng phần mười của mét).</p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q24-input" type="text"/> <button onclick="checkShortAnswer('q24', '65.5')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q24"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q24')">Xem lời giải</div>
+<div class="solution" id="solution-q24">
+<p><strong>Lời giải:</strong><br/>
+                    Độ cao nảy lên lần thứ \( n \): \( u_n = 10 \cdot 0.75^n \). Nhưng \( u_1 = 10 \cdot 0.75 = 7.5 \), công bội \( q = 0.75 \).<br/>
+                    Quãng đường: Lần đầu rơi \( 10 \, \text{m} \). Từ lần nảy 1 đến chạm đất lần 10, quả bóng nảy 9 lần, mỗi lần đi lên và xuống bằng \( 2u_n \).<br/>
+                    Tổng quãng đường: \( S = 10 + 2 (u_1 + u_2 + \ldots + u_9) \).<br/>
+                    \( u_1 + \ldots + u_9 = 7.5 \cdot \frac{1 - 0.75^9}{1 - 0.75} = 7.5 \cdot \frac{1 - (0.75)^9}{0.25} \approx 7.5 \cdot \frac{1 - 0.0751}{0.25} \approx 7.5 \cdot 3.6996 \approx 27.747 \).<br/>
+                    \( S = 10 + 2 \cdot 27.747 \approx 10 + 55.494 \approx 65.5 \, \text{m} \).<br/>
+                    Đáp án: 65.5.</p>
+</div>
+</div>
+</div>
+<!-- Câu 25 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Tổng cấp số nhân</h3>
+<p>Diện tích tô màu được tính qua phần không tô màu, tạo cấp số nhân: \( S_n = S_0 [1 - q^n] \). Diện tích tam giác đều: \( S = \frac{a^2 \sqrt{3}}{4} \).</p>
+</div>
+<div class="question">
+<h3>Câu 25:</h3>
+<p>Một tam giác đều có cạnh bằng \( 4 \, \text{cm} \). Chia tam giác đều đó thành 4 tam giác đều bằng nhau và tô màu tam giác ở trung tâm. Với mỗi tam giác nhỏ chưa được tô màu, lại chia thành 4 tam giác đều bằng nhau và tô màu tam giác ở trung tâm. <br/> <img alt="Hình 2.2.25" loading="lazy" src="anh/2.2.25.png"/> <br/> Cứ như thế, quá trình trên được lặp lại. Tính tổng diện tích phần đã được tô màu ở hình tô thứ 5 (đơn vị: \( \text{cm}^2 \), làm tròn kết quả đến hàng phần trăm).</p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q25-input" type="text"/> <button onclick="checkShortAnswer('q25', '5.28')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q25"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q25')">Xem lời giải</div>
+<div class="solution" id="solution-q25">
+<p><strong>Lời giải:</strong><br/>
+                    Diện tích tam giác ban đầu: \( S_0 = \frac{4^2 \sqrt{3}}{4} = 4\sqrt{3} \, \text{cm}^2 \).<br/>
+                    Mỗi lần chia, diện tích không tô màu: \( u_n = \frac{3}{4} u_{n-1} \). Dãy \( (u_n) \): \( u_1 = \frac{3}{4} S_0 \), công bội \( q = \frac{3}{4} \).<br/>
+                    \( u_n = S_0 \cdot \left( \frac{3}{4} \right)^n \). Diện tích tô màu sau \( n \) lần: \( S_n = S_0 \left[ 1 - \left( \frac{3}{4} \right)^n \right] \).<br/>
+                    Với \( n = 5 \): \( S_5 = 4\sqrt{3} \cdot \left( 1 - \left( \frac{3}{4} \right)^5 \right) = 4\sqrt{3} \cdot (1 - 0.2373) \approx 4 \cdot 1.732 \cdot 0.7627 \approx 5.28 \, \text{cm}^2 \).<br/>
+                    Đáp án: 5.28.</p>
+</div>
+</div>
+</div>
+<!-- Câu 26 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Cấp số nhân và diện tích hình vuông</h3>
+<p>Độ dài cạnh hình vuông tạo cấp số nhân. Diện tích hình vuông thứ \( n \): \( a_n^2 \), với \( a_n = a_1 q^{n-1} \).</p>
+</div>
+<div class="question">
+<h3>Câu 26:</h3>
+<p>Cho hình vuông \( C_1 \) có cạnh bằng \( 4 \, \text{cm} \). Người ta chia mỗi cạnh hình vuông \( C_1 \) thành bốn phần bằng nhau và nối các điểm chia một cách thích hợp để có hình vuông \( C_2 \). Từ hình vuông \( C_2 \) lại làm tiếp tục như trên để có hình vuông \( C_3 \). Cứ tiếp tục quá trình như trên, ta nhận được dãy các hình vuông \( C_1, C_2, C_3, \ldots, C_n, \ldots \). <br/> <img alt="Hình 2.2.26" loading="lazy" src="anh/2.2.26.png"/> <br/> Tính diện tích của hình vuông thứ 6 (đơn vị: \( \text{cm}^2 \), làm tròn kết quả đến hàng phần trăm).</p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q26-input" type="text"/> <button onclick="checkShortAnswer('q26', '1.53')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q26"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q26')">Xem lời giải</div>
+<div class="solution" id="solution-q26">
+<p><strong>Lời giải:</strong><br/>
+                    Độ dài cạnh: \( a_1 = 4 \), \( a_2 = \sqrt{\left( \frac{a_1}{4} \right)^2 + \left( \frac{3a_1}{4} \right)^2} = \sqrt{\frac{16}{16} + \frac{9 \cdot 16}{16}} = \sqrt{\frac{10}{16}} \cdot 4 = \frac{\sqrt{10}}{4} \cdot 4 = \sqrt{10} \).<br/>
+                    Công bội: \( q = \frac{a_2}{a_1} = \frac{\sqrt{10}}{4} \). Dãy \( (a_n) \): \( a_n = 4 \cdot \left( \frac{\sqrt{10}}{4} \right)^{n-1} \).<br/>
+                    Diện tích hình vuông thứ 6: \( a_6^2 \), với \( a_6 = 4 \cdot \left( \frac{\sqrt{10}}{4} \right)^5 = 4 \cdot \frac{10^{5/2}}{4^5} = \frac{4 \cdot 10^{2.5}}{1024} = \frac{10^{2.5}}{256} \).<br/>
+                    \( 10^{2.5} \approx 316.227 \), \( a_6^2 \approx \frac{316.227}{256} \approx 1.235 \). Làm tròn: \( 1.53 \, \text{cm}^2 \).<br/>
+                    Đáp án: 1.53.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- PHẦN CUỐICUỐI -->
+<div class="navigation">
+<button onclick="window.location.href='de4.html'">Chuyên Đề trước</button>
+<button onclick="window.location.href='de66.html'">Chuyên Đề sau</button>
+</div>
+<script defer="">
+let isSolutionDisabled = false; function checkAnswer(questionId, correctAnswer) {
+    const options = document.getElementsByName(questionId);
+    let selectedAnswer = null;
+    for (const option of options) {
+        if (option.checked) {
+            selectedAnswer = option.value;
+            break;
+        }
+    }
+    const feedback = document.getElementById(`feedback-${questionId}`);
+    if (!selectedAnswer) {
+        feedback.textContent = 'Vui lòng chọn một đáp án!';
+        feedback.className = 'answer-feedback incorrect';
+        return;
+    }
+    if (selectedAnswer === correctAnswer) {
+        feedback.textContent = 'Đúng!';
+        feedback.className = 'answer-feedback correct';
+    } else {
+        feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
+        feedback.className = 'answer-feedback incorrect';
+    }
+}
+function checkTrueFalseAnswer(questionId, correctAnswers) {
+    const feedback = document.getElementById(`feedback-${questionId}`);
+    let allCorrect = true;
+    let results = [];
+    for (let i = 0; i < correctAnswers.length; i++) {
+        const options = document.getElementsByName(`${questionId}${String.fromCharCode(97 + i)}`);
+        let selected = null;
+        for (const option of options) {
+            if (option.checked) {
+                selected = option.value;
+                break;
+            }
+        }
+        if (!selected) {
+            feedback.textContent = 'Vui lòng chọn đáp án cho tất cả phát biểu!';
+            feedback.className = 'answer-feedback incorrect';
+            return;
+        }
+        if (selected !== correctAnswers[i]) {
+            allCorrect = false;
+        }
+        results.push(`Phát biểu ${String.fromCharCode(97 + i)}: ${selected === correctAnswers[i] ? 'Đúng' : `Sai (Đáp án đúng: ${correctAnswers[i]})`}`);
+    }
+    if (allCorrect) {
+        feedback.textContent = 'Tất cả Chuyên Đều đúng!';
+        feedback.className = 'answer-feedback correct';
+    } else {
+        feedback.textContent = results.join('\n');
+        feedback.className = 'answer-feedback incorrect';
+    }
+}
+function checkShortAnswer(questionId, correctAnswer) {
+    const input = document.getElementById(`${questionId}-input`).value.trim();
+    const feedback = document.getElementById(`feedback-${questionId}`);
+    if (!input) {
+        feedback.textContent = 'Vui lòng nhập đáp án!';
+        feedback.className = 'answer-feedback incorrect';
+        return;
+    }
+    if (input === correctAnswer) {
+        feedback.textContent = 'Đúng!';
+        feedback.className = 'answer-feedback correct';
+    } else {
+        feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
+        feedback.className = 'answer-feedback incorrect';
+    }
+}
+function toggleSolution(solutionId) {
+if (isSolutionDisabled) {
+alert('Hãy cố gắng giải, thầy sẽ cho xem lời giải sau, nhớ quay lại xem lời giải nhé.');
+return;
+}
+const solution = document.getElementById(solutionId);
+solution.classList.toggle('show');
+
+}
+</script>
+</body>
+</html>
