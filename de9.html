@@ -1495,10 +1495,9 @@ canvas.addEventListener("touchstart", startDraw, { passive: false });
 canvas.addEventListener("touchmove", drawMove, { passive: false });
 canvas.addEventListener("touchend", endDraw);
 </script>
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-  import { getFirestore, doc, onSnapshot, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
-
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script>
   const firebaseConfig = {
     apiKey: "AIzaSyDDACFZgZazMOnjzmGM_lrKswVcsoTFHxA",
     authDomain: "veonline-3bcbf.firebaseapp.com",
@@ -1507,65 +1506,156 @@ canvas.addEventListener("touchend", endDraw);
     messagingSenderId: "83902304195",
     appId: "1:83902304195:web:2f9ec1ee0c23d6e21bb776"
   };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
 
   const canvas = document.getElementById("drawCanvas");
   const ctx = canvas.getContext("2d");
+  const toggleBtn = document.getElementById("toggleDraw");
+  const toolbar = document.getElementById("drawToolbar");
+  const clearBtn = document.getElementById("clearBtn");
+  const saveBtn = document.getElementById("saveBtn");
+  const exitBtn = document.getElementById("exitBtn");
+  const colorPicker = document.getElementById("colorPicker");
+  const toolSelect = document.getElementById("tool");
+  const widthPicker = document.getElementById("draw-width");
 
-  // Cập nhật vẽ khi người khác cập nhật
-  const docRef = doc(db, "sharedDrawing", "canvasImage");
-  onSnapshot(docRef, (docSnap) => {
-    const data = docSnap.data();
-    if (data?.image && !window.isDrawing) {
-      const img = new Image();
-      img.onload = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img, 0, 0);
+  let isDrawing = false;
+  let isDrawMode = false;
+  let lineWidth = parseInt(widthPicker.value);
+  let userId = "user_" + Math.random().toString(36).substring(2);
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
+
+  toggleBtn.onclick = () => {
+    isDrawMode = true;
+    canvas.style.display = "block";
+    toolbar.style.display = "flex";
+  };
+  exitBtn.onclick = () => {
+    isDrawMode = false;
+    canvas.style.display = "none";
+    toolbar.style.display = "none";
+  };
+  clearBtn.onclick = () => ctx.clearRect(0, 0, canvas.width, canvas.height);
+  saveBtn.onclick = () => {
+    const link = document.createElement("a");
+    link.download = "ban_ve.png";
+    link.href = canvas.toDataURL();
+    link.click();
+  };
+  widthPicker.oninput = () => lineWidth = parseInt(widthPicker.value);
+
+  function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    if (e.touches && e.touches.length > 0) {
+      return {
+        x: e.touches[0].clientX - rect.left,
+        y: e.touches[0].clientY - rect.top
       };
-      img.src = data.image;
     }
+    return {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    };
+  }
+
+  canvas.addEventListener("mousedown", (e) => {
+    if (!isDrawMode) return;
+    isDrawing = true;
+    const pos = getPos(e);
+    ctx.beginPath();
+    ctx.moveTo(pos.x, pos.y);
   });
 
-  // Ghi ảnh lên Firestore
-  window.saveDrawingToFirebase = async function () {
-    const imageData = canvas.toDataURL();
-    await setDoc(docRef, {
-      image: imageData,
-      timestamp: serverTimestamp()
+  canvas.addEventListener("mousemove", (e) => {
+    if (!isDrawing || !isDrawMode) return;
+    const pos = getPos(e);
+    ctx.strokeStyle = colorPicker.value;
+    ctx.lineWidth = lineWidth;
+    ctx.lineCap = "round";
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+
+    const normX = pos.x / canvas.width;
+    const normY = pos.y / canvas.height;
+    db.collection("sharedDrawing").add({
+      x: normX,
+      y: normY,
+      color: colorPicker.value,
+      width: lineWidth,
+      user: userId,
+      time: Date.now()
     });
-  };
+  });
+
+  canvas.addEventListener("mouseup", () => {
+    if (!isDrawMode) return;
+    isDrawing = false;
+    ctx.beginPath();
+  });
+
+  canvas.addEventListener("touchstart", (e) => {
+    if (!isDrawMode) return;
+    isDrawing = true;
+    const pos = getPos(e);
+    ctx.beginPath();
+    ctx.moveTo(pos.x, pos.y);
+  });
+
+  canvas.addEventListener("touchmove", (e) => {
+    if (!isDrawing || !isDrawMode) return;
+    const pos = getPos(e);
+    ctx.strokeStyle = colorPicker.value;
+    ctx.lineWidth = lineWidth;
+    ctx.lineCap = "round";
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+
+    const normX = pos.x / canvas.width;
+    const normY = pos.y / canvas.height;
+    db.collection("sharedDrawing").add({
+      x: normX,
+      y: normY,
+      color: colorPicker.value,
+      width: lineWidth,
+      user: userId,
+      time: Date.now()
+    });
+  }, { passive: false });
+
+  canvas.addEventListener("touchend", () => {
+    if (!isDrawMode) return;
+    isDrawing = false;
+    ctx.beginPath();
+  });
+
+  // Nhận dữ liệu theo thời gian thực
+  db.collection("sharedDrawing")
+    .orderBy("time")
+    .limitToLast(1000)
+    .onSnapshot(snapshot => {
+      snapshot.docChanges().forEach(change => {
+        const data = change.doc.data();
+        if (data.user === userId) return;
+        const x = data.x * canvas.width;
+        const y = data.y * canvas.height;
+        ctx.strokeStyle = data.color;
+        ctx.lineWidth = data.width;
+        ctx.lineCap = "round";
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+      });
+    });
 </script>
 
-<script>
-  // Thêm cấu hình Firebase (thay bằng giá trị thực tế bạn sao chép từ Firebase Console)
-  const firebaseConfig = {
-    apiKey: "AIzaSyDDACFZgZazMOnjzmGM_lrKswVcsoTFHxA",
-  authDomain: "veonline-3bcbf.firebaseapp.com",
-  projectId: "veonline-3bcbf",
-  storageBucket: "veonline-3bcbf.firebasestorage.app",
-  messagingSenderId: "83902304195",
-  appId: "1:83902304195:web:2f9ec1ee0c23d6e21bb776",
-  };
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-  // Theo dõi dữ liệu vẽ từ Firestore theo thời gian thực
-db.collection("sharedDrawing").doc("canvasImage").onSnapshot((doc) => {
-  if (doc.exists && !isDrawing) {
-    const data = doc.data();
-    if (data.image) {
-      const img = new Image();
-      img.onload = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img, 0, 0);
-      };
-      img.src = data.image;
-    }
-  }
-});
-
-</script>
 <!-- Nút gọn bật/tắt phòng trao đổi -->
 <div style="position: fixed; top: 8px; left: 10px; z-index: 10000;">
   <button onclick="toggleJitsiRoom()" style="background: #6b21a8; border: none; color: white; border-radius: 50%; width: 40px; height: 40px; font-size: 18px; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">🎧</button>
