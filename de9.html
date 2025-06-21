@@ -396,26 +396,31 @@
   touch-action: none;
 }
 
+
 .toolbar {
   position: fixed;
   top: 100px;
-  right: 20px;
+  left: 10px;
   background: white;
   border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
-  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 6px;
   z-index: 10000;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
+  width: 48px;
+  align-items: center;
 }
-
-.toolbar button, .toolbar select, .toolbar input[type="color"] {
-  padding: 6px 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  cursor: pointer;
+.toolbar button,
+.toolbar select,
+.toolbar input[type="color"],
+.toolbar input[type="range"] {
+  width: 100%;
+  font-size: 10px;
+  padding: 2px;
+  height: 28px;
+  box-sizing: border-box;
 }
 
 .floating-button {
@@ -459,8 +464,8 @@ input[type="text"].short-answer {
 <option value="pyramid">🔻 Chóp</option>
 <option value="sphere">⚽ Cầu</option>
   </select>
-  <label for="draw-width">Độ dày:</label>
-<input type="range" id="draw-width" min="1" max="10" value="2" />
+  
+<input type="range" id="draw-width" min="1" max="5" value="2" />
   <input type="color" id="colorPicker" value="#6b21a8" />
   <button id="clearBtn">🧹 Xoá</button>
   <button id="saveBtn">💾 Lưu</button>
@@ -1567,7 +1572,7 @@ db.collection("sharedDrawing").doc("canvasImage").onSnapshot((doc) => {
 </div>
 
 <!-- Phòng Jitsi ẩn hiện -->
-<div id="jitsiRoom" style="display: none; position: fixed; bottom: 10px; right: 10px; width: 260px; height: 180px; border-radius: 10px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.4); z-index: 9999; background: white;" onmousedown="startDrag(event)">
+<div id="jitsiRoom" style="display: none; position: fixed; bottom: 10px; left: 10px; width: 180px; height: 220px; border-radius: 10px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.4); z-index: 9999; background: white;" onmousedown="startDrag(event)">
 
   <iframe
     allow="camera; microphone"

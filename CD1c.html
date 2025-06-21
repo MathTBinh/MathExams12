@@ -1,0 +1,2725 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Chuyên Đề THI TOÁN - Chuyên Đề SỐ 3 với 22 câu hỏi trắc nghiệm và lời giải chi tiết, kèm tóm tắt kiến thức." name="description"/>
+<title>Chuyên Đề THI TOÁN - Chuyên Đề 3 - KHÓA HỌC TOÁN THẦY BÌNH</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #ecfdf5, #f3e8ff);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .header {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .header .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #6b21a8;
+        }
+        .nav-bar {
+            position: sticky;
+            top: 60px;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 999;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-bar a {
+            color: #6b21a8;
+            margin-right: 15px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .nav-bar a:hover {
+            color: #10b981;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-button {
+            background: #6b21a8;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background 0.3s;
+        }
+        .dropdown-button:hover {
+            background: #5b1a8b;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 100px;
+            max-height: 300px;
+            overflow-y: auto;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 10px;
+            right: 0;
+        }
+        .dropdown-content a {
+            color: #6b21a8;
+            padding: 8px 16px;
+            text-decoration: none;
+            display: block;
+            font-weight: 400;
+        }
+        .dropdown-content a:hover {
+            background: #f0fdf4;
+            color: #10b981;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+        }
+        h1 {
+            color: #6b21a8;
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #10b981;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        h3 {
+            color: #6b21a8;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .summary-box {
+            background: #f0fdf4;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 5px solid #10b981;
+        }
+        .options {
+            margin: 10px 0;
+        }
+        .option {
+            margin: 5px 0;
+        }
+        .answer-check {
+            margin-top: 10px;
+        }
+        .answer-check button {
+            padding: 12px 24px;
+            background: #6b21a8;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .answer-check button:hover {
+            background: #5b1a8b;
+        }
+        .answer-feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            color: #22c55e;
+        }
+        .incorrect {
+            color: #ef4444;
+        }
+        .solution {
+            display: none;
+            background: #fef3c7;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .solution.show {
+            display: block;
+            opacity: 1;
+        }
+        .solution-toggle {
+            display: inline-block;
+            background: #6b21a8;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        .solution-toggle:hover {
+            background: #5b1a8b;
+        }
+        .hot {
+            color: #ef4444;
+            font-weight: bold;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background: #6b21a8;
+            color: white;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        .navigation button {
+            padding: 12px 24px;
+            background: #6b21a8;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .navigation button:hover {
+            background: #5b1a8b;
+        }
+        .navigation button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+        @media (max-width: 640px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.6rem; }
+            h3 { font-size: 1.3rem; }
+            .card { padding: 15px; }
+            .header .logo { font-size: 1.4rem; }
+            .nav-bar { top: 50px; flex-direction: column; align-items: flex-start; }
+            .nav-bar a { font-size: 0.9rem; margin-right: 10px; }
+            .dropdown-button { font-size: 0.9rem; padding: 6px 12px; }
+            .dropdown-content { min-width: 80px; }
+            table { font-size: 0.85rem; }
+            .answer-check button, .navigation button {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    
+.question img, .solution img {
+    display: block;
+    margin: 10px auto;
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+    object-position: center;
+    background: white;
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%;
+}
+
+.question img, .solution img {
+    display: block;
+    margin: 5px auto; /* Giảm khoảng cách */
+    width: 300px; /* Giảm chiều rộng */
+    height: 200px; /* Giảm chiều cao */
+    object-fit: contain;
+    object-position: center;
+    background: white;
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%; /* Đảm bảo vừa với màn hình nhỏ */
+}
+.question img:not([src]), .solution img:not([src]),
+.question img[src=''], .solution img[src=''],
+.question img[onerror], .solution img[onerror] {
+    display: none !important; /* Ẩn ảnh không tồn tại */
+}
+@media (max-width: 640px) {
+    .question img, .solution img {
+        width: 100%; /* Chiều rộng 100% trên di động */
+        height: auto; /* Chiều cao tự động */
+        margin: 3px auto; /* Giảm thêm khoảng cách trên di động */
+    }
+    .question img.long-image, .solution img.long-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.question img, .solution img {
+    display: block;
+    margin: 5px auto; /* Khoảng cách trên laptop */
+    width: 300px; /* Chiều rộng mặc định */
+    height: 200px; /* Chiều cao mặc định */
+    object-fit: contain;
+    object-position: center;
+    background: white;
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%; /* Đảm bảo vừa với màn hình nhỏ */
+}
+.question img:not([src]), .solution img:not([src]),
+.question img[src=''], .solution img[src=''],
+.question img[onerror], .solution img[onerror] {
+    display: none !important; /* Ẩn ảnh không tồn tại */
+}
+@media (max-width: 640px) {
+    .question img, .solution img {
+        max-width: 100%; /* Thu nhỏ theo màn hình */
+        width: auto; /* Tự động điều chỉnh chiều rộng */
+        height: auto; /* Tự động điều chỉnh chiều cao */
+        margin: 2px auto; /* Giảm khoảng cách trên di động */
+    }
+    .question img.long-image, .solution img.long-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.question img, .solution img {
+    display: block;
+    margin: 5px auto; /* Căn giữa và giữ khoảng cách nhỏ */
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%; /* Giới hạn chiều rộng tối đa */
+}
+.question img:not([src]), .solution img:not([src]),
+.question img[src=''], .solution img[src=''],
+.question img[onerror], .solution img[onerror] {
+    display: none !important; /* Ẩn ảnh không tồn tại */
+}
+@media (max-width: 640px) {
+    .question img, .solution img {
+        margin: 2px auto; /* Giảm khoảng cách trên di động */
+    }
+    .question img.long-image, .solution img.long-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo">KHÓA HỌC TOÁN THẦY BÌNH</div>
+</div>
+<div class="nav-bar">
+<div>
+<a href="index.html">Trang chủ</a>
+</div>
+<div class="dropdown">
+<span class="dropdown-button">Chọn đề</span>
+<div class="dropdown-content">
+<!-- Tạo danh sách đề từ 1 đến 100 -->
+<a href="de1.html">Đề 1</a>
+<a href="de2.html">Đề 2</a>
+<a href="de3.html">Đề 3</a>
+<a href="de4.html">Đề 4</a>
+<a href="de5.html">Đề 5</a>
+<a href="de6.html">Đề 6</a>
+<a href="de7.html">Đề 7</a>
+<a href="de8.html">Đề 8</a>
+<a href="de9.html">Đề 9</a>
+<a href="de10.html">Đề 10</a>
+<a href="de11.html">Đề 11</a>
+<a href="de12.html">Đề 12</a>
+<a href="de13.html">Đề 13</a>
+<a href="de14.html">Đề 14</a>
+<a href="de15.html">Đề 15</a>
+<a href="de16.html">Đề 16</a>
+<a href="de17.html">Đề 17</a>
+<a href="de18.html">Đề 18</a>
+<a href="de19.html">Đề 19</a>
+<a href="de20.html">Đề 20</a>
+<a href="de21.html">Đề 21</a>
+<a href="de22.html">Đề 22</a>
+<a href="de23.html">Đề 23</a>
+<a href="de24.html">Đề 24</a>
+<a href="de25.html">Đề 25</a>
+<a href="de26.html">Đề 26</a>
+<a href="de27.html">Đề 27</a>
+<a href="de28.html">Đề 28</a>
+<a href="de29.html">Đề 29</a>
+<a href="de30.html">Đề 30</a>
+<a href="de31.html">Đề 31</a>
+<a href="de32.html">Đề 32</a>
+<a href="de33.html">Đề 33</a>
+<a href="de34.html">Đề 34</a>
+<a href="de35.html">Đề 35</a>
+<a href="de36.html">Đề 36</a>
+<a href="de37.html">Đề 37</a>
+<a href="de38.html">Đề 38</a>
+<a href="de39.html">Đề 39</a>
+<a href="de40.html">Đề 40</a>
+<a href="de41.html">Đề 41</a>
+<a href="de42.html">Đề 42</a>
+<a href="de43.html">Đề 43</a>
+<a href="de44.html">Đề 44</a>
+<a href="de45.html">Đề 45</a>
+<a href="de46.html">Đề 46</a>
+<a href="de47.html">Đề 47</a>
+<a href="de48.html">Đề 48</a>
+<a href="de49.html">Đề 49</a>
+<a href="de50.html">Đề 50</a>
+<a href="de51.html">Đề 51</a>
+<a href="de52.html">Đề 52</a>
+<a href="de53.html">Đề 53</a>
+<a href="de54.html">Đề 54</a>
+<a href="de55.html">Đề 55</a>
+<a href="de56.html">Đề 56</a>
+<a href="de57.html">Đề 57</a>
+<a href="de58.html">Đề 58</a>
+<a href="de59.html">Đề 59</a>
+<a href="de60.html">Đề 60</a>
+<a href="de61.html">Đề 61</a>
+<a href="de62.html">Đề 62</a>
+<a href="de63.html">Đề 63</a>
+<a href="de64.html">Đề 64</a>
+<a href="de65.html">Đề 65</a>
+<a href="de66.html">Đề 66</a>
+<a href="de67.html">Đề 67</a>
+<a href="de68.html">Đề 68</a>
+<a href="de69.html">Đề 69</a>
+<a href="de70.html">Đề 70</a>
+<a href="de71.html">Đề 71</a>
+<a href="de72.html">Đề 72</a>
+<a href="de73.html">Đề 73</a>
+<a href="de74.html">Đề 74</a>
+<a href="de75.html">Đề 75</a>
+<a href="de76.html">Đề 76</a>
+<a href="de77.html">Đề 77</a>
+<a href="de78.html">Đề 78</a>
+<a href="de79.html">Đề 79</a>
+<a href="de80.html">Đề 80</a>
+<a href="de81.html">Đề 81</a>
+<a href="de82.html">Đề 82</a>
+<a href="de83.html">Đề 83</a>
+<a href="de84.html">Đề 84</a>
+<a href="de85.html">Đề 85</a>
+<a href="de86.html">Đề 86</a>
+<a href="de87.html">Đề 87</a>
+<a href="de88.html">Đề 88</a>
+<a href="de89.html">Đề 89</a>
+<a href="de90.html">Đề 90</a>
+<a href="de91.html">Đề 91</a>
+<a href="de92.html">Đề 92</a>
+<a href="de93.html">Đề 93</a>
+<a href="de94.html">Đề 94</a>
+<a href="de95.html">Đề 95</a>
+<a href="de96.html">Đề 96</a>
+<a href="de97.html">Đề 97</a>
+<a href="de98.html">Đề 98</a>
+<a href="de99.html">Đề 99</a>
+<a href="de100.html">Đề 100</a>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><div class="container">
+<!-- Tóm tắt kiến thức -->
+<div class="card" id="theory">
+<h2>1.A Tóm tắt kiến thức cần nhớ</h2>
+<h3>1.1. Phương trình lượng giác cơ bản</h3>
+<h4>a) Phương trình \(\sin x = m\)</h4>
+<ul class="list-disc ml-6">
+<li>Với \(|m| &gt; 1\), phương trình vô nghiệm.</li>
+<li>Với \(|m| \leq 1\), gọi \(\alpha \in \left[-\frac{\pi}{2}; \frac{\pi}{2}\right]\) sao cho \(\sin \alpha = m\). Khi đó:
+                \[
+                \sin x = m \Leftrightarrow \sin x = \sin \alpha \Leftrightarrow \left\{
+                \begin{array}{l}
+                    x = \alpha + k 2\pi \\
+                    x = \pi - \alpha + k 2\pi
+                \end{array}
+                (k \in \mathbb{Z})
+                \right.
+                \]
+            </li>
+<li>Các trường hợp đặc biệt:
+                <ul class="list-disc ml-6">
+<li>\(\sin x = 1 \Leftrightarrow x = \frac{\pi}{2} + k 2\pi\)</li>
+<li>\(\sin x = -1 \Leftrightarrow x = -\frac{\pi}{2} + k 2\pi\)</li>
+<li>\(\sin x = 0 \Leftrightarrow x = k \pi\)</li>
+</ul>
+</li>
+<li>Nếu \(x\) là góc đo bằng độ:
+                \[
+                \sin x = \sin a^\circ \Leftrightarrow \left\{
+                \begin{array}{l}
+                    x = a^\circ + k 360^\circ \\
+                    x = 180^\circ - a^\circ + k 360^\circ
+                \end{array}
+                (k \in \mathbb{Z})
+                \right.
+                \]
+            </li>
+</ul>
+<h4>b) Phương trình \(\cos x = m\)</h4>
+<ul class="list-disc ml-6">
+<li>Với \(|m| &gt; 1\), phương trình vô nghiệm.</li>
+<li>Với \(|m| \leq 1\), gọi \(\alpha \in [0; \pi]\) sao cho \(\cos \alpha = m\). Khi đó:
+                \[
+                \cos x = m \Leftrightarrow \cos x = \cos \alpha \Leftrightarrow \left\{
+                \begin{array}{l}
+                    x = \alpha + k 2\pi \\
+                    x = -\alpha + k 2\pi
+                \end{array}
+                (k \in \mathbb{Z})
+                \right.
+                \]
+            </li>
+<li>Các trường hợp đặc biệt:
+                <ul class="list-disc ml-6">
+<li>\(\cos x = 1 \Leftrightarrow x = k 2\pi\)</li>
+<li>\(\cos x = -1 \Leftrightarrow x = \pi + k 2\pi\)</li>
+<li>\(\cos x = 0 \Leftrightarrow x = \frac{\pi}{2} + k \pi\)</li>
+</ul>
+</li>
+<li>Nếu \(x\) là góc đo bằng độ:
+                \[
+                \cos x = \cos a^\circ \Leftrightarrow \left\{
+                \begin{array}{l}
+                    x = a^\circ + k 360^\circ \\
+                    x = -a^\circ + k 360^\circ
+                \end{array}
+                (k \in \mathbb{Z})
+                \right.
+                \]
+            </li>
+</ul>
+<h4>c) Phương trình \(\tan x = m\)</h4>
+<ul class="list-disc ml-6">
+<li>Gọi \(\alpha \in \left(-\frac{\pi}{2}; \frac{\pi}{2}\right)\) sao cho \(\tan \alpha = m\). Khi đó:
+                \[
+                \tan x = m \Leftrightarrow \tan x = \tan \alpha \Leftrightarrow x = \alpha + k \pi \quad (k \in \mathbb{Z})
+                \]
+            </li>
+<li>Nếu \(x\) là góc đo bằng độ:
+                \[
+                \tan x = \tan a^\circ \Leftrightarrow x = a^\circ + k 180^\circ \quad (k \in \mathbb{Z})
+                \]
+            </li>
+</ul>
+<h4>d) Phương trình \(\cot x = m\)</h4>
+<ul class="list-disc ml-6">
+<li>Gọi \(\alpha \in (0; \pi)\) sao cho \(\cot \alpha = m\). Khi đó:
+                \[
+                \cot x = m \Leftrightarrow \cot x = \cot \alpha \Leftrightarrow x = \alpha + k \pi \quad (k \in \mathbb{Z})
+                \]
+            </li>
+<li>Nếu \(x\) là góc đo bằng độ:
+                \[
+                \cot x = \cot a^\circ \Leftrightarrow x = a^\circ + k 180^\circ \quad (k \in \mathbb{Z})
+                \]
+            </li>
+</ul>
+<h3>1.2. Phương trình lượng giác đưa về dạng cơ bản</h3>
+<ul class="list-disc ml-6">
+<li>\(\sin f(x) = \sin g(x) \Leftrightarrow \left\{
+                \begin{array}{l}
+                    f(x) = g(x) + k 2\pi \\
+                    f(x) = \pi - g(x) + k 2\pi
+                \end{array}
+                (k \in \mathbb{Z})
+                \right.\)</li>
+<li>\(\cos f(x) = \cos g(x) \Leftrightarrow \left\{
+                \begin{array}{l}
+                    f(x) = g(x) + k 2\pi \\
+                    f(x) = -g(x) + k 2\pi
+                \end{array}
+                (k \in \mathbb{Z})
+                \right.\)</li>
+<li>Phương trình dạng \(\sin^2 u(x) = \sin^2 v(x)\), \(\cos^2 u(x) = \cos^2 v(x)\), hoặc \(\sin^2 u(x) = \cos^2 v(x)\): dùng công thức hạ bậc để đưa về \(\cos f(x) = \cos g(x)\).</li>
+<li>Một số phương trình lượng giác: dùng công thức lượng giác và biến đổi để đưa về phương trình dạng tích \(A(x) \cdot B(x) = 0\).</li>
+</ul>
+<h3>1.3. Phương trình và bất phương trình mũ, lôgarit</h3>
+<h4>a) Phương trình mũ</h4>
+<ul class="list-disc ml-6">
+<li>Với \(a &gt; 0\), \(a \neq 1\):
+                <ul class="list-disc ml-6">
+<li>\(a^{f(x)} = b \Leftrightarrow f(x) = \log_a b \quad (b &gt; 0)\)</li>
+<li>\(a^{f(x)} = a^{g(x)} \Leftrightarrow f(x) = g(x)\)</li>
+</ul>
+</li>
+</ul>
+<h4>b) Phương trình lôgarit</h4>
+<ul class="list-disc ml-6">
+<li>Với \(a &gt; 0\), \(a \neq 1\):
+                <ul class="list-disc ml-6">
+<li>\(\log_a f(x) = b \Leftrightarrow f(x) = a^b\)</li>
+<li>\(\log_a f(x) = \log_a g(x) \Leftrightarrow \left\{
+                        \begin{array}{l}
+                            f(x) = g(x) \\
+                            f(x) &gt; 0 \text{ hoặc } g(x) &gt; 0
+                        \end{array}
+                        \right.\)</li>
+</ul>
+</li>
+</ul>
+<h4>c) Bất phương trình mũ</h4>
+<ul class="list-disc ml-6">
+<li>Với \(a &gt; 0\), \(a \neq 1\), xét \(a^{f(x)} &gt; b\):
+                <ul class="list-disc ml-6">
+<li>Nếu \(b \leq 0\), tập nghiệm là tập xác định của \(f(x)\).</li>
+<li>Nếu \(b &gt; 0\), \(a &gt; 1\): \(f(x) &gt; \log_a b\).</li>
+<li>Nếu \(b &gt; 0\), \(0 &lt; a &lt; 1\): \(f(x) &lt; \log_a b\).</li>
+</ul>
+</li>
+<li>Xét \(a^{f(x)} &gt; a^{g(x)}\):
+                <ul class="list-disc ml-6">
+<li>Nếu \(a &gt; 1\): \(f(x) &gt; g(x)\).</li>
+<li>Nếu \(0 &lt; a &lt; 1\): \(f(x) &lt; g(x)\).</li>
+</ul>
+</li>
+</ul>
+<h4>d) Bất phương trình lôgarit</h4>
+<ul class="list-disc ml-6">
+<li>Với \(a &gt; 0\), \(a \neq 1\), xét \(\log_a f(x) &gt; b\):
+                <ul class="list-disc ml-6">
+<li>Nếu \(a &gt; 1\): \(f(x) &gt; a^b\).</li>
+<li>Nếu \(0 &lt; a &lt; 1\): \(0 &lt; f(x) &lt; a^b\).</li>
+</ul>
+</li>
+<li>Xét \(\log_a f(x) &gt; \log_a g(x)\):
+                <ul class="list-disc ml-6">
+<li>Nếu \(a &gt; 1\): \(f(x) &gt; g(x) &gt; 0\).</li>
+<li>Nếu \(0 &lt; a &lt; 1\): \(0 &lt; f(x) &lt; g(x)\).</li>
+</ul>
+</li>
+</ul>
+</div>
+<!-- Ví dụ minh họa -->
+<div class="card example-box" id="example">
+<h2>2. Ví dụ minh họa</h2>
+<!-- Ví dụ 1 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Phương trình \(\sin x = m\): Với \(|m| \leq 1\), gọi \(\alpha \in \left[-\frac{\pi}{2}; \frac{\pi}{2}\right]\) sao cho \(\sin \alpha = m\). Khi đó:
+                \[
+                \sin x = m \Leftrightarrow \left\{
+                \begin{array}{l}
+                    x = \alpha + k 2\pi \\
+                    x = \pi - \alpha + k 2\pi
+                \end{array}
+                (k \in \mathbb{Z})
+                \right.
+                \]
+            </p>
+</div>
+<p><strong>Ví dụ 1:</strong> Nghiệm của phương trình \(\sin \left(x + \frac{\pi}{3}\right) = -\frac{\sqrt{3}}{2}\) là:</p>
+<ul class="list-disc ml-6">
+<li>A. \(x = -\frac{2\pi}{3} + k 2\pi\) và \(x = \pi + k 2\pi\)</li>
+<li>B. \(x = -\frac{\pi}{3} + k 2\pi\) và \(x = \frac{\pi}{3} + k 2\pi\)</li>
+<li>C. \(x = k 2\pi\) và \(x = \pi + k 2\pi\)</li>
+<li>D. \(x = -\frac{\pi}{2} + k 2\pi\) và \(x = \frac{5\pi}{3} + k 2\pi\)</li>
+</ul>
+<div class="solution" id="solution-example1">
+<p><strong>Lời giải:</strong></p>
+<p>Do \(\sin \left(-\frac{\pi}{3}\right) = -\frac{\sqrt{3}}{2}\), ta có:</p>
+            \[
+            \sin \left(x + \frac{\pi}{3}\right) = -\frac{\sqrt{3}}{2} \Leftrightarrow \sin \left(x + \frac{\pi}{3}\right) = \sin \left(-\frac{\pi}{3}\right)
+            \]
+            \[
+            \Leftrightarrow \left\{
+            \begin{array}{l}
+                x + \frac{\pi}{3} = -\frac{\pi}{3} + k 2\pi \\
+                x + \frac{\pi}{3} = \pi - \left(-\frac{\pi}{3}\right) + k 2\pi
+            \end{array}
+            \right.
+            \Leftrightarrow \left\{
+            \begin{array}{l}
+                x = -\frac{2\pi}{3} + k 2\pi \\
+                x = \pi + k 2\pi
+            \end{array}
+            (k \in \mathbb{Z})
+            \right.
+            \]
+            <p>Chọn <strong>A</strong>.</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example1')">Hiện lời giải</button>
+<!-- Ví dụ 2 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Phương trình mũ: \(a^{f(x)} = a^{g(x)} \Leftrightarrow f(x) = g(x)\).</p>
+</div>
+<p><strong>Ví dụ 2:</strong> Tổng các nghiệm của phương trình \(3^{x^2 - 2x} = 81\) là:</p>
+<ul class="list-disc ml-6">
+<li>A. 4</li>
+<li>B. -4</li>
+<li>C. -2</li>
+<li>D. 2</li>
+</ul>
+<div class="solution" id="solution-example2">
+<p><strong>Lời giải:</strong></p>
+            \[
+            3^{x^2 - 2x} = 81 \Leftrightarrow 3^{x^2 - 2x} = 3^4 \Leftrightarrow x^2 - 2x - 4 = 0
+            \]
+            <p>Phương trình \(x^2 - 2x - 4 = 0\) có hai nghiệm phân biệt (do \(\Delta = 4 + 16 = 20 &gt; 0\)). Tổng các nghiệm là \(-\frac{b}{a} = \frac{2}{1} = 2\).</p>
+<p>Chọn <strong>D</strong>.</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example2')">Hiện lời giải</button>
+<!-- Ví dụ 3 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Phương trình lôgarit: \(\log_a f(x) = b \Leftrightarrow f(x) = a^b\).</p>
+</div>
+<p><strong>Ví dụ 3:</strong> Nghiệm của phương trình \(\log_{16}(x + 5) = \frac{1}{2}\) là:</p>
+<ul class="list-disc ml-6">
+<li>A. 3</li>
+<li>B. -1</li>
+<li>C. -3</li>
+<li>D. 27</li>
+</ul>
+<div class="solution" id="solution-example3">
+<p><strong>Lời giải:</strong></p>
+            \[
+            \log_{16}(x + 5) = \frac{1}{2} \Leftrightarrow x + 5 = 16^{\frac{1}{2}} = 4 \Leftrightarrow x = 4 - 5 = -1
+            \]
+            <p>Chọn <strong>B</strong>.</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example3')">Hiện lời giải</button>
+<!-- Ví dụ 4 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Phương trình lôgarit: \(\log_a f(x) = \log_a g(x) \Leftrightarrow \left\{
+                \begin{array}{l}
+                    f(x) = g(x) \\
+                    f(x) &gt; 0 \text{ hoặc } g(x) &gt; 0
+                \end{array}
+                \right.\)</p>
+</div>
+<p><strong>Ví dụ 4:</strong> Số nghiệm của phương trình \(\log_2 (x - 4) = \log_2 (x^2 - 5x + 4)\) là:</p>
+<ul class="list-disc ml-6">
+<li>A. 1</li>
+<li>B. 2</li>
+<li>C. 0</li>
+<li>D. 3</li>
+</ul>
+<div class="solution" id="solution-example4">
+<p><strong>Lời giải:</strong></p>
+            \[
+            \log_2 (x - 4) = \log_2 (x^2 - 5x + 4) \Leftrightarrow \left\{
+            \begin{array}{l}
+                x - 4 = x^2 - 5x + 4 \\
+                x - 4 &gt; 0
+            \end{array}
+            \right.
+            \]
+            \[
+            \Leftrightarrow \left\{
+            \begin{array}{l}
+                x^2 - 6x + 8 = 0 \\
+                x &gt; 4
+            \end{array}
+            \right.
+            \Leftrightarrow \left\{
+            \begin{array}{l}
+                x = 2 \text{ hoặc } x = 4 \\
+                x &gt; 4
+            \end{array}
+            \right.
+            \]
+            <p>Không có giá trị \(x\) thỏa mãn \(x &gt; 4\). Vậy phương trình vô nghiệm.</p>
+<p>Chọn <strong>C</strong>.</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example4')">Hiện lời giải</button>
+<!-- Ví dụ 5 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Phương trình dạng \(\sin^2 u(x) = \cos^2 v(x)\): Dùng công thức hạ bậc:
+                \[
+                \sin^2 \theta = \frac{1 - \cos 2\theta}{2}, \quad \cos^2 \theta = \frac{1 + \cos 2\theta}{2}
+                \]
+                để đưa về \(\cos f(x) = \cos g(x)\).</p>
+</div>
+<p><strong>Ví dụ 5:</strong> Cho phương trình \(\sin^2 \left(2x + \frac{\pi}{4}\right) = \cos^2 \left(x + \frac{\pi}{2}\right)\). Xác định các khẳng định sau là đúng hay sai:</p>
+<ul class="list-disc ml-6">
+<li>a) Hạ bậc hai vế, ta được phương trình: \(\frac{1 + \cos \left(4x + \frac{\pi}{2}\right)}{2} = \frac{1 - \cos (2x + \pi)}{2}\).</li>
+<li>b) Ta có: \(\cos (2x + \pi) = -\cos 2x\).</li>
+<li>c) Phương trình đã cho đưa về dạng: \(\cos \left(4x + \frac{\pi}{2}\right) = \cos 2x\).</li>
+<li>d) Nghiệm của phương trình là: \(x = -\frac{\pi}{4} + k \pi\) và \(x = \frac{\pi}{12} + k \frac{\pi}{3}\).</li>
+</ul>
+<div class="solution" id="solution-example5">
+<p><strong>Lời giải:</strong></p>
+            \[
+            \sin^2 \left(2x + \frac{\pi}{4}\right) = \cos^2 \left(x + \frac{\pi}{2}\right)
+            \Leftrightarrow \frac{1 - \cos \left(4x + \frac{\pi}{2}\right)}{2} = \frac{1 + \cos (2x + \pi)}{2}
+            \]
+            \[
+            \Leftrightarrow -\cos \left(4x + \frac{\pi}{2}\right) = \cos (2x + \pi) \Leftrightarrow \cos \left(4x + \frac{\pi}{2}\right) = -\cos (2x + \pi) = \cos 2x
+            \]
+            \[
+            \Leftrightarrow \left\{
+            \begin{array}{l}
+                4x + \frac{\pi}{2} = 2x + k 2\pi \\
+                4x + \frac{\pi}{2} = -2x + k 2\pi
+            \end{array}
+            \right.
+            \Leftrightarrow \left\{
+            \begin{array}{l}
+                x = -\frac{\pi}{4} + k \pi \\
+                x = \frac{\pi}{12} + k \frac{\pi}{3}
+            \end{array}
+            (k \in \mathbb{Z})
+            \right.
+            \]
+            <p>Kiểm tra các khẳng định:</p>
+<ul class="list-disc ml-6">
+<li>a) Sai, vì hạ bậc đúng phải là \(\frac{1 - \cos \left(4x + \frac{\pi}{2}\right)}{2} = \frac{1 + \cos (2x + \pi)}{2}\).</li>
+<li>b) Đúng, vì \(\cos (2x + \pi) = \cos (2x + \pi - 2\pi) = \cos 2x\).</li>
+<li>c) Đúng.</li>
+<li>d) Đúng.</li>
+</ul>
+<p>Đáp án: a) S, b) Đ, c) Đ, d) S.</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example5')">Hiện lời giải</button>
+<!-- Ví dụ 6 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Bất phương trình mũ: Với \(0 &lt; a &lt; 1\), \(a^{f(x)} &gt; a^{g(x)} \Leftrightarrow f(x) &lt; g(x)\).</p>
+</div>
+<p><strong>Ví dụ 6:</strong> Cho bất phương trình \((3 - 2\sqrt{2})^{x^2 - 4x} &gt; (3 + 2\sqrt{2})^{5 - 2x}\). Xác định các khẳng định sau là đúng hay sai:</p>
+<ul class="list-disc ml-6">
+<li>a) Ta có: \(3 + 2\sqrt{2} = (3 - 2\sqrt{2})^{-1}\).</li>
+<li>b) Bất phương trình đã cho tương đương với: \(x^2 - 4x &gt; 2x - 5\).</li>
+<li>c) Số nghiệm nguyên của bất phương trình là 5.</li>
+<li>d) Tổng các nghiệm nguyên của bất phương trình là 9.</li>
+</ul>
+<div class="solution" id="solution-example6">
+<p><strong>Lời giải:</strong></p>
+<p>Do \(3 + 2\sqrt{2} = (3 - 2\sqrt{2})^{-1}\), ta có:</p>
+            \[
+            (3 - 2\sqrt{2})^{x^2 - 4x} &gt; (3 - 2\sqrt{2})^{2x - 5}
+            \]
+            <p>Với \(0 &lt; 3 - 2\sqrt{2} &lt; 1\), bất phương trình trở thành:</p>
+            \[
+            x^2 - 4x &lt; 2x - 5 \Leftrightarrow x^2 - 6x + 5 &lt; 0 \Leftrightarrow 1 &lt; x &lt; 5
+            \]
+            <p>Các nghiệm nguyên: \(x = 2, 3, 4\). Tổng: \(2 + 3 + 4 = 9\).</p>
+<p>Kiểm tra các khẳng định:</p>
+<ul class="list-disc ml-6">
+<li>a) Đúng.</li>
+<li>b) Sai, vì bất phương trình tương đương \(x^2 - 4x &lt; 2x - 5\).</li>
+<li>c) Sai, số nghiệm nguyên là 3.</li>
+<li>d) Đúng.</li>
+</ul>
+<p>Đáp án: a) Đ, b) S, c) S, d) Đ.</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example6')">Hiện lời giải</button>
+<!-- Ví dụ 7 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Bất phương trình lôgarit: Với \(0 &lt; a &lt; 1\), \(\log_a f(x) &gt; \log_a g(x) \Leftrightarrow 0 &lt; f(x) &lt; g(x)\).</p>
+</div>
+<p><strong>Ví dụ 7:</strong> Cho bất phương trình \(\log_{\sqrt{2} - 1} (2x^2 - 2) \geq \log_{\sqrt{2} - 1} (5x + 5)\). Xác định các khẳng định sau là đúng hay sai:</p>
+<ul class="list-disc ml-6">
+<li>a) Ta có: \(0 &lt; \sqrt{2} - 1 &lt; 1\).</li>
+<li>b) Bất phương trình đã cho tương đương với: \(\left\{
+                \begin{array}{l}
+                    2x^2 - 2 \leq 5x + 5 \\
+                    5x + 5 &gt; 0
+                \end{array}
+                \right.\).</li>
+<li>c) Số nghiệm nguyên của bất phương trình là 2.</li>
+<li>d) Nghiệm nguyên nhỏ nhất của bất phương trình là 0.</li>
+</ul>
+<div class="solution" id="solution-example7">
+<p><strong>Lời giải:</strong></p>
+<p>Với \(0 &lt; \sqrt{2} - 1 &lt; 1\), ta có:</p>
+            \[
+            \log_{\sqrt{2} - 1} (2x^2 - 2) \geq \log_{\sqrt{2} - 1} (5x + 5)
+            \Leftrightarrow \left\{
+            \begin{array}{l}
+                2x^2 - 2 \leq 5x + 5 \\
+                2x^2 - 2 &gt; 0
+            \end{array}
+            \right.
+            \]
+            \[
+            \Leftrightarrow \left\{
+            \begin{array}{l}
+                2x^2 - 5x - 7 \leq 0 \\
+                x^2 - 1 &gt; 0
+            \end{array}
+            \right.
+            \Leftrightarrow 1 &lt; x \leq \frac{7}{2}
+            \]
+            <p>Các nghiệm nguyên: \(x = 2, 3\). Nghiệm nguyên nhỏ nhất là 2.</p>
+<p>Kiểm tra các khẳng định:</p>
+<ul class="list-disc ml-6">
+<li>a) Đúng.</li>
+<li>b) Sai, vì điều kiện đúng phải là \(2x^2 - 2 &gt; 0\).</li>
+<li>c) Đúng.</li>
+<li>d) Sai, nghiệm nguyên nhỏ nhất là 2.</li>
+</ul>
+<p>Đáp án: a) Đ, b) S, c) Đ, d) S.</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example7')">Hiện lời giải</button>
+<!-- Ví dụ 8 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Phương trình \(\sin x = 1 \Leftrightarrow x = \frac{\pi}{2} + k 2\pi \quad (k \in \mathbb{Z})\).</p>
+</div>
+<p><strong>Ví dụ 8:</strong> Hằng ngày, mực nước tại cảng theo thời gian \(t\) (giờ) được cho bởi công thức:</p>
+        \[
+        h = 16 + 7 \sin \left(\frac{\pi}{12} t\right) \quad \text{với } 0 \leq t \leq 24
+        \]
+        <p>Tìm thời điểm mà mực nước tại cảng cao nhất.</p>
+<div class="solution" id="solution-example8">
+<p><strong>Lời giải:</strong></p>
+<p>Do \(-1 \leq \sin \left(\frac{\pi}{12} t\right) \leq 1\), ta có:</p>
+            \[
+            16 - 7 \leq h \leq 16 + 7 \Rightarrow 9 \leq h \leq 23
+            \]
+            <p>Mực nước cao nhất là \(h = 23\) khi:</p>
+            \[
+            \sin \left(\frac{\pi}{12} t\right) = 1 \Leftrightarrow \frac{\pi}{12} t = \frac{\pi}{2} + k 2\pi \Leftrightarrow t = 6 + 24k \quad (k \in \mathbb{Z})
+            \]
+            <p>Với \(0 \leq t \leq 24\), ta có \(t = 6\). Vậy thời điểm mực nước cao nhất là \(t = 6\) giờ.</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example8')">Hiện lời giải</button>
+<!-- Ví dụ 9 -->
+<div class="summary-box">
+<h3>Tóm tắt kiến thức</h3>
+<p>Phương trình lôgarit: \(\ln \frac{a}{b} = c \Leftrightarrow \frac{a}{b} = e^c\).</p>
+</div>
+<p><strong>Ví dụ 9:</strong> Công thức định luật làm mát của Newton:</p>
+        \[
+        kt = \ln \frac{T - S}{T_0 - S}
+        \]
+        <p>Thay \(t = 2\) phút = \(\frac{1}{30}\) giờ, \(T_0 = 96\), \(T = 90\), \(S = 24\). Tính nhiệt độ \(T\) sau 10 phút.</p>
+<div class="solution" id="solution-example9">
+<p><strong>Lời giải:</strong></p>
+<p>Thay \(t = \frac{1}{30}\), \(T_0 = 96\), \(T = 90\), \(S = 24\):</p>
+            \[
+            \frac{1}{30} k = \ln \frac{90 - 24}{96 - 24} = \ln \frac{66}{72} = \ln \frac{11}{12}
+            \]
+            \[
+            k = 30 \ln \frac{11}{12}
+            \]
+            <p>Sau 10 phút = \(\frac{1}{6}\) giờ:</p>
+            \[
+            \frac{1}{6} k = \ln \frac{T - 24}{96 - 24} \Rightarrow \frac{1}{6} \cdot 30 \ln \frac{11}{12} = \ln \frac{T - 24}{72}
+            \]
+            \[
+            5 \ln \frac{11}{12} = \ln \frac{T - 24}{72} \Rightarrow \frac{T - 24}{72} = \left(\frac{11}{12}\right)^5
+            \]
+            \[
+            T = 72 \cdot \left(\frac{11}{12}\right)^5 + 24 \approx 70.6^\circ \text{C}
+            \]
+            <p>Vậy nhiệt độ sau 10 phút khoảng \(70.6^\circ \text{C}\).</p>
+</div>
+<button class="solution-toggle" onclick="toggleSolution('solution-example9')">Hiện lời giải</button>
+</div>
+<!-- Ví dụ minh họa -->
+<div class="container">
+<h1>BÀI TẬP TỰ LUYỆN <span class="hot">HOT</span></h1>
+<h2>Phần I: Trắc Nghiệm Nhiều Lựa Chọn</h2>
+<!-- Câu 1 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình lượng giác cơ bản</h3>
+<p>Phương trình \(\sin x = m\): Nếu \(|m| \leq 1\), nghiệm là \(x = \alpha + k2\pi\) hoặc \(x = \pi - \alpha + k2\pi\), với \(\sin \alpha = m\), \(\alpha \in [-\frac{\pi}{2}, \frac{\pi}{2}]\). Đặc biệt, \(\sin x = 0 \Leftrightarrow x = k\pi\).</p>
+</div>
+<div class="question">
+<h3>Câu 1:</h3>
+<p>Các nghiệm của phương trình \(\sin \left(\frac{\pi}{5} - x\right) = 0\) là</p>
+<div class="options">
+<div class="option">A. \(x = -\frac{\pi}{5} + k\pi\)</div>
+<div class="option">B. \(x = \frac{2\pi}{5} + k\pi\)</div>
+<div class="option">C. \(x = -\frac{\pi}{5} + k2\pi\)</div>
+<div class="option">D. \(x = \frac{\pi}{5} + k\pi\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q1" type="radio" value="A"/> A</label>
+<label><input name="q1" type="radio" value="B"/> B</label>
+<label><input name="q1" type="radio" value="C"/> C</label>
+<label><input name="q1" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q1', 'D')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q1"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q1')">Xem lời giải</div>
+<div class="solution" id="solution-q1">
+<p><strong>Lời giải:</strong><br/>
+                        Ta có \(\sin \left(\frac{\pi}{5} - x\right) = 0 \Leftrightarrow \sin \left(x - \frac{\pi}{5}\right) = 0 \Leftrightarrow x - \frac{\pi}{5} = k\pi \Leftrightarrow x = \frac{\pi}{5} + k\pi\), \(k \in \mathbb{Z}\).<br/>
+                        Đáp án: D.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 2 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình lượng giác \(\sin ax = m\)</h3>
+<p>Phương trình \(\sin ax = m\): Nếu \(|m| \leq 1\), nghiệm là \(ax = \alpha + k2\pi\) hoặc \(ax = \pi - \alpha + k2\pi\), với \(\sin \alpha = m\). Suy ra \(x = \frac{\alpha + k2\pi}{a}\) hoặc \(x = \frac{\pi - \alpha + k2\pi}{a}\).</p>
+</div>
+<div class="question">
+<h3>Câu 2:</h3>
+<p>Các nghiệm của phương trình \(2\sin 3x + \sqrt{2} = 0\) là</p>
+<div class="options">
+<div class="option">A. \(x = \frac{\pi}{12} + k\frac{2\pi}{3}\) và \(x = \frac{3\pi}{12} + k\frac{2\pi}{3}\)</div>
+<div class="option">B. \(x = -\frac{\pi}{12} + k\frac{2\pi}{3}\) và \(x = \frac{5\pi}{12} + k\frac{2\pi}{3}\)</div>
+<div class="option">C. \(x = \frac{\pi}{12} + k\frac{2\pi}{3}\) và \(x = -\frac{\pi}{12} + k\frac{2\pi}{3}\)</div>
+<div class="option">D. \(x = -\frac{\pi}{12} + k\frac{2\pi}{3}\) và \(x = \frac{3\pi}{12} + k\frac{2\pi}{3}\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q2" type="radio" value="A"/> A</label>
+<label><input name="q2" type="radio" value="B"/> B</label>
+<label><input name="q2" type="radio" value="C"/> C</label>
+<label><input name="q2" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q2', 'B')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q2"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q2')">Xem lời giải</div>
+<div class="solution" id="solution-q2">
+<p><strong>Lời giải:</strong><br/>
+                        \(2\sin 3x + \sqrt{2} = 0 \Leftrightarrow \sin 3x = -\frac{\sqrt{2}}{2} = \sin \left(-\frac{\pi}{4}\right)\).<br/>
+                        Suy ra: \(3x = -\frac{\pi}{4} + k2\pi\) hoặc \(3x = \pi + \frac{\pi}{4} + k2\pi = \frac{5\pi}{4} + k2\pi\).<br/>
+                        Do đó: \(x = -\frac{\pi}{12} + k\frac{2\pi}{3}\) hoặc \(x = \frac{5\pi}{12} + k\frac{2\pi}{3}\), \(k \in \mathbb{Z}\).<br/>
+                        Đáp án: B.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 3 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình lượng giác \(\cos x = m\)</h3>
+<p>Phương trình \(\cos x = m\): Nếu \(|m| \leq 1\), nghiệm là \(x = \pm \alpha + k2\pi\), với \(\cos \alpha = m\), \(\alpha \in [0, \pi]\).</p>
+</div>
+<div class="question">
+<h3>Câu 3:</h3>
+<p>Các nghiệm của phương trình \(\cos \left(x + \frac{\pi}{6}\right) = \frac{1}{2}\) là</p>
+<div class="options">
+<div class="option">A. \(x = \frac{\pi}{6} + k2\pi\) và \(x = -\frac{\pi}{2} + k2\pi\)</div>
+<div class="option">B. \(x = -\frac{\pi}{6} + k2\pi\) và \(x = \frac{\pi}{2} + k2\pi\)</div>
+<div class="option">C. \(x = k2\pi\) và \(x = -\frac{\pi}{3} + k2\pi\)</div>
+<div class="option">D. \(x = \frac{\pi}{6} + k\pi\) và \(x = -\frac{\pi}{2} + k\pi\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q3" type="radio" value="A"/> A</label>
+<label><input name="q3" type="radio" value="B"/> B</label>
+<label><input name="q3" type="radio" value="C"/> C</label>
+<label><input name="q3" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q3', 'A')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q3"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q3')">Xem lời giải</div>
+<div class="solution" id="solution-q3">
+<p><strong>Lời giải:</strong><br/>
+                        \(\cos \left(x + \frac{\pi}{6}\right) = \frac{1}{2} = \cos \frac{\pi}{3}\).<br/>
+                        Suy ra: \(x + \frac{\pi}{6} = \pm \frac{\pi}{3} + k2\pi\).<br/>
+                        Trường hợp 1: \(x + \frac{\pi}{6} = \frac{\pi}{3} + k2\pi \Rightarrow x = \frac{\pi}{6} + k2\pi\).<br/>
+                        Trường hợp 2: \(x + \frac{\pi}{6} = -\frac{\pi}{3} + k2\pi \Rightarrow x = -\frac{\pi}{2} + k2\pi\).<br/>
+                        Đáp án: A.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 4 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình lượng giác bậc hai</h3>
+<p>Phương trình \(\sin^2 ax = 1 \Leftrightarrow \cos^2 ax = 0 \Leftrightarrow \cos ax = 0 \Leftrightarrow ax = \frac{\pi}{2} + k\pi \Rightarrow x = \frac{\pi}{2a} + k\frac{\pi}{a}\).</p>
+</div>
+<div class="question">
+<h3>Câu 4:</h3>
+<p>Các nghiệm của phương trình \(\sin^2 2x = 1\) là</p>
+<div class="options">
+<div class="option">A. \(x = \frac{\pi}{4} + k\frac{\pi}{2}\)</div>
+<div class="option">B. \(x = k\frac{\pi}{2}\)</div>
+<div class="option">C. \(x = \frac{\pi}{2} + k\pi\)</div>
+<div class="option">D. \(x = \frac{\pi}{8} + k\frac{\pi}{2}\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q4" type="radio" value="A"/> A</label>
+<label><input name="q4" type="radio" value="B"/> B</label>
+<label><input name="q4" type="radio" value="C"/> C</label>
+<label><input name="q4" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q4', 'A')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q4"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q4')">Xem lời giải</div>
+<div class="solution" id="solution-q4">
+<p><strong>Lời giải:</strong><br/>
+                        \(\sin^2 2x = 1 \Leftrightarrow \cos^2 2x = 0 \Leftrightarrow \cos 2x = 0 \Leftrightarrow 2x = \frac{\pi}{2} + k\pi \Leftrightarrow x = \frac{\pi}{4} + k\frac{\pi}{2}\), \(k \in \mathbb{Z}\).<br/>
+                        Đáp án: A.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 5 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình lượng giác \(\tan x = m\)</h3>
+<p>Phương trình \(\tan x = m \Leftrightarrow x = \alpha + k\pi\), với \(\tan \alpha = m\), \(\alpha \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right)\).</p>
+</div>
+<div class="question">
+<h3>Câu 5:</h3>
+<p>Các nghiệm của phương trình \(\tan \left(x - \frac{\pi}{3}\right) = \sqrt{3}\) là</p>
+<div class="options">
+<div class="option">A. \(x = \frac{2\pi}{3} + k2\pi\)</div>
+<div class="option">B. \(x = k\pi\)</div>
+<div class="option">C. \(x = \frac{2\pi}{3} + k\pi\)</div>
+<div class="option">D. \(x = -\frac{2\pi}{3} + k\pi\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q5" type="radio" value="A"/> A</label>
+<label><input name="q5" type="radio" value="B"/> B</label>
+<label><input name="q5" type="radio" value="C"/> C</label>
+<label><input name="q5" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q5', 'C')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q5"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q5')">Xem lời giải</div>
+<div class="solution" id="solution-q5">
+<p><strong>Lời giải:</strong><br/>
+                        \(\tan \left(x - \frac{\pi}{3}\right) = \sqrt{3} = \tan \frac{\pi}{3} \Leftrightarrow x - \frac{\pi}{3} = \frac{\pi}{3} + k\pi \Leftrightarrow x = \frac{2\pi}{3} + k\pi\), \(k \in \mathbb{Z}\).<br/>
+                        Đáp án: C.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 6 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình lượng giác \(\cot x = m\)</h3>
+<p>Phương trình \(\cot x = m \Leftrightarrow x = \alpha + k\pi\), với \(\cot \alpha = m\), \(\alpha \in (0, \pi)\).</p>
+</div>
+<div class="question">
+<h3>Câu 6:</h3>
+<p>Các nghiệm của phương trình \(\cot \left(3x + \frac{\pi}{4}\right) = -1\) là</p>
+<div class="options">
+<div class="option">A. \(x = \frac{\pi}{6} + k\pi\)</div>
+<div class="option">B. \(x = -\frac{\pi}{6} + k\frac{\pi}{3}\)</div>
+<div class="option">C. \(x = -\frac{\pi}{6} + k\frac{\pi}{6}\)</div>
+<div class="option">D. \(x = \frac{\pi}{6} + k\frac{\pi}{2}\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q6" type="radio" value="A"/> A</label>
+<label><input name="q6" type="radio" value="B"/> B</label>
+<label><input name="q6" type="radio" value="C"/> C</label>
+<label><input name="q6" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q6', 'B')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q6"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q6')">Xem lời giải</div>
+<div class="solution" id="solution-q6">
+<p><strong>Lời giải:</strong><br/>
+                        \(\cot \left(3x + \frac{\pi}{4}\right) = -1 = \cot \left(-\frac{\pi}{4}\right) \Leftrightarrow 3x + \frac{\pi}{4} = -\frac{\pi}{4} + k\pi \Leftrightarrow 3x = -\frac{\pi}{2} + k\pi \Leftrightarrow x = -\frac{\pi}{6} + k\frac{\pi}{3}\), \(k \in \mathbb{Z}\).<br/>
+                        Đáp án: B.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 7 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình lượng giác dạng \(a\sin x + b\cos x = 0\)</h3>
+<p>Phương trình \(a\sin x + b\cos x = 0 \Leftrightarrow \sin x \cos \alpha + \sin \alpha \cos x = 0 \Leftrightarrow \sin (x + \alpha) = 0\), với \(\cos \alpha = \frac{a}{\sqrt{a^2 + b^2}}\), \(\sin \alpha = \frac{b}{\sqrt{a^2 + b^2}}\).</p>
+</div>
+<div class="question">
+<h3>Câu 7:</h3>
+<p>Các nghiệm của phương trình \(\sin x + \sqrt{3}\cos x = 0\) là</p>
+<div class="options">
+<div class="option">A. \(x = -\frac{\pi}{6} + k\pi\)</div>
+<div class="option">B. \(x = \frac{\pi}{3} + k\pi\)</div>
+<div class="option">C. \(x = \frac{\pi}{6} + k\pi\)</div>
+<div class="option">D. \(x = -\frac{\pi}{3} + k\pi\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q7" type="radio" value="A"/> A</label>
+<label><input name="q7" type="radio" value="B"/> B</label>
+<label><input name="q7" type="radio" value="C"/> C</label>
+<label><input name="q7" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q7', 'D')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q7"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q7')">Xem lời giải</div>
+<div class="solution" id="solution-q7">
+<p><strong>Lời giải:</strong><br/>
+                        \(\sin x + \sqrt{3}\cos x = 0 \Leftrightarrow \frac{1}{2}\sin x + \frac{\sqrt{3}}{2}\cos x = 0 \Leftrightarrow \sin x \cos \frac{\pi}{3} + \sin \frac{\pi}{3}\cos x = 0 \Leftrightarrow \sin \left(x + \frac{\pi}{3}\right) = 0 \Leftrightarrow x + \frac{\pi}{3} = k\pi \Leftrightarrow x = -\frac{\pi}{3} + k\pi\), \(k \in \mathbb{Z}\).<br/>
+                        Đáp án: D.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 8 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình lượng giác với góc đo độ</h3>
+<p>Phương trình \(\cos x = m\): Nghiệm là \(x = \pm a^\circ + k360^\circ\), với \(\cos a^\circ = m\), \(a \in [0, 180^\circ]\).</p>
+</div>
+<div class="question">
+<h3>Câu 8:</h3>
+<p>Các góc lượng giác \(x\) sao cho \(\cos \left(x - 15^\circ\right) = -\frac{1}{2}\) là</p>
+<div class="options">
+<div class="option">A. \(x = 165^\circ + k360^\circ\) và \(x = -135^\circ + k360^\circ\)</div>
+<div class="option">B. \(x = 165^\circ + k180^\circ\) và \(x = -135^\circ + k180^\circ\)</div>
+<div class="option">C. \(x = 135^\circ + k360^\circ\) và \(x = -105^\circ + k360^\circ\)</div>
+<div class="option">D. \(x = 135^\circ + k180^\circ\) và \(x = -105^\circ + k180^\circ\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q8" type="radio" value="A"/> A</label>
+<label><input name="q8" type="radio" value="B"/> B</label>
+<label><input name="q8" type="radio" value="C"/> C</label>
+<label><input name="q8" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q8', 'C')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q8"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q8')">Xem lời giải</div>
+<div class="solution" id="solution-q8">
+<p><strong>Lời giải:</strong><br/>
+                        \(\cos \left(x - 15^\circ\right) = -\frac{1}{2} = \cos 120^\circ \Leftrightarrow x - 15^\circ = \pm 120^\circ + k360^\circ\).<br/>
+                        Trường hợp 1: \(x - 15^\circ = 120^\circ + k360^\circ \Rightarrow x = 135^\circ + k360^\circ\).<br/>
+                        Trường hợp 2: \(x - 15^\circ = -120^\circ + k360^\circ \Rightarrow x = -105^\circ + k360^\circ\).<br/>
+                        Đáp án: C.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 9 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình lượng giác \(\tan ax = \tan b^\circ\)</h3>
+<p>Phương trình \(\tan ax = \tan b^\circ \Leftrightarrow ax = b^\circ + k180^\circ \Rightarrow x = \frac{b^\circ + k180^\circ}{a}\).</p>
+</div>
+<div class="question">
+<h3>Câu 9:</h3>
+<p>Các góc lượng giác \(x\) sao cho \(\tan \left(2x + 27^\circ\right) = \tan 35^\circ\) là</p>
+<div class="options">
+<div class="option">A. \(x = 4^\circ + k180^\circ\)</div>
+<div class="option">B. \(x = -4^\circ + k180^\circ\)</div>
+<div class="option">C. \(x = -4^\circ + k90^\circ\)</div>
+<div class="option">D. \(x = 4^\circ + k90^\circ\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q9" type="radio" value="A"/> A</label>
+<label><input name="q9" type="radio" value="B"/> B</label>
+<label><input name="q9" type="radio" value="C"/> C</label>
+<label><input name="q9" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q9', 'D')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q9"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q9')">Xem lời giải</div>
+<div class="solution" id="solution-q9">
+<p><strong>Lời giải:</strong><br/>
+                        \(\tan \left(2x + 27^\circ\right) = \tan 35^\circ \Leftrightarrow 2x + 27^\circ = 35^\circ + k180^\circ \Leftrightarrow 2x = 8^\circ + k180^\circ \Leftrightarrow x = 4^\circ + k90^\circ\), \(k \in \mathbb{Z}\).<br/>
+                        Đáp án: D.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 10 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình lượng giác \(\sin ax = \sin bx\)</h3>
+<p>Phương trình \(\sin ax = \sin bx \Leftrightarrow ax = bx + k360^\circ\) hoặc \(ax = 180^\circ - bx + k360^\circ\).</p>
+</div>
+<div class="question">
+<h3>Câu 10:</h3>
+<p>Các góc lượng giác \(x\) sao cho \(\sin 2x = \sin \left(36^\circ - x\right)\) là</p>
+<div class="options">
+<div class="option">A. \(x = 12^\circ + k120^\circ\) và \(x = 144^\circ + k360^\circ\)</div>
+<div class="option">B. \(x = 12^\circ + k120^\circ\) và \(x = 48^\circ + k120^\circ\)</div>
+<div class="option">C. \(x = 12^\circ + k360^\circ\) và \(x = 144^\circ + k120^\circ\)</div>
+<div class="option">D. \(x = 36^\circ + k360^\circ\) và \(x = 144^\circ + k360^\circ\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q10" type="radio" value="A"/> A</label>
+<label><input name="q10" type="radio" value="B"/> B</label>
+<label><input name="q10" type="radio" value="C"/> C</label>
+<label><input name="q10" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q10', 'A')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q10"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q10')">Xem lời giải</div>
+<div class="solution" id="solution-q10">
+<p><strong>Lời giải:</strong><br/>
+                        \(\sin 2x = \sin \left(36^\circ - x\right) \Leftrightarrow \left\{
+                        \begin{array}{l}
+                        2x = 36^\circ - x + k360^\circ \\
+                        2x = 180^\circ - (36^\circ - x) + k360^\circ
+                        \end{array}
+                        \right.\)<br/>
+                        Trường hợp 1: \(3x = 36^\circ + k360^\circ \Rightarrow x = 12^\circ + k120^\circ\).<br/>
+                        Trường hợp 2: \(2x = 144^\circ + x + k360^\circ \Rightarrow x = 144^\circ + k360^\circ\).<br/>
+                        Đáp án: A.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 11 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Số nghiệm phương trình lượng giác</h3>
+<p>Phương trình \(\cos x = 1 \Leftrightarrow x = k2\pi\). Để tìm số nghiệm trong khoảng \((a, b)\), xét \(a &lt; k2\pi &lt; b \Rightarrow \frac{a}{2\pi} &lt; k &lt; \frac{b}{2\pi}\).</p>
+</div>
+<div class="question">
+<h3>Câu 11:</h3>
+<p>Số nghiệm của phương trình \(\cos x = 1\) trên khoảng \(\left(-\frac{3\pi}{4}, \frac{9\pi}{2}\right)\) là</p>
+<div class="options">
+<div class="option">A. 1</div>
+<div class="option">B. 2</div>
+<div class="option">C. 4</div>
+<div class="option">D. 3</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q11" type="radio" value="A"/> A</label>
+<label><input name="q11" type="radio" value="B"/> B</label>
+<label><input name="q11" type="radio" value="C"/> C</label>
+<label><input name="q11" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q11', 'D')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q11"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q11')">Xem lời giải</div>
+<div class="solution" id="solution-q11">
+<p><strong>Lời giải:</strong><br/>
+                        \(\cos x = 1 \Leftrightarrow x = k2\pi\), \(k \in \mathbb{Z}\).<br/>
+                        Trong khoảng \(\left(-\frac{3\pi}{4}, \frac{9\pi}{2}\right)\): \(-\frac{3\pi}{4} &lt; k2\pi &lt; \frac{9\pi}{2} \Rightarrow -\frac{3}{8} &lt; k &lt; \frac{9}{4} \Rightarrow k \in \{0, 1, 2\}\).<br/>
+                        Suy ra có 3 nghiệm.<br/>
+                        Đáp án: D.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 12 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Số nghiệm phương trình \(\sin x = m\)</h3>
+<p>Phương trình \(\sin x = m \Leftrightarrow x = \alpha + k2\pi\) hoặc \(x = \pi - \alpha + k2\pi\), với \(\sin \alpha = m\). Tìm số nghiệm trong khoảng \((a, b)\) bằng cách xét \(k\) thỏa mãn.</p>
+</div>
+<div class="question">
+<h3>Câu 12:</h3>
+<p>Số nghiệm của phương trình \(\sin x = \frac{1}{\sqrt{3}}\) trên khoảng \(\left(-\frac{5\pi}{2}, \frac{5\pi}{2}\right)\) là</p>
+<div class="options">
+<div class="option">A. 2</div>
+<div class="option">B. 5</div>
+<div class="option">C. 4</div>
+<div class="option">D. 3</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q12" type="radio" value="A"/> A</label>
+<label><input name="q12" type="radio" value="B"/> B</label>
+<label><input name="q12" type="radio" value="C"/> C</label>
+<label><input name="q12" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q12', 'B')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q12"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q12')">Xem lời giải</div>
+<div class="solution" id="solution-q12">
+<p><strong>Lời giải:</strong><br/>
+                        Gọi \(\sin \alpha = \frac{1}{\sqrt{3}} \approx 0,577 \Rightarrow \alpha \approx 0,62\).<br/>
+                        Nghiệm: \(x = \alpha + k2\pi\) hoặc \(x = \pi - \alpha + k2\pi\).<br/>
+                        Trong khoảng \(\left(-\frac{5\pi}{2}, \frac{5\pi}{2}\right)\):<br/>
+                        - Với \(x = \alpha + k2\pi\): \(-\frac{5\pi}{2} &lt; \alpha + k2\pi &lt; \frac{5\pi}{2} \Rightarrow -1,25 - \frac{\alpha}{2\pi} &lt; k &lt; 1,25 - \frac{\alpha}{2\pi} \Rightarrow k \in \{-1, 0, 1\}\) (3 nghiệm).<br/>
+                        - Với \(x = \pi - \alpha + k2\pi\): \(-\frac{5\pi}{2} &lt; \pi - \alpha + k2\pi &lt; \frac{5\pi}{2} \Rightarrow -0,75 - \frac{\alpha}{2\pi} &lt; k &lt; 1,75 - \frac{\alpha}{2\pi} \Rightarrow k \in \{0, 1\}\) (2 nghiệm).<br/>
+                        Tổng cộng: 3 + 2 = 5 nghiệm.<br/>
+                        Đáp án: B.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 13 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình lượng giác bậc hai</h3>
+<p>Phương trình \(\cos^2 x - \sin^2 x = 0 \Leftrightarrow \cos 2x = 0 \Leftrightarrow 2x = \frac{\pi}{2} + k\pi \Rightarrow x = \frac{\pi}{4} + k\frac{\pi}{2}\).</p>
+</div>
+<div class="question">
+<h3>Câu 13:</h3>
+<p>Các nghiệm của phương trình \(\cos^2 x - \sin^2 x = 0\) là</p>
+<div class="options">
+<div class="option">A. \(x = \frac{\pi}{4} + k\frac{\pi}{2}\)</div>
+<div class="option">B. \(x = \frac{\pi}{4} + k\pi\)</div>
+<div class="option">C. \(x = \frac{\pi}{4} + k2\pi\)</div>
+<div class="option">D. \(x = -\frac{\pi}{4} + k\pi\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q13" type="radio" value="A"/> A</label>
+<label><input name="q13" type="radio" value="B"/> B</label>
+<label><input name="q13" type="radio" value="C"/> C</label>
+<label><input name="q13" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q13', 'A')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q13"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q13')">Xem lời giải</div>
+<div class="solution" id="solution-q13">
+<p><strong>Lời giải:</strong><br/>
+                        \(\cos^2 x - \sin^2 x = 0 \Leftrightarrow \cos 2x = 0 \Leftrightarrow 2x = \frac{\pi}{2} + k\pi \Leftrightarrow x = \frac{\pi}{4} + k\frac{\pi}{2}\), \(k \in \mathbb{Z}\).<br/>
+                        Đáp án: A.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 14 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình lượng giác \(\cos ax = \cos bx\)</h3>
+<p>Phương trình \(\cos ax = \cos bx \Leftrightarrow \left\{
+                        \begin{array}{l}
+                        ax = bx + k2\pi \\
+                        ax = -bx + k2\pi
+                        \end{array}
+                        \right.\).</p>
+</div>
+<div class="question">
+<h3>Câu 14:</h3>
+<p>Các nghiệm của phương trình \(\cos \left(2x - \frac{\pi}{2}\right) = \cos 6x\) là</p>
+<div class="options">
+<div class="option">A. \(x = -\frac{2\pi}{3} + k2\pi\) và \(x = \pi + k2\pi\)</div>
+<div class="option">B. \(x = -\frac{\pi}{3} + k2\pi\) và \(x = \frac{\pi}{3} + k2\pi\)</div>
+<div class="option">C. \(x = k2\pi\) và \(x = \frac{\pi}{3} + k2\pi\)</div>
+<div class="option">D. \(x = -\frac{\pi}{8} + k\frac{\pi}{2}\) và \(x = \frac{\pi}{16} + k\frac{\pi}{4}\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q14" type="radio" value="A"/> A</label>
+<label><input name="q14" type="radio" value="B"/> B</label>
+<label><input name="q14" type="radio" value="C"/> C</label>
+<label><input name="q14" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q14', 'D')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q14"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q14')">Xem lời giải</div>
+<div class="solution" id="solution-q14">
+<p><strong>Lời giải:</strong><br/>
+                        \(\cos \left(2x - \frac{\pi}{2}\right) = \cos 6x \Leftrightarrow \left\{
+                        \begin{array}{l}
+                        2x - \frac{\pi}{2} = 6x + k2\pi \\
+                        2x - \frac{\pi}{2} = -6x + k2\pi
+                        \end{array}
+                        \right.\)<br/>
+                        Trường hợp 1: \(2x - 6x = \frac{\pi}{2} + k2\pi \Rightarrow 4x = -\frac{\pi}{2} + k2\pi \Rightarrow x = -\frac{\pi}{8} + k\frac{\pi}{2}\).<br/>
+                        Trường hợp 2: \(2x + 6x = \frac{\pi}{2} + k2\pi \Rightarrow 8x = \frac{\pi}{2} + k2\pi \Rightarrow x = \frac{\pi}{16} + k\frac{\pi}{4}\).<br/>
+                        Đáp án: D.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 15 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình mũ</h3>
+<p>Phương trình \(a^{f(x)} = b \Leftrightarrow f(x) = \log_a b\), với \(b &gt; 0\). Nếu \(a^{f(x)} = a^{g(x)} \Leftrightarrow f(x) = g(x)\).</p>
+</div>
+<div class="question">
+<h3>Câu 15:</h3>
+<p>Nghiệm của phương trình \(\left(\frac{3}{2}\right)^x = \frac{4}{9}\) là</p>
+<div class="options">
+<div class="option">A. \(x = -2\)</div>
+<div class="option">B. \(x = -\sqrt{2}\)</div>
+<div class="option">C. \(x = \sqrt{2}\)</div>
+<div class="option">D. \(x = 2\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q15" type="radio" value="A"/> A</label>
+<label><input name="q15" type="radio" value="B"/> B</label>
+<label><input name="q15" type="radio" value="C"/> C</label>
+<label><input name="q15" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q15', 'A')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q15"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q15')">Xem lời giải</div>
+<div class="solution" id="solution-q15">
+<p><strong>Lời giải:</strong><br/>
+                        \(\left(\frac{3}{2}\right)^x = \frac{4}{9} = \left(\frac{2}{3}\right)^2 = \left(\frac{3}{2}\right)^{-2} \Leftrightarrow x = -2\).<br/>
+                        Đáp án: A.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 16 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình mũ</h3>
+<p>Phương trình \(a^{f(x)} = a^k \Leftrightarrow f(x) = k\). Giải phương trình bậc hai nếu cần.</p>
+</div>
+<div class="question">
+<h3>Câu 16:</h3>
+<p>Nghiệm của phương trình \(2^{x^2 - x} = 4\) là</p>
+<div class="options">
+<div class="option">A. \(x = -1\) và \(x = 2\)</div>
+<div class="option">B. \(x = 0\) và \(x = 1\)</div>
+<div class="option">C. \(x = 1\) và \(x = -2\)</div>
+<div class="option">D. \(x = 0\) và \(x = 2\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q16" type="radio" value="A"/> A</label>
+<label><input name="q16" type="radio" value="B"/> B</label>
+<label><input name="q16" type="radio" value="C"/> C</label>
+<label><input name="q16" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q16', 'A')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q16"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q16')">Xem lời giải</div>
+<div class="solution" id="solution-q16">
+<p><strong>Lời giải:</strong><br/>
+                        \(2^{x^2 - x} = 4 = 2^2 \Leftrightarrow x^2 - x = 2 \Leftrightarrow x^2 - x - 2 = 0 \Leftrightarrow (x - 2)(x + 1) = 0 \Leftrightarrow x = 2\) hoặc \(x = -1\).<br/>
+                        Đáp án: A.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 17 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình mũ và định lý Viète</h3>
+<p>Phương trình \(a^{f(x)} = b \Leftrightarrow f(x) = \log_a b\). Với phương trình bậc hai \(x^2 + px + q = 0\), tổng các nghiệm là \(-p\).</p>
+</div>
+<div class="question">
+<h3>Câu 17:</h3>
+<p>Tổng các nghiệm của phương trình \(5^{x^2 - 3x} = 10\) là</p>
+<div class="options">
+<div class="option">A. -3</div>
+<div class="option">B. \(\log_5 10\)</div>
+<div class="option">C. 3</div>
+<div class="option">D. \(-\log_5 10\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q17" type="radio" value="A"/> A</label>
+<label><input name="q17" type="radio" value="B"/> B</label>
+<label><input name="q17" type="radio" value="C"/> C</label>
+<label><input name="q17" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q17', 'C')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q17"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q17')">Xem lời giải</div>
+<div class="solution" id="solution-q17">
+<p><strong>Lời giải:</strong><br/>
+                        \(5^{x^2 - 3x} = 10 \Leftrightarrow x^2 - 3x = \log_5 10 \Leftrightarrow x^2 - 3x - \log_5 10 = 0\).<br/>
+                        Theo định lý Viète, tổng các nghiệm là \(-(-3) = 3\).<br/>
+                        Đáp án: C.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 18 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình mũ</h3>
+<p>Phương trình \(a^{f(x)} = b^{g(x)} \Rightarrow a^{f(x)} = (b^{g(x)})^{\log_a b} \Rightarrow f(x) = g(x) \cdot \log_a b\).</p>
+</div>
+<div class="question">
+<h3>Câu 18:</h3>
+<p>Nghiệm của phương trình \(\left(\frac{1}{25}\right)^{3 - 2x} = 5^{x + 3}\) là</p>
+<div class="options">
+<div class="option">A. \(x = -3\)</div>
+<div class="option">B. \(x = 5\)</div>
+<div class="option">C. \(x = -5\)</div>
+<div class="option">D. \(x = 3\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q18" type="radio" value="A"/> A</label>
+<label><input name="q18" type="radio" value="B"/> B</label>
+<label><input name="q18" type="radio" value="C"/> C</label>
+<label><input name="q18" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q18', 'D')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q18"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q18')">Xem lời giải</div>
+<div class="solution" id="solution-q18">
+<p><strong>Lời giải:</strong><br/>
+                        \(\left(\frac{1}{25}\right)^{3 - 2x} = 5^{x + 3} \Leftrightarrow 5^{2(3 - 2x)} = 5^{x + 3} \Leftrightarrow 6 - 4x = x + 3 \Leftrightarrow 5x = 3 \Leftrightarrow x = 3\).<br/>
+                        Đáp án: D.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 19 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình lôgarit</h3>
+<p>Phương trình \(\log_a f(x) = b \Leftrightarrow f(x) = a^b\), với điều kiện \(f(x) &gt; 0\).</p>
+</div>
+<div class="question">
+<h3>Câu 19:</h3>
+<p>Nghiệm của phương trình \(\log_{27} \left(x^2 - 1\right) = \frac{1}{3}\) là</p>
+<div class="options">
+<div class="option">A. \(x = \pm 2\)</div>
+<div class="option">B. \(x = \pm \sqrt{10}\)</div>
+<div class="option">C. \(x = 2\)</div>
+<div class="option">D. \(x = \sqrt{10}\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q19" type="radio" value="A"/> A</label>
+<label><input name="q19" type="radio" value="B"/> B</label>
+<label><input name="q19" type="radio" value="C"/> C</label>
+<label><input name="q19" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q19', 'A')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q19"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q19')">Xem lời giải</div>
+<div class="solution" id="solution-q19">
+<p><strong>Lời giải:</strong><br/>
+                        \(\log_{27} \left(x^2 - 1\right) = \frac{1}{3} \Leftrightarrow x^2 - 1 = 27^{\frac{1}{3}} = 3 \Leftrightarrow x^2 = 4 \Leftrightarrow x = \pm 2\).<br/>
+                        Điều kiện: \(x^2 - 1 &gt; 0 \Leftrightarrow x &lt; -1\) hoặc \(x &gt; 1\). Cả \(x = 2\) và \(x = -2\) thỏa mãn.<br/>
+                        Đáp án: A.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 20 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình lôgarit và định lý Viète</h3>
+<p>Phương trình \(\log_a f(x) = b \Leftrightarrow f(x) = a^b\). Tích các nghiệm của phương trình bậc hai \(x^2 + px + q = 0\) là \(\frac{q}{a}\).</p>
+</div>
+<div class="question">
+<h3>Câu 20:</h3>
+<p>Tích các nghiệm của phương trình \(\log_2 \left(x^2 - 2x\right) = 3\) là</p>
+<div class="options">
+<div class="option">A. 8</div>
+<div class="option">B. 6</div>
+<div class="option">C. -8</div>
+<div class="option">D. -6</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q20" type="radio" value="A"/> A</label>
+<label><input name="q20" type="radio" value="B"/> B</label>
+<label><input name="q20" type="radio" value="C"/> C</label>
+<label><input name="q20" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q20', 'C')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q20"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q20')">Xem lời giải</div>
+<div class="solution" id="solution-q20">
+<p><strong>Lời giải:</strong><br/>
+                        \(\log_2 \left(x^2 - 2x\right) = 3 \Leftrightarrow x^2 - 2x = 2^3 = 8 \Leftrightarrow x^2 - 2x - 8 = 0\).<br/>
+                        Tích các nghiệm: \(\frac{-8}{1} = -8\).<br/>
+                        Đáp án: C.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 21 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình lôgarit</h3>
+<p>Phương trình \(\log_a f(x) = \log_a g(x) \Leftrightarrow f(x) = g(x)\), với điều kiện \(f(x) &gt; 0\), \(g(x) &gt; 0\).</p>
+</div>
+<div class="question">
+<h3>Câu 21:</h3>
+<p>Số nghiệm của phương trình \(\log_7 \left(x^2 - 2x\right) = \log_7 (3x - 6)\) là</p>
+<div class="options">
+<div class="option">A. 2</div>
+<div class="option">B. 0</div>
+<div class="option">C. 3</div>
+<div class="option">D. 1</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q21" type="radio" value="A"/> A</label>
+<label><input name="q21" type="radio" value="B"/> B</label>
+<label><input name="q21" type="radio" value="C"/> C</label>
+<label><input name="q21" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q21', 'D')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q21"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q21')">Xem lời giải</div>
+<div class="solution" id="solution-q21">
+<p><strong>Lời giải:</strong><br/>
+                        Điều kiện: \(\left\{
+                        \begin{array}{l}
+                        x^2 - 2x &gt; 0 \\
+                        3x - 6 &gt; 0
+                        \end{array}
+                        \right. \Leftrightarrow x &gt; 2\).<br/>
+                        \(\log_7 \left(x^2 - 2x\right) = \log_7 (3x - 6) \Leftrightarrow x^2 - 2x = 3x - 6 \Leftrightarrow x^2 - 5x + 6 = 0 \Leftrightarrow x = 2\) (loại), \(x = 3\) (nhận).<br/>
+                        Suy ra có 1 nghiệm.<br/>
+                        Đáp án: D.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 22 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Bất phương trình mũ</h3>
+<p>Bất phương trình \(a^{f(x)} &gt; b\), với \(0 &lt; a &lt; 1\), \(b &gt; 0\): \(f(x) &lt; \log_a b\).</p>
+</div>
+<div class="question">
+<h3>Câu 22:</h3>
+<p>Nghiệm của bất phương trình \((0,5)^x &gt; 3\) là</p>
+<div class="options">
+<div class="option">A. \(x &gt; \log_{0,5} 3\)</div>
+<div class="option">B. \(x &lt; \log_{0,5} 3\)</div>
+<div class="option">C. \(x &lt; \log_3 0,5\)</div>
+<div class="option">D. \(x &gt; \log_3 0,5\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q22" type="radio" value="A"/> A</label>
+<label><input name="q22" type="radio" value="B"/> B</label>
+<label><input name="q22" type="radio" value="C"/> C</label>
+<label><input name="q22" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q22', 'B')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q22"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q22')">Xem lời giải</div>
+<div class="solution" id="solution-q22">
+<p><strong>Lời giải:</strong><br/>
+                        \((0,5)^x &gt; 3 \Rightarrow x &lt; \log_{0,5} 3\), vì \(0 &lt; 0,5 &lt; 1\).<br/>
+                        Đáp án: B.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 23 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Bất phương trình mũ</h3>
+<p>Bất phương trình \(a^{f(x)} &gt; b\), với \(0 &lt; a &lt; 1\), \(b = 1 \Rightarrow f(x) &lt; \log_a 1 = 0\).</p>
+</div>
+<div class="question">
+<h3>Câu 23:</h3>
+<p>Tập nghiệm của bất phương trình \((0,2)^{x^2} &gt; 1\) là</p>
+<div class="options">
+<div class="option">A. \(\varnothing\)</div>
+<div class="option">B. \(\mathbb{R} \setminus \{0\}\)</div>
+<div class="option">C. \((0, +\infty)\)</div>
+<div class="option">D. \(\mathbb{R}\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q23" type="radio" value="A"/> A</label>
+<label><input name="q23" type="radio" value="B"/> B</label>
+<label><input name="q23" type="radio" value="C"/> C</label>
+<label><input name="q23" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q23', 'A')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q23"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q23')">Xem lời giải</div>
+<div class="solution" id="solution-q23">
+<p><strong>Lời giải:</strong><br/>
+                        \((0,2)^{x^2} &gt; 1 \Leftrightarrow x^2 &lt; \log_{0,2} 1 = 0 \Leftrightarrow x^2 &lt; 0\) (vô nghiệm).<br/>
+                        Tập nghiệm: \(\varnothing\).<br/>
+                        Đáp án: A.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 24 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Bất phương trình mũ</h3>
+<p>Bất phương trình \(a^{f(x)} &gt; a^{g(x)}\), với \(0 &lt; a &lt; 1 \Rightarrow f(x) &lt; g(x)\).</p>
+</div>
+<div class="question">
+<h3>Câu 24:</h3>
+<p>Tập nghiệm của bất phương trình \((2 - \sqrt{3})^{2x - 1} &gt; (2 + \sqrt{3})^{x - 5}\) là</p>
+<div class="options">
+<div class="option">A. \((2, +\infty)\)</div>
+<div class="option">B. \((-4, +\infty)\)</div>
+<div class="option">C. \((-\infty, 2)\)</div>
+<div class="option">D. \((-\infty, -4)\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q24" type="radio" value="A"/> A</label>
+<label><input name="q24" type="radio" value="B"/> B</label>
+<label><input name="q24" type="radio" value="C"/> C</label>
+<label><input name="q24" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q24', 'C')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q24"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q24')">Xem lời giải</div>
+<div class="solution" id="solution-q24">
+<p><strong>Lời giải:</strong><br/>
+                        Vì \((2 - \sqrt{3})(2 + \sqrt{3}) = 1 \Rightarrow 2 + \sqrt{3} = (2 - \sqrt{3})^{-1}\), nên:<br/>
+                        \((2 - \sqrt{3})^{2x - 1} &gt; (2 - \sqrt{3})^{-(x - 5)} \Leftrightarrow 2x - 1 &lt; -(x - 5) \Leftrightarrow 3x &lt; 6 \Leftrightarrow x &lt; 2\).<br/>
+                        Tập nghiệm: \((-\infty, 2)\).<br/>
+                        Đáp án: C.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 25 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Bất phương trình lôgarit</h3>
+<p>Bất phương trình \(\log_a f(x) &lt; b\), với \(0 &lt; a &lt; 1 \Rightarrow f(x) &gt; a^b\), với điều kiện \(f(x) &gt; 0\).</p>
+</div>
+<div class="question">
+<h3>Câu 25:</h3>
+<p>Tập nghiệm của bất phương trình \(\log_{\frac{1}{2}} (2x - 6) &lt; -2\) là</p>
+<div class="options">
+<div class="option">A. \((3, 5)\)</div>
+<div class="option">B. \((-\infty, 5)\)</div>
+<div class="option">C. \((3, +\infty)\)</div>
+<div class="option">D. \((5, +\infty)\)</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q25" type="radio" value="A"/> A</label>
+<label><input name="q25" type="radio" value="B"/> B</label>
+<label><input name="q25" type="radio" value="C"/> C</label>
+<label><input name="q25" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q25', 'D')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q25"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q25')">Xem lời giải</div>
+<div class="solution" id="solution-q25">
+<p><strong>Lời giải:</strong><br/>
+                        Điều kiện: \(2x - 6 &gt; 0 \Rightarrow x &gt; 3\).<br/>
+                        \(\log_{\frac{1}{2}} (2x - 6) &lt; -2 \Rightarrow 2x - 6 &gt; \left(\frac{1}{2}\right)^{-2} = 4 \Rightarrow 2x &gt; 10 \Rightarrow x &gt; 5\).<br/>
+                        Tập nghiệm: \((5, +\infty)\).<br/>
+                        Đáp án: D.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Câu 26 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Bất phương trình lôgarit</h3>
+<p>Bất phương trình \(\log_a f(x) &lt; \log_a g(x)\), với \(a &gt; 1 \Rightarrow f(x) &lt; g(x)\), với điều kiện \(f(x) &gt; 0\), \(g(x) &gt; 0\).</p>
+</div>
+<div class="question">
+<h3>Câu 26:</h3>
+<p>Số nghiệm nguyên của bất phương trình \(\log_5 (2x - 3) &lt; \log_{25} x^2\) là</p>
+<div class="options">
+<div class="option">A. 1</div>
+<div class="option">B. 2</div>
+<div class="option">C. 0</div>
+<div class="option">D. vô số</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án:</p>
+<label><input name="q26" type="radio" value="A"/> A</label>
+<label><input name="q26" type="radio" value="B"/> B</label>
+<label><input name="q26" type="radio" value="C"/> C</label>
+<label><input name="q26" type="radio" value="D"/> D</label>
+<button onclick="checkAnswer('q26', 'A')">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q26"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q26')">Xem lời giải</div>
+<div class="solution" id="solution-q26">
+<p><strong>Lời giải:</strong><br/>
+                        Điều kiện: \(\left\{
+                        \begin{array}{l}
+                        2x - 3 &gt; 0 \\
+                        x^2 &gt; 0
+                        \end{array}
+                        \right. \Leftrightarrow x &gt; \frac{3}{2}\).<br/>
+                        \(\log_{25} x^2 = \log_{5^2} x^2 = \frac{1}{2} \log_5 x^2 = \log_5 x\).<br/>
+                        Bất phương trình: \(\log_5 (2x - 3) &lt; \log_5 x \Leftrightarrow 2x - 3 &lt; x \Leftrightarrow x &lt; 3\).<br/>
+                        Tập nghiệm: \(\left(\frac{3}{2}, 3\right)\). Nghiệm nguyên: \(x = 2\).<br/>
+                        Số nghiệm nguyên: 1.<br/>
+                        Đáp án: A.
+                        </p>
+</div>
+</div>
+</div>
+<h2>Phần II: Trắc Nghiệm Đúng/Sai</h2>
+<!-- Câu 27 -->
+<div class="card">
+<h3>Tóm tắt kiến thức</h3>
+<p>\(\cos^2 x = \frac{1 + \cos 2x}{2}\), \(\sin^2 x = \frac{1 - \cos 2x}{2}\), \(\cos (\pi - x) = -\cos x\).</p>
+<div class="question">
+<h3>Câu 27:</h3>
+<p>Cho phương trình \(\cos^2 \left(\frac{\pi}{2} - x\right) = \sin^2 \left(3x + \frac{\pi}{4}\right)\). Xét các phát biểu sau:</p>
+<div class="options">
+<div class="option">a) Hạ bậc hai vế, ta được phương trình \(\frac{1 + \cos (\pi - 2x)}{2} = \frac{1 - \cos \left(6x + \frac{\pi}{2}\right)}{2}\).</div>
+<div class="option">b) Ta có \(\cos (\pi - 2x) = \cos 2x\).</div>
+<div class="option">c) Phương trình đã cho đưa về dạng \(\cos 2x = \cos 6x\).</div>
+<div class="option">d) Nghiệm của phương trình đã cho là \(x = k \frac{\pi}{4} \quad (k \in \mathbb{Z})\).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q27a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q27a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q27b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q27b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q27c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q27c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q27d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q27d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q27', ['Đúng', 'Sai', 'Sai', 'Sai'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q27"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q27')">Xem lời giải</div>
+<div class="solution" id="solution-q27">
+<p><strong>Lời giải:</strong><br/>
+                Ta có \(\cos^2 \left(\frac{\pi}{2} - x\right) = \sin^2 x\), \(\sin^2 \left(3x + \frac{\pi}{4}\right) = \frac{1 - \cos \left(6x + \frac{\pi}{2}\right)}{2}\). Phương trình trở thành \(\frac{1 + \cos (\pi - 2x)}{2} = \frac{1 - \cos \left(6x + \frac{\pi}{2}\right)}{2} \Leftrightarrow \cos (\pi - 2x) = -\cos \left(6x + \frac{\pi}{2}\right) \Leftrightarrow \cos (\pi - 2x) = \cos \left(\frac{\pi}{2} - 6x\right)\). Giải ra: \(x = -\frac{\pi}{8} + k \frac{\pi}{2}\) hoặc \(x = \frac{3\pi}{16} - k \frac{\pi}{4}\).<br/>
+                - a) Đúng, vì hạ bậc đúng.<br/>
+                - b) Sai, vì \(\cos (\pi - 2x) = -\cos 2x\).<br/>
+                - c) Sai, không đưa về \(\cos 2x = \cos 6x\).<br/>
+                - d) Sai, nghiệm không phải \(x = k \frac{\pi}{4}\).<br/>
+                Đáp án: a Đúng, b Sai, c Sai, d Sai.
+                </p>
+</div>
+</div>
+</div>
+<!-- Câu 28 -->
+<div class="card">
+<h3>Tóm tắt kiến thức</h3>
+<p>\(\sin x + \cos x = \sqrt{2} \sin \left(x + \frac{\pi}{4}\right)\), \(\sin x = \sin \alpha \Leftrightarrow x = \alpha + k 2\pi\) hoặc \(x = \pi - \alpha + k 2\pi\).</p>
+<div class="question">
+<h3>Câu 28:</h3>
+<p>Cho phương trình \(\sin x + \cos x = 1\). Xét các phát biểu sau:</p>
+<div class="options">
+<div class="option">a) Phương trình đã cho tương đương với phương trình \(\sin \left(x + \frac{\pi}{4}\right) = \frac{\sqrt{2}}{2}\).</div>
+<div class="option">b) Phương trình đã cho có nghiệm \(x = 2k\pi \quad (k \in \mathbb{Z})\).</div>
+<div class="option">c) Phương trình đã cho có nghiệm \(x = \frac{\pi}{2} + k 2\pi \quad (k \in \mathbb{Z})\).</div>
+<div class="option">d) Phương trình đã cho có nghiệm \(x = \frac{\pi}{4} + k \pi \quad (k \in \mathbb{Z})\).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q28a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q28a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q28b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q28b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q28c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q28c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q28d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q28d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q28', ['Đúng', 'Đúng', 'Sai', 'Sai'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q28"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q28')">Xem lời giải</div>
+<div class="solution" id="solution-q28">
+<p><strong>Lời giải:</strong><br/>
+                Ta có \(\sin x + \cos x = \sqrt{2} \sin \left(x + \frac{\pi}{4}\right) = 1 \Leftrightarrow \sin \left(x + \frac{\pi}{4}\right) = \frac{\sqrt{2}}{2} \Leftrightarrow x + \frac{\pi}{4} = \frac{\pi}{4} + k 2\pi\) hoặc \(x + \frac{\pi}{4} = \pi - \frac{\pi}{4} + k 2\pi \Leftrightarrow x = 2k\pi\) hoặc \(x = \frac{\pi}{2} + k 2\pi\).<br/>
+                - a) Đúng, vì phương trình tương đương.<br/>
+                - b) Đúng, vì \(x = 2k\pi\) là nghiệm.<br/>
+                - c) Sai, vì \(x = \frac{\pi}{2} + k 2\pi\) không phải nghiệm đầy đủ.<br/>
+                - d) Sai, vì \(x = \frac{\pi}{4} + k \pi\) không phải nghiệm.<br/>
+                Đáp án: a Đúng, b Đúng, c Sai, d Sai.
+                </p>
+</div>
+</div>
+</div>
+<!-- Câu 29 -->
+<div class="card">
+<h3>Tóm tắt kiến thức</h3>
+<p>\(\sin x = \cos x \Leftrightarrow \tan x = 1 \Leftrightarrow x = \frac{\pi}{4} + k \pi\).</p>
+<div class="question">
+<h3>Câu 29:</h3>
+<p>Cho phương trình \(\sin x - \cos x = 0\). Xét các phát biểu sau:</p>
+<div class="options">
+<div class="option">a) Phương trình đã cho tương đương với \(\tan x = 1\).</div>
+<div class="option">b) Phương trình đã cho có nghiệm \(x = \frac{\pi}{4} + k \pi \quad (k \in \mathbb{Z})\).</div>
+<div class="option">c) Phương trình đã cho có nghiệm \(x = \frac{\pi}{4} + k 2\pi \quad (k \in \mathbb{Z})\).</div>
+<div class="option">d) Phương trình đã cho có nghiệm \(x = -\frac{\pi}{4} + k 2\pi \quad (k \in \mathbb{Z})\).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q29a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q29a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q29b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q29b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q29c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q29c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q29d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q29d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q29', ['Đúng', 'Đúng', 'Sai', 'Sai'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q29"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q29')">Xem lời giải</div>
+<div class="solution" id="solution-q29">
+<p><strong>Lời giải:</strong><br/>
+                Ta có \(\sin x - \cos x = 0 \Leftrightarrow \sin x = \cos x \Leftrightarrow \tan x = 1 \Leftrightarrow x = \frac{\pi}{4} + k \pi\).<br/>
+                - a) Đúng, vì tương đương với \(\tan x = 1\).<br/>
+                - b) Đúng, vì \(x = \frac{\pi}{4} + k \pi\) là nghiệm.<br/>
+                - c) Sai, vì \(x = \frac{\pi}{4} + k 2\pi\) không đầy đủ.<br/>
+                - d) Sai, vì \(x = -\frac{\pi}{4} + k 2\pi\) không phải nghiệm.<br/>
+                Đáp án: a Đúng, b Đúng, c Sai, d Sai.
+                </p>
+</div>
+</div>
+</div>
+<!-- Câu 30 -->
+<div class="card">
+<h3>Tóm tắt kiến thức</h3>
+<p>\(\sin x = \cos x \Leftrightarrow \tan x = 1 \Leftrightarrow x = \frac{\pi}{4} + k \pi\).</p>
+<div class="question">
+<h3>Câu 30:</h3>
+<p>Cho phương trình \(\sin 2x = \cos 2x\). Xét các phát biểu sau:</p>
+<div class="options">
+<div class="option">a) Phương trình đã cho tương đương với \(\tan 2x = 1\).</div>
+<div class="option">b) Phương trình đã cho có nghiệm \(x = \frac{\pi}{8} + k \frac{\pi}{2} \quad (k \in \mathbb{Z})\).</div>
+<div class="option">c) Phương trình đã cho có nghiệm \(x = \frac{\pi}{4} + k \pi \quad (k \in \mathbb{Z})\).</div>
+<div class="option">d) Phương trình đã cho có nghiệm \(x = \frac{\pi}{4} + k \frac{\pi}{2} \quad (k \in \mathbb{Z})\).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q30a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q30a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q30b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q30b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q30c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q30c" type="radio" value="Sai"/> Sai</label></p>
+<p>d
+
+) <label><input name="q30d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q30d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q30', ['Đúng', 'Đúng', 'Sai', 'Sai'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q30"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q30')">Xem lời giải</div>
+<div class="solution" id="solution-q30">
+<p><strong>Lời giải:</strong><br/>
+                Ta có \(\sin 2x = \cos 2x \Leftrightarrow \tan 2x = 1 \Leftrightarrow 2x = \frac{\pi}{4} + k \pi \Leftrightarrow x = \frac{\pi}{8} + k \frac{\pi}{2}\).<br/>
+                - a) Đúng, vì tương đương với \(\tan 2x = 1\).<br/>
+                - b) Đúng, vì \(x = \frac{\pi}{8} + k \frac{\pi}{2}\) là nghiệm.<br/>
+                - c) Sai, vì \(x = \frac{\pi}{4} + k \pi\) không phải nghiệm.<br/>
+                - d) Sai, vì \(x = \frac{\pi}{4} + k \frac{\pi}{2}\) không phải nghiệm.<br/>
+                Đáp án: a Đúng, b Đúng, c Sai, d Sai.
+                </p>
+</div>
+</div>
+</div>
+<!-- Câu 31 -->
+<div class="card">
+<h3>Tóm tắt kiến thức</h3>
+<p>\(a^{f(x)} = a^{g(x)} \Leftrightarrow f(x) = g(x)\).</p>
+<div class="question">
+<h3>Câu 31:</h3>
+<p>Cho phương trình \(3^{2x} = 9^x\). Xét các phát biểu sau:</p>
+<div class="options">
+<div class="option">a) Phương trình đã cho tương đương với \(3^{2x} = 3^{2x}\).</div>
+<div class="option">b) Phương trình đã cho có vô số nghiệm.</div>
+<div class="option">c) Phương trình đã cho có nghiệm duy nhất \(x = 0\).</div>
+<div class="option">d) Phương trình đã cho có nghiệm \(x = 1\).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q31a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q31a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q31b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q31b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q31c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q31c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q31d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q31d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q31', ['Đúng', 'Đúng', 'Sai', 'Sai'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q31"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q31')">Xem lời giải</div>
+<div class="solution" id="solution-q31">
+<p><strong>Lời giải:</strong><br/>
+                Ta có \(3^{2x} = 9^x = (3^2)^x = 3^{2x} \Leftrightarrow 2x = 2x\), đúng với mọi \(x\).<br/>
+                - a) Đúng, vì tương đương.<br/>
+                - b) Đúng, vì có vô số nghiệm.<br/>
+                - c) Sai, vì không chỉ có \(x = 0\).<br/>
+                - d) Sai, vì \(x = 1\) không phải duy nhất.<br/>
+                Đáp án: a Đúng, b Đúng, c Sai, d Sai.
+                </p>
+</div>
+</div>
+</div>
+<!-- Câu 32 -->
+<div class="card">
+<h3>Tóm tắt kiến thức</h3>
+<p>\(\log_a b = c \Leftrightarrow a^c = b\), điều kiện \(b &gt; 0\).</p>
+<div class="question">
+<h3>Câu 32:</h3>
+<p>Cho phương trình \(\log_2 (x + 1) = 3\). Xét các phát biểu sau:</p>
+<div class="options">
+<div class="option">a) Điều kiện của phương trình là \(x &gt; -1\).</div>
+<div class="option">b) Phương trình đã cho tương đương với \(x + 1 = 8\).</div>
+<div class="option">c) Phương trình đã cho có nghiệm \(x = 7\).</div>
+<div class="option">d) Phương trình đã cho có nghiệm \(x = 8\).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q32a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q32a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q32b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q32b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q32c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q32c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q32d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q32d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q32', ['Đúng', 'Đúng', 'Đúng', 'Sai'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q32"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q32')">Xem lời giải</div>
+<div class="solution" id="solution-q32">
+<p><strong>Lời giải:</strong><br/>
+                Điều kiện: \(x + 1 &gt; 0 \Leftrightarrow x &gt; -1\). Phương trình \(\log_2 (x + 1) = 3 \Leftrightarrow x + 1 = 2^3 = 8 \Leftrightarrow x = 7\).<br/>
+                - a) Đúng, vì điều kiện đúng.<br/>
+                - b) Đúng, vì tương đương.<br/>
+                - c) Đúng, vì \(x = 7\) là nghiệm.<br/>
+                - d) Sai, vì \(x = 8\) không phải nghiệm.<br/>
+                Đáp án: a Đúng, b Đúng, c Đúng, d Sai.
+                </p>
+</div>
+</div>
+</div>
+<!-- Câu 33 -->
+<div class="card">
+<h3>Tóm tắt kiến thức</h3>
+<p>\(\log_a f(x) = \log_a g(x) \Leftrightarrow f(x) = g(x)\), điều kiện \(f(x) &gt; 0\), \(g(x) &gt; 0\).</p>
+<div class="question">
+<h3>Câu 33:</h3>
+<p>Cho phương trình \(\log_3 (2x - 1) = \log_3 (x + 1)\). Xét các phát biểu sau:</p>
+<div class="options">
+<div class="option">a) Điều kiện của phương trình là \(x &gt; \frac{1}{2}\).</div>
+<div class="option">b) Phương trình đã cho tương đương với \(2x - 1 = x + 1\).</div>
+<div class="option">c) Phương trình đã cho có nghiệm \(x = 2\).</div>
+<div class="option">d) Phương trình đã cho có nghiệm \(x = 1\).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q33a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q33a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q33b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q33b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q33c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q33c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q33d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q33d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q33', ['Đúng', 'Đúng', 'Đúng', 'Sai'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q33"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q33')">Xem lời giải</div>
+<div class="solution" id="solution-q33">
+<p><strong>Lời giải:</strong><br/>
+                Điều kiện: \(2x - 1 &gt; 0 \Leftrightarrow x &gt; \frac{1}{2}\), \(x + 1 &gt; 0 \Leftrightarrow x &gt; -1 \Rightarrow x &gt; \frac{1}{2}\). Phương trình \(\log_3 (2x - 1) = \log_3 (x + 1) \Leftrightarrow 2x - 1 = x + 1 \Leftrightarrow x = 2\).<br/>
+                - a) Đúng, vì điều kiện đúng.<br/>
+                - b) Đúng, vì tương đương.<br/>
+                - c) Đúng, vì \(x = 2\) là nghiệm.<br/>
+                - d) Sai, vì \(x = 1\) không phải nghiệm.<br/>
+                Đáp án: a Đúng, b Đúng, c Đúng, d Sai.
+                </p>
+</div>
+</div>
+</div>
+<!-- Câu 34 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình lượng giác</h3>
+<p>Phương trình \(\cos^2 u = \sin^2 v\) có thể được hạ bậc bằng công thức: \(\cos^2 u = \frac{1 + \cos 2u}{2}\), \(\sin^2 v = \frac{1 - \cos 2v}{2}\). Sau đó, biến đổi để đưa về dạng \(\cos a = \cos b\), với nghiệm: \(a = b + k2\pi\) hoặc \(a = -b + k2\pi\) (\(k \in \mathbb{Z}\)).</p>
+</div>
+<div class="question">
+<h3>Câu 34:</h3>
+<p>Cho phương trình \(\cos^2\left(\frac{\pi}{2} - x\right) = \sin^2\left(3x + \frac{\pi}{4}\right)\). Xét các phát biểu sau:</p>
+<div class="options">
+<div class="option">a) Hạ bậc hai vế, ta được phương trình \(\frac{1 + \cos (\pi - 2x)}{2} = \frac{1 - \cos \left(6x + \frac{\pi}{2}\right)}{2}\).</div>
+<div class="option">b) Ta có \(\cos (\pi - 2x) = \cos 2x\).</div>
+<div class="option">c) Phương trình đã cho đưa về dạng \(\cos 2x = \cos 6x\).</div>
+<div class="option">d) Nghiệm của phương trình đã cho là \(x = k \frac{\pi}{4}\ (\ k \in \mathbb{Z}\)).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q40a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q40a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q40b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q40b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q40c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q40c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q40d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q40d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q40', ['Đúng', 'Sai', 'Sai', 'Sai'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q40"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q40')">Xem lời giải</div>
+<div class="solution" id="solution-q40">
+<p><strong>Lời giải:</strong><br/>
+                \(\cos^2\left(\frac{\pi}{2} - x\right) = \sin^2\left(3x + \frac{\pi}{4}\right) \Leftrightarrow \frac{1 + \cos (\pi - 2x)}{2} = \frac{1 - \cos \left(6x + \frac{\pi}{2}\right)}{2}\).<br/>
+                \(\Leftrightarrow \cos (\pi - 2x) = -\cos \left(6x + \frac{\pi}{2}\right) \Leftrightarrow \cos (\pi - 2x) = \cos \left(\frac{\pi}{2} - 6x\right)\).<br/>
+                \(\Leftrightarrow \left\{\begin{array}{l} \pi - 2x = \frac{\pi}{2} - 6x + k 2\pi \\ \pi - 2x = -\frac{\pi}{2} + 6x + k 2\pi \end{array}\right. \Leftrightarrow \left\{\begin{array}{l} x = -\frac{\pi}{8} + k \frac{\pi}{2} \\ x = \frac{3\pi}{16} - k \frac{\pi}{4} \end{array}\ (k \in \mathbb{Z})\).<br/>
+                a) Đúng: Công thức hạ bậc đúng như trên.<br/>
+                b) Sai: \(\cos (\pi - 2x) = -\cos 2x\).<br/>
+                c) Sai: Phương trình đưa về \(\cos (\pi - 2x) = \cos \left(\frac{\pi}{2} - 6x\right)\), không phải \(\cos 2x = \cos 6x\).<br/>
+                d) Sai: Nghiệm không phải \(x = k \frac{\pi}{4}\).<br/>
+                Đáp án: a) Đúng, b) Sai, c) Sai, d) Sai.</p>
+</div>
+</div>
+</div>
+<!-- Câu 41 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình lượng giác</h3>
+<p>Phương trình \(\cos a = \sin b\) có thể được biến đổi thành \(\sin \left(\frac{\pi}{2} - a\right) = \sin b\), với nghiệm: \(\frac{\pi}{2} - a = b + k 2\pi\) hoặc \(\frac{\pi}{2} - a = \pi - b + k 2\pi\) (\(k \in \mathbb{Z}\)).</p>
+</div>
+<div class="question">
+<h3>Câu 35:</h3>
+<p>Cho phương trình \(\cos 2x = \sin \left(\frac{\pi}{4} - x\right)\) với \(x \in [0; \pi]\). Xét các phát biểu sau:</p>
+<div class="options">
+<div class="option">a) Ta có \(\cos 2x = \sin \left(\frac{\pi}{2} - 2x\right)\).</div>
+<div class="option">b) Phương trình đã cho có các nghiệm là \(x = \frac{\pi}{4} + k 2\pi\) và \(x = \frac{5\pi}{4} + k 2\pi\ (\ k \in \mathbb{Z}\)).</div>
+<div class="option">c) Phương trình đã cho có hai nghiệm thuộc đoạn \([0; \pi]\).</div>
+<div class="option">d) Tổng các nghiệm của phương trình đã cho trên đoạn \([0; \pi]\) là \(\frac{5\pi}{6}\).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q41a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q41a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q41b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q41b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q41c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q41c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q41d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q41d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q41', ['Đúng', 'Sai', 'Đúng', 'Đúng'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q41"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q41')">Xem lời giải</div>
+<div class="solution" id="solution-q41">
+<p><strong>Lời giải:</strong><br/>
+                \(\cos 2x = \sin \left(\frac{\pi}{4} - x\right) \Leftrightarrow \sin \left(\frac{\pi}{2} - 2x\right) = \sin \left(\frac{\pi}{4} - x\right)\).<br/>
+                \(\Leftrightarrow \left\{\begin{array}{l} \frac{\pi}{2} - 2x = \frac{\pi}{4} - x + k 2\pi \\ \frac{\pi}{2} - 2x = \pi - \left(\frac{\pi}{4} - x\right) + k 2\pi \end{array}\right. \Leftrightarrow \left\{\begin{array}{l} x = \frac{\pi}{4} - k 2\pi \\ x = -\frac{\pi}{12} - k \frac{2\pi}{3} \end{array}\right.\).<br/>
+                Với \(x \in [0; \pi]\), nghiệm là \(x = \frac{\pi}{4}\), \(x = \frac{7\pi}{12}\).<br/>
+                a) Đúng: \(\cos 2x = \sin \left(\frac{\pi}{2} - 2x\right)\).<br/>
+                b) Sai: Nghiệm không phải dạng \(x = \frac{\pi}{4} + k 2\pi\), \(x = \frac{5\pi}{4} + k 2\pi\).<br/>
+                c) Đúng: Có hai nghiệm \(\frac{\pi}{4}\), \(\frac{7\pi}{12} \in [0; \pi]\).<br/>
+                d) Đúng: Tổng các nghiệm: \(\frac{\pi}{4} + \frac{7\pi}{12} = \frac{3\pi + 7\pi}{12} = \frac{5\pi}{6}\).<br/>
+                Đáp án: a) Đúng, b) Sai, c) Đúng, d) Đúng.</p>
+</div>
+</div>
+</div>
+<!-- Câu 43 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Hàm lượng giác và ứng dụng</h3>
+<p>Hàm số dạng \(h = a + b \sin \left(\frac{\pi}{k} t\right)\) có giá trị lớn nhất khi \(\sin \left(\frac{\pi}{k} t\right) = 1\), nhỏ nhất khi \(\sin \left(\frac{\pi}{k} t\right) = -1\). Giải phương trình \(\sin \left(\frac{\pi}{k} t\right) = m\) để tìm thời điểm đạt giá trị cụ thể.</p>
+</div>
+<div class="question">
+<h3>Câu 37:</h3>
+<p>Hàng ngày mực nước tại một bến cảng lên xuống theo thủy triều. Chiều cao \(h\) (m) của mực nước theo thời gian \(t\) (giờ) trong một ngày được cho bởi công thức \(h = 14 + 8 \sin \left(\frac{\pi}{12} t\right)\) với \(0 \leq t \leq 24\). Xét các phát biểu sau:</p>
+<div class="options">
+<div class="option">a) Lúc 6 giờ sáng thì chiều cao của mực nước tại bến cảng là cao nhất.</div>
+<div class="option">b) Chiều cao của mực nước tại bến cảng thấp nhất vào lúc 12 giờ.</div>
+<div class="option">c) Mực nước tại bến cảng cao 18 (m) vào lúc 2 giờ và 10 giờ.</div>
+<div class="option">d) Biết tàu chỉ vào được cảng khi mực nước trong cảng không thấp hơn 18 (m). Vậy thời gian tàu vào được cảng là từ 10 sáng hôm trước đến 2 giờ sáng hôm sau.</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q43a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q43a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q43b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q43b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q43c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q43c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q43d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q43d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q43', ['Đúng', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q43"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q43')">Xem lời giải</div>
+<div class="solution" id="solution-q43">
+<p><strong>Lời giải:</strong><br/>
+                \(h = 14 + 8 \sin \left(\frac{\pi}{12} t\right)\), với \(-1 \leq \sin \left(\frac{\pi}{12} t\right) \leq 1 \Rightarrow 6 \leq h \leq 22\).<br/>
+                a) Đúng: \(h_{\text{max}} = 22\) khi \(\sin \left(\frac{\pi}{12} t\right) = 1 \Leftrightarrow \frac{\pi}{12} t = \frac{\pi}{2} + k 2\pi \Leftrightarrow t = 6 + 24k\). Với \(0 \leq t \leq 24\), \(t = 6\).<br/>
+                b) Sai: \(h_{\text{min}} = 6\) khi \(\sin \left(\frac{\pi}{12} t\right) = -1 \Leftrightarrow \frac{\pi}{12} t = -\frac{\pi}{2} + k 2\pi \Leftrightarrow t = 18 + 24k\). Với \(0 \leq t \leq 24\), \(t = 18\), không phải 12 giờ.<br/>
+                c) Đúng: \(h = 18 \Leftrightarrow 14 + 8 \sin \left(\frac{\pi}{12} t\right) = 18 \Leftrightarrow \sin \left(\frac{\pi}{12} t\right) = \frac{1}{2} \Leftrightarrow \frac{\pi}{12} t = \frac{\pi}{6} + k 2\pi \text{ hoặc } \frac{5\pi}{6} + k 2\pi \Leftrightarrow t = 2 + 24k \text{ hoặc } t = 10 + 24k\). Với \(0 \leq t \leq 24\), \(t = 2, 10\).<br/>
+                d) Sai: Từ bảng biến thiên, \(h \geq 18\) khi \(t \in [2; 10]\), tức từ 2 giờ đến 10 giờ trong ngày, không phải từ 10 sáng hôm trước đến 2 giờ sáng hôm sau.<br/>
+                Đáp án: a) Đúng, b) Sai, c) Đúng, d) Sai.</p>
+</div>
+</div>
+</div>
+<!-- Câu 44 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Bất phương trình mũ</h3>
+<p>Bất phương trình dạng \(a^{f(x)} \geq b^{g(x)}\) có thể được biến đổi thành \((a^k)^{f(x)} \geq (b^m)^{g(x)}\) nếu cần. Với \(a &gt; 1\), bất phương trình \(a^{f(x)} \geq a^{g(x)}\) tương đương \(f(x) \geq g(x)\). Nếu \(0 &lt; a &lt; 1\), thì ngược lại.</p>
+</div>
+<div class="question">
+<h3>Câu 38:</h3>
+<p>Cho bất phương trình \(4^{x^2 + 5} \geq \left(\frac{1}{8}\right)^{x - x^2}\). Xét các phát biểu sau:</p>
+<div class="options">
+<div class="option">a) Ta có \(4 = 2^2\) và \(\frac{1}{8} = 2^{-3}\).</div>
+<div class="option">b) Bất phương trình đã cho tương đương với bất phương trình \(2(x^2 + 5) \geq -3(x - x^2)\).</div>
+<div class="option">c) Số nghiệm nguyên của bất phương trình là 6.</div>
+<div class="option">d) Tích nghiệm nguyên lớn nhất và nghiệm nguyên nhỏ nhất của bất phương trình là -4.</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q44a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q44a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q44b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q44b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q44c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q44c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q44d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q44d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q44', ['Đúng', 'Đúng', 'Sai', 'Sai'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q44"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q44')">Xem lời giải</div>
+<div class="solution" id="solution-q44">
+<p><strong>Lời giải:</strong><br/>
+                \(4^{x^2 + 5} \geq \left(\frac{1}{8}\right)^{x - x^2} \Leftrightarrow 2^{2(x^2 + 5)} \geq 2^{-3(x - x^2)} \Leftrightarrow 2(x^2 + 5) \geq -3(x - x^2)\).<br/>
+                \(\Leftrightarrow x^2 - 3x - 10 \leq 0 \Leftrightarrow -2 \leq x \leq 5\).<br/>
+                a) Đúng: \(4 = 2^2\), \(\frac{1}{8} = 2^{-3}\).<br/>
+                b) Đúng: Biến đổi như trên.<br/>
+                c) Sai: Nghiệm nguyên: \(\{-2, -1, 0, 1, 2, 3, 4, 5\}\), có 8 nghiệm, không phải 6.<br/>
+                d) Sai: Tích nghiệm lớn nhất (5) và nhỏ nhất (-2) là \(5 \cdot (-2) = -10\), không phải -4.<br/>
+                Đáp án: a) Đúng, b) Đúng, c) Sai, d) Sai.</p>
+</div>
+</div>
+</div>
+<!-- Câu 45 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Bất phương trình lôgarit</h3>
+<p>Với \(0 &lt; a &lt; 1\), bất phương trình \(\log_a f(x) \geq b\) tương đương \(0 &lt; f(x) \leq a^b\). Điều kiện: \(f(x) &gt; 0\). Tập nghiệm là giao của điều kiện và bất phương trình.</p>
+</div>
+<div class="question">
+<h3>Câu 39:</h3>
+<p>Cho bất phương trình \(\log_{\frac{1}{3\sqrt{2}}}(-x^2 + 7x + 18) \geq -2\). Xét các phát biểu sau:</p>
+<div class="options">
+<div class="option">a) Ta có \(0 &lt; \frac{1}{3\sqrt{2}} &lt; 1\).</div>
+<div class="option">b) Nghiệm của bất phương trình đã cho là nghiệm của bất phương trình \(-x^2 + 7x + 18 \leq \left(\frac{1}{3\sqrt{2}}\right)^{-2}\).</div>
+<div class="option">c) Số nghiệm nguyên của bất phương trình là 2.</div>
+<div class="option">d) Tổng các nghiệm nguyên của bất phương trình là 14.</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q45a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q45a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q45b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q45b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q45c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q45c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q45d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q45d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q45', ['Đúng', 'Đúng', 'Sai', 'Đúng'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q45"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q45')">Xem lời giải</div>
+<div class="solution" id="solution-q45">
+<p><strong>Lời giải:</strong><br/>
+                \(\log_{\frac{1}{3\sqrt{2}}}(-x^2 + 7x + 18) \geq -2 \Leftrightarrow \left\{\begin{array}{l} -x^2 + 7x + 18 \leq \left(\frac{1}{3\sqrt{2}}\right)^{-2} \\ -x^2 + 7x + 18 &gt; 0 \end{array}\right. \Leftrightarrow \left\{\begin{array}{l} -x^2 + 7x + 18 \leq 18 \\ -x^2 + 7x + 18 &gt; 0 \end{array}\right.\).<br/>
+                \(\Leftrightarrow \left\{\begin{array}{l} x \leq 0 \\ x \geq 7 \\ -2 &lt; x &lt; 9 \end{array}\right. \Rightarrow -2 &lt; x \leq 0 \text{ hoặc } 7 \leq x &lt; 9\).<br/>
+                a) Đúng: \(\frac{1}{3\sqrt{2}} &lt; 1\).<br/>
+                b) Đúng: Biến đổi như trên.<br/>
+                c) Sai: Nghiệm nguyên: \(\{-1, 0, 7, 8\}\), có 4 nghiệm, không phải 2.<br/>
+                d) Đúng: Tổng nghiệm nguyên: \(-1 + 0 + 7 + 8 = 14\).<br/>
+                Đáp án: a) Đúng, b) Đúng, c) Sai, d) Đúng.</p>
+</div>
+</div>
+</div>
+<!-- Câu 46 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Ứng dụng lôgarit</h3>
+<p>Cường độ âm \(L\) (dB) được tính bằng \(L = 10 \log \frac{I}{10^{-12}}\). Tổng cường độ âm của hai nguồn là \(I_1 + I_2\), và \(L_{\text{tổng}} = 10 \log \frac{I_1 + I_2}{10^{-12}}\).</p>
+</div>
+        &lt; ಞ div class="question"&gt;
+            <h3>Câu 40:</h3>
+<p>Mức cường độ âm \(L\) (đơn vị dB) được tính bởi công thức \(L = 10 \log \frac{I}{10^{-12}}\), trong đó \(I\) (đơn vị W/m²) là cường độ của âm. Một người đứng giữa hai loa \(A\) và \(B\). Khi loa \(A\) bật thì người đó nghe được âm có mức cường độ 80 dB. Khi loa \(B\) bật thì nghe được âm có mức cường độ 90 dB. Nếu bật cả hai loa thì cường độ âm tác động vào tai người bằng tổng cường độ âm của hai loa đó. Xét các phát biểu sau:</p>
+<div class="options">
+<div class="option">a) Cường độ âm của loa \(A\) là \(10^{80} \cdot 10^{-12}\) (W/m²).</div>
+<div class="option">b) Cường độ âm của loa \(B\) là \(10^{90} \cdot 10^{-12}\) (W/m²).</div>
+<div class="option">c) Cường độ âm tác động vào tai người khi bật cả hai loa là \(10^{170} \cdot 10^{-12}\) (W/m²).</div>
+<div class="option">d) Nếu bật cả hai loa thì người đó nghe được âm có mức cường độ là 90,4 (dB).</div>
+</div>
+<div class="answer-check">
+<p>Chọn đáp án cho từng phát biểu:</p>
+<p>a) <label><input name="q46a" type="radio" value="Đúng"/> Đúng</label> <label><input name="q46a" type="radio" value="Sai"/> Sai</label></p>
+<p>b) <label><input name="q46b" type="radio" value="Đúng"/> Đúng</label> <label><input name="q46b" type="radio" value="Sai"/> Sai</label></p>
+<p>c) <label><input name="q46c" type="radio" value="Đúng"/> Đúng</label> <label><input name="q46c" type="radio" value="Sai"/> Sai</label></p>
+<p>d) <label><input name="q46d" type="radio" value="Đúng"/> Đúng</label> <label><input name="q46d" type="radio" value="Sai"/> Sai</label></p>
+<button onclick="checkTrueFalseAnswer('q46', ['Sai', 'Sai', 'Sai', 'Đúng'])">Kiểm tra</button>
+</div>
+<div class="answer-feedback" id="feedback-q46"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q46')">Xem lời giải</div>
+<div class="solution" id="solution-q46">
+<p><strong>Lời giải:</strong><br/>
+                \(L_1 = 80 \Rightarrow 80 = 10 \log \frac{I_1}{10^{-12}} \Rightarrow I_1 = 10^8 \cdot 10^{-12}\).<br/>
+                \(L_2 = 90 \Rightarrow 90 = 10 \log \frac{I_2}{10^{-12}} \Rightarrow I_2 = 10^9 \cdot 10^{-12}\).<br/>
+                Tổng cường độ: \(I_1 + I_2 = (10^8 + 10^9) \cdot 10^{-12}\).<br/>
+                \(L_{\text{tổng}} = 10 \log \frac{10^8 + 10^9}{10^{-12}} \approx 90,4\).<br/>
+                a) Sai: \(I_1 = 10^8 \cdot 10^{-12}\), không phải \(10^{80} \cdot 10^{-12}\).<br/>
+                b) Sai: \(I_2 = 10^9 \cdot 10^{-12}\), không phải \(10^{90} \cdot 10^{-12}\).<br/>
+                c) Sai: \(I_1 + I_2 = (10^8 + 10^9) \cdot 10^{-12}\), không phải \(10^{170} \cdot 10^{-12}\).<br/>
+                d) Đúng: \(L_{\text{tổng}} \approx 90,4\).<br/>
+                Đáp án: a) Sai, b) Sai, c) Sai, d) Đúng.</p>
+</div>
+</div>
+</div>
+<h2>Phần III: Trắc Nghiệm Trả Lời Ngắn</h2>
+<!-- Câu 34 -->
+<div class="card">
+<h3>Tóm tắt kiến thức</h3>
+<p>\(\cos x = \pm 1 \Leftrightarrow x = k\pi\).</p>
+<div class="question">
+<h3>Câu 41:</h3>
+<p>Hội Lim có trò chơi đánh đu, khoảng cách \(h\) (m) từ người chơi đến vị trí cân bằng được biểu diễn bởi \(h = |d|\), với \(d = 3 \cos \left[\frac{\pi}{3}(2t - 1)\right]\). Tìm thời điểm đầu tiên \(h\) lớn nhất. (Kết quả dạng số thập phân).</p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q34-input" type="text"/> <button onclick="checkShortAnswer('q34', '0,5')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q34"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q34')">Xem lời giải</div>
+<div class="solution" id="solution-q34">
+<p><strong>Lời giải:</strong><br/>
+                Ta có \(h = |3 \cos \left[\frac{\pi}{3}(2t - 1)\right]|\), \(h\) lớn nhất khi \(\cos \left[\frac{\pi}{3}(2t - 1)\right] = \pm 1 \Leftrightarrow \frac{\pi}{3}(2t - 1) = k\pi \Leftrightarrow t = \frac{1 + 3k}{2}\). Thời điểm đầu tiên: \(t = 0,5\) (khi \(k = 0\)).<br/>
+                Đáp án: 0,5.
+                </p>
+</div>
+</div>
+</div>
+<!-- Câu 35 -->
+<div class="card">
+<h3>Tóm tắt kiến thức</h3>
+<p>\(\sin x = \sin \alpha \Leftrightarrow x = \alpha + k 2\pi\) hoặc \(x = \pi - \alpha + k 2\pi\).</p>
+<div class="question">
+<!-- Câu 36 -->
+<div class="card">
+<h3>Tóm tắt kiến thức</h3>
+<p>\(a^{f(x)} = b \Leftrightarrow f(x) = \log_a b\).</p>
+<div class="question">
+<h3>Câu 43:</h3>
+<p>Số lượng vi khuẩn tăng theo \(N(t) = N_0 \cdot 2^{\frac{t}{3}}\). Tìm \(t\) để số lượng tăng gấp 8 lần. (Kết quả dạng số thập phân).</p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q36-input" type="text"/> <button onclick="checkShortAnswer('q36', '9')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q36"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q36')">Xem lời giải</div>
+<div class="solution" id="solution-q36">
+<p><strong>Lời giải:</strong><br/>
+                Yêu cầu \(N(t) = 8N_0 \Leftrightarrow 2^{\frac{t}{3}} = 8 = 2^3 \Leftrightarrow \frac{t}{3} = 3 \Leftrightarrow t = 9\).<br/>
+                Đáp án: 9.
+                </p>
+</div>
+</div>
+</div>
+<!-- Câu 37 -->
+<div class="card">
+<h3>Tóm tắt kiến thức</h3>
+<p>\(a^{f(x)} = b \Leftrightarrow f(x) = \log_a b\).</p>
+<div class="question">
+<h3>Câu 44:</h3>
+<p>Nồng độ chất hóa học giảm theo \(C(t) = C_0 \cdot \left(\frac{1}{2}\right)^{\frac{t}{10}}\). Tìm \(t\) để nồng độ còn \(\frac{1}{8}\) lần. (Kết quả dạng số thập phân).</p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q37-input" type="text"/> <button onclick="checkShortAnswer('q37', '30')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q37"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q37')">Xem lời giải</div>
+<div class="solution" id="solution-q37">
+<p><strong>Lời giải:</strong><br/>
+                Yêu cầu \(C(t) = \frac{1}{8}C_0 \Leftrightarrow \left(\frac{1}{2}\right)^{\frac{t}{10}} = \frac{1}{8} = \left(\frac{1}{2}\right)^3 \Leftrightarrow \frac{t}{10} = 3 \Leftrightarrow t = 30\).<br/>
+                Đáp án: 30.
+                </p>
+</div>
+</div>
+</div>
+<!-- Câu 38 -->
+<div class="card">
+<h3>Tóm tắt kiến thức</h3>
+<p>\(a^{f(x)} = b \Leftrightarrow f(x) = \log_a b\).</p>
+<div class="question">
+<h3>Câu 45:</h3>
+<p>Số tiền \(A(t) = 100 \cdot 1,05^t\) (triệu đồng). Tìm \(t\) để \(A(t) = 200\). (Kết quả dạng số nguyên).</p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q38-input" type="text"/> <button onclick="checkShortAnswer('q38', '15')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q38"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q38')">Xem lời giải</div>
+<div class="solution" id="solution-q38">
+<p><strong>Lời giải:</strong><br/>
+                Yêu cầu \(100 \cdot 1,05^t = 200 \Leftrightarrow 1,05^t = 2 \Leftrightarrow t = \log_{1,05} 2 \approx 14,207\). Vì \(t\) nguyên, thử \(t = 15\): \(1,05^{15} \approx 2,079 &gt; 2\).<br/>
+                Đáp án: 15.
+                </p>
+</div>
+</div>
+</div>
+<!-- Câu 39 -->
+<div class="card">
+<h3>Tóm tắt kiến thức</h3>
+<p>\(a^{f(x)} = b \Leftrightarrow f(x) = \log_a b\).</p>
+<div class="question">
+<h3>Câu 46:</h3>
+<p>Chất phóng xạ phân rã theo \(M(t) = 100 \cdot \left(\frac{1}{2}\right)^{\frac{t}{5}}\). Tìm \(t\) để \(M(t) = 25\). (Kết quả dạng số thập phân).</p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q39-input" type="text"/> <button onclick="checkShortAnswer('q39', '10')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q39"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q39')">Xem lời giải</div>
+<div class="solution" id="solution-q39">
+<p><strong>Lời giải:</strong><br/>
+                Yêu cầu \(100 \cdot \left(\frac{1}{2}\right)^{\frac{t}{5}} = 25 \Leftrightarrow \left(\frac{1}{2}\right)^{\frac{t}{5}} = \frac{1}{4} = \left(\frac{1}{2}\right)^2 \Leftrightarrow \frac{t}{5} = 2 \Leftrightarrow t = 10\).<br/>
+                Đáp án: 10.
+                </p>
+</div>
+</div>
+</div>
+<!-- Câu 47 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Hàm lượng giác và cực trị</h3>
+<p>Hàm \(h = |d|\) với \(d = a \cos \omega t\) đạt giá trị lớn nhất khi \(|d| = |a|\), tức là \(\cos \omega t = \pm 1\). Giải phương trình \(\cos \omega t = \pm 1\) để tìm thời điểm.</p>
+</div>
+<div class="question">
+<h3>Câu 47:</h3>
+<p>Hội Lim (tính Bắc Ninh) vào mùa xuân thường có trò chơi đánh đu. Khi người chơi đu nhún đều, cây đu sẽ đưa người chơi đu dao động qua lại vị trí cân bằng. Khoảng cách \(h\) (m) từ người chơi đu đến vị trí cân bằng được biểu diễn qua thời gian \(t\) (s) (với \(t \geq 0\)) bởi hệ thức \(h = |d|\) với \(d = 3 \cos \left[\frac{\pi}{3}(2t - 1)\right]\). Tìm thời điểm đầu tiên mà khoảng cách \(h\) lớn nhất. (Viết kết quả dưới dạng số thập phân).</p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q47-input" type="text"/> <button onclick="checkShortAnswer('q47', '0.5')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q47"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q47')">Xem lời giải</div>
+<div class="solution" id="solution-q47">
+<p><strong>Lời giải:</strong><br/>
+                \(h = |d|\), \(d = 3 \cos \left[\frac{\pi}{3}(2t - 1)\right]\). \(h_{\text{max}} = 3\) khi \(|d| = 3 \Leftrightarrow \cos \left[\frac{\pi}{3}(2t - 1)\right] = \pm 1\).<br/>
+                \(\Leftrightarrow \frac{\pi}{3}(2t - 1) = k \pi \Leftrightarrow 2t - 1 = 3k \Leftrightarrow t = \frac{1 + 3k}{2}\ (k \in \mathbb{N})\).<br/>
+                Thời điểm đầu tiên: \(k = 0 \Rightarrow t = 0.5\).<br/>
+                Đáp án: 0.5.</p>
+</div>
+</div>
+</div>
+<!-- Câu 48 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Hàm lượng giác và ứng dụng</h3>
+<p>Hàm \(y = a \cos \frac{x}{k}\) có giá trị \(y = a \cos \frac{x}{k}\). Để tìm khoảng cách \(x\) sao cho \(y \geq h\), giải phương trình \(\cos \frac{x}{k} = \frac{h}{a}\) và tính độ rộng \(2|x|\).</p>
+</div>
+<div class="question">
+<h3>Câu 48:</h3>
+<p>Một cây cầu có dạng cung \(AB\) của đồ thị hàm số \(y = 4.8 \cdot \cos \frac{x}{9}\) và được mô tả trong hệ trục tọa độ với đơn vị trục là mét. Một sà lan chở khối hàng hóa được xếp thành hình hộp chữ nhật với độ cao 3.6 m so với mực nước sông. Hỏi chiều rộng của khối hàng hóa đó lớn nhất là bao nhiêu mét để sà lan có thể đi qua được gầm cầu (làm tròn kết quả đến hàng đơn vị)?</p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q48-input" type="text"/> <button onclick="checkShortAnswer('q48', '13')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q48"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q48')">Xem lời giải</div>
+<div class="solution" id="solution-q48">
+<p><strong>Lời giải:</strong><br/>
+                \(y = 4.8 \cos \frac{x}{9}\), \(x \in \left[-\frac{9\pi}{2}; \frac{9\pi}{2}\right]\). Sà lan cao 3.6 m, cần \(y \geq 3.6\).<br/>
+                \(4.8 \cos \frac{x}{9} = 3.6 \Leftrightarrow \cos \frac{x}{9} = \frac{3}{4}\). Với \(\frac{x}{9} \in \left[-\frac{\pi}{2}; \frac{\pi}{2}\right]\), \(\frac{x}{9} \approx \pm 0.7227 \Rightarrow x \approx \pm 6.5043\).<br/>
+                Chiều rộng lớn nhất: \(2|x| \approx 13.0086 \approx 13\).<br/>
+                Đáp án: 13.</p>
+</div>
+</div>
+</div>
+<!-- Câu 49 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Hàm lượng giác và dao động</h3>
+<p>Hàm \(h = a - b \cos \omega t\) đạt giá trị lớn nhất khi \(\cos \omega t = -1\). Giải phương trình \(\cos \omega t = -1\) để tìm thời điểm đạt cực đại.</p>
+</div>
+<div class="question">
+<h3>Câu 49:</h3>
+<p>Trong một thí nghiệm, một quả cầu được gắn vào một đầu dây đàn hồi, đầu kia của dây được gắn cố định vào một thanh treo nằm ngang. Sau khi quả cầu được kéo xuống và thả ra, nó bắt đầu di chuyển lên xuống. Khi đó, chiều cao \(h\) (cm) của quả cầu so với mặt đất theo thời gian \(t\) (s) được cho bởi công thức \(h = 100 - 30 \cos 20t\). Tính thời điểm đầu tiên mà quả cầu đạt chiều cao cao nhất kể từ khi quả cầu được thả ra (làm tròn kết quả đến hàng phần trăm).</p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q49-input" type="text"/> <button onclick="checkShortAnswer('q49', '0.16')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q49"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q49')">Xem lời giải</div>
+<div class="solution" id="solution-q49">
+<p><strong>Lời giải:</strong><br/>
+                \(h = 100 - 30 \cos 20t\), \(h_{\text{max}} = 130\) khi \(\cos 20t = -1 \Leftrightarrow 20t = \pi + k 2\pi \Leftrightarrow t = \frac{\pi}{20} + k \frac{\pi}{10}\ (k \in \mathbb{N})\).<br/>
+                Thời điểm đầu tiên: \(t = \frac{\pi}{20} \approx 0.16\).<br/>
+                Đáp án: 0.16.</p>
+</div>
+</div>
+</div>
+<!-- Câu 50 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Bất phương trình mũ</h3>
+<p>Bất phương trình \(a^t &lt; b\) với \(0 &lt; a &lt; 1\) tương đương \(t &gt; \log_a b\). Lấy nguyên dương nhỏ nhất lớn hơn nghiệm thực.</p>
+</div>
+<div class="question">
+<h3>Câu 50:</h3>
+<p>Trung bình sau mỗi năm sử dụng, giá trị còn lại của một chiếc ô tô giảm đi 6% so với năm trước đó. Giả sử một chiếc ô tô lúc mới mua là 800 triệu đồng. Hỏi sau ít nhất bao nhiêu năm sử dụng thì giá trị còn lại của chiếc ô tô đó nhỏ hơn 600 triệu đồng (làm tròn kết quả đến hàng đơn vị)?</p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q50-input" type="text"/> <button onclick="checkShortAnswer('q50', '5')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q50"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q50')">Xem lời giải</div>
+<div class="solution" id="solution-q50">
+<p><strong>Lời giải:</strong><br/>
+                Giá trị sau \(t\) năm: \(S = 800 \cdot (0.94)^t\).<br/>
+                \(800 \cdot (0.94)^t &lt; 600 \Leftrightarrow (0.94)^t &lt; 0.75 \Leftrightarrow t &gt; \log_{0.94} 0.75 \approx 4.65\).<br/>
+                Lấy nguyên nhỏ nhất \(t \geq 4.65 \Rightarrow t = 5\).<br/>
+                Đáp án: 5.</p>
+</div>
+</div>
+</div>
+<!-- Câu 51 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Phương trình mũ và chu kỳ bán rã</h3>
+<p>Chu kỳ bán rã: \(m(t) = m_0 \cdot \left(\frac{1}{2}\right)^{\frac{t}{T}}\), với \(T\) là chu kỳ bán rã. Giải phương trình \(\left(\frac{1}{2}\right)^{\frac{t}{T}} = k\) để tìm \(t\).</p>
+</div>
+<div class="question">
+<h3>Câu 51:</h3>
+<p>Các nhà khoa học xác định được chu kỳ bán rã của \(_6^{14}\text{C}\) là 5730 năm. Nếu cây chết, lượng \(_6^{14}\text{C}\) trong cây phân rã theo chu kỳ bán rã. Các nhà khảo cổ đã tìm thấy một mẫu gỗ cổ và đo được tỷ lệ phần trăm lượng \(_6^{14}\text{C}\) còn lại trong mẫu gỗ cổ đó so với lúc còn sinh trưởng là 75%. Hỏi mẫu gỗ cổ đó của cây đã chết cách đây bao nhiêu năm (làm tròn kết quả đến hàng đơn vị)?</p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q51-input" type="text"/> <button onclick="checkShortAnswer('q51', '2378')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q51"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q51')">Xem lời giải</div>
+<div class="solution" id="solution-q51">
+<p><strong>Lời giải:</strong><br/>
+                \(m(t) = m_0 \cdot \left(\frac{1}{2}\right)^{\frac{t}{5730}}\), \(\frac{m(t)}{m_0} = 0.75 \Rightarrow \left(\frac{1}{2}\right)^{\frac{t}{5730}} = 0.75\).<br/>
+                \(\frac{t}{5730} = \log_{\frac{1}{2}} 0.75 \Rightarrow t = 5730 \cdot \log_{\frac{1}{2}} 0.75 \approx 2378\).<br/>
+                Đáp án: 2378.</p>
+</div>
+</div>
+</div>
+<!-- Câu 52 -->
+<div class="card">
+<div class="summary-box">
+<h3>Tóm tắt kiến thức: Lãi kép</h3>
+<p>Số tiền sau \(t\) năm với lãi kép: \(S = S_0 \cdot (1 + r)^t\). Giải bất phương trình \(S &gt; b\) để tìm \(t\), lấy nguyên nhỏ nhất lớn hơn nghiệm thực.</p>
+</div>
+<div class="question">
+<h3>Câu 52:</h3>
+<p>Cô Liên gửi 100 triệu đồng vào ngân hàng theo hình thức lãi kép cố kỳ hạn là 12 tháng với lãi suất 6%/năm. Giả sử qua các năm thì lãi suất không thay đổi và cô Liên không gửi thêm tiền vào mỗi năm. Hỏi sau ít nhất bao nhiêu năm thì số tiền cô Liên có được cả gốc và lãi nhiều hơn 150 triệu đồng (làm tròn kết quả đến hàng đơn vị)?</p>
+<div class="answer-check">
+<p>Nhập đáp án: <input id="q52-input" type="text"/> <button onclick="checkShortAnswer('q52', '7')">Kiểm tra</button></p>
+</div>
+<div class="answer-feedback" id="feedback-q52"></div>
+<div class="solution-toggle" onclick="toggleSolution('solution-q52')">Xem lời giải</div>
+<div class="solution" id="solution-q52">
+<p><strong>Lời giải:</strong><br/>
+                \(S = 100 \cdot (1.06)^t\). Cần \(100 \cdot (1.06)^t &gt; 150 \Leftrightarrow (1.06)^t &gt; 1.5 \Leftrightarrow t &gt; \log_{1.06} 1.5 \approx 6.96\).<br/>
+                Lấy nguyên nhỏ nhất \(t \geq 6.96 \Rightarrow t = 7\).<br/>
+                Đáp án: 7.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- PHẦN CUỐICUỐI -->
+<div class="navigation">
+<button onclick="window.location.href='de4.html'">Chuyên Đề trước</button>
+<button onclick="window.location.href='de66.html'">Chuyên Đề sau</button>
+</div>
+</div>
+<script defer="">
+let isSolutionDisabled = false; function checkAnswer(questionId, correctAnswer) {
+    const options = document.getElementsByName(questionId);
+    let selectedAnswer = null;
+    for (const option of options) {
+        if (option.checked) {
+            selectedAnswer = option.value;
+            break;
+        }
+    }
+    const feedback = document.getElementById(`feedback-${questionId}`);
+    if (!selectedAnswer) {
+        feedback.textContent = 'Vui lòng chọn một đáp án!';
+        feedback.className = 'answer-feedback incorrect';
+        return;
+    }
+    if (selectedAnswer === correctAnswer) {
+        feedback.textContent = 'Đúng!';
+        feedback.className = 'answer-feedback correct';
+    } else {
+        feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
+        feedback.className = 'answer-feedback incorrect';
+    }
+}
+function checkTrueFalseAnswer(questionId, correctAnswers) {
+    const feedback = document.getElementById(`feedback-${questionId}`);
+    let allCorrect = true;
+    let results = [];
+    for (let i = 0; i < correctAnswers.length; i++) {
+        const options = document.getElementsByName(`${questionId}${String.fromCharCode(97 + i)}`);
+        let selected = null;
+        for (const option of options) {
+            if (option.checked) {
+                selected = option.value;
+                break;
+            }
+        }
+        if (!selected) {
+            feedback.textContent = 'Vui lòng chọn đáp án cho tất cả phát biểu!';
+            feedback.className = 'answer-feedback incorrect';
+            return;
+        }
+        if (selected !== correctAnswers[i]) {
+            allCorrect = false;
+        }
+        results.push(`Phát biểu ${String.fromCharCode(97 + i)}: ${selected === correctAnswers[i] ? 'Đúng' : `Sai (Đáp án đúng: ${correctAnswers[i]})`}`);
+    }
+    if (allCorrect) {
+        feedback.textContent = 'Tất cả Chuyên Đều đúng!';
+        feedback.className = 'answer-feedback correct';
+    } else {
+        feedback.textContent = results.join('\n');
+        feedback.className = 'answer-feedback incorrect';
+    }
+}
+function checkShortAnswer(questionId, correctAnswer) {
+    const input = document.getElementById(`${questionId}-input`).value.trim();
+    const feedback = document.getElementById(`feedback-${questionId}`);
+    if (!input) {
+        feedback.textContent = 'Vui lòng nhập đáp án!';
+        feedback.className = 'answer-feedback incorrect';
+        return;
+    }
+    if (input === correctAnswer) {
+        feedback.textContent = 'Đúng!';
+        feedback.className = 'answer-feedback correct';
+    } else {
+        feedback.textContent = `Sai! Đáp án đúng là ${correctAnswer}.`;
+        feedback.className = 'answer-feedback incorrect';
+    }
+}
+function toggleSolution(solutionId) {
+if (isSolutionDisabled) {
+alert('Hãy cố gắng giải, thầy sẽ cho xem lời giải sau, nhớ quay lại xem lời giải nhé.');
+return;
+}
+const solution = document.getElementById(solutionId);
+solution.classList.toggle('show');
+
+}
+</script>
+</div></body>
+</html>
