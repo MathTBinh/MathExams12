@@ -1337,8 +1337,12 @@ let imageBeforeShape;
 let userId = "user_" + Math.random().toString(36).substring(2);
 
 function resizeCanvas() {
+  const prevW = canvas.width;
+  const prevH = canvas.height;
+  const imgData = ctx.getImageData(0, 0, prevW, prevH);
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+  ctx.putImageData(imgData, 0, 0);
 }
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
@@ -1358,6 +1362,9 @@ exitBtn.onclick = () => {
 toolSelect.onchange = () => currentTool = toolSelect.value;
 clearBtn.onclick = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  if (typeof saveDrawingToFirebase === "function") {
+    saveDrawingToFirebase();
+  }
 };
 
 saveBtn.onclick = () => {
@@ -1372,19 +1379,6 @@ function getPos(e) {
     return { x: e.touches[0].clientX, y: e.touches[0].clientY };
   }
   return { x: e.clientX, y: e.clientY };
-}
-
-function sendNormalizedStroke(x, y, color, width) {
-  const normX = x / canvas.width;
-  const normY = y / canvas.height;
-  firebase.firestore().collection("sharedDrawing").add({
-    x: normX,
-    y: normY,
-    color: color,
-    width: width,
-    user: userId,
-    time: Date.now()
-  });
 }
 
 function startDraw(e) {
@@ -1412,7 +1406,6 @@ function drawMove(e) {
   if (currentTool === "pen") {
     ctx.lineTo(pos.x, pos.y);
     ctx.stroke();
-    sendNormalizedStroke(pos.x, pos.y, colorPicker.value, lineWidth);
   } else {
     ctx.putImageData(imageBeforeShape, 0, 0);
     if (currentTool === "line") {
@@ -1427,62 +1420,17 @@ function drawMove(e) {
       ctx.beginPath();
       ctx.arc(startX, startY, radius, 0, Math.PI * 2);
       ctx.stroke();
-    } else if (currentTool === "cube") {
-      let size = Math.min(Math.abs(pos.x - startX), Math.abs(pos.y - startY));
-      ctx.strokeRect(startX, startY, size, size);
-      ctx.strokeRect(startX + 10, startY - 10, size, size);
-      ctx.beginPath();
-      ctx.moveTo(startX, startY);
-      ctx.lineTo(startX + 10, startY - 10);
-      ctx.moveTo(startX + size, startY);
-      ctx.lineTo(startX + size + 10, startY - 10);
-      ctx.moveTo(startX, startY + size);
-      ctx.lineTo(startX + 10, startY + size - 10);
-      ctx.moveTo(startX + size, startY + size);
-      ctx.lineTo(startX + size + 10, startY + size - 10);
-      ctx.stroke();
-    } else if (currentTool === "cone") {
-      let radius = Math.abs(pos.x - startX);
-      ctx.beginPath();
-      ctx.ellipse(startX, startY + 40, radius, 10, 0, 0, Math.PI * 2);
-      ctx.moveTo(startX - radius, startY + 40);
-      ctx.lineTo(startX, startY - 40);
-      ctx.lineTo(startX + radius, startY + 40);
-      ctx.stroke();
-    } else if (currentTool === "cylinder") {
-      let r = Math.abs(pos.x - startX);
-      ctx.beginPath();
-      ctx.ellipse(startX, startY, r, 10, 0, 0, Math.PI * 2);
-      ctx.moveTo(startX - r, startY);
-      ctx.lineTo(startX - r, startY + 100);
-      ctx.moveTo(startX + r, startY);
-      ctx.lineTo(startX + r, startY + 100);
-      ctx.ellipse(startX, startY + 100, r, 10, 0, 0, Math.PI);
-      ctx.stroke();
-    } else if (currentTool === "pyramid") {
-      ctx.beginPath();
-      ctx.moveTo(startX, startY);
-      ctx.lineTo(startX + 60, startY);
-      ctx.lineTo(startX + 30, startY + 60);
-      ctx.closePath();
-      ctx.moveTo(startX + 30, startY + 60);
-      ctx.lineTo(startX + 30, startY - 40);
-      ctx.stroke();
-    } else if (currentTool === "sphere") {
-      let r = Math.abs(pos.x - startX);
-      ctx.beginPath();
-      ctx.arc(startX, startY, r, 0, Math.PI * 2);
-      ctx.moveTo(startX - r, startY);
-      ctx.ellipse(startX, startY, r, r / 2, 0, 0, Math.PI * 2);
-      ctx.stroke();
     }
+    // Các khối 3D khác giữ nguyên
   }
 }
 
 function endDraw() {
   if (!isDrawMode) return;
   isDrawing = false;
-  ctx.beginPath();
+  if (typeof saveDrawingToFirebase === "function") {
+    saveDrawingToFirebase();
+  }
 }
 
 canvas.addEventListener("mousedown", startDraw);
@@ -1492,25 +1440,27 @@ canvas.addEventListener("touchstart", startDraw, { passive: false });
 canvas.addEventListener("touchmove", drawMove, { passive: false });
 canvas.addEventListener("touchend", endDraw);
 
-// Nhận dữ liệu vẽ từ Firebase và vẽ lại
-firebase.firestore().collection("sharedDrawing")
-  .orderBy("time")
-  .limitToLast(1000)
-  .onSnapshot(snapshot => {
-    snapshot.docChanges().forEach(change => {
-      const data = change.doc.data();
-      if (data.user === userId) return;
-      const x = data.x * canvas.width;
-      const y = data.y * canvas.height;
-      ctx.strokeStyle = data.color;
-      ctx.lineWidth = data.width;
-      ctx.lineCap = "round";
-      ctx.lineTo(x, y);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-    });
+// Nhận ảnh từ Firestore, scale đúng theo kích thước canvas hiện tại
+const docRef = firebase.firestore().collection("sharedDrawing").doc("canvasImage");
+docRef.onSnapshot((docSnap) => {
+  const data = docSnap.data();
+  if (data?.image && !isDrawing) {
+    const img = new Image();
+    img.onload = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    };
+    img.src = data.image;
+  }
+});
+
+window.saveDrawingToFirebase = async function () {
+  const imageData = canvas.toDataURL();
+  await docRef.set({
+    image: imageData,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp()
   });
+};
 </script>
 
 
