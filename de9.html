@@ -402,7 +402,7 @@
   right: 20px;
   background: white;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
   padding: 10px;
   z-index: 10000;
   display: flex;
@@ -1561,5 +1561,55 @@ db.collection("sharedDrawing").doc("canvasImage").onSnapshot((doc) => {
 });
 
 </script>
+<!-- Nút gọn bật/tắt phòng trao đổi -->
+<div style="position: fixed; top: 8px; left: 10px; z-index: 10000;">
+  <button onclick="toggleJitsiRoom()" style="background: #6b21a8; border: none; color: white; border-radius: 50%; width: 40px; height: 40px; font-size: 18px; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">🎧</button>
+</div>
+
+<!-- Phòng Jitsi ẩn hiện -->
+<div id="jitsiRoom" style="display: none; position: fixed; bottom: 10px; right: 10px; width: 260px; height: 180px; border-radius: 10px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.4); z-index: 9999; background: white;" onmousedown="startDrag(event)">
+
+  <iframe
+    allow="camera; microphone"
+    src="https://meet.jit.si/PhongGiaoVien"
+    style="width: 100%; height: 100%; border: none;">
+  </iframe>
+</div>
+
+<script>
+  function toggleJitsiRoom() {
+    const box = document.getElementById("jitsiRoom");
+    box.style.display = box.style.display === "none" ? "block" : "none";
+  }
+  let isDragging = false;
+let offsetX, offsetY;
+
+function startDrag(e) {
+  const box = document.getElementById("jitsiRoom");
+  isDragging = true;
+  offsetX = e.clientX - box.offsetLeft;
+  offsetY = e.clientY - box.offsetTop;
+
+  document.onmousemove = drag;
+  document.onmouseup = stopDrag;
+}
+
+function drag(e) {
+  if (!isDragging) return;
+  const box = document.getElementById("jitsiRoom");
+  box.style.left = (e.clientX - offsetX) + "px";
+  box.style.top = (e.clientY - offsetY) + "px";
+  box.style.bottom = "auto";
+  box.style.right = "auto";
+}
+
+function stopDrag() {
+  isDragging = false;
+  document.onmousemove = null;
+  document.onmouseup = null;
+}
+
+</script>
+
 </body>
 </html>
