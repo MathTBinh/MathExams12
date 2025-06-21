@@ -130,9 +130,10 @@
     });
 
     canvas.addEventListener("mouseup", () => {
-      if (!isDrawMode) return;
-      isDrawing = false;
-    });
+  if (!isDrawMode) return;
+  isDrawing = false;
+  ctx.beginPath();
+});
 
     canvas.addEventListener("touchstart", (e) => {
       if (!isDrawMode) return;
@@ -150,9 +151,10 @@
     }, { passive: false });
 
     canvas.addEventListener("touchend", () => {
-      if (!isDrawMode) return;
-      isDrawing = false;
-    });
+  if (!isDrawMode) return;
+  isDrawing = false;
+  ctx.beginPath();
+});
 
     db.collection("sharedDrawing")
       .orderBy("timestamp")
