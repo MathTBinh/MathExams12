@@ -1188,29 +1188,28 @@ Khối lượng riêng của các khoảng giá trị lần lượt là \( Q_1, 
   if (isScoreCalculated) return;
 /* @@ */
   const correctAnswers = {
-    q1: 'B',
-    q2: 'D',
-    q3: 'A',
-    q4: 'C',
-    q5: 'B',
-    q6: 'D',
+    q1: 'D',
+    q2: 'C',
+    q3: 'C',
+    q4: 'D',
+    q5: 'A',
+    q6: 'A',
     q7: 'B',
-    q8: 'A',
+    q8: 'B',
     q9: 'C',
-    q10: 'D',
-    q11: 'A',
-    q12: 'C'
-    q13: ['Sai', 'Sai', 'Đúng', 'Sai'],
-    q14: ['Đúng', 'Sai', 'Sai', 'Sai'],
-    q15: ['Đúng', 'Đúng', 'Sai', 'Sai'],
-    q16: ['Sai', 'Đúng', 'Sai', 'Đúng'],
-    q17: '2043',
-    q18: '14',
-    q19: '-10',
-    q20: '2',
-    q21: '9,8',
-    q22: '0,71'
-
+    q10: 'A',
+    q11: 'B',
+    q12: 'C',
+    q13: ['Đúng',  'Sai', 'Sai', 'Đúng'],
+    q14: ['Đúng', 'Đúng', 'Sai', 'Sai'],
+    q15: ['Sai', 'Đúng', 'Đúng', 'Sai'],
+    q16: ['Đúng', 'Sai', 'Sai', 'Sai'],
+    q17: '0,33',
+    q18: '62,1',
+    q19: '2',
+    q20: '13,5',
+    q21: '-100',
+    q22: '0,75'
   };
 
   let studentAnswers = {};
@@ -1351,7 +1350,15 @@ exitBtn.onclick = () => {
 };
 
 toolSelect.onchange = () => currentTool = toolSelect.value;
-clearBtn.onclick = () => ctx.clearRect(0, 0, canvas.width, canvas.height);
+clearBtn.onclick = () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Ghi một ảnh rỗng lên Firebase để đồng bộ xoá cho mọi người
+  if (typeof saveDrawingToFirebase === "function") {
+    saveDrawingToFirebase(); // Lưu canvas trống
+  }
+};
+
 saveBtn.onclick = () => {
   const link = document.createElement("a");
   link.download = "ban_ve.png";
@@ -1464,10 +1471,17 @@ else if (currentTool === "sphere") {
   }
 }
 
+
 function endDraw() {
   if (!isDrawMode) return;
   isDrawing = false;
+
+  // Sau khi vẽ xong, lưu lên Firebase
+  if (typeof saveDrawingToFirebase === "function") {
+    saveDrawingToFirebase();
+  }
 }
+
 
 canvas.addEventListener("mousedown", startDraw);
 canvas.addEventListener("mousemove", drawMove);
@@ -1476,6 +1490,76 @@ canvas.addEventListener("touchstart", startDraw, { passive: false });
 canvas.addEventListener("touchmove", drawMove, { passive: false });
 canvas.addEventListener("touchend", endDraw);
 </script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+  import { getFirestore, doc, onSnapshot, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
+  const firebaseConfig = {
+    apiKey: "AIzaSyDDACFZgZazMOnjzmGM_lrKswVcsoTFHxA",
+    authDomain: "veonline-3bcbf.firebaseapp.com",
+    projectId: "veonline-3bcbf",
+    storageBucket: "veonline-3bcbf.appspot.com",
+    messagingSenderId: "83902304195",
+    appId: "1:83902304195:web:2f9ec1ee0c23d6e21bb776"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const canvas = document.getElementById("drawCanvas");
+  const ctx = canvas.getContext("2d");
+
+  // Cập nhật vẽ khi người khác cập nhật
+  const docRef = doc(db, "sharedDrawing", "canvasImage");
+  onSnapshot(docRef, (docSnap) => {
+    const data = docSnap.data();
+    if (data?.image && !window.isDrawing) {
+      const img = new Image();
+      img.onload = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0);
+      };
+      img.src = data.image;
+    }
+  });
+
+  // Ghi ảnh lên Firestore
+  window.saveDrawingToFirebase = async function () {
+    const imageData = canvas.toDataURL();
+    await setDoc(docRef, {
+      image: imageData,
+      timestamp: serverTimestamp()
+    });
+  };
+</script>
+
+<script>
+  // Thêm cấu hình Firebase (thay bằng giá trị thực tế bạn sao chép từ Firebase Console)
+  const firebaseConfig = {
+    apiKey: "AIzaSyDDACFZgZazMOnjzmGM_lrKswVcsoTFHxA",
+  authDomain: "veonline-3bcbf.firebaseapp.com",
+  projectId: "veonline-3bcbf",
+  storageBucket: "veonline-3bcbf.firebasestorage.app",
+  messagingSenderId: "83902304195",
+  appId: "1:83902304195:web:2f9ec1ee0c23d6e21bb776",
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  // Theo dõi dữ liệu vẽ từ Firestore theo thời gian thực
+db.collection("sharedDrawing").doc("canvasImage").onSnapshot((doc) => {
+  if (doc.exists && !isDrawing) {
+    const data = doc.data();
+    if (data.image) {
+      const img = new Image();
+      img.onload = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0);
+      };
+      img.src = data.image;
+    }
+  }
+});
+
+</script>
 </body>
 </html>
