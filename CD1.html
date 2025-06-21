@@ -89,68 +89,70 @@
       };
     }
 
-    function drawAt(x, y, color, width) {
+    function sendStroke(x, y, color, width, type) {
+      db.collection("sharedDrawing").add({
+        x: x / canvas.width,
+        y: y / canvas.height,
+        color,
+        width,
+        type,
+        user: userId,
+        timestamp: Date.now()
+      });
+    }
+
+    function drawAction(x, y, color, width, type) {
       ctx.strokeStyle = color;
       ctx.lineWidth = width;
       ctx.lineCap = "round";
-      ctx.lineTo(x, y);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(x, y);
+      if (type === "begin") {
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+      } else if (type === "draw") {
+        ctx.lineTo(x, y);
+        ctx.stroke();
+      }
     }
 
     canvas.addEventListener("mousedown", (e) => {
       if (!isDrawMode) return;
       isDrawing = true;
       const pos = getPos(e);
-      ctx.beginPath();
-      ctx.moveTo(pos.x, pos.y);
+      drawAction(pos.x, pos.y, colorPicker.value, lineWidth, "begin");
+      sendStroke(pos.x, pos.y, colorPicker.value, lineWidth, "begin");
     });
 
     canvas.addEventListener("mousemove", (e) => {
       if (!isDrawing || !isDrawMode) return;
       const pos = getPos(e);
-      drawAt(pos.x, pos.y, colorPicker.value, lineWidth);
-      sendStroke(pos.x, pos.y, colorPicker.value, lineWidth);
+      drawAction(pos.x, pos.y, colorPicker.value, lineWidth, "draw");
+      sendStroke(pos.x, pos.y, colorPicker.value, lineWidth, "draw");
     });
 
     canvas.addEventListener("mouseup", () => {
       if (!isDrawMode) return;
       isDrawing = false;
-      ctx.beginPath();
     });
 
     canvas.addEventListener("touchstart", (e) => {
       if (!isDrawMode) return;
       isDrawing = true;
       const pos = getPos(e);
-      ctx.beginPath();
-      ctx.moveTo(pos.x, pos.y);
+      drawAction(pos.x, pos.y, colorPicker.value, lineWidth, "begin");
+      sendStroke(pos.x, pos.y, colorPicker.value, lineWidth, "begin");
     });
 
     canvas.addEventListener("touchmove", (e) => {
       if (!isDrawing || !isDrawMode) return;
       const pos = getPos(e);
-      drawAt(pos.x, pos.y, colorPicker.value, lineWidth);
-      sendStroke(pos.x, pos.y, colorPicker.value, lineWidth);
+      drawAction(pos.x, pos.y, colorPicker.value, lineWidth, "draw");
+      sendStroke(pos.x, pos.y, colorPicker.value, lineWidth, "draw");
     }, { passive: false });
 
     canvas.addEventListener("touchend", () => {
       if (!isDrawMode) return;
       isDrawing = false;
-      ctx.beginPath();
     });
-
-    function sendStroke(x, y, color, width) {
-      db.collection("sharedDrawing").add({
-        x: x / canvas.width,
-        y: y / canvas.height,
-        color,
-        width,
-        user: userId,
-        timestamp: Date.now()
-      });
-    }
 
     db.collection("sharedDrawing")
       .orderBy("timestamp")
@@ -161,7 +163,7 @@
           if (data.user === userId) return;
           const x = data.x * canvas.width;
           const y = data.y * canvas.height;
-          drawAt(x, y, data.color, data.width);
+          drawAction(x, y, data.color, data.width, data.type);
         });
       });
   </script>
