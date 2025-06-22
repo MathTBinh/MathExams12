@@ -1,53 +1,93 @@
 
 <!DOCTYPE html>
-<html lang="vi">
+<html>
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DEMO WebRTC Truyền Âm Thanh</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f9f9f9;
-      margin: 0;
-      padding: 20px;
-    }
-    .controls {
-      text-align: center;
-      margin-top: 20px;
-    }
-    button {
-      padding: 10px 20px;
-      margin: 10px;
-      font-size: 18px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-    }
-    #btnToggleMic {
-      background-color: #6b21a8;
-      color: white;
-    }
-    #btnToggleSpeaker {
-      background-color: #10b981;
-      color: white;
-    }
-  </style>
+  <title>WebRTC + Firebase Demo</title>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 </head>
 <body>
-  <h1>🎧 Truyền giọng nói thời gian thực</h1>
-  <p>Cho phép trình duyệt truy cập micro và kết nối với người khác.</p>
+  <h2>🎧 WebRTC + Firebase Audio Chat</h2>
+  <p>Room ID: <input id="room-id" value="room1"> <button onclick="joinRoom()">Join Room</button></p>
+  <p><strong>Status:</strong> <span id="status">Not connected</span></p>
 
-  <div class="controls">
-    <button id="btnToggleMic">🎙️ Bật/Tắt Micro</button>
-    <button id="btnToggleSpeaker">🔊 Bật/Tắt Loa</button>
-  </div>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyD-PLACE-YOUR-KEY-HERE",
+      authDomain: "your-app.firebaseapp.com",
+      databaseURL: "https://your-app-default-rtdb.firebaseio.com",
+      projectId: "your-app",
+      storageBucket: "your-app.appspot.com",
+      messagingSenderId: "000000000000",
+      appId: "1:000000000000:web:xxxxxx"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
 
-  <audio id="remoteAudio" autoplay></audio>
+    const peerConnection = new RTCPeerConnection({
+      iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
+    });
+    let localStream;
 
-  <!-- Firebase compat SDK + WebRTC -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  <script src="webrtc.js"></script>
+    peerConnection.onicecandidate = event => {
+      if (event.candidate) {
+        db.ref(`rooms/${roomId}/candidates/${role}`).push(JSON.stringify(event.candidate));
+      }
+    };
+
+    peerConnection.ontrack = event => {
+      const remoteAudio = new Audio();
+      remoteAudio.srcObject = event.streams[0];
+      remoteAudio.play();
+    };
+
+    let role = "";
+    let roomId = "";
+
+    async function joinRoom() {
+      roomId = document.getElementById("room-id").value;
+      document.getElementById("status").innerText = "Connecting...";
+
+      localStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+
+      const roomRef = db.ref(`rooms/${roomId}`);
+      const snapshot = await roomRef.once("value");
+
+      if (snapshot.exists() && snapshot.val().offer) {
+        // Join as callee
+        role = "callee";
+        const offer = JSON.parse(snapshot.val().offer);
+        await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
+        const answer = await peerConnection.createAnswer();
+        await peerConnection.setLocalDescription(answer);
+        await roomRef.update({ answer: JSON.stringify(answer) });
+      } else {
+        // Join as caller
+        role = "caller";
+        const offer = await peerConnection.createOffer();
+        await peerConnection.setLocalDescription(offer);
+        await roomRef.set({ offer: JSON.stringify(offer) });
+      }
+
+      // Listen for answer
+      roomRef.child("answer").on("value", async snap => {
+        const val = snap.val();
+        if (val && role === "caller") {
+          const answer = JSON.parse(val);
+          await peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
+        }
+      });
+
+      // Listen for ICE candidates
+      roomRef.child("candidates").child(role === "caller" ? "callee" : "caller").on("child_added", snap => {
+        const candidate = new RTCIceCandidate(JSON.parse(snap.val()));
+        peerConnection.addIceCandidate(candidate);
+      });
+
+      document.getElementById("status").innerText = "Connected";
+    }
+  </script>
 </body>
 </html>
