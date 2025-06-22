@@ -1022,7 +1022,7 @@ chuyển động chậm dần đều với tốc độ v t t ( ) 10 20 (m/s). G�
 </div>
 <div class="answer-check">
 <input type="text" id="input-q21" placeholder="Nhập đáp án">
-<button onclick="checkShortAnswer('q21', '4.74')">Kiểm tra</button>
+<button onclick="checkShortAnswer('q21', '4,74')">Kiểm tra</button>
 <button class="solution-toggle" onclick="toggleSolution('solution-q21')">Xem lời giải</button>
 <div class="solution" id="solution-q21"></div>
 <div class="answer-feedback" id="feedback-q21"></div>
@@ -1663,6 +1663,23 @@ db.ref("sharedDrawing").limitToLast(1000).on("child_added", (snapshot) => {
   ctx.beginPath();
   ctx.moveTo(x, y);
 });
+// Nhận nét vẽ từ các học sinh khác (Realtime)
+db.ref("sharedDrawing").limitToLast(1000).on("child_added", (snapshot) => {
+  const data = snapshot.val();
+  if (data.user === userId) return;
+
+  const x = data.x * canvas.width;
+  const y = data.y * canvas.height;
+
+  ctx.strokeStyle = data.color;
+  ctx.lineWidth = data.width;
+  ctx.lineCap = "round";
+  ctx.lineTo(x, y);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+});
+
 <script>
 
 
