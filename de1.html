@@ -1291,8 +1291,6 @@ for (let i = 17; i <= 22; i++) {
       }
     }
     }
-      
-
   const scoreElement = document.getElementById("score-result");
   scoreElement.textContent = `Tổng điểm của bạn: ${totalScore.toFixed(2)} / 10`;
   scoreElement.className = "correct";
@@ -1322,7 +1320,27 @@ let allowShowSolution = true; // Đặt thành false nếu muốn khóa lời gi
   }
   </script>
     <script src="recorder.js"></script>
-    <script>
+         
+<script type="module">
+
+      // Import các hàm cần thiết từ Firebase SDK
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import { getFirestore, doc, onSnapshot, setDoc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+// --- 1. CẤU HÌNH VÀ KHỞI TẠO ---
+const firebaseConfig = {
+    apiKey: "AIzaSyDDACFZgZazMOnjzmGM_lrKswVcsoTFHxA",
+    authDomain: "veonline-3bcbf.firebaseapp.com",
+    projectId: "veonline-3bcbf",
+    storageBucket: "veonline-3bcbf.appspot.com",
+    messagingSenderId: "83902304195",
+    appId: "1:83902304195:web:2f9ec1ee0c23d6e21bb776"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Lấy các phần tử DOM
 const canvas = document.getElementById("drawCanvas");
 const ctx = canvas.getContext("2d");
 const toggleBtn = document.getElementById("toggleDraw");
@@ -1333,354 +1351,229 @@ const exitBtn = document.getElementById("exitBtn");
 const colorPicker = document.getElementById("colorPicker");
 const toolSelect = document.getElementById("tool");
 const widthPicker = document.getElementById("draw-width");
-let lineWidth = 2;
 
-widthPicker.oninput = () => {
-  lineWidth = parseInt(widthPicker.value);
-};
+// --- 2. BIẾN TOÀN CỤC VÀ TRẠNG THÁI ---
 let isDrawing = false;
 let isDrawMode = false;
-let startX = 0, startY = 0;
 let currentTool = "pen";
-let imageBeforeShape;
+let lineWidth = 2;
+// Tạo một ID duy nhất cho client này để không vẽ lại hành động của chính mình
+const clientId = Date.now().toString(36) + Math.random().toString(36).substr(2);
 
+// Tham chiếu đến các document trên Firestore
+const liveEventDoc = doc(db, "sharedDrawing", "live_event");
+const canvasStateDoc = doc(db, "sharedDrawing", "canvas_state");
+
+// --- 3. CÁC HÀM TIỆN ÍCH ---
+
+// Thay đổi kích thước canvas và load lại trạng thái cũ
 function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    // Khi resize, load lại trạng thái canvas đã lưu để hình không bị mất
+    loadCanvasState(); 
 }
-resizeCanvas();
+
+// Lấy tọa độ (chuột hoặc chạm)
+function getPos(e) {
+    if (e.touches && e.touches.length > 0) {
+        return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }
+    return { x: e.clientX, y: e.clientY };
+}
+
+// *** HÀM MỚI: Chuyển tọa độ pixel tuyệt đối sang tọa độ tương đối (0-1) ***
+function toNormalized(pos) {
+    return {
+        x: pos.x / canvas.width,
+        y: pos.y / canvas.height
+    };
+}
+
+// *** HÀM MỚI: Chuyển tọa độ tương đối về tọa độ pixel trên canvas hiện tại ***
+function fromNormalized(normPos) {
+    return {
+        x: normPos.x * canvas.width,
+        y: normPos.y * canvas.height
+    };
+}
+
+// --- 4. CÁC HÀM GỬI DỮ LIỆU LÊN FIREBASE ---
+
+// Gửi sự kiện vẽ (start, move, clear)
+async function sendDrawEvent(type, data = {}) {
+    await setDoc(liveEventDoc, {
+        clientId: clientId, // Gửi kèm ID để các client khác biết ai đã vẽ
+        type: type,
+        ...data,
+    });
+}
+
+// Lưu trạng thái toàn bộ canvas (dưới dạng ảnh)
+function saveCanvasState() {
+    const dataUrl = canvas.toDataURL();
+    setDoc(canvasStateDoc, { image: dataUrl });
+}
+
+// --- 5. CÁC HÀM VẼ NỘI BỘ ---
+
+// Hàm vẽ dựa trên dữ liệu sự kiện nhận được
+function drawFromEvent(event) {
+    // Không vẽ lại hành động của chính mình
+    if (event.clientId === clientId) return;
+
+    const { type, normPos, color, width, tool } = event;
+
+    // Chuyển tọa độ tương đối về pixel của máy này
+    const pos = normPos ? fromNormalized(normPos) : null;
+    
+    ctx.strokeStyle = color || colorPicker.value;
+    ctx.lineWidth = width || lineWidth;
+    ctx.lineCap = "round";
+
+    switch (type) {
+        case 'start':
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);
+            break;
+        case 'move':
+            // Chỉ vẽ nếu có một điểm bắt đầu
+            if (ctx.beginPath) { 
+                ctx.lineTo(pos.x, pos.y);
+                ctx.stroke();
+            }
+            break;
+        case 'clear':
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            break;
+    }
+}
+
+
+// --- 6. GẮN KẾT SỰ KIỆN ---
+
 window.addEventListener("resize", resizeCanvas);
 
 toggleBtn.onclick = () => {
-  isDrawMode = true;
-  canvas.style.display = "block";
-  toolbar.style.display = "flex";
+    isDrawMode = true;
+    canvas.style.display = "block";
+    toolbar.style.display = "flex";
+    resizeCanvas(); // Đảm bảo canvas có kích thước đúng ngay khi bật
 };
 
 exitBtn.onclick = () => {
-  isDrawMode = false;
-  canvas.style.display = "none";
-  toolbar.style.display = "none";
+    isDrawMode = false;
+    canvas.style.display = "none";
+    toolbar.style.display = "none";
 };
 
-toolSelect.onchange = () => currentTool = toolSelect.value;
 clearBtn.onclick = () => {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // Ghi một ảnh rỗng lên Firebase để đồng bộ xoá cho mọi người
-  if (typeof saveDrawingToFirebase === "function") {
-    saveDrawingToFirebase(); // Lưu canvas trống
-  }
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    sendDrawEvent('clear'); // Gửi sự kiện xóa cho người khác
+    saveCanvasState(); // Lưu trạng thái trống
 };
 
 saveBtn.onclick = () => {
-  const link = document.createElement("a");
-  link.download = "ban_ve.png";
-  link.href = canvas.toDataURL();
-  link.click();
+    const link = document.createElement("a");
+    link.download = "ban_ve.png";
+    link.href = canvas.toDataURL();
+    link.click();
 };
 
-function getPos(e) {
-  if (e.touches && e.touches.length > 0) {
-    return { x: e.touches[0].clientX, y: e.touches[0].clientY };
-  }
-  return { x: e.clientX, y: e.clientY };
-}
+toolSelect.onchange = () => (currentTool = toolSelect.value);
+widthPicker.oninput = () => (lineWidth = parseInt(widthPicker.value));
 
+
+// Bắt đầu vẽ
 function startDraw(e) {
-  if (!isDrawMode) return;
-  e.preventDefault();
-  const pos = getPos(e);
-  isDrawing = true;
-  startX = pos.x;
-  startY = pos.y;
-  if (currentTool !== "pen") {
-    imageBeforeShape = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  } else {
+    if (!isDrawMode) return;
+    e.preventDefault();
+    isDrawing = true;
+
+    const pos = getPos(e);
+    ctx.strokeStyle = colorPicker.value;
+    ctx.lineWidth = lineWidth;
+    ctx.lineCap = "round";
+
     ctx.beginPath();
-    ctx.moveTo(startX, startY);
-  }
+    ctx.moveTo(pos.x, pos.y);
+
+    // Gửi sự kiện bắt đầu vẽ với tọa độ đã chuẩn hóa
+    sendDrawEvent('start', {
+        normPos: toNormalized(pos),
+        color: colorPicker.value,
+        width: lineWidth,
+        tool: currentTool
+    });
 }
 
+// Đang vẽ
 function drawMove(e) {
-  if (!isDrawing || !isDrawMode) return;
-  const pos = getPos(e);
-  ctx.strokeStyle = colorPicker.value;
-  ctx.lineWidth = lineWidth;
-  ctx.lineCap = "round";
+    if (!isDrawing || !isDrawMode) return;
+    e.preventDefault();
+    const pos = getPos(e);
 
-  if (currentTool === "pen") {
     ctx.lineTo(pos.x, pos.y);
     ctx.stroke();
-  } else {
-    ctx.putImageData(imageBeforeShape, 0, 0);
-    if (currentTool === "line") {
-      ctx.beginPath();
-      ctx.moveTo(startX, startY);
-      ctx.lineTo(pos.x, pos.y);
-      ctx.stroke();
-    } else if (currentTool === "rect") {
-      ctx.strokeRect(startX, startY, pos.x - startX, pos.y - startY);
-    } else if (currentTool === "circle") {
-      const radius = Math.hypot(pos.x - startX, pos.y - startY);
-      ctx.beginPath();
-      ctx.arc(startX, startY, radius, 0, Math.PI * 2);
-      ctx.stroke();
-    }
-    else if (currentTool === "cube") {
-  // Vẽ hình lập phương 3D đơn giản
-  let size = Math.min(Math.abs(pos.x - startX), Math.abs(pos.y - startY));
-  ctx.strokeRect(startX, startY, size, size);
-  ctx.strokeRect(startX + 10, startY - 10, size, size);
-  ctx.beginPath();
-  ctx.moveTo(startX, startY);
-  ctx.lineTo(startX + 10, startY - 10);
-  ctx.moveTo(startX + size, startY);
-  ctx.lineTo(startX + size + 10, startY - 10);
-  ctx.moveTo(startX, startY + size);
-  ctx.lineTo(startX + 10, startY + size - 10);
-  ctx.moveTo(startX + size, startY + size);
-  ctx.lineTo(startX + size + 10, startY + size - 10);
-  ctx.stroke();
-}
-else if (currentTool === "cone") {
-  let radius = Math.abs(pos.x - startX);
-  ctx.beginPath();
-  ctx.ellipse(startX, startY + 40, radius, 10, 0, 0, Math.PI * 2);
-  ctx.moveTo(startX - radius, startY + 40);
-  ctx.lineTo(startX, startY - 40);
-  ctx.lineTo(startX + radius, startY + 40);
-  ctx.stroke();
-}
-else if (currentTool === "cylinder") {
-  let r = Math.abs(pos.x - startX);
-  ctx.beginPath();
-  ctx.ellipse(startX, startY, r, 10, 0, 0, Math.PI * 2);
-  ctx.moveTo(startX - r, startY);
-  ctx.lineTo(startX - r, startY + 100);
-  ctx.moveTo(startX + r, startY);
-  ctx.lineTo(startX + r, startY + 100);
-  ctx.ellipse(startX, startY + 100, r, 10, 0, 0, Math.PI);
-  ctx.stroke();
-}
-else if (currentTool === "pyramid") {
-  ctx.beginPath();
-  ctx.moveTo(startX, startY);
-  ctx.lineTo(startX + 60, startY);
-  ctx.lineTo(startX + 30, startY + 60);
-  ctx.closePath();
-  ctx.moveTo(startX + 30, startY + 60);
-  ctx.lineTo(startX + 30, startY - 40);
-  ctx.stroke();
-}
-else if (currentTool === "sphere") {
-  let r = Math.abs(pos.x - startX);
-  ctx.beginPath();
-  ctx.arc(startX, startY, r, 0, Math.PI * 2);
-  ctx.moveTo(startX - r, startY);
-  ctx.ellipse(startX, startY, r, r / 2, 0, 0, Math.PI * 2);
-  ctx.stroke();
+
+    // Gửi sự kiện di chuyển với tọa độ đã chuẩn hóa
+    sendDrawEvent('move', {
+        normPos: toNormalized(pos)
+    });
 }
 
-  }
-}
-
-
+// Kết thúc vẽ
 function endDraw() {
-  if (!isDrawMode) return;
-  isDrawing = false;
-
-  // Sau khi vẽ xong, lưu lên Firebase
-  if (typeof saveDrawingToFirebase === "function") {
-    saveDrawingToFirebase();
-  }
+    if (!isDrawing) return;
+    isDrawing = false;
+    // Khi vẽ xong, lưu lại toàn bộ trạng thái của canvas
+    // để người mới vào sau có thể thấy được
+    saveCanvasState();
 }
-
 
 canvas.addEventListener("mousedown", startDraw);
 canvas.addEventListener("mousemove", drawMove);
 canvas.addEventListener("mouseup", endDraw);
+canvas.addEventListener("mouseleave", endDraw); // Thêm để xử lý khi chuột ra ngoài
+
 canvas.addEventListener("touchstart", startDraw, { passive: false });
 canvas.addEventListener("touchmove", drawMove, { passive: false });
 canvas.addEventListener("touchend", endDraw);
+
+
+// --- 7. LẮNG NGHE DỮ LIỆU TỪ FIREBASE ---
+
+// Hàm tải trạng thái canvas đã lưu (cho người mới vào)
+function loadCanvasState() {
+    onSnapshot(canvasStateDoc, (docSnap) => {
+        if (docSnap.exists()) {
+            const data = docSnap.data();
+            if (data.image) {
+                const img = new Image();
+                img.onload = () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                };
+                img.src = data.image;
+            }
+        }
+    });
+}
+
+// Lắng nghe các sự kiện vẽ theo thời gian thực
+onSnapshot(liveEventDoc, (docSnap) => {
+    if (docSnap.exists()) {
+        const eventData = docSnap.data();
+        drawFromEvent(eventData);
+    }
+});
+
+// Khởi tạo
+resizeCanvas(); // Gọi lần đầu để thiết lập kích thước và tải trạng thái
+
 </script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-
-<!--script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script-->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-
-<script>
- const firebaseConfig = {
-  apiKey: "AIzaSyDDACFZgZazMOnjzmGM_lrKswVcsoTFHxA",
-  authDomain: "veonline-3bcbf.firebaseapp.com",
-  databaseURL: "https://veonline-3bcbf-default-rtdb.firebaseio.com",
-  projectId: "veonline-3bcbf",
-  storageBucket: "veonline-3bcbf.appspot.com",
-  messagingSenderId: "83902304195",
-  appId: "1:83902304195:web:2f9ec1ee0c23d6e21bb776"
-};
-
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.database();  // Dùng Realtime Database, không phải Firestore
 
 
-  const canvas = document.getElementById("drawCanvas");
-const ctx = canvas.getContext("2d");
-const toggleBtn = document.getElementById("toggleDraw");
-const toolbar = document.getElementById("drawToolbar");
-const clearBtn = document.getElementById("clearBtn");
-const saveBtn = document.getElementById("saveBtn");
-const exitBtn = document.getElementById("exitBtn");
-const colorPicker = document.getElementById("colorPicker");
-const toolSelect = document.getElementById("tool");
-const widthPicker = document.getElementById("draw-width");
-
-let isDrawing = false;
-let isDrawMode = false;
-let lineWidth = parseInt(widthPicker.value);
-let userId = "user_" + Math.random().toString(36).substring(2);
-
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
-
-toggleBtn.onclick = () => {
-  isDrawMode = true;
-  canvas.style.display = "block";
-  toolbar.style.display = "flex";
-};
-exitBtn.onclick = () => {
-  isDrawMode = false;
-  canvas.style.display = "none";
-  toolbar.style.display = "none";
-};
-clearBtn.onclick = () => {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  db.ref("sharedDrawing").remove(); // xoá dữ liệu Firebase luôn
-};
-saveBtn.onclick = () => {
-  const link = document.createElement("a");
-  link.download = "ban_ve.png";
-  link.href = canvas.toDataURL();
-  link.click();
-};
-widthPicker.oninput = () => lineWidth = parseInt(widthPicker.value);
-
-function getPos(e) {
-  const rect = canvas.getBoundingClientRect();
-  if (e.touches && e.touches.length > 0) {
-    return {
-      x: e.touches[0].clientX - rect.left,
-      y: e.touches[0].clientY - rect.top
-    };
-  }
-  return {
-    x: e.clientX - rect.left,
-    y: e.clientY - rect.top
-  };
-}
-
-function sendPointToFirebase(pos) {
-  const normX = pos.x / canvas.width;
-  const normY = pos.y / canvas.height;
-  db.ref("sharedDrawing").push({
-    x: normX,
-    y: normY,
-    color: colorPicker.value,
-    width: lineWidth,
-    user: userId,
-    time: Date.now()
-  });
-}
-
-// Vẽ chuột
-canvas.addEventListener("mousedown", (e) => {
-  if (!isDrawMode) return;
-  isDrawing = true;
-  const pos = getPos(e);
-  ctx.beginPath();
-  ctx.moveTo(pos.x, pos.y);
-  sendPointToFirebase(pos);
-});
-canvas.addEventListener("mousemove", (e) => {
-  if (!isDrawing || !isDrawMode) return;
-  const pos = getPos(e);
-  ctx.strokeStyle = colorPicker.value;
-  ctx.lineWidth = lineWidth;
-  ctx.lineCap = "round";
-  ctx.lineTo(pos.x, pos.y);
-  ctx.stroke();
-  sendPointToFirebase(pos);
-});
-canvas.addEventListener("mouseup", () => {
-  if (!isDrawMode) return;
-  isDrawing = false;
-  ctx.beginPath();
-});
-
-// Vẽ cảm ứng
-canvas.addEventListener("touchstart", (e) => {
-  if (!isDrawMode) return;
-  isDrawing = true;
-  const pos = getPos(e);
-  ctx.beginPath();
-  ctx.moveTo(pos.x, pos.y);
-  sendPointToFirebase(pos);
-});
-canvas.addEventListener("touchmove", (e) => {
-  if (!isDrawing || !isDrawMode) return;
-  const pos = getPos(e);
-  ctx.strokeStyle = colorPicker.value;
-  ctx.lineWidth = lineWidth;
-  ctx.lineCap = "round";
-  ctx.lineTo(pos.x, pos.y);
-  ctx.stroke();
-  sendPointToFirebase(pos);
-  e.preventDefault(); // ngăn cuộn khi vẽ trên cảm ứng
-}, { passive: false });
-canvas.addEventListener("touchend", () => {
-  if (!isDrawMode) return;
-  isDrawing = false;
-  ctx.beginPath();
-});
-
-// Nhận dữ liệu vẽ từ người khác (REALTIME)
-db.ref("sharedDrawing").limitToLast(1000).on("child_added", (snapshot) => {
-  const data = snapshot.val();
-  if (data.user === userId) return; // bỏ qua nét của chính mình
-
-  const x = data.x * canvas.width;
-  const y = data.y * canvas.height;
-
-  ctx.strokeStyle = data.color;
-  ctx.lineWidth = data.width;
-  ctx.lineCap = "round";
-  ctx.lineTo(x, y);
-  ctx.stroke();
-  ctx.beginPath();
-  ctx.moveTo(x, y);
-});
-// Nhận nét vẽ từ các học sinh khác (Realtime)
-db.ref("sharedDrawing").limitToLast(1000).on("child_added", (snapshot) => {
-  const data = snapshot.val();
-  if (data.user === userId) return;
-
-  const x = data.x * canvas.width;
-  const y = data.y * canvas.height;
-
-  ctx.strokeStyle = data.color;
-  ctx.lineWidth = data.width;
-  ctx.lineCap = "round";
-  ctx.lineTo(x, y);
-  ctx.stroke();
-  ctx.beginPath();
-  ctx.moveTo(x, y);
-});
-
-<script>
 
 
 </body>
