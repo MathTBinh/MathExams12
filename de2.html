@@ -1213,28 +1213,9 @@ let allowShowSolution = true; // Đặt thành false nếu muốn khóa lời gi
     }
     window.open(url, '_blank');
   }
-  </script>
+   </script>
     <script src="recorder.js"></script>
-         
-<script type="module">
-// Import các hàm cần thiết từ Firebase SDK
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-import { getFirestore, doc, onSnapshot, setDoc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
-
-// --- 1. CẤU HÌNH VÀ KHỞI TẠO ---
-const firebaseConfig = {
-    apiKey: "AIzaSyDDACFZgZazMOnjzmGM_lrKswVcsoTFHxA",
-    authDomain: "veonline-3bcbf.firebaseapp.com",
-    projectId: "veonline-3bcbf",
-    storageBucket: "veonline-3bcbf.appspot.com",
-    messagingSenderId: "83902304195",
-    appId: "1:83902304195:web:2f9ec1ee0c23d6e21bb776"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-// Lấy các phần tử DOM
+    <script>
 const canvas = document.getElementById("drawCanvas");
 const ctx = canvas.getContext("2d");
 const toggleBtn = document.getElementById("toggleDraw");
@@ -1245,272 +1226,245 @@ const exitBtn = document.getElementById("exitBtn");
 const colorPicker = document.getElementById("colorPicker");
 const toolSelect = document.getElementById("tool");
 const widthPicker = document.getElementById("draw-width");
+let lineWidth = 2;
 
-// --- 2. BIẾN TOÀN CỤC VÀ TRẠNG THÁI ---
+widthPicker.oninput = () => {
+  lineWidth = parseInt(widthPicker.value);
+};
 let isDrawing = false;
 let isDrawMode = false;
-const clientId = Date.now().toString(36) + Math.random().toString(36).substr(2);
-const liveEventDoc = doc(db, "sharedDrawing", "live_event");
-const canvasStateDoc = doc(db, "sharedDrawing", "canvas_state");
+let startX = 0, startY = 0;
+let currentTool = "pen";
+let imageBeforeShape;
 
-// *** NEW: Biến cho việc điều tiết (throttling) và vẽ mượt ***
-let points = []; // Lưu các điểm vẽ cục bộ
-let lastSentPoints = []; // Lưu các điểm đã gửi đi để so sánh
-
-// --- 3. CÁC HÀM TIỆN ÍCH VÀ XỬ LÝ CANVAS NÂNG CAO ---
-
-// *** UPDATED: Xử lý Device Pixel Ratio để chống nhòe ***
 function resizeCanvas() {
-    const dpr = window.devicePixelRatio || 1;
-    const rect = canvas.getBoundingClientRect();
-
-    // Set kích thước thật của canvas (số pixel vật lý)
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-
-    // Set kích thước hiển thị của canvas (CSS pixel)
-    canvas.style.width = `${rect.width}px`;
-    canvas.style.height = `${rect.height}px`;
-
-    // Scale context để tọa độ vẽ khớp với pixel vật lý
-    ctx.scale(dpr, dpr);
-    
-    // Load lại trạng thái canvas đã lưu
-    loadCanvasState();
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 }
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+toggleBtn.onclick = () => {
+  isDrawMode = true;
+  canvas.style.display = "block";
+  toolbar.style.display = "flex";
+};
+
+exitBtn.onclick = () => {
+  isDrawMode = false;
+  canvas.style.display = "none";
+  toolbar.style.display = "none";
+};
+
+toolSelect.onchange = () => currentTool = toolSelect.value;
+clearBtn.onclick = () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Ghi một ảnh rỗng lên Firebase để đồng bộ xoá cho mọi người
+  if (typeof saveDrawingToFirebase === "function") {
+    saveDrawingToFirebase(); // Lưu canvas trống
+  }
+};
+
+saveBtn.onclick = () => {
+  const link = document.createElement("a");
+  link.download = "ban_ve.png";
+  link.href = canvas.toDataURL();
+  link.click();
+};
 
 function getPos(e) {
-    const rect = canvas.getBoundingClientRect();
-    const dpr = window.devicePixelRatio || 1;
-    let clientX, clientY;
-    if (e.touches && e.touches.length > 0) {
-        clientX = e.touches[0].clientX;
-        clientY = e.touches[0].clientY;
-    } else {
-        clientX = e.clientX;
-        clientY = e.clientY;
-    }
-    // Trả về tọa độ đã được scale, sẵn sàng để vẽ
-    return { 
-        x: (clientX - rect.left), 
-        y: (clientY - rect.top)
-    };
-}
-
-// Chuẩn hóa tọa độ để gửi đi
-function toNormalized(pos) {
-    const rect = canvas.getBoundingClientRect();
-    return {
-        x: pos.x / rect.width,
-        y: pos.y / rect.height
-    };
-}
-
-// Chuyển tọa độ chuẩn hóa về tọa độ vẽ
-function fromNormalized(normPos) {
-    const rect = canvas.getBoundingClientRect();
-    return {
-        x: normPos.x * rect.width,
-        y: normPos.y * rect.height
-    };
-}
-
-// --- 4. GỬI DỮ LIỆU LÊN FIREBASE (ĐÃ TỐI ƯU) ---
-
-async function sendDrawEvent(type, data = {}) {
-    try {
-        await setDoc(liveEventDoc, {
-            clientId: clientId,
-            type: type,
-            ...data,
-            timestamp: Date.now()
-        });
-    } catch (error) {
-        console.error("Lỗi khi gửi sự kiện:", error);
-    }
-}
-
-function saveCanvasState() {
-    // Cần tạm thời reset transform để toDataURL hoạt động đúng trên mọi trình duyệt
-    ctx.save();
-    const dpr = window.devicePixelRatio || 1;
-    ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset
-    const dataUrl = canvas.toDataURL();
-    ctx.restore(); // Khôi phục lại scale
-
-    setDoc(canvasStateDoc, { image: dataUrl });
-}
-
-// --- 5. CÁC HÀM VẼ (ĐÃ TỐI ƯU) ---
-
-// *** NEW: Hàm vẽ một lô các điểm để mượt hơn ***
-function drawChunk(chunkPoints, color, width) {
-    if (chunkPoints.length < 2) return;
-
-    ctx.strokeStyle = color;
-    ctx.lineWidth = width;
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-
-    ctx.beginPath();
-    ctx.moveTo(chunkPoints[0].x, chunkPoints[0].y);
-
-    for (let i = 1; i < chunkPoints.length - 1; i++) {
-        const p1 = chunkPoints[i];
-        const p2 = chunkPoints[i + 1];
-        // Sử dụng trung điểm để tạo đường cong mượt mà
-        const midPoint = { x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2 };
-        ctx.quadraticCurveTo(p1.x, p1.y, midPoint.x, midPoint.y);
-    }
-    // Vẽ đoạn cuối cùng
-    ctx.lineTo(chunkPoints[chunkPoints.length - 1].x, chunkPoints[chunkPoints.length - 1].y);
-    ctx.stroke();
-}
-
-function drawFromEvent(event) {
-    if (event.clientId === clientId) return;
-
-    const { type, chunk, color, width } = event;
-
-    switch (type) {
-        case 'draw_chunk': {
-            const pointsToDraw = chunk.map(fromNormalized);
-            drawChunk(pointsToDraw, color, width);
-            break;
-        }
-        case 'clear':
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            break;
-    }
-}
-
-
-// --- 6. GẮN KẾT SỰ KIỆN (VỚI THROTTLING) ---
-
-// *** NEW: Vòng lặp gửi dữ liệu đã được điều tiết ***
-function throttledSend() {
-    if (!isDrawing) {
-        // Nếu đã dừng vẽ, gửi nốt phần còn lại (nếu có)
-        if (points.length > 0) {
-            sendDrawEvent('draw_chunk', {
-                chunk: points.map(toNormalized),
-                color: colorPicker.value,
-                width: parseInt(widthPicker.value),
-            });
-            points = [];
-        }
-        return;
-    }
-
-    if (points.length > 0) {
-        // Gửi lô điểm hiện tại
-        sendDrawEvent('draw_chunk', {
-            chunk: points.map(toNormalized),
-            color: colorPicker.value,
-            width: parseInt(widthPicker.value),
-        });
-        // Chỉ giữ lại điểm cuối cùng để nét vẽ tiếp theo được nối liền
-        points = [points[points.length - 1]];
-    }
-
-    // Tiếp tục vòng lặp
-    requestAnimationFrame(throttledSend);
+  if (e.touches && e.touches.length > 0) {
+    return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }
+  return { x: e.clientX, y: e.clientY };
 }
 
 function startDraw(e) {
-    if (!isDrawMode) return;
-    e.preventDefault();
-    isDrawing = true;
-    
-    // Reset mảng điểm
-    points = []; 
-    const pos = getPos(e);
-    points.push(pos);
-
-    // Bắt đầu vòng lặp gửi dữ liệu
-    requestAnimationFrame(throttledSend);
+  if (!isDrawMode) return;
+  e.preventDefault();
+  const pos = getPos(e);
+  isDrawing = true;
+  startX = pos.x;
+  startY = pos.y;
+  if (currentTool !== "pen") {
+    imageBeforeShape = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  } else {
+    ctx.beginPath();
+    ctx.moveTo(startX, startY);
+  }
 }
 
 function drawMove(e) {
-    if (!isDrawing || !isDrawMode) return;
-    e.preventDefault();
-    
-    const pos = getPos(e);
-    points.push(pos); // Thêm điểm vào mảng chờ
-    
-    // Vẽ ngay lập tức trên máy của người dùng để không bị trễ
-    drawChunk(points, colorPicker.value, parseInt(widthPicker.value));
+  if (!isDrawing || !isDrawMode) return;
+  const pos = getPos(e);
+  ctx.strokeStyle = colorPicker.value;
+  ctx.lineWidth = lineWidth;
+  ctx.lineCap = "round";
+
+  if (currentTool === "pen") {
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+  } else {
+    ctx.putImageData(imageBeforeShape, 0, 0);
+    if (currentTool === "line") {
+      ctx.beginPath();
+      ctx.moveTo(startX, startY);
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+    } else if (currentTool === "rect") {
+      ctx.strokeRect(startX, startY, pos.x - startX, pos.y - startY);
+    } else if (currentTool === "circle") {
+      const radius = Math.hypot(pos.x - startX, pos.y - startY);
+      ctx.beginPath();
+      ctx.arc(startX, startY, radius, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+    else if (currentTool === "cube") {
+  // Vẽ hình lập phương 3D đơn giản
+  let size = Math.min(Math.abs(pos.x - startX), Math.abs(pos.y - startY));
+  ctx.strokeRect(startX, startY, size, size);
+  ctx.strokeRect(startX + 10, startY - 10, size, size);
+  ctx.beginPath();
+  ctx.moveTo(startX, startY);
+  ctx.lineTo(startX + 10, startY - 10);
+  ctx.moveTo(startX + size, startY);
+  ctx.lineTo(startX + size + 10, startY - 10);
+  ctx.moveTo(startX, startY + size);
+  ctx.lineTo(startX + 10, startY + size - 10);
+  ctx.moveTo(startX + size, startY + size);
+  ctx.lineTo(startX + size + 10, startY + size - 10);
+  ctx.stroke();
 }
+else if (currentTool === "cone") {
+  let radius = Math.abs(pos.x - startX);
+  ctx.beginPath();
+  ctx.ellipse(startX, startY + 40, radius, 10, 0, 0, Math.PI * 2);
+  ctx.moveTo(startX - radius, startY + 40);
+  ctx.lineTo(startX, startY - 40);
+  ctx.lineTo(startX + radius, startY + 40);
+  ctx.stroke();
+}
+else if (currentTool === "cylinder") {
+  let r = Math.abs(pos.x - startX);
+  ctx.beginPath();
+  ctx.ellipse(startX, startY, r, 10, 0, 0, Math.PI * 2);
+  ctx.moveTo(startX - r, startY);
+  ctx.lineTo(startX - r, startY + 100);
+  ctx.moveTo(startX + r, startY);
+  ctx.lineTo(startX + r, startY + 100);
+  ctx.ellipse(startX, startY + 100, r, 10, 0, 0, Math.PI);
+  ctx.stroke();
+}
+else if (currentTool === "pyramid") {
+  ctx.beginPath();
+  ctx.moveTo(startX, startY);
+  ctx.lineTo(startX + 60, startY);
+  ctx.lineTo(startX + 30, startY + 60);
+  ctx.closePath();
+  ctx.moveTo(startX + 30, startY + 60);
+  ctx.lineTo(startX + 30, startY - 40);
+  ctx.stroke();
+}
+else if (currentTool === "sphere") {
+  let r = Math.abs(pos.x - startX);
+  ctx.beginPath();
+  ctx.arc(startX, startY, r, 0, Math.PI * 2);
+  ctx.moveTo(startX - r, startY);
+  ctx.ellipse(startX, startY, r, r / 2, 0, 0, Math.PI * 2);
+  ctx.stroke();
+}
+
+  }
+}
+
 
 function endDraw() {
-    if (!isDrawing) return;
-    isDrawing = false; // Vòng lặp throttledSend sẽ tự dừng
-    saveCanvasState(); // Lưu trạng thái cuối cùng
+  if (!isDrawMode) return;
+  isDrawing = false;
+
+  // Sau khi vẽ xong, lưu lên Firebase
+  if (typeof saveDrawingToFirebase === "function") {
+    saveDrawingToFirebase();
+  }
 }
 
-window.addEventListener("resize", resizeCanvas);
-toggleBtn.onclick = () => {
-    isDrawMode = true;
-    canvas.style.display = "block";
-    toolbar.style.display = "flex";
-    // Đảm bảo canvas có kích thước đúng ngay khi bật
-    const rect = document.body.getBoundingClientRect();
-    canvas.style.width = `${rect.width}px`;
-    canvas.style.height = `${rect.height}px`;
-    resizeCanvas(); 
-};
-exitBtn.onclick = () => { isDrawMode = false; canvas.style.display = "none"; toolbar.style.display = "none"; };
-clearBtn.onclick = () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    sendDrawEvent('clear');
-    saveCanvasState();
-};
-saveBtn.onclick = () => {
-    const link = document.createElement("a");
-    link.download = "ban_ve.png";
-    link.href = canvas.toDataURL();
-    link.click();
-};
 
 canvas.addEventListener("mousedown", startDraw);
 canvas.addEventListener("mousemove", drawMove);
 canvas.addEventListener("mouseup", endDraw);
-canvas.addEventListener("mouseleave", endDraw);
 canvas.addEventListener("touchstart", startDraw, { passive: false });
 canvas.addEventListener("touchmove", drawMove, { passive: false });
 canvas.addEventListener("touchend", endDraw);
+</script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+  import { getFirestore, doc, onSnapshot, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
-// --- 7. LẮNG NGHE DỮ LIỆU TỪ FIREBASE ---
+  const firebaseConfig = {
+    apiKey: "AIzaSyDDACFZgZazMOnjzmGM_lrKswVcsoTFHxA",
+    authDomain: "veonline-3bcbf.firebaseapp.com",
+    projectId: "veonline-3bcbf",
+    storageBucket: "veonline-3bcbf.appspot.com",
+    messagingSenderId: "83902304195",
+    appId: "1:83902304195:web:2f9ec1ee0c23d6e21bb776"
+  };
 
-function loadCanvasState() {
-    onSnapshot(canvasStateDoc, (docSnap) => {
-        if (docSnap.exists()) {
-            const data = docSnap.data();
-            if (data.image) {
-                const img = new Image();
-                img.onload = () => {
-                    const dpr = window.devicePixelRatio || 1;
-                    ctx.save();
-                    ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset scale để vẽ ảnh
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                    ctx.restore(); // Khôi phục scale
-                };
-                img.src = data.image;
-            }
-        }
-    });
-}
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-let lastTimestamp = 0;
-onSnapshot(liveEventDoc, (docSnap) => {
-    if (docSnap.exists()) {
-        const eventData = docSnap.data();
-        if (eventData.timestamp && eventData.timestamp > lastTimestamp) {
-            drawFromEvent(eventData);
-            lastTimestamp = eventData.timestamp;
-        }
+  const canvas = document.getElementById("drawCanvas");
+  const ctx = canvas.getContext("2d");
+
+  // Cập nhật vẽ khi người khác cập nhật
+  const docRef = doc(db, "sharedDrawing", "canvasImage");
+  onSnapshot(docRef, (docSnap) => {
+    const data = docSnap.data();
+    if (data?.image && !window.isDrawing) {
+      const img = new Image();
+      img.onload = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0);
+      };
+      img.src = data.image;
     }
+  });
+
+  // Ghi ảnh lên Firestore
+  window.saveDrawingToFirebase = async function () {
+    const imageData = canvas.toDataURL();
+    await setDoc(docRef, {
+      image: imageData,
+      timestamp: serverTimestamp()
+    });
+  };
+</script>
+
+<script>
+  // Thêm cấu hình Firebase (thay bằng giá trị thực tế bạn sao chép từ Firebase Console)
+  const firebaseConfig = {
+    apiKey: "AIzaSyDDACFZgZazMOnjzmGM_lrKswVcsoTFHxA",
+  authDomain: "veonline-3bcbf.firebaseapp.com",
+  projectId: "veonline-3bcbf",
+  storageBucket: "veonline-3bcbf.firebasestorage.app",
+  messagingSenderId: "83902304195",
+  appId: "1:83902304195:web:2f9ec1ee0c23d6e21bb776",
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  // Theo dõi dữ liệu vẽ từ Firestore theo thời gian thực
+db.collection("sharedDrawing").doc("canvasImage").onSnapshot((doc) => {
+  if (doc.exists && !isDrawing) {
+    const data = doc.data();
+    if (data.image) {
+      const img = new Image();
+      img.onload = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0);
+      };
+      img.src = data.image;
+    }
+  }
 });
 
 </script>
