@@ -1249,100 +1249,133 @@ const widthPicker = document.getElementById("draw-width");
 // --- 2. BIẾN TOÀN CỤC VÀ TRẠNG THÁI ---
 let isDrawing = false;
 let isDrawMode = false;
-let lastPos = { x: 0, y: 0 };
-// Tạo một ID duy nhất cho client này để không vẽ lại hành động của chính mình
 const clientId = Date.now().toString(36) + Math.random().toString(36).substr(2);
-
-// Tham chiếu đến các document trên Firestore
 const liveEventDoc = doc(db, "sharedDrawing", "live_event");
 const canvasStateDoc = doc(db, "sharedDrawing", "canvas_state");
 
-// --- 3. CÁC HÀM TIỆN ÍCH ---
+// *** NEW: Biến cho việc điều tiết (throttling) và vẽ mượt ***
+let points = []; // Lưu các điểm vẽ cục bộ
+let lastSentPoints = []; // Lưu các điểm đã gửi đi để so sánh
 
-// Thay đổi kích thước canvas và load lại trạng thái cũ
+// --- 3. CÁC HÀM TIỆN ÍCH VÀ XỬ LÝ CANVAS NÂNG CAO ---
+
+// *** UPDATED: Xử lý Device Pixel Ratio để chống nhòe ***
 function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    loadCanvasState(); 
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+
+    // Set kích thước thật của canvas (số pixel vật lý)
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+
+    // Set kích thước hiển thị của canvas (CSS pixel)
+    canvas.style.width = `${rect.width}px`;
+    canvas.style.height = `${rect.height}px`;
+
+    // Scale context để tọa độ vẽ khớp với pixel vật lý
+    ctx.scale(dpr, dpr);
+    
+    // Load lại trạng thái canvas đã lưu
+    loadCanvasState();
 }
 
-// Lấy tọa độ (chuột hoặc chạm)
 function getPos(e) {
     const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    let clientX, clientY;
     if (e.touches && e.touches.length > 0) {
-        return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+    } else {
+        clientX = e.clientX;
+        clientY = e.clientY;
     }
-    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    // Trả về tọa độ đã được scale, sẵn sàng để vẽ
+    return { 
+        x: (clientX - rect.left), 
+        y: (clientY - rect.top)
+    };
 }
 
-// *** HÀM MỚI: Chuyển tọa độ pixel tuyệt đối sang tọa độ tương đối (0-1) ***
-// Đây là chìa khóa để giải quyết vấn đề "bị nhè"
+// Chuẩn hóa tọa độ để gửi đi
 function toNormalized(pos) {
+    const rect = canvas.getBoundingClientRect();
     return {
-        x: pos.x / canvas.width,
-        y: pos.y / canvas.height
+        x: pos.x / rect.width,
+        y: pos.y / rect.height
     };
 }
 
-// *** HÀM MỚI: Chuyển tọa độ tương đối về tọa độ pixel trên canvas hiện tại ***
+// Chuyển tọa độ chuẩn hóa về tọa độ vẽ
 function fromNormalized(normPos) {
+    const rect = canvas.getBoundingClientRect();
     return {
-        x: normPos.x * canvas.width,
-        y: normPos.y * canvas.height
+        x: normPos.x * rect.width,
+        y: normPos.y * rect.height
     };
 }
 
-// --- 4. CÁC HÀM GỬI DỮ LIỆU LÊN FIREBASE ---
+// --- 4. GỬI DỮ LIỆU LÊN FIREBASE (ĐÃ TỐI ƯU) ---
 
-// Gửi sự kiện vẽ (start, move, end, clear)
 async function sendDrawEvent(type, data = {}) {
     try {
         await setDoc(liveEventDoc, {
-            clientId: clientId, // Gửi kèm ID để các client khác biết ai đã vẽ
+            clientId: clientId,
             type: type,
             ...data,
-            timestamp: Date.now() // Giúp Firebase nhận biết đây là sự kiện mới
+            timestamp: Date.now()
         });
     } catch (error) {
         console.error("Lỗi khi gửi sự kiện:", error);
     }
 }
 
-// Lưu trạng thái toàn bộ canvas (dưới dạng ảnh)
 function saveCanvasState() {
+    // Cần tạm thời reset transform để toDataURL hoạt động đúng trên mọi trình duyệt
+    ctx.save();
+    const dpr = window.devicePixelRatio || 1;
+    ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset
     const dataUrl = canvas.toDataURL();
+    ctx.restore(); // Khôi phục lại scale
+
     setDoc(canvasStateDoc, { image: dataUrl });
 }
 
-// --- 5. CÁC HÀM VẼ NỘI BỘ ---
+// --- 5. CÁC HÀM VẼ (ĐÃ TỐI ƯU) ---
 
-// Hàm vẽ dựa trên dữ liệu sự kiện nhận được
-function drawFromEvent(event) {
-    // Không vẽ lại hành động của chính mình
-    if (event.clientId === clientId) return;
+// *** NEW: Hàm vẽ một lô các điểm để mượt hơn ***
+function drawChunk(chunkPoints, color, width) {
+    if (chunkPoints.length < 2) return;
 
-    const { type, normPos, normFromPos, color, width } = event;
-    
-    ctx.strokeStyle = color || colorPicker.value;
-    ctx.lineWidth = width || widthPicker.value;
+    ctx.strokeStyle = color;
+    ctx.lineWidth = width;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
 
+    ctx.beginPath();
+    ctx.moveTo(chunkPoints[0].x, chunkPoints[0].y);
+
+    for (let i = 1; i < chunkPoints.length - 1; i++) {
+        const p1 = chunkPoints[i];
+        const p2 = chunkPoints[i + 1];
+        // Sử dụng trung điểm để tạo đường cong mượt mà
+        const midPoint = { x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2 };
+        ctx.quadraticCurveTo(p1.x, p1.y, midPoint.x, midPoint.y);
+    }
+    // Vẽ đoạn cuối cùng
+    ctx.lineTo(chunkPoints[chunkPoints.length - 1].x, chunkPoints[chunkPoints.length - 1].y);
+    ctx.stroke();
+}
+
+function drawFromEvent(event) {
+    if (event.clientId === clientId) return;
+
+    const { type, chunk, color, width } = event;
+
     switch (type) {
-        case 'start': {
-            const pos = fromNormalized(normPos);
-            ctx.beginPath();
-            ctx.moveTo(pos.x, pos.y);
-            break;
-        }
-        case 'move': {
-            // Sử dụng from và to để vẽ đường thẳng chính xác
-            const from = fromNormalized(normFromPos);
-            const to = fromNormalized(normPos);
-            ctx.beginPath(); // Bắt đầu path mới cho mỗi đoạn để tránh nối các nét không liên quan
-            ctx.moveTo(from.x, from.y);
-            ctx.lineTo(to.x, to.y);
-            ctx.stroke();
+        case 'draw_chunk': {
+            const pointsToDraw = chunk.map(fromNormalized);
+            drawChunk(pointsToDraw, color, width);
             break;
         }
         case 'clear':
@@ -1352,29 +1385,86 @@ function drawFromEvent(event) {
 }
 
 
-// --- 6. GẮN KẾT SỰ KIỆN ---
+// --- 6. GẮN KẾT SỰ KIỆN (VỚI THROTTLING) ---
+
+// *** NEW: Vòng lặp gửi dữ liệu đã được điều tiết ***
+function throttledSend() {
+    if (!isDrawing) {
+        // Nếu đã dừng vẽ, gửi nốt phần còn lại (nếu có)
+        if (points.length > 0) {
+            sendDrawEvent('draw_chunk', {
+                chunk: points.map(toNormalized),
+                color: colorPicker.value,
+                width: parseInt(widthPicker.value),
+            });
+            points = [];
+        }
+        return;
+    }
+
+    if (points.length > 0) {
+        // Gửi lô điểm hiện tại
+        sendDrawEvent('draw_chunk', {
+            chunk: points.map(toNormalized),
+            color: colorPicker.value,
+            width: parseInt(widthPicker.value),
+        });
+        // Chỉ giữ lại điểm cuối cùng để nét vẽ tiếp theo được nối liền
+        points = [points[points.length - 1]];
+    }
+
+    // Tiếp tục vòng lặp
+    requestAnimationFrame(throttledSend);
+}
+
+function startDraw(e) {
+    if (!isDrawMode) return;
+    e.preventDefault();
+    isDrawing = true;
+    
+    // Reset mảng điểm
+    points = []; 
+    const pos = getPos(e);
+    points.push(pos);
+
+    // Bắt đầu vòng lặp gửi dữ liệu
+    requestAnimationFrame(throttledSend);
+}
+
+function drawMove(e) {
+    if (!isDrawing || !isDrawMode) return;
+    e.preventDefault();
+    
+    const pos = getPos(e);
+    points.push(pos); // Thêm điểm vào mảng chờ
+    
+    // Vẽ ngay lập tức trên máy của người dùng để không bị trễ
+    drawChunk(points, colorPicker.value, parseInt(widthPicker.value));
+}
+
+function endDraw() {
+    if (!isDrawing) return;
+    isDrawing = false; // Vòng lặp throttledSend sẽ tự dừng
+    saveCanvasState(); // Lưu trạng thái cuối cùng
+}
 
 window.addEventListener("resize", resizeCanvas);
-
 toggleBtn.onclick = () => {
     isDrawMode = true;
     canvas.style.display = "block";
     toolbar.style.display = "flex";
-    resizeCanvas();
+    // Đảm bảo canvas có kích thước đúng ngay khi bật
+    const rect = document.body.getBoundingClientRect();
+    canvas.style.width = `${rect.width}px`;
+    canvas.style.height = `${rect.height}px`;
+    resizeCanvas(); 
 };
-
-exitBtn.onclick = () => {
-    isDrawMode = false;
-    canvas.style.display = "none";
-    toolbar.style.display = "none";
-};
-
+exitBtn.onclick = () => { isDrawMode = false; canvas.style.display = "none"; toolbar.style.display = "none"; };
 clearBtn.onclick = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    sendDrawEvent('clear'); // Gửi sự kiện xóa cho người khác
-    saveCanvasState(); // Lưu trạng thái trống
+    sendDrawEvent('clear');
+    saveCanvasState();
 };
-
 saveBtn.onclick = () => {
     const link = document.createElement("a");
     link.download = "ban_ve.png";
@@ -1382,70 +1472,16 @@ saveBtn.onclick = () => {
     link.click();
 };
 
-// Bắt đầu vẽ
-function startDraw(e) {
-    if (!isDrawMode) return;
-    e.preventDefault();
-    isDrawing = true;
-
-    lastPos = getPos(e); // Lưu vị trí bắt đầu
-    
-    // Gửi sự kiện bắt đầu vẽ với tọa độ đã chuẩn hóa
-    sendDrawEvent('start', {
-        normPos: toNormalized(lastPos),
-        color: colorPicker.value,
-        width: parseInt(widthPicker.value),
-    });
-}
-
-// Đang vẽ
-function drawMove(e) {
-    if (!isDrawing || !isDrawMode) return;
-    e.preventDefault();
-    
-    const currentPos = getPos(e);
-
-    // 1. Vẽ ngay trên màn hình của người dùng để có trải nghiệm mượt mà
-    ctx.beginPath();
-    ctx.moveTo(lastPos.x, lastPos.y);
-    ctx.lineTo(currentPos.x, currentPos.y);
-    ctx.strokeStyle = colorPicker.value;
-    ctx.lineWidth = parseInt(widthPicker.value);
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-    ctx.stroke();
-
-    // 2. Gửi sự kiện di chuyển với cả điểm bắt đầu và kết thúc (đã chuẩn hóa)
-    sendDrawEvent('move', {
-        normFromPos: toNormalized(lastPos), // Điểm cũ
-        normPos: toNormalized(currentPos)  // Điểm mới
-    });
-    
-    lastPos = currentPos; // Cập nhật vị trí cuối cùng
-}
-
-// Kết thúc vẽ
-function endDraw() {
-    if (!isDrawing) return;
-    isDrawing = false;
-    // Khi vẽ xong, lưu lại toàn bộ trạng thái của canvas
-    // để người mới vào sau có thể thấy được hình ảnh đầy đủ
-    saveCanvasState();
-}
-
 canvas.addEventListener("mousedown", startDraw);
 canvas.addEventListener("mousemove", drawMove);
 canvas.addEventListener("mouseup", endDraw);
-canvas.addEventListener("mouseleave", endDraw); 
-
+canvas.addEventListener("mouseleave", endDraw);
 canvas.addEventListener("touchstart", startDraw, { passive: false });
 canvas.addEventListener("touchmove", drawMove, { passive: false });
 canvas.addEventListener("touchend", endDraw);
 
-
 // --- 7. LẮNG NGHE DỮ LIỆU TỪ FIREBASE ---
 
-// Hàm tải trạng thái canvas đã lưu (cho người mới vào)
 function loadCanvasState() {
     onSnapshot(canvasStateDoc, (docSnap) => {
         if (docSnap.exists()) {
@@ -1453,35 +1489,29 @@ function loadCanvasState() {
             if (data.image) {
                 const img = new Image();
                 img.onload = () => {
+                    const dpr = window.devicePixelRatio || 1;
+                    ctx.save();
+                    ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset scale để vẽ ảnh
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    // Vẽ ảnh snapshot sao cho vừa với kích thước canvas hiện tại
                     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    ctx.restore(); // Khôi phục scale
                 };
                 img.src = data.image;
             }
         }
-    }, (error) => {
-        console.error("Lỗi khi tải trạng thái canvas:", error);
     });
 }
 
-// Lắng nghe các sự kiện vẽ theo thời gian thực
 let lastTimestamp = 0;
 onSnapshot(liveEventDoc, (docSnap) => {
     if (docSnap.exists()) {
         const eventData = docSnap.data();
-        // Chỉ xử lý các sự kiện mới nhất để tránh vẽ lại sự kiện cũ
         if (eventData.timestamp && eventData.timestamp > lastTimestamp) {
             drawFromEvent(eventData);
             lastTimestamp = eventData.timestamp;
         }
     }
-}, (error) => {
-    console.error("Lỗi khi lắng nghe sự kiện vẽ:", error);
 });
-
-// Khởi tạo
-resizeCanvas();
 
 </script>
 
