@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Chuyên Đề THI TOÁN - Chuyên Đề SỐ 3 với 22 câu hỏi trắc nghiệm và lời giải chi tiết, kèm tóm tắt kiến thức." name="description"/>
+<title>Chuyên Đề THI TOÁN - Chuyên Đề 3 - KHÓA HỌC TOÁN THẦY BÌNH</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #ecfdf5, #f3e8ff);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .header {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+            margin-bottom: 17px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .header .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #6b21a8;
+        }
+        .nav-bar {
+         position: sticky;
+  top: 0;
+  background-color: #c62828;   
+  color: #fff176;    
+  padding: 4px 10px;
+  height: 40px;
+  font-size: 14px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+        .nav-bar a {
+            color: #fff176;
+            margin-right: 15px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .nav-bar a:hover {
+            color: #10b981;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-button {
+            background: #6b21a8;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background 0.3s;
+        }
+        .dropdown-button:hover {
+            background: #5b1a8b;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 100px;
+            max-height: 300px;
+            overflow-y: auto;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 10px;
+            right: 0;
+        }
+        .dropdown-content a {
+            color: #6b21a8;
+            padding: 8px 16px;
+            text-decoration: none;
+            display: block;
+            font-weight: 400;
+        }
+        .dropdown-content a:hover {
+            background: #f0fdf4;
+            color: #10b981;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+        }
+        h1 {
+            color: #6b21a8;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #10b981;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        h3 {
+            color: #c62828;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .summary-box {
+             background-color: #0b3a2e;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 5px solid #ef4444;
+        }
+        .options {
+            margin: 10px 0;
+        }
+        .option {
+            margin: 5px 0;
+        }
+        .answer-check {
+            margin-top: 10px;
+        }
+        .answer-check button {
+            padding: 12px 24px;
+            background: #6b21a8;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .answer-check button:hover {
+            background: #5b1a8b;
+        }
+        .answer-feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            color: #22c55e;
+        }
+        .incorrect {
+            color: #ef4444;
+        }
+        .solution {
+         background-color: #0b3a2e;
+        color: #ffffff;
+         font-family: 'Courier New', 'Segoe Script', cursive;
+         padding: 10px;
+        margin-top: 5px;
+        border-radius: 8px;
+        border: 1px solid #0a2e23;
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+        display: none;
+        max-width: 1000px;
+        min-height: 500px;
+        white-space: pre-wrap;
+        line-height: 1.0;
+         }
+       
+        .solution.visible {
+         display: block;
+         }
+
+        .solution-toggle {
+         margin-left: 10px;
+         padding: 4px 10px;
+         cursor: pointer;
+        background-color: #0b3a2e;
+        color: white;
+         border: 1px solid white;
+        border-radius: 4px;
+        }
+
+        .solution-toggle:hover {
+         background-color: #145a47;
+        }
+        
+        .hot {
+            color: #ef4444;
+            font-weight: bold;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background: #6b21a8;
+            color: white;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        .navigation button {
+            padding: 12px 24px;
+            background: #6b21a8;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .navigation button:hover {
+            background: #5b1a8b;
+        }
+        .navigation button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+        @media (max-width: 640px) {
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.6rem; }
+            h3 { font-size: 1.3rem; }
+            .card { padding: 15px; }
+            .header .logo { font-size: 1.4rem; }
+            .nav-bar { top: 50px; flex-direction: column; align-items: flex-start; }
+            .nav-bar a { font-size: 0.9rem; margin-right: 10px; }
+            .dropdown-button { font-size: 0.9rem; padding: 6px 12px; }
+            .dropdown-content { min-width: 80px; }
+            table { font-size: 0.85rem; }
+            .answer-check button, .navigation button {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            .score-section {
+    background-color: #ecfdf5;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#score-result {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#score-result.correct {
+    color: #22c55e;
+}
+
+#score-result.incorrect {
+    color: #ef4444;
+}
+        }
+    
+.question img, .solution img {
+    display: block;
+    margin: 10px auto;
+    width: 400px;
+    height: 300px;
+    object-fit: contain;
+    object-position: center;
+    background: white;
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%;
+}
+
+.question img, .solution img {
+    display: block;
+    margin: 5px auto; /* Giảm khoảng cách */
+    width: 300px; /* Giảm chiều rộng */
+    height: 100px; /* Giảm chiều cao */
+    object-fit: contain;
+    object-position: center;
+    background: white;
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%; /* Đảm bảo vừa với màn hình nhỏ */
+}
+.question img:not([src]), .solution img:not([src]),
+.question img[src=''], .solution img[src=''],
+.question img[onerror], .solution img[onerror] {
+    display: none !important; /* Ẩn ảnh không tồn tại */
+}
+@media (max-width: 640px) {
+    .question img, .solution img {
+        width: 100%; /* Chiều rộng 100% trên di động */
+        height: auto; /* Chiều cao tự động */
+        margin: 3px auto; /* Giảm thêm khoảng cách trên di động */
+    }
+    .question img.long-image, .solution img.long-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.question img, .solution img {
+    display: block;
+    margin: 5px auto; /* Khoảng cách trên laptop */
+    width: 300px; /* Chiều rộng mặc định */
+    height: 200px; /* Chiều cao mặc định */
+    object-fit: contain;
+    object-position: center;
+    background: #0b3a2e;
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%; /* Đảm bảo vừa với màn hình nhỏ */
+}
+.question img:not([src]), .solution img:not([src]),
+.question img[src=''], .solution img[src=''],
+.question img[onerror], .solution img[onerror] {
+    display: none !important; /* Ẩn ảnh không tồn tại */
+}
+@media (max-width: 640px) {
+    .question img, .solution img {
+        max-width: 100%; /* Thu nhỏ theo màn hình */
+        width: auto; /* Tự động điều chỉnh chiều rộng */
+        height: auto; /* Tự động điều chỉnh chiều cao */
+        margin: 2px auto; /* Giảm khoảng cách trên di động */
+    }
+    .question img.long-image, .solution img.long-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.question img, .solution img {
+    display: block;
+    margin: 5px auto; /* Căn giữa và giữ khoảng cách nhỏ */
+}
+.question img.long-image, .solution img.long-image {
+    height: auto;
+    max-width: 100%; /* Giới hạn chiều rộng tối đa */
+}
+.question img:not([src]), .solution img:not([src]),
+.question img[src=''], .solution img[src=''],
+.question img[onerror], .solution img[onerror] {
+    display: none !important; /* Ẩn ảnh không tồn tại */
+}
+@media (max-width: 640px) {
+    .question img, .solution img {
+        margin: 2px auto; /* Giảm khoảng cách trên di động */
+    }
+    .question img.long-image, .solution img.long-image {
+        max-width: 100%;
+        height: auto;
+    }
+}
+.latex-solution {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-family: Courier New, monospace;
+  font-size: 18px;
+  border-radius: 6px;
+  padding: 6px;
+}
+/* thêm vẽ */
+#drawCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9998;
+  touch-action: none;
+}
+
+
+.toolbar {
+  position: fixed;
+  top: 100px;
+  left: 10px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 6px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 48px;
+  align-items: center;
+}
+.toolbar button,
+.toolbar select,
+.toolbar input[type="color"],
+.toolbar input[type="range"] {
+  width: 100%;
+  font-size: 10px;
+  padding: 2px;
+  height: 28px;
+  box-sizing: border-box;
+}
+
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10001;
+  background: #6b21a8;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+</style>
+<style>
+input[type="text"].short-answer {
+  width: 120px;
+  padding: 6px;
+  background-color: #f0f9ff;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-right: 8px;
+}
+</style>
+</head>
+<!-- Canvas và thanh công cụ vẽ nổi -->
+<canvas id="drawCanvas" style="display: none;"></canvas>
+<div class="toolbar" id="drawToolbar" style="display: none;">
+  <select id="tool">
+    <option value="pen">✏️ Bút</option>
+    <option value="line">📏 Đường</option>
+    <option value="rect">⬛ Chữ nhật</option>
+    <option value="circle">⚪ Tròn</option>
+    <option value="cube">📦 Hộp</option>
+<option value="cone">🔺 Nón</option>
+<option value="cylinder">⬤ Trụ</option>
+<option value="pyramid">🔻 Chóp</option>
+<option value="sphere">⚽ Cầu</option>
+  </select>
+  
+<input type="range" id="draw-width" min="1" max="5" value="2" />
+  <input type="color" id="colorPicker" value="#6b21a8" />
+  <button id="clearBtn">🧹 Xoá</button>
+  <button id="saveBtn">💾 Lưu</button>
+  <button id="exitBtn">❌ Thoát</button>
+  
+</div>
+<button id="toggleDraw" class="floating-button">🖊️ Vẽ</button>
+<body>
+<div class="header">
+<div class="logo">KHÓA HỌC TOÁN THẦY BÌNH</div>
+</div>
+<div class="nav-bar">
+<div>
+<a href="index.html">Trang chủ</a>
+<a href="https://meet.google.com/hje-gfpk-erv">Học online </a>
+</div>
+<!-- Thêm phần ghi màn hình -->
+    <div class="recording-controls" style="margin: 3px 0; padding: 5px; background-color: #f0f0f0; border-radius: 5px;">
+        <button id="startRecording" style="padding: 3px 5px; margin: 0 5px; background-color: #4CAF50; color: white; border: none; border-radius: 3px;">Record</button>
+        <button id="stopRecording" style="padding: 3px 5px; margin: 0 5px; background-color: #f44336; color: white; border: none; border-radius: 3px;">Stop</button>
+        <button id="pauseRecording" style="padding: 3px 5px; margin: 0 5px; background-color: #ff9800; color: white; border: none; border-radius: 3px;">Pause</button>
+        <video id="videoPreview" controls style="display: none; margin-top: 10px; width: 320px; height: 240px;"></video>
+        <br>
+        <a id="downloadLink" style="display: none; margin-top: 5px;">Download Video</a>
+    </div>
+<div class="dropdown">
+<span class="dropdown-button">Chọn đề</span>
+<div class="dropdown-content">
+<!-- Tạo danh sách đề từ 1 đến 100 -->
+<a href="de1.html">Đề 1</a>
+<a href="de2.html">Đề 2</a>
+<a href="de3.html">Đề 3</a>
+<a href="de4.html">Đề 4</a>
+<a href="de5.html">Đề 5</a>
+<a href="de6.html">Đề 6</a>
+<a href="de7.html">Đề 7</a>
+<a href="de8.html">Đề 8</a>
+<a href="de9.html">Đề 9</a>
+<a href="de10.html">Đề 10</a>
+<a href="de11.html">Đề 11</a>
+<a href="de12.html">Đề 12</a>
+<a href="de13.html">Đề 13</a>
+<a href="de14.html">Đề 14</a>
+<a href="de15.html">Đề 15</a>
+<a href="de16.html">Đề 16</a>
+<a href="de17.html">Đề 17</a>
+<a href="de18.html">Đề 18</a>
+<a href="de19.html">Đề 19</a>
+<a href="de20.html">Đề 20</a>
+<a href="de21.html">Đề 21</a>
+<a href="de22.html">Đề 22</a>
+<a href="de23.html">Đề 23</a>
+<a href="de24.html">Đề 24</a>
+<a href="de25.html">Đề 25</a>
+<a href="de26.html">Đề 26</a>
+<a href="de27.html">Đề 27</a>
+<a href="de28.html">Đề 28</a>
+<a href="de29.html">Đề 29</a>
+<a href="de30.html">Đề 30</a>
+<a href="de31.html">Đề 31</a>
+<a href="de32.html">Đề 32</a>
+<a href="de33.html">Đề 33</a>
+<a href="de34.html">Đề 34</a>
+<a href="de35.html">Đề 35</a>
+<a href="de36.html">Đề 36</a>
+<a href="de37.html">Đề 37</a>
+<a href="de38.html">Đề 38</a>
+<a href="de39.html">Đề 39</a>
+<a href="de40.html">Đề 40</a>
+<a href="de41.html">Đề 41</a>
+<a href="de42.html">Đề 42</a>
+<a href="de43.html">Đề 43</a>
+<a href="de44.html">Đề 44</a>
+<a href="de45.html">Đề 45</a>
+<a href="de46.html">Đề 46</a>
+<a href="de47.html">Đề 47</a>
+<a href="de48.html">Đề 48</a>
+<a href="de49.html">Đề 49</a>
+<a href="de50.html">Đề 50</a>
+<a href="de51.html">Đề 51</a>
+<a href="de52.html">Đề 52</a>
+<a href="de53.html">Đề 53</a>
+<a href="de54.html">Đề 54</a>
+<a href="de55.html">Đề 55</a>
+<a href="de56.html">Đề 56</a>
+<a href="de57.html">Đề 57</a>
+<a href="de58.html">Đề 58</a>
+<a href="de59.html">Đề 59</a>
+<a href="de60.html">Đề 60</a>
+<a href="de61.html">Đề 61</a>
+<a href="de62.html">Đề 62</a>
+<a href="de63.html">Đề 63</a>
+<a href="de64.html">Đề 64</a>
+<a href="de65.html">Đề 65</a>
+<a href="de66.html">Đề 66</a>
+<a href="de67.html">Đề 67</a>
+<a href="de68.html">Đề 68</a>
+<a href="de69.html">Đề 69</a>
+<a href="de70.html">Đề 70</a>
+<a href="de71.html">Đề 71</a>
+<a href="de72.html">Đề 72</a>
+<a href="de73.html">Đề 73</a>
+<a href="de74.html">Đề 74</a>
+<a href="de75.html">Đề 75</a>
+<a href="de76.html">Đề 76</a>
+<a href="de77.html">Đề 77</a>
+<a href="de78.html">Đề 78</a>
+<a href="de79.html">Đề 79</a>
+<a href="de80.html">Đề 80</a>
+<a href="de81.html">Đề 81</a>
+<a href="de82.html">Đề 82</a>
+<a href="de83.html">Đề 83</a>
+<a href="de84.html">Đề 84</a>
+<a href="de85.html">Đề 85</a>
+<a href="de86.html">Đề 86</a>
+<a href="de87.html">Đề 87</a>
+<a href="de88.html">Đề 88</a>
+<a href="de89.html">Đề 89</a>
+<a href="de90.html">Đề 90</a>
+<a href="de91.html">Đề 91</a>
+<a href="de92.html">Đề 92</a>
+<a href="de93.html">Đề 93</a>
+<a href="de94.html">Đề 94</a>
+<a href="de95.html">Đề 95</a>
+<a href="de96.html">Đề 96</a>
+<a href="de97.html">Đề 97</a>
+<a href="de98.html">Đề 98</a>
+<a href="de99.html">Đề 99</a>
+<a href="de100.html">Đề 100</a>
+</div>
+</div>
+</div>
+<!--@@-->
+<div class="container">
+<h1>ĐỀ THI TOÁN - ĐỀ SỐ 91 <span class="hot">HOT</span></h1>
+<h3>Phần I: Trắc Nghiệm Nhiều Lựa Chọn - từ câu 1 đến câu 12</h3>
+
+<!-- Câu 1 -->
+<div class="question" id="q1">
+<div class="summary-box">
+<p><strong>Câu 1</strong>. Cho hàm số \( y = f(x) \) có đồ thị như Hình 1.<br/>
+  <img alt="" loading="lazy" src="data/anh1/1.1.png"/></p>
+Điểm cực tiểu của đồ thị hàm số đã cho là:</p>
+
+<div class="options">
+<label><input name="q1" onchange="showOptionIcon('q1', 'A', 'B')" type="radio" value="A"/> A. -1 <span class="option-icon" id="icon-q1-A"></span></label>
+<label><input name="q1" onchange="showOptionIcon('q1', 'B', 'B')" type="radio" value="B"/> B. 1 <span class="option-icon" id="icon-q1-B"></span></label>
+<label><input name="q1" onchange="showOptionIcon('q1', 'C', 'B')" type="radio" value="C"/> C. 2 <span class="option-icon" id="icon-q1-C"></span></label>
+<label><input name="q1" onchange="showOptionIcon('q1', 'D', 'B')" type="radio" value="D"/> D. -4 <span class="option-icon" id="icon-q1-D"></span></label>
+</div></div>
+<div class="answer-check">
+<button onclick="checkAnswer('q1', 'B')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q1')">Xem lời giải</button>
+<div class="solution" id="solution-q1"></div>
+</div>
+</div>
+
+<!-- Câu 2 -->
+<div class="question" id="q2">
+<div class="summary-box">
+<p><strong>Câu 2</strong>. Cho hàm số \( y = f(x) \) có đồ thị như Hình 2.<br/>
+  <img alt="" loading="lazy" src="data/anh1/1.2.png"/></p>
+Đường thẳng nào sau đây là đường tiệm cận ngang của đồ thị hàm số đã cho?</p>
+
+<div class="options">
+<label><input name="q2" onchange="showOptionIcon('q2', 'A', 'D')" type="radio" value="A"/> A. \( x = 1 \) <span class="option-icon" id="icon-q2-A"></span></label>
+<label><input name="q2" onchange="showOptionIcon('q2', 'B', 'D')" type="radio" value="B"/> B. \( x = -1 \) <span class="option-icon" id="icon-q2-B"></span></label>
+<label><input name="q2" onchange="showOptionIcon('q2', 'C', 'D')" type="radio" value="C"/> C. \( y = 1 \) <span class="option-icon" id="icon-q2-C"></span></label>
+<label><input name="q2" onchange="showOptionIcon('q2', 'D', 'D')" type="radio" value="D"/> D. \( y = -1 \) <span class="option-icon" id="icon-q2-D"></span></label>
+</div></div>
+<div class="answer-check">
+<button onclick="checkAnswer('q2', 'D')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q2')">Xem lời giải</button>
+<div class="solution" id="solution-q2"></div>
+</div>
+</div>
+
+<!-- Câu 3 -->
+<div class="question" id="q3">
+<div class="summary-box">
+<p><strong>Câu 3</strong>. Cho hàm số \( y = f(x) \) là một nguyên hàm của hàm số \( y = x^3 \). Phát biểu nào sau đây là đúng?</p>
+
+<div class="options">
+<label><input name="q3" onchange="showOptionIcon('q3', 'A', 'A')" type="radio" value="A"/> A. \( f(x) = \frac{x^4}{4} + C \) <span class="option-icon" id="icon-q3-A"></span></label>
+<label><input name="q3" onchange="showOptionIcon('q3', 'B', 'A')" type="radio" value="B"/> B. \( f(x) = 3x^2 \) <span class="option-icon" id="icon-q3-B"></span></label>
+<label><input name="q3" onchange="showOptionIcon('q3', 'C', 'A')" type="radio" value="C"/> C. \( f(x) = 4x^3 \) <span class="option-icon" id="icon-q3-C"></span></label>
+<label><input name="q3" onchange="showOptionIcon('q3', 'D', 'A')" type="radio" value="D"/> D. \( f(x) = \frac{x^4}{4} \) <span class="option-icon" id="icon-q3-D"></span></label>
+</div></div>
+<div class="answer-check">
+<button onclick="checkAnswer('q3', 'A')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q3')">Xem lời giải</button>
+<div class="solution" id="solution-q3"></div>
+</div>
+</div>
+
+<!-- Câu 4 -->
+<div class="question" id="q4">
+<div class="summary-box">
+<p><strong>Câu 4</strong>. Trong không gian với hệ tọa độ Oxyz, phương trình nào sau đây là phương trình tổng quát của mặt phẳng?</p>
+
+<div class="options">
+<label><input name="q4" onchange="showOptionIcon('q4', 'A', 'C')" type="radio" value="A"/> A. \( 2x + y^2 + z + 1 = 0 \) <span class="option-icon" id="icon-q4-A"></span></label>
+<label><input name="q4" onchange="showOptionIcon('q4', 'B', 'C')" type="radio" value="B"/> B. \( x^2 + y + z + 2 = 0 \) <span class="option-icon" id="icon-q4-B"></span></label>
+<label><input name="q4" onchange="showOptionIcon('q4', 'C', 'C')" type="radio" value="C"/> C. \( 2x + y + z + 3 = 0 \) <span class="option-icon" id="icon-q4-C"></span></label>
+<label><input name="q4" onchange="showOptionIcon('q4', 'D', 'C')" type="radio" value="D"/> D. \( 2x + y + z^2 + 4 = 0 \) <span class="option-icon" id="icon-q4-D"></span></label>
+</div></div>
+<div class="answer-check">
+<button onclick="checkAnswer('q4', 'C')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q4')">Xem lời giải</button>
+<div class="solution" id="solution-q4"></div>
+</div>
+</div>
+
+<!-- Câu 5 -->
+<div class="question" id="q5">
+<div class="summary-box">
+<p><strong>Câu 5</strong>. Trong không gian với hệ tọa độ Oxyz, phương trình nào sau đây là phương trình chính tắc của đường thẳng?</p>
+
+<div class="options">
+<label><input name="q5" onchange="showOptionIcon('q5', 'A', 'B')" type="radio" value="A"/> A. \( \frac{x-2}{3} = \frac{y-1}{z} = \frac{z-5}{4} \) <span class="option-icon" id="icon-q5-A"></span></label>
+<label><input name="q5" onchange="showOptionIcon('q5', 'B', 'B')" type="radio" value="B"/> B. \( \frac{x-9}{7} = \frac{y-8}{-1} = \frac{z-6}{-2} \) <span class="option-icon" id="icon-q5-B"></span></label>
+<label><input name="q5" onchange="showOptionIcon('q5', 'C', 'B')" type="radio" value="C"/> C. \( \frac{x-6}{3} = \frac{y-3}{4} = \frac{z-5}{z} \) <span class="option-icon" id="icon-q5-C"></span></label>
+<label><input name="q5" onchange="showOptionIcon('q5', 'D', 'B')" type="radio" value="D"/> D. \( \frac{x-1}{y} = \frac{y-2}{5} = \frac{z-3}{4} \) <span class="option-icon" id="icon-q5-D"></span></label>
+</div></div>
+<div class="answer-check">
+<button onclick="checkAnswer('q5', 'B')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q5')">Xem lời giải</button>
+<div class="solution" id="solution-q5"></div>
+</div>
+</div>
+
+<!-- Câu 6 -->
+<div class="question" id="q6">
+<div class="summary-box">
+<p><strong>Câu 6</strong>. Trong không gian với hệ tọa độ Oxyz, phương trình nào sau đây là phương trình mặt cầu?</p>
+
+<div class="options">
+<label><input name="q6" onchange="showOptionIcon('q6', 'A', 'D')" type="radio" value="A"/> A. \( (x^2-8)^2 + (y-12)^2 + (z-24)^2 = 9^2 \) <span class="option-icon" id="icon-q6-A"></span></label>
+<label><input name="q6" onchange="showOptionIcon('q6', 'B', 'D')" type="radio" value="B"/> B. \( (x-9)^2 + (y^2-10)^2 + (z-11)^2 = 12^2 \) <span class="option-icon" id="icon-q6-B"></span></label>
+<label><input name="q6" onchange="showOptionIcon('q6', 'C', 'D')" type="radio" value="C"/> C. \( (x-13)^2 + (y-24)^2 - (z-36)^2 = 7^2 \) <span class="option-icon" id="icon-q6-C"></span></label>
+<label><input name="q6" onchange="showOptionIcon('q6', 'D', 'D')" type="radio" value="D"/> D. \( (x-1)^2 + (y-2)^2 + (z-3)^2 = 5^2 \) <span class="option-icon" id="icon-q6-D"></span></label>
+</div></div>
+<div class="answer-check">
+<button onclick="checkAnswer('q6', 'D')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q6')">Xem lời giải</button>
+<div class="solution" id="solution-q6"></div>
+</div>
+</div>
+
+<!-- Câu 7 -->
+<div class="question" id="q7">
+<div class="summary-box">
+<p><strong>Câu 7</strong>. Cho hai biến cố \( A \) và \( B \). Xác suất của biến cố \( A \) với điều kiện biến cố \( B \) đã xảy ra được gọi là xác suất của \( A \) với điều kiện \( B \), ký hiệu là \( P(A \mid B) \). Phát biểu nào sau đây là đúng?</p>
+
+<div class="options">
+<label><input name="q7" onchange="showOptionIcon('q7', 'A', 'B')" type="radio" value="A"/> A. Nếu \( P(A) > 0 \) thì \( P(A \mid B) = \frac{P(A \cap B)}{P(A)} \) <span class="option-icon" id="icon-q7-A"></span></label>
+<label><input name="q7" onchange="showOptionIcon('q7', 'B', 'B')" type="radio" value="B"/> B. Nếu \( P(B) > 0 \) thì \( P(A \mid B) = \frac{P(A \cap B)}{P(B)} \) <span class="option-icon" id="icon-q7-B"></span></label>
+<label><input name="q7" onchange="showOptionIcon('q7', 'C', 'B')" type="radio" value="C"/> C. Nếu \( P(A \cap B) > 0 \) thì \( P(A \mid B) = \frac{P(A)}{P(A \cap B)} \) <span class="option-icon" id="icon-q7-C"></span></label>
+<label><input name="q7" onchange="showOptionIcon('q7', 'D', 'B')" type="radio" value="D"/> D. Nếu \( P(A \cap B) > 0 \) thì \( P(A \mid B) = \frac{P(B)}{P(A \cap B)} \) <span class="option-icon" id="icon-q7-D"></span></label>
+</div></div>
+<div class="answer-check">
+<button onclick="checkAnswer('q7', 'B')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q7')">Xem lời giải</button>
+<div class="solution" id="solution-q7"></div>
+</div>
+</div>
+
+<!-- Câu 8 -->
+<div class="question" id="q8">
+<div class="summary-box">
+<p><strong>Câu 8</strong>. Xét mẫu số liệu ghép nhóm cho bởi Bảng 1.<br/>
+  <img alt="" loading="lazy" src="data/anh1/1.3.png"/></p>
+Khoảng biến thiên của mẫu số liệu ghép nhóm đó bằng:</p>
+
+<div class="options">
+<label><input name="q8" onchange="showOptionIcon('q8', 'A', 'A')" type="radio" value="A"/> A. \( a_{n-1} - a_1 \) <span class="option-icon" id="icon-q8-A"></span></label>
+<label><input name="q8" onchange="showOptionIcon('q8', 'B', 'A')" type="radio" value="B"/> B. \( a_{n-1} - a_{n-1} \)<span class="option-icon" id="icon-q8-B"></span></label>
+<label><input name="q8" onchange="showOptionIcon('q8', 'C', 'A')" type="radio" value="C"/> C. \( n_m - n_1 \) <span class="option-icon" id="icon-q8-C"></span></label>
+<label><input name="q8" onchange="showOptionIcon('q8', 'D', 'A')" type="radio" value="D"/> D. \( n - n_m \) <span class="option-icon" id="icon-q8-D"></span></label>
+</div></div>
+<div class="answer-check">
+<button onclick="checkAnswer('q8', 'A')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q8')">Xem lời giải</button>
+<div class="solution" id="solution-q8"></div>
+</div>
+</div>
+<!-- Câu 9 -->
+<div class="question" id="q9">
+<div class="summary-box">
+<p><strong>Câu 9</strong>. Xét mẫu số liệu ghép nhóm có các khoảng giá trị như sau:<br/>
+Khối lượng riêng của các khoảng giá trị lần lượt là \( Q_1, Q_2, Q_3 \). Khoảng giá trị nào dưới đây là khoảng giá trị có khối lượng riêng lớn nhất?</p>
+
+<div class="options">
+<label><input name="q9" onchange="showOptionIcon('q9', 'A', 'C')" type="radio" value="A"/> A. \( Q_2 - Q_1 \) <span class="option-icon" id="icon-q9-A"></span></label>
+<label><input name="q9" onchange="showOptionIcon('q9', 'B', 'C')" type="radio" value="B"/> B. \( Q_2 - Q_2 \) <span class="option-icon" id="icon-q9-B"></span></label>
+<label><input name="q9" onchange="showOptionIcon('q9', 'C', 'C')" type="radio" value="C"/> C. \( Q_3 - Q_1 \) <span class="option-icon" id="icon-q9-C"></span></label>
+<label><input name="q9" onchange="showOptionIcon('q9', 'D', 'C')" type="radio" value="D"/> D. \( Q_3 - 2Q_2 + Q_1 \) <span class="option-icon" id="icon-q9-D"></span></label>
+</div></div>
+<div class="answer-check">
+<button onclick="checkAnswer('q9', 'C')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q9')">Xem lời giải</button>
+<div class="solution" id="solution-q9"></div>
+</div>
+</div>
+
+<!-- Câu 10 -->
+<div class="question" id="q10">
+<div class="summary-box">
+<p><strong>Câu 10</strong>. Cho hàm số \( y = f(x) \) liên tục, khoảng miền định nghĩa \([a; b]\) như Hình 3. Hình phẳng \((H)\) giới hạn bởi đồ thị hàm số \( y = f(x) \), trục hoành và hai đường thẳng \( x = a \), \( x = b \) quay quanh trục Ox tạo thành một khối tròn xoay có thể tích bằng:</p>
+<img alt="" loading="lazy" src="data/anh1/1.4.png"/></p>
+<div class="options">
+<label><input name="q10" onchange="showOptionIcon('q10', 'A', 'D')" type="radio" value="A"/> A. \( V = \pi \int_a^b [f(x)]^2 \, dx \) <span class="option-icon" id="icon-q10-A"></span></label>
+<label><input name="q10" onchange="showOptionIcon('q10', 'B', 'D')" type="radio" value="B"/> B. \( V = \int_a^b |f(x)| \, dx \) <span class="option-icon" id="icon-q10-B"></span></label>
+<label><input name="q10" onchange="showOptionIcon('q10', 'C', 'D')" type="radio" value="C"/> C. \( V = \int_a^b [f(x)]^2 \, dx \) <span class="option-icon" id="icon-q10-C"></span></label>
+<label><input name="q10" onchange="showOptionIcon('q10', 'D', 'D')" type="radio" value="D"/> D. \( V = \pi \int_a^b [f(x)]^2 \, dx \) <span class="option-icon" id="icon-q10-D"></span></label>
+</div></div>
+<div class="answer-check">
+<button onclick="checkAnswer('q10', 'D')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q10')">Xem lời giải</button>
+<div class="solution" id="solution-q10"></div>
+</div>
+</div>
+
+<!-- Câu 11 -->
+<div class="question" id="q11">
+<div class="summary-box">
+<p><strong>Câu 11</strong>. Xét mẫu số liệu ghép nhóm có phường sai bằng 16. Độ lệch chuẩn của mẫu số liệu đó bằng:</p>
+
+<div class="options">
+<label><input name="q11" onchange="showOptionIcon('q11', 'A', 'A')" type="radio" value="A"/> A. 4 <span class="option-icon" id="icon-q11-A"></span></label>
+<label><input name="q11" onchange="showOptionIcon('q11', 'B', 'A')" type="radio" value="B"/> B. 8 <span class="option-icon" id="icon-q11-B"></span></label>
+<label><input name="q11" onchange="showOptionIcon('q11', 'C', 'A')" type="radio" value="C"/> C. 256 <span class="option-icon" id="icon-q11-C"></span></label>
+<label><input name="q11" onchange="showOptionIcon('q11', 'D', 'A')" type="radio" value="D"/> D. 32 <span class="option-icon" id="icon-q11-D"></span></label>
+</div></div>
+<div class="answer-check">
+<button onclick="checkAnswer('q11', 'A')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q11')">Xem lời giải</button>
+<div class="solution" id="solution-q11"></div>
+</div>
+</div>
+
+<!-- Câu 12 -->
+<div class="question" id="q12">
+<div class="summary-box">
+<p><strong>Câu 12</strong>. Chi số hay độ pH của một môi trường được đo bằng công thức:<br/>
+\( pH = -\log [H^+] \) với \([H^+]\) là nồng độ ion hydrogen. Độ pH của một môi trường có \([H^+] = 10^{-6}\) là bao nhiêu?</p>
+
+<div class="options">
+<label><input name="q12" onchange="showOptionIcon('q12', 'A', 'C')" type="radio" value="A"/> A. -6.8 <span class="option-icon" id="icon-q12-A"></span></label>
+<label><input name="q12" onchange="showOptionIcon('q12', 'B', 'C')" type="radio" value="B"/> B. 6.8 <span class="option-icon" id="icon-q12-B"></span></label>
+<label><input name="q12" onchange="showOptionIcon('q12', 'C', 'C')" type="radio" value="C"/> C. 6.8 <span class="option-icon" id="icon-q12-C"></span></label>
+<label><input name="q12" onchange="showOptionIcon('q12', 'D', 'C')" type="radio" value="D"/> D. 0.68 <span class="option-icon" id="icon-q12-D"></span></label>
+</div></div>
+<div class="answer-check">
+<button onclick="checkAnswer('q12', 'C')">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q12')">Xem lời giải</button>
+<div class="solution" id="solution-q12"></div>
+</div>
+</div>
+<h3>Phần II: Trắc Nghiệm Đúng/Sai - từ câu 13 đến câu 16</h3>
+
+<!-- Câu 13 -->
+<div class="question" id="q13">
+<div class="summary-box">
+<p><strong>Câu 13</strong>. Trong không gian toạ độ \( Oxyz \), cho hai đường thẳng:</p>
+<p>\( \Delta_1: \dfrac{x - 1}{2} = \dfrac{y + 1}{1} = \dfrac{z - 3}{2} \) và 
+\( \Delta_2: \dfrac{x - 4}{1} = \dfrac{y - 5}{2} = \dfrac{z - 6}{-2} \)</p>
+
+<div class="options">
+<p>a) Véctơ có toạ độ \( (1; 2; 3) \) là một vectơ chỉ phương của \( \Delta_1 \).</p>
+<label><input name="q13a" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q13a-Đúng"></span></label>
+<label><input name="q13a" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q13a-Sai"></span></label>
+
+<p>b) Véctơ có toạ độ \( (4; 5; 6) \) là một vectơ chỉ phương của \( \Delta_2 \).</p>
+<label><input name="q13b" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q13b-Đúng"></span></label>
+<label><input name="q13b" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q13b-Sai"></span></label>
+
+<p>c) Cosin của góc giữa hai véctơ \( \vec{u}_1 = (2; 1; 2) \) và \( \vec{u}_2 = (-1; 2; -2) \) bằng \( -\frac{8}{9} \).</p>
+<label><input name="q13c" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q13c-Đúng"></span></label>
+<label><input name="q13c" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q13c-Sai"></span></label>
+
+<p>d) Góc giữa hai đường thẳng \( \Delta_1 \) và \( \Delta_2 \) (làm tròn đến độ) bằng \( 132^\circ \).</p>
+<label><input name="q13d" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q13d-Đúng"></span></label>
+<label><input name="q13d" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q13d-Sai"></span></label>
+</div></div>
+<div class="answer-check">
+<button onclick="checkTrueFalseAnswer('q13', ['Sai', 'Sai', 'Đúng', 'Sai'])">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q13')">Xem lời giải</button>
+<div class="solution" id="solution-q13"></div>
+</div>
+</div>
+
+<!-- Câu 14 -->
+<div class="question" id="q14">
+<div class="summary-box">
+<p><strong>Câu 14</strong>. Cho hàm số \( y = -x^3 + 3x^2 + 2 \).</p>
+
+<div class="options">
+<p>a) Đạo hàm của hàm số đã cho là \( y' = -3x^2 + 6x \).</p>
+<label><input name="q14a" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q14a-Đúng"></span></label>
+<label><input name="q14a" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q14a-Sai"></span></label>
+
+<p>b) Hàm số đồng biến trên khoảng \( (0;2) \) và nghịch biến trên \( (-\infty; 0) \cup (2; +\infty) \).</p>
+<label><input name="q14b" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q14b-Đúng"></span></label>
+<label><input name="q14b" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q14b-Sai"></span></label>
+
+<p>c) Bảng biến thiên của hàm số như hình dưới đây:<br/>
+<img alt="" loading="lazy" src="data/anh1/1.5.png"/></p>
+<label><input name="q14c" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q14c-Đúng"></span></label>
+<label><input name="q14c" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q14c-Sai"></span></label>
+
+<p>d) Đồ thị hàm số đã cho như ở Hình 4:<br/>
+<img alt="" loading="lazy" src="data/anh1/1.6.png"/></p>
+<label><input name="q14d" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q14d-Đúng"></span></label>
+<label><input name="q14d" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q14d-Sai"></span></label>
+</div></div>
+<div class="answer-check">
+<button onclick="checkTrueFalseAnswer('q14', ['Đúng', 'Sai', 'Sai', 'Sai'])">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q14')">Xem lời giải</button>
+<div class="solution" id="solution-q14"></div>
+</div>
+</div>
+
+<!-- Câu 15 -->
+<div class="question" id="q15">
+<div class="summary-box">
+<p><strong>Câu 15</strong>. Kết quả kiểm tra cân nặng của 20 học sinh nam lớp 12A (làm tròn đến kg) được cho ở bảng 2.</p>
+<img alt="" loading="lazy" src="data/anh1/1.7.png"/></p>
+<div class="options">
+<p>a) Khoảng biến thiên của mẫu số liệu ghép nhóm đã cho là 20.</p>
+<label><input name="q15a" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q15a-Đúng"></span></label>
+<label><input name="q15a" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q15a-Sai"></span></label>
+
+<p>b) Số trung bình cộng được tính bằng công thức: \( \bar{x} = \dfrac{8.62 + 9.66 + 1.70 + 1.74 + 1.78}{20} \).</p>
+<label><input name="q15b" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q15b-Đúng"></span></label>
+<label><input name="q15b" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q15b-Sai"></span></label>
+
+<p>c) Phương sai của mẫu là \( s^2 = \dfrac{436}{25} \).</p>
+<label><input name="q15c" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q15c-Đúng"></span></label>
+<label><input name="q15c" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q15c-Sai"></span></label>
+
+<p>d) Độ lệch chuẩn là 4 kg (làm tròn đến hàng phần mười).</p>
+<label><input name="q15d" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q15d-Đúng"></span></label>
+<label><input name="q15d" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q15d-Sai"></span></label>
+</div></div>
+<div class="answer-check">
+<button onclick="checkTrueFalseAnswer('q15', ['Đúng', 'Đúng', 'Sai', 'Sai'])">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q15')">Xem lời giải</button>
+<div class="solution" id="solution-q15"></div>
+</div>
+</div>
+
+<!-- Câu 16 -->
+<div class="question" id="q16">
+<div class="summary-box">
+<p><strong>Câu 16</strong>. Hình ảnh máy tính xách tay mở ra tạo góc nhị diện \( \angle BAC \).</p>
+<img alt="" loading="lazy" src="data/anh1/1.8.png"/></p>
+<div class="options">
+<p>a) \( \cos \angle BAC = \dfrac{AB^2 + AC^2 - BC^2}{2 \cdot AB \cdot AC} \).</p>
+<label><input name="q16a" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q16a-Đúng"></span></label>
+<label><input name="q16a" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q16a-Sai"></span></label>
+
+<p>b) Nếu \( AB = AC = 30 \, \text{cm} \), \( BC = 30\sqrt{3} \) thì \( \cos \angle BAC = -\frac{1}{2} \).</p>
+<label><input name="q16b" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q16b-Đúng"></span></label>
+<label><input name="q16b" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q16b-Sai"></span></label>
+
+<p>c) Nếu \( \cos \angle BAC = -\frac{1}{2} \) thì \( \angle BAC = 60^\circ \).</p>
+<label><input name="q16c" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q16c-Đúng"></span></label>
+<label><input name="q16c" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q16c-Sai"></span></label>
+
+<p>d) Độ mở của máy tính là \( 120^\circ \) nếu \( AB = AC = 30 \) và \( BC = 30\sqrt{3} \).</p>
+<label><input name="q16d" type="radio" value="Đúng"/> Đúng<span class="option-icon" id="icon-q16d-Đúng"></span></label>
+<label><input name="q16d" type="radio" value="Sai"/> Sai<span class="option-icon" id="icon-q16d-Sai"></span></label>
+</div></div>
+<div class="answer-check">
+<button onclick="checkTrueFalseAnswer('q16', ['Sai', 'Đúng', 'Sai', 'Đúng'])">Kiểm tra</button>
+<button class="solution-toggle" onclick="toggleSolution('solution-q16')">Xem lời giải</button>
+<div class="solution" id="solution-q16"></div>
+</div>
+</div>
+<h3>Phần III: Trắc Nghiệm Trả Lời Ngắn - từ câu 17 đến câu 22</h3>
+
+    <!-- Câu 17 -->
+    <div class="question" id="q17">
+        <div class="summary-box">
+            <p><strong>Câu 17</strong>. Ta coi năm lấy làm mốc để tính dân số của một vùng (hoặc một quốc gia) là năm 0. Khi đó, dân số của quốc gia đó ở năm thứ \( t \) là hàm số theo biến \( t \) được cho bởi công thức: \( S = A e^{rt} \), trong đó \( A \) là dân số của vùng (hoặc quốc gia) đó ở năm 0 và \( r \) là tỉ lệ tăng dân số hàng năm. Biết rằng dân số Việt Nam năm 2021 ước tính là 98.564.407 người và tỉ lệ tăng dân số hàng năm của Việt Nam là \( r = 0,93\% \). Giả sử tỉ lệ tăng dân số hàng năm là như nhau tính từ năm 2021. Hỏi từ năm nào trở đi, dân số nước ta vượt quá 120 triệu người?</p>
+        </div>
+        <div class="answer-check">
+            <input type="text" id="input-q17" placeholder="Nhập đáp án">
+            <button onclick="checkShortAnswer('q17', '2043')">Kiểm tra</button>
+            <button class="solution-toggle" onclick="toggleSolution('solution-q17')">Xem lời giải</button>
+            <div class="solution" id="solution-q17"></div>
+            <div class="answer-feedback" id="feedback-q17"></div>
+        </div>
+    </div>
+
+    <!-- Câu 18 -->
+    <div class="question" id="q18">
+        <div class="summary-box">
+            <p><strong>Câu 18</strong>. Một nguồn âm phát ra sóng âm là sóng cầu. Khi gắn hệ trục tọa độ \( Oxyz \) (đơn vị trên mỗi trục là mét), cường độ âm chuẩn tại điểm \( I(3; 4; 5) \) là tâm của nguồn phát âm với bán kính \( 10 \, \text{m} \). Để kiểm tra một điểm ở vị trí \( M(7; 10; 17) \) có nhận được cường độ âm phát ra tại \( I \) hay không, người ta sẽ tính khoảng cách giữa hai vị trí \( I \) và \( M \). Hỏi khoảng cách giữa hai vị trí \( I \) và \( M \) là bao nhiêu mét?</p>
+        </div>
+        <div class="answer-check">
+            <input type="text" id="input-q18" placeholder="Nhập đáp án">
+            <button onclick="checkShortAnswer('q18', '14')">Kiểm tra</button>
+            <button class="solution-toggle" onclick="toggleSolution('solution-q18')">Xem lời giải</button>
+            <div class="solution" id="solution-q18"></div>
+            <div class="answer-feedback" id="feedback-q18"></div>
+        </div>
+    </div>
+
+    <!-- Câu 19 -->
+    <div class="question" id="q19">
+        <div class="summary-box">
+            <p><strong>Câu 19</strong>. Trong một khung lưới ở vùng gồm các hình lập phương, người ta đưa ra một cách kiểm tra bốn nút lưới (đỉnh hình lập phương) bất kỳ có đồng phẳng hay không bằng cách gắn hệ trục tọa độ \( Oxyz \) vào khung lưới ở vùng và lập phương trình mặt phẳng đi qua ba nút lưới trong bốn nút lưới đã cho. Giả sử có ba nút lưới mà tọa độ lần lượt là \( (1; 1; 10) \), \( (4; 3; 1) \), \( (3; 2; 5) \) và mặt phẳng đi qua ba nút lưới đó có phương trình \( x + my + nz + p = 0 \). Giá trị của \( m + n + p \) là bao nhiêu?</p>
+        </div>
+        <div class="answer-check">
+            <input type="text" id="input-q19" placeholder="Nhập đáp án">
+            <button onclick="checkShortAnswer('q19', '-10')">Kiểm tra</button>
+            <button class="solution-toggle" onclick="toggleSolution('solution-q19')">Xem lời giải</button>
+            <div class="solution" id="solution-q19"></div>
+            <div class="answer-feedback" id="feedback-q19"></div>
+        </div>
+    </div>
+
+    <!-- Câu 20 -->
+    <div class="question" id="q20">
+        <div class="summary-box">
+            <p><strong>Câu 20</strong>. Cho một tấm nhôm hình vuông cạnh \( 12 \, \text{cm} \), người ta cắt ở bốn góc bốn hình vuông bằng nhau, mỗi hình vuông có cạnh bằng \( \frac{12}{x} \, \text{cm} \), rồi gấp tấm nhôm lại như Hình 6 để được một cái hộp có dạng hình hộp chữ nhật không có nắp. Giá trị của \( x \) bằng bao nhiêu centimet để thể tích của khối hộp đó là lớn nhất (làm tròn kết quả đến hàng đơn vị)?</p>
+        <img alt="" loading="lazy" src="data/anh1/1.9.png"/></p>
+          </div>
+        <div class="answer-check">
+            <input type="text" id="input-q20" placeholder="Nhập đáp án">
+            <button onclick="checkShortAnswer('q20', '2')">Kiểm tra</button>
+            <button class="solution-toggle" onclick="toggleSolution('solution-q20')">Xem lời giải</button>
+            <div class="solution" id="solution-q20"></div>
+            <div class="answer-feedback" id="feedback-q20"></div>
+        </div>
+    </div>
+
+    <!-- Câu 21 -->
+    < diarrhoea class="question" id="q21">
+        <div class="summary-box">
+            <p><strong>Câu 21</strong>. Bạn Hải nhận thiết kế logo hình con mắt (phần được tô đậm) cho một cơ sở y tế: Logo là hình phẳng giới hạn bởi hai parabol \( y = f(x) \) và \( y = g(x) \) như Hình 7 (đơn vị trên mỗi trục tọa độ là decimet). Bạn Hải cần tính diện tích của logo để báo giá cho cơ sở y tế đó trước khi ký hợp đồng. Diện tích của logo là bao nhiêu decimet vuông (làm tròn kết quả đến hàng phần mười)?</p>
+        <img alt="" loading="lazy" src="data/anh1/1.10.png"/></p>
+          </div>
+        <div class="answer-check">
+            <input type="text" id="input-q21" placeholder="Nhập đáp án">
+            <button onclick="checkShortAnswer('q21', '9,8')">Kiểm tra</button>
+            <button class="solution-toggle" onclick="toggleSolution('solution-q21')">Xem lời giải</button>
+            <div class="solution" id="solution-q21"></div>
+            <div class="answer-feedback" id="feedback-q21"></div>
+        </div>
+    </div>
+
+    <!-- Câu 22 -->
+    <div class="question" id="q22">
+        <div class="summary-box">
+            <p><strong>Câu 22</strong>. Một công ty dược phẩm giới thiệu một dụng cụ để kiểm tra sớm bệnh sốt xuất huyết. Về báo cáo kiểm định chất lượng của sản phẩm, họ cho biết như sau: Số người được thử là 8000, trong số đó có 1200 người đã bị nhiễm bệnh sốt xuất huyết và có 6800 người không bị nhiễm bệnh sốt xuất huyết. Nhưng khi kiểm tra lại bằng dụng cụ của công ty, trong 1200 người đã bị nhiễm bệnh sốt xuất huyết, có 70% số người đó cho kết quả dương tính, còn lại cho kết quả âm tính. Trong 6800 người không bị nhiễm bệnh sốt xuất huyết, có 5% số người đó cho kết quả dương tính, còn lại cho kết quả âm tính. Xác suất mà một bệnh nhân với kết quả kiểm tra dương tính là bị nhiễm bệnh sốt xuất huyết bằng bao nhiêu? (Viết kết quả dưới dạng số thập phân và làm tròn đến hàng phần trăm).</p>
+        </div>
+        <div class="answer-check">
+            <input type="text" id="input-q22" placeholder="Nhập đáp án">
+            <button onclick="checkShortAnswer('q22', '0,71')">Kiểm tra</button>
+            <button class="solution-toggle" onclick="toggleSolution('solution-q22')">Xem lời giải</button>
+            <div class="solution" id="solution-q22"></div>
+            <div class="answer-feedback" id="feedback-q22"></div>
+        </div>
+    </div>
+
+ <div class="score-section">
+ <h3>Tính tổng điểm</h3>
+    <p>Nhập họ và tên:</p>
+    <input id="student-name" type="text" placeholder="Họ và tên"/>   
+<button onclick="calculateScore()">Tính điểm</button>
+<div id="score-result"></div>
+</div>
+
+  <script>
+    function showOptionIcon(questionId, selectedValue, correctAnswer) {
+      if (!checkedQuestions[questionId]) return;
+      ['A', 'B', 'C', 'D'].forEach(letter => {
+        const iconSpan = document.getElementById(`icon-${questionId}-${letter}`);
+        if (iconSpan) iconSpan.innerHTML = '';
+      });
+      const icon = selectedValue === correctAnswer ? '✅' : '❌';
+      const selectedSpan = document.getElementById(`icon-${questionId}-${selectedValue}`);
+      if (selectedSpan) selectedSpan.innerHTML = icon;
+    }
+
+    function showTFOptionIcon(name, selectedValue, correctValue, questionId) {
+      if (!checkedQuestions[questionId]) return;
+      const icon = selectedValue === correctValue ? '✅' : '❌';
+      const span = document.getElementById(`icon-${name}`);
+      if (span) span.innerHTML = icon;
+    }
+
+    
+    function lockQuestionInputs(questionId) {
+    const radios = document.querySelectorAll(`input[name="${questionId}"]`);
+    radios.forEach(input => input.disabled = true);
+}
+
+    function addSolutionLink(questionId, url) {
+      if (!checkedQuestions[questionId]) return;
+      const container = document.getElementById(`feedback-${questionId}`);
+      if (container && !container.querySelector("a")) {
+        const link = document.createElement("a");
+        link.href = url;
+        link.target = "_blank";
+        link.style.marginLeft = "10px";
+        link.textContent = "Xem lời giải";
+        container.appendChild(link);
+      }
+    }
+
+    var studentAnswers = {};
+    var checkedQuestions = {};
+    var isScoreCalculated = false;
+
+    function checkAnswer(questionId, correctAnswer) {
+      if (checkedQuestions[questionId]) return;
+      const inputs = document.getElementsByName(questionId);
+      let selectedAnswer = null;
+      for (let input of inputs) {
+        if (input.checked) {
+          selectedAnswer = input.value;
+          break;
+        }
+      }
+      studentAnswers[questionId] = selectedAnswer;
+      checkedQuestions[questionId] = true;
+      lockQuestionInputs(questionId);
+      showOptionIcon(questionId, selectedAnswer, correctAnswer);
+      addSolutionLink(questionId, `giai/${questionId}.html`);
+    }
+
+    function checkTrueFalseAnswer(questionId, correctAnswers) {
+  for (let i = 0; i < correctAnswers.length; i++) {
+    const name = questionId + String.fromCharCode(97 + i);
+    const inputs = document.getElementsByName(name);
+    let selected = '';
+    for (const input of inputs) {
+      if (input.checked) {
+        selected = input.value;
+        break;
+      }
+    }
+
+    const iconId = `icon-${name}`;
+    let icon = document.getElementById(iconId);
+    if (!icon && inputs.length) {
+      icon = document.createElement('span');
+      icon.id = iconId;
+      icon.className = 'option-icon';
+      inputs[0].parentNode.appendChild(icon);
+    }
+    if (icon) {
+      icon.innerHTML = selected === correctAnswers[i] ? '✅' : '❌';
+    }
+  }
+}
+   function checkShortAnswer(questionId, correctAnswer) {
+      if (checkedQuestions[questionId]) return;
+      const input = document.getElementById('input-' + questionId);
+      const feedback = document.getElementById('feedback-' + questionId);
+
+      // Tự động tạo span hiển thị nếu chưa tồn tại
+      let icon = document.getElementById('icon-' + questionId);
+      if (!icon && input) {
+        icon = document.createElement('span');
+        icon.id = 'icon-' + questionId;
+        icon.className = 'option-icon';
+        icon.setAttribute('aria-label', 'Biểu tượng kiểm tra');
+        input.insertAdjacentElement('afterend', icon);
+      }
+
+      if (!input) {
+        feedback.innerHTML = 'Lỗi: Không tìm thấy input cho câu hỏi!';
+        feedback.className = 'answer-feedback incorrect';
+        return;
+      }
+
+      const value = input.value.trim();
+      if (value === '') {
+        feedback.innerHTML = 'Vui lòng nhập đáp án!';
+        feedback.className = 'answer-feedback incorrect';
+        if (icon) icon.innerHTML = '';
+        return;
+      }
+
+      if (!isNaN(correctAnswer)) {
+        const numeric = parseFloat(value);
+        if (isNaN(numeric)) {
+          feedback.innerHTML = 'Vui lòng nhập một số hợp lệ!';
+          feedback.className = 'answer-feedback incorrect';
+          if (icon) icon.innerHTML = '';
+          return;
+        }
+        const correct = parseFloat(correctAnswer);
+        if (Math.abs(numeric - correct) < 0.001) {
+          feedback.innerHTML = 'Đúng!';
+          feedback.className = 'answer-feedback correct';
+          studentAnswers[questionId] = numeric;
+          if (icon) icon.innerHTML = '✅';
+        } else {
+          feedback.innerHTML = 'Sai!';
+          feedback.className = 'answer-feedback incorrect';
+          studentAnswers[questionId] = numeric;
+          if (icon) icon.innerHTML = '❌';
+        }
+      } else {
+        if (value === correctAnswer) {
+          feedback.innerHTML = 'Đúng';
+            feedback.className = 'answer-feedback correct';
+          studentAnswers[questionId] = value;
+          if (icon) icon.innerHTML = '✅';
+        } else {
+          feedback.innerHTML = 'Sai!';
+          feedback.className = 'answer-feedback incorrect';
+          studentAnswers[questionId] = value;
+          if (icon) icon.innerHTML = '❌';
+        }
+      }
+}
+    function calculateScore() {
+  if (isScoreCalculated) return;
+/* @@ */
+  const correctAnswers = {
+    q1: 'D',
+    q2: 'C',
+    q3: 'C',
+    q4: 'D',
+    q5: 'A',
+    q6: 'A',
+    q7: 'B',
+    q8: 'B',
+    q9: 'C',
+    q10: 'A',
+    q11: 'B',
+    q12: 'C',
+    q13: ['Đúng',  'Sai', 'Sai', 'Đúng'],
+    q14: ['Đúng', 'Đúng', 'Sai', 'Sai'],
+    q15: ['Sai', 'Đúng', 'Đúng', 'Sai'],
+    q16: ['Đúng', 'Sai', 'Sai', 'Sai'],
+    q17: '0,33',
+    q18: '62,1',
+    q19: '2',
+    q20: '13,5',
+    q21: '-100',
+    q22: '0,75'
+  };
+
+  let studentAnswers = {};
+
+  // Câu 1 → 12: Trắc nghiệm ABCD
+  for (let i = 1; i <= 12; i++) {
+    const name = 'q' + i;
+    const selected = document.querySelector(`input[name="${name}"]:checked`);
+    if (selected) {
+      studentAnswers[name] = selected.value.trim();
+    }
+  }
+
+  // Câu 13 → 16: Đúng / Sai từng mệnh đề
+  for (let i = 13; i <= 16; i++) {
+    const subAnswers = [];
+    ['a', 'b', 'c', 'd'].forEach(letter => {
+      const inputName = `q${i}${letter}`;
+      const selected = document.querySelector(`input[name="${inputName}"]:checked`);
+      if (selected) {
+        subAnswers.push(selected.value.trim());
+      } else {
+        subAnswers.push(''); // Không chọn gì
+      }
+    });
+    studentAnswers['q' + i] = subAnswers;
+    console.log(`q${i}:`, subAnswers);  // Ghi ra console
+  }
+
+  // Câu 17 → 22: Tự luận (text input)
+  // Câu 17 → 22: Tự luận (text input)
+for (let i = 17; i <= 22; i++) {
+  const input = document.getElementById(`input-q${i}`);
+  if (input) {
+    studentAnswers['q' + i] = input.value.trim().replace(',', '.');
+  }
+}
+  // Bắt đầu tính điểm
+  let totalScore = 0;
+
+  for (let i = 1; i <= 22; i++) {
+    const key = 'q' + i;
+    const userAns = studentAnswers[key];
+    const correctAns = correctAnswers[key];
+
+    if (i >= 1 && i <= 12) {
+      if (userAns && userAns === correctAns) totalScore += 0.25;
+    } else if (i >= 13 && i <= 16) {
+      if (Array.isArray(userAns) && Array.isArray(correctAns)) {
+        let correctCount = 0;
+        for (let j = 0; j < correctAns.length; j++) {
+          if (userAns[j] === correctAns[j]) correctCount++;
+        }
+        console.log(`Câu ${key} đúng ${correctCount} phần`);
+        if (correctCount === 1) totalScore += 0.1;
+        else if (correctCount === 2) totalScore += 0.25;
+        else if (correctCount === 3) totalScore += 0.5;
+        else if (correctCount === 4) totalScore += 1;
+      }
+    } else if (i >= 17 && i <= 22) {
+      const user = parseFloat(userAns?.toString().replace(',', '.'));
+      const correct = parseFloat(correctAns?.toString().replace(',', '.'));
+      if (!isNaN(user) && !isNaN(correct) && Math.abs(user - correct) < 0.001) {
+        totalScore += 0.5;
+      }
+    }
+    }
+      
+
+  const scoreElement = document.getElementById("score-result");
+  scoreElement.textContent = `Tổng điểm của bạn: ${totalScore.toFixed(2)} / 10`;
+  scoreElement.className = "correct";
+  isScoreCalculated = true;
+}
+
+let allowShowSolution = true; // Đặt thành false nếu muốn khóa lời giải
+
+  function toggleSolution(id) {
+    if (!allowShowSolution) {
+      alert("Lời giải đang bị khóa. Liên hệ giáo viên để mở.");
+      return;
+    }
+    const el = document.getElementById(id);
+    if (el) {
+      el.classList.toggle("hidden");
+      el.classList.toggle('visible');
+    }
+  }
+
+  function showVideoSolution(url, qid) {
+    if (!allowShowSolution) {
+      alert("Lời giải đang bị khóa. Liên hệ giáo viên để mở.");
+      return;
+    }
+    window.open(url, '_blank');
+  }
+  </script>
+    <script src="recorder.js"></script>
+    <script>
+const canvas = document.getElementById("drawCanvas");
+const ctx = canvas.getContext("2d");
+const toggleBtn = document.getElementById("toggleDraw");
+const toolbar = document.getElementById("drawToolbar");
+const clearBtn = document.getElementById("clearBtn");
+const saveBtn = document.getElementById("saveBtn");
+const exitBtn = document.getElementById("exitBtn");
+const colorPicker = document.getElementById("colorPicker");
+const toolSelect = document.getElementById("tool");
+const widthPicker = document.getElementById("draw-width");
+let lineWidth = 2;
+
+widthPicker.oninput = () => {
+  lineWidth = parseInt(widthPicker.value);
+};
+let isDrawing = false;
+let isDrawMode = false;
+let startX = 0, startY = 0;
+let currentTool = "pen";
+let imageBeforeShape;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+toggleBtn.onclick = () => {
+  isDrawMode = true;
+  canvas.style.display = "block";
+  toolbar.style.display = "flex";
+};
+
+exitBtn.onclick = () => {
+  isDrawMode = false;
+  canvas.style.display = "none";
+  toolbar.style.display = "none";
+};
+
+toolSelect.onchange = () => currentTool = toolSelect.value;
+clearBtn.onclick = () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Ghi một ảnh rỗng lên Firebase để đồng bộ xoá cho mọi người
+  if (typeof saveDrawingToFirebase === "function") {
+    saveDrawingToFirebase(); // Lưu canvas trống
+  }
+};
+
+saveBtn.onclick = () => {
+  const link = document.createElement("a");
+  link.download = "ban_ve.png";
+  link.href = canvas.toDataURL();
+  link.click();
+};
+
+function getPos(e) {
+  if (e.touches && e.touches.length > 0) {
+    return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }
+  return { x: e.clientX, y: e.clientY };
+}
+
+function startDraw(e) {
+  if (!isDrawMode) return;
+  e.preventDefault();
+  const pos = getPos(e);
+  isDrawing = true;
+  startX = pos.x;
+  startY = pos.y;
+  if (currentTool !== "pen") {
+    imageBeforeShape = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  } else {
+    ctx.beginPath();
+    ctx.moveTo(startX, startY);
+  }
+}
+
+function drawMove(e) {
+  if (!isDrawing || !isDrawMode) return;
+  const pos = getPos(e);
+  ctx.strokeStyle = colorPicker.value;
+  ctx.lineWidth = lineWidth;
+  ctx.lineCap = "round";
+
+  if (currentTool === "pen") {
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+  } else {
+    ctx.putImageData(imageBeforeShape, 0, 0);
+    if (currentTool === "line") {
+      ctx.beginPath();
+      ctx.moveTo(startX, startY);
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+    } else if (currentTool === "rect") {
+      ctx.strokeRect(startX, startY, pos.x - startX, pos.y - startY);
+    } else if (currentTool === "circle") {
+      const radius = Math.hypot(pos.x - startX, pos.y - startY);
+      ctx.beginPath();
+      ctx.arc(startX, startY, radius, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+    else if (currentTool === "cube") {
+  // Vẽ hình lập phương 3D đơn giản
+  let size = Math.min(Math.abs(pos.x - startX), Math.abs(pos.y - startY));
+  ctx.strokeRect(startX, startY, size, size);
+  ctx.strokeRect(startX + 10, startY - 10, size, size);
+  ctx.beginPath();
+  ctx.moveTo(startX, startY);
+  ctx.lineTo(startX + 10, startY - 10);
+  ctx.moveTo(startX + size, startY);
+  ctx.lineTo(startX + size + 10, startY - 10);
+  ctx.moveTo(startX, startY + size);
+  ctx.lineTo(startX + 10, startY + size - 10);
+  ctx.moveTo(startX + size, startY + size);
+  ctx.lineTo(startX + size + 10, startY + size - 10);
+  ctx.stroke();
+}
+else if (currentTool === "cone") {
+  let radius = Math.abs(pos.x - startX);
+  ctx.beginPath();
+  ctx.ellipse(startX, startY + 40, radius, 10, 0, 0, Math.PI * 2);
+  ctx.moveTo(startX - radius, startY + 40);
+  ctx.lineTo(startX, startY - 40);
+  ctx.lineTo(startX + radius, startY + 40);
+  ctx.stroke();
+}
+else if (currentTool === "cylinder") {
+  let r = Math.abs(pos.x - startX);
+  ctx.beginPath();
+  ctx.ellipse(startX, startY, r, 10, 0, 0, Math.PI * 2);
+  ctx.moveTo(startX - r, startY);
+  ctx.lineTo(startX - r, startY + 100);
+  ctx.moveTo(startX + r, startY);
+  ctx.lineTo(startX + r, startY + 100);
+  ctx.ellipse(startX, startY + 100, r, 10, 0, 0, Math.PI);
+  ctx.stroke();
+}
+else if (currentTool === "pyramid") {
+  ctx.beginPath();
+  ctx.moveTo(startX, startY);
+  ctx.lineTo(startX + 60, startY);
+  ctx.lineTo(startX + 30, startY + 60);
+  ctx.closePath();
+  ctx.moveTo(startX + 30, startY + 60);
+  ctx.lineTo(startX + 30, startY - 40);
+  ctx.stroke();
+}
+else if (currentTool === "sphere") {
+  let r = Math.abs(pos.x - startX);
+  ctx.beginPath();
+  ctx.arc(startX, startY, r, 0, Math.PI * 2);
+  ctx.moveTo(startX - r, startY);
+  ctx.ellipse(startX, startY, r, r / 2, 0, 0, Math.PI * 2);
+  ctx.stroke();
+}
+
+  }
+}
+
+
+function endDraw() {
+  if (!isDrawMode) return;
+  isDrawing = false;
+
+  // Sau khi vẽ xong, lưu lên Firebase
+  if (typeof saveDrawingToFirebase === "function") {
+    saveDrawingToFirebase();
+  }
+}
+
+
+canvas.addEventListener("mousedown", startDraw);
+canvas.addEventListener("mousemove", drawMove);
+canvas.addEventListener("mouseup", endDraw);
+canvas.addEventListener("touchstart", startDraw, { passive: false });
+canvas.addEventListener("touchmove", drawMove, { passive: false });
+canvas.addEventListener("touchend", endDraw);
+</script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+
+<!--script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script-->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<script>
+ const firebaseConfig = {
+  apiKey: "AIzaSyDDACFZgZazMOnjzmGM_lrKswVcsoTFHxA",
+  authDomain: "veonline-3bcbf.firebaseapp.com",
+  databaseURL: "https://veonline-3bcbf-default-rtdb.firebaseio.com",
+  projectId: "veonline-3bcbf",
+  storageBucket: "veonline-3bcbf.appspot.com",
+  messagingSenderId: "83902304195",
+  appId: "1:83902304195:web:2f9ec1ee0c23d6e21bb776"
+};
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();  // Dùng Realtime Database, không phải Firestore
+
+
+  const canvas = document.getElementById("drawCanvas");
+const ctx = canvas.getContext("2d");
+const toggleBtn = document.getElementById("toggleDraw");
+const toolbar = document.getElementById("drawToolbar");
+const clearBtn = document.getElementById("clearBtn");
+const saveBtn = document.getElementById("saveBtn");
+const exitBtn = document.getElementById("exitBtn");
+const colorPicker = document.getElementById("colorPicker");
+const toolSelect = document.getElementById("tool");
+const widthPicker = document.getElementById("draw-width");
+
+let isDrawing = false;
+let isDrawMode = false;
+let lineWidth = parseInt(widthPicker.value);
+let userId = "user_" + Math.random().toString(36).substring(2);
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+toggleBtn.onclick = () => {
+  isDrawMode = true;
+  canvas.style.display = "block";
+  toolbar.style.display = "flex";
+};
+exitBtn.onclick = () => {
+  isDrawMode = false;
+  canvas.style.display = "none";
+  toolbar.style.display = "none";
+};
+clearBtn.onclick = () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  db.ref("sharedDrawing").remove(); // xoá dữ liệu Firebase luôn
+};
+saveBtn.onclick = () => {
+  const link = document.createElement("a");
+  link.download = "ban_ve.png";
+  link.href = canvas.toDataURL();
+  link.click();
+};
+widthPicker.oninput = () => lineWidth = parseInt(widthPicker.value);
+
+function getPos(e) {
+  const rect = canvas.getBoundingClientRect();
+  if (e.touches && e.touches.length > 0) {
+    return {
+      x: e.touches[0].clientX - rect.left,
+      y: e.touches[0].clientY - rect.top
+    };
+  }
+  return {
+    x: e.clientX - rect.left,
+    y: e.clientY - rect.top
+  };
+}
+
+function sendPointToFirebase(pos) {
+  const normX = pos.x / canvas.width;
+  const normY = pos.y / canvas.height;
+  db.ref("sharedDrawing").push({
+    x: normX,
+    y: normY,
+    color: colorPicker.value,
+    width: lineWidth,
+    user: userId,
+    time: Date.now()
+  });
+}
+
+// Vẽ chuột
+canvas.addEventListener("mousedown", (e) => {
+  if (!isDrawMode) return;
+  isDrawing = true;
+  const pos = getPos(e);
+  ctx.beginPath();
+  ctx.moveTo(pos.x, pos.y);
+  sendPointToFirebase(pos);
+});
+canvas.addEventListener("mousemove", (e) => {
+  if (!isDrawing || !isDrawMode) return;
+  const pos = getPos(e);
+  ctx.strokeStyle = colorPicker.value;
+  ctx.lineWidth = lineWidth;
+  ctx.lineCap = "round";
+  ctx.lineTo(pos.x, pos.y);
+  ctx.stroke();
+  sendPointToFirebase(pos);
+});
+canvas.addEventListener("mouseup", () => {
+  if (!isDrawMode) return;
+  isDrawing = false;
+  ctx.beginPath();
+});
+
+// Vẽ cảm ứng
+canvas.addEventListener("touchstart", (e) => {
+  if (!isDrawMode) return;
+  isDrawing = true;
+  const pos = getPos(e);
+  ctx.beginPath();
+  ctx.moveTo(pos.x, pos.y);
+  sendPointToFirebase(pos);
+});
+canvas.addEventListener("touchmove", (e) => {
+  if (!isDrawing || !isDrawMode) return;
+  const pos = getPos(e);
+  ctx.strokeStyle = colorPicker.value;
+  ctx.lineWidth = lineWidth;
+  ctx.lineCap = "round";
+  ctx.lineTo(pos.x, pos.y);
+  ctx.stroke();
+  sendPointToFirebase(pos);
+  e.preventDefault(); // ngăn cuộn khi vẽ trên cảm ứng
+}, { passive: false });
+canvas.addEventListener("touchend", () => {
+  if (!isDrawMode) return;
+  isDrawing = false;
+  ctx.beginPath();
+});
+
+// Nhận dữ liệu vẽ từ người khác (REALTIME)
+db.ref("sharedDrawing").limitToLast(1000).on("child_added", (snapshot) => {
+  const data = snapshot.val();
+  if (data.user === userId) return; // bỏ qua nét của chính mình
+
+  const x = data.x * canvas.width;
+  const y = data.y * canvas.height;
+
+  ctx.strokeStyle = data.color;
+  ctx.lineWidth = data.width;
+  ctx.lineCap = "round";
+  ctx.lineTo(x, y);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+});
+<script>
+
+
+</body>
+</html>
